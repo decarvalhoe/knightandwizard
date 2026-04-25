@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qgis projectname="Knight and Wizard — Carte interactive" version="3.44.9-Solothurn" saveDateTime="2026-04-25T21:11:31">
+  <homePath path=""/>
+  <title>Knight and Wizard — Digitalisation cartes</title>
+  <transaction mode="Disabled"/>
+  <projectFlags set=""/>
+  <autotransaction active="0"/>
+  <evaluateDefaultValues active="0"/>
+  <trust active="0"/>
+
+  <projectCrs>
+    <spatialrefsys nativeFormat="Wkt">
+      <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
+      <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+      <srsid>3452</srsid>
+      <srid>4326</srid>
+      <authid>EPSG:4326</authid>
+      <description>WGS 84</description>
+      <projectionacronym>longlat</projectionacronym>
+      <ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+      <geographicflag>true</geographicflag>
+    </spatialrefsys>
+  </projectCrs>
+
+  <layer-tree-group>
+    <customproperties/>
+    <layer-tree-group expanded="1" name="Rasters (référence)" checked="Qt::Unchecked">
+      <customproperties/>
+      <layer-tree-layer id="raster_terres_oubliees" name="terres-oubliees" providerKey="gdal" source="../public/maps/terres-oubliees.jpg" checked="Qt::Checked" expanded="1"/>
+      <layer-tree-layer id="raster_alteria" name="alteria" providerKey="gdal" source="../public/maps/alteria.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_collines_ico" name="collines-ico" providerKey="gdal" source="../public/maps/collines-ico.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_cortega" name="cortega" providerKey="gdal" source="../public/maps/cortega.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_detre" name="detre" providerKey="gdal" source="../public/maps/detre.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_dundoria" name="dundoria" providerKey="gdal" source="../public/maps/dundoria.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_empire" name="empire" providerKey="gdal" source="../public/maps/empire.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_enorie" name="enorie" providerKey="gdal" source="../public/maps/enorie.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_fauche_le_vent" name="fauche-le-vent" providerKey="gdal" source="../public/maps/fauche-le-vent.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_foret_tyrkan" name="foret-tyrkan" providerKey="gdal" source="../public/maps/foret-tyrkan.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_haut_royaume" name="haut-royaume" providerKey="gdal" source="../public/maps/haut-royaume.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_irtanie" name="irtanie" providerKey="gdal" source="../public/maps/irtanie.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_portes_azrak" name="portes-azrak" providerKey="gdal" source="../public/maps/portes-azrak.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_sombre_monde" name="sombre-monde" providerKey="gdal" source="../public/maps/sombre-monde.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_terres_nord" name="terres-nord" providerKey="gdal" source="../public/maps/terres-nord.jpg" checked="Qt::Unchecked" expanded="1"/>
+      <layer-tree-layer id="raster_yonkado" name="yonkado" providerKey="gdal" source="../public/maps/yonkado.jpg" checked="Qt::Unchecked" expanded="1"/>
+    </layer-tree-group>
+    <layer-tree-group expanded="1" name="Vecteurs à digitaliser" checked="Qt::Checked">
+      <customproperties/>
+      <layer-tree-layer id="regions_layer" name="Régions (à créer en GeoPackage)" providerKey="ogr" source="layers/regions.gpkg|layername=regions" expanded="1"/>
+      <layer-tree-layer id="cities_layer" name="Villes (à créer en GeoPackage)" providerKey="ogr" source="layers/cities.gpkg|layername=cities" expanded="1"/>
+      <layer-tree-layer id="routes_layer" name="Routes/fleuves (optionnel)" providerKey="ogr" source="layers/routes.gpkg|layername=routes" expanded="1"/>
+    </layer-tree-group>
+  </layer-tree-group>
+
+  <projectlayers>
+    <maplayer type="raster" id="raster_terres_oubliees">
+      <id>raster_terres_oubliees</id>
+      <datasource>../public/maps/terres-oubliees.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>terres-oubliees</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : terres-oubliees</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_alteria">
+      <id>raster_alteria</id>
+      <datasource>../public/maps/alteria.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>alteria</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : alteria</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_collines_ico">
+      <id>raster_collines_ico</id>
+      <datasource>../public/maps/collines-ico.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>collines-ico</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : collines-ico</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_cortega">
+      <id>raster_cortega</id>
+      <datasource>../public/maps/cortega.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>cortega</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : cortega</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_detre">
+      <id>raster_detre</id>
+      <datasource>../public/maps/detre.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>detre</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : detre</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_dundoria">
+      <id>raster_dundoria</id>
+      <datasource>../public/maps/dundoria.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>dundoria</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : dundoria</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_empire">
+      <id>raster_empire</id>
+      <datasource>../public/maps/empire.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>empire</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : empire</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_enorie">
+      <id>raster_enorie</id>
+      <datasource>../public/maps/enorie.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>enorie</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : enorie</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_fauche_le_vent">
+      <id>raster_fauche_le_vent</id>
+      <datasource>../public/maps/fauche-le-vent.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>fauche-le-vent</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : fauche-le-vent</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_foret_tyrkan">
+      <id>raster_foret_tyrkan</id>
+      <datasource>../public/maps/foret-tyrkan.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>foret-tyrkan</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : foret-tyrkan</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_haut_royaume">
+      <id>raster_haut_royaume</id>
+      <datasource>../public/maps/haut-royaume.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>haut-royaume</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : haut-royaume</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_irtanie">
+      <id>raster_irtanie</id>
+      <datasource>../public/maps/irtanie.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>irtanie</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : irtanie</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_portes_azrak">
+      <id>raster_portes_azrak</id>
+      <datasource>../public/maps/portes-azrak.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>portes-azrak</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : portes-azrak</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_sombre_monde">
+      <id>raster_sombre_monde</id>
+      <datasource>../public/maps/sombre-monde.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>sombre-monde</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : sombre-monde</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_terres_nord">
+      <id>raster_terres_nord</id>
+      <datasource>../public/maps/terres-nord.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>terres-nord</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : terres-nord</abstract>
+    </maplayer>
+    <maplayer type="raster" id="raster_yonkado">
+      <id>raster_yonkado</id>
+      <datasource>../public/maps/yonkado.jpg</datasource>
+      <provider>gdal</provider>
+      <layername>yonkado</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <authid>EPSG:4326</authid>
+        </spatialrefsys>
+      </srs>
+      <abstract>Carte raster K&amp;W : yonkado</abstract>
+    </maplayer>
+  </projectlayers>
+
+  <properties>
+    <Paths>
+      <Absolute type="bool">false</Absolute>
+    </Paths>
+    <PAL>
+      <CandidatesLinePerCM type="double">5</CandidatesLinePerCM>
+      <CandidatesPolygonPerCM type="double">2.5</CandidatesPolygonPerCM>
+      <DrawRectOnly type="bool">false</DrawRectOnly>
+      <DrawUnplaced type="bool">false</DrawUnplaced>
+      <SearchMethod type="int">0</SearchMethod>
+      <ShowingAllLabels type="bool">false</ShowingAllLabels>
+      <ShowingCandidates type="bool">false</ShowingCandidates>
+      <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
+    </PAL>
+  </properties>
+</qgis>
