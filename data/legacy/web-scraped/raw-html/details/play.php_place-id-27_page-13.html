@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=27">Aux Acolytes Anonymes</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=11">
+        <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=11">Giovanni Marzo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=176">
+        <img src="../img/characters-profil/176.jpg" alt="Filomena" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=176">Filomena</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=190">
+        <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=190">Marzia Moretti</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=27&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                En fait ce qu&#039;elle pro...*se fait couper la parole par Sindalia <hr><span class="play-sub-title">Action</span><br /><p>Charisme (diff. 7) => 1R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *je me lève. Vous regarde tous :
+
+Je suis plus intéresser à redresser la nation, si mon vote compte. Et aidez, celle qui a toujours crue en nous en nous faisons confiance pour l aider. Sur ce... J ai soif ! 
+
+
+Nerrak je veux bien être ta première participante pour le bras de fer.
+*Sela l ayant entendu après être aller échanger son verre d dcin contre une chope de bière. 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                * s&#039;interrompt nette alors qu&#039;elle allais s’asseoir et regarde Sela avec des yeux tout ronds et fini par rire au éclats *   
+
+Hahaha, mais c&#039;est qu&#039;elle as les oreilles partout ! Je savais bien que c&#039;est pas mon fort la discretion !
+
+Avec plaisir ma grande ! *tape le verre de Sela tout sourir*
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=749&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                //Falshback// *interromps en effet Akbar*
+
+En effet, et si possible étranger...
+Non seulement pour dynamiser les pays, mais aussi pour créer des liens tacites avec les voisins du royaume et augmenter les chances de non agressions
+
+Je retiens ton idée Akbar... mais prendre l&#039;argent du peuple Alterien, déjà dans la difficultée, n&#039;était pas mon but et il est claire que la promesse d&#039;une grande richesse mènera certains de plus pauvre et se ruiner... 
+Cela dit, je ne rejette pas ton idée du tout, c&#039;est effectivement une excellente idée... d’Impôts détournés. Mais je doutes que la reine nous appuies. <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Psychologie + Psychologie humaine (diff. 5) => 6R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=750&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *Interpelle Akbar la bouche pleine, tout en mangeant et buvant*
+
+Eh dit, shon pourais invéchtir l&#039;argent qui nous rechte dans une maichon des jeux *scruntch scruntch, avale*
+
+*regarde Sindalia*
+Comme ça on pourrait, contrôler qui rentre pour jouer et limiter les excès...
+Et régulièrement reverser une partie des bénéfice à l’État ? 
+*marmonne en regardant Akbare* Et se remplir les poches au passage...
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=751&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *réfléchis encore...* <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Ethnologie (diff. 6) => 6R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=753&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *réfléchis toujours...* <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Droit (diff. 6) => 2R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=754&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                @Sindalia : selon toi les Alteriens aiment le pain et les jeux. Les lois sont d&#039;ailleurs très libérales sur tout ce qui génère du plaisir.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Il est vrai que même si nous devons avoir l&#039;approbation royale pour ce genre de d&#039;activité, rien n&#039;indique qu&#039;il y ai un interdit legal pour les jeux d&#039;argents en dehors des regions vouant le culte au Dieu unique. Les prêtres du dieu unique associe le jeu à une activité démoniaque et il est totalement interdit.
+
+Pour païens en revanche c&#039;est une activité parfaitement acceptable.
+
+Si nous créons une structure de ce type à Erune... il est fort probable qui nous attirions des intéressé de Cortaga et Fauche-le-vent pour venir jouer ici en toute impunité...
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=756&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *se retourne vers Sela en souriant*
+
+Il est bien evident que ton avis est plus que bienvenu Sela, merci pour tes mots. <hr><span class="play-sub-title">Action</span><br /><p>Empathie + Réconfort (diff. 6) => 2R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=758&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=27&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=27&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=27&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=27&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=27&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=27&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=27&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=27&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=27&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=27&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=27&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=27&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=27&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=27&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=27&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=27&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=27&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=27&page=18">
+          18
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

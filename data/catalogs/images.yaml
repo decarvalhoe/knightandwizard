@@ -1,0 +1,235 @@
+# Catalogue d'images visuelles K&W — Phase 2 axe A bis
+# Sources : site/download/map/, site/img/flags/, site/img/maps/, site/img/archives/
+# Date import : 2026-04-25
+
+version: 1
+metadata:
+  source: web (site/)
+  imported_at: "2026-04-25"
+  total_images: 33  # 16 cartes + 10 blasons + 3 maps web + 4 divers (hors PJ portraits, hors Manoir Rossellini)
+
+# === CARTE DU MONDE GLOBAL ===
+
+world_map:
+  - id: terres_oubliees
+    name: "Les Terres Oubliées (carte du monde)"
+    file: "site/download/map/terres-oubliees.jpg"
+    type: world_map
+    resolution: high
+    description: |
+      Carte du monde global K&W. Confirme la disposition géographique des 18 nations + dévoile
+      des régions absentes de nations.yaml :
+      - Royaume du Chaos (frontière nord)
+      - Onarit (nord-est, derrière les Montagnes Grises)
+      - Lounaxill (est, entre Cortega et Sombre Monde)
+      - Montagnes Grises (chaîne nord-est)
+      - L'Île aux Basilics (île au sud)
+      - Les Terres Sauvages (sud-est, étendue sauvage)
+    regions_visible:
+      - terres_du_nord     # nord
+      - foret_de_tyrkan    # nord
+      - empire             # ouest
+      - fauche_le_vent     # centre-nord
+      - alteria            # centre
+      - portes_d_azrak     # centre (entre Cortega et Alteria)
+      - aderand            # ouest (port)
+      - enorie             # ouest
+      - haut_royaume       # sud-ouest
+      - cortega            # sud-ouest
+      - dundoria           # sud-est
+      - yonkado            # sud-est
+      - irtanie            # est
+      - blanc_royaume      # est (côté Lounaxill)
+      - monde_sombre       # est extrême
+      - detre              # nord-est
+      - grand_desert       # sud-est centre
+      - landes_desertiques # sud
+      - terres_sauvages    # sud-est
+      - royaume_du_chaos   # nord (NOUVEAU)
+      - onarit             # nord-est (NOUVEAU)
+      - lounaxill          # est (NOUVEAU, mentionné dans poisons.md)
+      - montagnes_grises   # nord-est (NOUVEAU)
+      - ile_aux_basilics   # île sud (NOUVEAU)
+    metadata: { source: web, format: jpg, version: 1 }
+
+  - id: map_world_web
+    name: "Carte du monde (web variant)"
+    file: "site/img/maps/map-world.jpg"
+    type: world_map
+    notes: "Variante web, à comparer avec terres-oubliees.jpg"
+    metadata: { source: web, format: jpg, version: 1 }
+
+# === CARTES RÉGIONALES (15 nations) ===
+
+regional_maps:
+
+  - { id: alteria, file: "site/download/map/alteria.jpg", region: alteria, format: jpg }
+  - { id: collines_ico, file: "site/download/map/collines-ico.jpg", region: collines_d_ico, format: jpg }
+  - { id: cortega, file: "site/download/map/cortega.jpg", region: cortega, format: jpg, cities_visible: [senec, mellec, precy, cortega_city, ozora, teglas, gampey, gara, gan, letak, cetara, udvan, padan, selice, massa, pilis] }
+  - { id: detre, file: "site/download/map/detre.jpg", region: detre, format: jpg }
+  - { id: dundoria, file: "site/download/map/dundoria.jpg", region: dundoria, format: jpg }
+  - { id: empire, file: "site/download/map/empire.jpg", region: empire, format: jpg }
+  - { id: enorie, file: "site/download/map/enorie.jpg", region: enorie, format: jpg }
+  - { id: fauche_le_vent, file: "site/download/map/fauche-le-vent.jpg", region: fauche_le_vent, format: jpg }
+  - { id: foret_tyrkan, file: "site/download/map/foret-tyrkan.jpg", region: foret_de_tyrkan, format: jpg }
+  - { id: haut_royaume, file: "site/download/map/haut-royaume.jpg", region: haut_royaume, format: jpg }
+  - { id: irtanie, file: "site/download/map/irtanie.jpg", region: irtanie, format: jpg }
+  - { id: portes_azrak, file: "site/download/map/portes-azrak.jpg", region: portes_d_azrak, format: jpg }
+  - { id: sombre_monde, file: "site/download/map/sombre-monde.jpg", region: monde_sombre, format: jpg }
+  - { id: terres_nord, file: "site/download/map/terres-nord.jpg", region: terres_du_nord, format: jpg }
+  - { id: yonkado, file: "site/download/map/yonkado.jpg", region: yonkado, format: jpg }
+
+# Nations sans carte régionale individuelle (présentes uniquement dans la carte mondiale) :
+regional_maps_missing:
+  - blanc_royaume
+  - grand_desert
+  - landes_desertiques
+  - terres_sauvages   # paper la mentionne sans détail
+  - aderand           # paper l'a mais pas de carte régionale
+
+# === BLASONS / DRAPEAUX ===
+
+flags:
+
+  # Mini-flags (taille réduite, pour UI listing)
+  - { id: flag_alteria_mini, file: "site/img/flags/flag-alteria-mini.jpg", region: alteria, type: mini, description: "Balance d'or sur fond noir/jaune (justice)" }
+  - { id: flag_cortega_mini, file: "site/img/flags/flag-cortega-mini.jpg", region: cortega, type: mini, description: "Fontaine blanche (oracle) sur fond rouge/bleu" }
+  - { id: flag_fauche_le_vent_mini, file: "site/img/flags/flag-fauche-le-vent-mini.jpg", region: fauche_le_vent, type: mini }
+  - { id: flag_irtanie_mini, file: "site/img/flags/flag-irtanie-mini.jpg", region: irtanie, type: mini }
+  - { id: flag_portes_azrak_mini, file: "site/img/flags/flag-portes-azrak-mini.jpg", region: portes_d_azrak, type: mini }
+
+  # Flags numérotés (correspondent aux land-id du web, taille standard)
+  - { id: flag_8, file: "site/img/flags/8.jpg", region: cortega, web_land_id: 8, type: standard, description: "Confirmation visuelle : fontaine oracle blanche sur rouge/bleu — cohérent nations.yaml.cortega.blason" }
+  - { id: flag_9, file: "site/img/flags/9.jpg", region: alteria, web_land_id: 9, type: standard }
+  - { id: flag_13, file: "site/img/flags/13.jpg", region: irtanie, web_land_id: 13, type: standard }
+  - { id: flag_21, file: "site/img/flags/21.jpg", region: fauche_le_vent, web_land_id: 21, type: standard }
+  - { id: flag_24, file: "site/img/flags/24.jpg", region: portes_d_azrak, web_land_id: 24, type: standard }
+
+# Nations sans blason image disponible (web) :
+flags_missing:
+  - aderand          # description textuelle dans nations.yaml mais pas de fichier image
+  - blanc_royaume
+  - collines_d_ico
+  - detre
+  - dundoria
+  - empire
+  - enorie
+  - foret_de_tyrkan
+  - grand_desert
+  - haut_royaume
+  - landes_desertiques
+  - monde_sombre
+  - terres_du_nord
+  - yonkado
+  # (description textuelle disponible dans nations.yaml pour la plupart)
+
+# === DIVERS ===
+
+misc_images:
+  - id: tavern_archive
+    name: "Auberge / taverne (image générique)"
+    file: "site/img/archives/tavern.jpg"
+    type: place_illustration
+    notes: "Image générique d'auberge utilisée par le moteur web"
+
+  - id: maps_1
+    name: "Map 1 (web fallback)"
+    file: "site/img/maps/1.jpg"
+    type: web_asset
+
+  - id: maps_no_img
+    name: "No-image fallback"
+    file: "site/img/maps/no-img.jpg"
+    type: web_asset_fallback
+
+# === MANOIR ROSSELLINI (HORS CANON, signalé) ===
+
+manoir_rossellini_plans:
+  is_canon: false
+  owned_by_pcs: true
+  notes: "Propriété d'un groupe de PJ (table de jeu). Hors règles canoniques. Plans listés pour traçabilité uniquement."
+  files:
+    - "regles-papier/extracted/manoir-rossellini/ManoirRossellini1er.png"
+    - "regles-papier/extracted/manoir-rossellini/ManoirRossellini1er_ex.png"
+    - "regles-papier/extracted/manoir-rossellini/ManoirRosselliniFac.png"
+    - "regles-papier/extracted/manoir-rossellini/ManoirRosselliniRez.png"
+    - "regles-papier/extracted/manoir-rossellini/ManoirRosselliniRez_Ex1.png"
+    - "regles-papier/extracted/manoir-rossellini/ManoirRosselliniSSdraft6.png"
+  # Doublons aussi présents dans regles-papier/K&Wshared/ et regles-papier/source/
+
+# === PORTRAITS PJ (hors canon, exclu de l'inventaire moteur) ===
+
+character_portraits:
+  is_canon: false
+  count: 131  # site/img/characters-profil/ — portraits de PJ joueurs
+  notes: "Portraits PJ joueurs (user-generated). Pas pertinent pour le moteur de règles."
+  path: "site/img/characters-profil/"
+
+# === RÉGIONS NOUVELLES DÉCOUVERTES VIA CARTE MONDIALE ===
+
+newly_discovered_regions:
+  - id: royaume_du_chaos
+    name: "Royaume du Chaos"
+    visible_on: terres_oubliees
+    location: "Frontière nord, au-dessus de la Forêt de Tyrkan"
+    notes: "Absent de nations.md paper. Probable territoire chaotique non-civilisé."
+    todo: "À ajouter à nations.yaml comme region (category: wilderness ou nation hostile)"
+
+  - id: onarit
+    name: "Onarit"
+    visible_on: terres_oubliees
+    location: "Nord-est, entre Forêt de Tyrkan et Detre, derrière Montagnes Grises"
+    notes: "Absent de nations.md paper."
+    todo: "À ajouter à nations.yaml"
+
+  - id: lounaxill
+    name: "Lounaxill"
+    visible_on: terres_oubliees
+    location: "Est, entre Cortega/Alteria et Sombre Monde/Blanc Royaume"
+    notes: "Mentionné dans poisons.md (origine géographique de l'Opium 'centre Irtanie, Lounaxill') et champignons-toxiques.md. Absent de nations.md paper."
+    todo: "À ajouter à nations.yaml"
+
+  - id: montagnes_grises
+    name: "Montagnes Grises"
+    visible_on: terres_oubliees
+    location: "Chaîne montagneuse nord-est"
+    type: mountain_range
+    notes: "Absent de nations.md paper."
+    todo: "Catégorie: range_geographic, pas une nation"
+
+  - id: ile_aux_basilics
+    name: "L'Île aux Basilics"
+    visible_on: terres_oubliees
+    location: "Île au sud, entre Cortega/Haut Royaume et le Grand Désert"
+    notes: "Absent de nations.md paper. Suggère un biotope basilic (créature du bestiaire à ajouter ?)"
+    todo: "À ajouter à nations.yaml + bestiaire (basilic)"
+
+  - id: terres_sauvages
+    name: "Les Terres Sauvages"
+    visible_on: terres_oubliees
+    location: "Sud-est, vaste étendue sauvage"
+    type: wilderness
+    notes: |
+      Mentionnée dans nations.md (habitat des Orcs, Ogres, Gobelins) sans entrée dédiée.
+      Visible sur la carte comme région étendue.
+      L'Irtanie partage ses frontières avec elle (cf. nations.yaml.irtanie.rivalries).
+    todo: "Promouvoir en entrée nations.yaml comme wilderness"
+
+# === ANOMALIES SOURCES ===
+
+source_anomalies:
+  - description: "L'écusson Cortega-mini montre orange-bleu, alors que la description nations.yaml dit 'rouge-bleu-blanc'"
+    impact: low
+    resolution: variante visuelle / orange = rouge stylisé, à valider
+  - description: "Carte cortega.jpg mentionne 'Les Terres Sans Noms' à l'est — qui correspond à l'organisation Sans Noms (organisations.yaml.sans_noms) basée dans Monde Sombre"
+    impact: medium
+    resolution: "Possiblement zone tampon entre Cortega et Monde Sombre où opèrent les Sans Noms (assassins). À valider."
+
+# === LIENS À CRÉER (mise à jour des autres catalogs) ===
+
+todo_cross_references:
+  - "nations.yaml : ajouter image_assets.regional_map et image_assets.flag pour chaque nation"
+  - "nations.yaml : ajouter entrées portes_d_azrak, royaume_du_chaos, onarit, lounaxill, terres_sauvages, ile_aux_basilics"
+  - "world-map.yaml : ajouter référence à terres-oubliees.jpg comme image canonique de la carte"
+  - "bestiaire.yaml : ajouter `basilic` (suggéré par L'Île aux Basilics)"
+  - "Cortega : extraire les 16 villes visibles sur la carte régionale et les ajouter à world-map.yaml"

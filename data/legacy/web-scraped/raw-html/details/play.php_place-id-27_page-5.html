@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=27">Aux Acolytes Anonymes</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=11">
+        <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=11">Giovanni Marzo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=176">
+        <img src="../img/characters-profil/176.jpg" alt="Filomena" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=176">Filomena</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=190">
+        <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=190">Marzia Moretti</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=27&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.05.20
+            </div>
+
+            <div class="forum-post-content">
+                J&#039;imagine que celui qui paye peut faire circuler l&#039;information qu&#039;il souhaite.
+
+Je ne sais pas qui paye pour avoir des informations sur vous malheureusement. Mais je oeut vous dire qu&#039;il achète tout à 1 écu d&#039;argent. C&#039;est une une sacrée somme juste pour lâcher une info.
+
+Enfin, il n&#039;y a pas une personne qui dirige les bas-fonds comme vous dites mais des secteurs définit avec chacun leur tête dirigeante.
+
+Claudia Berucchi dirige les filles de la ville.
+
+Enzo Lombardi administre les jeux. C&#039;est avec lui que vous allez avoir affaire avec votre casino.
+
+Dante Carradori régit les actions musclées. Passage à tabac ou pire.
+
+Chloe Pinella est à la tête du reseau de voleurs et de receleurs.
+
+Et enfin... Eh bein... Bein, moi je veille à fournir les substances disons spéciales.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Hmmm, miam super bon la soupe de poisson, merci Filomena dis je en criant
+
+Nerrak tu es un amour. 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Du coup, j&#039;imagine que Dante Carradori pourrait surement nous en dire plus...Tu sais comment le rencontrer?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Difficile de parler à chacune de ces personnes. Surtout pour des gens comme vous....
+Cela étant dit, comme l&#039;a annoncé votre amie, nous avons certainement affaire à des étrangers puisqu&#039;ils sembles avoir besoin de se renseigner. Ce serait donc certainement des personnes qui ne répondrait pas à Dante.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.05.20
+            </div>
+
+            <div class="forum-post-content">
+                En effet...mais j&#039;imagine que ça dois pas laisser Dante de marbre de savoir que des étrangers viennent sur son territoire effectuer des actes qui relèvent de sa responsabilité sans l&#039;en avoir averti...à moins qu&#039;il ne soit au courant ce qui se trame auquel cas nous pourrions peut-être avoir des informations...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Mmm... * Prend un instant de réflexion. *
+Vous devez savoir que Dante et moi sommes assez proche de par nos activités. C&#039;est lui qui m&#039;a laissé savoir pour les informations qui s&#039;achète à votre sujet. Cela étant dit, vous devez également savoir que vous lui faîtes peur. Lui et les autres aussi d&#039;ailleurs, sauf peut-être Claudia.
+
+Pour faire bref, je dirais qu&#039;il n&#039;y a aucun crime qui a été commis sur son territoire donc techniquement pas de raison de déclencher de représailles pour l&#039;heure. Et si vous veniez à disparaître, il ne serait probablement pas mécontent.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Tu crois que tu pourrais organiser une rencontre, ici-même...peut être dans une arrière-salle? Il n&#039;a pas de raisons d&#039;avoir peur, en tout cas pas de moi. Je ne suis pas dupe et je sais qu&#039;il a la voie officielle...et les autres voies possible. Et pour ma part, je n&#039;ai aucun envie, ni aucun besoin de changer cet état de fait...ça serait une bonne chose que nous puissions discuter en toute liberté.
+
+D&#039;ailleurs, comme tu l&#039;as si bien dit, nous devrons aussi parler avec Enzo et Claudia. Pas de raisons que notre casino perturbe la marche de leurs affaires sans avoir d&#039;accord avec eux deux.
+
+Qu&#039;en dis-tu Sela? Grumtark?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Pas de raison d&#039;avoir peur, pas de raison d&#039;avoir peur... disons que tout le monde sait que vous tuez facilement, que vous êtes hyper-puissants, que vous êtes proches de la Princesse et que vous êtes proches de moi.
+Ca fait déjà pas mal de raisons pour Dante de se méfier de vous.
+
+Mais je peux vous donner l&#039;adresse de son quartier général si vous voulez aller le rassurer.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Bon...disons qu&#039;il a de mauvaises raisons d&#039;avoir peur...on ne s&#039;attaque pas aux gens s&#039;il ne nous ont rien fait...et je n&#039;ai rien à lui reprocher. Mais je veux bien l&#039;adresse de son quartier général
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Via Senese, l&#039;ancienne forge. Notez que je ne sais pas où vit Dante. C&#039;est là juste son quartier général officiel. J&#039;ajoute encore qu&#039;il me paraîtrait risqué de vous y rendre.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=27&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=27&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=27&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=27&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=27&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=27&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=27&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=27&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=27&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=27&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=27&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=27&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=27&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=27&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=27&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=27&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=27&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=27&page=18">
+          18
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

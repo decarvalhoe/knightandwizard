@@ -1,0 +1,1 @@
+<p>Potion ajoutée</p>

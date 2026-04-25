@@ -1,0 +1,80 @@
+# === Node.js ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.npm
+.yarn-integrity
+
+# Build outputs
+dist/
+build/
+.cache/
+.parcel-cache/
+.vite/
+*.tsbuildinfo
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# === Editors ===
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# === OS ===
+desktop.ini
+$RECYCLE.BIN/
+
+# === Logs ===
+*.log
+logs/
+
+# === Env / secrets ===
+.env
+.env.local
+.env.*.local
+*.pem
+
+# === Phase 2A : raw extraits temporaires ===
+data/legacy/_tmp_extract/
+
+# === QGIS work files ===
+*.qgs~
+*.qgz~
+.qgis/
+
+# === Generated GeoJSON (regenerable from YAML) ===
+# On ne commit PAS les GeoJSON placeholders : ils sont regénérés par yaml_to_geojson.py
+apps/interactive-map/data/geojson/*.geojson
+apps/interactive-map/data/raw/*.yaml
+
+# === PHP legacy site uploads ===
+apps/legacy-php-site/site/uploads/
+apps/legacy-php-site/site/temp/
+
+# === Backup files ===
+*.bak
+*.backup
+*.old
+
+# === Local config overrides ===
+*.local.yaml
+*.local.json

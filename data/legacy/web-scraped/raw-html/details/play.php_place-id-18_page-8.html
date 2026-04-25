@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=18">Château d'Aljoteria</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=142">
+        <img src="../img/characters-profil/142.jpg" alt="Abdullah" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=142">Abdullah</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=143">
+        <img src="../img/characters-profil/143.jpg" alt="Irina" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=143">Irina</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=144">
+        <img src="../img/characters-profil/144.jpg" alt="Valentin de Provoda" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=144">Valentin de Provoda</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=145">
+        <img src="../img/characters-profil/145.jpg" alt="Roxane" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=145">Roxane</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=146">
+        <img src="../img/characters-profil/146.jpg" alt="Yi Yong" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=146">Yi Yong</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=147">
+        <img src="../img/characters-profil/147.jpg" alt="Erasme" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=147">Erasme</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=148">
+        <img src="../img/characters-profil/148.jpg" alt="Eduardo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=148">Eduardo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=149">
+        <img src="../img/characters-profil/149.jpg" alt="Oscar" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=149">Oscar</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=150">
+        <img src="../img/characters-profil/150.jpg" alt="Tan le grand" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=150">Tan le grand</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=18&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Archibald Baudoin<br />
+
+                <a href="character-detail.php?id=88">
+                    <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *passe en coup de vent dans les cuisines chaparder un peu de nourriture et retourne de planquer au sommet d'une tour*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Fais un signe de désintérêt de la tête.*
+Est-il vrai que les vampires sont ennemis jurés des loups-garous ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Oscar<br />
+
+                <a href="character-detail.php?id=149">
+                    <img src="../img/characters-profil/149.jpg" alt="Oscar" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *D'un ton atone* Les vampires ne sont que la main armée des Landes désertiques, si nous souhaitons éliminer des loups-garous, ce qui arrive rarement, nous faisons en général appel à eux. Cela dit il n'y a pas de conflit ouvert entre la nation des morts et les loups-garous.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Irina<br />
+
+                <a href="character-detail.php?id=143">
+                    <img src="../img/characters-profil/143.jpg" alt="Irina" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Avec un accent irtanien que le MJ n'arrive pas bien à faire* Et bien moi une fois, je me suis faite enculée par un loup-garou en rute. C'était fort bon ! Après le câlin, il a repris forme humaine et m'a longuement parlé de son enfance difficile.... haaaaa.... le pauuuuuvre !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Roxane<br />
+
+                <a href="character-detail.php?id=145">
+                    <img src="../img/characters-profil/145.jpg" alt="Roxane" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Avec un accent de l'empire* Une loup-garou en rute??! Par Kantalbrücker, ça devait être quelque-chose ! Ach ! *semble toute émoustillée*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Eduardo<br />
+
+                <a href="character-detail.php?id=148">
+                    <img src="../img/characters-profil/148.jpg" alt="Eduardo" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Avec un cortegan parfait* C'est sûr que dès qu'on parle de cul, tu n'es pas la dernière à relever Roxane... mais parfois ce sont ceux qui en disent le moins qui en pensent le plus *dit-il en se tournant vers Erasme*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Erasme<br />
+
+                <a href="character-detail.php?id=147">
+                    <img src="../img/characters-profil/147.jpg" alt="Erasme" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Fait quelque chose qui ressemble à un grognement*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Tan le grand<br />
+
+                <a href="character-detail.php?id=150">
+                    <img src="../img/characters-profil/150.jpg" alt="Tan le grand" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Putaaaaain vous êtes dégueulasses les adultes, vous parlez tout le temps de ça, pis moi j'ai même pas le droit de participer ! 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Sela à rigoler dans sa cape lorsque Tan le grand à voulu faire sentir son doigt.
+*regarde l'équipe discuter de cul!
+*Cherche Andalur du regard style WTF? 
+
+Quelque sait comment un loup garou se gère? Est-il possible qu'un loup garou neuf puisse se maitriser? 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Gilbert<br />
+
+                <a href="character-detail.php?id=119">
+                    <img src="../img/characters-profil/119.jpg" alt="Gilbert" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Tout à coup, Gilbert prend la parole alors qu'il semblait gêné par la discussion* Heum les loup-garous peuvent apprendre à se maitriser mais il leur faut du temps, de la patiente, de la volonté et souvent quelqu'un pour les guider dans cette démarche... *réajuste ses lunettes sur son nez*...  du moins c'est ce que j'ai lu 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=18&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=18&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=18&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=18&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=18&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=18&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=18&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=18&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=18&page=9">
+          9
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,5495 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          65,
+          55
+        ]
+      },
+      "properties": {
+        "id": "erune",
+        "name": "Erune",
+        "parent_region": "alteria",
+        "role": "capital",
+        "notes": "Capitale d'Alteria",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          68.0,
+          55.0
+        ]
+      },
+      "properties": {
+        "id": "gelario",
+        "name": "Gelario",
+        "parent_region": "alteria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          67.29817303325615,
+          56.606929592338176
+        ]
+      },
+      "properties": {
+        "id": "tertoria",
+        "name": "Tertoria",
+        "parent_region": "alteria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          65.52106619385717,
+          57.46200150363525
+        ]
+      },
+      "properties": {
+        "id": "cebrada",
+        "name": "Cebrada",
+        "parent_region": "alteria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.500160483586484,
+          57.165140716655564
+        ]
+      },
+      "properties": {
+        "id": "olbadio",
+        "name": "Olbadio",
+        "parent_region": "alteria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.181006652253856,
+          55.855243835179884
+        ]
+      },
+      "properties": {
+        "id": "sevoles",
+        "name": "Sevoles",
+        "parent_region": "alteria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.18081652126776,
+          54.14519149592375
+        ]
+      },
+      "properties": {
+        "id": "impole",
+        "name": "Impole",
+        "parent_region": "alteria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.49967904999701,
+          52.83509092970941
+        ]
+      },
+      "properties": {
+        "id": "lugina",
+        "name": "Lugina",
+        "parent_region": "alteria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          65.52051871304818,
+          52.537918074213934
+        ]
+      },
+      "properties": {
+        "id": "abejuan",
+        "name": "Abejuan",
+        "parent_region": "alteria",
+        "role": "major_city",
+        "notes": "Maison-mère des Chiromanciens (organisations.yaml)",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          67.29781566309133,
+          53.39271554528467
+        ]
+      },
+      "properties": {
+        "id": "sala",
+        "name": "Sala",
+        "parent_region": "alteria",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.77668244562803,
+          56.18208082664536
+        ]
+      },
+      "properties": {
+        "id": "eboria, val_d_ora, salgueda, sao_guerda, espovora, la_quaglia, el_norreno",
+        "name": "Eboria, Val D Ora, Salgueda, Sao Guerda, Espovora, La Quaglia, El Norreno",
+        "parent_region": "alteria",
+        "role": "village",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          65.07097924977636,
+          58.99959693538046
+        ]
+      },
+      "properties": {
+        "id": "greatorga, greba, bellisse, venasia, riciano, plamus_greo, pasciso",
+        "name": "Greatorga, Greba, Bellisse, Venasia, Riciano, Plamus Greo, Pasciso",
+        "parent_region": "alteria",
+        "role": "village",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.26719014688467,
+          56.29008797076899
+        ]
+      },
+      "properties": {
+        "id": "hueseroca, mont_charoia, parielo, gretto, oruyo, jezano, pico_rhello",
+        "name": "Hueseroca, Mont Charoia, Parielo, Gretto, Oruyo, Jezano, Pico Rhello",
+        "parent_region": "alteria",
+        "role": "village",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.00364976109573,
+          51.797812223288005
+        ]
+      },
+      "properties": {
+        "id": "gueceno, carvodi, ilcuen, le_bosque, jelda, pontevila, romana, baroste",
+        "name": "Gueceno, Carvodi, Ilcuen, Le Bosque, Jelda, Pontevila, Romana, Baroste",
+        "parent_region": "alteria",
+        "role": "village",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          67.88075233671474,
+          51.730625407866505
+        ]
+      },
+      "properties": {
+        "id": "lugana, vagame",
+        "name": "Lugana, Vagame",
+        "parent_region": "alteria",
+        "role": "village",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75,
+          62
+        ]
+      },
+      "properties": {
+        "id": "kilioka",
+        "name": "Kilioka",
+        "parent_region": "collines_d_ico",
+        "role": "capital",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.0,
+          62.0
+        ]
+      },
+      "properties": {
+        "id": "daniark",
+        "name": "Daniark",
+        "parent_region": "collines_d_ico",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.12136947997678,
+          63.7677260050036
+        ]
+      },
+      "properties": {
+        "id": "runilio",
+        "name": "Runilio",
+        "parent_region": "collines_d_ico",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.00013898038463,
+          64.49999999731729
+        ]
+      },
+      "properties": {
+        "id": "caldorak",
+        "name": "Caldorak",
+        "parent_region": "collines_d_ico",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.87882707252075,
+          63.76788979116368
+        ]
+      },
+      "properties": {
+        "id": "alkio",
+        "name": "Alkio",
+        "parent_region": "collines_d_ico",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.00000001287704,
+          62.00023163397415
+        ]
+      },
+      "properties": {
+        "id": "nekia",
+        "name": "Nekia",
+        "parent_region": "collines_d_ico",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.87843398573699,
+          60.232437796331844
+        ]
+      },
+      "properties": {
+        "id": "ranadio",
+        "name": "Ranadio",
+        "parent_region": "collines_d_ico",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.99958305884728,
+          59.500000024144434
+        ]
+      },
+      "properties": {
+        "id": "riokia",
+        "name": "Riokia",
+        "parent_region": "collines_d_ico",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.12097635677212,
+          60.231946437853026
+        ]
+      },
+      "properties": {
+        "id": "enyak",
+        "name": "Enyak",
+        "parent_region": "collines_d_ico",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.77668244562803,
+          63.18208082664536
+        ]
+      },
+      "properties": {
+        "id": "murtanai, luminokia, egaloia, ekrilia, viarnarak, tainadok, kornia",
+        "name": "Murtanai, Luminokia, Egaloia, Ekrilia, Viarnarak, Tainadok, Kornia",
+        "parent_region": "collines_d_ico",
+        "role": "village",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.22318066983532,
+          60.81827323984874
+        ]
+      },
+      "properties": {
+        "id": "sentaio, vainotka, murtana, adiltir, ortaiba",
+        "name": "Sentaio, Vainotka, Murtana, Adiltir, Ortaiba",
+        "parent_region": "collines_d_ico",
+        "role": "village",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110,
+          75
+        ]
+      },
+      "properties": {
+        "id": "asturiev",
+        "name": "Asturiev",
+        "parent_region": "detre",
+        "role": "capital",
+        "notes": "Donjon où la 8e épouse du Roi tyran est enfermée",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": "bosojno",
+        "name": "Bosojno",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.7406514469627,
+          76.01681339318988
+        ]
+      },
+      "properties": {
+        "id": "kajce",
+        "name": "Kajce",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.0074469024925,
+          76.85782073155792
+        ]
+      },
+      "properties": {
+        "id": "tresgrad",
+        "name": "Tresgrad",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.92715672504853,
+          77.37761265757115
+        ]
+      },
+      "properties": {
+        "id": "kresica",
+        "name": "Kresica",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.68656204421782,
+          77.48631764863488
+        ]
+      },
+      "properties": {
+        "id": "pegrina",
+        "name": "Pegrina",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.50016048358648,
+          77.16514071665557
+        ]
+      },
+      "properties": {
+        "id": "salkzor",
+        "name": "Salkzor",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.57307972853515,
+          76.46961304335174
+        ]
+      },
+      "properties": {
+        "id": "vorojkiv",
+        "name": "Vorojkiv",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.06561114731136,
+          75.51999069250259
+        ]
+      },
+      "properties": {
+        "id": "umijek",
+        "name": "Umijek",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.06549556808328,
+          74.48046245252449
+        ]
+      },
+      "properties": {
+        "id": "betanka",
+        "name": "Betanka",
+        "parent_region": "detre",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.57275297438795,
+          73.53076175333726
+        ]
+      },
+      "properties": {
+        "id": "svetja",
+        "name": "Svetja",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.49967904999701,
+          72.83509092970941
+        ]
+      },
+      "properties": {
+        "id": "vos",
+        "name": "Vos",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          109.68600917058929,
+          72.513730795973
+        ]
+      },
+      "properties": {
+        "id": "proda",
+        "name": "Proda",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          110.926628002698,
+          72.62224420925367
+        ]
+      },
+      "properties": {
+        "id": "zaleska",
+        "name": "Zaleska",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.00703374700433,
+          73.14186930507174
+        ]
+      },
+      "properties": {
+        "id": "orospic",
+        "name": "Orospic",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.74042529252225,
+          73.98276340561237
+        ]
+      },
+      "properties": {
+        "id": "kazma",
+        "name": "Kazma",
+        "parent_region": "detre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100,
+          25
+        ]
+      },
+      "properties": {
+        "id": "derin",
+        "name": "Derin",
+        "parent_region": "dundoria",
+        "role": "capital",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.0,
+          25.0
+        ]
+      },
+      "properties": {
+        "id": "jalaam",
+        "name": "Jalaam",
+        "parent_region": "dundoria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.65638794973752,
+          26.161776375883935
+        ]
+      },
+      "properties": {
+        "id": "gefah",
+        "name": "Gefah",
+        "parent_region": "dundoria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.70426462634047,
+          27.057419176791875
+        ]
+      },
+      "properties": {
+        "id": "sounice",
+        "name": "Sounice",
+        "parent_region": "dundoria",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.36173739464564,
+          27.481759296641947
+        ]
+      },
+      "properties": {
+        "id": "oussben",
+        "name": "Oussben",
+        "parent_region": "dundoria",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.93634527773028,
+          27.33759114970728
+        ]
+      },
+      "properties": {
+        "id": "khabil_wafen",
+        "name": "Khabil Wafen",
+        "parent_region": "dundoria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.75460954740856,
+          26.657940011021715
+        ]
+      },
+      "properties": {
+        "id": "ismawad",
+        "name": "Ismawad",
+        "parent_region": "dundoria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.08723596179001,
+          25.598496761403233
+        ]
+      },
+      "properties": {
+        "id": "jabal_beir",
+        "name": "Jabal Beir",
+        "parent_region": "dundoria",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.0871029249049,
+          24.401953045610608
+        ]
+      },
+      "properties": {
+        "id": "oumick",
+        "name": "Oumick",
+        "parent_region": "dundoria",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.75424091213779,
+          23.342406756585294
+        ]
+      },
+      "properties": {
+        "id": "qaeid",
+        "name": "Qaeid",
+        "parent_region": "dundoria",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.93582548908796,
+          22.66257314280729
+        ]
+      },
+      "properties": {
+        "id": "miloudjem",
+        "name": "Miloudjem",
+        "parent_region": "dundoria",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.36118552305919,
+          22.518184885521666
+        ]
+      },
+      "properties": {
+        "id": "zhor_hevat",
+        "name": "Zhor Hevat",
+        "parent_region": "dundoria",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.70380709162808,
+          22.94231768147492
+        ]
+      },
+      "properties": {
+        "id": "isna_byri",
+        "name": "Isna Byri",
+        "parent_region": "dundoria",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.65612956152624,
+          23.837813437599678
+        ]
+      },
+      "properties": {
+        "id": "shoyim",
+        "name": "Shoyim",
+        "parent_region": "dundoria",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35,
+          70
+        ]
+      },
+      "properties": {
+        "id": "elioquant",
+        "name": "Elioquant",
+        "parent_region": "empire",
+        "role": "capital",
+        "notes": "Maison-mère des Astrologues",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0,
+          70.0
+        ]
+      },
+      "properties": {
+        "id": "welty",
+        "name": "Welty",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.94892230342893,
+          70.4593604010072
+        ]
+      },
+      "properties": {
+        "id": "milhery",
+        "name": "Milhery",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.79742850110705,
+          70.90307875456145
+        ]
+      },
+      "properties": {
+        "id": "jillford",
+        "name": "Jillford",
+        "parent_region": "empire",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.55067722934595,
+          71.31604565304553
+        ]
+      },
+      "properties": {
+        "id": "delchester",
+        "name": "Délchester",
+        "parent_region": "empire",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.217070812537344,
+          71.68419883116964
+        ]
+      },
+      "properties": {
+        "id": "ardeen",
+        "name": "Ardeen",
+        "parent_region": "empire",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.80796914890249,
+          71.99500201138453
+        ]
+      },
+      "properties": {
+        "id": "shirlingt",
+        "name": "Shirlingt",
+        "parent_region": "empire",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.33730288553597,
+          72.23787178666863
+        ]
+      },
+      "properties": {
+        "id": "lifield",
+        "name": "Lifield",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.821099054828764,
+          72.40453800456312
+        ]
+      },
+      "properties": {
+        "id": "sectown",
+        "name": "Sectown",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.27693532520333,
+          72.48932538073049
+        ]
+      },
+      "properties": {
+        "id": "walkston",
+        "name": "Walkston",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7233414499042,
+          72.48934675258876
+        ]
+      },
+      "properties": {
+        "id": "sobradge",
+        "name": "Sobradge",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.179168295588795,
+          72.40460139238778
+        ]
+      },
+      "properties": {
+        "id": "vintale",
+        "name": "Vintale",
+        "parent_region": "empire",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.662945936429274,
+          72.23797503199026
+        ]
+      },
+      "properties": {
+        "id": "meidon",
+        "name": "Meidon",
+        "parent_region": "empire",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.192252671775215,
+          71.99514159851434
+        ]
+      },
+      "properties": {
+        "id": "costor",
+        "name": "Costor",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.78311645345998,
+          71.68437000691492
+        ]
+      },
+      "properties": {
+        "id": "crey",
+        "name": "Crey",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.449469105227124,
+          71.3162425885644
+        ]
+      },
+      "properties": {
+        "id": "denes",
+        "name": "Denes",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.202671919086505,
+          70.9032947438455
+        ]
+      },
+      "properties": {
+        "id": "trumburg",
+        "name": "Trumburg",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.05112878289698,
+          70.459588089233
+        ]
+      },
+      "properties": {
+        "id": "sissvick",
+        "name": "Sissvick",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.00000001287703,
+          70.00023163397415
+        ]
+      },
+      "properties": {
+        "id": "forhey",
+        "name": "Forhey",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.05102663556074,
+          69.54086729116207
+        ]
+      },
+      "properties": {
+        "id": "sileker",
+        "name": "Sileker",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.202471102714455,
+          69.09713724247524
+        ]
+      },
+      "properties": {
+        "id": "parteld",
+        "name": "Parteld",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.449176457977735,
+          68.6841512937712
+        ]
+      },
+      "properties": {
+        "id": "telury",
+        "name": "Telury",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.7827419404982,
+          68.31597235903395
+        ]
+      },
+      "properties": {
+        "id": "crahar",
+        "name": "Crahar",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.19180904594065,
+          68.00513759287173
+        ]
+      },
+      "properties": {
+        "id": "tarvuish",
+        "name": "Tarvuish",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.66244830397911,
+          67.76223147786442
+        ]
+      },
+      "properties": {
+        "id": "nawel",
+        "name": "Nawel",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.17863360180256,
+          67.59552540390372
+        ]
+      },
+      "properties": {
+        "id": "tayford",
+        "name": "Tayford",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.72278790206654,
+          67.51069601249787
+        ]
+      },
+      "properties": {
+        "id": "danot",
+        "name": "Danot",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.27638177261324,
+          67.51063189692321
+        ]
+      },
+      "properties": {
+        "id": "telfage",
+        "name": "Telfage",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.820564346947066,
+          67.59533524043034
+        ]
+      },
+      "properties": {
+        "id": "st_eldrick",
+        "name": "St-Eldrick",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.33680523012728,
+          67.76192174190042
+        ]
+      },
+      "properties": {
+        "id": "swipoo",
+        "name": "Swipoo",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.807525492028134,
+          68.00471883148353
+        ]
+      },
+      "properties": {
+        "id": "silester",
+        "name": "Silester",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.216696261511444,
+          68.31545883179962
+        ]
+      },
+      "properties": {
+        "id": "foriney",
+        "name": "Foriney",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.550384538304286,
+          68.68356048721624
+        ]
+      },
+      "properties": {
+        "id": "tarwush",
+        "name": "Tarwush",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.797227636705756,
+          69.09648927462496
+        ]
+      },
+      "properties": {
+        "id": "muar",
+        "name": "Muar",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.94882010546197,
+          69.54018422648662
+        ]
+      },
+      "properties": {
+        "id": "selten",
+        "name": "Selten",
+        "parent_region": "empire",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25,
+          50
+        ]
+      },
+      "properties": {
+        "id": "monastie",
+        "name": "Monastie",
+        "parent_region": "enorie",
+        "role": "capital",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.0,
+          50.0
+        ]
+      },
+      "properties": {
+        "id": "bourgonil",
+        "name": "Bourgonil",
+        "parent_region": "enorie",
+        "role": "major_city",
+        "notes": "Siège de la famille royale de Bourgonil",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.88875838307295,
+          50.674472532709075
+        ]
+      },
+      "properties": {
+        "id": "pedrune",
+        "name": "Pédrune",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.563283330516168,
+          51.29892545534385
+        ]
+      },
+      "properties": {
+        "id": "brincour",
+        "name": "Brincour",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.04771242307354,
+          51.827048666031864
+        ]
+      },
+      "properties": {
+        "id": "silfany",
+        "name": "Silfany",
+        "parent_region": "enorie",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.380280955001375,
+          52.21967597817735
+        ]
+      },
+      "properties": {
+        "id": "goorate",
+        "name": "Goorate",
+        "parent_region": "enorie",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.610486363430567,
+          52.44768972707845
+        ]
+      },
+      "properties": {
+        "id": "feyley",
+        "name": "Feyley",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.79541744507314,
+          52.49418016732893
+        ]
+      },
+      "properties": {
+        "id": "rolin",
+        "name": "Rolin",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.995520589519135,
+          52.35569951776537
+        ]
+      },
+      "properties": {
+        "id": "grangle",
+        "name": "Grangle",
+        "parent_region": "enorie",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.27011700982634,
+          52.04251765263483
+        ]
+      },
+      "properties": {
+        "id": "lunon",
+        "name": "Lunon",
+        "parent_region": "enorie",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.673003417414556,
+          51.577860476650194
+        ]
+      },
+      "properties": {
+        "id": "pledre",
+        "name": "Plèdre",
+        "parent_region": "enorie",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.248462399956452,
+          50.99618746686032
+        ]
+      },
+      "properties": {
+        "id": "fridlin",
+        "name": "Fridlin",
+        "parent_region": "enorie",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.02797837694129,
+          50.34063612068645
+        ]
+      },
+      "properties": {
+        "id": "quepet",
+        "name": "Quepet",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.027902681186934,
+          49.6598228326133
+        ]
+      },
+      "properties": {
+        "id": "deenit",
+        "name": "Deenit",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": "Possible maison-mère des Géomanciens (anomalie source)",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.248240926372116,
+          49.00423744996799
+        ]
+      },
+      "properties": {
+        "id": "nefill",
+        "name": "Nefill",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.67265259071999,
+          48.42249889141665
+        ]
+      },
+      "properties": {
+        "id": "paisendre",
+        "name": "Païsendre",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.26966284770739,
+          47.957749515547334
+        ]
+      },
+      "properties": {
+        "id": "plaindeu",
+        "name": "Plaindeu",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.994996773128108,
+          47.64445563705172
+        ]
+      },
+      "properties": {
+        "id": "beldon",
+        "name": "Beldon",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.794862821198244,
+          47.50585146767462
+        ]
+      },
+      "properties": {
+        "id": "joren",
+        "name": "Joren",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.609942063576224,
+          47.55221604202558
+        ]
+      },
+      "properties": {
+        "id": "centaury",
+        "name": "Centaury",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.379787345031506,
+          47.780110913291985
+        ]
+      },
+      "properties": {
+        "id": "tayhin",
+        "name": "Tayhin",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.0473061096356,
+          48.17263515216113
+        ]
+      },
+      "properties": {
+        "id": "marall",
+        "name": "Marall",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.562994446252702,
+          48.70067873795644
+        ]
+      },
+      "properties": {
+        "id": "kweldon",
+        "name": "Kweldon",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.88860835195234,
+          49.32508138915003
+        ]
+      },
+      "properties": {
+        "id": "aquil",
+        "name": "Aquil",
+        "parent_region": "enorie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50,
+          60
+        ]
+      },
+      "properties": {
+        "id": "careon",
+        "name": "Caréon",
+        "parent_region": "fauche_le_vent",
+        "role": "capital",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          53.0,
+          60.0
+        ]
+      },
+      "properties": {
+        "id": "entedeu",
+        "name": "Entédèu",
+        "parent_region": "fauche_le_vent",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.83746122535793,
+          60.811725611561855
+        ]
+      },
+      "properties": {
+        "id": "grilois",
+        "name": "Grilois",
+        "parent_region": "fauche_le_vent",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.36745747027315,
+          61.53549329895781
+        ]
+      },
+      "properties": {
+        "id": "talignon",
+        "name": "Talignon",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.64091795769809,
+          62.0928761868313
+        ]
+      },
+      "properties": {
+        "id": "palenvau",
+        "name": "Palenvau",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.73656991570142,
+          62.42347672078136
+        ]
+      },
+      "properties": {
+        "id": "dentive",
+        "name": "Dentive",
+        "parent_region": "fauche_le_vent",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.75240775934721,
+          62.4914712970185
+        ]
+      },
+      "properties": {
+        "id": "edrideris",
+        "name": "Edrideris",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.79507449593072,
+          62.28949207880679
+        ]
+      },
+      "properties": {
+        "id": "miges",
+        "name": "Migès",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.96830597582516,
+          61.83942536923375
+        ]
+      },
+      "properties": {
+        "id": "tourde",
+        "name": "Tourde",
+        "parent_region": "fauche_le_vent",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.3616901604776,
+          61.19004002928686
+        ]
+      },
+      "properties": {
+        "id": "divellie",
+        "name": "Divellie",
+        "parent_region": "fauche_le_vent",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.040959444091435,
+          60.41170292391643
+        ]
+      },
+      "properties": {
+        "id": "marendon",
+        "name": "Marendon",
+        "parent_region": "fauche_le_vent",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.04086794508765,
+          59.58875402603272
+        ]
+      },
+      "properties": {
+        "id": "ribalen",
+        "name": "Ribalen",
+        "parent_region": "fauche_le_vent",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.361425578223546,
+          58.81036740593908
+        ]
+      },
+      "properties": {
+        "id": "tirevix",
+        "name": "Tirevix",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.96789698023774,
+          58.16088840192074
+        ]
+      },
+      "properties": {
+        "id": "mecride",
+        "name": "Mecride",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.79456540543768,
+          57.71069402829028
+        ]
+      },
+      "properties": {
+        "id": "crozon",
+        "name": "Crozon",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.7518537385785,
+          57.508566979608126
+        ]
+      },
+      "properties": {
+        "id": "drugeau_la_norme",
+        "name": "Drugeau-la-Norme",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.73603099789496,
+          57.57640957775084
+        ]
+      },
+      "properties": {
+        "id": "tireux",
+        "name": "Tireux",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.640452539547134,
+          57.906870454204636
+        ]
+      },
+      "properties": {
+        "id": "saint_jules",
+        "name": "Saint-Jules",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.36711598410833,
+          58.46414113835223
+        ]
+      },
+      "properties": {
+        "id": "chez_nous",
+        "name": "Chez Nous",
+        "parent_region": "fauche_le_vent",
+        "role": "border_town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.837280674341116,
+          59.18783623409676
+        ]
+      },
+      "properties": {
+        "id": "saivre",
+        "name": "Saivre",
+        "parent_region": "fauche_le_vent",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50,
+          75
+        ]
+      },
+      "properties": {
+        "id": "tyrandell",
+        "name": "Tyrandell",
+        "parent_region": "foret_de_tyrkan",
+        "role": "capital",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          53.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": "avorrwen",
+        "name": "Avorrwen",
+        "parent_region": "foret_de_tyrkan",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.92478815448785,
+          75.55628620441952
+        ]
+      },
+      "properties": {
+        "id": "talvr",
+        "name": "Talvr",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.70292383242162,
+          76.08467953412749
+        ]
+      },
+      "properties": {
+        "id": "sadaron",
+        "name": "Sadaron",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.34553158387859,
+          76.55868569746812
+        ]
+      },
+      "properties": {
+        "id": "talanai",
+        "name": "Talanai",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.87053149591519,
+          76.9545374422221
+        ]
+      },
+      "properties": {
+        "id": "mihaven",
+        "name": "Mihaven",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.301740657354195,
+          77.25238627487467
+        ]
+      },
+      "properties": {
+        "id": "eloracya",
+        "name": "Eloracya",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.667678940647995,
+          77.43729768850086
+        ]
+      },
+      "properties": {
+        "id": "zavynell",
+        "name": "Zavynell",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.00013898038464,
+          77.49999999731729
+        ]
+      },
+      "properties": {
+        "id": "doluvel",
+        "name": "Doluvel",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.3325920514738,
+          77.43734923041464
+        ]
+      },
+      "properties": {
+        "id": "beerwen",
+        "name": "Beerwen",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.69850977824173,
+          77.25248677432725
+        ]
+      },
+      "properties": {
+        "id": "geandere",
+        "name": "Geandere",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.129685826005954,
+          76.95468186004729
+        ]
+      },
+      "properties": {
+        "id": "torrevidor",
+        "name": "Torrevidor",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.65464172757927,
+          76.55886679237845
+        ]
+      },
+      "properties": {
+        "id": "dorina",
+        "name": "Dorina",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.29719677852322,
+          76.08488822580138
+        ]
+      },
+      "properties": {
+        "id": "ambocissi",
+        "name": "Ambocissi",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.07527370836281,
+          75.55651202879967
+        ]
+      },
+      "properties": {
+        "id": "kelduiss",
+        "name": "Kelduiss",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.00000001287703,
+          75.00023163397415
+        ]
+      },
+      "properties": {
+        "id": "asyril",
+        "name": "Asyril",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.075150007769885,
+          74.44393962473617
+        ]
+      },
+      "properties": {
+        "id": "kiraerss",
+        "name": "Kiraerss",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.296955579837295,
+          73.91552916685805
+        ]
+      },
+      "properties": {
+        "id": "eccnoe",
+        "name": "Eccnoe",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          47.65429512479921,
+          73.44149541082305
+        ]
+      },
+      "properties": {
+        "id": "welonkas",
+        "name": "Welonkas",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.1292511982216,
+          73.04560699238216
+        ]
+      },
+      "properties": {
+        "id": "ulzonkas",
+        "name": "Ulzonkas",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          48.69800891822492,
+          72.74771424391393
+        ]
+      },
+      "properties": {
+        "id": "sciandel",
+        "name": "Sciandel",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.33205007296202,
+          72.56275387433635
+        ]
+      },
+      "properties": {
+        "id": "hyertodyess",
+        "name": "Hyertodyess",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          49.99958305884727,
+          72.50000002414444
+        ]
+      },
+      "properties": {
+        "id": "pellipe",
+        "name": "Pellipe",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50.6671369506749,
+          72.56259924859548
+        ]
+      },
+      "properties": {
+        "id": "marlonil",
+        "name": "Marlonil",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.30123977498946,
+          72.74741274555707
+        ]
+      },
+      "properties": {
+        "id": "narthias",
+        "name": "Narthias",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.87009683601684,
+          73.04517373890788
+        ]
+      },
+      "properties": {
+        "id": "wendees",
+        "name": "Wendees",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.34518494082871,
+          73.44095212609358
+        ]
+      },
+      "properties": {
+        "id": "doganai",
+        "name": "Doganai",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.70268258732922,
+          73.91490309183816
+        ]
+      },
+      "properties": {
+        "id": "subelyss",
+        "name": "Subelyss",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.92466440367867,
+          74.44326215159765
+        ]
+      },
+      "properties": {
+        "id": "hyrtul",
+        "name": "Hyrtul",
+        "parent_region": "foret_de_tyrkan",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25,
+          35
+        ]
+      },
+      "properties": {
+        "id": "heldannya",
+        "name": "Heldannya",
+        "parent_region": "haut_royaume",
+        "role": "capital",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.0,
+          35.0
+        ]
+      },
+      "properties": {
+        "id": "talatair",
+        "name": "Talatair",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.897783473909236,
+          35.64702896763383
+        ]
+      },
+      "properties": {
+        "id": "earelia",
+        "name": "Earelia",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.59809937444099,
+          36.24996656636658
+        ]
+      },
+      "properties": {
+        "id": "thuldurim",
+        "name": "Thuldurim",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.12136947997678,
+          36.7677260050036
+        ]
+      },
+      "properties": {
+        "id": "earlis",
+        "name": "Earlis",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.50008023964711,
+          37.16502490276611
+        ]
+      },
+      "properties": {
+        "id": "taletsir",
+        "name": "Taletsir",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.77656900534802,
+          37.41478958422146
+        ]
+      },
+      "properties": {
+        "id": "hernfegas",
+        "name": "Hernfegas",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.00013898038464,
+          37.49999999731728
+        ]
+      },
+      "properties": {
+        "id": "vaheriss",
+        "name": "Vaheriss",
+        "parent_region": "haut_royaume",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.223699484693185,
+          37.41484953377799
+        ]
+      },
+      "properties": {
+        "id": "rodalis",
+        "name": "Rodalis",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.500160483586487,
+          37.165140716655564
+        ]
+      },
+      "properties": {
+        "id": "trian_falas",
+        "name": "Trian-Falas",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.878827072520746,
+          36.76788979116368
+        ]
+      },
+      "properties": {
+        "id": "tallia",
+        "name": "Tallia",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.40203961337814,
+          36.25016716369574
+        ]
+      },
+      "properties": {
+        "id": "oronalis",
+        "name": "Oronalis",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.102288477996805,
+          35.647252706557325
+        ]
+      },
+      "properties": {
+        "id": "narthelia",
+        "name": "Narthelia",
+        "parent_region": "haut_royaume",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.00000001287703,
+          35.00023163397415
+        ]
+      },
+      "properties": {
+        "id": "suaeu",
+        "name": "Suaeu",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.102144599061287,
+          34.353194776844205
+        ]
+      },
+      "properties": {
+        "id": "ludith",
+        "name": "Ludith",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.40176166004375,
+          33.750234041693155
+        ]
+      },
+      "properties": {
+        "id": "ombrosil",
+        "name": "Ombrosil",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.878433985736987,
+          33.232437796331844
+        ]
+      },
+      "properties": {
+        "id": "vanthel",
+        "name": "Vanthel",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.499679049997013,
+          32.83509092970941
+        ]
+      },
+      "properties": {
+        "id": "tavhulcia",
+        "name": "Tavhulcia",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.22316251127738,
+          32.58527038606529
+        ]
+      },
+      "properties": {
+        "id": "lichmpod",
+        "name": "Lichmpod",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.99958305884727,
+          32.500000024144434
+        ]
+      },
+      "properties": {
+        "id": "takimis",
+        "name": "Takimis",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.77603201860131,
+          32.58509053739621
+        ]
+      },
+      "properties": {
+        "id": "siretarms",
+        "name": "Siretarms",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.499598780304265,
+          32.83474348804204
+        ]
+      },
+      "properties": {
+        "id": "metiras",
+        "name": "Metiras",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.12097635677212,
+          33.231946437853026
+        ]
+      },
+      "properties": {
+        "id": "eralios",
+        "name": "Eralios",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.59782137650005,
+          33.74963224970739
+        ]
+      },
+      "properties": {
+        "id": "luntith",
+        "name": "Luntith",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.897639545221203,
+          34.352523560075646
+        ]
+      },
+      "properties": {
+        "id": "lunte",
+        "name": "Lunte",
+        "parent_region": "haut_royaume",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100,
+          55
+        ]
+      },
+      "properties": {
+        "id": "felderio",
+        "name": "Felderio",
+        "parent_region": "irtanie",
+        "role": "capital",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.0,
+          55.0
+        ]
+      },
+      "properties": {
+        "id": "ibravnick",
+        "name": "Ibravnick",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.87848603988668,
+          55.70431118742668
+        ]
+      },
+      "properties": {
+        "id": "qetekzhov",
+        "name": "Qetekzhov",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.52378792121499,
+          56.35156661382914
+        ]
+      },
+      "properties": {
+        "id": "lokta",
+        "name": "Lokta",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.9646394926813,
+          56.889332565829385
+        ]
+      },
+      "properties": {
+        "id": "baimora",
+        "name": "Baimora",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.24633698084712,
+          57.274044996466294
+        ]
+      },
+      "properties": {
+        "id": "niksk",
+        "name": "Niksk",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.42706957422733,
+          57.474538618438864
+        ]
+      },
+      "properties": {
+        "id": "detsenkov",
+        "name": "Detsenkov",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.5732055574687,
+          57.47457158242487
+        ]
+      },
+      "properties": {
+        "id": "branicolli",
+        "name": "Branicolli",
+        "parent_region": "irtanie",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.75391586262094,
+          57.27414121803464
+        ]
+      },
+      "properties": {
+        "id": "arinoava",
+        "name": "Arinoava",
+        "parent_region": "irtanie",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.03557057988475,
+          56.88948425013754
+        ]
+      },
+      "properties": {
+        "id": "berana",
+        "name": "Berana",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.4763623626161,
+          56.351761473036454
+        ]
+      },
+      "properties": {
+        "id": "prildag",
+        "name": "Prildag",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.12159228082048,
+          55.70453343612386
+        ]
+      },
+      "properties": {
+        "id": "gotschern",
+        "name": "Gotschern",
+        "parent_region": "irtanie",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.00000001287704,
+          55.00023163397415
+        ]
+      },
+      "properties": {
+        "id": "pentuppi",
+        "name": "Pentuppi",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.12143566411707,
+          54.29591106731678
+        ]
+      },
+      "properties": {
+        "id": "felinov",
+        "name": "Felinov",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97.47606181661985,
+          53.64862825698095
+        ]
+      },
+      "properties": {
+        "id": "ameral",
+        "name": "Ameral",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.03515045161846,
+          53.110819134698104
+        ]
+      },
+      "properties": {
+        "id": "edirvirkel",
+        "name": "Edirvirkel",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          98.75341018638422,
+          52.726051244624024
+        ]
+      },
+      "properties": {
+        "id": "protchkev",
+        "name": "Protchkev",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          99.5726552977429,
+          52.52549436679028
+        ]
+      },
+      "properties": {
+        "id": "poltinek",
+        "name": "Poltinek",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          100.42651930717138,
+          52.52539547483256
+        ]
+      },
+      "properties": {
+        "id": "st_cresas",
+        "name": "St-Crésas",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.24583128321373,
+          52.725762579919795
+        ]
+      },
+      "properties": {
+        "id": "birikov",
+        "name": "Birikov",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.96421933068518,
+          53.11036408177493
+        ]
+      },
+      "properties": {
+        "id": "peluna",
+        "name": "Peluna",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.52348733188818,
+          53.648043679360676
+        ]
+      },
+      "properties": {
+        "id": "bertisch",
+        "name": "Bertisch",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.87832937376214,
+          54.295244321227166
+        ]
+      },
+      "properties": {
+        "id": "caliopoñi",
+        "name": "Caliopoñi",
+        "parent_region": "irtanie",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60,
+          50
+        ]
+      },
+      "properties": {
+        "id": "azrak",
+        "name": "Azrak",
+        "parent_region": "portes_d_azrak",
+        "role": "capital_centre",
+        "notes": "Centre du territoire nain",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.0,
+          50.0
+        ]
+      },
+      "properties": {
+        "id": "tumargar",
+        "name": "Tumargar",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.94578927988843,
+          50.473114326163454
+        ]
+      },
+      "properties": {
+        "id": "bafag",
+        "name": "Bafag",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.78511632100374,
+          50.9291300734493
+        ]
+      },
+      "properties": {
+        "id": "emerg_bafag",
+        "name": "Emerg-Bafag",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.52378792121499,
+          51.35156661382914
+        ]
+      },
+      "properties": {
+        "id": "farnag",
+        "name": "Farnag",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.17124861434761,
+          51.7251568879327
+        ]
+      },
+      "properties": {
+        "id": "gruduria",
+        "name": "Gruduria",
+        "parent_region": "portes_d_azrak",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.74023934019689,
+          52.03639916390275
+        ]
+      },
+      "properties": {
+        "id": "vaitorgar",
+        "name": "Vaitorgar",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.246336980847126,
+          52.274044996466294
+        ]
+      },
+      "properties": {
+        "id": "kalorat",
+        "name": "Kalorat",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.7073914046751,
+          52.429505751146806
+        ]
+      },
+      "properties": {
+        "id": "kenona",
+        "name": "Kenona",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.14288036353762,
+          52.49716300163741
+        ]
+      },
+      "properties": {
+        "id": "narenona",
+        "name": "Narenona",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.5732055574687,
+          52.47457158242487
+        ]
+      },
+      "properties": {
+        "id": "korrec",
+        "name": "Korrec",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.01895530744593,
+          52.362547958245074
+        ]
+      },
+      "properties": {
+        "id": "ivariek",
+        "name": "Ivariek",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58.500160483586484,
+          52.165140716655564
+        ]
+      },
+      "properties": {
+        "id": "tornaca",
+        "name": "Tornaca",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58.03557057988475,
+          51.88948425013754
+        ]
+      },
+      "properties": {
+        "id": "drannia",
+        "name": "Drannia",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.64197609849821,
+          51.54554091572657
+        ]
+      },
+      "properties": {
+        "id": "galareust",
+        "name": "Galareust",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.3336017329388,
+          51.145740990646644
+        ]
+      },
+      "properties": {
+        "id": "galin",
+        "name": "Galin",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.12159228082048,
+          50.70453343612386
+        ]
+      },
+      "properties": {
+        "id": "kad",
+        "name": "Kad",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.013609865523094,
+          50.2378637049911
+        ]
+      },
+      "properties": {
+        "id": "mooran",
+        "name": "Mooran",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.01355702337509,
+          49.7625974653677
+        ]
+      },
+      "properties": {
+        "id": "wario",
+        "name": "Wario",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.12143566411707,
+          49.29591106731678
+        ]
+      },
+      "properties": {
+        "id": "narwar",
+        "name": "Narwar",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.33334700188284,
+          48.854670781308094
+        ]
+      },
+      "properties": {
+        "id": "rastrek",
+        "name": "Rastrek",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.641632459192344,
+          48.45482324310614
+        ]
+      },
+      "properties": {
+        "id": "kernar",
+        "name": "Kernar",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58.03515045161846,
+          48.110819134698104
+        ]
+      },
+      "properties": {
+        "id": "waldek",
+        "name": "Waldek",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          58.49967904999701,
+          47.83509092970941
+        ]
+      },
+      "properties": {
+        "id": "ert_oria_fel",
+        "name": "Ert-Oria-Fel",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.018429967774324,
+          47.637603577838384
+        ]
+      },
+      "properties": {
+        "id": "faruv",
+        "name": "Faruv",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.57265529774289,
+          47.52549436679028
+        ]
+      },
+      "properties": {
+        "id": "aardrek",
+        "name": "Aardrek",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.14232507040827,
+          47.50281497727312
+        ]
+      },
+      "properties": {
+        "id": "walnoir",
+        "name": "Walnoir",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.706851146702476,
+          47.57038505331186
+        ]
+      },
+      "properties": {
+        "id": "orotrinek",
+        "name": "Orotrinek",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.24583128321373,
+          47.725762579919795
+        ]
+      },
+      "properties": {
+        "id": "frenkov",
+        "name": "Frenkov",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.73978647905797,
+          47.96333213869254
+        ]
+      },
+      "properties": {
+        "id": "gameñor",
+        "name": "Gameñor",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.170864956322134,
+          48.274507851725
+        ]
+      },
+      "properties": {
+        "id": "niebel",
+        "name": "Niebel",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.52348733188817,
+          48.648043679360676
+        ]
+      },
+      "properties": {
+        "id": "denir",
+        "name": "Denir",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.78490966381816,
+          49.07043985746386
+        ]
+      },
+      "properties": {
+        "id": "baratrat",
+        "name": "Baratrat",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          62.94568402353399,
+          49.5264307853763
+        ]
+      },
+      "properties": {
+        "id": "melaran",
+        "name": "Melaran",
+        "parent_region": "portes_d_azrak",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125,
+          50
+        ]
+      },
+      "properties": {
+        "id": "vallandr",
+        "name": "Vallandr",
+        "parent_region": "monde_sombre",
+        "role": "capital",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          128.0,
+          50.0
+        ]
+      },
+      "properties": {
+        "id": "edranem",
+        "name": "Edranem",
+        "parent_region": "monde_sombre",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.90575501338866,
+          50.62170676935368
+        ]
+      },
+      "properties": {
+        "id": "demorann",
+        "name": "Demorann",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.62894146522221,
+          51.20435170793808
+        ]
+      },
+      "properties": {
+        "id": "vichulm",
+        "name": "Vichulm",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.1869515482612,
+          51.7113272394625
+        ]
+      },
+      "properties": {
+        "id": "seltak",
+        "name": "Seltak",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.60755548504316,
+          52.11078009580641
+        ]
+      },
+      "properties": {
+        "id": "elimmidar",
+        "name": "Elimmidar",
+        "parent_region": "monde_sombre",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.92715672504853,
+          52.37761265757115
+        ]
+      },
+      "properties": {
+        "id": "lornath",
+        "name": "Lornath",
+        "parent_region": "monde_sombre",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.1885047162947,
+          52.495059837282724
+        ]
+      },
+      "properties": {
+        "id": "nusyl",
+        "name": "Nusyl",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.43800895789863,
+          52.45574242968816
+        ]
+      },
+      "properties": {
+        "id": "soertan",
+        "name": "Soertan",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.72282309166157,
+          52.26213074715569
+        ]
+      },
+      "properties": {
+        "id": "theornn",
+        "name": "Theornn",
+        "parent_region": "monde_sombre",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.08788223917563,
+          51.92638940997069
+        ]
+      },
+      "properties": {
+        "id": "hanaronn",
+        "name": "Hanaronn",
+        "parent_region": "monde_sombre",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.57307972853515,
+          51.46961304335175
+        ]
+      },
+      "properties": {
+        "id": "hurl",
+        "name": "Hurl",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.21076059688868,
+          50.92050090233645
+        ]
+      },
+      "properties": {
+        "id": "idilana",
+        "name": "Idilana",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.02368935204356,
+          50.31355369784353
+        ]
+      },
+      "properties": {
+        "id": "lonar",
+        "name": "Lonar",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.02361967864368,
+          49.686905917313815
+        ]
+      },
+      "properties": {
+        "id": "homulus",
+        "name": "Homulus",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.21055595426813,
+          49.07992983520466
+        ]
+      },
+      "properties": {
+        "id": "krilyt",
+        "name": "Krilyt",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          122.57275297438795,
+          48.530761753337266
+        ]
+      },
+      "properties": {
+        "id": "galerak",
+        "name": "Galerak",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.08745390346193,
+          48.0739058973936
+        ]
+      },
+      "properties": {
+        "id": "hormur",
+        "name": "Hormur",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123.72232008671045,
+          47.73806651672482
+        ]
+      },
+      "properties": {
+        "id": "harm",
+        "name": "Harm",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          124.43746288750667,
+          47.54434439662071
+        ]
+      },
+      "properties": {
+        "id": "rendomur",
+        "name": "Rendomur",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.18794989005976,
+          47.5049110961583
+        ]
+      },
+      "properties": {
+        "id": "lahurnn",
+        "name": "Lahurnn",
+        "parent_region": "monde_sombre",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125.926628002698,
+          47.622244209253665
+        ]
+      },
+      "properties": {
+        "id": "iriar",
+        "name": "Iriar",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.60708608619758,
+          47.88897169745832
+        ]
+      },
+      "properties": {
+        "id": "kalandeor",
+        "name": "Kalandeor",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.18657096524588,
+          48.2883350750691
+        ]
+      },
+      "properties": {
+        "id": "herlund",
+        "name": "Herlund",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.6286736100646,
+          48.79524234463536
+        ]
+      },
+      "properties": {
+        "id": "drenom",
+        "name": "Drenom",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.90561671542591,
+          49.37784452693479
+        ]
+      },
+      "properties": {
+        "id": "l_ordral",
+        "name": "L'Ordral",
+        "parent_region": "monde_sombre",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60,
+          85
+        ]
+      },
+      "properties": {
+        "id": "hildurm",
+        "name": "Hildurm",
+        "parent_region": "terres_du_nord",
+        "role": "capital",
+        "notes": "1ère tribu fondée par Sorolson",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.0,
+          85.0
+        ]
+      },
+      "properties": {
+        "id": "aldar",
+        "name": "Aldar",
+        "parent_region": "terres_du_nord",
+        "role": "tribal_capital",
+        "notes": "Tribu d'une fille de Sorolson",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.87053149591519,
+          86.9545374422221
+        ]
+      },
+      "properties": {
+        "id": "snorrig",
+        "name": "Snorrig",
+        "parent_region": "terres_du_nord",
+        "role": "tribal_capital",
+        "notes": "Tribu d'une fille de Sorolson",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.3325920514738,
+          87.43734923041464
+        ]
+      },
+      "properties": {
+        "id": "rimgard",
+        "name": "Rimgard",
+        "parent_region": "terres_du_nord",
+        "role": "tribal_capital",
+        "notes": "Tribu d'une fille de Sorolson",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.29719677852322,
+          86.08488822580138
+        ]
+      },
+      "properties": {
+        "id": "varfar",
+        "name": "Varfar",
+        "parent_region": "terres_du_nord",
+        "role": "tribal_capital",
+        "notes": "Tribu d'une fille de Sorolson",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          57.296955579837295,
+          83.91552916685805
+        ]
+      },
+      "properties": {
+        "id": "thildor",
+        "name": "Thildor (Hildor)",
+        "parent_region": "terres_du_nord",
+        "role": "tribal_capital",
+        "notes": "Tribu d'un fils de Sorolson",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          59.33205007296202,
+          82.56275387433635
+        ]
+      },
+      "properties": {
+        "id": "otten",
+        "name": "Otten (Otyn)",
+        "parent_region": "terres_du_nord",
+        "role": "tribal_capital",
+        "notes": "Tribu d'un fils de Sorolson",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          61.87009683601684,
+          83.04517373890788
+        ]
+      },
+      "properties": {
+        "id": "alayr",
+        "name": "Alayr (Altyr)",
+        "parent_region": "terres_du_nord",
+        "role": "tribal_capital",
+        "notes": "Tribu d'un fils de Sorolson",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115,
+          30
+        ]
+      },
+      "properties": {
+        "id": "tsai_mai_do",
+        "name": "Tsai'Maï Do",
+        "parent_region": "yonkado",
+        "role": "capital",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.0,
+          30.0
+        ]
+      },
+      "properties": {
+        "id": "paypao",
+        "name": "Paypao",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.89778347390924,
+          30.647028967633833
+        ]
+      },
+      "properties": {
+        "id": "gon_mi",
+        "name": "Gon'mi",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.59809937444099,
+          31.24996656636658
+        ]
+      },
+      "properties": {
+        "id": "sei_an",
+        "name": "Sei'an",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.12136947997678,
+          31.767726005003603
+        ]
+      },
+      "properties": {
+        "id": "tseliang",
+        "name": "Tseliang",
+        "parent_region": "yonkado",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.5000802396471,
+          32.16502490276611
+        ]
+      },
+      "properties": {
+        "id": "endu_zi",
+        "name": "Endu'zi",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.77656900534802,
+          32.41478958422146
+        ]
+      },
+      "properties": {
+        "id": "nebholi",
+        "name": "Nebholi",
+        "parent_region": "yonkado",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.00013898038463,
+          32.49999999731728
+        ]
+      },
+      "properties": {
+        "id": "qumao",
+        "name": "Qumao",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.22369948469319,
+          32.41484953377799
+        ]
+      },
+      "properties": {
+        "id": "ling_he",
+        "name": "Ling'he",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.50016048358648,
+          32.165140716655564
+        ]
+      },
+      "properties": {
+        "id": "beizu",
+        "name": "Beizu",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.87882707252075,
+          31.76788979116368
+        ]
+      },
+      "properties": {
+        "id": "wogan",
+        "name": "Wogan",
+        "parent_region": "yonkado",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.40203961337814,
+          31.250167163695743
+        ]
+      },
+      "properties": {
+        "id": "fuji",
+        "name": "Fuji",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.10228847799681,
+          30.647252706557325
+        ]
+      },
+      "properties": {
+        "id": "enzhou",
+        "name": "Enzhou",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.00000001287704,
+          30.000231633974153
+        ]
+      },
+      "properties": {
+        "id": "hubei",
+        "name": "Hubei",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.10214459906129,
+          29.353194776844205
+        ]
+      },
+      "properties": {
+        "id": "jiran_chung",
+        "name": "Jiran Chung",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.40176166004375,
+          28.75023404169315
+        ]
+      },
+      "properties": {
+        "id": "bailing",
+        "name": "Bailing",
+        "parent_region": "yonkado",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.87843398573699,
+          28.232437796331848
+        ]
+      },
+      "properties": {
+        "id": "zhanguan",
+        "name": "Zhanguan",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.49967904999701,
+          27.835090929709406
+        ]
+      },
+      "properties": {
+        "id": "dujishan",
+        "name": "Dujishan",
+        "parent_region": "yonkado",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.22316251127738,
+          27.58527038606529
+        ]
+      },
+      "properties": {
+        "id": "daghai",
+        "name": "Daghai",
+        "parent_region": "yonkado",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.99958305884728,
+          27.500000024144434
+        ]
+      },
+      "properties": {
+        "id": "kozu",
+        "name": "Kozu",
+        "parent_region": "yonkado",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.77603201860131,
+          27.585090537396212
+        ]
+      },
+      "properties": {
+        "id": "kanjvi",
+        "name": "Kanjvi",
+        "parent_region": "yonkado",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.49959878030427,
+          27.834743488042037
+        ]
+      },
+      "properties": {
+        "id": "yuxion",
+        "name": "Yuxion",
+        "parent_region": "yonkado",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.12097635677212,
+          28.231946437853026
+        ]
+      },
+      "properties": {
+        "id": "luoming",
+        "name": "Luoming",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.59782137650005,
+          28.74963224970739
+        ]
+      },
+      "properties": {
+        "id": "puy_fu",
+        "name": "Puy'fu",
+        "parent_region": "yonkado",
+        "role": "major_city",
+        "notes": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.89763954522121,
+          29.352523560075646
+        ]
+      },
+      "properties": {
+        "id": "xiaoxi",
+        "name": "Xiaoxi",
+        "parent_region": "yonkado",
+        "role": "town",
+        "notes": null,
+        "is_placeholder": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=23">La taverne des Bolichons</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=119">
+        <img src="../img/characters-profil/119.jpg" alt="Gilbert" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=119">Gilbert</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=156">
+        <img src="../img/characters-profil/156.jpg" alt="Jean" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=156">Jean</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=23&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.19
+            </div>
+
+            <div class="forum-post-content">
+                *hèle la serveuse pour qu&#039;elle rapporte un peu de pain (le meilleur qu&#039;il aie mangé depuis bien longtemps) pour saucer le ragout. 
+Puis pose la question qui tue à l&#039;assemblée: 
+
+Bon, qu&#039;es-qu on va faire maintenant? Pasqu&#039;y a plusieurs options sur la table, là. (Tuer la liche, retrouver le gamin, retrouver les rubis volés, en avoir rien à foutre et partir sur une plage déserte, comprendre pourquoi on a un contrat mort vivant sur nos têtes, se débarrasser du démon qui nous poursuit et veux nous voler nos souvenirs...y a encore autre chose, Philippe?)
+
+ (post à lire en premier, supprimé pour correction, désolé)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.19
+            </div>
+
+            <div class="forum-post-content">
+                *regarde Len avec un oeil souspicieux (parfaitement...sOUspicieux)...
+
+Pourquoi tu le dis en Irtanien? <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage irtanien (diff. 7) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.19
+            </div>
+
+            <div class="forum-post-content">
+                Ben je m&#039;entraîne. Je vais essayer de pratiquer un peu les langues ces temps.  <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage irtanien (diff. 7) => 2R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.19
+            </div>
+
+            <div class="forum-post-content">
+                La serveuse arrive avec un pichet de bière et une corbeille de pain. C&#039;est une petite blonde avec des couettes qui vous fait à tous un grand sourire. &quot;De rien !&quot; Lance-t-elle en repartant vers d&#039;autres tables.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.06.19
+            </div>
+
+            <div class="forum-post-content">
+                Ici, on est en Fauchelevent, on parle Carenien! (ton péremptoire)
+ <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage carénien (diff. 7) => 2R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.06.19
+            </div>
+
+            <div class="forum-post-content">
+                Andalure, t&#039;as une idéey d&#039;où i&#039;s&#039;trouve, Thomas Vicery? <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage carénien (diff. 7) => 1R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.06.19
+            </div>
+
+            <div class="forum-post-content">
+                Non, mais un devin pourra peut être nous renseigner.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Ha heu d&#039;accord, mais j&#039;ai pas compris, je sais pas parler carénien ! <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage irtanien (diff. 7) => 4R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.07.19
+            </div>
+
+            <div class="forum-post-content">
+                A ce moment là précis, un mec en robe brune rentre dans la taverne, il est petit, barbu et chauve. Il s&#039;empresse d&#039;aller commander une bière à la tavernière car il semble mourir de chaud. 
+
+Vous l&#039;entendez dire: &quot;Je vous ai bien dit une choppe, pas un pichet, n&#039;est-ce pas??&quot; 
+
+Il va ensuite s’asseoir à une table vide et la tavernière lui amène un pichet de bière. 
+
+&quot;Ha... heu merci. Comme d&#039;habitude, impossible de changer le destin.&quot;
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.07.19
+            </div>
+
+            <div class="forum-post-content">
+                *tout en continuant à mastiquer, observe le mec puis, à sa remarque, sort le monocle qui lui permet de savoir si c&#039;est un magicien.
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=23&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=23&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=23&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=23&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=23&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=23&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=23&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=23&page=8">
+          8
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

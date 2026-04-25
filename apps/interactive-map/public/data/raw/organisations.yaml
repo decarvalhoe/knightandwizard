@@ -1,0 +1,172 @@
+# Catalogue des organisations K&W — Phase 2 import auto (R-12.5)
+# Source paper : regles-papier/extracted/histoires/organisations.md
+# Schéma : R-12.5 faction
+# Date import : 2026-04-25
+
+version: 1
+metadata:
+  source: paper
+  imported_at: "2026-04-25"
+  total_entries: 7
+
+# Note importante : les 5 premières organisations (Aruspices, Astrologues, Augures,
+# Chiromanciens, Géomanciens) sont des "Maisons" de la magie brune (Devins / Divination D8).
+# Elles forment ensemble la **Fédération des Devins**.
+
+factions:
+
+  - id: aruspices
+    name: "Les Aruspices"
+    category: scholarly  # divinatoire / sectaire
+    sub_category: divination_house
+    practice: aruspicine  # hiéroscopie : lecture des viscères d'animaux sacrifiés
+    profile_members: |
+      Charisme important (peur qu'ils inspirent). Connaissances anatomie animale et humaine.
+      Connaissances en plantes (subsistance). Solitaires. Considèrent autrui comme "sac à matières premières".
+      Capacité à mettre un prix sur la vie ("information pour une vie").
+    base_region: dundoria  # Chaîne d'Eliena
+    presence_regions: [dundoria, fauche_le_vent]  # Monts Utanial dans la Marche Nord
+    rivalries: [foret_de_tyrkan]  # tensions avec Elfes des Bois
+    political_alignment: independent  # n'agit que pour elle-même
+    revenue: poor_subsistence  # généralement pauvres, vivent du strict minimum
+    famous_legends:
+      - "Histoire du roi Hasrim II et du devin Neodrème (Daltar, Narsveg) — prophétie autoréalisée"
+    spell_school_affinity: divination  # magie brune
+    metadata: { source: paper, version: 1 }
+
+  - id: astrologues
+    name: "Les Astrologues"
+    category: scholarly
+    sub_category: divination_house
+    practice: astrologie  # macro-divination via étoiles
+    profile_members: |
+      Goût pour mathématiques et physique cosmiques. Carriéristes, riches.
+      Niveau d'instruction très supérieur à la moyenne.
+      Plus grands spécialistes de trigonométrie (loués pour machines balistiques).
+    base_region: empire  # Elioquant, point le plus élevé de la ville
+    base_location: "Maison-mère à Elioquant (capitale Empire), point le plus élevé"
+    presence_regions: [empire]
+    political_alignment: empire_aligned  # neutres en théorie, soutiennent Empereur en pratique
+    relations:
+      with_other_divination_houses: dedain  # snobent les autres maisons
+      with_nains: excellent  # commerce de lentilles télescopes
+    revenue: very_high  # tarifs élevés, soutenus par Empereur
+    spell_school_affinity: divination
+    metadata: { source: paper, version: 1 }
+
+  - id: augures
+    name: "Les Augures"
+    category: scholarly
+    sub_category: divination_house
+    practice: ornithomancie  # observation des oiseaux
+    profile_members: |
+      Devins sages, patients. Connaissances ornithologie et théologie.
+      Considérés comme volonté divine plutôt que destin.
+    base_region: haut_royaume  # Helldannya
+    base_location: "Maison-mère à Helldannya (capitale Haut Royaume)"
+    presence_regions: [haut_royaume]
+    political_alignment: theist  # suivent les idées de leur dieu personnel
+    typical_employment: noble_advisor  # souvent conseillers royaux
+    revenue: high  # grassement payés
+    spell_school_affinity: divination
+    metadata: { source: paper, version: 1 }
+
+  - id: chiromanciens
+    name: "Les Chiromanciens"
+    category: scholarly
+    sub_category: divination_house
+    practice: chiromancie  # micro-divination via lignes de la main
+    profile_members: |
+      Sociaux, écoute prolongée des malheurs (heures facturées).
+      Voyageurs, polyglottes (parfois loués comme traducteurs).
+      Souvent considérés comme charlatans, mais reconnus officiellement.
+    base_region: alteria  # Abejuan
+    base_location: "Maison-mère à Abejuan (Alteria), forteresse mieux gardée que le trésor national"
+    base_security: |
+      Protection extrême due à anciennes représailles de clients insatisfaits (rumeur).
+    presence_regions: [alteria]  # implantation principale
+    political_alignment: neutral
+    typical_clients: bourgeoisie + populace
+    revenue: variable  # tarifs adaptatifs (selon client, satisfaction, conjoncture, vitesse de course du chiromancien)
+    spell_school_affinity: divination
+    metadata: { source: paper, version: 1 }
+
+  - id: devins_federation
+    name: "Les Devins"
+    category: scholarly
+    sub_category: meta_organization
+    practice: divination  # union des 5 maisons reconnues par les écoles de magie brune
+    members:
+      - aruspices
+      - astrologues
+      - augures
+      - chiromanciens
+      - geomanciens
+    notes: |
+      "Les Devins" est la **fédération** des 5 maisons reconnues par les écoles de magie brune.
+      Chaque Maison spécialise dans un type de divination différent.
+    spell_school_affinity: divination
+    metadata: { source: paper, version: 1 }
+
+  - id: geomanciens
+    name: "Les Géomanciens"
+    category: scholarly
+    sub_category: divination_house
+    practice: geomancie  # objets jetés au sol (pierres, os) + signes naturels
+    profile_members: |
+      Sobres, proches de la nature, simplicité.
+      Méthode permettant de travailler sans attendre événement naturel.
+    base_region: terres_du_nord  # Deonit (selon paper, mais Hildurm est capitale)
+    base_location: "Maison-mère à Deonit (Terres du Nord)"
+    presence_regions: [terres_du_nord]
+    political_alignment: neutral
+    typical_employment: village_diviner  # souvent au service d'un village/petite région
+    revenue: medium  # entretenus avec l'argent des taxes locales
+    notable_population: gens_du_peuple  # populaires dans le peuple
+    notes: "Aversion pour les grandes villes."
+    spell_school_affinity: divination
+    metadata: { source: paper, version: 1, location_anomaly: "Paper dit Deonit, mais nations.yaml indique Hildurm comme capitale" }
+
+  - id: sans_noms
+    name: "Les Sans Noms"
+    category: military_order  # organisation militaire d'élite
+    sub_category: assassin_corps
+    base_region: monde_sombre
+    base_locations: |
+      Orphelinats dans toutes les grandes villes du Monde Sombre.
+      Recrues quittent l'orphelinat entre 8 et 13 ans pour leur employeur.
+    presence_regions: [monde_sombre]
+    political_alignment: monde_sombre_aligned
+
+    profile_members: |
+      Elfes Sombres orphelins (1/3 des nouveau-nés monde_sombre abandonnés).
+      Pris en charge gratuitement par structure militaire.
+      Entraînés depuis tout petit. Reçoivent UN seul nom (les elfes en ont 3).
+      Numéros à la place du nom durant l'entraînement.
+      Machines exécutives, obéissent sans question. Émotions refoulées.
+      Maxime irtanienne : "Mort comme un Sans Nom qui danse" (= déjà froid).
+      Aucun magicien parmi eux (impossibilité due à leur entraînement).
+
+    skills_specialty: assassinat
+    renown: |
+      Unités d'élite du Monde Sombre.
+      Servent dans tous domaines mais finissent souvent assassins.
+      Fait du Monde Sombre la patrie des meilleurs assassins des Terres Oubliées.
+      Autonomes dès leur 5ème année.
+
+    economy:
+      revenue_source: vente_des_recrues
+      standard_price_pc: 25_000_000  # 25 millions d'écus pour un élément standard
+      premium_price_pc: 75_000_000  # 75 millions d'écus pour un élément prometteur
+      transparency: secret  # chiffres tenus secrets
+
+    visual_marker:
+      tatouages: true
+      tatouage_meaning: "rapport avec employeur ou fonction"
+      tatouage_timing: "soir avant départ de l'orphelinat"
+      cultural_anomaly: "Tatouages rares chez les elfes — particularité notable"
+
+    related_factions:
+      employers: many_organizations_monde_sombre  # achetés par diverses organisations
+
+    metadata: { source: paper, version: 1 }

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1>Mes personnages</h1>
+
+<a href="add-character.php"><button style="float:right;">Nouveau personnage</button></a>
+
+<h3>PJ</h3>
+
+<div class="characters-container">
+                        <div class="character-thumbnail">
+    <a href="character-detail.php?id=197">
+        <img src="../img/characters-profil/197.jpg" alt="Amaterasu" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=197">Amaterasu</a>
+</div>
+
+                                            <div class="character-thumbnail">
+    <a href="character-detail.php?id=195">
+        <img src="../img/characters-profil/195.jpg" alt="Colonel Hohenshmidthart Wiebke" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=195">Colonel Hohenshmidthart Wiebke</a>
+</div>
+
+                                                                    <div class="character-thumbnail">
+    <a href="character-detail.php?id=183">
+        <img src="../img/characters-profil/183.jpg" alt="Grumtark" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=183">Grumtark</a>
+</div>
+
+                                                        <div class="character-thumbnail">
+    <a href="character-detail.php?id=182">
+        <img src="../img/characters-profil/182.jpg" alt="Nerrak" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=182">Nerrak</a>
+</div>
+
+                                                                    <div class="character-thumbnail">
+    <a href="character-detail.php?id=12">
+        <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=12">Sindalia Androulya Lissentia</a>
+</div>
+
+                                            <div class="character-thumbnail">
+    <a href="character-detail.php?id=196">
+        <img src="../img/characters-profil/196.jpg" alt="Susanoo Shizu" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=196">Susanoo Shizu</a>
+</div>
+
+                        </div>
+
+<h3>PNJ actif</h3>
+
+<div class="characters-container">
+                                                                                                                                                                                                                </div>
+
+<h3>PNJ inactif</h3>
+
+<div class="characters-container">
+                                    <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=237">
+        <img src="../img/characters-profil/no-img.jpg" alt="Black Dalhia" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=237">Black Dalhia</a>
+</div>
+
+            </div>
+                                            <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=202">
+        <img src="../img/characters-profil/202.jpg" alt="Curly Dadan" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=202">Curly Dadan</a>
+</div>
+
+            </div>
+                                <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=200">
+        <img src="../img/characters-profil/200.jpg" alt="Dogra" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=200">Dogra</a>
+</div>
+
+            </div>
+                                <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=238">
+        <img src="../img/characters-profil/238.jpg" alt="Fuuh Raie" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=238">Fuuh Raie</a>
+</div>
+
+            </div>
+                                            <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=201">
+        <img src="../img/characters-profil/201.jpg" alt="Magra" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=201">Magra</a>
+</div>
+
+            </div>
+                                <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=203">
+        <img src="../img/characters-profil/203.jpg" alt="Makino" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=203">Makino</a>
+</div>
+
+            </div>
+                                            <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=236">
+        <img src="../img/characters-profil/236.jpg" alt="Pascal.e le Poulpe" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=236">Pascal.e le Poulpe</a>
+</div>
+
+            </div>
+                                <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=235">
+        <img src="../img/characters-profil/235.jpg" alt="Poudline " style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=235">Poudline </a>
+</div>
+
+            </div>
+                                <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=231">
+        <img src="../img/characters-profil/231.jpg" alt="Servalkyrie" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=231">Servalkyrie</a>
+</div>
+
+            </div>
+                                            <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=204">
+        <img src="../img/characters-profil/204.jpg" alt="Sonja" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=204">Sonja</a>
+</div>
+
+            </div>
+                                            <div class="my-characters-list">
+                <div class="character-thumbnail">
+    <a href="character-detail.php?id=232">
+        <img src="../img/characters-profil/232.jpg" alt="Waxa" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=232">Waxa</a>
+</div>
+
+            </div>
+            </div>
+
+<h3>Mort</h3>
+
+<div class="characters-container">
+                                                                                                                                                                                                                </div>
+
+<h3>MJ</h3>
+
+<div class="characters-container">
+                                                                                                                                                                                                                </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

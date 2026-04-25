@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=29">La casa Fortuna</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=211">
+        <img src="../img/characters-profil/211.jpg" alt="M. Urbano" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=211">M. Urbano</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=214">
+        <img src="../img/characters-profil/214.jpg" alt="Andrea" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=214">Andrea</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=29&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Sela attends mais est sur ces gardes. 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.05.20
+            </div>
+
+            <div class="forum-post-content">
+                La paire d&#039;yeux va vous observer en silence pendant un moment avant de refermer la glissière. 10 bonnes minutes vont s&#039;écoulées avant que vous n&#039;entendiez remuer derrière la porte. Puis, celle-ci s&#039;ouvre lentement.
+
+Vous découvrez que le portier n&#039;est autre qu&#039;un petit garçon qui ne doit pas avoir plus de 12 ans. Celui-ci est sale et mal habillé.
+
+Derrière-lui le paysage est étonnant. Beaucoup plus grand que ce que vous l&#039;imaginiez, le bâtiment communique directement avec les immeubles voisins, ce qui lui permet d&#039;avoir une cours intérieur digne d&#039;une grande villa.
+Le jardin est magnifiquement éclairé par le soleil couchant et possède une grande fontaine de marbre en son centre. La maison ainsi que son atrium semblent mal entretenus mais demeure charmants. Le curieux mélange de couloir poussiéreux et de végétation sauvage donne à cet endroit un caractère reposant, comme une ruine qui n&#039;attendait que des visiteur pour témoigner de sa beauté jadis.
+
+[Jeune homme] :
+&quot;Soyez les bienvenus ! Vous n&#039;aurez pas besoin de vos armes, vous pouvez les laisser à l&#039;entrée *vous indique une table sur la gauche directement suite à l&#039;entrée*. 49 n&#039;est pas là mais je peux peut-être vous renseigner.&quot;
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Je ne laisse jamais mes armes seule, question de principes ! Tu es qui enfant ? 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [Jeune garçon] :
+&quot;Vous savez Madame, vous êtes grande et vous me faites peur [dit-il sur un ton mi-insolant] si vous pénétrer cette demeure en arme, je crains de céder à la panique.
+Du reste je me nomme Andrea, à vot&#039; service !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Nous sommes venus pour discuter, pas pour nous battre...nous n&#039;aurons pas besoin de nos armes. Nous allons les laisser à l&#039;entrée, c&#039;est une requête légitime...
+*commence à ouvrir sa ceinture pour enlever son cimeterre
+
+Par contre, nous étions venus voir 49...Si vous êtes sur qu&#039;il n&#039;est pas présent, je ne suis pas sur que notre présence soit utile, ni pour nous, ni pour vous...et nous ne voudrions pas vous faire perdre votre temps
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [Jeune homme]:
+Si vous voulez voir 49, je vous conseille de prendre rendez-vous. Pour cela je peux vous conduire auprès de Monsieur Urbano. Il saura prendre en charge votre demande.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Allons voir Monsieur Urbano dans ce cas. Je te remercie pour ton accueil, jeune humain.
+(n&#039;avais pas d&#039;arme sur elle de toute manière) 
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1191&place-id=29" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Le garçon regarde en direction de Sela en attendant que celle-ci pose ses armes pour vous conduire.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.05.20
+            </div>
+
+            <div class="forum-post-content">
+                * Pose toutes ses armes sur la table. *
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Mouais!!
+Voilà voilà ça arrive.. 
+
+*dépose un à un ses objets, environ 6 armes en regardant le garçon.
+
+Je te fais encore peur maintenant ? 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=29&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=29&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=29&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=29&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=29&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=29&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=29&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=29&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=29&page=9">
+          9
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,3779 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1>Le Grand Grimoire</h1>
+
+<form action="spells-list.php" method="get" class="form">
+	Tri par :
+
+    <select name="order">
+		<option value="name">nom</option>
+		<option value="type_id">type de magie</option>
+		<option value="energy">énergie</option>
+		<option value="casting_time">TI</option>
+		<option value="difficulty">difficulté</option>
+        <option value="value">valeur</option>
+    </select>
+
+    <input type="submit" value="Trier" />
+</form>
+
+<br />
+
+<table id="spells-list">
+	<thead>
+		<tr>
+			<th style="width: 178px;">Nom</th>
+			<th style="width: 97px;">Type</th>
+            <th style="width: 50px;">Energie</th>
+            <th style="width: 28px;">TI</th>
+            <th style="width: 32px;">Diff.</th>
+            <th style="width: 595px;">Effet</th>
+			<th style="width: 43px;">Valeur</th>
+		</tr>
+	</thead>
+
+	<tbody>
+					<tr class="magic-spell-type-id-1">
+				<td>Annihilation</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">169</td>
+	            <td style="text-align: center;">118</td>
+	            <td style="text-align: center;">29</td>
+	            <td>Empêche tout sort 1km/niv. 1jour/R</td>
+				<td style="text-align: center;">10000</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Augmentation énergétique</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Augmente l’énergie d’un sort de 2/R</td>
+				<td style="text-align: center;">12</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Barrière psychique</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Diminue 1R/R sur sorts mentaux, 1 jour/Niv.</td>
+				<td style="text-align: center;">12</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Barrière psychique de masse</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Diminue 1R/R sur sorts mentaux, 1 personne/R, 1 jour/Niv.</td>
+				<td style="text-align: center;">15</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Boomerang</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Renvoi le sort au lanceur</td>
+				<td style="text-align: center;">16</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Captage d'énergie</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Absorbe 3 d’énergie/R sur un sort</td>
+				<td style="text-align: center;">17</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Complexité magique</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Augmente la diff. D’un sort de 2/R</td>
+				<td style="text-align: center;">17</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-blanc</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort blanc/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-bleu</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort bleu/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-brun</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort brun/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-gris</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort gris/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-jaune</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort jaune/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-noir</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort noir/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-orange</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort orange/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-rouge</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort rouge/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-turquoise</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort turquoise/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-vert</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort vert/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Contre-violet</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Annule un sort violet/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Déplacement magique</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Change la cible d’un sort actif</td>
+				<td style="text-align: center;">17</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Déplacement magique de masse</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Change la cible d’un sort actif/R</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Détournement du lien du mort-vivant</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Remet le contrôle de 1 mort/niv. à une cible si R>R d’appel des morts</td>
+				<td style="text-align: center;">40</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Dispersion du familier</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">7</td>
+	            <td>2 dégâts/R. La cible doit être un familier à portée de vue du magicien.</td>
+				<td style="text-align: center;">28</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Dissipation</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Annule un sort actif</td>
+				<td style="text-align: center;">42</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Interdiction magique</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Cible oublie son sort 10min/niv si R>jet d’int.</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Irréductibilité</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Empêche de réduire le TI de 1DT/R 10 min./Niv., 1 personne/R</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Irréductibilité de masse</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Empêche de réduire le TI de 1DT/R 10 min./Niv., 1 personne/R</td>
+				<td style="text-align: center;">65</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Perturbation</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Test de volonté pour rester en incantation diff. + R</td>
+				<td style="text-align: center;">65</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Piégeage magique</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">9</td>
+	            <td>2 dégâts/R si la cible lance un sort</td>
+				<td style="text-align: center;">95</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Ralentissement magique</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">19</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Prolonge le TI d’un sort ciblé de 2/R</td>
+				<td style="text-align: center;">130</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Rets des âmes</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">21</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Réduit les R d’appel des âmes sur 10m/R, 1 jour/Niv.</td>
+				<td style="text-align: center;">150</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Rets des cadavres</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">24</td>
+	            <td style="text-align: center;">17</td>
+	            <td style="text-align: center;">11</td>
+	            <td>Réduit les R d’appel des cadavres sur 10m/R, 1 jour/Niv.</td>
+				<td style="text-align: center;">200</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Rupture de lien d'invocation</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Diminue le nombre de R d'un lien d'invocation existant entre un sujet et son invocateur. Si le nombre de R du lien tombe à 0 ou en dessous, le lien est rompu.</td>
+				<td style="text-align: center;">32</td>
+			</tr>
+					<tr class="magic-spell-type-id-1">
+				<td>Substitution de sort</td>
+	            <td style="text-align: center;">
+											Abjuration
+									</td>
+	            <td style="text-align: center;">25</td>
+	            <td style="text-align: center;">18</td>
+	            <td style="text-align: center;">11</td>
+	            <td>Remplace un sort incanté</td>
+				<td style="text-align: center;">220</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Agrandissement</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">36</td>
+	            <td style="text-align: center;">53</td>
+	            <td style="text-align: center;">16</td>
+	            <td>Double la taille /R</td>
+				<td style="text-align: center;">950</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Branchie</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée des branchies sur la cible</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Branchie de masse</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée des branchies sur la cible, 1 cible/R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Changement de sexe</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">18</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Contre jet d’endurance</td>
+				<td style="text-align: center;">110</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Changement en corbeau </td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">20</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Contre jet d’endurance</td>
+				<td style="text-align: center;">140</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Changement en crapaud </td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">17</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Contre jet d’endurance</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Changement en furet</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">19</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Contre jet d’endurance</td>
+				<td style="text-align: center;">120</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Changement en humain</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">28</td>
+	            <td style="text-align: center;">42</td>
+	            <td style="text-align: center;">14</td>
+	            <td>Contre jet d’endurance</td>
+				<td style="text-align: center;">600</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Changement en lapin</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">18</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Contre jet d’endurance</td>
+				<td style="text-align: center;">105</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Changer l’eau en vin</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>1litre/R</td>
+				<td style="text-align: center;">15</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Châtiment de la matière</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">124</td>
+	            <td style="text-align: center;">186</td>
+	            <td style="text-align: center;">30</td>
+	            <td>Détruit une cible</td>
+				<td style="text-align: center;">11500</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Corrosion</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Rouille 1kg/R</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Corrosion de masse</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Rouille 1Kg/R, 1 cible/R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Création d'aile</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">21</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Crée une aile sur une cible</td>
+				<td style="text-align: center;">150</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Création d'oeil</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Crée un oeil sur une cible</td>
+				<td style="text-align: center;">90</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Création de bras</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">21</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Crée un bras sur une cible</td>
+				<td style="text-align: center;">150</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Création de dent</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Crée une dent sur la cible</td>
+				<td style="text-align: center;">10</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Création de jambe</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">22</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Crée une jambe sur la cible</td>
+				<td style="text-align: center;">155</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Création de kyste</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Crée un kyste sur une cible</td>
+				<td style="text-align: center;">10</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Création de main</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">17</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Crée une main sur la cible</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Création de pied</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">17</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Crée un pied sur la cible</td>
+				<td style="text-align: center;">95</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Création de queue</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Crée une queue sur la cible</td>
+				<td style="text-align: center;">80</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Evaporation</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Evapore 1 litre/R</td>
+				<td style="text-align: center;">10</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Gel</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Gel 1 litre/R</td>
+				<td style="text-align: center;">22</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Membre téléscopique</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Allonge un membre 1m/R, 10min/niv.</td>
+				<td style="text-align: center;">33</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Miniaturisation</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">36</td>
+	            <td style="text-align: center;">53</td>
+	            <td style="text-align: center;">16</td>
+	            <td>Divise la taille par 2 /R</td>
+				<td style="text-align: center;">950</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Pétrification</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">62</td>
+	            <td style="text-align: center;">93</td>
+	            <td style="text-align: center;">21</td>
+	            <td>Contre jet d’endurance</td>
+				<td style="text-align: center;">2900</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Rendre forme</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Rend la forme initiale si R supérieures aux R de changement</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-2">
+				<td>Soudure</td>
+	            <td style="text-align: center;">
+											Altération
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Soude 1m/R</td>
+				<td style="text-align: center;">26</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Barrière de Höln</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">27</td>
+	            <td style="text-align: center;">30</td>
+	            <td style="text-align: center;">13</td>
+	            <td>10 min/Niv 1m2/R.</td>
+				<td style="text-align: center;">400</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Bénédiction</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Diff. –1/R 10min/Niv.</td>
+				<td style="text-align: center;">93</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Bénédiction de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">18</td>
+	            <td style="text-align: center;">20</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Diff. –1, 1 Perso/R. 10min/Niv.</td>
+				<td style="text-align: center;">186</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Bouclier</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Bouclier de +1 PECT / R</td>
+				<td style="text-align: center;">40</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Bouclier anti-feu</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Bouclier de 1 E (feu)/R, 10 min/niv.</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Bouclier anti-foudre</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Bouclier de 1 E (foudre)/R, 10 min/niv.</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Bouclier anti-froid</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Bouclier de 1 E (froid)/R, 10 min/niv.</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Bouclier anti-lave</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Bouclier de 1 E (lave)/R, 10 min/niv.</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Bouclier anti-mal</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Bouclier de 1/R contre démon, 10 min/niv.</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Charisme</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Charisme +1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Charisme de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Charisme +1/R, 10 min/niv., 1 perso/R</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Courage</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Facteur de volonté – 1/R, 10 min/niv.</td>
+				<td style="text-align: center;">24</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Déviation</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>+1 pour être toucher, 10min/ R</td>
+				<td style="text-align: center;">47</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Déviation de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Diff +1 pour être toucher, 1 Perso/R, 10min/niv.</td>
+				<td style="text-align: center;">94</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Déviation des projectiles</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>1 R /projectile</td>
+				<td style="text-align: center;">37</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Déviation majeure</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Diff. +2 pour être touché/R, 10min/niv.</td>
+				<td style="text-align: center;">71</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Déviation mineure</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Diff. +1 pour être touché/R, 5 min/niv.</td>
+				<td style="text-align: center;">24</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Dextérité</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Dextérité +1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Dextérité de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Dextérité +1/R, 10 min/niv., 1 perso/R</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Don d’énergie</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>3 points d’énergie transmis/R</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Empathie</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Empathie +1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Empathie de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Empathie +1/R, 10 min/niv., 1 perso/R</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Endurance</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Endurance +1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Endurance de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Endurance +1/R, 10 min/niv., 1 perso/R</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Esthétique</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Esthétique +1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Esthétique de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Esthétique +1/R, 10 min/niv., 1 perso/R</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Force</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Force +1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Force de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Force +1/R, 10 min/niv., 1 perso/R</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Guérison absolue</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">131</td>
+	            <td style="text-align: center;">145</td>
+	            <td style="text-align: center;">28</td>
+	            <td>+2 de vitalité/R</td>
+				<td style="text-align: center;">9500</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Guérison de la chair</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>+2 de vitalité à la zone/R</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Guérison de la peau</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td>+2 de vitalité à la zone/R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Guérison des muscles</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td>+2 de vitalité à la zone/R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Guérison des muscles mineure</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>+1 de vitalité à la zone/R</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Guérison des organes</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>+2 de vitalité à la zone/R</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Guérison des os</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td>+2 de vitalité à la zone/R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Intelligence</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Intelligence +1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Intelligence de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Intelligence +1/R, 10 min/niv., 1 perso/R</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Lumière</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Eclaire 5 m2/R, 10 min/niv.</td>
+				<td style="text-align: center;">21</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Purification de l'air</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Purifie 1 m3 d'air/R</td>
+				<td style="text-align: center;">15</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Purification de l'eau</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Purifie 1 litre d'eau/R</td>
+				<td style="text-align: center;">15</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Rapidité</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Facteur de vitesse -1/R, 50 DT/niv.</td>
+				<td style="text-align: center;">95</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Rapidité de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">19</td>
+	            <td style="text-align: center;">20</td>
+	            <td style="text-align: center;">11</td>
+	            <td>Facteur de vitesse -1, 1 Perso/R, 50DT/niv.</td>
+				<td style="text-align: center;">190</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Renvoi du démon</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">40</td>
+	            <td style="text-align: center;">44</td>
+	            <td style="text-align: center;">16</td>
+	            <td>Renvoi 1 démon sous jet de force diff+1/R</td>
+				<td style="text-align: center;">900</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Respiration</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Permet de respirer normalement 10 min/R</td>
+				<td style="text-align: center;">33</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Respiration de masse</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Permet de respirer normalement 10 min/R, 1 personne/R</td>
+				<td style="text-align: center;">66</td>
+			</tr>
+					<tr class="magic-spell-type-id-3">
+				<td>Résurrection</td>
+	            <td style="text-align: center;">
+											Blanche
+									</td>
+	            <td style="text-align: center;">141</td>
+	            <td style="text-align: center;">156</td>
+	            <td style="text-align: center;">29</td>
+	            <td>Ramène un mort d’une heure/R</td>
+				<td style="text-align: center;">11000</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Connaître le vice</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">19</td>
+	            <td style="text-align: center;">32</td>
+	            <td style="text-align: center;">12</td>
+	            <td>Révèle le plus grand vice si R > jet d’int.</td>
+				<td style="text-align: center;">300</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Contact</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Permet de parler avec qqn d’éloigné</td>
+				<td style="text-align: center;">40</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Contact de Morphée</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Rejoint la cible dans son rêve</td>
+				<td style="text-align: center;">33</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Contact divin</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">113</td>
+	            <td style="text-align: center;">192</td>
+	            <td style="text-align: center;">30</td>
+	            <td>Permet de parler avec un dieu</td>
+				<td style="text-align: center;">10800</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Contacter l’au-delà </td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">69</td>
+	            <td style="text-align: center;">117</td>
+	            <td style="text-align: center;">23</td>
+	            <td>Permet de parler avec un esprit</td>
+				<td style="text-align: center;">4000</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Détection du danger</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">17</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Colore en fonction du danger, 1min/R</td>
+				<td style="text-align: center;">90</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Identification</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Révèle au lanceur l’utilisation d’un objet</td>
+				<td style="text-align: center;">40</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Localisation</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">18</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Localise une cible recherchée</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Nouvelle du monde</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">18</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 information internationale par R</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Nouvelle nationale</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 information nationale par R</td>
+				<td style="text-align: center;">75</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Nouvelle régionale</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 information régionale par R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Prémonition</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">34</td>
+	            <td style="text-align: center;">58</td>
+	            <td style="text-align: center;">16</td>
+	            <td>Anticiper le présent de 10 DT/R</td>
+				<td style="text-align: center;">1000</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Regard de puissance</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">20</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Colore en fonction de puissance, 1min/R</td>
+				<td style="text-align: center;">120</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Savoir l'aptitude</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Révèle les points de 1 aptitude/R</td>
+				<td style="text-align: center;">23</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Savoir l'énergie</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Révèle l’énergie d’une cible. 10min/R</td>
+				<td style="text-align: center;">26</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Savoir la vitalité</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Révèle la vitalité d’une cible. 10min/R</td>
+				<td style="text-align: center;">27</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Savoir la vitesse</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Révèle la vitesse d’une cible</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Savoir la volonté</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Révèle la volonté d’une cible</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Savoir le nom</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">3</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Révèle le nom de la cible</td>
+				<td style="text-align: center;">10</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Savoir les compétences</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Révèle les points de 1 compétence/R</td>
+				<td style="text-align: center;">21</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Vision ante mortem</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Montre des événements de la vie d’un mort</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-4">
+				<td>Vision de rêve</td>
+	            <td style="text-align: center;">
+											Divinatoire
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Montre le rêve si R > jet d’int.</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Appel de la foudre</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">37</td>
+	            <td style="text-align: center;">30</td>
+	            <td style="text-align: center;">14</td>
+	            <td>20 dégâts +4 par +</td>
+				<td style="text-align: center;">550</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Appel de la pluie</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Fait pleuvoir 10 min/R</td>
+				<td style="text-align: center;">37</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Bouclier de foudre</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">8</td>
+	            <td>2 dégâts/R, 10 min/niv.</td>
+				<td style="text-align: center;">75</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Bouclier d’eau</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>+1 pour toucher/R, 10min/niv.</td>
+				<td style="text-align: center;">41</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Boule de feu</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">9</td>
+	            <td>8 dégâts +3 par R sup.</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Boule de feu majeure</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">19</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">10</td>
+	            <td>12 dégâts +4 par R sup.</td>
+				<td style="text-align: center;">150</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Boule de foudre</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">9</td>
+	            <td>8 dégâts de foudre +3 par R sup.</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Boule de foudre majeure</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">19</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">10</td>
+	            <td>12 dégâts de foudre +4 par R sup.</td>
+				<td style="text-align: center;">150</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Brasier</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">32</td>
+	            <td style="text-align: center;">25</td>
+	            <td style="text-align: center;">13</td>
+	            <td>4 dégâts, 1m2/R</td>
+				<td style="text-align: center;">400</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Cercle de feu</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>1m de haut, 3m de dia/R, , 10min/niv.</td>
+				<td style="text-align: center;">47</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Chaîne d’éclairs</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">35</td>
+	            <td style="text-align: center;">28</td>
+	            <td style="text-align: center;">13</td>
+	            <td>3 dégâts/R sur 1personne/R</td>
+				<td style="text-align: center;">500</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Champs de boue</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Déplacement => jet force (diff = 5 + R), 10m2/niv. </td>
+				<td style="text-align: center;">37</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Colère divine</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">173</td>
+	            <td style="text-align: center;">139</td>
+	            <td style="text-align: center;">30</td>
+	            <td>1000 dégâts +100 par R sup.</td>
+				<td style="text-align: center;">12000</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Flash</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Aveugle l’ennemi 50DT/R</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Flèche de feu</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td>2 dégâts de feu/R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Flèche de foudre</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td>2 dégâts d’électricité/R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Foudroiement</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td>3 dégâts d’électricité/R</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Immolation</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Résist. au feu : 100%, 1 dégât/R, 1min/R</td>
+				<td style="text-align: center;">34</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Multi-flamme</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">9</td>
+	            <td>3 dégâts +1 par R sup., 1 projectile   sup./2R</td>
+				<td style="text-align: center;">105</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Mur de flammes</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Crée un mur de flammes. 1m de haut/R, 5m de long/R, 10 min./niv.</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Pilier de feu</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">37</td>
+	            <td style="text-align: center;">30</td>
+	            <td style="text-align: center;">14</td>
+	            <td>20 dégâts +4 par +</td>
+				<td style="text-align: center;">550</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Pyramide de feu</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">45</td>
+	            <td style="text-align: center;">36</td>
+	            <td style="text-align: center;">15</td>
+	            <td>25 dégâts +5 par+ (10m2/5m)</td>
+				<td style="text-align: center;">800</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Rayon d’eau</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Force = R   5DT/R</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Raz de marée</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">112</td>
+	            <td style="text-align: center;">89</td>
+	            <td style="text-align: center;">24</td>
+	            <td>50 dégâts +10 par R supp.</td>
+				<td style="text-align: center;">5000</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Sables mouvants</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">9</td>
+	            <td>5m2/R, dext. = diff.+ niv. pour sortir</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Tornade</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">39</td>
+	            <td style="text-align: center;">31</td>
+	            <td style="text-align: center;">14</td>
+	            <td>Projette tout dans les airs sur son passage. Diff. pour résister = 10 +3/R supplémentaires. 1 min/niv. Le lanceur décide de la direction de base de la tornade, celle-ci peut ensuite dévier librement.</td>
+				<td style="text-align: center;">600</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Tornade de feu</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">43</td>
+	            <td style="text-align: center;">34</td>
+	            <td style="text-align: center;">15</td>
+	            <td>50DT/ R 15dégâts +3 par+</td>
+				<td style="text-align: center;">730</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Touché ardant</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>1 dégât/R</td>
+				<td style="text-align: center;">14</td>
+			</tr>
+					<tr class="magic-spell-type-id-5">
+				<td>Vague de feu</td>
+	            <td style="text-align: center;">
+											Elémentaire
+									</td>
+	            <td style="text-align: center;">17</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">9</td>
+	            <td>10 dégâts + 2 par + (1m/R)</td>
+				<td style="text-align: center;">115</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Animation des armures</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 pièce d’armure/R, 10 min/niv.</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Arc-en-ciel</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Crée un arc-en-ciel de rayon de 2m/R</td>
+				<td style="text-align: center;">43</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Cauchemard</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">5</td>
+	            <td>La cible endormie se met à cauchemarder. Le MJ pourra appliquer des malus de fatigue en fonction des R au dormeur dès le lendemain.</td>
+				<td style="text-align: center;">10</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Cauchemard de masse</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Les cibles endormie se mettent à cauchemarder. Le MJ pourra appliquer des malus de fatigue en fonction des R aux dormeurs dès le lendemain.
+Le sort touche tout personnage dormant dans un rayon de 10 m/niv.</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Cocon thermique</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Modifie la température de max 5°C/R, 3m/niv., 10min/niv.</td>
+				<td style="text-align: center;">15</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Corde</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>5 m de corde/R 10min/niv.</td>
+				<td style="text-align: center;">31</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Enchantement de livre</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Le livre raconte son contenu 10min/R</td>
+				<td style="text-align: center;">10</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Extase</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Fait jouir la cible 10 min/niv.</td>
+				<td style="text-align: center;">19</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Invisibilité</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Diff + 1/R pour être vu, 10 min/niv.</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Légèreté</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>La cible perd 2 kg/R, 10 min/niv.</td>
+				<td style="text-align: center;">35</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Lourdeur</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>La cible acquiert 2 kg/R, 10 min/niv.</td>
+				<td style="text-align: center;">35</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Marche sur l'eau</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Marche sur l’eau 10kg/R, 10min/niv.</td>
+				<td style="text-align: center;">18</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Multilinguisme</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Permet de parler la langue 10min/niv.</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Nettoyage magique</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Nettoie sur rayon de 3m/R</td>
+				<td style="text-align: center;">10</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Parler aux oiseaux</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">5</td>
+	            <td>5m. rayon de voix/ R</td>
+				<td style="text-align: center;">12</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Passe-partout</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Verrouille/déverrouille une porte</td>
+				<td style="text-align: center;">35</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Porte de secours</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">9</td>
+	            <td>20cm de profondeur/R 10min/niv.</td>
+				<td style="text-align: center;">92</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Rire</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Diff + 1/2R, 10 min/niv.</td>
+				<td style="text-align: center;">24</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Rire de masse</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Diff + 1/3R, 10 min/niv, 1 cible/R</td>
+				<td style="text-align: center;">48</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Sommeil</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Test de vol. pour ne pas dormir</td>
+				<td style="text-align: center;">26</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Vol de masse</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">32</td>
+	            <td style="text-align: center;">32</td>
+	            <td style="text-align: center;">13</td>
+	            <td>Vol à 1 m/s x R , 1 perso/R, 10 min/niv.</td>
+				<td style="text-align: center;">500</td>
+			</tr>
+					<tr class="magic-spell-type-id-6">
+				<td>Vol magique</td>
+	            <td style="text-align: center;">
+											Enchantement
+									</td>
+	            <td style="text-align: center;">22</td>
+	            <td style="text-align: center;">22</td>
+	            <td style="text-align: center;">11</td>
+	            <td>Vol à 1 m/s x R , 10 min/niv.</td>
+				<td style="text-align: center;">250</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Auto clonage</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un clone du lanceur/R</td>
+				<td style="text-align: center;">55</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Centaure illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un centaure</td>
+				<td style="text-align: center;">66</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Chat illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Crée un chat</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Cheval illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Crée un cheval</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Chigr Illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un chigr</td>
+				<td style="text-align: center;">48</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Clonage</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un clone d'une cible à vue.</td>
+				<td style="text-align: center;">65</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Couteau illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Crée un couteau</td>
+				<td style="text-align: center;">29</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Demi-elfe illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un demi-elfe</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Dryade illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée une dryade</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Elfe illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un elfe</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Fantôme illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Crée un fantôme</td>
+				<td style="text-align: center;">93</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Fortune illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Crée une pièce/R</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Gnome illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Crée un gnome</td>
+				<td style="text-align: center;">45</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Gobelin illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Crée un gobelin</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Hobbit illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un hobbit</td>
+				<td style="text-align: center;">48</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Homme lézard illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un homme lézard</td>
+				<td style="text-align: center;">54</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Homme oiseau illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un homme oiseau</td>
+				<td style="text-align: center;">66</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Homme rat illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un homme rat</td>
+				<td style="text-align: center;">54</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Humain illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un humain</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Khochigr illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un khochigr</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Khogr illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un khogr</td>
+				<td style="text-align: center;">66</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Loup illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un loup</td>
+				<td style="text-align: center;">48</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Loup-garou illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">19</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Crée un loup-garou</td>
+				<td style="text-align: center;">135</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Mur illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Crée un mur 1m de haut, 3m de long/R</td>
+				<td style="text-align: center;">40</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Nain illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un nain</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Ogre illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">20</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Crée un ogre</td>
+				<td style="text-align: center;">152</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Ondine illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée une ondine</td>
+				<td style="text-align: center;">57</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Orc illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un orc</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Squelette illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Crée un squelette</td>
+				<td style="text-align: center;">48</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Troll illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">19</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Crée un troll</td>
+				<td style="text-align: center;">144</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Vampire illusoire</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Crée un vampire</td>
+				<td style="text-align: center;">90</td>
+			</tr>
+					<tr class="magic-spell-type-id-7">
+				<td>Vide sidéral</td>
+	            <td style="text-align: center;">
+											Illusion
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Plonge une cible dans un vide illusoire</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation d'elfe</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 elfe/R</td>
+				<td style="text-align: center;">80</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation d'homme lézard</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 homme lézard/R</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation d'homme oiseau</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 homme oiseau/R</td>
+				<td style="text-align: center;">88</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation d'homme rat</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 homme rat/R</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation d'humain</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 humain/R</td>
+				<td style="text-align: center;">80</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation d'ondine</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 ondine/R</td>
+				<td style="text-align: center;">76</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de centaure</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 centaure/R</td>
+				<td style="text-align: center;">88</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de chat</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 chat/R</td>
+				<td style="text-align: center;">48</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de cheval</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 cheval/R</td>
+				<td style="text-align: center;">64</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de chigr</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 chigr/R</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de demi elfe</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 demi elfe/R</td>
+				<td style="text-align: center;">80</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de dryade</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 dryade/R</td>
+				<td style="text-align: center;">80</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de gnome</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 gnome/R</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de gobelin</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 gobelin/R</td>
+				<td style="text-align: center;">48</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de guêpe</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>10 guêpes/R</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de hobbit</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 hobbit/R</td>
+				<td style="text-align: center;">64</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de khochigr</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 khochigr/R</td>
+				<td style="text-align: center;">80</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de khogr</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 khogr/R</td>
+				<td style="text-align: center;">88</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de loup</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 loup/ R</td>
+				<td style="text-align: center;">64</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de loup-garou</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">22</td>
+	            <td style="text-align: center;">11</td>
+	            <td>1 loup-garou/R</td>
+				<td style="text-align: center;">180</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de nain</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 nain/R</td>
+				<td style="text-align: center;">80</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de squelette</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 squelette/R</td>
+				<td style="text-align: center;">64</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de termite</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">6</td>
+	            <td>10 termites/R</td>
+				<td style="text-align: center;">22</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de troll</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">17</td>
+	            <td style="text-align: center;">23</td>
+	            <td style="text-align: center;">11</td>
+	            <td>1 troll/R</td>
+				<td style="text-align: center;">192</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation de vampire</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">18</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 vampire/R</td>
+				<td style="text-align: center;">120</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation d’abeilles</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>10 abeilles/R</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation d’ogres</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">20</td>
+	            <td style="text-align: center;">10</td>
+	            <td>1 ogre/R</td>
+				<td style="text-align: center;">150</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Invocation d’orc</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">9</td>
+	            <td>1 orc/ R</td>
+				<td style="text-align: center;">80</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Lien d'invocation</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Le magicien crée un lien entre une cible (à vue) et lui-même (jet d'intelligence pour résister). Ce lien permettra au magicien d'invoquer la cible à l'avenir.</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-8">
+				<td>Révocation</td>
+	            <td style="text-align: center;">
+											Invocation
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Révoque une cible invoquée</td>
+				<td style="text-align: center;">16</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Appel des chats</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Appel 1 chat/niv, 10m de rayon/R</td>
+				<td style="text-align: center;">24</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Appel des chevaux</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Appel 1 cheval/niv, 10m de rayon/R</td>
+				<td style="text-align: center;">32</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Appel des colombes</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Appel 1 colombe/niv, 10m de rayon/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Appel des corbeaux</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Appel 1 corbeau/niv, 10m de rayon/R</td>
+				<td style="text-align: center;">22</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Appel des insectes</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Appel 10 insectes/niv, 10m de rayon/R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Appel des loups</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Appel 1 loup/niv, 10m de rayon/R</td>
+				<td style="text-align: center;">32</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Appel des mammifères</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Appel 1 mammifère/niv, 10m de rayon/R</td>
+				<td style="text-align: center;">70</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Cercle de fleur</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Un cercle de fleur pousse. Esthétique = nb R</td>
+				<td style="text-align: center;">10</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Croissance</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Fait croître la plante d’une année/R</td>
+				<td style="text-align: center;">37</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Eclosion</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Fait éclore 1 fleur/R sur une cible</td>
+				<td style="text-align: center;">11</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Effacement des traces</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Diff. pour pister +1/R, 10 min/niv.</td>
+				<td style="text-align: center;">21</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Effacement des traces de masses</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Diff. pour pister +1/R, 1 cible/R,  10 min/niv.</td>
+				<td style="text-align: center;">42</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Fertilité</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Rend une cible fertile, 10 min/niv.</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Instinct de reproduction</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Stimule l’instinct d’une cible, 10 min/niv.</td>
+				<td style="text-align: center;">34</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Instinct de survie</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Stimule l’instinct d’une cible, 10 min/niv.</td>
+				<td style="text-align: center;">34</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Marécage</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Le terrain devient marécageux sur un rayon de 3 m /niv. autour du lanceur.</td>
+				<td style="text-align: center;">22</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Mûrissement</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">5</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Fait mûrir 1 fruit/R sur une cible</td>
+				<td style="text-align: center;">13</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Obstacles végétaux</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Diff + 1 pour avancer en foret 10min/niv.</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Réveil de la bête</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Transforme un change forme sous facteur volonté diff + R,  10 min/niv.</td>
+				<td style="text-align: center;">70</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Sol fertile</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Rend la terre fertile sur un rayon de 3m/R</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-9">
+				<td>Torsion du bois</td>
+	            <td style="text-align: center;">
+											Naturelle
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Tord un arbre de max 10 ans/R</td>
+				<td style="text-align: center;">35</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Appel des morts</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">22</td>
+	            <td style="text-align: center;">10</td>
+	            <td>1 mort/niv, 3m/R, catégorie max 20</td>
+				<td style="text-align: center;">150</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Appel des morts de masse</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">19</td>
+	            <td style="text-align: center;">31</td>
+	            <td style="text-align: center;">12</td>
+	            <td>1 mort/niv, +1/R sup 3m/R,  catégorie max 20</td>
+				<td style="text-align: center;">300</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Appel des morts majeur</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">17</td>
+	            <td style="text-align: center;">27</td>
+	            <td style="text-align: center;">11</td>
+	            <td>1 mort/niv, 3m/R, catégorie max 30</td>
+				<td style="text-align: center;">225</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Armure d’os</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>1/3 chance d’avoir armure de 4, 10min/R</td>
+				<td style="text-align: center;">16</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Cage d'os</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">7</td>
+	            <td>1m de rayon, 10min/niv durabilité = +3+R</td>
+				<td style="text-align: center;">40</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Changement spectral</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">33</td>
+	            <td style="text-align: center;">52</td>
+	            <td style="text-align: center;">16</td>
+	            <td>Forme spectrale 10min/R</td>
+				<td style="text-align: center;">850</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Corruption de l'air</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">24</td>
+	            <td style="text-align: center;">38</td>
+	            <td style="text-align: center;">13</td>
+	            <td>Empoisonne air 5m3/R, 2 dég./R, 10min/niv</td>
+				<td style="text-align: center;">450</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Corruption de l'eau</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">24</td>
+	            <td style="text-align: center;">38</td>
+	            <td style="text-align: center;">13</td>
+	            <td>Empoisonne eau 5m3/R,2dég/R,10min/niv.</td>
+				<td style="text-align: center;">450</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Corruption végétale</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">5</td>
+	            <td>Inflige 2 dégâts/R aux plantes, 3 m/niv.</td>
+				<td style="text-align: center;">10</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Crâne hurlant</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Peur + 2 dégâts de feu/ R</td>
+				<td style="text-align: center;">80</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Décret de non repos</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">22</td>
+	            <td style="text-align: center;">10</td>
+	            <td>1 jour/niv, cat. max 20. Si R > jet d’end. Si la cible meurt, elle revient en non-mort.</td>
+				<td style="text-align: center;">150</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Mort temporaire</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">22</td>
+	            <td style="text-align: center;">36</td>
+	            <td style="text-align: center;">13</td>
+	            <td>Cible morte 10 min/niv si R > jet d’end.</td>
+				<td style="text-align: center;">400</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Piège d'os</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Bloque 10 min/niv. Force de 1/R</td>
+				<td style="text-align: center;">35</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Putréfaction</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 dégât/R/jour pendant 1 jour/niv.</td>
+				<td style="text-align: center;">71</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Raideur cadavérique</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Paralyse 50DT/R, si R sup à jet d’endu.</td>
+				<td style="text-align: center;">40</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Réanimation des membres</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>1 membre/niv, 3m/R, catégorie max 20</td>
+				<td style="text-align: center;">34</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Renvoi</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">4</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Renvoi 1 mort/Niveau 3m/R</td>
+				<td style="text-align: center;">16</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Renvoie de masse</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Renvoi 1 mort/niv +1/R sup., 3m/R</td>
+				<td style="text-align: center;">32</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Terre stérile</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Rend la terre stérile sur un rayon de 3m/R</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Touché mortel</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">120</td>
+	            <td style="text-align: center;">192</td>
+	            <td style="text-align: center;">30</td>
+	            <td>Tue une cible si R > jet d’end.</td>
+				<td style="text-align: center;">11500</td>
+			</tr>
+					<tr class="magic-spell-type-id-10">
+				<td>Vieillissement</td>
+	            <td style="text-align: center;">
+											Nécromancie
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Malus –1/R, 10 min/niv si R > jet d’end.</td>
+				<td style="text-align: center;">38</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Affaiblissement</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td>1 malus/R, 50 DT/niv.</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Affaiblissement de masse</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 malus/R, 1 personne / R, 50 DT/niv.</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Antipathisme</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Empathie -1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Apathie</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Test de volonté diff + R, 10 min/niv.</td>
+				<td style="text-align: center;">23</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Arrêt du temps</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">47</td>
+	            <td style="text-align: center;">42</td>
+	            <td style="text-align: center;">16</td>
+	            <td>Arrêt 10 DT/R</td>
+				<td style="text-align: center;">1000</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Autodestruction</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">18</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Sous test d’intelligence, la cible cherchera à se nuire le plus possible durant 10 min/niv. Celle-ci doit être à vue du lanceur lors de l'incantation.</td>
+				<td style="text-align: center;">140</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Bêtise</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Intelligence -1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Contagion du péché</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">207</td>
+	            <td style="text-align: center;">186</td>
+	            <td style="text-align: center;">33</td>
+	            <td>Chaîne de contagion des 7 péchés</td>
+				<td style="text-align: center;">19250</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Control charnel</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Eveille le désir de la cible sous F. vol</td>
+				<td style="text-align: center;">100</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Contrôle mental</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">19</td>
+	            <td style="text-align: center;">17</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Control sous test d’intelligence, 10min/Niv.</td>
+				<td style="text-align: center;">168</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Douleur</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>-2 points de vitalité/R</td>
+				<td style="text-align: center;">40</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Douleur à distance</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">8</td>
+	            <td>-2 points de vitalité/R, 3m/niv.</td>
+				<td style="text-align: center;">70</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Douleur de masse</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">9</td>
+	            <td>-2 points de vitalité/R, 3m/niv.</td>
+				<td style="text-align: center;">90</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Douleur majeure</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">10</td>
+	            <td style="text-align: center;">8</td>
+	            <td>-3 points de vitalité/R</td>
+				<td style="text-align: center;">60</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Douleur mineure</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td>-1 point de vitalité/R</td>
+				<td style="text-align: center;">20</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Drain de jeunesse</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">67</td>
+	            <td style="text-align: center;">60</td>
+	            <td style="text-align: center;">19</td>
+	            <td>Vole 1 année de jeunesse (le lanceur rajeunit tandis que sa cible vieillit) /R contre jet d'endurance.</td>
+				<td style="text-align: center;">2000</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Drain de sort</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td>3 PS absorbé/R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Drain de sort majeur</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">8</td>
+	            <td>4 PS absorbé/R</td>
+				<td style="text-align: center;">75</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Drain de sort mineur</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>2 d'énergie absorbés/R</td>
+				<td style="text-align: center;">25</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Drain de vie</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td>1 vitalité absorbé/R</td>
+				<td style="text-align: center;">50</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Emprise corporelle</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">18</td>
+	            <td style="text-align: center;">16</td>
+	            <td style="text-align: center;">10</td>
+	            <td>Possède sous test d’intelligence, 10min/Niv.</td>
+				<td style="text-align: center;">150</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Faiblesse</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Force -1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Folie</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">79</td>
+	            <td style="text-align: center;">71</td>
+	            <td style="text-align: center;">21</td>
+	            <td>Folie aléatoire sur test de volonté diff+R</td>
+				<td style="text-align: center;">2800</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Hibernation</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">17</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">10</td>
+	            <td>1 jour d’hybernation/R</td>
+				<td style="text-align: center;">130</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Horreur</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Test de volonté sur la cible, diff. +1/R</td>
+				<td style="text-align: center;">30</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Implosion</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">45</td>
+	            <td style="text-align: center;">40</td>
+	            <td style="text-align: center;">16</td>
+	            <td>1 dégât/R si sup. à l’endurance, cible implose</td>
+				<td style="text-align: center;">900</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Lâcheté</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Facteur de volonté + 1/R, 10 min/niv</td>
+				<td style="text-align: center;">24</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Laideur</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Esthétique -1/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Lenteur</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">15</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">9</td>
+	            <td>+1 Facteur de vitesse/R, 50 DT/niv.</td>
+				<td style="text-align: center;">95</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Lenteur de masse</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">21</td>
+	            <td style="text-align: center;">18</td>
+	            <td style="text-align: center;">11</td>
+	            <td>+1 Facteur de vitesse/R, 1 personne/R, 50 DT/niv.</td>
+				<td style="text-align: center;">190</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Malédiction</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">9</td>
+	            <td>Diff. +1/R, 10min/niv.</td>
+				<td style="text-align: center;">93</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Oubli</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>La cible oublie 10 min /R sous jet d’intelligence</td>
+				<td style="text-align: center;">37</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Paralysie</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Paralyse 50DT/R, si R sup à jet de force</td>
+				<td style="text-align: center;">40</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Pénombre</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Plonge dans l'ombre 5 m2/R, 10 min/niv.</td>
+				<td style="text-align: center;">21</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Peur</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td style="text-align: center;">6</td>
+	            <td>Test de volonté pour ne pas avoir peur</td>
+				<td style="text-align: center;">26</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Pluie de sang</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Fait pleuvoir du sang 10 min/R</td>
+				<td style="text-align: center;">38</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Resserrement des murs</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">14</td>
+	            <td style="text-align: center;">12</td>
+	            <td style="text-align: center;">9</td>
+	            <td>50 cm/R</td>
+				<td style="text-align: center;">85</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Vengeance</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">9</td>
+	            <td style="text-align: center;">8</td>
+	            <td style="text-align: center;">7</td>
+	            <td>Renvoi 1 dégât/R, 10 min/niv.</td>
+				<td style="text-align: center;">36</td>
+			</tr>
+					<tr class="magic-spell-type-id-11">
+				<td>Vengeance en masse</td>
+	            <td style="text-align: center;">
+											Noire
+									</td>
+	            <td style="text-align: center;">13</td>
+	            <td style="text-align: center;">11</td>
+	            <td style="text-align: center;">8</td>
+	            <td>Renvoi 1 dégât/R, 10 min/niv., 3m/niv.</td>
+				<td style="text-align: center;">72</td>
+			</tr>
+			</tbody>
+</table>
+
+<table id="header-fixed"></table>
+
+
+	<script language=javascript>
+		var tableOffset = $("#spells-list").offset().top;
+		var $header = $("#spells-list > thead").clone();
+		var $fixedHeader = $("#header-fixed").append($header);
+
+		$(window).bind("scroll", function() {
+		    var offset = $(this).scrollTop();
+
+		    if (offset >= tableOffset && $fixedHeader.is(":hidden")) {
+		        $fixedHeader.show();
+		    }
+		    else if (offset < tableOffset) {
+		        $fixedHeader.hide();
+		    }
+		});
+    </script>
+
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

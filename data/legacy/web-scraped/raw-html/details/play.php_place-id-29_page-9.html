@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=29">La casa Fortuna</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=211">
+        <img src="../img/characters-profil/211.jpg" alt="M. Urbano" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=211">M. Urbano</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=214">
+        <img src="../img/characters-profil/214.jpg" alt="Andrea" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=214">Andrea</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=29&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.05.20
+            </div>
+
+            <div class="forum-post-content">
+                La via Fontana est une ruelle étroite avec des bâtiments d&#039;habitations collés les uns aux autres. Mal orienté pour profiter du soleil Alterien, son sol offre une terre un peu boueuse à cause du mauvaise écoulement de l&#039;eau de pluie. La fontaine qui a donné son nom à la rue à cessée de fonctionné il y a de cela bien longtemps et sert à présent les grenouilles de son eau verte et stagnante.
+
+Vous arrivez devant un vieux bâtiment jaune délavé qui semble abandonné. Les fenêtres sont condamnées par des planches en bois et au dessus de la porte, une pierre en clé de voute porte la gravure &quot;Alea jacta est&quot;. La porte est munie d&#039;un lourd marteau.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.05.20
+            </div>
+
+            <div class="forum-post-content">
+                * se dit qu&#039;il n&#039;a jamais du mettre les pieds ici...trouve endroit lugubre, coupe gorge. Ne se sent pas très à l&#039;aise. Se rapproche discrètement de Sindalia et Andalure 
+Jet de volonté: 6, facteur de volonté 15
+
+[HRP] La pièce du trésor du roi Salomon m&#039;a été donnée lors d&#039;une quête dans le grand désert avec Boris (ou Philippe?), je ne sais plus. Il s&#039;agit d&#039;une pièce en or très ancienne. En soit elle vaut 1000 écus à la refonte mais probablement beaucoup plus pour un connaisseur.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Pour info, Enola (qui ne se sentait pas rassurée par cette visite) avait décidée de retourner à l&#039;hospice de Dario. Elle possedait encore quelques énergie arcanique en elle et souhaitait les utiliser pour soulager les malheureux.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.05.20
+            </div>
+
+            <div class="forum-post-content">
+                * Observe la rue ainsi que les toits des bâtiments. * <hr><span class="play-sub-title">Action</span><br /><p>Perception + Vue (diff. 6) => Echec critique (79)</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Hmm... ( &lt;- Traduction : Andalur ressent une gêne physique ou psychologique. Il peut s&#039;agir d&#039;un imprévu, d&#039;une épreuve à la difficulté sous-estimée ou d&#039;une douleur lié à l&#039;une de ses récentes altercations. En outre, la météorologie peut également lui déconvenir en cas de forte chaleure si celui-ci s&#039;est mit à boire en quantité tôt dans la journee. Il est préférable que nul autre que Sindalia ne lui adresse la parole durant les 8 prochaines minutes. Enfin et surtout, les thèmes tels que l&#039;enfance ou les liens parents-enfants sont strictement prohibés durant tout ce laps de temps. Ce délais peut être prolongé si quelqu&#039;un en vient à faire de lhumour.)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.05.20
+            </div>
+
+            <div class="forum-post-content">
+                 <hr><span class="play-sub-title">Action</span><br /><p>Empathie + Psychologie + Psychologie elfe sombre (diff. 5) => 5R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP] un jet qu&#039;il ne fallait pas rater...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=29&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=29&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=29&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=29&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=29&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=29&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=29&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=29&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=29&page=9">
+          9
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

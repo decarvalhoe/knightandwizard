@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=7">Auberge de Puercos</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=14">
+        <img src="../img/characters-profil/14.jpg" alt="Sighild" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=14">Sighild</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=7&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                13.01.19
+            </div>
+
+            <div class="forum-post-content">
+                * Regarde les armures de Len
+
+Ouais, c'est du beau!, Y' t'les as bien nettoyéeys en plus...
+
+Dis, Len, tu sais c'qui a comme école de magie dans l'coin?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                13.01.19
+            </div>
+
+            <div class="forum-post-content">
+                (Ackbar sait surement, mais Eric oublie...)
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                13.01.19
+            </div>
+
+            <div class="forum-post-content">
+                Alors il y a une école de magie élémentaire (rouge), une école de magie illusoire (turquoise), une école de magie noire, une école de magie blanche et une école de magie divinatoire (brun) [le tout tiré aléatoirement].
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                13.01.19
+            </div>
+
+            <div class="forum-post-content">
+                [La couleur des élémentalistes est le bleu. Celle des illusionniste est le violet.]
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Archibald Baudoin<br />
+
+                <a href="character-detail.php?id=88">
+                    <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.01.19
+            </div>
+
+            <div class="forum-post-content">
+                *a du mal à reprendre son souffle et bégaye un truc informe du genre
+keufkeuf bon-keuf-jour yerk keufkeuf
+*va s'assoir sur une marche en se massant l'épaule
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.01.19
+            </div>
+
+            <div class="forum-post-content">
+                -C'est bien c'qui m'semblait...*regarde Archibald, aller s'assoire.
+-Tu y est peut être allé un peut fort, Len. Les oiseaux ont les os léger pour pouvoir voler, ils sont donc un peu fra...délicats. Je pense que pour les hommes oiseaux c'est pareil. (4R d'ornithologie)
+*Se dirige vers Archibald: 
+-Ca va? (3R d'empathie)
+-Rien d'câssé?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Archibald Baudoin<br />
+
+                <a href="character-detail.php?id=88">
+                    <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.01.19
+            </div>
+
+            <div class="forum-post-content">
+                Yerk keuf keuf. Ça ira je vous en remercie, seulement quelques plumes qui repousseront.
+*regarde Len d'un air mauvais
+Cher Monsieur Al Menolda, je vous saurai gré, à l'avenir, de garder vos tapes "amicales" (mime les guillemets) pour vos amis !
+*se tourne vers Akbar
+Et pour votre gouverne, certe mes os sont légers mais en aucun cas il ne sont fragiles ! Je ne suis pas un vulgaire moineau moi Monsieur ! 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.01.19
+            </div>
+
+            <div class="forum-post-content">
+                Ho ben heu désolé... *a soudainement un air tout penaud* ... Je pensais pas à mal mais j'avoue que parfois je gère pas très bien ma force... *Regarde ses deux bras comme si c'était deux excroissances étrangères*. Promis je le ferai plus! Et je vous paie un pot pour me faire pardonner ça vous va ??? *Prend un air limite implorant*.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.01.19
+            </div>
+
+            <div class="forum-post-content">
+                *Lis son livre tandis que Sela s'entraîne à lancer des couteaux. Soudain, Andalur ferme son livre, se lève, s'approche de Sela et lui parles d'un air calme mais qui transparaître une certaine exaspération fatiguée.*
+
+C'est n'importe quoi. Vous lancez ces couteaux comme s'il s'agissait de haches. Et puis où donc avez-vous trouvé ces couteaux de cuisine ?
+Si vous souhaitez lancer des couteaux, prenez un vrai couteau de lancer.
+
+*En sort un de sa ceinture.*
+
+Voyez comme l'équilibrage n'est pas répartit de la même manière. A cette distance, le mouvement se fait par le haut, comme ceci *Sans prévenir ni faire de ralentit, il envoie un couteau sur la cible avec 4 réussites*
+
+De plus, à votre niveau, il est inutile d'essayer de le faire tourner en vol. C'est réservé aux plus longue distances.
+
+*Regardes Sela d'air air froid, presque absent.*
+
+Compris ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Archibald Baudoin<br />
+
+                <a href="character-detail.php?id=88">
+                    <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.01.19
+            </div>
+
+            <div class="forum-post-content">
+                J'accepte très volontiers un pot comme vous dites. Sans rancune mon Cher ! À condition de maîtriser votre force à l'avenir ! 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=7&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=7&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=7&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=7&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=7&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=7&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=7&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=7&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=7&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=7&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=7&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=7&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=7&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=7&page=14">
+          14
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

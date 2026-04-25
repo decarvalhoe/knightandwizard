@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h2>Liste des compétences</h2>
+
+    <h3>Art</h3>
+
+            
+        Calligraphie
+
+        <br />
+            
+        Chant
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Berceuse
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Opéra
+
+        <br />
+            
+        Comédie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Mensonge
+
+        <br />
+            
+        Conduite d'attelage
+
+        <br />
+            
+        Conte
+
+        <br />
+            
+        Danse
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Mutchka Putchka (Danse)
+
+        <br />
+            
+        Dessin
+
+        <br />
+            
+        Flûte
+
+        <br />
+            
+        Flûte de pan
+
+        <br />
+            
+        Flûte traversière
+
+        <br />
+            
+        Gravure
+
+        <br />
+            
+        Guitare
+
+        <br />
+            
+        Harpe
+
+        <br />
+            
+        Orgue
+
+        <br />
+            
+        Peinture
+
+        <br />
+            
+        Poésie
+
+        <br />
+            
+        Prestidigitation
+
+        <br />
+            
+        Rédaction
+
+        <br />
+            
+        Sculpture
+
+        <br />
+            
+        Tambour
+
+        <br />
+            
+        Trompette
+
+        <br />
+        <h3>Artisanat</h3>
+
+            
+        Bijouterie
+
+        <br />
+            
+        Charpenterie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Charpenterie navale
+
+        <br />
+            
+        Cordonnerie
+
+        <br />
+            
+        Couture
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Broderie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Couture de robe
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Rapiéçage
+
+        <br />
+            
+        Facture d'arc
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Facture de flèche
+
+        <br />
+            
+        Facture de tonneau
+
+        <br />
+            
+        Forge
+
+        <br />
+            
+        Menuiserie
+
+        <br />
+            
+        Poterie
+
+        <br />
+            
+        Serrurerie
+
+        <br />
+            
+        Tannage
+
+        <br />
+            
+        Vannerie
+
+        <br />
+            
+        Verrerie
+
+        <br />
+        <h3>Combat</h3>
+
+            
+        Arbalète
+
+        <br />
+            
+        Archerie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arc court
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arc long
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Tir dans la gorge (arc long)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Tir dans la tête (arc long)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Tir en mouvement (arc long)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Tir monté (arc long)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Tir sur cible mouvante (arc long)
+
+        <br />
+            
+        Bouclier
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Charge au bouclier
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Parade au bouclier
+
+        <br />
+            
+        Bâton
+
+        <br />
+            
+        Combat à mains nues
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Clef de bras
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Coup de coude
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Coup de genou
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Coup de pied
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Coup de pied frontal
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Coup de pied retourné
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Coup de pied sauté
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Fauchage
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Coup de poing
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Crochet
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Direct
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Uppercut
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Coup de queue
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Désarmement
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Esquive
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Esquive baissée
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Esquive sautée
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Giffle
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Griffure
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Morsure
+
+        <br />
+            
+        Couteau de lancer
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Lancé dans l'épaule
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Lancé dans la gorge
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Lancé dans la jambe
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Lancé dans la main
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Lancé dans la tête
+
+        <br />
+            
+        Dague
+
+        <br />
+            
+        Epée
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Cimeterre
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Epée bâtarde
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Frappe à la gorge (épée bâtarde)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Frappe à la tête (épée bâtarde)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Parade (Epée bâtarde)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Epée à deux mains
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Epée à une main
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Parade (Epée à une mains)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Katana
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Sabre
+
+        <br />
+            
+        Fouet
+
+        <br />
+            
+        Fronde
+
+        <br />
+            
+        Hache
+
+        <br />
+            
+        Hachette
+
+        <br />
+            
+        Hallebarde
+
+        <br />
+            
+        Javelot
+
+        <br />
+            
+        Kunai
+
+        <br />
+            
+        Lance
+
+        <br />
+            
+        Lance-pierre
+
+        <br />
+            
+        Main gauche
+
+        <br />
+            
+        Marteau de guerre
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Frappe à la tête (marteau de guerre)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Parade (marteau de guerre)
+
+        <br />
+            
+        Masse d'arme
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Frappe dans le torse (masse d'arme)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Frappe dans les jambes (masse d'arme)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Frappe à la main (masse d'arme)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Frappe à la tête (masse d'arme)
+
+        <br />
+            
+        Poignard
+
+        <br />
+            
+        Sarbacane
+
+        <br />
+            
+        Shuriken
+
+        <br />
+        <h3>Connaissance</h3>
+
+            
+        Alchimie
+
+        <br />
+            
+        Alphabetisation (commune)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ecriture
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Lecture
+
+        <br />
+            
+        Alphabetisation (dundorienne)
+
+        <br />
+            
+        Alphabetisation (elfique)
+
+        <br />
+            
+        Arcanologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie abjuratrice
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie altératrice
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie ancienne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie blanche
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie chaotique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie conceptuelle
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie des cibles non-communes
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie des rituels
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie divinatoire
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie enchanteresse
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie illusoire
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie invocatrice
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie naturelle
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie noire
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie nécromantique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie élémentaliste
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arcanologie énergétique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Identification de sort
+
+        <br />
+            
+        Architecture
+
+        <br />
+            
+        Astronomie
+
+        <br />
+            
+        Balistique
+
+        <br />
+            
+        Botanique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Dendrologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Herbologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Phycologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Pomoligie
+
+        <br />
+            
+        Cartographie
+
+        <br />
+            
+        Connaissance des armes
+
+        <br />
+            
+        Cryptologie
+
+        <br />
+            
+        Droit
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Droit aderandais
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Droit altérien
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Droit cortegan
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Droit nordique
+
+        <br />
+            
+        Economie
+
+        <br />
+            
+        Ethnologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Connaissance des coutumes
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Connaissance des traditions
+
+        <br />
+            
+        Exorcisme
+
+        <br />
+            
+        Gemmologie
+
+        <br />
+            
+        Graphologie
+
+        <br />
+            
+        Géographie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Géographie altérienne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Géographie du Monde Sombre
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Géographie irtanienne
+
+        <br />
+            
+        Histoire
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Histoire de l'art
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Numismatique
+
+        <br />
+            
+        Héraldique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Héraldique altérien
+
+        <br />
+            
+        Langage altérien
+
+        <br />
+            
+        Langage carénien
+
+        <br />
+            
+        Langage cortegan
+
+        <br />
+            
+        Langage dundorien
+
+        <br />
+            
+        Langage elfique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Langue sombre
+
+        <br />
+            
+        Langage enorien
+
+        <br />
+            
+        Langage impérial
+
+        <br />
+            
+        Langage irtanien
+
+        <br />
+            
+        Langage nordique
+
+        <br />
+            
+        Langage onarien
+
+        <br />
+            
+        Langage yonnen
+
+        <br />
+            
+        Langue verte
+
+        <br />
+            
+        Lingua Mortis
+
+        <br />
+            
+        Mathématique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Algèbre
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Trigonométrie
+
+        <br />
+            
+        Musicologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Organologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Solfège
+
+        <br />
+            
+        Mycologie
+
+        <br />
+            
+        Oenologie
+
+        <br />
+            
+        Olfactologie
+
+        <br />
+            
+        Philosophie
+
+        <br />
+            
+        Politique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Diplomatie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Négociation diplomatique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Gestion des ressources
+
+        <br />
+            
+        Psychologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Détection du mensonge
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Manipulation
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Psychologie elfique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Psychologie elfe sombre
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Psychologie humaine
+
+        <br />
+            
+        Sociologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Sociologie dundorienne
+
+        <br />
+            
+        Stratégie millitaire
+
+        <br />
+            
+        Sémiologie
+
+        <br />
+            
+        Théologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Théologie ancestrâle
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Runologie ancestrâle
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Théologie du Dieu Unique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Angélologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Connaissance des Saintes Ecritures
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Démonologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Théologie elfique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Culte de Meliokyss
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Culte de Sarh
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Théologie nordique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Runologie nordiques
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Théologie païenne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Culte d'Ilis
+
+        <br />
+            
+        Toxicologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Mycotoxicologie
+
+        <br />
+            
+        Urbanisme
+
+        <br />
+            
+        Zoologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Arachnologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Carcinologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Entomologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ichtyologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Malacologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ornithologie
+
+        <br />
+        <h3>Jeu</h3>
+
+            
+        Dames
+
+        <br />
+            
+        Echecs
+
+        <br />
+            
+        Jeu du couteau
+
+        <br />
+            
+        Poker
+
+        <br />
+        <h3>Maîtrise de soi</h3>
+
+            
+        Apprentissage
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Apprentissage de la magie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Apprentissage de la musique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Apprentissage des langues
+
+        <br />
+            
+        Furtivité
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Camouflage
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Déplacement silencieux
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Furtivité en forêt
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Furtivité en ville
+
+        <br />
+            
+        Méditation
+
+        <br />
+            
+        Mémoire
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Mémoire des noms
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Mémoire des visages
+
+        <br />
+            
+        Stoïcisme
+
+        <br />
+            
+        Technique de relaxation
+
+        <br />
+            
+        Yoga
+
+        <br />
+        <h3>Savoir-faire</h3>
+
+            
+        Agriculture
+
+        <br />
+            
+        Apiculture
+
+        <br />
+            
+        Bûcheronnage
+
+        <br />
+            
+        Chasse
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Chasse d'oiseau
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Chasse de reptile
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Chasse de rongeur
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Traque
+
+        <br />
+            
+        Cuisine
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Cuisine alterienne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Cuisine carénienne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Cuisine corteganne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Cuisine dundorienne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Cuisine irtanienne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Cuisine onarienne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Cuisine yonnienne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Patisserie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Sandwich
+
+        <br />
+            
+        Dressage
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Dressage de cheval
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Dressage de chien
+
+        <br />
+            
+        Elevage de bovins
+
+        <br />
+            
+        Elevage de chèvres
+
+        <br />
+            
+        Elevage de moutons
+
+        <br />
+            
+        Elevage de porcs
+
+        <br />
+            
+        Elevage de volailes
+
+        <br />
+            
+        Hôtellerie
+
+        <br />
+            
+        Jardinage
+
+        <br />
+            
+        Médecine
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Addictologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Cardiologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Chirurgie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Chirurgie infantile
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Chirurgie thoracique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Chirurgie viscérale
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Odontologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ophtalmologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Sutures
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Amputation
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Amputation de bras
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Amputation de jambe
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Dermatologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Diagnostic
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Gastroentérologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Gériatrie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Médecine légale
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Traumatologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Médecine vétérinaire
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Obstétrique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Pansement
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Pneumologie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Pédiatrie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Rhumatologie
+
+        <br />
+            
+        Métallurgie
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Métallurgie des métaux précieux
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Sidérurgie
+
+        <br />
+            
+        Navigation
+
+        <br />
+            
+        Nettoyage
+
+        <br />
+            
+        Pêche
+
+        <br />
+            
+        Service
+
+        <br />
+            
+        Sexualité
+
+        <br />
+            
+        Torture
+
+        <br />
+            
+        Vol à la tire
+
+        <br />
+        <h3>Sens</h3>
+
+            
+        Goût
+
+        <br />
+            
+        Odorat
+
+        <br />
+            
+        Ouïe
+
+        <br />
+            
+        Touché
+
+        <br />
+            
+        Vue
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Observation du terrain
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Vue en forêt
+
+        <br />
+        <h3>Social</h3>
+
+            
+        Commandement
+
+        <br />
+            
+        Commerce
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Marchandage
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Marchandage d'achat
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Marchandage de vente
+
+        <br />
+            
+        Enseignement
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Enseignement de l'équitation (cheval)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Enseignement de la magie
+
+        <br />
+            
+        Etiquette
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Etiquette altérienne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Etiquette carénienne
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Etiquette cortegane
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Etiquette de la table
+
+        <br />
+            
+        Intimidation
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Menace
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Regard noir
+
+        <br />
+            
+        Oration
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Discours de foule
+
+        <br />
+            
+        Provocation
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Grimace
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Insulte
+
+        <br />
+            
+        Réconfort
+
+        <br />
+            
+        Séduction
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Oeillade
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Pose aguicheuse
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Sourire
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Voix sensuelle
+
+        <br />
+        <h3>Sport</h3>
+
+            
+        Bras de fer
+
+        <br />
+            
+        Course
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Course d'endurance
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Sprint
+
+        <br />
+            
+        Equitation (cheval)
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Galop
+
+        <br />
+            
+        Equitation (éléphant)
+
+        <br />
+            
+        Escalade
+
+        <br />
+            
+        Gymnastique
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Contorsion
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Saut
+
+        <br />
+            
+        Lutte
+
+        <br />
+            
+        Natation
+
+        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Apnée
+
+        <br />
+            
+        Surf
+
+        <br />
+            
+        Vol
+
+        <br />
+        <h3></h3>
+
+    	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

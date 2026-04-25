@@ -1,0 +1,148 @@
+# Catalogue de potions K&W — Phase 2 import auto (R-10.19)
+# Sources :
+#   - documents/potions/index.md (web canonique, 3 entrées détaillées)
+#   - regles-papier/extracted/listes/rituels-et-potions.md (paper, 2 entrées)
+# Schéma : R-10.20 creation_procedure (output_type: potion)
+# Date import : 2026-04-25
+
+version: 1
+metadata:
+  source: paper + web
+  imported_at: "2026-04-25"
+  total_entries: 5
+
+potions:
+
+  - id: agrandissement
+    name: "Potion d'Agrandissement"
+    category: potion
+    output_type: potion
+    effect: "Double la taille de la cible"
+    effect_duration_per_success: "10 minutes / niveau de réussite"
+    consumption_mode: ingestion
+    ingredients:
+      - { id: bambou, quantity: 5, unit: cm, notes: "Tronçon" }
+      - { id: seve_hevea, quantity: 1, unit: spoon, notes: "Latex" }
+      - { id: oleagineux_mix, quantity: 1, unit: handful, notes: "Noix, noisettes, etc." }
+      - { id: poudre_tetards_seches, quantity: 1, unit: thimble }
+      - { id: feuilles_arbres_locaux, quantity: 1, unit: handful }
+      - { id: lait_chevre, quantity: 1, unit: dl }
+    craft_check:
+      skill: alchimie
+      aptitude: intelligence
+      difficulty: 18
+      duration: { base: "1h" }
+      multi_dose_difficulty_increment: 1
+    output_metadata:
+      stack_size: 1
+    price:
+      raw_materials_pc: ~  # à calculer
+      market_value_pc: 1615
+    metadata: { source: web, inferred: false, version: 1 }
+
+  - id: resistance_au_feu
+    name: "Potion de Résistance au feu"
+    category: potion
+    output_type: potion
+    effect: "Bouclier de 1 E (feu) par niveau de réussite"
+    effect_duration_per_success: "10 min / niveau"
+    consumption_mode: ingestion
+    ingredients:
+      - { id: poudre_ginko_biloba_seche, quantity: 10, unit: g }
+      - { id: limaille_chromate_fer, quantity: 1, unit: g }
+      - { id: ebene, quantity: 5, unit: g }
+      - { id: eau, quantity: 1, unit: dl }
+    optional_ingredients:
+      - { id: cannelle, effect: "rend cheveux roux" }
+      - { id: poivre, effect: "fume nez et oreilles" }
+      - { id: framboise, effect: "yeux rouges" }
+    forbidden_ingredients: [piment, huile]
+    craft_check:
+      skill: alchimie
+      aptitude: intelligence
+      difficulty: 8
+      duration: { base: "20-30 min" }
+      requires_recitation: "« Que ma peau soit d'ébène, que mon sang soit de métal et que mon cœur résiste au feu ! » × 5"
+    output_metadata:
+      stack_size: 1
+    price:
+      market_value_pc: 51
+    metadata: { source: web, inferred: false, version: 1 }
+
+  - id: supercherie
+    name: "Potion de Supercherie (paire)"
+    category: potion
+    output_type: potion_pair
+    effect: "Modifie l'apparence de celui qui boit la potion #1 pour celui ou ceux qui inhale(nt) la potion #2. Illusion sur les 5 sens."
+    effect_duration: "narratif (selon scénario)"
+    consumption_mode: { potion_1: ingestion, potion_2: inhalation }
+    ingredients:
+      - { id: prisme_quartz, quantity: 1, unit: piece, sense: vue }
+      - { id: eau, quantity: 2, unit: dl, sense: toucher }
+      - { id: piment_fort, quantity: 1, unit: piece, sense: gout }
+      - { id: verre_cristal, quantity: 1, unit: piece, sense: ouie }
+      - { id: fleurs_camomille_puante, quantity: 2, unit: piece, sense: odorat }
+      - { id: ingredient_transformation, quantity: 1, unit: variable, notes: "Cheveu, poil, pierre, plante, etc. — détermine en quoi le buveur se transforme" }
+      - { id: poudre_mandragore, quantity: 5, unit: g }
+    craft_check:
+      skill: alchimie
+      aptitude: intelligence
+      difficulty: 14
+      duration: { base: ">8h" }
+    output_metadata:
+      stack_size: 2  # potion #1 + potion #2
+    price:
+      market_value_pc: 600
+    metadata: { source: web, inferred: false, version: 1, notes: "Paire de potions complémentaires" }
+
+  - id: calme_loup_garou
+    name: "Potion Calme pour Loup-Garou"
+    category: potion
+    output_type: potion
+    effect: "Calme les pulsions d'un loup-garou — non-agressif (mais pas amorphe)"
+    effect_duration_per_success: "1 heure / niveau de réussite"
+    consumption_mode: ingestion
+    administration_timing: "1 heure avant coucher du soleil (active après 1 heure)"
+    ingredients:
+      - { id: eau_distillee, quantity: 3, unit: dl }
+      - { id: fleurs_onagre, quantity: 5, unit: piece }
+      - { id: argentite, quantity: 1, unit: thimble }
+      - { id: sel, quantity: 2, unit: thimble }
+    craft_check:
+      skill: alchimie
+      aptitude: intelligence
+      difficulty: 10
+      duration: { base: "1 nuit complète (minuit→aube)" }
+      moon_phase: pleine_lune
+      astronomical_window: "infusion à minuit, finalisation à l'aube"
+    output_metadata:
+      stack_size: 1
+    metadata: { source: paper, inferred: false, version: 1, notes: "Difficulté legacy '10 (= 95)'. Notation étendue D1 R-1.X : '95' = obtenir 9 ET 5 minimum sur 2 dés = difficulté 10. Cohérent avec le reste du système." }
+
+  - id: soin
+    name: "Potion de Soin"
+    category: potion
+    output_type: potion
+    effect: "Restaure autant de points de vitalité que de réussites obtenues lors de la fabrication"
+    consumption_mode: ingestion
+    ingredients:
+      - { id: huile, quantity: 1, unit: cl }
+      - { id: sel, quantity: 1, unit: pinch }
+      - { id: vin, quantity: 1, unit: cl }
+      - { id: romarin, quantity: 1, unit: pinch }
+    craft_check:
+      skill: alchimie
+      aptitude: intelligence
+      difficulty: 9
+      multi_dose_difficulty_increment: 1
+      requires_divine_invocation:
+        deity: "any (selon foi du préparateur)"
+        prayers_count: 300
+        prayer_requires_symbol: true
+        excludes_atheists: true
+    output_metadata:
+      stack_size: 1
+      restore_vitality: "= nombre de réussites du jet"
+    price:
+      market_value_pc: 20  # legacy "Potion de soin (vitalité +1) = 20 Pc"
+    metadata: { source: paper, web_price: true, inferred: false, version: 1, notes: "Restriction : nécessite foi religieuse" }

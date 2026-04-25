@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=18">Château d'Aljoteria</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=142">
+        <img src="../img/characters-profil/142.jpg" alt="Abdullah" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=142">Abdullah</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=143">
+        <img src="../img/characters-profil/143.jpg" alt="Irina" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=143">Irina</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=144">
+        <img src="../img/characters-profil/144.jpg" alt="Valentin de Provoda" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=144">Valentin de Provoda</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=145">
+        <img src="../img/characters-profil/145.jpg" alt="Roxane" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=145">Roxane</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=146">
+        <img src="../img/characters-profil/146.jpg" alt="Yi Yong" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=146">Yi Yong</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=147">
+        <img src="../img/characters-profil/147.jpg" alt="Erasme" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=147">Erasme</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=148">
+        <img src="../img/characters-profil/148.jpg" alt="Eduardo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=148">Eduardo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=149">
+        <img src="../img/characters-profil/149.jpg" alt="Oscar" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=149">Oscar</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=150">
+        <img src="../img/characters-profil/150.jpg" alt="Tan le grand" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=150">Tan le grand</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=18&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Reste stoïque en croisant le regard de Sela.*
+
+Mmm... Je parle de loup-garou car nous étions encore récemment chez l'Archevêque de Brandi. C'était votre ancien employeur, c'est juste Monsieur de Provoda ?
+
+Il est toujours à la recherche de Damien. Il m'a raconté que l'enfant s'était évader de chez lui avec un loup-garou demi elfe du nom d'Anaril. Il semble que cette fois-ci l'Archevêque aurait localisé le petit. Il est probable que ce change-forme soit proche du petit.
+Alors si vous aviez eût une quelque force de frappe contre ces bêtes vous auriez pu le servir à nouveau...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Valentin de Provoda<br />
+
+                <a href="character-detail.php?id=144">
+                    <img src="../img/characters-profil/144.jpg" alt="Valentin de Provoda" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Ha oui, ce bon vieil Archevêque... mais les choses ont changées, mon supérieur direct est maintenant Oscar, ici présent. 
+
+Or on m'a confié la mission de veiller sur le groupe de vampire qui vit dans ce château. Il est vrai que nous ne faisons pas grand chose d'autre que de manger, boire, faire des orgies et tester les divers décoctions de ce cher Abdullah. Et aller chercher Tan dans le vaste de monde de temps en temps, car il est très difficile à retenir à son âge. 
+
+Je suis triste pour Damien, je ne sais ce qu'il pourrait lui arriver dans les mains de l'Archevêque. Ma fois les destins tragiques se suivent et ne se ressemblent pas *lève son verre*.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Observe tout ce petit monde comme s'il ne savait pas s'il sortait d'un cauchemar ou s'il y était encore. A l'arrivée de la soubrette, zieute les plats qu'elle porte, sert fort son sac magique sous son bras, histoire de se rassurer. Puis, d'un pas lent, presque hésitant, se rapproche d'Andalur , saisit une chaise et l'escalade. Toujours sans rien dire pense "putain, elles sont vachement hautes, ces chaises...j'avais presque oublié"
+S'assied, avec la table qui lui arrive au niveau des épaules, et les pieds dans le vide. Gigne un peu les plats et la réaction des convives
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Première chose qui te frappe en sortant des toi-toi c'est qu'il y a plein de magie dans cette pièce. A l'entrée il y a une sorte de panier dans lequel les vampires ont mis leur armes, il s'en dégage de la magie élémentaire. Ensuite la de la pièce en général émanne une atmosphère de magie jaune. Enfin chaque vampire a quelque chose sur lui qui dégage de la magie d'enchantement. Plusieurs vampires te font un signe de la tête lorsque tu t'assois.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Marie<br />
+
+                <a href="character-detail.php?id=94">
+                    <img src="../img/characters-profil/94.jpg" alt="Marie" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Ho Akbar! Je me faisais du soucis, tu es resté tellement longtemps aux toilettes ! Viens t'assoire ici *en tappotant la chaise libre à côté d'elle*.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Roxane<br />
+
+                <a href="character-detail.php?id=145">
+                    <img src="../img/characters-profil/145.jpg" alt="Roxane" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Par la théorie de Niderhölms, un hobbit qui dégage de la magie abjuratrice, incroyable! Et exactement comme votre ami demi-elfe! Enchantée, je m'appelle Roxane *en prononçant bien le e comme un é* et vous? Puis-je voir l'objet qui dégage cette magie, je suis complètement Gaga des objets enchantés!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Tu peux faire un jet de connaissance de la magie / magie divinatoire / théoriciens  connus de la magie pour voir si tu connais Niderhölms avec une difficulté +5.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Tan le grand<br />
+
+                <a href="character-detail.php?id=150">
+                    <img src="../img/characters-profil/150.jpg" alt="Tan le grand" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Ho Akbar! Hey mon pote ! Comment ça va? Tu veux faire un jeu? Je m'ennnnnnuie lors de ces soupés sans fin!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Prends son verre et le lève en direction de Valentin. S'arrête juste avant de boire (et qu'Ackbar ne mange quoi que ce soit.)*
+
+Ah au fait, vous comptez encore nous droguer sans nous avertir ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Abdullah<br />
+
+                <a href="character-detail.php?id=142">
+                    <img src="../img/characters-profil/142.jpg" alt="Abdullah" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Ha heum non missieur, à moins que vous ne le souhaitiez ! Nous ne faisons pas d'abus tous les soirs *avec un fort accent dundorien* !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=18&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=18&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=18&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=18&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=18&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=18&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=18&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=18&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=18&page=9">
+          9
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

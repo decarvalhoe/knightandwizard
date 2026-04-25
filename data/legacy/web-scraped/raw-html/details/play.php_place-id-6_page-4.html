@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=6">L'oasis de Laura</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=52">
+        <img src="../img/characters-profil/52.jpg" alt="Hafed" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=52">Hafed</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=92">
+        <img src="../img/characters-profil/92.jpg" alt="John" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=92">John</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=6&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Feng<br />
+
+                <a href="character-detail.php?id=78">
+                    <img src="../img/characters-profil/78.jpg" alt="Feng" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Hmmmm qu'est-ce que vous voulez, petit elfe? (il parle en cortegan)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Répond dans un Cortegan très mauvais*
+
+Elle besoin nourriture ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Feng<br />
+
+                <a href="character-detail.php?id=78">
+                    <img src="../img/characters-profil/78.jpg" alt="Feng" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Hmmm oui, nous avons tous très faim. Et il serait temps que le petit homme revienne afin que nous décidions ce que nous allons faire. (Il parle en cortegan moyen, mais tu ne peux t'en rendre compte du coup).
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                11.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Hoche la tête et s'en va en emportant une masse et une grosse pierre.*
+
+*Arrivé en haut il lance à l'équipe cuisine :* Ils s'impatiente en bas.
+
+*Puis va dans le jardin. Si le démon est toujours sous contrôle mental, Andalur pose la pierre proche de lui, à l'intérieur du cercle et demande à Sindalia de faire en sorte que la bête y place sa tête.*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                11.10.18
+            </div>
+
+            <div class="forum-post-content">
+                J'imagine que Sindalia (désolé de jouer à sa place) force la bête à poser sa tête sur la grosse pierre.
+
+Est-ce que tu regardes le démon dans les yeux?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                11.10.18
+            </div>
+
+            <div class="forum-post-content">
+                [Andalur ne regarde pas ses yeux car il a un souvenir que c'est comme ça que la créature prenait possession des corps. Jet de mémoire à 5R pour éclaircir ce souvenir.]
+
+*Demande à Sindalia de bien lui poser le front contre la pierre (yeux vers le sol), puis remonte ses manches, et lui martèle l'arrière du crâne à coups de masse*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                11.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Non il a jamais pris possession d'aucun des membres du groupe. 
+
+Vu qu'il esquive pas tu peux faire tes jets. Tu remarques que sa peau ressemble à de la lave qui aurait refroidit.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Ha oui mais tu te rappelles qu'une fois il a regardé Damien (le ptit là) longuement et il semblait profondément concentré.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.10.18
+            </div>
+
+            <div class="forum-post-content">
+                [Moi j'ai souvenir qu'il avait essayé de rentré dans la tête d'Andalur (peut être pour lire ses souvenirs) et qu'il avait trouvé que c'était compliqué, mais qu'il avait réussi. Puis il était passé à Damien.
+C'est d'ailleurs suite à cette soirée que j'ai créer les atouts "Mécanisme d'auto-défense" et "Forteresse mentale" que je compte bien prendre avec Andalur si je passe le niveau.]
+
+[Pour la masse je fais F+6 ? Et pour "l'enclume", j'ai droit un bonus de dégât ?]
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Ha oui c'est bien possible qu'il ait lu dans la tête d'Andalur. 
+
+Alors partons du principe que ça fait F+5 et que tu as +1 pour "l'enclume" avec une difficulté de 8.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=6&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=6&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=6&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=6&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=6&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=6&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=6&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=6&page=8">
+          8
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

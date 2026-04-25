@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=5">Restaurant de la Tonnella</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=5&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                21.06.18
+            </div>
+
+            <div class="forum-post-content">
+                Bon... et bien... je comprends. Le devoir, c'est le devoir. Je pense que cette guerre terminée je vais essayer de prendre mes distances par rapport à toi. Ne m'en veux pas, c'est juste pour me protéger.... Retournons vers les autres *fait un signe en direction de la table* !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                21.06.18
+            </div>
+
+            <div class="forum-post-content">
+                [Rejoins le groupe en compagnie de Len]
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.06.18
+            </div>
+
+            <div class="forum-post-content">
+                Bon HUM *se racle la gorge*. Demain nous allons attaquer l'avant-garde de Cortega et de l'Empire. Avons-nous un plan ou on fonce simplement dans le tas? *Regarde l'assemblée... tombe sur la princesse assise à côté de lui, se renfrogne*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.06.18
+            </div>
+
+            <div class="forum-post-content">
+                Hmmm je vous comprends, moi aussi si je n'avais pas d'idée je choisirais le mutisme. Ha mais au fait... je n'ai pas d'idée ! *Se tais soudainement*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.07.18
+            </div>
+
+            <div class="forum-post-content">
+                Eh bien, j'imagine que vu que la moi de maintenant n'a aucune connaissance en stratégie militaire, la moi d'avant aura certainement essayer d'inclure quelqu'un dans le groupe qui s'y connaît un peu. Probablement que Braal pourrait nous aider. Ou alors ce devrais être Kensar...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.07.18
+            </div>
+
+            <div class="forum-post-content">
+                Toujours est-il qu'ils ne sont pas là. Donc le plus apte, c'est encore vous.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.07.18
+            </div>
+
+            <div class="forum-post-content">
+                Et bien... heum... je n'ai jamais fait de guerres mais voilà ce que j'en pense [int:5, connaissances militaires:0 --> 4R]. On pourrait faire un petit régiment composé de vos meilleurs soldats qu'on boosterait magiquement. Ackbar s'occuperait de les protéger d'éventuels sorts. La trouplette pourrait faire des escarmouches dans les bois (car le tunnel amène visiblement dans une région boisée) pendant que le gros des troupes se rassemblerait. Si une partie de l'armée ennemie suit la petite trouplette, notre armée pourrait lui tendre une embuscade en tenaille. Hum... et nos autres magiciens serait de bon recours pour envoyer des sorts de masses sur l'armée en question. 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.07.18
+            </div>
+
+            <div class="forum-post-content">
+                Mes sorts durent un peu plus d'une heure, et si j'ai le mana nécessaire je peux les prolonger indéfiniment sans devoir les relancer...
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.09.18
+            </div>
+
+            <div class="forum-post-content">
+                Bon et bien, ma princesse.... la guerre est finie depuis un moment. Il est grand temps pour moi de te dire au revoir, je m'en vais vers d'autres aventures. J'espère qu'on se recroisera, à l'occasion. *Lui fait un bec sur la joue*. Bon courage pour ton règne. Tcho !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                <div class="forum-post-demarcation-line">Fin de la scène</div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=5&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=5&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=5&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=5&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=5&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=5&page=6">
+          6
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

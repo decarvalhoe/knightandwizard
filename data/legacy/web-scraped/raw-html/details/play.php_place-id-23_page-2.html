@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=23">La taverne des Bolichons</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=119">
+        <img src="../img/characters-profil/119.jpg" alt="Gilbert" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=119">Gilbert</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=156">
+        <img src="../img/characters-profil/156.jpg" alt="Jean" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=156">Jean</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=23&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Jean va vous emmener donc dans une chambre et tracer des signes ésotériques (dont les 4 points cardinaux) sur le sol avec un bout de charbon de bois. Il va ensuite allumer des bougies dans un certain ordre. Il va vous expliquer que le  rituel donne des résultats parfois surprenants. Cela peut être une direction, une image, un nom de localité, un personnage proche de la personne qu&#039;on recherche. Puis il va incanter. La permière fois, vous obtenez une direction: le sud est. La seconde, l&#039;image d&#039;un loup-garou tout grisonnant qui a l&#039;air extrêmement vieux. 
+
+Une fois fini, Jean va se dépecher de vous laisser en plan car il a, je cite, &quot;d&#039;autres chats à fouetter&quot;.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                <div class="forum-post-demarcation-line">Fin de la scène</div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.07.19
+            </div>
+
+            <div class="forum-post-content">
+                (je peux essayer de retenir le rituel pour tenter de le reproduire?)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Aboslument pas :D.
+
+Mais vous êtes à nouveau à la taverne, à votre table réservée.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Demain matin on met le cap sur Cortega.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                22.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Heum, d&#039;accord ! Mais pourquoi Cortega?
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                22.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Au Sud-Est tout du moins.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                22.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Ouais, on va essayer mais franchment, le vieux grigou, y s&#039;est pas trop foulé...pour 500 balles, y nous z&#039;a donné une direction...pas vachement précise... et nous à décrit un mec qu&#039;on connait déjà...J&#039;veux bien partir en direction du sud-est, mais dès qu&#039;on r&#039;croise une école de magie brune ou un devin, on s&#039;arrête. Quit à faire un détour par Caréon (on est ou déjà?)
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                23.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Ca me va.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                23.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Vous êtes à Saivre.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=23&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=23&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=23&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=23&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=23&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=23&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=23&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=23&page=8">
+          8
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

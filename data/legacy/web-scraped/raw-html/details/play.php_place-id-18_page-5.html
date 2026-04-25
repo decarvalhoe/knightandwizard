@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=18">Château d'Aljoteria</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=142">
+        <img src="../img/characters-profil/142.jpg" alt="Abdullah" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=142">Abdullah</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=143">
+        <img src="../img/characters-profil/143.jpg" alt="Irina" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=143">Irina</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=144">
+        <img src="../img/characters-profil/144.jpg" alt="Valentin de Provoda" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=144">Valentin de Provoda</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=145">
+        <img src="../img/characters-profil/145.jpg" alt="Roxane" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=145">Roxane</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=146">
+        <img src="../img/characters-profil/146.jpg" alt="Yi Yong" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=146">Yi Yong</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=147">
+        <img src="../img/characters-profil/147.jpg" alt="Erasme" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=147">Erasme</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=148">
+        <img src="../img/characters-profil/148.jpg" alt="Eduardo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=148">Eduardo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=149">
+        <img src="../img/characters-profil/149.jpg" alt="Oscar" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=149">Oscar</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=150">
+        <img src="../img/characters-profil/150.jpg" alt="Tan le grand" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=150">Tan le grand</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=18&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Marie<br />
+
+                <a href="character-detail.php?id=94">
+                    <img src="../img/characters-profil/94.jpg" alt="Marie" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *Fait un clin d&#039;oeil à Akbar* 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Tan le grand<br />
+
+                <a href="character-detail.php?id=150">
+                    <img src="../img/characters-profil/150.jpg" alt="Tan le grand" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Pffffff vous voulez tous mon beau journal. J&#039;ai bien réfléchis, et je vous le donnerai si j&#039;ai un cheval ET si je peux partir à l&#039;aventure avec vous... Je m&#039;ennnnnnnnuiiiiie tellement ici !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Petit, tu voulais un cheval, tu l&#039;as eût. Un marché est un marché.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Tan le grand<br />
+
+                <a href="character-detail.php?id=150">
+                    <img src="../img/characters-profil/150.jpg" alt="Tan le grand" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Ha ouais? Comme quand vous m&#039;avez dit que je pourrais venir avec vous et être un grand aventurier et qu&#039;au bout de quelques jours vous m&#039;avez laissé tombé comme une vieille chaussette? Pis d&#039;abord je fais ce que je veux.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.02.19
+            </div>
+
+            <div class="forum-post-content">
+                [On a fait ça ?]
+Et alors, de quoi tu te plaint ? N&#039;es-tu pas devenu Tan le Grand ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Tan le grand<br />
+
+                <a href="character-detail.php?id=150">
+                    <img src="../img/characters-profil/150.jpg" alt="Tan le grand" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.02.19
+            </div>
+
+            <div class="forum-post-content">
+                [Oui vous avez fait ça, il y a bien longtemps].
+
+Et bien oui, je suis Tan le Grand, et du coup je peux décider de tout ce c&#039;que j&#039;veux ! Tremblez pauvres mortels !!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Oscar<br />
+
+                <a href="character-detail.php?id=149">
+                    <img src="../img/characters-profil/149.jpg" alt="Oscar" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Hmmmm... excusez-nous un instant. *Se lève et fait un mouvement théâtrale des mains*. *Tout les vampires, sauf Tan, vont se lever aussitôt et sortir de la pièce, telles des marionnettes désarticulées. Oscar les suit. Une douzaine de minutes vont se passer puis tout le monde va revenir s&#039;assoir. *
+
+Nous avons discuté. Nous sommes d&#039;accord pour que Tan vous suive dans votre périple. Si vous souhaitez lui reprendre le livre, ce sont ses conditions. Seulement vous devrez le protéger et veiller à ce qu&#039;il ne fasse pas de vagues. Ho, et il va sans dire que si vous lui faîtes du mal, que vous lui volez son bien ou que vous le trompez, vous aurez à faire à moi personnellement étant donné qu&#039;il est sous ma protection. 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Valentin de Provoda<br />
+
+                <a href="character-detail.php?id=144">
+                    <img src="../img/characters-profil/144.jpg" alt="Valentin de Provoda" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.02.19
+            </div>
+
+            <div class="forum-post-content">
+                Oui, cela lui fera le plus grand bien de découvrir le monde, et ici il s&#039;ennuie et.... heu non rien.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.02.19
+            </div>
+
+            <div class="forum-post-content">
+                hum... hum... *raclement de gorge*
+Malgré que je commence à apprécier l&#039;enthousiasme de Tan, je vous fais remarquer que nous, nous vivons le jour... 
+Qu&#039;il serait difficile de le protégé, et que nous ne pouvons pas mener à bien notre mission dans ce contexte entre la nuit et le jour. Et ce même si on ce concentre entre le lever du jour et le début de nuit, nous n&#039;avancerons pas vraiment... 
+Question de logique...
+
+Maintenant Than.... * je me retourne vers lui*
+
+Etant donner que tu avais l&#039;air d&#039;apprécier nos chevaux, on te laisse les 2 contre le livre, puis nous reviendrons te raconter nos aventures, je pourrai même m&#039;engager à t&#039;écrire pour tout te raconter. Entre temps toi, pour nous aider à participer, tu pourrais.... Planter des arbres pour Oscar! 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.02.19
+            </div>
+
+            <div class="forum-post-content">
+                *je joue sur mon esthétisme pour aider à convaincre!* <hr><span class="play-sub-title">Action</span><br /><p>Esthétisme (diff. 7) => 4R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=18&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=18&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=18&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=18&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=18&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=18&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=18&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=18&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=18&page=9">
+          9
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

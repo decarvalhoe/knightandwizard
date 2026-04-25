@@ -1,0 +1,258 @@
+/* Knight and Wizard — Carte interactive — styles */
+
+:root {
+  --parchment: #e8d8b0;
+  --parchment-dark: #c5b08a;
+  --ink: #2a1f10;
+  --accent: #8b3a1f;
+  --accent-light: #c66a3f;
+  --shadow: rgba(42, 31, 16, 0.4);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #app {
+  margin: 0; padding: 0; height: 100%;
+  font-family: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  color: var(--ink);
+  background: #2a1f10;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* === TOPBAR === */
+#topbar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+  border-bottom: 2px solid var(--ink);
+  box-shadow: 0 2px 8px var(--shadow);
+  z-index: 1000;
+}
+
+#topbar h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.4);
+}
+
+#search-container {
+  position: relative;
+  flex: 1;
+  max-width: 360px;
+}
+
+#search {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.5);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+#search:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: white;
+}
+
+#search-results {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  margin: 0; padding: 0;
+  list-style: none;
+  background: var(--parchment);
+  border: 1px solid var(--ink);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: none;
+  z-index: 2000;
+}
+
+#search-results.visible { display: block; }
+#search-results li {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(42,31,16,0.1);
+}
+#search-results li:hover { background: rgba(139,58,31,0.1); }
+#search-results li .role-label {
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-left: 0.5rem;
+}
+
+#layer-controls {
+  display: flex;
+  gap: 1rem;
+}
+#layer-controls label {
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* === MAP === */
+#map-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  background: #1a1408;
+}
+
+/* Override Leaflet defaults for fantasy theme */
+.leaflet-container {
+  background: #1a1408 !important;
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--parchment);
+  color: var(--ink);
+  border-radius: 4px;
+  border: 2px solid var(--ink);
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.leaflet-popup-tip {
+  background: var(--parchment);
+  border-left: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+
+.leaflet-popup-content {
+  margin: 0.75rem 1rem;
+  font-size: 0.9rem;
+}
+
+.leaflet-popup-content h3 {
+  margin: 0 0 0.4rem;
+  color: var(--accent);
+  font-size: 1.05rem;
+}
+
+.leaflet-popup-content img.flag {
+  max-width: 60px;
+  float: right;
+  margin: 0 0 0.5rem 0.5rem;
+  border: 1px solid var(--ink);
+}
+
+/* === INFO PANEL === */
+#info-panel {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 360px;
+  max-height: calc(100% - 2rem);
+  overflow-y: auto;
+  background: var(--parchment);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 16px var(--shadow);
+  z-index: 500;
+  transition: transform 0.2s ease;
+}
+
+#info-panel.hidden {
+  transform: translateX(calc(100% + 2rem));
+}
+
+#info-close {
+  position: absolute;
+  top: 0.4rem; right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ink);
+  line-height: 1;
+}
+#info-close:hover { color: var(--accent); }
+
+#info-content h2 {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.4rem;
+}
+
+#info-content h3 {
+  margin: 1rem 0 0.3rem;
+  font-size: 0.95rem;
+  color: var(--accent-light);
+}
+
+#info-content dl { margin: 0; font-size: 0.85rem; }
+#info-content dt { font-weight: bold; margin-top: 0.3rem; }
+#info-content dd { margin: 0 0 0.3rem 1rem; }
+
+#info-content .blason {
+  float: right;
+  max-width: 80px;
+  margin: 0 0 0.5rem 0.75rem;
+  border: 1px solid var(--ink);
+}
+
+/* === BOTTOMBAR === */
+#bottombar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 1rem;
+  background: var(--ink);
+  color: var(--parchment);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* === MARKERS === */
+.city-marker-capital {
+  background: var(--accent);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  width: 14px !important;
+  height: 14px !important;
+  margin-left: -7px !important;
+  margin-top: -7px !important;
+}
+.city-marker-major { background: var(--accent-light); width: 10px !important; height: 10px !important; margin-left: -5px !important; margin-top: -5px !important; }
+.city-marker-town { background: #b89060; width: 8px !important; height: 8px !important; margin-left: -4px !important; margin-top: -4px !important; }
+.city-marker-village { background: #6e5638; width: 6px !important; height: 6px !important; margin-left: -3px !important; margin-top: -3px !important; }
+
+.city-label {
+  font-size: 11px;
+  color: var(--ink);
+  text-shadow: 1px 1px 0 var(--parchment), -1px -1px 0 var(--parchment), 1px -1px 0 var(--parchment), -1px 1px 0 var(--parchment);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.region-label {
+  font-size: 18px;
+  color: var(--ink);
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  text-transform: uppercase;
+}

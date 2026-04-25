@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=5">Restaurant de la Tonnella</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=5&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.05.18
+            </div>
+
+            <div class="forum-post-content">
+                @Akbar : Avec tes 7 R de connaissances du Chaos, tu peux dire avec certitude qu'une concentration d'énergie n'est pas suffisant pour faire venir le Chaos (sinon à chaque fois qu'un sort ultime serait lancé, le Chaos débarquerait). D'où la tentative de la porte d'Arianne te semble totalement vide de sens.
+
+Il faut voir le mana comme l'oxygène du Chaos. Pour le faire venir il lui faudrait un couloir dans lequel s'engouffrer.
+
+Ceci dis, tu as également vu des montres du Chaos en plein Alteria. Selon toi, il se peut donc qu'il y ait une astuce.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                29.05.18
+            </div>
+
+            <div class="forum-post-content">
+                (oula, tu me refais l'épisode des montres du chaos en deux mots...me rappelle plus du tout de ça...)
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.05.18
+            </div>
+
+            <div class="forum-post-content">
+                [Vous êtiez passé près d'un village ou beaucoup de magicien attendais pour une foire au livre. Il y avait un livre (un traité de fauconnerie) qui intéressait tout le monde. Bratos à déclaré qu'il allait y avoir beaucoup de morts. Vous avez décidé de partir. Vous avez vu beaucoup des éclairs et de la fumée se dégagé du village en partant. 8 cavalier du chaos se sont lancé à votre poursuite. Vous les avez tué. Je ne me rappel pas si vous aviez le bouquin ou non.]
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.05.18
+            </div>
+
+            <div class="forum-post-content">
+                (oui, je me rappelle, non, on avait pas le bouquin, on l'avait juste consulté, je crois, mais en tout cas on l'avait pas acheté. on s'était barré vite fait au sud... mais y avait des montres du chaos?)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.06.18
+            </div>
+
+            <div class="forum-post-content">
+                [Des sortes de cavaliers du Chaos oui. Sur le moment vous êtiez bien content d'avoir Bratos à vos côtés pour vous aider.]
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.06.18
+            </div>
+
+            <div class="forum-post-content">
+                (ok compris...montre≠monStre...)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.06.18
+            </div>
+
+            <div class="forum-post-content">
+                Princesse? Comment vas-tu? Je souhaiterais discuter avec toi en privé si cela est possible...
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.06.18
+            </div>
+
+            <div class="forum-post-content">
+                [Te fais signe de venir à l'écart avec elle.]
+
+Je t'écoute Len.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.06.18
+            </div>
+
+            <div class="forum-post-content">
+                Oui alors... voilà... *vérifie qu'il n'y ait personne d'autre que la princesse dans les parages*. Heum, je suis plutôt gêné par rapport à l'autre nuit. Je sais qu'on est pas censés en discuter mais... j'aimerais que nos rapports restent bons et du coup et bien il faut quand même qu'on en parle au moins une fois. Et bien heu.. j'ai un peu l'impression d'avoir abusé de toi ou de la situation. On était ivres. Mais je dois tout de même t'avouer que c'est quelque chose que j’espérais depuis très longtemps. Quasiment depuis la première fois ou je t'ai vue. Je crains que cela n'ait pas de lien avec ta position de princesse si c'est ce que tu te dis... je crois bien que je suis amoureux de toi. Et c'est difficile car je vois bien que je t'attire au moins un peu, mais que de par ta position tu as les mains liées et que tu ne peux pas choisir tes amoureux ni tes amants d'ailleurs. Et puis il y a cette histoire de guerre qui fait qu'on sait pas si demain on sera encore en vie. Et puis j'espère quand même qu'un jour on pourra peut-être construire quelque chose même si je reste objectif et que je me dis qu'il y a très peu de chance mais... est-ce que je devrais passer à autre chose d'après toi? C'est peut-être la meilleure chose à faire mais j'aimerais que tu me dises ce que tu en penses toi, pour moi, et pour toi aussi... comment tu vois tout cela?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.06.18
+            </div>
+
+            <div class="forum-post-content">
+                [Inspire et expire profondément en regardant au loin avant de répondre.]
+
+Je suis allée avec Eypo car je l'aimais. Je suis allée avec toi car j'en avais envie. Et j'irais avec Ragnard car je le dois. C'est ainsi et nous n'y pouvons rien.
+
+[Regarde Len dans les yeux avec tendresse.]
+
+Considère la nuit dernière comme un adieu. Adieu à ce monde en cas de défaite, adieu à cette vie en cas de victoire.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=5&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=5&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=5&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=5&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=5&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=5&page=6">
+          6
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=29">La casa Fortuna</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=211">
+        <img src="../img/characters-profil/211.jpg" alt="M. Urbano" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=211">M. Urbano</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=214">
+        <img src="../img/characters-profil/214.jpg" alt="Andrea" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=214">Andrea</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=29&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [Ils sont pipés ces dés!]
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP]
+
+Je peux considérer être affilier à la fortuna, après avoir pu négocier les conditions.
+Il est exclu que je paie un impôt directe, mais on peu chercher d&#039;autre forme de contributions.
+Je souhaite que les mafias considèrent s&#039;unir pour investir dans le pays.
+J&#039;ai sous entendu, qu&#039;on avais besoin d&#039;eu, pour un certain soucis perso...
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1252&place-id=29" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.06.20
+            </div>
+
+            <div class="forum-post-content">
+                @Akbar: La chaleur et la colère te crée en sentiment de vertige en regardant les long couloirs. Ta vue se trouble pendant 10 minutes et tu as une petite nausée pour couronner le tout.
+
+@Akbar: C&#039;est la casa Fortuna. Tu t&#039;attendais à quoi? ^^
+
+@Sindalia: Ok, merci.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                M. Urbano<br />
+
+                <a href="character-detail.php?id=211">
+                    <img src="../img/characters-profil/211.jpg" alt="M. Urbano" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Je pense pouvoir vous répondre directement, sans que cela passe par 49.
+
+Tout d&#039;abord, pour votre potentiel affiliation, vous êtes une personne puissante et nul besoin de définir ce que vous pourriez amenez à la Fortuna. Le revers de la médaille est que les questions demeurantes sont &quot;Comment nous faire confiance mutuellement ? et Quels sont nos garanties ?&quot;.
+Je vous laisse méditez sur ces deux points.
+Notez que la Fortuna nuance l&#039;affiliation d&#039;une personne et c&#039;elle d&#039;une maison.
+
+Ensuite quant à cet &quot;impôt&quot; dont vous parlez. Si c&#039;est de racket dont il est question, sachez que la Fortuna ne pratique pas cela. Nous mettons en place des systèmes d&#039;aide communautaire via des marchés élaborés spécifiquement pour chacun de nos membres. En outre, sachez encore que lier votre maison de jeu à notre famille vous dispensera de la visite des Tenebrae. Eux en revanche n&#039;ont aucun scrupule à vendre leurs &quot;assurances&quot; comme ils le disent.
+
+Je transmettrai votre souhait quant à une unification des mafias ayant pour but d&#039;investir dans la nation. Mais on me demandera invariablement quels formes d&#039;investissements ? Et pour quels profits ?
+Vous devez avoir une vision royaliste des choses. Par exemple, &quot;votre gain sera votre survie car nous devons affronter l&#039;Empire&quot;. Cela également je peux le transmettre mais n&#039;ayez pas trop d&#039;espoir à ce sujet. Nos mondes sont fort différents.
+
+Enfin, quant à votre besoin personnel, vous êtes en face de la bonne personne pour l&#039;énoncer. En fonction du besoin nous jugerons si nous vous aiderons et à quel prix.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                M. Urbano<br />
+
+                <a href="character-detail.php?id=211">
+                    <img src="../img/characters-profil/211.jpg" alt="M. Urbano" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Les affiliations sont unique. On ne peut avoir qu&#039;une famille Madame.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                M. Urbano<br />
+
+                <a href="character-detail.php?id=211">
+                    <img src="../img/characters-profil/211.jpg" alt="M. Urbano" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Quoi qu&#039;il en soit, je transmettrai vos demandes à 49.
+A présent, si vous voulez bien m&#039;excuser, j&#039;ai du travail à terminer.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Si cela convient à tout le monde, je propose que Sindalia rejoigne le groupe à l&#039;entrée du bâtiment.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Je peut clore la scène si vous en avez terminé ici.
+Dans quel cas il faut juste me dire où vous allez et si je fait défiler les jours.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Ok rendez-vous au Manoir de Rosselini.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                <div class="forum-post-demarcation-line">Fin de la scène</div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=29&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=29&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=29&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=29&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=29&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=29&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=29&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=29&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=29&page=9">
+          9
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=6">L'oasis de Laura</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=52">
+        <img src="../img/characters-profil/52.jpg" alt="Hafed" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=52">Hafed</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=92">
+        <img src="../img/characters-profil/92.jpg" alt="John" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=92">John</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=6&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Dans un altérien, certes avec un accent, mais relativement maitrisé (3, quoi...):
+Pas exactement...je parlais d'un banquet pour soixante personne. Un menu, de qualité, nourrissant et préparé dans les plus brefs délais. C'est plutôt à ça que faisait référence Laura.Allez, allez
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                John<br />
+
+                <a href="character-detail.php?id=92">
+                    <img src="../img/characters-profil/92.jpg" alt="John" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.10.18
+            </div>
+
+            <div class="forum-post-content">
+                
+*son visage s'illumine soudainement* Haaaaa un banquet?? Oui bien sûr. Attendez deux secondes... J'ai de quoi faire des mini-hamburgers Cheddar/baccon comme entrée, de la dinde fourrée avec haricots et frites comme plat principal et du cheesecake comme dessert! Ça vous irait ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Heuu...(visiblement, Ackbar ne connait pas tous les plats proposés et en a un peu honte)...oui, les emmbougères tchédarbêconn, on pourrait les faire pas "mini", non? Je dis ça, je dis rien . Mais c'est très bien, commencez direct sans plus attendre. *Ackbar descend en direction de la cave, surtout pour échapper à une autre question gênante du chef. -Et à boire, pardi, à boire! (crié, depuis les premières marches de l'escalier)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                John<br />
+
+                <a href="character-detail.php?id=92">
+                    <img src="../img/characters-profil/92.jpg" alt="John" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *En criant*  Oui j'ai une douzaine de caisses de sang de la terre de 512, une très bonne année !!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.10.18
+            </div>
+
+            <div class="forum-post-content">
+                [La pioche c'est F+4.]
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Sela à faim 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Pas de soucis pour la pioche. Fais donc tes jets.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Akbar tu arrives à la cave. Les mages se retournent en blocs et plusieurs te demandent si tu as une idée de ce qu'ils doivent faire maintenant.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Je pense que la première chose à faire, messieurs dame, c'est retrouver des forces. J'ai demandé au chef de préparer un repas digne de ce nom. Pour l'instant, nous avons un demon sous contrôle, celui la même qui a commendité, visiblement, votre rapt. D'ailleurs, si quelqun connait ou comprend quelque chose de plus que ce que nous savons, déjà, que ce soit à propos des démons, ou de celui la précisément, c'est pas une mauvaise idée de nous en faire part...D'ailleurs, ça m'y fait penser, l''un d'entre vous sait-il geler de l'eau, par hasard?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Feng<br />
+
+                <a href="character-detail.php?id=78">
+                    <img src="../img/characters-profil/78.jpg" alt="Feng" height="100" width="80">
+                </a>
+
+                <br />
+
+                16.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Nous sommes plusieurs à pouvoir lancer ce sort, dont moi. Le problème c'est qu'il semblerait que comme notre "âme" (dit il en faisant des tirets avec ses doigts) ou notre essence a été emprisonnée pendant longtemps, personne n'est ici à même de lancer un sort. Peut-être que notre corps n'est pas encore bien coordonné ou alors notre magie s'est éteinte pour toujours, nous ne le savons pas. Ensuite, ce dont nous nous rappelons est comme une sorte de long cauchemard ou nous n'avions aucune volontée et ou nous creusions sans cesses dans ces tunnels maudits. Nous nous réjouissons de nous en aller d'ici. Les 40 personnes que vous voyez ici viennent de différent pays, et il faudrait décider de la manière la plus appropriée pour que chacun d'entre nous rentre au plus vite. Seulement certains sont très faible, proches de la mort même. Cette servitude, qui a duré un temps que personne n'arrive à quantifier ici, semble avoir épuisé nos corps.
+
+Pour le démon et bien, il faut voir, nous ne savions pas qu'il y avait un démon dans l'histoire. J'espère que nous pourrons nous venger.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=6&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=6&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=6&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=6&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=6&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=6&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=6&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=6&page=8">
+          8
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

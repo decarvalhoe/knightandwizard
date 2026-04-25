@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=31">Castello di Sala</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=31&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                23.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [apparemment le calcul serait 3kg par m2 pour un tableau, il ne dois pas faire beaucoup plus que 10kilo, ce n&#039;est pas excessif]
+
+Il y&#039;a un début de bonne idée en tout cas... Si nous nous déplaçons en volant nous gagneront un temps précieux.
+
+Sela peut voyager Nerrak, Moi avec Grumtark et Akbar avec Abu.
+
+
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1386&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                23.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Tu es certaine Sindalia que vous pourrez transporte le tableau ainsi ?
+Il risque d&#039;être endommagé par les intempéries.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Il faudra le protéger sans aucun doutes, au même titre qu&#039;il aurait fallu le protéger par voie terrestres... si nous volons à basse altitude nous serons dans des conditions comparables et éviterons des variations trop abruptes de temperature.
+
+Mon inquiétude ma chère Ylenia reside plus dans l&#039;accueil que nous reserve les pays à visiter. Quels pays ne sont pas au courant de notre venue ? Quels seront nos outils diplomatiques ? Nous n&#039;aurons pas le luxe de traverser une frontière par la voie de la force et espérer paisiblement exposer la toile à leur capitale... 
+
+A tu par exemple une idée de comment nous présenterons, l&#039;oeuvre en empire ? 
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1388&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Pour la fin de ta phrase je dirai une fois arriver trouver une place central où le peuple ce réuni facilement pour les communication.
+
+Cool si Nerrak veut bien de moi, je serai contente de voler. 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Petit rappel (valable pour moi-même): Ylenia souhaiterait que le tableau passe par un maximum de pays, cependant il doit impérativement passer par Cortega et l&#039;Enorie avant de terminé dans l&#039;Empire.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Vous allez probablement entrez en conflit avec les forces de Cortega qui soupçonneront quelques bassesses de notre part.
+
+Je me fais plus de souci quant à l&#039;Empereur. C&#039;est un homme intelligent et il comprendra rapidement que votre venue est en lien avec les représailles de notre récente victoire. L&#039;Empire a pour habitude d&#039;agir vite et fort. Je table sur une attaque visant à détruire le tableau et à vous tuez de par là-même.
+Vous naurez pas besoin de sauvez le tableau. Sauvez-vous vous même et revenez-moi sains et saufs.
+
+Pour ce qui est de votre couverture, vous annoncerez que vous transitez un présent symbol de paix pour l&#039;Empereur. Ceux qui se mettront en travers de votre route s&#039;engageront de fait contre l&#039;Empire, Alteria et la trêve établie avec Cortega. Vous aurez donc tout loisir de vous défendre face à des traîtres.
+
+Méfiez-vous tout particulièrement des escarmouches et dagues tapies dans l&#039;ombre.
+Enfin, comprennez que notre victoire se jouera en Enorie. C&#039;est là que l&#039;exposition du tableau aura le plus d&#039;importance.
+
+Je compte sur vous.
+
+[Jet de charisme pour vous transmettre de la motivation dans votre quête.] <hr><span class="play-sub-title">Action</span><br /><p>Charisme + Commandement + Discours de foule (diff. 5) => 6R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Alberto Bratelli (Braal)<br />
+
+                <a href="character-detail.php?id=129">
+                    <img src="../img/characters-profil/129.jpg" alt="Alberto Bratelli (Braal)" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Son Altesse vous autorise à former un groupe à votre convenance pour mener à bien votre mission.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Bien, pour moi tout est claire. 
+
+Si c&#039;est le cas, je crois qu&#039;il n&#039;est pas nécessaire d&#039;encombré son altesse des détails de notre périple.
+
+Nous réussirons, même si nous devons en périr.
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1393&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                @Sela
+
+Oui bien sur, si je peu être utile je le ferai avec plaisir !
+
+Bien que si nous voyageons ensemble aussi loin, il faudra faire préparer un selle... sinon tu vas devenir folle...
+
+Mais je sais pas trop si on à vraiment décidé de comment voyager.
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1394&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                *sort de sa torpeur
+-Je réfléchissais à ce que vous disiez...
+Je peux donner des ailes à qui sait déjà voler...en tout cas, moi, c&#039;est ce que je vais faire. De cette manière, Abu sera à disposition pour transporter le tableau. Cela dit, je pense qu&#039;il serait tout de même utile de lui prévoir un emballage de protection, comme une boite en bois rembourrée.
+-Braal, tu sais te déplacer par les airs? Ou passer dans Tronchetto?
+
+-Sinon, si on monte dans les terres du nord, qu&#039;en est t-il d&#039;Anne? Est-ce qu&#039;on combine avec le sauvetage de son parasite? Ou ça fait trop loin?
+
+D&#039;ailleurs, il nous faut calculer le trajet qu&#039;on va faire...une fois qu&#039;on aura choisi le meilleurs moyens de se déplacer.
+
+-Ylenia, pourrais tu nous faire un laisser passer-mondial? Je sais qu&#039;on a le tableau, mais nous connaissons tous le côté procédurier des gardes qui s&#039;en fichent et ne veulent voir que le papier qu&#039;ils attendent...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=31&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=31&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=31&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=31&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=31&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=31&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=31&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=31&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=31&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=31&page=10">
+          10
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

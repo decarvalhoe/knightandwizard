@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=31">Castello di Sala</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=31&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Puis je proposer un duel de flèche uniquement les 2 pour réparer et aider princess Ylenia ? Prince Oherim? 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Un duel contre une cible pas nous a nous *
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                *s&#039;incline respectueusement et répond sincèrement
+Si je puis me permettre...
+Pour moi, utiliser la magie n&#039;est pas tricher...après tout, chacun fait en fonction de ses atouts.
+Si je suis votre logique, tout ceux qui sont plus grand que mois trichent...Leurs flèchent partent de plus haut, ils voient mieux la cible et ont plus de force pour bander leurs arcs.
+Est-ce qu&#039;un oiseau qui prend son envole pour ne pas se faire attraper à main-nue triche? Évidemment que non, il ne fait que mettre à profit ses compétences pour se démarquer.
+
+D&#039;autre part, si je vous ai laissé gagner, c&#039;est parce que j&#039;ai reçu un ordre de Sindalia. Je n&#039;avais pas le droit de gagner ce concours...cela dit, je ne suis pas sur que je l&#039;aurais gagné...surtout s&#039;il avait duré plus longtemps. Vous savez, la magie n&#039;est souvent qu&#039;éphèmère...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                @Akbar : Je veux bien un jet de charisme diplomatie.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                (Ackbar n&#039;a pas de diplomatie...) <hr><span class="play-sub-title">Action</span><br /><p>Charisme (diff. 7) => 1R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Oherim Kaleth Mereha<br />
+
+                <a href="character-detail.php?id=215">
+                    <img src="../img/characters-profil/215.jpg" alt="Oherim Kaleth Mereha" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [Jet de volonté : 19 =&gt; Succès]
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Oherim Kaleth Mereha<br />
+
+                <a href="character-detail.php?id=215">
+                    <img src="../img/characters-profil/215.jpg" alt="Oherim Kaleth Mereha" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Hm... Vous avez reçu un ordre de Sindalia...
+
+* Regarde Sindalia, la Princesse puis Sela. *
+
+@Sela : Je vous remercie pour votre offre que je crois sincère mais je ne suis pas venu ici pour disputer des salves de flèches.
+
+@Tout le monde : Le Cercle avait voté pour que nous fassions un pas en direction de la petite Reine et de son peuple et j&#039;ai été envoyé pour me rendre compte de ce qui anime le coeur d&#039;Alteria.
+Je constate avec lassitude que votre nation est incapable de s&#039;élevé au delà de sa condition de mortel. Vous demeurez irrémédiablement humains. Vos paroles visent des desseins secrets et vos silences dissimulent vos mensonges.
+De plus, Princesse, je me permets de m&#039;étonner de vous voir en si perfide compagnie. Vous qu&#039;on dit si sage... Si vous deviez entendre mes conseils, je vous dirais de vous garder des Elfes de l&#039;Est et de leurs serviteurs.
+Mais je ne m&#039;attends pas à ce que vous m&#039;écoutiez.
+
+Sur ce *fait une petite révérence*, je prends congé.
+
+* Tourne les talons et s&#039;en va. Ajoute encore juste avant de passer la porte... *
+
+Ho ! Et rassurez-vous, vous n&#039;avez guère besoin de la bénédiction de mon peuple à votre mariage. Ce hobbit semble en avoir en avoir à revendre.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [Sindalia a vécu avec les elfes de Tirkan, elle cherche un levier culturel pour rattraper la situation] <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Sociologie (diff. 5) => 7R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1414&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [Jet de préliminaire de diplomatie, pour ce qui suivra, en attendant un la réponse du MJ au sujet du premier jet] <hr><span class="play-sub-title">Action</span><br /><p>Charisme + Politique + Diplomatie + Négociation diplomatique (diff. 3) => 11R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1416&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [C’était &quot;Jet préliminaire&quot; pas &quot;de préliminaire&quot; évidement...]
+
+@Akbar par télépathie &quot;S&#039;il te plais n&#039;ajoute rien dans cette discussion avec le prince, ça ne fera qu&#039;empirer la situation...&quot;
+
+@Oherim 
+Prince, bien que ma condition de perfide elf de l&#039;est semble suffire, à ôter toute forme de credit, à mon opinion de la situation.
+
+J&#039;espère de tout cœur, que nous les immortels, qui clamons haut et fort être les plus sages des êtres vivant, soyons encore capable des raisonnement les plus simple. Comme par exemple, ne pas faire d&#039;amalgame raciaux et ne pas juger à la première impression.
+
+Cette jeune humaine, qui bien plus que d&#039;être reine est mon amie, est capable de ces raisonnement et je vous assure que si vous lui donnez une chance, elle vous prouvera qu&#039;elle est celle qui réunira les nations du monde.
+
+Ce que nous elfs dans notre grande sagesse n&#039;avons même, jamais essayé de faire...
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1417&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=31&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=31&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=31&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=31&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=31&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=31&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=31&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=31&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=31&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=31&page=10">
+          10
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

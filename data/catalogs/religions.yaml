@@ -1,0 +1,250 @@
+# Catalogue de religions et divinités K&W — Phase 2 import auto (R-12.4)
+# Source paper : regles-papier/extracted/histoires/cultes-et-religions.md
+# Schéma : R-12.4 religion + deity
+# Date import : 2026-04-25
+
+version: 1
+metadata:
+  source: paper
+  imported_at: "2026-04-25"
+  total_religions: 9  # 6 principales + 3 catégories complémentaires
+  total_deities: 70+
+
+religions:
+
+  # === RELIGIONS PRINCIPALES ===
+
+  - id: culte_de_la_mort
+    name: "Culte de la Mort"
+    category: death_cult
+    primary_race: mort_vivant
+    doctrine: "Mépris pour toute forme de vie. Idolâtrie de la Mort en tant qu'état ou entité."
+    practices: [pratiques_secretes, rituel_de_la_dernière_prophétie]
+    forbidden_acts: ["aider la vie"]
+    blessed_acts: ["donner la mort", "détruire la vie"]
+    alignment_tendency: chaotic_evil
+    spell_school_affinity: magie_noire
+    holy_texts: ["La Dernière Prophétie (extrait du Pr. Dieter Halmein, 1 fou disparu)"]
+    bounty_on_adepts: 100  # écus pour livrer un hérétique
+    metadata: { source: paper, version: 1 }
+
+  - id: dieu_unique
+    name: "Dieu Unique (Le)"
+    category: monotheist
+    primary_race: humain
+    doctrine: "Pardon, entraide, unicité divine. Probablement la plus répandue (après culte de l'Empereur Homme-Rat)."
+    practices: [10_commandements]
+    holy_texts: ["Les 10 Commandements (Exode 20/3-17 raccourci)"]
+    holy_days: [jour_du_repos_septieme]
+    alignment_tendency: lawful_good
+    spell_school_affinity: magie_blanche
+    deities:
+      - id: dieu_unique
+        name: "L'Éternel / Dieu"
+        domain: ["créateur", "tout"]
+        motto: "Tu n'auras pas d'autres dieux devant ma face"
+    practiced_in_regions: [enorie, fauche_le_vent, cortega, irtanie]
+    metadata: { source: paper, version: 1 }
+
+  - id: dieux_elfiques
+    name: "Dieux Elfiques (Les)"
+    category: polytheist
+    primary_race: elfe
+    doctrine: "Maintenance du monde pour les autres. Aucun bien/mal, mais responsabilité de ses actes."
+    alignment_tendency: neutral
+    spell_school_affinity: varies  # selon divinité
+    deities:
+      - { id: cerexos, name: "Cerexos", domain: ["mers"], motto: "Arme toi de patience si tu souhaites affronter la vie." }
+      - { id: isashi, name: "Isashi", domain: ["magie"], motto: "La maîtrise des énergies passe avant tout par la maîtrise de soi-même." }
+      - { id: kahan, name: "Kahan", domain: ["meurtre"], motto: "Ôter la vie est tout aussi beau que de la donner." }
+      - { id: louenill, name: "Louénill", domain: ["chagrin"], motto: "Nous vivons et mourons au travers de nos amours et rêves, prends soins d'eux tant que tu le peux." }
+      - { id: meliokyss, name: "Méliokyss", domain: ["mort"], motto: "Respecte la mort autant que la vie." }
+      - { id: mialiss, name: "Mialiss", domain: ["musique", "chant"], motto: "Sans la beauté, la vie n'a pas de raison d'être." }
+      - { id: olehan, name: "Oléhan", domain: ["rêves"], motto: "Il n'y a de grands actes qui n'ai de rêves comme base." }
+      - { id: sarh, name: "Sarh", domain: ["sang"], motto: "Le sang est sacré et ne doit pas être gaspillé." }
+      - { id: senghir, name: "Senghir", domain: ["combat"], motto: "Prendre la vie est un art sombre qui ne doit pas être pris à la légère." }
+      - { id: theemen, name: "Théemen", domain: ["nature", "vie"], motto: "La vie est un présent qu'il ne faut savoir respecter." }
+      - { id: vaelis, name: "Vaelis", domain: ["amour"], motto: "Rien ne peut être finalisé dans la solitude." }
+      - { id: voratyr, name: "Voratyr", domain: ["cruauté"], motto: "La douleur est une délicieuse beauté mélancolique ou charnelle." }
+    practiced_in_regions: [haut_royaume, foret_de_tyrkan, monde_sombre, blanc_royaume]
+    metadata: { source: paper, version: 1 }
+
+  - id: dieux_gnomiques
+    name: "Dieux Gnomiques (Les)"
+    category: polytheist
+    primary_race: gnome
+    doctrine: "Compagnons de fortune. Simplicité de vie. 'Tout compris à la vie'."
+    deities:
+      - { id: androulia, name: "Androulia", domain: ["jour", "nuit"], motto: "Il y a du bon et du moins bon dans un peu tout." }
+      - { id: baeh, name: "Baeh", domain: ["foyer"], motto: "On est bien qu'à la maison." }
+      - { id: darul, name: "Darul", domain: ["nature"], motto: "Le bonheur se cherche parterre d'abord." }
+      - { id: estian, name: "Estian", domain: ["fête"], motto: "Il faudrait rire au moins une fois par jour." }
+      - { id: tritirina, name: "Tritirina", domain: ["relations"], motto: "On a tous besoin de quelqu'un." }
+    alignment_tendency: chaotic_good
+    practiced_in_regions: [collines_d_ico]
+    metadata: { source: paper, version: 1 }
+
+  - id: dieux_orientaux
+    name: "Dieux Orientaux (Les)"
+    category: polytheist
+    primary_race: humain  # oriental
+    doctrine: "Équilibre de toutes choses. Bien/mal très relatifs. Contemplation et acceptation."
+    alignment_tendency: lawful_neutral
+    deities:
+      - { id: amaterasu, name: "Amaterasu", domain: ["soleil"], motto: "Sache où et quand briller." }
+      - { id: benten, name: "Benten", domain: ["chance", "musique", "éloquence"], motto: "Frappe ton adversaire par la beauté et par la douceur, tu n'auras à le combattre." }
+      - { id: fu_xi, name: "Fu Xi", domain: ["mariage", "foudre"], motto: "La moindre des choses en cache une grandiose." }
+      - { id: jen_han, name: "Jen-Han", domain: ["voleurs"], motto: "Toi dont la main est habile et dont la vie n'est pas facile, je te donne le droit de faire tien le bien des autres." }
+      - { id: kirin, name: "Kirin", domain: ["justice"], motto: "Que ma volonté, celle de la justice, guide ta main." }
+      - { id: nu_wa, name: "Nu Wa", domain: ["mariage", "création"], motto: "Respecte ce qui est." }
+      - { id: shoki, name: "Shoki", domain: ["chasseur de démons"], motto: "Purifie, quoi qu'il en coûte." }
+      - { id: ssu_ko_liang, name: "Ssu Ko Liang", domain: ["stratégie", "intellect"], motto: "Ta pensée doit dominer ton émotion." }
+      - { id: susanowo, name: "Susanowo", domain: ["cataclysmes", "océans"], motto: "Qu'importe ce que t'inflige autrui, vas au bout de ta volonté." }
+      - { id: tsuki_yomi, name: "Tsuki Yomi", domain: ["lune"], motto: "Ce qui met à mal l'un peut mettre à bien l'autre." }
+      - { id: xi_wang_mu, name: "Xi Wang Mu", domain: ["femme protectrice"], motto: "La faiblesse est le masque de la force." }
+      - { id: yanluo_wang, name: "Yanluo Wang", domain: ["enfers", "juge des âmes"], motto: "La justice et la clémence doivent guider le cœur des hommes comme des dieux." }
+      - { id: yu_huang_shangdi, name: "Yu Huang Shangdi", domain: ["jade", "ciel régnant"], motto: "Diriger un millier de personnes revient au même qu'en diriger une poignée, tout est une question d'organisation." }
+    practiced_in_regions: [yonkado]
+    metadata: { source: paper, version: 1 }
+
+  - id: dieux_paiens
+    name: "Dieux Païens (Les)"
+    category: polytheist
+    primary_race: humain
+    doctrine: "Il existe un dieu pour chaque chose. À 12 ans, choix d'un dieu personnel (fête 'Quamilion'). Accomplissement personnel."
+    alignment_tendency: chaotic_neutral
+    deities:
+      - { id: adiphae, name: "Adiphaée", domain: ["moisson", "commerce"], motto: "Tout labeur qu'il soit te reviendra, d'une manière ou d'une autre." }
+      - { id: conocles, name: "Conoclès", domain: ["guerre"], motto: "Combattre pour protéger nos familles est le devoir de tous." }
+      - { id: daemus, name: "Daémus", domain: ["création"], motto: "Le monde est grand…et toi ?" }
+      - { id: gaia, name: "Gaïa", domain: ["terre"], motto: "Montre toi reconnaissant envers la main qui te nourri." }
+      - { id: ilis, name: "Ilis", domain: ["amour"], motto: "Aimer est le plus grand pouvoir qui soit." }
+      - { id: imenophe, name: "Iménophé", domain: ["ciel"], motto: "Si tu veux avancer, accroche-toi à tes rêves." }
+      - { id: oradip, name: "Oradip", domain: ["océans"], motto: "Ne cherche pas à maîtriser autre que toi-même." }
+      - { id: teranos, name: "Teranos", domain: ["mal", "mort"], motto: "Aucune règle ne doit jamais t'empêcher d'agir à ta guise." }
+    rite_of_passage: "Quamilion (à 12 ans, choix du dieu personnel)"
+    practiced_in_regions: [empire, dundoria, detre]
+    metadata: { source: paper, version: 1 }
+
+  - id: liberte_de_culte
+    name: "Liberté de Culte"
+    category: secular_philosophy
+    primary_race: humain
+    doctrine: "Liberté à chacun de pratiquer la religion de son choix. Tolérance."
+    alignment_tendency: neutral_good
+    history: "Proclamée par Aderand pour préserver sa neutralité commerciale. Adoptée ensuite par Altéria sous pression Cortégante."
+    political_context: "Considérée comme traîtresse par les extrémistes religieux."
+    practiced_in_regions: [aderand, alteria]
+    metadata: { source: paper, version: 1 }
+
+  - id: dieux_vikings
+    name: "Dieux Vikings"
+    category: polytheist
+    primary_race: humain
+    doctrine: "Pas de culte officiel, pas de dogmes, pas d'écrits bibliques. Croyances libres. Heroïsme et défi."
+    deities:
+      - { id: aegir, name: "Aegir", domain: ["haute mer"], motto: "Plus grand est le défi, plus grande en est la gloire." }
+      - { id: wayland, name: "Wayland", domain: ["forge", "métal"], motto: "Il faut saluer l'épée." }
+      - { id: odin, name: "Odin", domain: ["guerre", "connaissance"], motto: "Il y a une chose qui ne meurt jamais : la gloire des grands disparus." }
+      - { id: thor, name: "Thor", domain: ["orage", "tonnerre"], motto: "Nul homme n'est forcé de rester calme et avisé face à la trahison." }
+      - { id: njord, name: "Njord", domain: ["mer", "rivages", "vent"], motto: "Le navigateur avisé saura reconnaître dans le vent son ami." }
+      - { id: ull, name: "Ull", domain: ["justice", "duels", "hiver"], motto: "Ne faire ni trêve ni traité avec des ennemis." }
+      - { id: hel, name: "Hel", domain: ["enfers", "morts"], motto: "Pauvres de l'homme qui meurt vieux ou malade." }
+      - { id: hoder, name: "Hoder", domain: ["ténèbres", "hiver"], motto: "Prévoir sa provision de bois pour les longs mois d'hiver." }
+      - { id: vidar, name: "Vidar", domain: ["silence", "revanche"], motto: "Le sage attend le jour de la revanche." }
+      - { id: mimir, name: "Mimir", domain: ["sagesse"], motto: "N'est pas sage celui qui n'est jamais silencieux." }
+      - { id: var, name: "Var", domain: ["contrats", "fidélité"], motto: "Reste fidèle à toi-même, et tu le serras à ton prochain." }
+    alignment_tendency: chaotic_neutral
+    practiced_in_regions: [terres_du_nord]
+    metadata: { source: paper, version: 1 }
+
+  # === DIVINITÉS PAR RACE (catégorie "Autres") ===
+
+  - id: chaotiques_puissances
+    name: "Chaotiques Puissances"
+    category: dualist
+    primary_race: ~  # multi-race, opposé à la lumière
+    doctrine: "Forces de chaos, perversion, éradication."
+    deities:
+      - { id: kral, name: "Kral", domain: ["cataclysmes"] }
+      - { id: athorn, name: "Athörn", domain: ["mensonge"] }
+      - { id: tennesse, name: "Tennesse", domain: ["perversion"] }
+      - { id: gereth, name: "Gereth", domain: ["changement"] }
+      - { id: makales, name: "Makalès", domain: ["éradication"] }
+      - { id: nosgler, name: "Nosgler", domain: ["pourriture"] }
+      - { id: velenas, name: "Velenas", domain: ["avidité"] }
+    alignment_tendency: chaotic_evil
+    metadata: { source: paper, version: 1 }
+
+  - id: cyclope_grand_citation
+    name: "Cyclope (Grand Citation)"
+    category: animist
+    primary_race: cyclope
+    doctrine: "Chacun doit porter son fardeau en silence."
+    deities:
+      - { id: celui_qui_porte, name: "Celui qui porte", domain: ["porter", "fardeau"] }
+    metadata: { source: paper, version: 1 }
+
+  - id: dieux_felides
+    name: "Dieux Félidés"
+    category: polytheist
+    primary_race: felide  # Chigr, Khochigr, Khogr
+    doctrine: "Importance de chaque chose. Force, chasse, action."
+    deities:
+      - { id: alundra, name: "Alundra", domain: ["pluie"], motto: "Toute chose a son importance." }
+      - { id: harcan, name: "Harcan", domain: ["combats"], motto: "Les plus forts d'entre nous doivent mener la tribu." }
+      - { id: kerschak, name: "Kerschak", domain: ["jour"], motto: "Méfie toi du serpent silencieux plus que du paon jacasseur." }
+      - { id: nanaki, name: "Nana'Ki", domain: ["chasse"], motto: "Tout acte doit avoir une utilité." }
+      - { id: opona, name: "Opona", domain: ["fertilité"], motto: "La vie doit être célébré en chaque instant paisible." }
+      - { id: rajin, name: "Rajiñ", domain: ["nature"], motto: "Connaître la nature autour de soi est une nécessité." }
+      - { id: saramba, name: "Saramba", domain: ["danse"], motto: "La danse unifie le corps et l'esprit." }
+      - { id: sinoum, name: "Sinoum", domain: ["flammes"], motto: "Intense et éphémère, ainsi doit être la vie." }
+      - { id: vitani, name: "Vitani", domain: ["nuit"], motto: "Il y a toujours quelque part une lumière qui vous guidera." }
+    metadata: { source: paper, version: 1 }
+
+  - id: dieux_gobelinoides
+    name: "Dieux Gobelinoïdes"
+    category: polytheist
+    primary_race: gobelinoid  # gobelins + orcs
+    doctrine: "Domination, conquête, haine envers les nains."
+    deities:
+      - { id: golmok, name: "Golmok", domain: ["gobelins"], motto: "Rien ne pourra nous contenir indéfiniment... Tuez les nains, tuez les tous !!!" }
+      - { id: orlok, name: "Orlok", domain: ["orcs"], motto: "Il a raisons tuez les nains ! On est les plus fort !" }
+    alignment_tendency: chaotic_evil
+    metadata: { source: paper, version: 1 }
+
+  - id: dieux_hobbits
+    name: "Dieux Hobbits"
+    category: polytheist
+    primary_race: hobbit
+    doctrine: "Philosophies existentielles. Bonheur simple."
+    deities:
+      - { id: glindron, name: "Glindron", domain: ["réjouissances"], motto: "Prends la vie du bon côté !" }
+      - { id: darlon, name: "Darlon", domain: ["moissons"], motto: "Si les graines ne poussent pas, c'est qu'il y a un problème." }
+      - { id: toulda, name: "Toulda", domain: ["relations"], motto: "Être poli, c'est la moindre des politesses." }
+      - { id: lidioun, name: "Lidioun", domain: ["tranquillité"], motto: "Ne rien faire est un droit fondamental !" }
+    metadata: { source: paper, version: 1 }
+
+  - id: dieux_hommes_lezards
+    name: "Dieux Hommes-Lézards"
+    category: polytheist
+    primary_race: homme_lezard
+    doctrine: "Règles. Respect, prudence, calme."
+    deities:
+      - { id: sarriuss, name: "Sarriuss", domain: ["soleil"], motto: "Baissse le regard devant plus puisssants que toi." }
+      - { id: seloq, name: "Séloq", domain: ["pluie"], motto: "Ne sous essstime pas la puisssance du nombre." }
+      - { id: esskja, name: "Esskja", domain: ["étoile"], motto: "Tu n'es jamais ssseul." }
+      - { id: lisstir, name: "Lisstir", domain: ["nuage"], motto: "N'agit pas dans l'empresssement." }
+      - { id: kassyl, name: "Kassyl", domain: ["éclairs"], motto: "L'agresssivité doit être éphémère et ciblé." }
+      - { id: ssima, name: "Ssima", domain: ["vent"], motto: "Méfie toi de ce que tu ne peux combattre." }
+    notes: "Diction caractéristique avec 'sss' allongé"
+    metadata: { source: paper, version: 1 }
+
+  - id: dieux_hommes_rats
+    name: "Dieu Homme-Rat"
+    category: monotheist  # ou théocratie impériale
+    primary_race: homme_rat
+    doctrine: "L'Empereur (homme-rat actuel) est divinité incarnée."
+    deities:
+      - { id: empereur_homme_rat, name: "L'Empereur", domain: ["tout"], notes: "Le plus largement répandu après le Dieu Unique" }
+    metadata: { source: paper, version: 1 }

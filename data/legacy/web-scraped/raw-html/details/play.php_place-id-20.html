@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=20">La posada de truchas doradas</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=2">
+        <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=2">Lenirdyl Al Menolda Dufaux</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=78">
+        <img src="../img/characters-profil/78.jpg" alt="Feng" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=78">Feng</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=87">
+        <img src="../img/characters-profil/87.jpg" alt="Petit gourou" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=87">Petit gourou</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=88">
+        <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=88">Archibald Baudoin</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=94">
+        <img src="../img/characters-profil/94.jpg" alt="Marie" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=94">Marie</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=160">
+        <img src="../img/characters-profil/160.jpg" alt="Féline" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=160">Féline</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=20&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.08.19
+            </div>
+
+            <div class="forum-post-content">
+                *Sela qui écoute la conversation en jouant avec son couteau à aller entre ses doigts de plus en plus vite.
+
+- Je suis d&#039;accord qu&#039;on prenne plus soin de nos chevaux et qu&#039;aussi qu&#039;on se fasse une cariole de compète.
+
+ <hr><span class="play-sub-title">Action</span><br /><p>Dextérité + Couteau de lancer (diff. 7) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Et pour le cheval, vous pensez faire comment, concrètement? Pas&#039;qu là, moi, j&#039;ai pas d&#039;ideey.
+
+Archibald, vous savez siffler? Je veux dire pas nous siffloter un petit air sympa mais siffler fort? Un autre truc que vous pouvez faire, c&#039;est emporter avec vous un truc lourd à balancer sur la tête des assaillants, genre une pierre et plus tard, apprendre à vous servir d&#039;une lance en plus de votre arc...de où vous serez, ça sera surement violent. 
+
+(lance, c&#039;est F+4, mais en position vertical, au dessus de quelqu’un, y a surement un bonus offert pour l’énergie potentielle que la lance a, non?)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Ben c&#039;est bien beau tout ça, mais question argent.... je suis pas très riche. Donc faire des améliorations, oui, mais si c&#039;est pour tout perdre dans une semaine, je sais pas trop.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.08.19
+            </div>
+
+            <div class="forum-post-content">
+                T&#039;as bien raison, Len...Après, si on peut eviter de mourir, c&#039;est plutôt une bonne idéey quand même...Une caisse en bois, ça devrait pas être trop cher quand même. Et protéger le cheval, faut voir si c&#039;est moins cher qu&#039;en rach&#039;ter un...Mais s&#039;organiser, ça coute rien et ça augmente largement nos chances de survie...Y en a quand même marre de se faire surprendre à chaque bosquet, non?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Je suis d&#039;accord.
+Pour la protection des chevaux, je pensais à des caparaçons. Ca ne nous coûtera pas si chère et si on peut minimiser nos chances d&#039;être immobiliser, je penses que c&#039;est bien.
+Pour l&#039;organisation, à part demander à Archibald si il est d&#039;accord d&#039;être guetteur vous pensez à quoi ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Chai pas, moi, c&#039;est vous l&#039;expert en tactique de combat...Mais pour ma part, j&#039;vais anticiper chaque matin un sort...probabl&#039;ment un sort qui m&#039;permet d&#039;être plus rapide, vousz en pensez quoi?
+
+(jet de tactique de combat, mais sans la compétence tactique de combat :-P)
+ <hr><span class="play-sub-title">Action</span><br /><p>Intelligence (diff. 7) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Ben tu te dis que ce serait une bonne idée de mettre les combattants devant, et les autres derrière xD (C&#039;est un smiley).
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Alors Andalure...à part mettre les combattants à l&#039;avant...?
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Féline<br />
+
+                <a href="character-detail.php?id=160">
+                    <img src="../img/characters-profil/160.jpg" alt="Féline" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Miaou! *Ronronne*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                <div class="forum-post-demarcation-line">Fin de la scène</div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=20&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=20&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=20&page=3">
+          3
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

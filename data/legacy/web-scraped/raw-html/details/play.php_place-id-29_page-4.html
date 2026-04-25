@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=29">La casa Fortuna</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=211">
+        <img src="../img/characters-profil/211.jpg" alt="M. Urbano" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=211">M. Urbano</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=214">
+        <img src="../img/characters-profil/214.jpg" alt="Andrea" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=214">Andrea</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=29&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP] Parce que sa remarque, si je la comprends dans le bon sens, sonne comme une nette interruption de la négociation. Il sous-entend bien que nous ne pourrons pas collaborer où nous entendre, sauf si nous adhérons à la Fortuna?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                *jet de vue sur Urbano et jet de moire visuelle pour le gamin
+A-t-il un attribut qui permet de l&#039;identifier comme appartenant à la Foruna (tatouage, pendentif, accessoire) que j&#039;aurais déjà repéré chez le gamin qui nous a ouvert? <hr><span class="play-sub-title">Action</span><br /><p>Perception + Vue (diff. 6) => 0R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                mémoire <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Mémoire (diff. 6) => 6R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Bien... en premier lieu, je teins à vous presenter mes excuses...
+Il n&#039;y avait en aucun cas d&#039;hostilité, lié à notre message initial.
+
+Bien au contraire, je voulais principalement que votre maison et notre groupe puisse sincèrement s&#039;entendre.
+
+J&#039;ignore ce que vous connaissez de nous, mais la couronne nous reconnais effectivement comme une force de frappe majeur du pays, même pays d&#039;ailleurs que nous avons sauvé, je dirais même plusieurs fois, ainsi que toutes les organisations qui profitent de la prospérité renaissante d&#039;Alteria, par extension.
+
+Sela relève de manière bien directe ce que j&#039;ai dit en préambule, si il devait y avoir une confrontation entre nous, il y&#039;aura des dommages collatéraux significatifs, sans le moindre doute et c&#039;est exactement ce qu&#039;on vas éviter *lance un regard et sourire doux à Sela*.
+
+Je peux considérer être affilier à la fortuna, après avoir pu négocier les conditions.
+Il est exclu que je paie un impôt directe sur les revenus de l’établissement, étant donné principalement, que ces revenus sont destiné à la reconstruction et au développement d&#039;Alteria, qui est d&#039;ailleurs une priorité pour retarder une contre attaque imminente de l&#039;empire.
+
+Plus le pays aura la force d&#039;entreprendre et de ce développer rapidement, ainsi que multiplier les transactions commercial frontalière, plus il gagnera en crédibilité international, plus nous aurons de chance de créer des alliances tacite et non-tacite avec nos voisins.
+
+Notre groupe à été désigné comme ambassadeurs, pour de nombreuse missions diplomatiques internationals imminentes et je crois que notre première mission devrais être dans les murs de la ville.
+Je crois que les 5 mafias ont un rôle à jouer dans la sauvegarde du territoir et doivent participer activement au développement de la nation et ce, dans leurs propre intérêt... car si Altéria ce fait rasé... vous comme notre princesse n&#039;aurez rien sur quoi régner...
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1219&place-id=29" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                *réfléchis tellement fort que tous ces traits se crispent* <hr><span class="play-sub-title">Action</span><br /><p>Intelligence (diff. 7) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1220&place-id=29" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Mais en fait M&#039;sieur Urbano... on dit que 49 est malin comme un singe... p&#039;tet quand fait c&#039;est vous ? c&#039;est vrai quoi... on sais pas à quoi il ressemble... Moi je me ferais trop passer pour un subordonné comme ça je pourrais voir si les gens en face c&#039;est des gens bien ou pas même si ils sont pas
+ devant la tête de l&#039;organisation...
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1221&place-id=29" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                *s&#039;approche de Nerrak et lui caresse le visage*
+Bien vue ma chère, au detail prêt que tu aurais du gardé ton raisonnement pour toi. si c&#039;est le cas...
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1222&place-id=29" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                @Akbar : Quant au ton de M. Urbano, tu comprends facilement qu&#039;il est irrité et effrayé à la fois. Son ton peut être vu comme insolant pour des personnes de votre rang, ou comme d&#039;une grande bravoure selon le point de vue.
+De manière générale, tu comprends que la discussion est en train de mal tourner.
+
+@Akbar : Tu te souviens très clairement n&#039;avoir rien remarqué de particulier. *Petit smiley qui tire la langue et cligne d&#039;un oeil.*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                M. Urbano<br />
+
+                <a href="character-detail.php?id=211">
+                    <img src="../img/characters-profil/211.jpg" alt="M. Urbano" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                @Nerrak : Ah ! Tu t&#039;entendrais bien avec 49 toi. Lui aussi il a plein d&#039;idées farfelues qui tournent dans sa tête.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Bah dans ce cas, moi ça me vas d&#039;être affilier à la Fortuna, toute seul sans engager le groupe... J&#039;voulais faire une affaire avec Giovani on voulais faire un tournois de bras de fer et de pugilat avec des paris... et je veux que ça soit fait avec vous... j&#039;comptais venir en parler avec ou sans Sindalia t&#039;façon, donc ça r&#039;met pas du tout en cause s&#039;qu&#039;elle dit... disons que c&#039;est une autre affaire !
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1225&place-id=29" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=29&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=29&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=29&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=29&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=29&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=29&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=29&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=29&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=29&page=9">
+          9
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

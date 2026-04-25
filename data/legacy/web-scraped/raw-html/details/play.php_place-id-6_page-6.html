@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=6">L'oasis de Laura</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=52">
+        <img src="../img/characters-profil/52.jpg" alt="Hafed" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=52">Hafed</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=92">
+        <img src="../img/characters-profil/92.jpg" alt="John" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=92">John</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=6&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Laura<br />
+
+                <a href="character-detail.php?id=90">
+                    <img src="../img/characters-profil/90.jpg" alt="Laura" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Et bien comme je vous ai dit c'était comme un long rêve
+... Mais je me souviens qu'il m'a fait construire une machine à la cave!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Et j'imagine que vous n'avez aucune idée de ce à quoi sert cette machine...
+On est chez vous ici?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Laura<br />
+
+                <a href="character-detail.php?id=90">
+                    <img src="../img/characters-profil/90.jpg" alt="Laura" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.10.18
+            </div>
+
+            <div class="forum-post-content">
+                 
+06.10.18 
+Je crois... Je me rappelle.... * Fronce les sourcils* je crois que j'ai mis des gens dans la machine !! * Equarquille les yeux tout grand puis se rafaisse*. Oui vous êtes dans mon domaine.
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.10.18
+            </div>
+
+            <div class="forum-post-content">
+                ... Bien. Eh bien on dirait que vous avez été possédée par ce démon. Attention, lorsque le sort de Sindalia cessera de fonctionner il risque de recommencer.
+Sur ce, si vous n'avez rien d'autre à ajouter on va vous laisser.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Laura<br />
+
+                <a href="character-detail.php?id=90">
+                    <img src="../img/characters-profil/90.jpg" alt="Laura" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Regardes longuement Andalur dans les yeux, puis dit* Un elfe si fort que vous, vous ne pourriez pas laisser une demoiselle en détresse n'est-ce pas? *Souris (clairement elle essaye de te séduire, à 10 R, elle a 5 d'esthétique)*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *je regarde la scène, pas très patiente*
+- nous sommes en vacances, mais mon poing me démange!!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Archibald Baudoin<br />
+
+                <a href="character-detail.php?id=88">
+                    <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Redescend du toit et se pose à l'opposé du démon pour parler de son accent de bourge*
+Mes chers compagnons, n'est il pas plus sage d'emmener cette damoiselle loin d'ici ? Cet endroit ne me dit rien qui vaille. Met-on donc le feu à ce lieu maudit et fuyons aussi loin que nous le pouvons ! Je suis sûr que d'autres aventures passionnantes nous attendent dans un lieu moins dangereux !
+*ses plumes frémissent de peur à l'idée de rester là ! Oui oui, c'est un gros trouillard !*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Et bien Sela, va donc taper sur le gros démon, juste là *pointe le doigt*. *S'en va ausculter Hafed. Fait 2 R de médecine et arrive tant bien que mal à le réveiller*. Cet homme est extrêmement faible. Il lui faut du repos, bien manger et bien boire, sinon il ne tiendra pas le choc ! Quelqu'un peut m'aider à le mettre à l'ombre à l'intérieur?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Reste ébahis devant le numéro de charme que Laura lui a fait.
+Puis, reprend ses esprits à l'appel de Len et va l'aider à déplacer le dundorien sans rien répondre à Laura.*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Archibald Baudoin<br />
+
+                <a href="character-detail.php?id=88">
+                    <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *trouve une occasion de se planquer*
+Très certainement cher Monsieur ! Emmenons le loin d'ici ! 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=6&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=6&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=6&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=6&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=6&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=6&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=6&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=6&page=8">
+          8
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

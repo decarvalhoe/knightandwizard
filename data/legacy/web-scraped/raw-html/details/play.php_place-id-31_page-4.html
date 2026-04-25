@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=31">Castello di Sala</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=31&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.07.20
+            </div>
+
+            <div class="forum-post-content">
+                *fait le tour de la charrette, caressant le bois du revers de la main, impressionné par le lustre obtenu par polissage...
+Toujours dans sa barbe, en ronchonnant:
+C&#039;est bon, j&#039;ai compris...mais à ce moment là, on savait pas encore que c&#039;était un potentiel futur allié avec lequel on devait être diplomate...Alors une fois qu&#039;on l&#039;sait, c&#039;est quand même plus simple de faire de la diplomatie...
+
+A haute voix:
+Elle est belle c&#039;te charriotte! Reste à savoir si on se déplace sur terre ou dans les airs...D&#039;ailleurs, Ylenia, il peut venir avec nous Janko?
+
+&quot;- Ouaw la caisse ! Je peux la conduire ?&quot;
+-T&#039;as l&#039;permis?
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.07.20
+            </div>
+
+            <div class="forum-post-content">
+                Tout le monde peut conduire une charrette...
+Prem&#039;s.
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.07.20
+            </div>
+
+            <div class="forum-post-content">
+                Si vous juger que Janko peut vous être utile, il viendra avec vous bien sûr.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.07.20
+            </div>
+
+            <div class="forum-post-content">
+                Je précise juste que je ne conçoit comment le tableau pourrait être porté par Abu. Il fait 2 mètres sur 1, un peu plus dans son étui.
+Si vous avez une solution, je suis ouvert mais ça me semble des plus hasardeux.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.07.20
+            </div>
+
+            <div class="forum-post-content">
+                (Abu fait 3,6m x 1,2m)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.07.20
+            </div>
+
+            <div class="forum-post-content">
+                Bon, c est pas tout, mais il faudrait ce mettre en route avant les sainte glace...
+Et oui on prend Jenko.
+Merci Princess Ylenia 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.07.20
+            </div>
+
+            <div class="forum-post-content">
+                * Acquiesce en direction de Sela. *
+
+Janko est ici même, à Sala. Il surveille le tableau. Je le préviendrai qu&#039;il part avec vous.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.07.20
+            </div>
+
+            <div class="forum-post-content">
+                @Akbar : OK pour les dimensions du tapis, mais il faudra sûrement prévoir un moyen de le fixer et une protection contre l&#039;humidité.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.07.20
+            </div>
+
+            <div class="forum-post-content">
+                Il faudra bien réfléchir à comment nous allons nous déplacer...Mais tous les moyens sont actuellement en notre possession. Ylenia, est-ce essentiel que le peuple voie, tout au long du trajet, le tableau? Devons nous faire des haltes quotidiennes dans chaque pays pour que les gens puissent l&#039;admirer ou est-ce surtout important que les aristocrates et les nobles puissent l&#039;apprécier?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.07.20
+            </div>
+
+            <div class="forum-post-content">
+                Il n&#039;y a pas de plan déterminé à ce sujet. Tâchez de le montrer au maximum de monde possible, nobles ou pauvres. L&#039;objectif est de créer une rumeur. Les seuls points impératifs sont de passer à Cortega, en Enorie et en Empire. Vous devez rester un peu plus de temps en Enorie, et bien sûr revenir vivant pour dans 6 semaines très exactement. Ce sera le jour de mon mariage et j&#039;aurai besoin de mes meilleurs éléments.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=31&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=31&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=31&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=31&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=31&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=31&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=31&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=31&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=31&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=31&page=10">
+          10
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

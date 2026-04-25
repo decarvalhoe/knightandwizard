@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=7">Auberge de Puercos</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=14">
+        <img src="../img/characters-profil/14.jpg" alt="Sighild" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=14">Sighild</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=7&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.12.18
+            </div>
+
+            <div class="forum-post-content">
+                (tu peux faire un jet de charisme - je sais pas quoi de Gilbert quand il dit ça à Ackbar, please)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.12.18
+            </div>
+
+            <div class="forum-post-content">
+                (il fait 1 R de charisme et 1 R de charisme + sourire à la fin de son speech)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.12.18
+            </div>
+
+            <div class="forum-post-content">
+                (jet de volonté:2...)
+Et bien MONNSIEURR GILBERT! Je pense aussi qu'on va r'passer au vouvoyyement, pa'ce qu'en sommes, on s'connait pas vraiment non plus! Et je vais vous dire, MONSIEUR GILBERT, je peux pas vous donner entièrement tord, vous m'avez sauver la vie...ou plutôt, vous ne m'avez pas tué, si j'puis plutôt dire.  Puisse que vous êtes, finalement, la seule menace mortelle à laquelle j'ai eu à faire face entre le moment où on s'est rencontré et le moment où vous avez éliminé nos ravisseurs! 
+Alors en effet, je vous rend CA!
+*geste théâtral et excessif en posant avec force deux filets sur la table
+et CA!
+*même geste avec le globe
+et aussi CA!
+*idem avec du matériel d'injection
+C'est c'que vous auriez pu prendre, si ça vous avais intéressé su' l'moment. J'espère que vous en ferez bonn usage! Après, si vo't morale vous fait penser qu'c'est du vol, et bein vous voila receleur!
+Quant au jour d'captivité que vous m'avez épargné; mis en perspective avec le fait que vous avez "OMI"
+*geste de guillemets du bout des doigts
+de nous dire que vous étiez poursuivit par un VAMPIRE et le fait que vous m'avez pas assassiné alors que vous aviez la possibilité, ça vaut bien le salaire que vous ne m'avez pas versé.
+*Se rapproche de son oreille et lui sert assez fort (F=1) l'épaule de la main en chuchotant:
+Et que vous étiez un loup-garou, en passant. Je suis pas sur que vous soyez si content que ça que ça se sache, MONSIEUR l'assassin donneur de leçons de morale!
+* se relève et s'adresse à la tablée
+Je sais pas vous, mais moi, je me casse. Retrouver le bouquin de MONSIEUR n'est plus dans mes priorités.
+* se retourne et commence à partir, visiblement très en colère puis s'arrête et pointe le doigt en l'air
+Ah oui...oubliez pas d'aller rechercher votre carte qui parle!
+*reprend sa marche d'un pas déterminé
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.12.18
+            </div>
+
+            <div class="forum-post-content">
+                (C'est Feng qui t'as dit qu'il ne souhaitait pas que tu le tutoies).
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Gilbert<br />
+
+                <a href="character-detail.php?id=119">
+                    <img src="../img/characters-profil/119.jpg" alt="Gilbert" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.12.18
+            </div>
+
+            <div class="forum-post-content">
+                Ha ben visiblement j'ai touché un point sensible... il est pas très net ce hobbit. Après un marché est un marché, je vous ai engagé, je vous paierai. Si vous souhaitez vous rétracter et bien... cela veut dire que vous n'avez pas de parole, ce qui serait ma foi bien dommage.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.12.18
+            </div>
+
+            <div class="forum-post-content">
+                [Pense : Meliokyss m'a demandée de suivre Ackbar pour trouver Thomas Vicery. Allons-y.]
+
+* Termine son verre d'une traite, se lève et rejoint Ackbar.*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.12.18
+            </div>
+
+            <div class="forum-post-content">
+                (ouais, j'ai compris, c'est juste qu'Ackbar était déjà bien énervé par Feng qui le traitait de voleur sans reconnaitre le grand service qu'il lui avait rendu et que Gilbert en a rajouté. C'était la goutte d'eau qu'Ackbar n'a pas pu contenir =>jet de volonté 2)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.12.18
+            </div>
+
+            <div class="forum-post-content">
+                On fait quoi maintenant ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.12.18
+            </div>
+
+            <div class="forum-post-content">
+                *en ronchonnant
+Putain, ce connard, j'y crois pas! franchement, c'est quand même gonflé de faire son moralisateur à deux écus alors qu'il est pas mieux et je dirais même pire! Merde à la fin!
+
+*se retourne vers Andalur, visiblement content qu'il aie suivit...
+
+Pour les rubis, à mon avis, il faut encore les garder un peu et les revendre là où on nous en donnera un prix honnête - chez les nains, ou en Adérand, je dirais.
+Pour ce qui est de Cortega, il va falloir décider...Soit on livre la position du gamin en échange d'une escorte d'exorciste et du nom de ce démon, soit on se démerde autrement, mais franchement, j'ai pas l'impression qu'on a des masses de choix...
+Qu'es t'en penses, de tout ça, Andalure?
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                21.12.18
+            </div>
+
+            <div class="forum-post-content">
+                Je n'ai pas de problème à traiter avec l'archevêque de Brandi. Il m'a même semblé conciliant. Et pour les rubis, à dire vrai, je ne suis pas pressé. On ira où il vous paraîtra judicieux d'aller.
+
+*Se retourne en direction de Sela et Feng.*
+
+Vous venez ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=7&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=7&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=7&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=7&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=7&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=7&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=7&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=7&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=7&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=7&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=7&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=7&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=7&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=7&page=14">
+          14
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

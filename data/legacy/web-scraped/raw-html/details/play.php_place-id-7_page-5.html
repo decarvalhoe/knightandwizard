@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=7">Auberge de Puercos</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=14">
+        <img src="../img/characters-profil/14.jpg" alt="Sighild" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=14">Sighild</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=7&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.01.19
+            </div>
+
+            <div class="forum-post-content">
+                 *lui tend 30 écus 
+-Dis, pour ce prix, tu m'donnes c'ui-là en prime? 
+*en montre un du doigt qui pourrait les contenir tous
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.01.19
+            </div>
+
+            <div class="forum-post-content">
+                *coupé en plein dans son élan* ... Dites ça vous intéresse pas mes histoires ?? Bon peut-être que mamie a raison, yé parle trop et yé travaille pas assez. Héhé * fais un grand sourire Colgate*. Si yé te l'offre ton grand sac. Mais fais-moi de la bonne pub !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.01.19
+            </div>
+
+            <div class="forum-post-content">
+                -Merci Enrico! Non seulement je te ferai de la pub, mais si un jour j'ai b'soin de quèt chose, je me rappellerai de ton vaste choix. Allez, bonne fin de journéy!
+
+*s'en va avec ses sachets, tous dans le grand sac. Se dirige vers des marchands de graines. Regarde un peu le choix et demande
+
+-Bonjour, vouz avez quoi comme graines?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.01.19
+            </div>
+
+            <div class="forum-post-content">
+                Alors en vrac tu trouves: des tomates, des courgettes, des aubergines, des courges, du fenouil, toutes les céréales possibles et imaginables, des oranges, des oranges sanguines, des mandarines, des grenades, des pommes, des poires, des abricots, de la lavande, des herbes aromatiques de tous types, des avocats, des coings, des marrons, des oléagineux (noix, noisettes, noix de pécan, etc), des olives, des glands. Il y a également tout une flopée de fleurs diverses et variées dont des roses. Il y a également un marchand qui vient du sud de la Dundoria qui a amené tout un tas de fruits type tropicaux (ananas, banane, papaye, litchi, etc) et il te dit en dundorien qu'il a pas vendu grand chose car ce sont des choses qui ne poussent pas ici mais qu'il est content d'être venu car il avait jamais visité Cortega et qu'il en profite pour faire le touriste.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.01.19
+            </div>
+
+            <div class="forum-post-content">
+                Bon, en résumé, Ackbar a dans l'idée d'acheter/se faire offrir quelques graines de chaque sortes qu'il peut trouver. Et d'offrir tout ça à Moerkann une fois rentré. Je ne prend que les graines, pas de fruits entiers, sauf une noix de coco et une figue de barbarie si je trouve.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.01.19
+            </div>
+
+            <div class="forum-post-content">
+                Tu trouves tout ce que tu veux, c'est la fête du grain ! Ca te coute... aller 15 écus?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.01.19
+            </div>
+
+            <div class="forum-post-content">
+                okay! Ackbar va prendre tout ce qu'il peut, et le mettre dans un maximum de sachet séparés avec des petites étiquettes pour savoir ce que c'est. Quand il n'aura plus de place, il va mélanger deux voir trois sortes par sachet en faisant un dessin de chaque graine différente pour les reconnaitre.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Archibald Baudoin<br />
+
+                <a href="character-detail.php?id=88">
+                    <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.01.19
+            </div>
+
+            <div class="forum-post-content">
+                *a quitté la taverne fâché suite au surnom de "piaf" que Akbar lui a donné et s'en est allé se promener au marché où il croise Akbar. Le salue froidement en mimant un chapeau qu'il retire et repose sur sa tête. 
+Monsieur le nain ! Vous ici ? 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.01.19
+            </div>
+
+            <div class="forum-post-content">
+                (Ackbar a appellé Archibald "le piaf"?)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Archibald Baudoin<br />
+
+                <a href="character-detail.php?id=88">
+                    <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.01.19
+            </div>
+
+            <div class="forum-post-content">
+                (10 décembre 2018, 1ère page) 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=7&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=7&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=7&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=7&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=7&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=7&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=7&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=7&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=7&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=7&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=7&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=7&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=7&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=7&page=14">
+          14
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

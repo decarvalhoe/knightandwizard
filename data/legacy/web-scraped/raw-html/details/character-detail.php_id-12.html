@@ -1,0 +1,3181 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1>Sindalia Androulya Lissentia</h1>
+
+<div id="character-detail-profil-img">
+    <img class="painting" src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" width="220" height="275"><br />
+
+            <a href="update-character.php?id=12&update=profil-img" class="update-link">modifier</a>
+    </div>
+
+    <form action="character-detail.php?id=12" method="post" class="form" target="_blank">
+        <input type="hidden" name="action" value="print-character">
+        <input type="submit" style="float:right" value="Imprimer" />
+    </form>
+
+    <br />
+
+    <div>
+        Status : PJ
+
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=status" class="update-link"><span class="glyphicon glyphicon-pencil"></span></a>
+
+        <br />
+
+        Lieux :
+
+                    <a href="play.php?place-id=2">
+                Palais d'Erune
+            </a>
+        
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=place" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+    </div>
+
+    <h2>Informations</h2>
+
+    <div class="character-detail-2-col-left">
+        Nom : Sindalia Androulya Lissentia
+
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=name" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Sexe : Féminin
+
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=gender" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Race : Elfe Sombre
+
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=race" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Orientation : Magicien
+
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=orientation" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Classe : Sorcier
+
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=class" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Niveau : 24
+    </div>
+
+    <div class="character-detail-info-column-right">
+        Vitalité : 30
+
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=vitality-max" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        F. Vitesse : 4
+
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=speed-factor" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        F. Volonté : 8
+
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=will-factor" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Energie : 180
+
+        &nbsp;
+
+        <a href="update-character.php?id=12&update=energy-max" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Points : 484 / 500
+    </div>
+
+    <br />
+
+    <div id="character-detail-attributes">
+        <h2>Attributs</h2>
+
+        <div class="character-detail-3-col-left">
+            Force : 4
+            &nbsp;
+            <a href="update-character.php?id=12&update=attribute&attribute=strength" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Dextérité : 5
+            &nbsp;
+            <a href="update-character.php?id=12&update=attribute&attribute=dexterity" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Endurance : 4
+            &nbsp;
+            <a href="update-character.php?id=12&update=attribute&attribute=stamina" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+        </div>
+
+        <div class="character-detail-3-col-center">
+            Esthétisme : 6
+            &nbsp;
+            <a href="update-character.php?id=12&update=attribute&attribute=aestheticism" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Charisme : 5
+            &nbsp;
+            <a href="update-character.php?id=12&update=attribute&attribute=charisma" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Empathie : 4
+            &nbsp;
+            <a href="update-character.php?id=12&update=attribute&attribute=empathy" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+        </div>
+
+        <div class="character-detail-3-col-right">
+            Intelligence : 7
+            &nbsp;
+            <a href="update-character.php?id=12&update=attribute&attribute=intelligence" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Perception : 4
+            &nbsp;
+            <a href="update-character.php?id=12&update=attribute&attribute=perception" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Réflexes : 4
+            &nbsp;
+            <a href="update-character.php?id=12&update=attribute&attribute=reflexes" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+        </div>
+    </div>
+
+    <div id="character-detail-skills">
+        <h2>Compétences</h2>
+
+        <a href="update-character.php?id=12&update=new-skill" style="float:right"><button>Nouvelle compétence</button></a>
+
+        <br />
+
+        
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Apprentissage : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=73" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=73" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Apprentissage de la magie : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=264" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=264" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Apprentissage de la musique : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=299" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=299" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Apprentissage des langues : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=298" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=298" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Arcanologie : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=46" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=46" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie abjuratrice : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=253" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=253" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie ancienne : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=144" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=144" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie blanche : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=278" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=278" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie chaotique : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=180" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=180" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie conceptuelle : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=321" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=321" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie des rituels : 1
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=265" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=265" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie divinatoire : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=280" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=280" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie enchanteresse : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=281" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=281" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie illusoire : 1
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=284" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=284" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie invocatrice : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=282" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=282" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie naturelle : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=283" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=283" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie noire : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=216" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=216" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie nécromantique : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=221" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=221" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arcanologie énergétique : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=285" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=285" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Archerie : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=308" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=308" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Arc long : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=9" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=9" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Tir dans la gorge (arc long) : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=159" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=159" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Tir dans la tête (arc long) : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=89" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=89" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Tir en mouvement (arc long) : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=322" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=322" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Tir monté (arc long) : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=323" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=323" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Tir sur cible mouvante (arc long) : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=320" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=320" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Calligraphie : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=101" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=101" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Cartographie : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=297" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=297" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Combat à mains nues : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=7" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=7" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Clef de bras : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=169" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=169" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Coup de poing : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=86" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=86" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Crochet : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=166" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=166" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Direct : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=167" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=167" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Uppercut : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=168" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=168" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Désarmement : 4
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=311" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=311" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Esquive : 4
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=82" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=82" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Esquive baissée : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=174" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=174" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Esquive sautée : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=175" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=175" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Giffle : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=305" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=305" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Commandement : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=66" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=66" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Commerce : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=274" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=274" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Marchandage : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=122" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=122" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Comédie : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=38" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=38" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Mensonge : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=196" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=196" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Course : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=23" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=23" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Danse : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=32" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=32" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Droit : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=191" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=191" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Echecs : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=39" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=39" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Enseignement : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=55" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=55" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Enseignement de l'équitation (cheval) : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=304" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=304" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Enseignement de la magie : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=303" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=303" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Epée : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=309" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=309" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Epée bâtarde : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=302" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=302" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Frappe à la gorge (épée bâtarde) : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=313" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=313" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Frappe à la tête (épée bâtarde) : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=312" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=312" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Parade (Epée bâtarde) : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=306" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=306" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Equitation (cheval) : 4
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=22" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=22" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Galop : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=155" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=155" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Escalade : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=24" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=24" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Ethnologie : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=316" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=316" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Exorcisme : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=88" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=88" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Furtivité : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=71" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=71" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Furtivité en forêt : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=310" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=310" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Gymnastique : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=49" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=49" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Harpe : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=295" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=295" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Herbologie : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=58" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=58" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Histoire : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=195" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=195" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Histoire de l'art : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=300" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=300" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Langage altérien : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=11" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=11" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Langage carénien : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=28" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=28" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Langage cortegan : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=14" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=14" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Langage dundorien : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=42" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=42" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Langage irtanien : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=41" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=41" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Langue sombre : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=172" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=172" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Lingua Mortis : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=266" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=266" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Mathématique : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=10" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=10" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Musicologie : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=194" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=194" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Mémoire : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=72" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=72" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Natation : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=6" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=6" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Apnée : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=307" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=307" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Ouïe : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=20" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=20" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Politique : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=127" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=127" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Diplomatie : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=190" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=190" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Négociation diplomatique : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=208" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=208" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Psychologie : 4
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=108" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=108" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Détection du mensonge : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=198" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=198" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Manipulation : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=262" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=262" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Psychologie humaine : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=252" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=252" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Réconfort : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=80" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=80" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Sexualité : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=62" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=62" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Sociologie : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=193" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=193" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Stratégie millitaire : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=45" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=45" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Théologie : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=29" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=29" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Culte de Sarh : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=213" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=213" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Théologie du Dieu Unique : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=103" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=103" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Connaissance des Saintes Ecritures : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=104" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=104" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Vue : 4
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=16" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=16" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Vue en forêt : 2
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=skill&skill-id=319" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-skill&skill-id=319" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+            </div>
+
+    <div id="character-detail-assets">
+        <h2>Atouts</h2>
+
+        <a href="update-character.php?id=12&update=new-asset" style="float:right;"><button>Nouvel atout</button></a>
+
+        <br /><br />
+
+                    <a href="update-character.php?id=12&update=new-level-asset" style="float:right;"><button>Nouvel atout de niveau</button></a>
+
+            <br />
+        
+                    <div class="character-detail-asset-left">                Familier
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=63" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-left">                Magie noire
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=129" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Anticipation magique
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=199" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Auto-soin
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=160" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Autodidacte
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=250" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Bouclier des arcanes
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=287" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Coup mortel
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=159" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Débordement d’énergie
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=148" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Détection des coups portants
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=268" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Détection des projectiles portants
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=280" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Energie à l’honneur
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=223" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Familier supplémentaire
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=247" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Forteresse mentale
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=182" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Grand amour
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=146" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Hybridation du familier
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=392" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Libération d’énergie
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=227" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Maîtrise de l’énergie
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=373" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Passage au familier
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=338" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Polyvalence
+
+                                    : 4
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=187" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Rappel du familier
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=211" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Répulsion
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=347" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Résistance aux maladies
+
+                                    : 30
+
+                                            %
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=45" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Résistance à l’alcool
+
+                                    : 30
+
+                                            %
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=42" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Sens du familier
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=165" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Télépathie
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=19" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Vision
+
+                                    : 110
+
+                                            %
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=3" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Vision nocturne
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=12&update=remove-asset&asset-id=22" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+            </div>
+
+            <div id="character-detail-spells">
+            <h2>Magie</h2>
+
+            <a href="update-character.php?id=12&update=new-spell">Ajouter</a>
+
+            <table class="spells-table">
+                <thead>
+                    <tr>
+                        <th>Sort</th>
+                        <th>Type</th>
+                        <th>Energie</th>
+                        <th>TI</th>
+                        <th>Diff.</th>
+                        <th>Effet</th>
+                    </tr>
+                </thead>
+
+                                    <tr>
+                        <td>Affaiblissement : 2</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>1 malus/R, 50 DT/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=260" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Appel des morts : 3</td>
+                        <td>
+                                        					Nécromancie
+            				                        </td>
+                        <td>14</td>
+                        <td>22</td>
+                        <td>10</td>
+                        <td>1 mort/niv, 3m/R, catégorie max 20</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=239" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Arrêt du temps : 4</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>47</td>
+                        <td>42</td>
+                        <td>16</td>
+                        <td>Arrêt 10 DT/R</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=263" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Auto clonage : 3</td>
+                        <td>
+                                        					Illusion
+            				                        </td>
+                        <td>9</td>
+                        <td>12</td>
+                        <td>8</td>
+                        <td>Crée un clone du lanceur/R</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=159" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Bénédiction : 2</td>
+                        <td>
+                                        					Blanche
+            				                        </td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>9</td>
+                        <td>Diff. –1/R 10min/Niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=63" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Bénédiction de masse : 4</td>
+                        <td>
+                                        					Blanche
+            				                        </td>
+                        <td>18</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>Diff. –1, 1 Perso/R. 10min/Niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=64" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Bêtise : 4</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>Intelligence -1/R, 10 min/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=264" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Contagion du péché : 2</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>207</td>
+                        <td>186</td>
+                        <td>33</td>
+                        <td>Chaîne de contagion des 7 péchés</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=265" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Control charnel : 5</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>15</td>
+                        <td>13</td>
+                        <td>9</td>
+                        <td>Eveille le désir de la cible sous F. vol</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=266" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Contrôle mental : 5</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>19</td>
+                        <td>17</td>
+                        <td>10</td>
+                        <td>Control sous test d’intelligence, 10min/Niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=267" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Dextérité : 2</td>
+                        <td>
+                                        					Blanche
+            				                        </td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>7</td>
+                        <td>Dextérité +1/R, 10 min/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=302" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Dissipation : 3</td>
+                        <td>
+                                        					Abjuration
+            				                        </td>
+                        <td>11</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>Annule un sort actif</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=22" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Douleur de masse : 4</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>14</td>
+                        <td>13</td>
+                        <td>9</td>
+                        <td>-2 points de vitalité/R, 3m/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=270" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Douleur majeure : 4</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>8</td>
+                        <td>-3 points de vitalité/R</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=271" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Drain de sort majeur : 3</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>13</td>
+                        <td>12</td>
+                        <td>8</td>
+                        <td>4 PS absorbé/R</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=274" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Déviation de masse : 2</td>
+                        <td>
+                                        					Blanche
+            				                        </td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>9</td>
+                        <td>Diff +1 pour être toucher, 1 Perso/R, 10min/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=66" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Emprise corporelle : 4</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>18</td>
+                        <td>16</td>
+                        <td>10</td>
+                        <td>Possède sous test d’intelligence, 10min/Niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=312" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Force : 2</td>
+                        <td>
+                                        					Blanche
+            				                        </td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>7</td>
+                        <td>Force +1/R, 10 min/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=75" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Guérison absolue : 1</td>
+                        <td>
+                                        					Blanche
+            				                        </td>
+                        <td>131</td>
+                        <td>145</td>
+                        <td>28</td>
+                        <td>+2 de vitalité/R</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=76" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Hibernation : 2</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>17</td>
+                        <td>15</td>
+                        <td>10</td>
+                        <td>1 jour d’hybernation/R</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=279" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Identification : 3</td>
+                        <td>
+                                        					Divinatoire
+            				                        </td>
+                        <td>7</td>
+                        <td>12</td>
+                        <td>7</td>
+                        <td>Révèle au lanceur l’utilisation d’un objet</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=100" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Implosion : 2</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>45</td>
+                        <td>40</td>
+                        <td>16</td>
+                        <td>1 dégât/R si sup. à l’endurance, cible implose</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=281" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Intelligence : 4</td>
+                        <td>
+                                        					Blanche
+            				                        </td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>7</td>
+                        <td>Intelligence +1/R, 10 min/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=74" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Malédiction : 4</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>14</td>
+                        <td>13</td>
+                        <td>9</td>
+                        <td>Diff. +1/R, 10min/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=286" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Oubli : 3</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>La cible oublie 10 min /R sous jet d’intelligence</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=287" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Paralysie : 3</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>Paralyse 50DT/R, si R sup à jet de force</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=288" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Passe-partout : 2</td>
+                        <td>
+                                        					Enchantement
+            				                        </td>
+                        <td>8</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>Verrouille/déverrouille une porte</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=152" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Peur : 3</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>Test de volonté pour ne pas avoir peur</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=289" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Porte de secours : 2</td>
+                        <td>
+                                        					Enchantement
+            				                        </td>
+                        <td>14</td>
+                        <td>14</td>
+                        <td>9</td>
+                        <td>20cm de profondeur/R 10min/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=153" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Pénombre : 2</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>Plonge dans l'ombre 5 m2/R, 10 min/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=309" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Rapidité : 2</td>
+                        <td>
+                                        					Blanche
+            				                        </td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>9</td>
+                        <td>Facteur de vitesse -1/R, 50 DT/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=87" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Regard de puissance : 3</td>
+                        <td>
+                                        					Divinatoire
+            				                        </td>
+                        <td>12</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>Colore en fonction de puissance, 1min/R</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=106" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Sommeil : 2</td>
+                        <td>
+                                        					Enchantement
+            				                        </td>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>6</td>
+                        <td>Test de vol. pour ne pas dormir</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=156" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Vengeance : 4</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>Renvoi 1 dégât/R, 10 min/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=292" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>Vengeance en masse : 5</td>
+                        <td>
+                                        					Noire
+            				                        </td>
+                        <td>13</td>
+                        <td>11</td>
+                        <td>8</td>
+                        <td>Renvoi 1 dégât/R, 10 min/niv., 3m/niv.</td>
+                        <td>
+                            <a href="update-character.php?id=12&update=spell&spell-id=293" class="update-link">modifier</a>
+                        </td>
+                    </tr>
+                            </table>
+        </div>
+    
+    <h2>Notes</h2>
+
+    <form action="update-character.php?id=12&update=note" method="post" class="form">
+        <textarea name="note" rows="6" cols="143"></textarea>
+
+        <br />
+
+        <input type="submit" style="float:right" value="Noter" />
+    </form>
+
+    <br />
+
+    <div class="delete-container">
+        <a href="javascript:AlertIt();" class="delete-link">Supprimer ce personnage</a>
+    </div>
+
+
+    <script type="text/javascript">
+        function AlertIt() {
+            var answer = confirm ("Voulez-vous vraiment supprimer ce personnage ?")
+
+            if (answer)
+            window.location="update-character.php?id=12&update=remove";
+        }
+    </script>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

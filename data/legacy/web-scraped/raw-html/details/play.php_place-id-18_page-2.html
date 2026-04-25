@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=18">Château d'Aljoteria</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=142">
+        <img src="../img/characters-profil/142.jpg" alt="Abdullah" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=142">Abdullah</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=143">
+        <img src="../img/characters-profil/143.jpg" alt="Irina" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=143">Irina</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=144">
+        <img src="../img/characters-profil/144.jpg" alt="Valentin de Provoda" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=144">Valentin de Provoda</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=145">
+        <img src="../img/characters-profil/145.jpg" alt="Roxane" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=145">Roxane</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=146">
+        <img src="../img/characters-profil/146.jpg" alt="Yi Yong" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=146">Yi Yong</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=147">
+        <img src="../img/characters-profil/147.jpg" alt="Erasme" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=147">Erasme</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=148">
+        <img src="../img/characters-profil/148.jpg" alt="Eduardo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=148">Eduardo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=149">
+        <img src="../img/characters-profil/149.jpg" alt="Oscar" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=149">Oscar</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=150">
+        <img src="../img/characters-profil/150.jpg" alt="Tan le grand" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=150">Tan le grand</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=18&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.03.19
+            </div>
+
+            <div class="forum-post-content">
+                De votre mieux... *Répète t-il pour souligner la formulation*
+De toute manière j&#039;imagine que nous n&#039;avons pas le choix.
+
+* Se retourne vers Valantin *
+Un grand démon avec une serviette sur la tête, de grandes ailes et des pustules sur tout le corps ça vous dit quelque chose ? Il aurait la capacité de lire dans l&#039;esprit de celui qui croise son regard.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.03.19
+            </div>
+
+            <div class="forum-post-content">
+                *Regarde la liche s&#039;éloigner, passe en vision des énergies. Frisonne.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Valentin de Provoda<br />
+
+                <a href="character-detail.php?id=144">
+                    <img src="../img/characters-profil/144.jpg" alt="Valentin de Provoda" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Heum, non, cela ne me dit rien du tout. Il ne me semble pas avoir déjà rencontré un démon...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.03.19
+            </div>
+
+            <div class="forum-post-content">
+                En vision des énergies, tu vois comme une sorte de quadrillage de magie jaune dans toute la pièce. Tu en as déjà vu, c&#039;est typiquement un enchantement de zone qui permet de contrer la magie. Du côté de la liche rien du tout. 
+
+Une fois qu&#039;elle sera partie, l&#039;ambiance va largement se détendre et Roxane va en profiter pour lancer un sort (que tu reconnais, c&#039;est le sort de regard de puissance). Lorsqu&#039;elle le lance, le quadrillage va se détendre autour d&#039;elle pour laisser passer la magie brute nécessaire au lancement du sort. Tu remarque qu&#039;elle a une sorte de &quot;lien&quot; de magie jaune qui est relié au quadrillage et que chaque vampire de la salle en a un, mais pas vous. 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Roxane<br />
+
+                <a href="character-detail.php?id=145">
+                    <img src="../img/characters-profil/145.jpg" alt="Roxane" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Ha oui, je vois !
+
+Bon, mettons un peu d&#039;ambiance maintenant. Erasme, on essaie le chant des corsaires?
+
+*Va vers une armoire et en ressort plusieurs instruments qu&#039;elle distribue. Dans le tas il y a a un violon, une flute, une guitare et des percussions*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Erasme<br />
+
+                <a href="character-detail.php?id=147">
+                    <img src="../img/characters-profil/147.jpg" alt="Erasme" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Hmmm d&#039;accord.
+
+3, 4....
+
+https://www.youtube.com/watch?v=9zX9Y-rxSJA
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Je vais aussi essayer de lancer &quot;regard de puissance&quot; même si je pense que je connais le résultat (1R)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Tu essaie et l’énergie nécessaire au sort est retenue dans le quadrillage, elle n&#039;arrive jamais à toi, ce qui fait que tu ne lance rien du tout.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Roxane<br />
+
+                <a href="character-detail.php?id=145">
+                    <img src="../img/characters-profil/145.jpg" alt="Roxane" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Haaa Monsieur Hobbit ! Malheureusement pour vous, j&#039;ai enchanté toute la château contre la magie ! Si un jour nous vous faisons assez confiance, vous pourriez vous aussi faire partie des gens qui ont le droit de faire de la magie ici ! 
+
+(P.S: son sort de regard de puissance était très joli à regarder [3R de &quot;jeter un sort gracieusement]).
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.03.19
+            </div>
+
+            <div class="forum-post-content">
+                @Valentin : Vous savez ce que l&#039;Archevêque de Brandi compte faire de Damien ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=18&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=18&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=18&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=18&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=18&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=18&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=18&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=18&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=18&page=9">
+          9
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

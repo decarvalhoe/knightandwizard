@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1>Dogra</h1>
+
+<div id="character-detail-profil-img">
+    <img class="painting" src="../img/characters-profil/200.jpg" alt="Dogra" width="220" height="275"><br />
+
+            <a href="update-character.php?id=200&update=profil-img" class="update-link">modifier</a>
+    </div>
+
+    <form action="character-detail.php?id=200" method="post" class="form" target="_blank">
+        <input type="hidden" name="action" value="print-character">
+        <input type="submit" style="float:right" value="Imprimer" />
+    </form>
+
+    <br />
+
+    <div>
+        Status : PNJ inactif
+
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=status" class="update-link"><span class="glyphicon glyphicon-pencil"></span></a>
+
+        <br />
+
+        Lieux :
+
+                    Indisponible
+        
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=place" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+    </div>
+
+    <h2>Informations</h2>
+
+    <div class="character-detail-2-col-left">
+        Nom : Dogra
+
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=name" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Sexe : Masculin
+
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=gender" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Race : Humain
+
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=race" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Orientation : Hors-la-loi
+
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=orientation" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Classe : Braconnier
+
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=class" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Niveau : 8
+    </div>
+
+    <div class="character-detail-info-column-right">
+        Vitalité : 24
+
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=vitality-max" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        F. Vitesse : 8
+
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=speed-factor" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        F. Volonté : 11
+
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=will-factor" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Energie : 0
+
+        &nbsp;
+
+        <a href="update-character.php?id=200&update=energy-max" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+        <br />
+
+        Points : 177 / 180
+    </div>
+
+    <br />
+
+    <div id="character-detail-attributes">
+        <h2>Attributs</h2>
+
+        <div class="character-detail-3-col-left">
+            Force : 4
+            &nbsp;
+            <a href="update-character.php?id=200&update=attribute&attribute=strength" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Dextérité : 4
+            &nbsp;
+            <a href="update-character.php?id=200&update=attribute&attribute=dexterity" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Endurance : 5
+            &nbsp;
+            <a href="update-character.php?id=200&update=attribute&attribute=stamina" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+        </div>
+
+        <div class="character-detail-3-col-center">
+            Esthétisme : 2
+            &nbsp;
+            <a href="update-character.php?id=200&update=attribute&attribute=aestheticism" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Charisme : 2
+            &nbsp;
+            <a href="update-character.php?id=200&update=attribute&attribute=charisma" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Empathie : 3
+            &nbsp;
+            <a href="update-character.php?id=200&update=attribute&attribute=empathy" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+        </div>
+
+        <div class="character-detail-3-col-right">
+            Intelligence : 3
+            &nbsp;
+            <a href="update-character.php?id=200&update=attribute&attribute=intelligence" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Perception : 5
+            &nbsp;
+            <a href="update-character.php?id=200&update=attribute&attribute=perception" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+            <br />
+
+            Réflexes : 2
+            &nbsp;
+            <a href="update-character.php?id=200&update=attribute&attribute=reflexes" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+        </div>
+    </div>
+
+    <div id="character-detail-skills">
+        <h2>Compétences</h2>
+
+        <a href="update-character.php?id=200&update=new-skill" style="float:right"><button>Nouvelle compétence</button></a>
+
+        <br />
+
+        
+                                    <div class="character-detail-2-col-left">
+            
+            
+                <b>
+                Chasse : 8
+
+                </b>
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=52" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=52" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                <b>
+                Chasse d'oiseau : 5
+
+                </b>
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=272" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=272" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                <b>
+                Chasse de reptile : 5
+
+                </b>
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=273" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=273" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                <b>
+                Chasse de rongeur : 5
+
+                </b>
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=271" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=271" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                <b>
+                Traque : 7
+
+                </b>
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=53" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=53" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Combat à mains nues : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=7" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=7" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Esquive : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=82" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=82" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Cuisine : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=77" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=77" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Dressage : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=204" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=204" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Dressage de chien : 4
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=206" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=206" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Epée : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=309" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=309" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Epée à une main : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=1" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=1" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Parade (Epée à une mains) : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=173" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=173" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+            
+                
+                Equitation (cheval) : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=22" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=22" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-left">
+            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Galop : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=155" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=155" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Furtivité : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=71" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=71" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Camouflage : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=329" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=329" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Déplacement silencieux : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=269" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=269" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Furtivité en forêt : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=310" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=310" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Gymnastique : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=49" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=49" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Saut : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=165" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=165" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Jardinage : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=100" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=100" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Langage altérien : 3
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=11" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=11" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Natation : 4
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=6" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=6" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Odorat : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=17" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=17" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Ouïe : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=20" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=20" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Tannage : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=139" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=139" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Vol à la tire : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=124" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=124" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+            
+                
+                Vue : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=16" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=16" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+                                    <div class="character-detail-2-col-right">
+
+                            
+                            
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                            
+                
+                Vue en forêt : 5
+
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=skill&skill-id=319" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-skill&skill-id=319" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+
+                <br />
+            </div>
+            </div>
+
+    <div id="character-detail-assets">
+        <h2>Atouts</h2>
+
+        <a href="update-character.php?id=200&update=new-asset" style="float:right;"><button>Nouvel atout</button></a>
+
+        <br /><br />
+
+                    <a href="update-character.php?id=200&update=new-level-asset" style="float:right;"><button>Nouvel atout de niveau</button></a>
+
+            <br />
+        
+                    <div class="character-detail-asset-left">                Discrétion
+
+                                    : 2
+
+                                    
+                                    &nbsp;
+
+                    <a href="update-character.php?id=200&update=asset&asset-id=62" class="update-link"><span class="glyphicon glyphicon-pencil"></a>
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-asset&asset-id=62" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-left">                Art de la chasse
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-asset&asset-id=87" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Antilimite physique
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-asset&asset-id=32" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Bonne nuit
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-asset&asset-id=288" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Cours toujours
+
+                
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-asset&asset-id=153" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Retraite stratégique
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-asset&asset-id=152" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Silence de mort
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-asset&asset-id=275" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Temps d’arrêt
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-asset&asset-id=271" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Trompe la mort
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-asset&asset-id=266" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+                    <div class="character-detail-asset-right">                Victime
+
+                                    : 1
+
+                                    
+                
+                &nbsp;
+
+                <a href="update-character.php?id=200&update=remove-asset&asset-id=341" title="Supprimer">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </div>
+            </div>
+
+    
+    <h2>Notes</h2>
+
+    <form action="update-character.php?id=200&update=note" method="post" class="form">
+        <textarea name="note" rows="6" cols="143"></textarea>
+
+        <br />
+
+        <input type="submit" style="float:right" value="Noter" />
+    </form>
+
+    <br />
+
+    <div class="delete-container">
+        <a href="javascript:AlertIt();" class="delete-link">Supprimer ce personnage</a>
+    </div>
+
+
+    <script type="text/javascript">
+        function AlertIt() {
+            var answer = confirm ("Voulez-vous vraiment supprimer ce personnage ?")
+
+            if (answer)
+            window.location="update-character.php?id=200&update=remove";
+        }
+    </script>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

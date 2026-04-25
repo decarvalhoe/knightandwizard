@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=1">Taverne di Marcello</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=1&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Ho! Que se passe-t-il Dario?
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Hum oui, voilà Enola, c'est ça... heum... Dario !! Attends laisse-moi deviner: t'as encore choppé une maladie grave et tu vas bientôt mourir?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Dario Martínez<br />
+
+                <a href="character-detail.php?id=4">
+                    <img src="../img/characters-profil/4.jpg" alt="Dario Martínez" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Non pourquoi tu dis ça ? J'ai l'air pâle ?
+Non c'est ce qui est arrivé dernièrement... Les gosses piétinés ça m'a fait bizarre. C'était un peu mon idée. Sans moi ils seraient encore en vie. Je suis un clerc, je suis là pour soigner les gens, pas pour les tuer. J'ai toujours pensé que je me foutais de tout. Je réalise que j'avais tord... Enfin bref, tout ça pour dire que je compte rester à Erune et je tâcherai de... Que ça aille pas trop mal ici.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Oui les enfants piétinés, c'est terrible... *se renfrogne* Alors tu vas nous laisser tomber?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Dario Martínez<br />
+
+                <a href="character-detail.php?id=4">
+                    <img src="../img/characters-profil/4.jpg" alt="Dario Martínez" height="100" width="80">
+                </a>
+
+                <br />
+
+                21.12.17
+            </div>
+
+            <div class="forum-post-content">
+                ... oui. Il y un gosse, son seul parent est mort lors de la bousculade. Il est tout seul. Il faut au moins que je sauve celui-là.
+Désolé. Il va falloir que vous vous gaffiez un peu plus
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                22.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Ha oui, je comprends... enfin... c'est pas qu'on t'adore mais tu vas quand même nous manquer !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Dario Martínez<br />
+
+                <a href="character-detail.php?id=4">
+                    <img src="../img/characters-profil/4.jpg" alt="Dario Martínez" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Eh bein... je pensais pas que je dirais ça un jour mais, vous aussi vous allez me manquer... un peu ! Mais de toute manière on se reverra quand vous reviendrez ici.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.12.17
+            </div>
+
+            <div class="forum-post-content">
+                *Entre dans la taverne, la mine basse, ses pieds touchent à peine le sol. Fait un petit signe de la main à ses amis et se dirige vers le bar. Commande quelques trucs et vient s'assoir en face de Len.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Elle a l'air sacrement fâchée la princesse...On pouvait pas deviner qu'ils allaient se piétiner parmi. C’était pas dans l'plan. Après, franchement, je suis passé à l'église et je suis allé confessé tout ça. Bein le prêtre, il m'a dit qu'il pouvait pas m'aider cette fois-ci et que j'avais qu'à demander pardon tout droit au Seigneur lui même...J'espère qu'il comprendra ma bêtise...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Dario Martínez<br />
+
+                <a href="character-detail.php?id=4">
+                    <img src="../img/characters-profil/4.jpg" alt="Dario Martínez" height="100" width="80">
+                </a>
+
+                <br />
+
+                29.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Ah Akbar! Justement vous tombez bien. Je disais que suite à cet incident, j'ai choisis d'arrêter de courrir le monde. Je serai plus utile ici en tant que médecin.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=1&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=1&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=1&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=1&page=4">
+          4
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

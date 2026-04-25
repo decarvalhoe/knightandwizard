@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=29">La casa Fortuna</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=211">
+        <img src="../img/characters-profil/211.jpg" alt="M. Urbano" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=211">M. Urbano</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=214">
+        <img src="../img/characters-profil/214.jpg" alt="Andrea" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=214">Andrea</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=29&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                M. Urbano<br />
+
+                <a href="character-detail.php?id=211">
+                    <img src="../img/characters-profil/211.jpg" alt="M. Urbano" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Ah... Eh bien oui j&#039;imagine que cela clarifie beaucoup de choses. En soit, vous ne voyez pas de raison de vous affilier à la Fortuna car vous prenez la clientèle aisé et laissez donc de ce fait les pauvres a 49.
+
+Excusez encore mon cerveau limité mais pouvez-vous me dire ce que vous sous-entendez par &quot;travailler en bonne entente&quot; ?
+
+Ne le prenez pas mal mais j&#039;ai cette manie d&#039;appeler un chat un chat.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.05.20
+            </div>
+
+            <div class="forum-post-content">
+                 <hr><span class="play-sub-title">Action</span><br /><p>Charisme + Intimidation (diff. 6) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.05.20
+            </div>
+
+            <div class="forum-post-content">
+                * Sela avance et dit :*
+
+- Qu&#039;est ce que ça veut dire travailler en bonne entente? Et bien c&#039;est très simple...
+Vos affaires vous concerne, nos affaires sont nos affaires. En gros, mon arc et moi on dégomme si on vient nous emmerder !
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                M. Urbano<br />
+
+                <a href="character-detail.php?id=211">
+                    <img src="../img/characters-profil/211.jpg" alt="M. Urbano" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.06.20
+            </div>
+
+            <div class="forum-post-content">
+                * Prend un longue respiration en faisant basculer son buste vers l&#039;arrière. *
+
+Eh bien ça au moins ça a le mérite d&#039;être clair. Je pense pouvoir transmettre vos salutations ainsi que votre message à 49 comme il se doit.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.06.20
+            </div>
+
+            <div class="forum-post-content">
+                *Reste abasourdi par cette intervention (jet de volonté: 18 donc réussi)
+Et reprend:
+
+-C&#039;est peut-être un peu catégorique parce que nous ne souhaitons jamais en arriver à de pareilles extrémités...et vous non plus, j&#039;imagine. Veuillez excuser l&#039;impétuosité nordienne...
+
+Mais pour clarifier mon propos, je dirais que travailler en bonne entente, ça va de 
+*marque les guillemets
+&quot;s&#039;ignorer cordialement&quot; à &quot;collaborer sur certains points&quot; Dans tous les cas, ça devra être explicitement discuté au préalable avec 49 et faire l&#039;objet d&#039;un accord spécifique. pour l&#039;instant, nous ne sommes que venus nous présenter...
+ Pour ce qui est des riches et des pauvres, vous déformez mes propos. Je disais que noter clientèle sera composée principalement de riches 
+(*insiste sur le mot suivant) ETRANGERS...Je ne crois pas que ce soit votre clientèle habituelle, je me trompe?
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.06.20
+            </div>
+
+            <div class="forum-post-content">
+                *jet pour voir s&#039;il se moque de nous <hr><span class="play-sub-title">Action</span><br /><p>Empathie + Psychologie + Psychologie humaine (diff. 5) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                M. Urbano<br />
+
+                <a href="character-detail.php?id=211">
+                    <img src="../img/characters-profil/211.jpg" alt="M. Urbano" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                L&#039;impétuosité nordienne... 
+
+Je veux bien croire que vous avez un plan pour attiré des joueurs fortunés dans votre casino. Néanmoins, Erune est l&#039;une des plus grandes villes du monde et des étrangés y ont transités de tout temps. Il y en a d&#039;autant plus depuis les récentes réformes faîtes par la Princesse. Parmis ces gens, certains sont des clients de la Fortuna. Nous avons également des personnes riches parmis nos parieurs réguliers.
+
+Allez-vous filtrer l&#039;entrée de votre maison de jeu ? Les gens devront attester être riche selon la définition que vous aurez posés avec 49, puis jurer ne pas être de la ville et enfin être capable de prouver que sans votre casino ils ne seraient pas venu...
+
+Nous savons que cela n&#039;est pas possible.
+Alors peut-être que je ne saisis pas toute la subtilité de l&#039;impétuosité nordienne, mais au moins son message à elle etait clair.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                @Akbar: Tu ne ressens pas de moquerie dans son discours. Tout au plus une légère pointe de peur. Vous êtes en position de force en ce moment face à lui.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP] Quel est le ton de sa remarque? En lisant, je trouve sa réponse agressive et provocatrice. Ackbar utilise un ton doux et conciliant, il voulait excuser le comportement de Sela, ce que j&#039;ai, il me semble laissé transparaitre. Dois-je comprendre qu&#039;il nous voit comme encore plus menaçant et qu&#039;il est sur une contre-attaque verbale qu&#039;il adresse à Ackbar? 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Bien reprenons... *cherche comment elle va résoudre ces différente interventions*  <hr><span class="play-sub-title">Action</span><br /><p>Charisme + Politique + Diplomatie + Négociation diplomatique (diff. 4) => 6R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1215&place-id=29" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=29&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=29&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=29&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=29&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=29&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=29&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=29&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=29&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=29&page=9">
+          9
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

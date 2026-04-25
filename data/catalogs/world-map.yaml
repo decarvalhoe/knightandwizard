@@ -1,0 +1,331 @@
+# Carte du monde K&W — Phase 2 import (R-12.1, R-12.2)
+# Sources web :
+#   - monde/regions/land-{8,9,13,21,24}.md (5 régions web canoniques, dérivées de nations paper)
+#   - monde/villes/city-{10,11,12,14,17,19,22,25,30}.md (9 villes nommées)
+#   - monde/lieux/place-{...}.md (17 lieux — souvent sessions RP user-generated, non-canon)
+#   - monde/tous-les-lieux/index.md (index global)
+# Le canon principal des nations reste dans `nations.yaml` (paper, 18 nations).
+# Date import : 2026-04-25
+
+version: 1
+metadata:
+  source: web
+  imported_at: "2026-04-25"
+  notes: |
+    Le web ne contient que 5 régions (incomplet vs 18 paper).
+    Les "lieux" web (place-id=*) sont essentiellement des sessions de RP des joueurs (taverne di Marcello, Castello di Sala).
+    Ce fichier consolide les éléments géographiques web qui complètent ou enrichissent nations.yaml.
+
+# === RÉGIONS WEB (5/18, complète nations.yaml) ===
+
+web_regions_complement:
+
+  - id: cortega  # cf. nations.yaml
+    web_id: 8
+    web_capital: "Cortega"
+    additional_cities: [pilis]
+    mountains: [monts_aljoteria]
+    additional_lore: |
+      Description web : "L'Oracle. L'oracle est le coeur du pays..."
+      Précision web vs paper : "il est conseillé de ne pas en avaler plus d'une gorgée"
+      (paper dit "deux gorgées"). Cohérence narrative à valider — peut être évolution
+      de la règle ou simple révision narrative.
+
+  - id: alteria
+    web_id: 9
+    web_capital: "Erune"
+    additional_cities: [impole, sala]
+    additional_lore: |
+      Description web confirme la Princesse Dona Ylenia Maria Santa-Ferucci (nom légèrement
+      différent du paper "Santa-Lucarna" — variante stylistique).
+
+  - id: irtanie
+    web_id: 13
+    web_capital: ~  # non précisé en web, paper indique Felderio
+    additional_cities: [ameral]
+    notes: "Web minimaliste vs paper riche."
+
+  - id: fauche_le_vent
+    web_id: 21
+    web_capital: ~  # paper indique Caréon
+    additional_cities: [saivre]
+    notes: "Web minimaliste."
+
+  - id: portes_d_azrak  # NOUVEAU vs nations.yaml
+    web_id: 24
+    name: "Les Portes d'Azrak"
+    category: nation
+    web_capital: ~
+    additional_cities: [niebel]
+    notes: |
+      Patrie des Nains (cf. bestiaire.yaml `nain.habitat`).
+      N'apparaît pas comme nation indépendante dans nations.md paper.
+      À ajouter à nations.yaml comme nation naine.
+
+# === VILLES NOMMÉES ===
+
+cities:
+
+  - id: erune
+    name: "Erune"
+    parent_region: alteria
+    is_capital: true
+    web_id: 10
+    locations:
+      - auberge_del_gatto_nero
+      - aux_acolytes_anonymes
+      - cimetiere_erune
+      - la_casa_fortuna
+      - manoir_rossellini  # propriété de groupe de PJ, hors règles canoniques
+      - palais_erune
+      - tannerie_baratti
+      - taverne_di_marcello
+
+  - id: cortega_city
+    name: "Cortega (Capitale)"
+    parent_region: cortega
+    is_capital: true
+    web_id: 11
+    locations:
+      - auberge_de_puercos
+
+  - id: pilis
+    name: "Pilis"
+    parent_region: cortega
+    is_capital: false
+    web_id: 12
+    locations: []
+
+  - id: ameral
+    name: "Ameral"
+    parent_region: irtanie
+    is_capital: false
+    web_id: 14
+    locations:
+      - chateau_ameral
+
+  - id: city_17
+    name: "Château d'Aljoteria"
+    parent_region: cortega
+    is_capital: false
+    web_id: 17
+    type: stronghold
+    notes: "Lié aux Monts Aljoteria"
+
+  - id: city_19
+    name: "Niebel"
+    parent_region: portes_d_azrak
+    web_id: 19
+
+  - id: saivre
+    name: "Saivre"
+    parent_region: fauche_le_vent
+    web_id: 22
+    locations:
+      - taverne_des_bolichons
+
+  - id: impole
+    name: "Impole"
+    parent_region: alteria
+    web_id: 25
+
+  - id: sala
+    name: "Sala"
+    parent_region: alteria
+    web_id: 30
+    locations:
+      - castello_di_sala
+
+# === LIEUX (locations) — extrait depuis tous-les-lieux/index.md ===
+
+locations:
+
+  # === Auberges et tavernes ===
+  - id: auberge_de_puercos
+    name: "Auberge de Puercos"
+    type: inn
+    parent_city: cortega_city
+    notes: "Lieu de RP joueur"
+
+  - id: auberge_del_gatto_nero
+    name: "Auberge del Gatto Nero"
+    type: inn
+    parent_city: erune
+
+  - id: aux_acolytes_anonymes
+    name: "Aux Acolytes Anonymes"
+    type: tavern
+    parent_city: erune
+
+  - id: la_taverne_des_bolichons
+    name: "La taverne des Bolichons"
+    type: tavern
+    parent_city: saivre
+
+  - id: taverne_di_marcello
+    name: "Taverne di Marcello"
+    type: tavern
+    parent_city: erune
+    notes: "Lieu de RP très utilisé par les joueurs"
+
+  - id: la_posada_truchas_doradas
+    name: "La Posada de Truchas Doradas"
+    type: inn
+
+  - id: restaurant_de_la_tonnella
+    name: "Restaurant de la Tonnella"
+    type: restaurant
+
+  # === Châteaux et manoirs ===
+  - id: castello_di_sala
+    name: "Castello di Sala"
+    type: castle
+    parent_city: sala
+
+  - id: chateau_aljoteria
+    name: "Château d'Aljoteria"
+    type: castle
+    parent_region: cortega
+
+  - id: chateau_ameral
+    name: "Château d'Ameral"
+    type: castle
+    parent_city: ameral
+
+  - id: palais_erune
+    name: "Palais d'Erune"
+    type: palace
+    parent_city: erune
+    is_seat_of_government: true
+    occupant: "Princesse Dona Ylenia"
+
+  - id: manoir_rossellini
+    name: "Manoir de Rossellini"
+    type: manor
+    parent_city: erune
+    is_canon: false
+    owned_by_pcs: true
+    notes: |
+      Propriété d'un groupe de PJ (table de jeu).
+      Non canon des règles. Ne pas inclure dans les catalogues du moteur.
+
+  # === Lieux divers ===
+  - id: cimetiere_erune
+    name: "Cimetière (Erune)"
+    type: cemetery
+    parent_city: erune
+
+  - id: la_casa_fortuna
+    name: "La Casa Fortuna"
+    type: gambling_house
+    parent_city: erune
+
+  - id: tannerie_baratti
+    name: "Tannerie Baratti"
+    type: artisan_shop
+    parent_city: erune
+    crafting_focus: tannerie
+
+  - id: la_8eme_forge
+    name: "La 8ème Forge"
+    type: artisan_shop
+    crafting_focus: forge
+
+  - id: l_oasis_de_laura
+    name: "L'Oasis de Laura"
+    type: oasis
+    parent_region: grand_desert  # probable
+
+# === RÉGIONS DÉCOUVERTES VIA CARTE MONDIALE (terres-oubliees.jpg) ===
+
+regions_from_world_map:
+  # Visibles sur site/download/map/terres-oubliees.jpg, absentes de nations.md paper :
+  - id: royaume_du_chaos
+    name: "Royaume du Chaos"
+    location: "Frontière nord (au-dessus de Forêt de Tyrkan)"
+    category: wilderness  # ou nation hostile non-civilisée
+    todo: "Détail à compléter"
+
+  - id: onarit
+    name: "Onarit"
+    location: "Nord-est, derrière les Montagnes Grises"
+    category: nation  # à valider
+    todo: "Détail à compléter"
+
+  - id: lounaxill
+    name: "Lounaxill"
+    location: "Est, entre Cortega/Alteria et Sombre Monde"
+    category: nation
+    cross_reference: "Mentionné dans poisons.md (origine Opium) et champignons-toxiques.md"
+    todo: "Détail à compléter"
+
+  - id: ile_aux_basilics
+    name: "L'Île aux Basilics"
+    location: "Île au sud (entre Haut Royaume et Grand Désert)"
+    category: location  # île
+    todo: "Possible biotope basilic — ajouter créature `basilic` au bestiaire"
+
+  - id: montagnes_grises
+    name: "Montagnes Grises"
+    location: "Chaîne nord-est"
+    category: mountain_range
+    todo: "Catégorie géographique pure, pas une nation"
+
+  - id: terres_sauvages
+    name: "Les Terres Sauvages"
+    location: "Sud-est, vaste wilderness"
+    category: wilderness
+    inhabitants: [orc, ogre, gobelin, troll]  # cf. bestiaire.yaml
+    cross_reference: "Mentionné comme habitat dans bestiaire.yaml mais absent de nations.md comme entrée"
+    todo: "Promouvoir en entrée nations.yaml"
+
+# === ANOMALIES vs nations.yaml ===
+
+anomalies:
+  - missing_in_paper: portes_d_azrak  # web a "Les Portes d'Azrak", nations.md mentionne juste les nains
+  - missing_in_paper: royaume_du_chaos  # visible sur carte mondiale uniquement
+  - missing_in_paper: onarit  # visible sur carte mondiale uniquement
+  - missing_in_paper: lounaxill  # mentionné poisons.md + champignons-toxiques.md, visible sur carte
+  - missing_in_paper: ile_aux_basilics  # visible sur carte
+  - name_variant: alteria_princess  # paper "Santa-Lucarna", web "Santa-Ferucci"
+  - oracle_dose_change: cortega  # paper "2 gorgées", web "1 gorgée"
+  - terres_sans_noms: "Carte cortega.jpg mentionne 'Les Terres Sans Noms' à l'est de Cortega — possiblement zone tampon où opèrent les assassins Sans Noms (organisations.yaml)"
+
+# === IMAGES ASSOCIÉES ===
+
+world_map_image:
+  file: "site/download/map/terres-oubliees.jpg"
+  type: high_res_canonical
+  description: "Carte canonique des Terres Oubliées (cf. catalogs/images.yaml)"
+
+# === VILLES DÉCOUVERTES VIA CARTES RÉGIONALES ===
+
+cities_from_regional_maps:
+  cortega:
+    source_map: "site/download/map/cortega.jpg"
+    cities:
+      - { id: senec, name: "Senec", parent_region: cortega }
+      - { id: mellec, name: "Mellec", parent_region: cortega }
+      - { id: precy, name: "Précy", parent_region: cortega }
+      - { id: ozora, name: "Ozora", parent_region: cortega }
+      - { id: teglas, name: "Teglas", parent_region: cortega }
+      - { id: gampey, name: "Gampey", parent_region: cortega }
+      - { id: gara, name: "Gara", parent_region: cortega }
+      - { id: gan, name: "Gan", parent_region: cortega }
+      - { id: letak, name: "Letak", parent_region: cortega }
+      - { id: cetara, name: "Cetara", parent_region: cortega }
+      - { id: udvan, name: "Udvan", parent_region: cortega }
+      - { id: padan, name: "Padan", parent_region: cortega }
+      - { id: selice, name: "Selice", parent_region: cortega }
+      - { id: massa, name: "Massa", parent_region: cortega }
+      - { id: pilis, name: "Pilis", parent_region: cortega }  # confirmé web aussi
+    todo: "Extraire les villes des 14 autres cartes régionales (alteria, dundoria, empire, etc.)"
+
+# === LIENS À CRÉER ===
+
+todo_imports:
+  - "Étendre nations.yaml avec 'portes_d_azrak' (nation naine), 'royaume_du_chaos', 'onarit', 'lounaxill', 'terres_sauvages', 'ile_aux_basilics'"
+  - "Crosser cities.parent_region avec nations.yaml regions[].id"
+  - "Marquer manoir_rossellini comme is_canon: false dans tous les contextes"
+  - "Extraire les villes des 15 cartes régionales (cf. images.yaml regional_maps)"
+  - "Ajouter 'basilic' au bestiaire (suggéré par L'Île aux Basilics)"

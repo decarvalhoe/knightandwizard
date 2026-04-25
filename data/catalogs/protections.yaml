@@ -1,0 +1,808 @@
+# Catalogue de protections K&W — Phase 2 import auto (R-10.19)
+# Source paper : regles-papier/extracted/listes/protections.md
+# Schéma : R-10.4 armor_piece + R-10.5 shield
+# Date import : 2026-04-25
+
+version: 1
+metadata:
+  source: paper
+  imported_at: "2026-04-25"
+  total_entries: 49
+  ambiguities_count: 4
+
+# Multiplicateurs raciaux de poids (R-10.4 paper protections.md:42-50)
+racial_weight_modifiers:
+  gnome: 0.50
+  gobelin: 0.40
+  hobbit: 0.60
+  homme_rat: 0.90
+  khogr: 1.10
+  nain: 0.80
+  ogre: 3.00
+  troll: 3.50
+  # humanoïdes standard (humain, elfe, etc.) = 1.00 par défaut
+
+# Layer system (R-9.14) :
+# soft  → cuir souple
+# soft+ → cuir rigide / cuir rigide clouté
+# mail  → cotte de mailles légère / lourde
+# plate → bronze / plates fer
+
+# Champ commun à toutes les protections :
+#   id, name, layer, category (matériau parent)
+#   protection: { P, E, C, T }
+#   zones_covered: [<zone_id>] (R-9.5 / R-9.21)
+#   weight_kg_human: poids pour humain/elfe (× racial_weight_modifier pour autres)
+#   inferred.durability_max (R-9.26)
+
+armor_pieces:
+
+  # === CUIR SOUPLE (soft, P:1 E:1 C:0 T:1) ===
+
+  - id: cuir_souple_bonnet
+    name: "Bonnet (cuir souple)"
+    layer: soft
+    category: cuir_souple
+    protection: { P: 1, E: 1, C: 0, T: 1 }
+    zones_covered: [tete]
+    weight_kg_human: 0.2
+    inferred: { durability_max: 30 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_souple_botte
+    name: "Botte (cuir souple)"
+    layer: soft
+    category: cuir_souple
+    protection: { P: 1, E: 1, C: 0, T: 1 }
+    zones_covered: [pied]
+    weight_kg_human: 0.4
+    paired: true  # singulier, doubler poids pour la paire
+    inferred: { durability_max: 30 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_souple_cagoule
+    name: "Cagoule (cuir souple)"
+    layer: soft
+    category: cuir_souple
+    protection: { P: 1, E: 1, C: 0, T: 1 }
+    zones_covered: [tete, gorge_nuque]
+    weight_kg_human: 0.4
+    inferred: { durability_max: 30 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_souple_cuissot
+    name: "Cuissot (cuir souple)"
+    layer: soft
+    category: cuir_souple
+    protection: { P: 1, E: 1, C: 0, T: 1 }
+    zones_covered: [haut_jambe]
+    weight_kg_human: 0.3
+    paired: true
+    inferred: { durability_max: 30 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_souple_gant
+    name: "Gant (cuir souple)"
+    layer: soft
+    category: cuir_souple
+    protection: { P: 1, E: 1, C: 0, T: 1 }
+    zones_covered: [main]
+    weight_kg_human: 0.1
+    paired: true
+    price_pc_pair: 180  # legacy : "Gants (paires) = 180"
+    inferred: { durability_max: 25 }
+    metadata: { source: paper, web_price: true, inferred: true, version: 1 }
+
+  - id: cuir_souple_greve
+    name: "Grève (cuir souple)"
+    layer: soft
+    category: cuir_souple
+    protection: { P: 1, E: 1, C: 0, T: 1 }
+    zones_covered: [bas_jambe]
+    weight_kg_human: 0.3
+    paired: true
+    inferred: { durability_max: 30 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_souple_pantalon
+    name: "Pantalon (cuir souple)"
+    layer: soft
+    category: cuir_souple
+    protection: { P: 1, E: 1, C: 0, T: 1 }
+    zones_covered: [haut_jambe, bas_jambe, ventre_bas_dos]
+    weight_kg_human: 1.7
+    inferred: { durability_max: 35 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_souple_veste_avec_manche
+    name: "Veste (cuir souple, avec manches)"
+    layer: soft
+    category: cuir_souple
+    protection: { P: 1, E: 1, C: 0, T: 1 }
+    zones_covered: [thorax_dos, avant_bras, haut_bras, epaule]
+    weight_kg_human: 3.4
+    price_pc: 900
+    inferred: { durability_max: 40 }
+    metadata: { source: paper, web_price: true, inferred: true, version: 1 }
+
+  - id: cuir_souple_veste_sans_manche
+    name: "Veste (cuir souple, sans manches)"
+    layer: soft
+    category: cuir_souple
+    protection: { P: 1, E: 1, C: 0, T: 1 }
+    zones_covered: [thorax_dos]
+    weight_kg_human: 3.1
+    price_pc: 700
+    inferred: { durability_max: 40 }
+    metadata: { source: paper, web_price: true, inferred: true, version: 1 }
+
+  # === CUIR RIGIDE (soft, P:1 E:1 C:0 T:2) ===
+
+  - id: cuir_rigide_bonnet
+    name: "Bonnet (cuir rigide)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [tete]
+    weight_kg_human: 0.3
+    inferred: { durability_max: 35 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_botte
+    name: "Botte (cuir rigide)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [pied]
+    weight_kg_human: 0.5
+    paired: true
+    inferred: { durability_max: 40 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_cagoule
+    name: "Cagoule (cuir rigide)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [tete, gorge_nuque]
+    weight_kg_human: 0.5
+    inferred: { durability_max: 35 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_canon_avant_bras
+    name: "Canon d'avant-bras (cuir rigide)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [avant_bras]
+    weight_kg_human: 0.1
+    paired: true
+    inferred: { durability_max: 35 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_cuissot
+    name: "Cuissot (cuir rigide)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [haut_jambe]
+    weight_kg_human: 0.4
+    paired: true
+    inferred: { durability_max: 35 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_greve
+    name: "Grève (cuir rigide)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [bas_jambe]
+    weight_kg_human: 0.4
+    paired: true
+    inferred: { durability_max: 35 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_haubergeon
+    name: "Haubergeon (cuir rigide)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [thorax_dos, ventre_bas_dos]
+    weight_kg_human: 5
+    inferred: { durability_max: 50 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_haubert
+    name: "Haubert (cuir rigide)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [thorax_dos, ventre_bas_dos, haut_jambe]
+    weight_kg_human: 6
+    inferred: { durability_max: 55 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_pantalon
+    name: "Pantalon (cuir rigide)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [haut_jambe, bas_jambe, ventre_bas_dos]
+    weight_kg_human: 2
+    inferred: { durability_max: 40 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_spaliere
+    name: "Spalière (cuir rigide)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [epaule]
+    weight_kg_human: 0.3
+    paired: true
+    inferred: { durability_max: 35 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_veste_avec_manche
+    name: "Veste (cuir rigide, avec manches)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [thorax_dos, avant_bras, haut_bras, epaule]
+    weight_kg_human: 4.8
+    inferred: { durability_max: 50 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_rigide_veste_sans_manche
+    name: "Veste (cuir rigide, sans manches)"
+    layer: soft
+    category: cuir_rigide
+    protection: { P: 1, E: 1, C: 0, T: 2 }
+    zones_covered: [thorax_dos]
+    weight_kg_human: 4.2
+    inferred: { durability_max: 50 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === CUIR RIGIDE CLOUTÉ (soft, P:2 E:2 C:1 T:3) ===
+
+  - id: cuir_cloute_botte
+    name: "Botte (cuir rigide clouté)"
+    layer: soft
+    category: cuir_rigide_cloute
+    protection: { P: 2, E: 2, C: 1, T: 3 }
+    zones_covered: [pied]
+    weight_kg_human: 0.6
+    paired: true
+    inferred: { durability_max: 45 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_cloute_canon_avant_bras
+    name: "Canon d'avant-bras (cuir rigide clouté)"
+    layer: soft
+    category: cuir_rigide_cloute
+    protection: { P: 2, E: 2, C: 1, T: 3 }
+    zones_covered: [avant_bras]
+    weight_kg_human: 0.2
+    paired: true
+    inferred: { durability_max: 40 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_cloute_haubergeon
+    name: "Haubergeon (cuir rigide clouté)"
+    layer: soft
+    category: cuir_rigide_cloute
+    protection: { P: 2, E: 2, C: 1, T: 3 }
+    zones_covered: [thorax_dos, ventre_bas_dos]
+    weight_kg_human: 6
+    inferred: { durability_max: 55 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_cloute_haubert
+    name: "Haubert (cuir rigide clouté)"
+    layer: soft
+    category: cuir_rigide_cloute
+    protection: { P: 2, E: 2, C: 1, T: 3 }
+    zones_covered: [thorax_dos, ventre_bas_dos, haut_jambe]
+    weight_kg_human: 7
+    inferred: { durability_max: 60 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cuir_cloute_pantalon
+    name: "Pantalon (cuir rigide clouté)"
+    layer: soft
+    category: cuir_rigide_cloute
+    protection: { P: 2, E: 2, C: 1, T: 3 }
+    zones_covered: [haut_jambe, bas_jambe, ventre_bas_dos]
+    weight_kg_human: 2.5
+    inferred: { durability_max: 50 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === COTTE DE MAILLES LÉGÈRE (mail, P:3 E:2 C:1 T:3) ===
+
+  - id: maille_leg_camail
+    name: "Camail (cotte de mailles légère)"
+    layer: mail
+    category: cotte_mailles_legere
+    protection: { P: 3, E: 2, C: 1, T: 3 }
+    zones_covered: [tete, gorge_nuque]
+    weight_kg_human: 1.9
+    inferred: { durability_max: 60 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: maille_leg_haubergeon
+    name: "Haubergeon (cotte de mailles légère)"
+    layer: mail
+    category: cotte_mailles_legere
+    protection: { P: 3, E: 2, C: 1, T: 3 }
+    zones_covered: [thorax_dos, ventre_bas_dos]
+    weight_kg_human: 5.5
+    inferred: { durability_max: 70 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: maille_leg_haubert
+    name: "Haubert (cotte de mailles légère)"
+    layer: mail
+    category: cotte_mailles_legere
+    protection: { P: 3, E: 2, C: 1, T: 3 }
+    zones_covered: [thorax_dos, ventre_bas_dos, haut_jambe]
+    weight_kg_human: 8
+    inferred: { durability_max: 75 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: maille_leg_pantalon
+    name: "Pantalon (cotte de mailles légère)"
+    layer: mail
+    category: cotte_mailles_legere
+    protection: { P: 3, E: 2, C: 1, T: 3 }
+    zones_covered: [haut_jambe, bas_jambe, ventre_bas_dos]
+    weight_kg_human: 6
+    inferred: { durability_max: 70 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: maille_leg_veste_avec_manches
+    name: "Veste (cotte de mailles légère, avec manches)"
+    layer: mail
+    category: cotte_mailles_legere
+    protection: { P: 3, E: 2, C: 1, T: 3 }
+    zones_covered: [thorax_dos, avant_bras, haut_bras, epaule]
+    weight_kg_human: 6
+    inferred: { durability_max: 70 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: maille_leg_veste_sans_manches
+    name: "Veste (cotte de mailles légère, sans manches)"
+    layer: mail
+    category: cotte_mailles_legere
+    protection: { P: 3, E: 2, C: 1, T: 3 }
+    zones_covered: [thorax_dos]
+    weight_kg_human: 5
+    inferred: { durability_max: 70 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === COTTE DE MAILLES LOURDE (mail, P:4 E:3 C:2 T:4) ===
+
+  - id: maille_lourd_camail
+    name: "Camail (cotte de mailles lourde)"
+    layer: mail
+    category: cotte_mailles_lourde
+    protection: { P: 4, E: 3, C: 2, T: 4 }
+    zones_covered: [tete, gorge_nuque]
+    weight_kg_human: 2.8
+    inferred: { durability_max: 80 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: maille_lourd_haubergeon
+    name: "Haubergeon (cotte de mailles lourde)"
+    layer: mail
+    category: cotte_mailles_lourde
+    protection: { P: 4, E: 3, C: 2, T: 4 }
+    zones_covered: [thorax_dos, ventre_bas_dos]
+    weight_kg_human: 7.7
+    inferred: { durability_max: 90 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: maille_lourd_haubert
+    name: "Haubert (cotte de mailles lourde)"
+    layer: mail
+    category: cotte_mailles_lourde
+    protection: { P: 4, E: 3, C: 2, T: 4 }
+    zones_covered: [thorax_dos, ventre_bas_dos, haut_jambe]
+    weight_kg_human: 11
+    inferred: { durability_max: 95 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: maille_lourd_pantalon
+    name: "Pantalon (cotte de mailles lourde)"
+    layer: mail
+    category: cotte_mailles_lourde
+    protection: { P: 4, E: 3, C: 2, T: 4 }
+    zones_covered: [haut_jambe, bas_jambe, ventre_bas_dos]
+    weight_kg_human: 9
+    inferred: { durability_max: 85 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: maille_lourd_veste_avec_manches
+    name: "Veste (cotte de mailles lourde, avec manches)"
+    layer: mail
+    category: cotte_mailles_lourde
+    protection: { P: 4, E: 3, C: 2, T: 4 }
+    zones_covered: [thorax_dos, avant_bras, haut_bras, epaule]
+    weight_kg_human: 8.5
+    inferred: { durability_max: 90 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: maille_lourd_veste_sans_manches
+    name: "Veste (cotte de mailles lourde, sans manches)"
+    layer: mail
+    category: cotte_mailles_lourde
+    protection: { P: 4, E: 3, C: 2, T: 4 }
+    zones_covered: [thorax_dos]
+    weight_kg_human: 7
+    inferred: { durability_max: 85 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === BRONZE (plate, P:4 E:3 C:2 T:4) ===
+
+  - id: bronze_brassard
+    name: "Brassard (bronze)"
+    layer: plate
+    category: bronze
+    protection: { P: 4, E: 3, C: 2, T: 4 }
+    zones_covered: [haut_bras]
+    weight_kg_human: 0.3
+    paired: true
+    inferred: { durability_max: 80 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: bronze_canon_avant_bras
+    name: "Canon d'avant-bras (bronze)"
+    layer: plate
+    category: bronze
+    protection: { P: 4, E: 3, C: 2, T: 4 }
+    zones_covered: [avant_bras]
+    weight_kg_human: 0.3
+    paired: true
+    inferred: { durability_max: 80 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: bronze_cuissot
+    name: "Cuissot (bronze)"
+    layer: plate
+    category: bronze
+    protection: { P: 4, E: 3, C: 2, T: 4 }
+    zones_covered: [haut_jambe]
+    weight_kg_human: 0.7
+    paired: true
+    inferred: { durability_max: 85 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: bronze_spaliere
+    name: "Spalière (bronze)"
+    layer: plate
+    category: bronze
+    protection: { P: 4, E: 3, C: 2, T: 4 }
+    zones_covered: [epaule]
+    weight_kg_human: 0.4
+    paired: true
+    inferred: { durability_max: 80 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === PLATES (FER) (plate, P:5 E:4 C:2 T:5) ===
+
+  - id: plate_barbute
+    name: "Barbute (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [tete]
+    weight_kg_human: 2.2
+    inferred: { durability_max: 100 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Casque ouvert" }
+
+  - id: plate_braconniere
+    name: "Braconnière (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [haut_jambe]
+    weight_kg_human: 1.5
+    paired: true
+    inferred: { durability_max: 100 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Plaques d'aine" }
+
+  - id: plate_brassard
+    name: "Brassard (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [haut_bras]
+    weight_kg_human: 0.3
+    paired: true
+    inferred: { durability_max: 100 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: plate_canon_avant_bras
+    name: "Canon d'avant-bras (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [avant_bras]
+    weight_kg_human: 0.3
+    paired: true
+    inferred: { durability_max: 100 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: plate_coquille
+    name: "Coquille (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [parties_genitales]
+    weight_kg_human: 0.3
+    inferred: { durability_max: 100 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Protection génitale" }
+
+  - id: plate_cubitiere
+    name: "Cubitière (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [coude]
+    weight_kg_human: 0.4
+    paired: true
+    inferred: { durability_max: 100 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Protection coude" }
+
+  - id: plate_cuirasse
+    name: "Cuirasse (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [thorax_dos, haut_thorax_haut_dos]
+    weight_kg_human: 4.3
+    inferred: { durability_max: 110 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Plastron complet" }
+
+  - id: plate_cuissot
+    name: "Cuissot (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [haut_jambe]
+    weight_kg_human: 0.7
+    paired: true
+    inferred: { durability_max: 105 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: plate_dossiere
+    name: "Dossière (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [thorax_dos, haut_thorax_haut_dos]
+    weight_kg_human: 2
+    inferred: { durability_max: 110 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Plaque de dos" }
+
+  - id: plate_genouillere
+    name: "Genouillère (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [genou]
+    weight_kg_human: 1.3
+    paired: true
+    inferred: { durability_max: 100 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: plate_greve
+    name: "Grève (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [bas_jambe]
+    weight_kg_human: 0.7
+    paired: true
+    inferred: { durability_max: 105 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: plate_gorgerin
+    name: "Gorgerin (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [gorge_nuque]
+    weight_kg_human: 1
+    inferred: { durability_max: 105 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: plate_heaume_cylindrique
+    name: "Heaume cylindrique (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [tete, gorge_nuque]
+    weight_kg_human: 3
+    inferred: { durability_max: 110 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Casque fermé intégral" }
+
+  - id: plate_pansiere
+    name: "Pansière (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [ventre_bas_dos]
+    weight_kg_human: 3
+    inferred: { durability_max: 105 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: plate_salade
+    name: "Salade (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [tete]
+    weight_kg_human: 1.2
+    inferred: { durability_max: 95 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Casque allongé arrière" }
+
+  - id: plate_soleret
+    name: "Soleret (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [pied]
+    weight_kg_human: 0.7
+    paired: true
+    inferred: { durability_max: 95 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Chausses métalliques" }
+
+  - id: plate_spaliere
+    name: "Spalière (plate fer)"
+    layer: plate
+    category: plate_fer
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    zones_covered: [epaule]
+    weight_kg_human: 1.1
+    paired: true
+    inferred: { durability_max: 100 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+# === BOUCLIERS ===
+
+shields:
+
+  # === BOIS ===
+  - id: bouclier_bois
+    name: "Bouclier (bois)"
+    category: shield
+    material: wood
+    protection: { P: 2, E: 2, C: 1, T: 3 }
+    pass_chance_pct: 40  # R-9.8 % d'arrêt
+    weight_kg_human: 3
+    size: medium
+    inferred: { durability_max: 50 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: pavois_bois
+    name: "Pavois (bois)"
+    category: shield
+    material: wood
+    protection: { P: 2, E: 2, C: 1, T: 3 }
+    pass_chance_pct: 80
+    weight_kg_human: 6
+    size: large
+    inferred: { durability_max: 70, min_strength: 4 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Bouclier-tour, large" }
+
+  - id: rondache_bois
+    name: "Rondache (bois)"
+    category: shield
+    material: wood
+    protection: { P: 2, E: 2, C: 1, T: 3 }
+    pass_chance_pct: 15
+    weight_kg_human: 1.1
+    size: small
+    inferred: { durability_max: 35 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Petit bouclier rond" }
+
+  # === BRONZE ===
+  - id: bouclier_bronze
+    name: "Bouclier (bronze)"
+    category: shield
+    material: bronze
+    protection: { P: 4, E: 3, C: 1, T: 4 }
+    pass_chance_pct: 40
+    weight_kg_human: 4
+    size: medium
+    inferred: { durability_max: 80 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: pavois_bronze
+    name: "Pavois (bronze)"
+    category: shield
+    material: bronze
+    protection: { P: 4, E: 3, C: 1, T: 4 }
+    pass_chance_pct: 80
+    weight_kg_human: 8
+    size: large
+    inferred: { durability_max: 100, min_strength: 5 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: rondache_bronze
+    name: "Rondache (bronze)"
+    category: shield
+    material: bronze
+    protection: { P: 4, E: 3, C: 1, T: 4 }
+    pass_chance_pct: 15
+    weight_kg_human: 1.9
+    size: small
+    inferred: { durability_max: 60 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === FER ===
+  - id: ecu_cavalerie_fer
+    name: "Écu de cavalerie (fer)"
+    category: shield
+    material: iron
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    pass_chance_pct: 35
+    weight_kg_human: 5.3
+    size: medium
+    inferred: { durability_max: 100, min_strength: 3 }
+    metadata: { source: paper, inferred: true, version: 1, notes: "Conçu pour cheval" }
+
+  - id: bouclier_fer
+    name: "Bouclier (fer)"
+    category: shield
+    material: iron
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    pass_chance_pct: 40
+    weight_kg_human: 6
+    size: medium
+    inferred: { durability_max: 100, min_strength: 3 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: grand_ecu_fer
+    name: "Grand écu (fer)"
+    category: shield
+    material: iron
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    pass_chance_pct: 50
+    weight_kg_human: 7.5
+    size: large
+    inferred: { durability_max: 110, min_strength: 4 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: pavois_fer
+    name: "Pavois (fer)"
+    category: shield
+    material: iron
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    pass_chance_pct: 80
+    weight_kg_human: 12
+    size: large
+    inferred: { durability_max: 130, min_strength: 6 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: petit_ecu_fer
+    name: "Petit écu (fer)"
+    category: shield
+    material: iron
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    pass_chance_pct: 20
+    weight_kg_human: 3.1
+    size: small
+    inferred: { durability_max: 80 }
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: rondache_fer
+    name: "Rondache (fer)"
+    category: shield
+    material: iron
+    protection: { P: 5, E: 4, C: 2, T: 5 }
+    pass_chance_pct: 15
+    weight_kg_human: 2.9
+    size: small
+    inferred: { durability_max: 70 }
+    metadata: { source: paper, inferred: true, version: 1 }

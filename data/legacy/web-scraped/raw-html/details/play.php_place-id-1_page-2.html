@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=1">Taverne di Marcello</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=1&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                29.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Tu rigoles Dario? *marque une pause* Enfin, je comprend que tu sois particulièrement affecté par ce qui s'est passé et, crois-moi, on est tous passé par ces émotions, ces envie d'arrêter le *fait des guillemets avec ses mains* gâchis mais dans ces moments, il faut savoir prendre du recul, se montrer responsable et analyser la cause dans sa globalité. Les enfants d'Erune, les malheureux piétinés, tout ça, c'est horrible mais on ne les ramènera pas à la vie et ceux qui restent sauront trouver la main accueillante de la princesse pour être accompagnés. Par contre, au sud, c'est une guerre qui se prépare, avec des gens encore bien vivants, et pas que des soldats qui vont mourir s'il ne croisent pas votre bienfaisante puissance.
+*marque encore une pause*
+Pensez-y, Dario
+*fait la balance de ses mains*
+Des morts...des vivants en sursis
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                30.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Sela écoute tout en faisant tourner son verre. - Hm... C'est terrible ce qui c'est passé, malheureusement on ne peut pas tout prévoir. *un peu bourrue dit elle* dommage collatéral. Dario quoique tu décide tu auras tout mon soutien. Et nous, nous allons faire du mieux, voir du meilleure pour dans le Sud... 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Diego<br />
+
+                <a href="character-detail.php?id=5">
+                    <img src="../img/characters-profil/5.jpg" alt="Diego" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Se racheter... belle illusion si tu veux mon avis.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.12.17
+            </div>
+
+            <div class="forum-post-content">
+                Ouais, il faut pas oublier l'intention...Ch'ai bien qu'on dit que l'enfer est pavé de bonnes intentions, mais en l'occurrence, quel était notre intention et quel est l’intérêt supérieur? Les responsabilités s'accompagnent de choix qui impliquent systématiquement des dilemmes éthiques. Et il faut dire que, même si on avait de loin pas tout envisagé *se fait couper la parole* 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.01.18
+            </div>
+
+            <div class="forum-post-content">
+                Oui on a merdé... mais ça sert à rien de se le ressasser sans cesse. On pouvait pas tout prévoir... *Bois une grande rasade de vin*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.01.18
+            </div>
+
+            <div class="forum-post-content">
+                *regarde Len contrarié*
+*S'apprête à recommencer sa phrase quand il est à nouveau interrompu par la serveuse qui arrive les bras chargés d'un plat débordant de cuisses de poulets au citron baignant dans la sauce*
+*A loin, sur le bar, deux autres plats fument encore et deux pichets patientent à côté...*
+
+C'est pour nous *en levant la main* (notez que vu la direction qu'elle prenait, le doute n'était pas possible)
+ 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Enola Nimendez<br />
+
+                <a href="character-detail.php?id=3">
+                    <img src="../img/characters-profil/3.jpg" alt="Enola Nimendez" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.01.18
+            </div>
+
+            <div class="forum-post-content">
+                Et maintenant on va faire comment pour la suite si Dario elle n'est plus avec nous ? D'ailleurs on fait quoi maintenant qu'on a retrouvés Kensar ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.01.18
+            </div>
+
+            <div class="forum-post-content">
+                *regard de Sela à Akbar: style j'ai faim moi aussi* 
+- Dit Akbar, tu partages ?
+Puis Sela regarde Enola :
+- Même que je viens d'arriver récemment, je pense pas que Dario a toujours été là. *Visage timide* On va avancer et continuer notre quête en faisant plus gaffe à nos fesses. * Essaye de chipper une cuisse de poulet* 
+Quand à Kensar, nous devrions aller l'interroger...
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.01.18
+            </div>
+
+            <div class="forum-post-content">
+                *la laisse tout à fait prendre sa cuisse de poulet étant donné qu'il a commandé pour la table...et que les plats de pommes de terre et de légumes arrivent, suivis d'un autre pichet de vin*
+-Bon, en ce qui te concerne, Dario, réfléchit encore, non pas à ton avenir personnel mais plus globalement à où tu sera réellement plus utile. Ta spécialité, c'est sauver des vies, pas faire de la garde d'enfant...regarde Dario dans les yeux en essayant de le convaincre (jet de charisme, psychologie, psychologie humaine: 2R)
+-Et pour ce qui est de Kensar, je propose qu'on aille d’abords retrouver le vieux fou à à fabriqué le poison pour savoir comment utiliser la clé qui redonne accès à sa mémoire. Parce que si c'est juste en le voyant, j'ai pas l'impression que ça a marché. Ou alors Illenia ne nous en a rien dit. Ensuite, on pourra interroger Kensar et le confronter au poison qu'il a acheté. Enfin, si nos hypothèses sont correctes.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.01.18
+            </div>
+
+            <div class="forum-post-content">
+                Ouais Dario, réfléchis !! *regard persuasif, 1R de charisme*. Comment on fait nous quand on est blessé? Et puis on t'as engagé non, y'a pas une ligne dans le contrat qui stipule que tu peux pas t'en aller sur un coup de tête? *Mord gaiement dans une cuisse de poulet*.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=1&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=1&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=1&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=1&page=4">
+          4
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

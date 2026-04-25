@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=28">Manoir de Rossellini</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=195">
+        <img src="../img/characters-profil/195.jpg" alt="Colonel Hohenshmidthart Wiebke" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=195">Colonel Hohenshmidthart Wiebke</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=28&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                                            <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Bien que le raffinement doit être de mise il ne faut pas oublier de contenter tous les goûts, dans la mesure du raisonnable.
+
+Ce qui me ramène à des étranges souvenirs... 
+Une de mes première rencontre avec Eïpo [no idea if it&#039;s the correct spelling to be honest...] 
+Nous étions à Cortega dans un endroit étrange, à l&#039;étage d&#039;une sorte d&#039;atrium souterrain. les habitués de l&#039;endroit était parfaitement de la haute société, d&#039;ailleurs il me semble que le prince lui même était présent et chacun se délectai de la torture publique, en contrebas, d&#039;une humaine, a qui on infligeais des sévisse d&#039;une cruauté rare, dont je vous épargnerai les détails.
+
+Tout cela pour soulevé que les humains de toutes echelle sociale, apprécient la cruauté.
+
+Cela étant dit, je suis tout autant d&#039;accord avec le propos du Chevalier Akbar que celui de Sela.
+Il faut proposé ici une expérience exclusive et varié. 
+Plus que du jeu, il faut des artistes, des acteurs, des musiciens et des spectacles. 
+Il faut que l&#039; établissement soit une galerie d&#039;art et que nos invités y trouvent des produits inédits. Que tout puisse être parié ou acheter, ou les deux. 
+Un établissement raffiné, mais surprenant et un moment de grande qualité à tout point de vue.
+  
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1109&place-id=28" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Ca s&#039;écrivait Eypo et non, le Prince de Cortega n&#039;était pas dans ses soirée décadences. C&#039;eût été un peu de l&#039;abus quand même ^^
+
+D&#039;ailleurs au passage, puisque tu parles d&#039;Eypo, ça te fait penser qu&#039;il y a 2 ans et demi environ, un émissaire du Chaos te demandait de lui amener &quot;l&#039;enfant&quot;.
+On s&#039;était demandé si l&#039;enfant ne serait pas Eypo ou la Princesse. Aujourd&#039;hui, il semble probable qu&#039;il s&#039;agissait de la petite de Chantemerle.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.05.20
+            </div>
+
+            <div class="forum-post-content">
+                 <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Mémoire (diff. 6) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1111&place-id=28" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [Sindalia n&#039;a pas parlé du Prince, navré pour la piètre mémoire de son joueur :) Merci pour l&#039;info MJ j&#039;aurais pas fait le rapprochement] 
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1112&place-id=28" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Enola Nimendez<br />
+
+                <a href="character-detail.php?id=3">
+                    <img src="../img/characters-profil/3.jpg" alt="Enola Nimendez" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Ca fait beaucoup... par quoi on commence ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP], très juste, j&#039;aurais du corriger. Je m&#039;étais dit que ça pouvait être le ton et le non-verbal qui pouvaient être déplacés et mal pris
+
+Edit: Sela, c&#039;est vraiment une très bonne idée de faire tout ces jeux dangereux et immatures avec des couteaux et des gros bras...mais comme chacun le sait, les gros bras et les gens violents ne sont pas les personnes les plus riches et les plus futées...Y a peu de chance que ces gens biens soit attirés par ça dans notre casino. Je pense donc qu&#039;il serait plus opportun de séparer un peu ces activités barbares et dénuées de subtilité en les exerçant à l&#039;autre bout de la ville...Tiens, tu pourrait encadrer tout ça avec l&#039;accord de Quarantanove...si ça l’intéresse, ce qui n&#039;est pas certain. (c&#039;est mieux pour un échec critique en 98?)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.05.20
+            </div>
+
+            <div class="forum-post-content">
+                *Ackbar voit Andalur qui le fusille du regard et ne comprend pas pourquoi. Il se tétanise
+(vol=15)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Sela garde la même réaction 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                13.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Enola avait terminé en demandant par quoi il faillait commencer.
+C&#039;est à ce moment que la porte s&#039;ouvrit et que quelqu&#039;un entra en s&#039;exclamant...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lucas Terrera<br />
+
+                <a href="character-detail.php?id=139">
+                    <img src="../img/characters-profil/139.jpg" alt="Lucas Terrera" height="100" width="80">
+                </a>
+
+                <br />
+
+                13.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Par le vin bien-sûr ! Il n&#039;est pas de bonne table sans vin.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+    <div id="forum-post-options">
+        <form action="play.php?action=new-comment&place-id=28" method="post" class="form">
+            <div id="play-select-character">
+                <select name="character-id" id="play-character-selector" onchange="loadChar()">
+                                                                                                                    <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                                                                                                                                                                                            </select>
+            </div>
+
+            <div id="play-action-comment-fields">
+                <div id="play-comment-field">
+                    <span class="play-sub-title">Texte</span>
+
+                    <div id="play-comment-form">
+                        <textarea rows="4" cols="70" name="comment"></textarea>
+                    </div>
+                </div>
+
+                <div id="play-action-field">
+                    <span class="play-sub-title">Action</span>
+
+                    <div id="play-action-form">
+                        <select name="action-attribute">
+                            <option value="">Attributs</option>
+                            <option id="attribute-strength" value="strength"></option>
+                            <option id="attribute-dexterity" value="dexterity"></option>
+                            <option id="attribute-stamina" value="stamina"></option>
+
+                            <option id="attribute-aestheticism" value="aestheticism"></option>
+                            <option id="attribute-charisma" value="charisma"></option>
+                            <option id="attribute-empathy" value="empathy"></option>
+
+                            <option id="attribute-intelligence" value="intelligence"></option>
+                            <option id="attribute-perception" value="perception"></option>
+                            <option id="attribute-reflexes" value="reflexes"></option>
+                        </select>
+
+                        <select name="action-skill" id="play-action-form-select-skill">
+                            <option value="">Compétences</option>
+                        </select>
+
+                        <div id="play-action-form-specialisations-container">
+                            <span class="play-sub-title">Spécialisations</span><br />
+                            <span id="play-action-form-check-specialisations"></span>
+                        </div>
+
+                        <div id="play-action-form-difficulty">
+                            Difficulté : <input type="number" name="difficulty" value="7" min="2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="play-action-mj-fields">
+                <span class="play-sub-title">Option de MJ</span>
+
+                <div id="mj-options-selector">
+                    <select name="mj-option-id">
+                        <option value="">Aucune</option>
+                        <option value="1">Faire une ligne de démarcation</option>
+                    </select>
+                </div>
+
+                <br />
+
+                <a href="" id="play-action-new-challenge-link">Créer un défi</a>
+            </div>
+
+            <div id="post-button">
+                <input type="hidden" id="hidden-place-id" value="28" />
+                <input type="submit" value="Poster" />
+            </div>
+        </form>
+    </div>
+
+    
+        <script>
+            $(window).on("load", loadChar);
+
+            function loadChar() {
+                var xhttp = new XMLHttpRequest();
+                var charId = $('#play-character-selector').val();
+
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        JsonChar = JSON.parse(this.responseText);
+
+                        if(JsonChar.status['id'] != 5){
+                            $("#play-action-field").show();
+                            $("#play-action-mj-fields").hide();
+
+                            document.getElementById("attribute-strength").innerHTML = "Force : " + JsonChar.strength;
+                            document.getElementById("attribute-dexterity").innerHTML = "Dextérité : " + JsonChar.dexterity;
+                            document.getElementById("attribute-stamina").innerHTML = "Endurance : " + JsonChar.stamina;
+
+                            document.getElementById("attribute-aestheticism").innerHTML = "Esthétisme : " + JsonChar.aestheticism;
+                            document.getElementById("attribute-charisma").innerHTML = "Charisme : " + JsonChar.charisma;
+                            document.getElementById("attribute-empathy").innerHTML = "Empathie : " + JsonChar.empathy;
+
+                            document.getElementById("attribute-intelligence").innerHTML = "Intelligence : " + JsonChar.intelligence;
+                            document.getElementById("attribute-perception").innerHTML = "Perception : " + JsonChar.perception;
+                            document.getElementById("attribute-reflexes").innerHTML = "Réflexes : " + JsonChar.reflexes;
+
+                            $("#play-action-form-select-skill").empty();
+                            $("#play-action-form-select-skill").append("<option value=''>Compétences</option>");
+
+                            $.each(JsonChar.skills, function(index, value) {
+                                if(value['level'] == 0){
+                                    $("#play-action-form-select-skill").append("<option value='" + value['id'] + "'>" + value['name'] + " : " + value['points'] + "</option>");
+                                }
+                            });
+
+                            $("#play-action-form-check-specialisations").empty();
+
+                            $.each(JsonChar.skills, function(index, value) {
+                                if(value['level'] != 0){
+                                    $("#play-action-form-check-specialisations").append("<input type='checkbox' name='specialisations[]' value='" + value['id'] + "'> " + value['name'] + " : " + value['points'] + "<br />");
+                                }
+                            });
+                        }else{
+                            $("#play-action-field").hide();
+                            $("#play-action-mj-fields").show();
+
+                            var placeId = $('#hidden-place-id').val();
+
+                            $('#play-action-new-challenge-link').attr("href", "new-challenge.php?mj-id=" + JsonChar.id + "&place-id=" + placeId);
+                        }
+                    }
+                };
+
+                xhttp.open("GET", "play.php?action=get-json-character&charId=" + charId, true);
+                xhttp.send();
+            }
+        </script>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=28&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=28&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=28&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=28&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=28&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=28&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=28&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=28&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=28&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=28&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=28&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=28&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=28&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=28&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=28&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=28&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=28&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=28&page=18">
+          18
+      </a>
+          <a href="play.php?place-id=28&page=19">
+          19
+      </a>
+          <a href="play.php?place-id=28&page=20">
+          20
+      </a>
+          <a href="play.php?place-id=28&page=21">
+          21
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

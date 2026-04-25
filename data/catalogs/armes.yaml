@@ -1,0 +1,1533 @@
+# Catalogue d'armes K&W — Phase 2 import auto (R-10.19)
+# Source paper : regles-papier/extracted/listes/armes.md
+# Schéma : R-9.30 méta-modèle + R-10.3 weapon
+# Date import : 2026-04-25
+# Statut : 🟡 import auto, ambiguïtés à valider (cf. armes-ambiguites.md)
+
+version: 1
+metadata:
+  source: paper
+  imported_at: "2026-04-25"
+  total_entries: 102
+  ambiguities_count: 8
+
+# Notation legendaire :
+# damage_formula:
+#   "F+N"           = Force + bonus arme (mêlée standard)
+#   "N+munition"    = bonus arme + munition (arme à distance, ex. arc)
+#   "F"             = Force seule, pas de bonus (chaîne, sarbacane, scalpel)
+#   "F+N+1/tête"    = formule paramétrique (goupillon)
+# damage_type:
+#   P = Perforant, T = Tranchant, C = Contendant, E = Énergétique
+#   "C/P" = au choix (R-9.7), "+1 X" = bonus typé additionnel
+# weight_kg:
+#   nombre = poids unitaire en kg
+#   "0.1/N" = poids 0.1 kg pour N pièces (munitions, lames de jet)
+#   "0.8/1m" = poids 0.8 kg par mètre (chaîne)
+#   0 = arme naturelle (crocs, griffe) ou poids négligeable
+
+# inferred = valeurs déduites par le moteur (R-10.19), à valider en édition admin :
+#   - range (pour weapon_ranged)
+#   - min_strength (ceil(weight_kg / 1.5))
+#   - area_attack pattern
+#   - durability max (selon matériau supposé)
+
+weapons:
+
+  # === ARBALÈTES ===
+
+  - id: arbalete_a_cry
+    name: "Arbalète à cry"
+    category: ranged
+    damage_type: P
+    damage_formula: "5+carreau"
+    difficulty: 7
+    weight_kg: 5.8
+    hands_required: 2
+    ammunition_compatible: [carreau]
+    inferred:
+      min_strength: 4
+      range:
+        nominal: 200
+        categories: { short: [0,50], medium: [51,100], long: [101,200], extreme: [201,300], impossible: [301, ~] }
+      durability_max: 80
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: arbalete_a_etrier
+    name: "Arbalète à étrier"
+    category: ranged
+    damage_type: P
+    damage_formula: "5+carreau"
+    difficulty: 7
+    weight_kg: 3.8
+    hands_required: 2
+    ammunition_compatible: [carreau]
+    inferred:
+      min_strength: 3
+      range:
+        nominal: 150
+        categories: { short: [0,40], medium: [41,80], long: [81,150], extreme: [151,250], impossible: [251, ~] }
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: arbalete_a_pied_de_biche
+    name: "Arbalète à pied de biche"
+    category: ranged
+    damage_type: P
+    damage_formula: "5+carreau"
+    difficulty: 7
+    weight_kg: 4.8
+    hands_required: 2
+    ammunition_compatible: [carreau]
+    inferred:
+      min_strength: 4
+      range:
+        nominal: 180
+        categories: { short: [0,45], medium: [46,90], long: [91,180], extreme: [181,280], impossible: [281, ~] }
+      durability_max: 75
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: arbalete_a_tour
+    name: "Arbalète à tour"
+    category: ranged
+    damage_type: P
+    damage_formula: "5+carreau"
+    difficulty: 7
+    weight_kg: 5.8
+    hands_required: 2
+    ammunition_compatible: [carreau]
+    inferred:
+      min_strength: 4
+      range:
+        nominal: 250
+        categories: { short: [0,60], medium: [61,120], long: [121,250], extreme: [251,400], impossible: [401, ~] }
+      durability_max: 90
+    metadata: { source: paper, inferred: true, version: 1, notes: "Arbalète lourde, montée sur tour" }
+
+  - id: arbalete_legere
+    name: "Arbalète légère"
+    category: ranged
+    damage_type: P
+    damage_formula: "4+carreau"
+    difficulty: 7
+    weight_kg: 1.9
+    hands_required: 2
+    ammunition_compatible: [carreau]
+    inferred:
+      min_strength: 2
+      range:
+        nominal: 100
+        categories: { short: [0,30], medium: [31,60], long: [61,100], extreme: [101,180], impossible: [181, ~] }
+      durability_max: 60
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === ARCS ===
+
+  - id: arc_court
+    name: "Arc court"
+    category: ranged
+    damage_type: P
+    damage_formula: "3+flèche"
+    difficulty: 7
+    weight_kg: 0.6
+    hands_required: 2
+    ammunition_compatible: [fleche]
+    price_pc: 300
+    inferred:
+      min_strength: 2
+      range:
+        nominal: 50
+        categories: { short: [0,15], medium: [16,30], long: [31,50], extreme: [51,80], impossible: [81, ~] }
+      durability_max: 40
+    metadata: { source: paper, web_price: true, inferred: true, version: 1 }
+
+  - id: arc_long
+    name: "Arc long"
+    category: ranged
+    damage_type: P
+    damage_formula: "4+flèche"
+    difficulty: 8
+    weight_kg: 0.8
+    hands_required: 2
+    ammunition_compatible: [fleche]
+    price_pc: 500
+    inferred:
+      min_strength: 3
+      range:
+        nominal: 100
+        categories: { short: [0,30], medium: [31,60], long: [61,100], extreme: [101,180], impossible: [181, ~] }
+      durability_max: 50
+    metadata: { source: paper, web_price: true, inferred: true, version: 1 }
+
+  # === MUNITIONS ===
+
+  - id: carreau
+    name: "Carreau"
+    category: ammunition
+    damage_type: P
+    damage_formula: "Arbalète+1"
+    difficulty_inherit: arbalete
+    weight_kg: 0.01  # 0.1/10
+    weight_per_count: { weight: 0.1, count: 10 }
+    price_pc: 4
+    inferred:
+      stack_size: 10
+      bonus_damage: 1
+    metadata: { source: paper, web_price: true, inferred: true, version: 1, notes: "Munition arbalète" }
+
+  - id: fleche
+    name: "Flèche"
+    category: ammunition
+    damage_type: P
+    damage_formula: "Arc+2"
+    difficulty_inherit: arc
+    weight_kg: 0.02  # 0.1/5
+    weight_per_count: { weight: 0.1, count: 5 }
+    price_pc: 4
+    inferred:
+      stack_size: 5
+      bonus_damage: 2
+    metadata: { source: paper, web_price: true, inferred: true, version: 1, notes: "Munition arc" }
+
+  - id: bille
+    name: "Bille"
+    category: ammunition
+    damage_type: C
+    damage_formula: "1+fronde"
+    difficulty_inherit: fronde
+    weight_kg: 0.01  # 0.1/10
+    weight_per_count: { weight: 0.1, count: 10 }
+    inferred:
+      stack_size: 10
+      bonus_damage: 1
+    metadata: { source: paper, inferred: true, version: 1, notes: "Munition fronde/lance-pierres" }
+
+  # === ARMES NATURELLES ===
+
+  - id: crocs
+    name: "Crocs"
+    category: natural
+    damage_type: P
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 0
+    hands_required: 0
+    metadata: { source: paper, version: 1, notes: "Attaque naturelle (créatures avec crocs)" }
+
+  - id: griffe
+    name: "Griffe"
+    category: natural
+    damage_type: T
+    damage_formula: "F+1"
+    difficulty: 5
+    weight_kg: 0
+    hands_required: 0
+    metadata: { source: paper, version: 1, notes: "Attaque naturelle (créatures avec griffes)" }
+
+  # === ARMES À MAINS NUES / FRAPPES ===
+
+  - id: baton
+    name: "Bâton"
+    category: melee
+    damage_type: C
+    damage_formula: "F+2"
+    difficulty: 7
+    weight_kg: 1.4
+    hands_required: 1  # ou 2 selon usage
+    inferred:
+      min_strength: 1
+      durability_max: 30
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: gourdin
+    name: "Gourdin"
+    category: melee
+    damage_type: C
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 1.1
+    hands_required: 1
+    inferred:
+      min_strength: 1
+      durability_max: 25
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: matraque
+    name: "Matraque"
+    category: melee
+    damage_type: C
+    damage_formula: "F+1"
+    difficulty: 6
+    weight_kg: 0.8
+    hands_required: 1
+    inferred:
+      min_strength: 1
+      durability_max: 30
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: trique
+    name: "Trique"
+    category: melee
+    damage_type: C
+    damage_formula: "F+2"
+    difficulty: 7
+    weight_kg: 1.3
+    hands_required: 1
+    inferred:
+      min_strength: 1
+      durability_max: 25
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: massue
+    name: "Massue"
+    category: melee
+    damage_type: C
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 1.5
+    hands_required: 1
+    inferred:
+      min_strength: 1
+      durability_max: 35
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: massue_a_pointes
+    name: "Massue à pointes"
+    category: melee
+    damage_type: C
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 1.7
+    hands_required: 1
+    special_effects: "+1 P (pointes)"
+    bonus_damage_extra:
+      - { type: P, value: 1, source: pointes }
+    inferred:
+      min_strength: 2
+      durability_max: 35
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === LAMES COURTES ===
+
+  - id: couteau
+    name: "Couteau"
+    category: melee
+    damage_type: T
+    damage_formula: "F+1"
+    difficulty: 6
+    weight_kg: 0.05  # 0.1/2
+    weight_per_count: { weight: 0.1, count: 2 }
+    price_pc: 50
+    inferred:
+      stack_size: 2
+      durability_max: 20
+    metadata: { source: paper, web_price: true, inferred: true, version: 1 }
+
+  - id: couteau_de_lancer
+    name: "Couteau de lancer"
+    category: thrown
+    damage_type: T
+    damage_formula: "F+1"
+    difficulty: 7
+    weight_kg: 0.1
+    inferred:
+      range:
+        nominal: 15
+        categories: { short: [0,5], medium: [6,10], long: [11,15], extreme: [16,25], impossible: [26, ~] }
+      durability_max: 25
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: poignard
+    name: "Poignard"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 0.2
+    inferred:
+      durability_max: 30
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: dague
+    name: "Dague"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 0.4
+    price_pc: 150
+    inferred:
+      durability_max: 35
+    metadata: { source: paper, web_price: true, inferred: true, version: 1 }
+
+  - id: stylet
+    name: "Stylet"
+    category: melee
+    damage_type: T
+    damage_formula: "F+1"
+    difficulty: 6
+    weight_kg: 0.05  # 0.1/2
+    weight_per_count: { weight: 0.1, count: 2 }
+    inferred:
+      durability_max: 25
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: misericorde
+    name: "Miséricorde"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 0.1
+    inferred:
+      durability_max: 30
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: tanto
+    name: "Tanto"
+    category: melee
+    damage_type: T
+    damage_formula: "F+1"
+    difficulty: 6
+    weight_kg: 0.3
+    inferred:
+      durability_max: 35
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: kriss
+    name: "Kriss"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 0.4
+    inferred:
+      durability_max: 35
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: khukri
+    name: "Khukri"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 7
+    weight_kg: 0.5
+    inferred:
+      durability_max: 40
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: scalpel
+    name: "Scalpel"
+    category: melee
+    damage_type: T
+    damage_formula: "F"
+    difficulty: 6
+    weight_kg: 0.05  # 0.1/2
+    weight_per_count: { weight: 0.1, count: 2 }
+    inferred:
+      durability_max: 15
+    metadata: { source: paper, inferred: true, version: 1, notes: "Outil chirurgical, faibles dégâts" }
+
+  - id: rasoir
+    name: "Rasoir"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 7
+    weight_kg: 0.05  # 0.1/2
+    weight_per_count: { weight: 0.1, count: 2 }
+    inferred:
+      durability_max: 20
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === ÉPÉES ===
+
+  - id: epee_courte
+    name: "Épée courte"
+    category: melee
+    damage_type: T
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 1.2
+    inferred:
+      durability_max: 60
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: epee_a_une_main
+    name: "Épée à une main"
+    category: melee
+    damage_type: T
+    damage_formula: "F+4"
+    difficulty: 7
+    weight_kg: 1.5
+    hands_required: 1
+    price_pc: 1800
+    inferred:
+      durability_max: 80
+    metadata: { source: paper, web_price: true, inferred: true, version: 1 }
+
+  - id: epee_batarde
+    name: "Épée bâtarde"
+    category: melee
+    damage_type: T
+    damage_formula: "F+6"
+    difficulty: 8
+    weight_kg: 2.2
+    hands_required: 1  # peut être 1 ou 2
+    price_pc: 2000
+    inferred:
+      min_strength: 2
+      durability_max: 90
+    metadata: { source: paper, web_price: true, inferred: true, version: 1, notes: "1 ou 2 mains au choix" }
+
+  - id: epee_a_deux_mains
+    name: "Épée à deux mains"
+    category: melee
+    damage_type: T
+    damage_formula: "F+7"
+    difficulty: 9
+    weight_kg: 3.5
+    hands_required: 2
+    price_pc: 2200
+    inferred:
+      min_strength: 3
+      area_attack:
+        enabled: true
+        pattern: sweep
+        max_targets: 2
+      durability_max: 100
+    metadata: { source: paper, web_price: true, inferred: true, version: 1 }
+
+  - id: espadon
+    name: "Espadon"
+    category: melee
+    damage_type: T
+    damage_formula: "F+7"
+    difficulty: 9
+    weight_kg: 5
+    hands_required: 2
+    special_effects: "+1 C"
+    bonus_damage_extra:
+      - { type: C, value: 1, source: pommeau }
+    inferred:
+      min_strength: 4
+      area_attack:
+        enabled: true
+        pattern: sweep
+        max_targets: 2
+      durability_max: 100
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: cimeterre
+    name: "Cimeterre"
+    category: melee
+    damage_type: T
+    damage_formula: "F+4"
+    difficulty: 7
+    weight_kg: 1.9
+    inferred:
+      min_strength: 2
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: sabre
+    name: "Sabre"
+    category: melee
+    damage_type: T
+    damage_formula: "F+4"
+    difficulty: 7
+    weight_kg: 1.8
+    inferred:
+      min_strength: 2
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: yatagan
+    name: "Yatagan"
+    category: melee
+    damage_type: T
+    damage_formula: "F+4"
+    difficulty: 7
+    weight_kg: 1.8
+    inferred:
+      min_strength: 2
+      durability_max: 65
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: katana
+    name: "Katana"
+    category: melee
+    damage_type: T
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 1.5
+    inferred:
+      durability_max: 90
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: wakizashi
+    name: "Wakizashi"
+    category: melee
+    damage_type: T
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 0.8
+    inferred:
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: ninjato
+    name: "Ninjato"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 0.4
+    inferred:
+      durability_max: 50
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: rapiere
+    name: "Rapière"
+    category: melee
+    damage_type: T
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 0.9
+    inferred:
+      durability_max: 60
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: fleuret
+    name: "Fleuret"
+    category: melee
+    damage_type: P
+    damage_formula: "F+2"
+    difficulty: 7
+    weight_kg: 0.3
+    inferred:
+      durability_max: 50
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: glaive
+    name: "Glaive"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 0.9
+    inferred:
+      durability_max: 60
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: main_gauche
+    name: "Main gauche"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 7
+    weight_kg: 0.8
+    inferred:
+      durability_max: 50
+    metadata: { source: paper, inferred: true, version: 1, notes: "Arme de parade pour la main faible (cf. R-9.42)" }
+
+  # === LAMES LONGUES SPÉCIALES ===
+
+  - id: coutelas
+    name: "Coutelas"
+    category: melee
+    damage_type: T
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 1.2
+    inferred:
+      durability_max: 55
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: machette
+    name: "Machette"
+    category: melee
+    damage_type: T
+    damage_formula: "F+3"
+    difficulty: 8
+    weight_kg: 1
+    inferred:
+      durability_max: 50
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: hachoir
+    name: "Hachoir"
+    category: melee
+    damage_type: T
+    damage_formula: "F+3"
+    difficulty: 8
+    weight_kg: 1
+    inferred:
+      durability_max: 45
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: fauchon
+    name: "Fauchon"
+    category: melee
+    damage_type: T
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 1.1
+    inferred:
+      durability_max: 55
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === ARMES D'HAST (POLE WEAPONS) ===
+
+  - id: lance
+    name: "Lance"
+    category: melee
+    damage_type: P
+    damage_formula: "F+4"
+    difficulty: 8
+    weight_kg: 1.6
+    hands_required: 2
+    inferred:
+      min_strength: 1
+      area_attack:
+        enabled: true
+        pattern: line
+        max_targets: 1  # peut traverser si Force suffisante
+      durability_max: 50
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: lance_de_cavalerie
+    name: "Lance de cavalerie"
+    category: melee
+    damage_type: P
+    damage_formula: "F+5"
+    difficulty: 9
+    weight_kg: 7
+    hands_required: 1  # tenue à la cavalcade
+    inferred:
+      min_strength: 5
+      area_attack:
+        enabled: true
+        pattern: charge
+        max_targets: 2
+        damage_distribution: full
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1, notes: "Réservée à un cavalier monté (R-9.43)" }
+
+  - id: pique
+    name: "Pique"
+    category: melee
+    damage_type: P
+    damage_formula: "F+4"
+    difficulty: 9
+    weight_kg: 2.2
+    hands_required: 2
+    inferred:
+      min_strength: 2
+      area_attack:
+        enabled: true
+        pattern: line
+        max_targets: 2
+      durability_max: 60
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: epieux
+    name: "Épieu"
+    category: melee
+    damage_type: P
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 1.3
+    hands_required: 2
+    inferred:
+      durability_max: 45
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: javelot
+    name: "Javelot"
+    category: thrown
+    damage_type: P
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 1
+    inferred:
+      range:
+        nominal: 30
+        categories: { short: [0,10], medium: [11,20], long: [21,30], extreme: [31,50], impossible: [51, ~] }
+      durability_max: 35
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: sagaie
+    name: "Sagaie"
+    category: thrown
+    damage_type: P
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 0.8
+    inferred:
+      range:
+        nominal: 25
+        categories: { short: [0,8], medium: [9,17], long: [18,25], extreme: [26,40], impossible: [41, ~] }
+      durability_max: 30
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: arpon
+    name: "Harpon"
+    category: thrown
+    damage_type: P
+    damage_formula: "F+3"
+    difficulty: 8
+    weight_kg: 0.8
+    inferred:
+      range:
+        nominal: 20
+        categories: { short: [0,7], medium: [8,14], long: [15,20], extreme: [21,30], impossible: [31, ~] }
+      area_attack:
+        enabled: true
+        pattern: line
+        max_targets: 1
+      durability_max: 40
+    metadata: { source: paper, inferred: true, version: 1, notes: "Orthographe legacy : 'Arpon'" }
+
+  - id: trident
+    name: "Trident"
+    category: melee
+    damage_type: P
+    damage_formula: "F+5"
+    difficulty: 9
+    weight_kg: 3
+    hands_required: 2
+    inferred:
+      min_strength: 2
+      durability_max: 55
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: corseque
+    name: "Corsèque"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 0.5
+    inferred:
+      durability_max: 50
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: pertuisane
+    name: "Pertuisane"
+    category: melee
+    damage_type: T
+    damage_formula: "F+5"
+    difficulty: 8
+    weight_kg: 4.1
+    hands_required: 2
+    inferred:
+      min_strength: 3
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: hallebarde
+    name: "Hallebarde"
+    category: melee
+    damage_type: ["T", "P"]  # T/P au choix R-9.7
+    damage_formula: "F+5"
+    difficulty: 8
+    weight_kg: 4.2
+    hands_required: 2
+    multi_type_choice: true
+    inferred:
+      min_strength: 3
+      area_attack:
+        enabled: true
+        pattern: sweep
+        max_targets: 2
+      durability_max: 75
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: bardiche
+    name: "Bardiche"
+    category: melee
+    damage_type: T
+    damage_formula: "F+4"
+    difficulty: 8
+    weight_kg: 3.9
+    hands_required: 2
+    inferred:
+      min_strength: 3
+      area_attack:
+        enabled: true
+        pattern: sweep
+        max_targets: 2
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: vouge
+    name: "Vouge"
+    category: melee
+    damage_type: T
+    damage_formula: "F+5"
+    difficulty: 8
+    weight_kg: 4.3
+    hands_required: 2
+    inferred:
+      min_strength: 3
+      area_attack:
+        enabled: true
+        pattern: sweep
+        max_targets: 2
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: fauchard
+    name: "Fauchard"
+    category: melee
+    damage_type: T
+    damage_formula: "F+5"
+    difficulty: 8
+    weight_kg: 4.1
+    hands_required: 2
+    inferred:
+      min_strength: 3
+      area_attack:
+        enabled: true
+        pattern: sweep
+        max_targets: 2
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: faux
+    name: "Faux"
+    category: melee
+    damage_type: T
+    damage_formula: "F+4"
+    difficulty: 10  # legacy "95" = notation étendue D1 R-1.X (9 ET 5 minimum sur 2 dés = difficulté 10)
+    weight_kg: 2.8
+    hands_required: 2
+    inferred:
+      min_strength: 2
+      area_attack:
+        enabled: true
+        pattern: sweep
+        max_targets: 3
+      durability_max: 50
+    metadata: { source: paper, inferred: true, version: 1, difficulty_notation: "legacy_extended_95_means_10" }
+
+  - id: naginata
+    name: "Naginata"
+    category: melee
+    damage_type: T
+    damage_formula: "F+4"
+    difficulty: 8
+    weight_kg: 3.8
+    hands_required: 2
+    inferred:
+      min_strength: 3
+      area_attack:
+        enabled: true
+        pattern: sweep
+        max_targets: 2
+      durability_max: 80
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: langue_de_boeuf
+    name: "Langue-de-bœuf"
+    category: melee
+    damage_type: T
+    damage_formula: "F+5"
+    difficulty: 8
+    weight_kg: 2.5
+    hands_required: 2
+    inferred:
+      min_strength: 2
+      durability_max: 65
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: fourche
+    name: "Fourche"
+    category: melee
+    damage_type: P
+    damage_formula: "F+3"
+    difficulty: 8
+    weight_kg: 2
+    hands_required: 2
+    inferred:
+      min_strength: 2
+      durability_max: 30
+    metadata: { source: paper, inferred: true, version: 1, notes: "Outil agricole" }
+
+  - id: rateau
+    name: "Râteau"
+    category: melee
+    damage_type: P
+    damage_formula: "F+1"
+    difficulty: 8
+    weight_kg: 2
+    hands_required: 2
+    inferred:
+      durability_max: 25
+    metadata: { source: paper, inferred: true, version: 1, notes: "Outil agricole improvisé" }
+
+  - id: pelle
+    name: "Pelle"
+    category: melee
+    damage_type: ["T", "C"]
+    damage_formula: "F+2"
+    difficulty: 8
+    weight_kg: 2
+    hands_required: 2
+    multi_type_choice: true
+    inferred:
+      durability_max: 35
+    metadata: { source: paper, inferred: true, version: 1, notes: "Outil improvisé" }
+
+  - id: pioche
+    name: "Pioche"
+    category: melee
+    damage_type: P
+    damage_formula: "F+4"
+    difficulty: 9
+    weight_kg: 2.2
+    hands_required: 2
+    inferred:
+      min_strength: 2
+      durability_max: 50
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: pieux
+    name: "Pieu"
+    category: melee
+    damage_type: P
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 0.3
+    inferred:
+      durability_max: 25
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === HACHES ===
+
+  - id: hache_d_armes
+    name: "Hache d'armes"
+    category: melee
+    damage_type: T
+    damage_formula: "F+5"
+    difficulty: 8
+    weight_kg: 2
+    inferred:
+      min_strength: 2
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: hache_de_bataille
+    name: "Hache de bataille"
+    category: melee
+    damage_type: T
+    damage_formula: "F+6"
+    difficulty: 9
+    weight_kg: 3.5
+    hands_required: 2
+    special_effects: "+1 C"
+    bonus_damage_extra:
+      - { type: C, value: 1, source: dos_de_lame }
+    inferred:
+      min_strength: 3
+      durability_max: 90
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: hache_de_jet
+    name: "Hache de jet"
+    category: thrown
+    damage_type: T
+    damage_formula: "F+4"
+    difficulty: 8
+    weight_kg: 0.7
+    inferred:
+      range:
+        nominal: 15
+        categories: { short: [0,5], medium: [6,10], long: [11,15], extreme: [16,25], impossible: [26, ~] }
+      durability_max: 50
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: hachette
+    name: "Hachette"
+    category: melee
+    damage_type: T
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 1.2
+    inferred:
+      durability_max: 55
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: tomahawk
+    name: "Tomahawk"
+    category: thrown
+    damage_type: T
+    damage_formula: "F+3"
+    difficulty: 7
+    weight_kg: 0.6
+    inferred:
+      range:
+        nominal: 12
+        categories: { short: [0,4], medium: [5,8], long: [9,12], extreme: [13,20], impossible: [21, ~] }
+      durability_max: 45
+    metadata: { source: paper, inferred: true, version: 1, notes: "Utilisable mêlée OU jet" }
+
+  - id: cognee
+    name: "Cognée"
+    category: melee
+    damage_type: T
+    damage_formula: "F+5"
+    difficulty: 8
+    weight_kg: 3.1
+    hands_required: 2
+    special_effects: "+ 1 C"
+    bonus_damage_extra:
+      - { type: C, value: 1, source: dos_de_lame }
+    inferred:
+      min_strength: 3
+      durability_max: 75
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: zabatoff
+    name: "Zabatoff"
+    category: melee
+    damage_type: T
+    damage_formula: "F+4"
+    difficulty: 8
+    weight_kg: 4.2
+    hands_required: 2
+    inferred:
+      min_strength: 3
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === MARTEAUX ET MASSES ===
+
+  - id: marteau
+    name: "Marteau"
+    category: melee
+    damage_type: C
+    damage_formula: "F+2"
+    difficulty: 7
+    weight_kg: 2
+    inferred:
+      min_strength: 2
+      durability_max: 60
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: marteau_de_guerre
+    name: "Marteau de guerre"
+    category: melee
+    damage_type: ["C", "P"]
+    damage_formula: "F+5"
+    difficulty: 7
+    weight_kg: 4
+    multi_type_choice: true
+    inferred:
+      min_strength: 3
+      durability_max: 80
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: marteau_de_guerre_lourd
+    name: "Marteau de guerre lourd"
+    category: melee
+    damage_type: ["C", "P"]
+    damage_formula: "F+7"
+    difficulty: 9
+    weight_kg: 5.8
+    hands_required: 2
+    multi_type_choice: true
+    inferred:
+      min_strength: 4
+      durability_max: 100
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: masse
+    name: "Masse"
+    category: melee
+    damage_type: C
+    damage_formula: "F+4"
+    difficulty: 8
+    weight_kg: 3.8
+    inferred:
+      min_strength: 3
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: masse_d_armes
+    name: "Masse d'armes"
+    category: melee
+    damage_type: C
+    damage_formula: "F+4"
+    difficulty: 7
+    weight_kg: 3.5
+    inferred:
+      min_strength: 3
+      durability_max: 75
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: masse_de_guerre
+    name: "Masse de guerre"
+    category: melee
+    damage_type: C
+    damage_formula: "F+5"
+    difficulty: 8
+    weight_kg: 4
+    inferred:
+      min_strength: 3
+      durability_max: 85
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: morgenstern
+    name: "Morgenstern"
+    category: melee
+    damage_type: C
+    damage_formula: "F+4"
+    difficulty: 7
+    weight_kg: 4
+    special_effects: "+ 2 P"
+    bonus_damage_extra:
+      - { type: P, value: 2, source: pointes }
+    inferred:
+      min_strength: 3
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: godendac
+    name: "Godendac"
+    category: melee
+    damage_type: ["C", "P"]
+    damage_formula: "F+5"
+    difficulty: 8
+    weight_kg: 4.5
+    hands_required: 2
+    multi_type_choice: true
+    inferred:
+      min_strength: 3
+      durability_max: 75
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: goupillon
+    name: "Goupillon"
+    category: melee
+    damage_type: C
+    damage_formula: "F+3+1/tête"
+    difficulty: 10  # legacy "95" = notation étendue D1 R-1.X (9 ET 5 minimum sur 2 dés = difficulté 10)
+    weight_kg_formula: "1.4+1/tête"
+    weight_kg: 1.4  # base, +1 kg par tête supplémentaire
+    parametric: true
+    parametric_field: heads
+    special_effects: "+1 P/tête"
+    bonus_damage_extra_per_param:
+      - { type: P, value: 1, per_unit: head }
+    inferred:
+      min_strength: 2
+      durability_max: 60
+    metadata: { source: paper, inferred: true, version: 1, difficulty_notation: "legacy_extended_95_means_10", notes: "Arme paramétrique : nombre de têtes variable" }
+
+  # === FLÉAUX ===
+
+  - id: fleau
+    name: "Fléau"
+    category: melee
+    damage_type: C
+    damage_formula: "F+3"
+    difficulty: 8
+    weight_kg: 2
+    inferred:
+      min_strength: 2
+      durability_max: 60
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: fleau_d_arme
+    name: "Fléau d'arme"
+    category: melee
+    damage_type: C
+    damage_formula: "F+5"
+    difficulty: 9
+    weight_kg: 3
+    inferred:
+      min_strength: 2
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: fleau_d_arme_a_pointes
+    name: "Fléau d'arme à pointes"
+    category: melee
+    damage_type: C
+    damage_formula: "F+5"
+    difficulty: 9
+    weight_kg: 3.3
+    special_effects: "+2 P"
+    bonus_damage_extra:
+      - { type: P, value: 2, source: pointes }
+    inferred:
+      min_strength: 2
+      durability_max: 70
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: fleau_de_guerre
+    name: "Fléau de guerre"
+    category: melee
+    damage_type: C
+    damage_formula: "F+6"
+    difficulty: 10  # legacy "95" = notation étendue D1 R-1.X (9 ET 5 minimum sur 2 dés = difficulté 10)
+    weight_kg: 4.9
+    hands_required: 2
+    inferred:
+      min_strength: 4
+      durability_max: 85
+    metadata: { source: paper, inferred: true, version: 1, difficulty_notation: "legacy_extended_95_means_10" }
+
+  - id: fleau_de_guerre_a_pointes
+    name: "Fléau de guerre à pointes"
+    category: melee
+    damage_type: C
+    damage_formula: "F+6"
+    difficulty: 10  # legacy "95" = notation étendue D1 R-1.X (9 ET 5 minimum sur 2 dés = difficulté 10)
+    weight_kg: 5.2
+    hands_required: 2
+    special_effects: "+2 P"
+    bonus_damage_extra:
+      - { type: P, value: 2, source: pointes }
+    inferred:
+      min_strength: 4
+      durability_max: 85
+    metadata: { source: paper, inferred: true, version: 1, difficulty_notation: "legacy_extended_95_means_10" }
+
+  # === ARMES SOUPLES ===
+
+  - id: chaine
+    name: "Chaîne"
+    category: melee
+    damage_type: C
+    damage_formula: "F"
+    difficulty: 9
+    weight_kg_formula: "0.8/1m"
+    weight_kg: 0.8  # par mètre
+    parametric: true
+    parametric_field: length_m
+    inferred:
+      min_strength: 1
+      durability_max: 60
+    metadata: { source: paper, inferred: true, version: 1, notes: "Poids = 0.8 kg / mètre" }
+
+  - id: fouet
+    name: "Fouet"
+    category: melee
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 8
+    weight_kg: 0.5
+    inferred:
+      durability_max: 30
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: nunchaku
+    name: "Nunchaku"
+    category: melee
+    damage_type: C
+    damage_formula: "F+2"
+    difficulty: 9
+    weight_kg: 0.4
+    inferred:
+      durability_max: 35
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: tonfa
+    name: "Tonfa"
+    category: melee
+    damage_type: C
+    damage_formula: "F+2"
+    difficulty: 9
+    weight_kg: 0.5
+    inferred:
+      durability_max: 40
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: sai
+    name: "Saï"
+    category: melee
+    damage_type: P
+    damage_formula: "F+2"
+    difficulty: 6
+    weight_kg: 0.5
+    inferred:
+      durability_max: 40
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  # === ARMES DE JET / LANCEMENT ===
+
+  - id: chakram
+    name: "Chakram"
+    category: thrown
+    damage_type: T
+    damage_formula: "F+2"
+    difficulty: 7
+    weight_kg: 0.7
+    inferred:
+      range:
+        nominal: 20
+        categories: { short: [0,7], medium: [8,14], long: [15,20], extreme: [21,30], impossible: [31, ~] }
+      area_attack:
+        enabled: true
+        pattern: ricochet
+        max_targets: 3
+      durability_max: 50
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: boomerang
+    name: "Boomerang"
+    category: thrown
+    damage_type: C
+    damage_formula: "F+1"
+    difficulty: 9
+    weight_kg: 0.4
+    inferred:
+      range:
+        nominal: 30
+        categories: { short: [0,10], medium: [11,20], long: [21,30], extreme: [31,50], impossible: [51, ~] }
+      area_attack:
+        enabled: true
+        pattern: ricochet
+        max_targets: 2
+      durability_max: 40
+      special: "Revient au lanceur si raté ou non bloqué"
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: etoile_ninja
+    name: "Étoile ninja"
+    category: thrown
+    damage_type: T
+    damage_formula: "F+1"
+    difficulty: 8
+    weight_kg: 0.02  # 0.1/5
+    weight_per_count: { weight: 0.1, count: 5 }
+    inferred:
+      stack_size: 5
+      range:
+        nominal: 10
+        categories: { short: [0,3], medium: [4,7], long: [8,10], extreme: [11,15], impossible: [16, ~] }
+      durability_max: 25
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: shuriken
+    name: "Shuriken"
+    category: thrown
+    damage_type: P
+    damage_formula: "F+1"
+    difficulty: 8
+    weight_kg: 0.02  # 0.1/5
+    weight_per_count: { weight: 0.1, count: 5 }
+    inferred:
+      stack_size: 5
+      range:
+        nominal: 12
+        categories: { short: [0,4], medium: [5,8], long: [9,12], extreme: [13,18], impossible: [19, ~] }
+      durability_max: 25
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: fronde
+    name: "Fronde"
+    category: ranged
+    damage_type: C
+    damage_formula: "F+bille"
+    difficulty: 8
+    weight_kg: 0  # poids négligeable
+    hands_required: 1
+    ammunition_compatible: [bille]
+    price_pc: 20
+    inferred:
+      range:
+        nominal: 30
+        categories: { short: [0,10], medium: [11,20], long: [21,30], extreme: [31,50], impossible: [51, ~] }
+      durability_max: 30
+    metadata: { source: paper, web_price: true, inferred: true, version: 1 }
+
+  - id: lance_pierres
+    name: "Lance-pierres"
+    category: ranged
+    damage_type: C
+    damage_formula: "2+bille"
+    difficulty: 7
+    weight_kg: 0.05  # 0.1/2
+    weight_per_count: { weight: 0.1, count: 2 }
+    ammunition_compatible: [bille]
+    inferred:
+      range:
+        nominal: 25
+        categories: { short: [0,8], medium: [9,17], long: [18,25], extreme: [26,40], impossible: [41, ~] }
+      durability_max: 30
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: sarbacane
+    name: "Sarbacane"
+    category: ranged
+    damage_type: P
+    damage_formula: "F"
+    difficulty: 7
+    weight_kg: 0.1
+    hands_required: 2
+    inferred:
+      range:
+        nominal: 20
+        categories: { short: [0,7], medium: [8,14], long: [15,20], extreme: [21,30], impossible: [31, ~] }
+      durability_max: 25
+      typical_use: "Tir de fléchettes empoisonnées (lien R-9.35)"
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: grappin
+    name: "Grappin"
+    category: thrown
+    damage_type: P
+    damage_formula: "F+1"
+    difficulty: 7
+    weight_kg: 0.1
+    inferred:
+      range:
+        nominal: 8
+        categories: { short: [0,3], medium: [4,5], long: [6,8], extreme: [9,12], impossible: [13, ~] }
+      durability_max: 50
+      typical_use: "Escalade / accrochage (compétence Acrobatie)"
+    metadata: { source: paper, inferred: true, version: 1, notes: "Outil multi-usage" }
+
+  # === ARMES IMPROVISÉES / ÉCLAIRAGE ===
+
+  - id: torche
+    name: "Torche"
+    category: melee
+    damage_type: C
+    damage_formula: "F+1"
+    difficulty: 7
+    weight_kg: 1.7
+    special_effects: "+ 1 E"
+    bonus_damage_extra:
+      - { type: E, value: 1, source: feu }
+    price_pc: 40
+    inferred:
+      durability_max: 15
+      typical_use: "Éclairage + arme d'opportunité"
+    metadata: { source: paper, web_price: true, inferred: true, version: 1, notes: "Item double usage : éclairage + arme C/E" }
+
+  - id: serpe
+    name: "Serpe"
+    category: melee
+    damage_type: T
+    damage_formula: "F+1"
+    difficulty: 8
+    weight_kg: 0.4
+    inferred:
+      durability_max: 35
+    metadata: { source: paper, inferred: true, version: 1 }
+
+  - id: serpette
+    name: "Serpette"
+    category: melee
+    damage_type: T
+    damage_formula: "F+1"
+    difficulty: 7
+    weight_kg: 0.2
+    inferred:
+      durability_max: 30
+    metadata: { source: paper, inferred: true, version: 1 }

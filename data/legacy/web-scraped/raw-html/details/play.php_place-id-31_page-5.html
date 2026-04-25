@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=31">Castello di Sala</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=31&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                30.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Je pense déjà qu il faudrait être clair sur vos intentions...parce que participer à un concours pour ne pas le gagner, c est un peu le genre de choses à dire avant de le commencer...et c edt pas la diplomatie le problème, c est votre stratégie secrète qui a faillit nous mettre dans la panade.
+
+Charisme-justification-mauvaise foi, diff -10 sur jet de volonte) <hr><span class="play-sub-title">Action</span><br /><p>Charisme (diff. 2) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                30.06.20
+            </div>
+
+            <div class="forum-post-content">
+                (tu peux faire un jet d&#039;empathie-etiquette pour savoir ou en est Ackbar en la matière, par contre)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                30.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [lol @ Charisme-justification-mauvaise foi]
+
+Je ne parle pas de ta prestation, mais bien de ton intervention ensuite.
+Justification douteuses, déresponsabilisation, consideration magistique ou racial et la liste est encore longue.. en à peine quelques phrase ! 
+Ce sont tout autant d&#039;opportunité de tuer des négociations dans l&#039;oeuf pour nos futures interlocuteurs... Si en effet la diplomatie n&#039;est pas le problème, dois-je en déduire que le manque de bon sens l&#039;est ? 
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1434&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                30.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [Sindalia s&#039;en branle littéralement, elle très agacée et peu importe le nombre de point d’étiquette et bien elle pensera qu&#039;il t&#039;en faut un de plus ;) Par contre tu sais qu&#039;elle peu se montrée bien plus acerbe que ça, si ça intéresse Akbar tu peu faire un jet d’empathie pour savoir pourquoi elle se contient]
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1435&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Alberto Bratelli (Braal)<br />
+
+                <a href="character-detail.php?id=129">
+                    <img src="../img/characters-profil/129.jpg" alt="Alberto Bratelli (Braal)" height="100" width="80">
+                </a>
+
+                <br />
+
+                30.06.20
+            </div>
+
+            <div class="forum-post-content">
+                * Toussote un peu pour s&#039;éclaicir la voix et prendre poliment la parole. *
+
+Le tableau à été conduit ici dans un chariotte spécialement construit pour l&#039;occasion. En plus d&#039;un rangement adapté au tableau, on peut y tenir à 4 pour dormir. Vous pouvez en disposer si vous le jugez nécessaire.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                30.06.20
+            </div>
+
+            <div class="forum-post-content">
+                (vol:4/15...fail mais vu que Sindalia peut être beaucoup plus acerbe, se permet quand même de répondre dans sa barbe) et jet d&#039;empathie (+2 car elf noire) pour savoir pourquoi Sindalia ne s&#039;emporte pas plus.
+
+*s&#039;écrse et marmonne dans sa barbe, de facon presque inaudible, de toute bonne foi, cette fois-ci.
+
+Mais heu...bein...bon bein voila...chai pas moi, qu&#039;est ce que j&#039;aurais pu dire d&#039;aut&#039;e? Après tout c&#039;est vrai quoi...la magie, c&#039;est pas de la triche...sauf si c&#039;est précisé qu&#039;on a pas l&#039;droit d&#039;en faire et qu&#039;on en fait <hr><span class="play-sub-title">Action</span><br /><p>Empathie + Psychologie + Psychologie elfe sombre (diff. 7) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                30.06.20
+            </div>
+
+            <div class="forum-post-content">
+                [Et bien... Sindalia t&#039;aime beaucoup... et aussi elle s&#039;attendrie anormalement ces temps. Tu pense que s&#039;il elle avait pas sincèrement de l&#039;affection pour toi elle t&#039;aurais surement arraché la tête. Mais la non seulement c&#039;est pas le cas mais en plus elle garde son calme et te propose des solutions]
+
+@Akbar *A repris son calme*
+Les relations diplomatique ce n&#039;est pas chercher à avoir raison face a opposant, mais convaincre un futur allié qu&#039;il a besoin de toi Akbar.
+J&#039;en n&#039;ai cure de savoir si c&#039;est de la triche ou pas.
+
+@Braal
+Merci pour la charrette.
+
+[@MJ Tu peu nous la décrire cette charrette ?]
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1438&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.07.20
+            </div>
+
+            <div class="forum-post-content">
+                Une magnifique chariotte de chez Giacomo Verucci.
+1,5 mètre de large pour 2,8 mètre de long.
+Bois léger et flexible renforcé d&#039;armutures métallique et inifugué.
+Intérieur cuir avec 2x 2 hamacs à sortir des cloissons.
+Attelage de 4 chevaux. Suspensions double à chaque roues pour une conduite en doucheur.
+
+Giacomo Verucci ;
+là où nous cheminons, point estoy besoin de sentier.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.07.20
+            </div>
+
+            <div class="forum-post-content">
+                Regarde Syndalia d un œil interrogateur. Baisse et relève la tête sans mot dire... *Sela ne sait pas ce qu elle a fait de mal alors elle suit le move sans se poser de question.*
+
+- Ouaw la caisse ! Je peux la conduire ? 
+
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.07.20
+            </div>
+
+            <div class="forum-post-content">
+                [@MJ J&#039;ai ri ! mais j&#039;ai ri / T&#039;as loupé ta vocation de concessionnaire auto ou de voix off de pub]
+[Sela n&#039;a rien fait de mal :) mais Sindalia l&#039;a mis dans le meme panier arbitrairement]
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1441&place-id=31" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=31&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=31&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=31&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=31&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=31&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=31&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=31&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=31&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=31&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=31&page=10">
+          10
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

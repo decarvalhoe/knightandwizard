@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=23">La taverne des Bolichons</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=119">
+        <img src="../img/characters-profil/119.jpg" alt="Gilbert" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=119">Gilbert</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=156">
+        <img src="../img/characters-profil/156.jpg" alt="Jean" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=156">Jean</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=23&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                23.07.19
+            </div>
+
+            <div class="forum-post-content">
+                
+Ha et si jamais Akbar, le loup Garou que vous a montré Jean, tu l&#039;as jamais vu.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                23.07.19
+            </div>
+
+            <div class="forum-post-content">
+                (Ackbar ayant étudié dans le pays, il sait surement s&#039;il y a une école de magie à Miges...Est-ce le cas?)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Oui il y a une école de magie élémentaire. En ce qui concerne l&#039;appel à un devin pour retrouver quelqu&#039;un, tu peux faire un jet de connaissance de la magie divinatoire +3 de difficulté . Spécialisation rituels.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.07.19
+            </div>
+
+            <div class="forum-post-content">
+                 <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Arcanologie (diff. 9) => 0R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.07.19
+            </div>
+
+            <div class="forum-post-content">
+                (A Caréon, y a une école de magie divinatoire, j&#039;imagine?)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Il, a 4 écoles de magie à Caréon : altération, abjuration, blanche, noire (comme d&#039;habitude cela a été définit au hasard avec des dès... Au cas où vous vous demanderez)., 
+
+Sinon Akbar tu sais pas grand chose du rituel que Jean a fait et sûrement qu&#039;il était un peu nul et que y&#039;a moyen de retrouver quelqu&#039;un !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.07.19
+            </div>
+
+            <div class="forum-post-content">
+                (bon, elle se trouve ou, l&#039;école de magie brune, en Fauche-le-vent, alors?)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.07.19
+            </div>
+
+            <div class="forum-post-content">
+                (heureusement que les dés on mit une école d&#039;abjuration, c&#039;est là qu&#039;Ackbar devait étudier :-P)
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Taligon: élémentaire +invocation.
+Palenveau : divinatoire.
+Entédeu: pas d&#039;école de magie.
+Grilois: élémentaire + possède la réputation d&#039;abriter une confrérie de nécromants.
+Denive : élémentaire et divinatoire.
+Ribalin: pas d&#039;école de magie.
+Marendon: naturelle.
+Tourde : altération et enchantement.
+Divelle : pas d&#039;école de magie mais possède la réputation d&#039;accueillir sporadiquement des nains maîtres des Runes.
+Edridens: blanche.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                <div class="forum-post-demarcation-line">Fin de la scène</div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=23&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=23&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=23&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=23&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=23&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=23&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=23&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=23&page=8">
+          8
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

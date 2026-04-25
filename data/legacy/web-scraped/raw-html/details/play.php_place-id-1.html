@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=1">Taverne di Marcello</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=1&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Dario Martínez<br />
+
+                <a href="character-detail.php?id=4">
+                    <img src="../img/characters-profil/4.jpg" alt="Dario Martínez" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.01.18
+            </div>
+
+            <div class="forum-post-content">
+                Aha ! Mon contrat, parlons-en tiens ! Déjà, y'en a pas. Ensuite, rien n'as jamais été stipuler quand à un arrêt. Et quand bien même, ça fait une blinde de temps que vous ne me versez plus de salaire.
+Non sérieusement, je sais que vous avez besoin d'être soigné mais vous êtes une troupe de magiciens et certains d'entre vous connaissent des sorts de soins. Vous avez aussi des connaissances en médecine dans le groupe. Bref, ce que je veux dire c'est que vous êtes assez grand pour vous débrouiller sans moi. Et puis, j'ai besoin de sauver des vies. Me raccrocher à ma vision de départ si on veut. Depuis un certain temps, avec vous, ne le prenez pas mal, mais j'ai le sentiment de semer la mort plus qu'autre chose.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.01.18
+            </div>
+
+            <div class="forum-post-content">
+                Bon okay Dario, okay. Tu marques un point. Enfait plusieurs... mais qui va nous embêter et chouiner toute la journée maintenant?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.01.18
+            </div>
+
+            <div class="forum-post-content">
+                -Bon okay Len, tu marques un point... 
+*se retourne vers Dario, en s'essuyant les mains sur une serviette
+-Quand la guerre sera déclarée dans le sud, c'est à dire, si on arrive pas à empêcher ça, on pourra compter sur toi, Dario?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Dario Martínez<br />
+
+                <a href="character-detail.php?id=4">
+                    <img src="../img/characters-profil/4.jpg" alt="Dario Martínez" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.01.18
+            </div>
+
+            <div class="forum-post-content">
+                Ce pays et la Princesse peut compter sur mon soutient. D'ailleurs Alteria est allié de mon pays n'est-ce pas ? Si vous avez les tripes à l'air, un coup de village magique et venez me voir ici à Erune.
+Bonne chance mes amis.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.01.18
+            </div>
+
+            <div class="forum-post-content">
+                De toute façon, tu sais que si tu restes à Erune, tu vas nous recroiser...et il sera toujours temps de reprendre la route à ce moment là... 
+*dépose les morceaux de poulet qu'il a découpés sur une tranche de pain tartinée de sauce, y glisse quelques légumes. Achève son second entre-pains en l'emballant dans un morceau de tissu à carreau rouge et blanc.
+-Tu as besoin de quelque chose?
+-Je veux dire, on peut t'aider ou faire quelque chose pour toi?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Dario Martínez<br />
+
+                <a href="character-detail.php?id=4">
+                    <img src="../img/characters-profil/4.jpg" alt="Dario Martínez" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.01.18
+            </div>
+
+            <div class="forum-post-content">
+                Je dirais, essayez d'éviter cette guerre.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Enola Nimendez<br />
+
+                <a href="character-detail.php?id=3">
+                    <img src="../img/characters-profil/3.jpg" alt="Enola Nimendez" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.01.18
+            </div>
+
+            <div class="forum-post-content">
+                Bon, on fait comme Sela elle a dit ? On va au palais voir Kensar ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.01.18
+            </div>
+
+            <div class="forum-post-content">
+                * Finit de saucer le plat de poulet avec le quignon du pain en se levant et va au bar pour régler la note puis rejoint le groupe qui est en train de se lever aussi
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.01.18
+            </div>
+
+            <div class="forum-post-content">
+                *Profite qu'Akbar ait le dos tourner pour donner un bout de poulet à Féline* Oui... allons-y !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                <div class="forum-post-demarcation-line">Fin de la scène</div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=1&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=1&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=1&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=1&page=4">
+          4
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=20">La posada de truchas doradas</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=2">
+        <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=2">Lenirdyl Al Menolda Dufaux</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=78">
+        <img src="../img/characters-profil/78.jpg" alt="Feng" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=78">Feng</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=87">
+        <img src="../img/characters-profil/87.jpg" alt="Petit gourou" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=87">Petit gourou</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=88">
+        <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=88">Archibald Baudoin</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=94">
+        <img src="../img/characters-profil/94.jpg" alt="Marie" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=94">Marie</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=160">
+        <img src="../img/characters-profil/160.jpg" alt="Féline" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=160">Féline</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=20&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                16.04.19
+            </div>
+
+            <div class="forum-post-content">
+                Chai pas c&#039;que vous en dites, les amis, mais en tout cas, on l&#039;a bien vendu, not&#039; jambon. Pas&#039;qu&#039;y faut bien l&#039;dire, il etait pas terrible. Ave&#039; st&#039;argent, va falloir trouvey des chaines pour Gil...enfin va falloir. (tout bas: pour Gilbert) Vous-voyez quoi?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Gilbert<br />
+
+                <a href="character-detail.php?id=119">
+                    <img src="../img/characters-profil/119.jpg" alt="Gilbert" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.04.19
+            </div>
+
+            <div class="forum-post-content">
+                Heum oui, j&#039;imagine que ce serait une bonne idée en effet... sinon je l&#039;aimais bien le jambon !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.04.19
+            </div>
+
+            <div class="forum-post-content">
+                Bon, l&#039;premier jour, il était pas mal, le deuxième, il était pas top, et à partir du troisième jour...&#039;fin quand Archibald l&#039;a balancé aux gros chiens sauvages, ça m&#039;a presque rien fait...c&#039;est dire! Y commençait franchement à m&#039;sortir par les trous d&#039;nez! Chui b&#039;en content qu&#039;on varie un peu. *s&#039;enfile une pleine fourchette de &quot;Paellac&quot;, la specialité du chef de la taverne, une sorte de paella mais uniquement composée de poissons et écrevisses du lac, qui ma fois est plutôt bonne!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                22.04.19
+            </div>
+
+            <div class="forum-post-content">
+                *Se sent seul au milieu de cette grande tablée de muets...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Marie<br />
+
+                <a href="character-detail.php?id=94">
+                    <img src="../img/characters-profil/94.jpg" alt="Marie" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.04.19
+            </div>
+
+            <div class="forum-post-content">
+                *La bouche pleine* C&#039;est que parfois, je préfère manger à parler....
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.04.19
+            </div>
+
+            <div class="forum-post-content">
+                *Suis les conseils de Marie
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                <div class="forum-post-demarcation-line">Fin de la scène</div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Feng<br />
+
+                <a href="character-detail.php?id=78">
+                    <img src="../img/characters-profil/78.jpg" alt="Feng" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.07.19
+            </div>
+
+            <div class="forum-post-content">
+                *Mange à grand bruit*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=20&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=20&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=20&page=3">
+          3
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

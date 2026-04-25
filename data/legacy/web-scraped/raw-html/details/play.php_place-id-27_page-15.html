@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=27">Aux Acolytes Anonymes</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=11">
+        <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=11">Giovanni Marzo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=176">
+        <img src="../img/characters-profil/176.jpg" alt="Filomena" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=176">Filomena</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=190">
+        <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=190">Marzia Moretti</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=27&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *chuchote toujours*
+
+Un endroit ou tout le monde est libre et egal, un paysan qui tape sur un noble. Un employé sur son patron ! Et plein de gens cherche du travail avec la récente immigration, ça serais l&#039;occasion génial de découvrir des nouveaux talents dans tout le pays et de les recruter dans l&#039;armée ! Ensuite une fois que ça c&#039;est bien encré on pourrait faire des endroits public ou les gens se battent et la foule en délire les acclames ! Un vivier de nouveau hero qui se battent sous la bannière Alterienne ! C&#039;est pas excitant tout ça !! Avoue !
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=720&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                * Ecarquille les yeux en écoutant Nerrak comme si celle-ci venait de lui révéler le nom de la mère de Dieu.*
+
+Et on fait comment si il y a un mort? Je veux dire avec sa part. Il faut que la mort ne profite à personne sinon on va avoir tout les tarés qui vont débouler et moi j&#039;aurai rapidement la garde sur le dos.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Marzia Moretti<br />
+
+                <a href="character-detail.php?id=190">
+                    <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Voilà vos consommations ! * Dit-elle en posant le plateau sur un bout de table. *
+Filomen vous apportera votre pizza dès qu&#039;elle sera prête Monsieur Akbar.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                * Voie qu&#039;elle a accroché l&#039;attention de Giovanni, et continue de chuchoter *
+
+Voilà évidement j&#039;y ai pensé, la règle c&#039;est combat a main nue uniquement, pas d&#039;arme dans la zone de combat et d&#039;ailleurs nul part ailleurs, ça aidera bien pour qu&#039;il n&#039;y ai pas de mort dans une premier temps.
+Il faudrait des aguerris qui renifle les armes même cachée, comme tu sentirai une crotte par terre, sur toutes les personnes qui rentrent dans le sous-sol. j&#039;en ai déjà vu, on pourras en trouver. Ensuite il faut que ce soit une condition absolue du combat, la mort n&#039;est pas acceptable. L&#039;idée serait de monter une confrérie de la castagne, et instauré un respect mutuel, pas réunir des assassins.
+
+Moi mon but c&#039;est faire des sous et faire une usine a vétéran et on deviens pas vétéran en mourant c&#039;est bien connu ! 
+
+Evidemment, il faudrait aussi un juge de combat qui évite les débordement, directement dans la zone de combat, quelqu&#039;un qui serait respecté et que personne a envie de défier.
+
+J&#039;avais même imaginé que ça pourrait être le rôle de celui qui enchaîne le plus de victoire, il aurait une légitimité sur le ring... une sorte d&#039;autorité qui décide si le combat peu continuer ou pas. 
+
+Alors t&#039;en dit quoi ! C&#039;est solide non ?
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=723&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *continue la discussion secrete*
+
+J&#039;avais meme pensé, qu&#039;on pourrait organiser un grand tournois de bras de fer... celui là publiquement de temps en temps.
+
+Durant ce tournois on pourrait repérer les bon gaillard sympa, qui serait les premier a rentrer dans la guilde trier sur le volet.
+
+Une bande de gars sympa, comme noyau dure ! Ensuite on leurs dit d&#039;amener un gars chacun au tournois de bras de fer comme prétexte au recrutement. Une sorte de bouche à oreille indirect de gens sympa et bienveillant, mais qui aime cogner dure pour se défouler !
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=724&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *continue*
+
+Rien que sur le tournois de bras de fer on pourrait faire un système de paris et s&#039;en mettre plein les poches !
+
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=726&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Un tournois de bras de fer ! En voilà une idée lumineuse. Faisons cela pour commencer. Je te laisses trouver des participants et mettre en place le système de paris. Tu pourra prendre ta commission là-dessus. Pour ce qui est des activités légales, on peut les organiser ici même et je gagnerai ma part sur les ventes de boissons.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Elle est bien ton idée, Sindalia...mais plutôt que de financer nous, on pourrait faire un arrangement avec Ylenia, genre on dit que c&#039;est notre pognon, de fait, on l&#039;avance et par la suite, quand Alteria aura retrouvé de sa superbe, elle nous le rend. Comme ça on peut tout organiser mais on y pert rien. <hr><span class="play-sub-title">Action</span><br /><p>Charisme (diff. 7) => 0R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                (j&#039;adore le résultat du jet...comme si Ackbar savait d&#039;avance que sa proposition de radin allait être refusée)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Autre chose, avant d&#039;organiser tout ça, il faudrait juste s&#039;assurer qu&#039;il reste en Alteria de grandes fortunes...parce que sinon, il y surement moyen d&#039;utiliser cet or à meilleur escient...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=27&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=27&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=27&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=27&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=27&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=27&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=27&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=27&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=27&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=27&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=27&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=27&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=27&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=27&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=27&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=27&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=27&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=27&page=18">
+          18
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=27">Aux Acolytes Anonymes</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=11">
+        <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=11">Giovanni Marzo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=176">
+        <img src="../img/characters-profil/176.jpg" alt="Filomena" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=176">Filomena</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=190">
+        <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=190">Marzia Moretti</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=27&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Comme d&#039;habitude...avec quelques trucs à grignoter genre...vous pouvez nous faire quelques pizza bianca (juste pate à pizza avec de l&#039;huile d&#039;olive et des herbes) coupées en morceaux, comme la dernière fois. C’était excellent.
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Marzia Moretti<br />
+
+                <a href="character-detail.php?id=190">
+                    <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.03.20
+            </div>
+
+            <div class="forum-post-content">
+                * Regarde son patron pour savoir si la pizza est comprise dans la tournée offerte par celui-ci. *
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.03.20
+            </div>
+
+            <div class="forum-post-content">
+                * Répond par un signe de la tête qu&#039;elle peut amener à manger à la table. *
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Enola Nimendez<br />
+
+                <a href="character-detail.php?id=3">
+                    <img src="../img/characters-profil/3.jpg" alt="Enola Nimendez" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Moi prendrais une verre de vin s&#039;il te plaît.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Une bière.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *N&#039;étant pas au courant que c&#039;est la tournée du patron:
+
+On va plutôt prendre une bouteille Enola...
+
+Quelles sont les dernière nouvelles d&#039;Erune alors? Les étrangers s&#039;intègrent-ils comme on l&#039;avait planifié? Apprennent-ils l&#039;altérien?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                24.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Un verre de vin, ho oui, pour moi aussi 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Grumtark<br />
+
+                <a href="character-detail.php?id=183">
+                    <img src="../img/characters-profil/183.jpg" alt="Grumtark" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *scrute les environs méfiante et s&#039; approche d&#039;une place auprès du groupe* 
+Vous permettez que je me joigne à vous ? <hr><span class="play-sub-title">Action</span><br /><p>Perception + Vue (diff. 5) => 11R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=706&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *tire un chaise et s&#039;assoit sans décoller le nez de son grimoire*
+Un Hydromel s&#039;il te plais Marzia.
+ <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Arcanologie + Arcanologie conceptuelle (diff. 6) => 5R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=707&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *Fait un grand signe au groupe, sourire jusqu&#039;au oreilles*
+EH Comment vas la compagnie !!
+Je vous avais déjà dit que je suis trop contente de vous voir en vrais !
+*Cole un tape amicale sur le dos de Sela* <hr><span class="play-sub-title">Action</span><br /><p>Charisme (diff. 7) => 1R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=708&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=27&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=27&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=27&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=27&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=27&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=27&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=27&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=27&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=27&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=27&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=27&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=27&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=27&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=27&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=27&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=27&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=27&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=27&page=18">
+          18
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

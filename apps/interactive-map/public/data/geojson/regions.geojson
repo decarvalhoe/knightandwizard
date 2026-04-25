@@ -1,0 +1,1165 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.0,
+              51.0
+            ],
+            [
+              23.0,
+              51.0
+            ],
+            [
+              23.0,
+              59.0
+            ],
+            [
+              13.0,
+              59.0
+            ],
+            [
+              13.0,
+              51.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "aderand",
+        "name": "Aderand (Duché d')",
+        "category": "duchy",
+        "color": "#3d7d8a",
+        "capital": "Aderand",
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              57.5,
+              49.0
+            ],
+            [
+              72.5,
+              49.0
+            ],
+            [
+              72.5,
+              61.0
+            ],
+            [
+              57.5,
+              61.0
+            ],
+            [
+              57.5,
+              49.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "alteria",
+        "name": "Alteria",
+        "category": "nation",
+        "color": "#b8923a",
+        "capital": "Erune",
+        "regional_map": "/maps/alteria.jpg",
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              41.0,
+              33.0
+            ],
+            [
+              59.0,
+              33.0
+            ],
+            [
+              59.0,
+              43.0
+            ],
+            [
+              41.0,
+              43.0
+            ],
+            [
+              41.0,
+              33.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "cortega",
+        "name": "Cortega",
+        "category": "nation",
+        "color": "#a83a3a",
+        "capital": "Cortega",
+        "regional_map": "/maps/cortega.jpg",
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              101.0,
+              70.0
+            ],
+            [
+              119.0,
+              70.0
+            ],
+            [
+              119.0,
+              80.0
+            ],
+            [
+              101.0,
+              80.0
+            ],
+            [
+              101.0,
+              70.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "detre",
+        "name": "Dêtre",
+        "category": "nation",
+        "color": "#8b3a1f",
+        "capital": "Asturiev",
+        "regional_map": "/maps/detre.jpg",
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              92.5,
+              20.0
+            ],
+            [
+              107.5,
+              20.0
+            ],
+            [
+              107.5,
+              30.0
+            ],
+            [
+              92.5,
+              30.0
+            ],
+            [
+              92.5,
+              20.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "dundoria",
+        "name": "Dundoria",
+        "category": "nation",
+        "color": "#c08838",
+        "capital": "Derin",
+        "regional_map": "/maps/dundoria.jpg",
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              26.0,
+              62.5
+            ],
+            [
+              44.0,
+              62.5
+            ],
+            [
+              44.0,
+              77.5
+            ],
+            [
+              26.0,
+              77.5
+            ],
+            [
+              26.0,
+              62.5
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "empire",
+        "name": "Empire (l')",
+        "category": "nation",
+        "color": "#7a3530",
+        "capital": "Elioquant",
+        "regional_map": "/maps/empire.jpg",
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              19.0,
+              45.0
+            ],
+            [
+              31.0,
+              45.0
+            ],
+            [
+              31.0,
+              55.0
+            ],
+            [
+              19.0,
+              55.0
+            ],
+            [
+              19.0,
+              45.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "enorie",
+        "name": "Enorie (l')",
+        "category": "nation",
+        "color": "#c8a878",
+        "capital": "Monastie",
+        "regional_map": "/maps/enorie.jpg",
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              41.0,
+              55.0
+            ],
+            [
+              59.0,
+              55.0
+            ],
+            [
+              59.0,
+              65.0
+            ],
+            [
+              41.0,
+              65.0
+            ],
+            [
+              41.0,
+              55.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "fauche_le_vent",
+        "name": "Fauche-le-Vent",
+        "category": "nation",
+        "color": "#5a8a3e",
+        "capital": "Caréon",
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              94.0,
+              49.0
+            ],
+            [
+              106.0,
+              49.0
+            ],
+            [
+              106.0,
+              61.0
+            ],
+            [
+              94.0,
+              61.0
+            ],
+            [
+              94.0,
+              49.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "irtanie",
+        "name": "Irtanie (l')",
+        "category": "nation",
+        "color": "#a8762a",
+        "capital": "Felderio",
+        "regional_map": "/maps/irtanie.jpg",
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              107.5,
+              25.0
+            ],
+            [
+              122.5,
+              25.0
+            ],
+            [
+              122.5,
+              35.0
+            ],
+            [
+              107.5,
+              35.0
+            ],
+            [
+              107.5,
+              25.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "yonkado",
+        "name": "Yonkado (Le)",
+        "category": "nation",
+        "color": "#a83a5a",
+        "capital": "Tsaï' Maï Do",
+        "regional_map": "/maps/yonkado.jpg",
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              110.0,
+              50.0
+            ],
+            [
+              120.0,
+              50.0
+            ],
+            [
+              120.0,
+              60.0
+            ],
+            [
+              110.0,
+              60.0
+            ],
+            [
+              110.0,
+              50.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "blanc_royaume",
+        "name": "Blanc Royaume (Le)",
+        "category": "nation",
+        "color": "#e8e0d0",
+        "capital": "Imor Nahram",
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              37.5,
+              69.0
+            ],
+            [
+              62.5,
+              69.0
+            ],
+            [
+              62.5,
+              81.0
+            ],
+            [
+              37.5,
+              81.0
+            ],
+            [
+              37.5,
+              69.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "foret_de_tyrkan",
+        "name": "Tyrkan (Forêt de)",
+        "category": "nation",
+        "color": "#3d6e3d",
+        "capital": "Tyrandell",
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              16.0,
+              29.0
+            ],
+            [
+              34.0,
+              29.0
+            ],
+            [
+              34.0,
+              41.0
+            ],
+            [
+              16.0,
+              41.0
+            ],
+            [
+              16.0,
+              29.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "haut_royaume",
+        "name": "Haut Royaume (Le)",
+        "category": "nation",
+        "color": "#d8c898",
+        "capital": "Heldannya",
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              119.0,
+              42.5
+            ],
+            [
+              131.0,
+              42.5
+            ],
+            [
+              131.0,
+              57.5
+            ],
+            [
+              119.0,
+              57.5
+            ],
+            [
+              119.0,
+              42.5
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "monde_sombre",
+        "name": "Monde Sombre (Le)",
+        "category": "nation",
+        "color": "#2a1a3a",
+        "capital": "Vallandr",
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              69.0,
+              58.0
+            ],
+            [
+              81.0,
+              58.0
+            ],
+            [
+              81.0,
+              66.0
+            ],
+            [
+              69.0,
+              66.0
+            ],
+            [
+              69.0,
+              58.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "collines_d_ico",
+        "name": "Collines d'Ico (Les)",
+        "category": "nation",
+        "color": "#4d8c4d",
+        "capital": "Kilioka",
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              66.0,
+              24.0
+            ],
+            [
+              84.0,
+              24.0
+            ],
+            [
+              84.0,
+              36.0
+            ],
+            [
+              66.0,
+              36.0
+            ],
+            [
+              66.0,
+              24.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "grand_desert",
+        "name": "Grand Désert (Le)",
+        "category": "wilderness",
+        "color": "#e0c890",
+        "capital": "La Cité des Failles",
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35.0,
+              7.0
+            ],
+            [
+              65.0,
+              7.0
+            ],
+            [
+              65.0,
+              17.0
+            ],
+            [
+              35.0,
+              17.0
+            ],
+            [
+              35.0,
+              7.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "landes_desertiques",
+        "name": "Landes Désertiques (les)",
+        "category": "wilderness",
+        "color": "#bcae90",
+        "capital": "Narcondre",
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35.0,
+              80.0
+            ],
+            [
+              85.0,
+              80.0
+            ],
+            [
+              85.0,
+              90.0
+            ],
+            [
+              35.0,
+              90.0
+            ],
+            [
+              35.0,
+              80.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "terres_du_nord",
+        "name": "Terres du Nord (les)",
+        "category": "nation",
+        "color": "#5d6d7e",
+        "capital": "Hildurm",
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              54.0,
+              46.0
+            ],
+            [
+              66.0,
+              46.0
+            ],
+            [
+              66.0,
+              54.0
+            ],
+            [
+              54.0,
+              54.0
+            ],
+            [
+              54.0,
+              46.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "portes_d_azrak",
+        "name": "Les Portes d'Azrak",
+        "category": "nation",
+        "color": "#5d4a30",
+        "capital": "Azrak",
+        "regional_map": "/maps/portes-azrak.jpg",
+        "blason_image": "/flags/24.jpg",
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              101.0,
+              39.0
+            ],
+            [
+              109.0,
+              39.0
+            ],
+            [
+              109.0,
+              45.0
+            ],
+            [
+              101.0,
+              45.0
+            ],
+            [
+              101.0,
+              39.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "stazyliss",
+        "name": "Stazyliss",
+        "category": "nation",
+        "color": "#5d8a5d",
+        "capital": null,
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              85.0,
+              7.0
+            ],
+            [
+              115.0,
+              7.0
+            ],
+            [
+              115.0,
+              17.0
+            ],
+            [
+              85.0,
+              17.0
+            ],
+            [
+              85.0,
+              7.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "terres_sauvages",
+        "name": "Les Terres Sauvages",
+        "category": "wilderness",
+        "color": "#5d6e3d",
+        "capital": null,
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.0,
+              87.0
+            ],
+            [
+              105.0,
+              87.0
+            ],
+            [
+              105.0,
+              97.0
+            ],
+            [
+              75.0,
+              97.0
+            ],
+            [
+              75.0,
+              87.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "royaume_du_chaos",
+        "name": "Royaume du Chaos",
+        "category": "wilderness",
+        "color": "#5a1a1a",
+        "capital": null,
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              99.0,
+              78.0
+            ],
+            [
+              111.0,
+              78.0
+            ],
+            [
+              111.0,
+              86.0
+            ],
+            [
+              99.0,
+              86.0
+            ],
+            [
+              99.0,
+              78.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "onarit",
+        "name": "Onarit",
+        "category": "nation",
+        "color": "#a07845",
+        "capital": null,
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              85.0,
+              46.0
+            ],
+            [
+              95.0,
+              46.0
+            ],
+            [
+              95.0,
+              54.0
+            ],
+            [
+              85.0,
+              54.0
+            ],
+            [
+              85.0,
+              46.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "lounaxill",
+        "name": "Lounaxill",
+        "category": "nation",
+        "color": "#9d7050",
+        "capital": null,
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              57.0,
+              20.0
+            ],
+            [
+              63.0,
+              20.0
+            ],
+            [
+              63.0,
+              24.0
+            ],
+            [
+              57.0,
+              24.0
+            ],
+            [
+              57.0,
+              20.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "ile_aux_basilics",
+        "name": "L'Île aux Basilics",
+        "category": "location",
+        "color": "#7da080",
+        "capital": null,
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              82.5,
+              76.0
+            ],
+            [
+              97.5,
+              76.0
+            ],
+            [
+              97.5,
+              84.0
+            ],
+            [
+              82.5,
+              84.0
+            ],
+            [
+              82.5,
+              76.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "montagnes_grises",
+        "name": "Les Montagnes Grises",
+        "category": "mountain_range",
+        "color": "#7d7d7d",
+        "capital": null,
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              81.0,
+              67.0
+            ],
+            [
+              89.0,
+              67.0
+            ],
+            [
+              89.0,
+              73.0
+            ],
+            [
+              81.0,
+              73.0
+            ],
+            [
+              81.0,
+              67.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "treadur",
+        "name": "Treadur",
+        "category": "nation",
+        "color": "#7c8c4d",
+        "capital": null,
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              31.0,
+              52.0
+            ],
+            [
+              39.0,
+              52.0
+            ],
+            [
+              39.0,
+              58.0
+            ],
+            [
+              31.0,
+              58.0
+            ],
+            [
+              31.0,
+              52.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "chez_nous",
+        "name": "Chez Nous",
+        "category": "nation",
+        "color": "#999966",
+        "capital": null,
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              65.0,
+              39.0
+            ],
+            [
+              75.0,
+              39.0
+            ],
+            [
+              75.0,
+              45.0
+            ],
+            [
+              65.0,
+              45.0
+            ],
+            [
+              65.0,
+              39.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "terres_sans_noms",
+        "name": "Les Terres Sans Noms",
+        "category": "wilderness",
+        "color": "#3a3a3a",
+        "capital": null,
+        "regional_map": null,
+        "blason_image": null,
+        "is_placeholder": true
+      }
+    }
+  ]
+}

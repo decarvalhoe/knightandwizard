@@ -1,0 +1,32 @@
+{
+  "name": "knightandwizard-monorepo",
+  "version": "0.1.0",
+  "description": "Knight and Wizard — transposition digitale du JdR papier (Phase 1+2)",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:map": "npm run dev --workspace=apps/interactive-map",
+    "build:map": "npm run build --workspace=apps/interactive-map",
+    "yaml2geojson": "python apps/interactive-map/tools/yaml_to_geojson.py",
+    "lint:yaml": "echo TODO: implement YAML linting (yamllint or similar)",
+    "test": "echo \"No tests yet — see Phase 3\""
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/decarvalhoe/knightandwizard.git"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "knight-and-wizard",
+    "rpg",
+    "tabletop",
+    "digital-adaptation",
+    "fantasy",
+    "monorepo"
+  ]
+}

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=27">Aux Acolytes Anonymes</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=11">
+        <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=11">Giovanni Marzo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=176">
+        <img src="../img/characters-profil/176.jpg" alt="Filomena" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=176">Filomena</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=190">
+        <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=190">Marzia Moretti</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=27&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Enola Nimendez<br />
+
+                <a href="character-detail.php?id=3">
+                    <img src="../img/characters-profil/3.jpg" alt="Enola Nimendez" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Eh bien... En fait, Dario elle m&#039;a dit que la famille de la Vega était très connue en Onarit pour leur grande fortune. Elle a dit que si, peut-être bien que Hylenia elle a ramener cette jeune fille, c&#039;est une accord passée avec son père pour une prêt d&#039;argent.
+Ca ferait que Perdita et Lucas Terrera sont les plus riches en ce moment dans l&#039;Alteria.
+Il est maline Dario !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Si y a pas de grosse fortunes ici, on pourrait investir notre argent dans une sorte de grande loterie nationale. Un truc ou le ticket serait pas cher mais ou le gros lot serait monstre élevé pour attirer tous les avides, les curieux. Et comme le bénéfice serait reversé à de bonnes œuvres, on intéresserait aussi les bonnes âmes... <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Sociologie (diff. 7) => 4R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Exclut, que nous fassions un prêt a Alteria, soit nous donnons et aidons le pays, soit nous investissons cette argent, soit nous le gardons pour nos frais et laissons mourir notre capitale a petit feux.
+
+Mais j&#039;imagine que nous avons mieux à faire que de laisser mourir bêtement notre argent... en effet.
+
+Je ne me cantonais pas seulement à Altéria, la fortune de Vega et probablement un bon exemple que la richesse existe à nos frontières.
+
+Mais l&#039;histoire, nous dit aussi que la guerre profite à certain, bien souvent aux pays limitrophes, mais aussi à l&#039;interne... nous serons peu être surpris que certaines fortune émergente meme à l&#039;intérieur du pays apparaissent et par ce fait, ne ratrait pas une opportunité de rencontrer la reine pour s&#039;attirer ses bonnes faveurs.
+
+Il n&#039;est pas non plus rare que les nouvelles richesses même étrangère, souhaitent investir dans des terres et achètent un titre de noblesse associé a une région pour y créer un commerce et aussi gagner en puissance... Rien de mieux que d&#039;organiser un événement international en montrant un Alteria forte lors d&#039;un événement mondain sans précédant !
+
+
+
+  <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Histoire + Manipulation (diff. 6) => 4R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=734&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                (oups manipulation c’était pas volontaire :D) <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Histoire (diff. 6) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=735&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                La manifestation est une idée...mais également un risque. Si ça ne fonctionne pas, l&#039;argent sera perdu. Je trouve la loterie plus sure et c&#039;est une façon de lever un impôt volontaire et bien accepté...par le peuple et pour le peuple. Et même d&#039;insister pour que les gens fortunés participent largement. Ça nous empêchera pas de faire une manifestation à l&#039;intention des riches dans un second temps. Ou on pourrait même combiner les deux idées... 
+
+-Écoutez! *persuadé d&#039;avoir l&#039;idée du siècle 
+On fait la manifestation mais..-AVEC une tombola! C&#039;est moins compliqué à organiser qu&#039;une loterie nationale et chaque participant aura la pression sociale pour acheter plus de billets que son voisin, afin de se démarquer auprès de la princesse. Ça attirera pas que les grosses fortunes, du coup, mais aussi les fortunes en devenir. Et l&#039;argent amassé lors de cet événement, on le réinvesti en partie pour une loterie nationale, en partie dans le soutien de l&#039;hôpital. Comme ça on réunis les deux idées. *fier de sa proposition 
+
+-Vous en dites quoi?  <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Commerce (diff. 6) => 5R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                @Akbar : Le jet de commerce me semble inapproprié. Tu n&#039;es pas dans une transaction ou négociation commerciale. Si tu le souhaites, tu peux faire un jet de manipulation.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                (je l&#039;ai fais pour réfléchir à comment amasser le plus d&#039;argent)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Filomena<br />
+
+                <a href="character-detail.php?id=176">
+                    <img src="../img/characters-profil/176.jpg" alt="Filomena" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Eh voilà la pizzaaa !!!
+
+*Dit-elle en posant la pizza blanche commandée par Akbar, coupée en morceau au milieu de notre table.* <hr><span class="play-sub-title">Action</span><br /><p>Dextérité + Cuisine + Cuisine alterienne (diff. 5) => 4R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Merci Filomena! *sentant son ventre gargouiller et observant le nombre de personnes à table
+-Tu peux direct en mettre deux autres *lui tend trois pièces d&#039;argent et porte le premier morceau jusqu&#039;à sa main par télékinésie.
+-Servez-vous mes amis!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Donc si je te suis bien Sindalia, tu proposes d&#039;investir dans un événement pour attirer de nouveaux investisseurs dans la nation. Juste ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=27&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=27&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=27&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=27&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=27&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=27&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=27&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=27&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=27&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=27&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=27&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=27&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=27&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=27&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=27&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=27&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=27&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=27&page=18">
+          18
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

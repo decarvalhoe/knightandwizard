@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=23">La taverne des Bolichons</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=119">
+        <img src="../img/characters-profil/119.jpg" alt="Gilbert" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=119">Gilbert</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=156">
+        <img src="../img/characters-profil/156.jpg" alt="Jean" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=156">Jean</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=23&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Effectivement ça tombe plutôt bien.
+Je cherche une personne du nom d&#039;Anaril. Un vieux demi-elfe et loup-garou.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Jean<br />
+
+                <a href="character-detail.php?id=156">
+                    <img src="../img/characters-profil/156.jpg" alt="Jean" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Hmmm. Possèdez-vous un objet lui appartenant, ou mieux, une partie de lui comme un cheveux, un ongle ou une dent?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.07.19
+            </div>
+
+            <div class="forum-post-content">
+                * Fais non de la tête *
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Jean<br />
+
+                <a href="character-detail.php?id=156">
+                    <img src="../img/characters-profil/156.jpg" alt="Jean" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Hmmm. Ca va être compliqué alors. Avec seulement un nom, le rituel ne marche pas très bien et n&#039;est généralement pas précis. On peut tout de même essayer, mais cela ne sera pas gratuit. 
+
+En plus, comme on vient de me voler ma bourse, cela me dépanerait bien de gagner un petit quelque chose. Disons 300 écus? <hr><span class="play-sub-title">Action</span><br /><p>Charisme + Psychologie + Manipulation (diff. 7) => 9R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.07.19
+            </div>
+
+            <div class="forum-post-content">
+                * Le regarde fixement pendant quelques secondes, puis, pose 300 écus sur la table sans essayer de marchander. *
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Heuuu, pour 300 écus, si ça marche pas du premier coup, vous essayez au moins une deuxième fois ou bien?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Jean<br />
+
+                <a href="character-detail.php?id=156">
+                    <img src="../img/characters-profil/156.jpg" alt="Jean" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.07.19
+            </div>
+
+            <div class="forum-post-content">
+                *Prend l&#039;argent d&#039;une d&#039;une manière un peu rapide à votre goût*. 
+
+Et bien écoutez, c&#039;est 300 écus pour un rituel, 500 pour deux. Et je vous fais un prix d&#039;ami car je vous trouve sympathiques ! <hr><span class="play-sub-title">Action</span><br /><p>Charisme + Psychologie + Manipulation (diff. 7) => 5R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.07.19
+            </div>
+
+            <div class="forum-post-content">
+                * pose 200 écus de plus sur la table *
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Jean<br />
+
+                <a href="character-detail.php?id=156">
+                    <img src="../img/characters-profil/156.jpg" alt="Jean" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Bien, bien. * prend l&#039;argent * Suivez-moi, allons dans un endroit tranquille. *Demande une chambre juste pour 1h, et vous y emmène* 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                <div class="forum-post-demarcation-line">Fin de la scène</div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=23&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=23&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=23&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=23&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=23&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=23&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=23&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=23&page=8">
+          8
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

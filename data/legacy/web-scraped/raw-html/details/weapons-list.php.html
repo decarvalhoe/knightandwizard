@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1>Armes</h1>
+
+<table id="weapons-list">
+	<thead>
+		<tr>
+			<th style="width: 300px;">Nom</th>
+			<th style="width: 50px;">D&eacute;g&acirc;ts</th>
+            <th style="width: 50px;">Type</th>
+            <th style="width: 50px;">Diff.</th>
+            <th style="width: 50px;">Poids</th>
+            <th style="width: 523px;">Sp&eacute;cial</th>
+		</tr>
+	</thead>
+
+	<tbody>
+					<tr>
+				<td>Arbalète à cry</td>
+				<td style="text-align: center;">
+											5
+									</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">5.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Arbalète à étrier</td>
+				<td style="text-align: center;">
+											5
+									</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">3.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Arbalète à pied de biche</td>
+				<td style="text-align: center;">
+											5
+									</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">4.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Arbalète à tour</td>
+				<td style="text-align: center;">
+											5
+									</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">5.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Arbalète légère</td>
+				<td style="text-align: center;">
+											4
+									</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.9</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Arc court</td>
+				<td style="text-align: center;">
+											3
+									</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.6</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Arc long</td>
+				<td style="text-align: center;">
+											4
+									</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">0.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Arpon</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">0.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Bardiche</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">3.9</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Bâton</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.4</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Bille</td>
+				<td style="text-align: center;">
+											1
+									</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">1</td>
+				<td style="text-align: center;">0.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Boomerang</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">0.4</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Carreau</td>
+				<td style="text-align: center;">
+											1
+									</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">1</td>
+				<td style="text-align: center;">0.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Chaîne</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">0.8</td>
+				<td>Poids => chaîne de 1 m.</td>
+			</tr>
+					<tr>
+				<td>Chakram</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.7</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Cimeterre</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.9</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Cognée</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">3.1</td>
+				<td>+1 dégât C</td>
+			</tr>
+					<tr>
+				<td>Corsèque</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Couteau</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Couteau de lancer</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Coutelas</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Dague</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.4</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Epée à deux mains</td>
+				<td style="text-align: center;">
+																		F+7
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">3.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Epée à une main</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Epée bâtarde</td>
+				<td style="text-align: center;">
+																		F+6
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">2.2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Epée courte</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Epieux</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Espadon</td>
+				<td style="text-align: center;">
+																		F+7
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">5</td>
+				<td>+1 dégât C</td>
+			</tr>
+					<tr>
+				<td>Etoile ninja</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">0.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Fauchard</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">4.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Fauchon</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Faux</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">10</td>
+				<td style="text-align: center;">2.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Fléau</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Fléau de guerre</td>
+				<td style="text-align: center;">
+																		F+6
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">10</td>
+				<td style="text-align: center;">4.9</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Fléau de guerre à pointes</td>
+				<td style="text-align: center;">
+																		F+6
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">10</td>
+				<td style="text-align: center;">5.2</td>
+				<td>+2 dégâts P</td>
+			</tr>
+					<tr>
+				<td>Fléau d’arme</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Fléau d’arme à pointes</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">3.3</td>
+				<td>+2 dégâts P</td>
+			</tr>
+					<tr>
+				<td>Flèche</td>
+				<td style="text-align: center;">
+											2
+									</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">1</td>
+				<td style="text-align: center;">0.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Fleuret</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Fouet</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">0.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Fourche</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Fronde</td>
+				<td style="text-align: center;">
+																		F
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">0.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Glaive</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.9</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Godendac</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">4.5</td>
+				<td>Dégâts C ou P à choix.</td>
+			</tr>
+					<tr>
+				<td>Goupillon</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">10</td>
+				<td style="text-align: center;">1.4</td>
+				<td>+1 dégât P par tête.</td>
+			</tr>
+					<tr>
+				<td>Gourdin</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">1.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Grappin</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Griffe</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">5</td>
+				<td style="text-align: center;">0.01</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Hache de bataille</td>
+				<td style="text-align: center;">
+																		F+6
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">3.5</td>
+				<td>+1 dégât C.</td>
+			</tr>
+					<tr>
+				<td>Hache de jet</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">0.7</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Hache d’armes</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Hachette</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Hachoir</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Hallebarde</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">4.2</td>
+				<td>Dégâts T ou P à choix.</td>
+			</tr>
+					<tr>
+				<td>Javelot</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Katana</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Khukri</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Kriss</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.4</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Lance</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">1.6</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Lance de cavalerie</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">7</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Lance-pierres</td>
+				<td style="text-align: center;">
+											2
+									</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Langue-de-bœuf</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">2.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Machette</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Main gauche</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Marteau</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Marteau de guerre</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">4</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Marteau de guerre lourd</td>
+				<td style="text-align: center;">
+																		F+7
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">5.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Masse</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">3.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Masse de guerre</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">4</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Masse d’armes</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">3.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Massue</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Massue à pointes</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.7</td>
+				<td>+1 dégât P.</td>
+			</tr>
+					<tr>
+				<td>Matraque</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Miséricorde</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Morgenstern</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">4</td>
+				<td>+2 dégâts P.</td>
+			</tr>
+					<tr>
+				<td>Naginata</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">3.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Ninjato</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.4</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Nunchaku</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">0.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Pelle</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">2</td>
+				<td>Dégâts T ou C à choix.</td>
+			</tr>
+					<tr>
+				<td>Pertuisane</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">4.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Pieux</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Pioche</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">2.2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Pique</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">2.2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Poignard</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Rapière</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.9</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Rasoir</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Râteau</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Sabre</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Sagaie</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Saï</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Sarbacane</td>
+				<td style="text-align: center;">
+																		F
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Scalpel</td>
+				<td style="text-align: center;">
+																		F
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Serpe</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">0.4</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Serpette</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.2</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Shuriken</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">0.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Stylet</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.1</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Tanto</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">6</td>
+				<td style="text-align: center;">0.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Tomahawk</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.6</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Tonfa</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">0.5</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Torche</td>
+				<td style="text-align: center;">
+																		F+1
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.7</td>
+				<td>+1 dégât E.</td>
+			</tr>
+					<tr>
+				<td>Trident</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">P</td>
+				<td style="text-align: center;">9</td>
+				<td style="text-align: center;">3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Trique</td>
+				<td style="text-align: center;">
+																		F+2
+															</td>
+				<td style="text-align: center;">C</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Vouge</td>
+				<td style="text-align: center;">
+																		F+5
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">4.3</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Wakizashi</td>
+				<td style="text-align: center;">
+																		F+3
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">0.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Yatagan</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">7</td>
+				<td style="text-align: center;">1.8</td>
+				<td></td>
+			</tr>
+					<tr>
+				<td>Zabatoff</td>
+				<td style="text-align: center;">
+																		F+4
+															</td>
+				<td style="text-align: center;">T</td>
+				<td style="text-align: center;">8</td>
+				<td style="text-align: center;">4.2</td>
+				<td></td>
+			</tr>
+			</tbody>
+</table>
+
+<table id="header-fixed"></table>
+
+
+	<script language=javascript>
+		var tableOffset = $("#weapons-list").offset().top;
+		var $header = $("#weapons-list > thead").clone();
+		var $fixedHeader = $("#header-fixed").append($header);
+
+		$(window).bind("scroll", function() {
+		    var offset = $(this).scrollTop();
+
+		    if (offset >= tableOffset && $fixedHeader.is(":hidden")) {
+		        $fixedHeader.show();
+		    }
+		    else if (offset < tableOffset) {
+		        $fixedHeader.hide();
+		    }
+		});
+    </script>
+
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,34 @@
+Knight and Wizard — Transposition digitale
+===========================================
+
+Statut : œuvre dérivée non-commerciale
+---------------------------------------
+
+Ce dépôt contient une transposition digitale dérivée du jeu de rôle papier
+Knight and Wizard.
+
+- Le contenu canon (règles, lore, bestiaire, cartes, images, blasons,
+  descriptions des nations) est inclus dans ce dépôt sous forme de copies de
+  référence (`data/legacy/`) et de transpositions structurées
+  (`data/catalogs/`, `docs/rules/`).
+
+- Le code de transposition (apps `apps/interactive-map/`, scripts `tools/`,
+  configurations `package.json`, etc.) peut être lu, étudié, et adapté pour
+  un usage personnel non-commercial.
+
+- Aucun usage commercial n'est autorisé sans accord explicite préalable.
+
+- Les images (cartes, blasons, portraits) restent la propriété de leurs ayants
+  droit. Elles sont incluses ici dans une optique de préservation et de
+  démonstration uniquement.
+
+LICENCE PROVISOIRE
+------------------
+
+À défaut d'un accord formel sur une licence ouverte, ce dépôt est considéré
+comme non-libre par défaut. Le code peut être consulté à des fins éducatives
+mais ne peut être redistribué tel quel sans accord.
+
+Une licence ouverte (par exemple CC BY-NC-SA pour le contenu et MIT pour le
+code) sera proposée ultérieurement, sous réserve d'accord avec les ayants
+droit.

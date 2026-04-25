@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h2>Bestiaire</h2>
+
+<form action="races-list.php" method="get" class="form">
+	Tri par :
+
+    <select name="order">
+		<option value="category" >catégorie</option>
+		<option value="name" selected>nom</option>
+		<option value="vitality" >vitalité</option>
+		<option value="speed_factor" >F. vitesse</option>
+		<option value="will_factor" >F. volonté</option>
+		<option value="strength_max" >force max.</option>
+		<option value="dexterity_max" >dextérité max.</option>
+		<option value="stamina_max" >endurance max.</option>
+		<option value="aestheticism_max" >esthétisme max.</option>
+		<option value="reflexes_max" >reflexes max.</option>
+		<option value="charisma_max" >charisme max.</option>
+		<option value="empathy_max" >empathie max.</option>
+		<option value="intelligence_max" >intelligence max.</option>
+		<option value="perception_max" >perception max.</option>
+    </select>
+
+    <input type="submit" value="Trier" />
+</form>
+
+<br />
+
+<table id="races-list">
+	<thead>
+		<tr>
+			<th style="width: 65px;">Nom</th>
+			<th style="width: 63px;">Catégorie</th>
+			<th style="width: 49px;">Vitalité</th>
+			<th style="width: 47px;">F. Vitesse</th>
+			<th style="width: 51px;">F. Volonté</th>
+			<th style="width: 36px;">Force max</th>
+			<th style="width: 61px;">Dextérité max</th>
+			<th style="width: 70px;">Endurance max</th>
+			<th style="width: 71px;">Esthétisme max</th>
+			<th style="width: 63px;">Charisme max</th>
+			<th style="width: 63px;">Empathie max</th>
+			<th style="width: 78px;">Intelligence max</th>
+			<th style="width: 70px;">Perception max</th>
+			<th style="width: 54px;">Reflexes max</th>
+			<th style="width: 182px;">Atouts</th>
+		</tr>
+	</thead>
+
+	<tbody>
+					<tr>
+				<td class="text-cell">Canidae</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">24</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">9</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Flaire infaillible
+																		<br />
+						
+						Pisteur né
+																		<br />
+						
+						Résistance à la fatigue
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Centaure</td>
+				<td class="num-cell" style="text-align: center;">22</td>
+				<td class="num-cell" style="text-align: center;">35</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">11</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Vélocité
+																		<br />
+						
+						Résistance à l’alcool
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Chat</td>
+				<td class="num-cell" style="text-align: center;">12</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">13</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="text-cell">
+											
+						Equilibre contrôlé
+																		<br />
+						
+						Retombe sur ses pattes
+																		<br />
+						
+						Vision nocturne
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Cheval</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">35</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="text-cell">
+											
+						Vélocité
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Chigr</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">14</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="text-cell">
+											
+						Equilibre contrôlé
+																		<br />
+						
+						Retombe sur ses pattes
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance à la chaleur
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Demi-Elfe</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">18</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">11</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Dépassement de soi
+																		<br />
+						
+						Vision nocturne
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Dryade</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Lingua végétalis
+																		<br />
+						
+						Vegothropie
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Elfe de Nacre</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Vision
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance à l’alcool
+																		<br />
+						
+						Résistance aux drogues
+																		<br />
+						
+						Résistance aux maladies
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Elfe des Bois</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">17</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="text-cell">
+											
+						Vision
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance à l’alcool
+																		<br />
+						
+						Résistance aux maladies
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Elfe Sombre</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Vision
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance à l’alcool
+																		<br />
+						
+						Résistance aux maladies
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Familier</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="num-cell" style="text-align: center;">0</td>
+				<td class="text-cell">
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Fantôme</td>
+				<td class="num-cell" style="text-align: center;">31</td>
+				<td class="num-cell" style="text-align: center;">13</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="text-cell">
+											
+						Mort-vivant
+																		<br />
+						
+						Immatérialité
+																		<br />
+						
+						Vol
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Possession
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Gnome</td>
+				<td class="num-cell" style="text-align: center;">15</td>
+				<td class="num-cell" style="text-align: center;">12</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">15</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Affinité avec les illusions
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance à la magie
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Gobelin</td>
+				<td class="num-cell" style="text-align: center;">12</td>
+				<td class="num-cell" style="text-align: center;">11</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">14</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Frénésie collective
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance aux maladies
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Haut-Elfe</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">15</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Vision
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance à l’alcool
+																		<br />
+						
+						Résistance aux maladies
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Hobbit</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">13</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">15</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Pieds poilus
+																		<br />
+						
+						Résistance à la magie
+																		<br />
+						
+						Résistance à la fumée
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Homme Lézard</td>
+				<td class="num-cell" style="text-align: center;">18</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">9</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="text-cell">
+											
+						Sang-froid
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance à la chaleur
+																		<br />
+						
+						Organisme fragile
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Homme Oiseau</td>
+				<td class="num-cell" style="text-align: center;">22</td>
+				<td class="num-cell" style="text-align: center;">18</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">11</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Vision
+																		<br />
+						
+						Vol
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Homme Rat</td>
+				<td class="num-cell" style="text-align: center;">18</td>
+				<td class="num-cell" style="text-align: center;">15</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">14</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="text-cell">
+											
+						Frénésie collective
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance aux maladies
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Humain</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">12</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Antilimite physique
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Khochigr</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">19</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="text-cell">
+											
+						Equilibre contrôlé
+																		<br />
+						
+						Retombe sur ses pattes
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance à la chaleur
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Khogr</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">22</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="text-cell">
+											
+						Equilibre contrôlé
+																		<br />
+						
+						Retombe sur ses pattes
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance à la chaleur
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Loup</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">12</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">13</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="text-cell">
+											
+						Frénésie collective
+																		<br />
+						
+						Vision nocturne
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Loup-Garou</td>
+				<td class="num-cell" style="text-align: center;">45</td>
+				<td class="num-cell" style="text-align: center;">41</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">15</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="text-cell">
+											
+						Vision nocturne
+																		<br />
+						
+						Terreur
+																		<br />
+						
+						Autorégénération
+																		<br />
+						
+						Lycanthropie
+																		<br />
+						
+						Humanothropie
+																		<br />
+						
+						Morsure lupine
+																		<br />
+						
+						Brûlure de l’argent
+																		<br />
+						
+						Rage lunaire
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Nain</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">25</td>
+				<td class="num-cell" style="text-align: center;">9</td>
+				<td class="num-cell" style="text-align: center;">9</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="text-cell">
+											
+						Force de géant
+																		<br />
+						
+						Résistance à l’alcool
+																		<br />
+						
+						Résistance aux drogues
+																		<br />
+						
+						Résistance aux maladies
+																		<br />
+						
+						Résistance à la magie
+																		<br />
+						
+						Résistance aux poisons
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Ogre</td>
+				<td class="num-cell" style="text-align: center;">38</td>
+				<td class="num-cell" style="text-align: center;">58</td>
+				<td class="num-cell" style="text-align: center;">11</td>
+				<td class="num-cell" style="text-align: center;">14</td>
+				<td class="num-cell" style="text-align: center;">23</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">35</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="text-cell">
+											
+						Terreur
+																		<br />
+						
+						Résistance au feu
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Ondine</td>
+				<td class="num-cell" style="text-align: center;">19</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">12</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Chant envoûtant
+																		<br />
+						
+						Race aquatique
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Orc</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">27</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">12</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Peur
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Résistance aux maladies
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Squelette</td>
+				<td class="num-cell" style="text-align: center;">16</td>
+				<td class="num-cell" style="text-align: center;">15</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="text-cell">
+											
+						Mort-vivant
+																		<br />
+						
+						Peur
+																		<br />
+						
+						Jusqu'à la mort
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Troll</td>
+				<td class="num-cell" style="text-align: center;">48</td>
+				<td class="num-cell" style="text-align: center;">120</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">13</td>
+				<td class="num-cell" style="text-align: center;">37</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">33</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="num-cell" style="text-align: center;">4</td>
+				<td class="text-cell">
+											
+						Vision nocturne
+																		<br />
+						
+						Terreur
+																		<br />
+						
+						Autorégénération
+																		<br />
+						
+						Résistance aux maladies
+																		<br />
+						
+						Résistance aux poisons
+																		<br />
+						
+						Soleil pétrificateur
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Vampire</td>
+				<td class="num-cell" style="text-align: center;">30</td>
+				<td class="num-cell" style="text-align: center;">35</td>
+				<td class="num-cell" style="text-align: center;">8</td>
+				<td class="num-cell" style="text-align: center;">10</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">7</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="text-cell">
+											
+						Mort-vivant
+																		<br />
+						
+						Vision nocturne
+																		<br />
+						
+						Baiser de la nuit
+																		<br />
+						
+						Lycanthropie
+																		<br />
+						
+						Chiroptèrothropie
+																		<br />
+						
+						Baiser des ténèbres
+																		<br />
+						
+						Brumathropie
+																		<br />
+						
+						Aube meurtrière
+																		<br />
+						
+						Sans reflet
+																		<br />
+						
+						Soif de sang
+									</td>
+			</tr>
+					<tr>
+				<td class="text-cell">Zombie</td>
+				<td class="num-cell" style="text-align: center;">18</td>
+				<td class="num-cell" style="text-align: center;">20</td>
+				<td class="num-cell" style="text-align: center;">12</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">5</td>
+				<td class="num-cell" style="text-align: center;">3</td>
+				<td class="num-cell" style="text-align: center;">6</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">1</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="num-cell" style="text-align: center;">2</td>
+				<td class="text-cell">
+											
+						Mort-vivant
+																		<br />
+						
+						Peur
+																		<br />
+						
+						Jusqu'à la mort
+																		<br />
+						
+						Résistance aux maladies
+																		<br />
+						
+						Résistance aux poisons
+									</td>
+			</tr>
+			</tbody>
+</table>
+
+<table id="header-fixed"></table>
+
+
+	<script language=javascript>
+		var tableOffset = $("#races-list").offset().top;
+		var $header = $("#races-list > thead").clone();
+		var $fixedHeader = $("#header-fixed").append($header);
+
+		$(window).bind("scroll", function() {
+		    var offset = $(this).scrollTop();
+
+		    if (offset >= tableOffset && $fixedHeader.is(":hidden")) {
+		        $fixedHeader.show();
+		    }
+		    else if (offset < tableOffset) {
+		        $fixedHeader.hide();
+		    }
+		});
+    </script>
+
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

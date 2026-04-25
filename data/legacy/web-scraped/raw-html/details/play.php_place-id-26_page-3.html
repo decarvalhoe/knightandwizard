@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=26">La 8ème Forge</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=194">
+        <img src="../img/characters-profil/194.jpg" alt="Kvild Docre" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=194">Kvild Docre</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=26&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Maître nain :
+Mais non voyons, les runes ça ne se forge pas. Ça se grave. Le creux que vous voyez sera intégralement rempli par de fines couches de métal ajoutées grâce à des bains. Cela permet à la rune d&#039;entrée en résonance. Les type de métaux et de bains sont variables, mais en somme, le plus important reste la profondeur. Plus un espace est profond, plus une rune à forte résonance peut y être gravée. Dans ce cas là on arrivera à une profondeur de 3 à 5 centimètres selon le motif... On dit qu&#039;au delà de 5 cm, ça ne sert à rien, voir pire, que ça peut entraîner de la raisonnance inverse !
+Après pour ce qui est de la rune en elle même, je ne sais pas du tout ce que votre souveraine à commandée. Les Maîtres des runes gardent secret ce genre de choses. Ça fait partie de leur contrat et c&#039;est bien compréhensible en fin de compte.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                12.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Vraiment...par des bains successifs vous dites...je serais vraiment curieux de voir ça et encore plus de pouvoir parler à un maitres des runes...c&#039;est vraiment un domaine de la magie qui reste obscure dans son fonctionnement, pour moi...Les bains, c&#039;est vous qui les faites? ou c&#039;est déjà le maitre des runes? Les diverses couches de métal, c&#039;est toujours les mêmes ou elle varient en fonction de la rune?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                13.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Maître nain:
+Ce n&#039;est pas de la magie malheureux ! Vous avisez pas de dire ça à un Maître des Runes, ils sont parfois chatouilleux sur ce point.
+C&#039;est une nouvelle propriété que l&#039;objet acquier. Comme certain peuvent voir la nuit ou communiquer par la pensée par exemple. C&#039;est pour ça que les alterateurs sont impuissants face aux runes naines.
+Pour ce qui est des bains, oui ! Ils sont fait ici par moi-même ! Vu la taille de l&#039;article on a dû construire une cuve spéciale...
+Les couches peuvent être de matières variables mais attention aux règles des couches ! Tout les matériaux ne peuvent pas cotoyer n&#039;importe quel autre... Un peu comme des poissons dans um étang. Certaines cohabitations fonctionnent, d&#039;autre non. Mais l&#039;art de l&#039;espacement runique réside plus dans l&#039;évolution des différents degrés de pureté du matériau de la couche.
+Typiquement, nous les nains, nous aimons beaucoup l&#039;or car en degré de pureté savamment dosé il absorbe les chocs sans se briser.
+Avouer qu&#039;au prix d&#039;une rune, vous serez content si elle résonne encore après une chute ou une bataille hein ?!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Victorine Claire de Chantemerle<br />
+
+                <a href="character-detail.php?id=121">
+                    <img src="../img/characters-profil/121.jpg" alt="Victorine Claire de Chantemerle" height="100" width="80">
+                </a>
+
+                <br />
+
+                13.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Vous voulez certainement parler des Abjurateurs plutôt que des Altérateurs.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                13.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Maître nain:
+Ouais enfin, ceux-la qui bloquent la magie...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.03.20
+            </div>
+
+            <div class="forum-post-content">
+                C&#039;est pas de la magie...je pensais que c’était une sorte de magie alternative, mais qui n&#039;obéissait pas aux mêmes règles...mais vous dites que c&#039;est pas de la magie...Vous parlez des résonances de la matière. Ce que j&#039;en comprend est que les vibrations résonnent de la matière à la rune et vice-versa et que ces vibrations modifient les propriétés de la matière elle-même et lui confère, du coup, des capacités hors norme? Et que ces résonances sont différentes en fonction du motif, de la profondeur de la gravure, des matériaux de la rune mais aussi des matériaux de l&#039;objet de base? C&#039;est bien ça? *pensif Je serais vraiment curieux de pouvoir échanger avec un maitre des runes... <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Apprentissage (diff. 7) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Maître nain:
+C&#039;est à peu près ça! Pour ce qui est de parler avec un Maître des Runes, vous n&#039;en trouverez pas ici malheureusement. Les Portes en compte actuellement 11. Autant vous dire qu&#039;ils sont très sollicités.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.03.20
+            </div>
+
+            <div class="forum-post-content">
+                C&#039;est bien dommage...et auquel sera confié la gravure des rune de la balance?
+
+Sinon, je voulais vous montrer ça: 
+*soulève sa tunique pour faire apparaitre la côte de maille d&#039;Urenvok, activable par deux runes. 
+Vous en pensez quoi? pasqu&#039;y a deux place pour mett&#039;e des runes dessus. Mais vous croyez qu&#039;on peut y mettre n&#039;importe quelle rune?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                14.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Maître nain:
+Aaah mais c&#039;est le travail à Geminik ! C&#039;est vraiment un orfèvre celui-là ! Voyez, vous avez ces 2 plaques où des espacements ont été implantés. Bon, vous ne pourrez pas faire graver grand chose d&#039;autre que des runes mineures... Mais sur une côte de maille, ça reste un exploit ! Il a du potentiel ce jeune... J&#039;aurais aimé qu&#039;il rejoigne notre forge...
+
+Pour le Maître des Runes qui gravera votre balance, je n&#039;en sais rien. Pour un objet en or intégral, ce pourrait être n&#039;importe lequel. D&#039;ailleurs même si je le savais le secret professionnel m&#039;interdirait de vous le révéler.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *étonné, pensant être dans le secret vu qu&#039;envoyé par la princesse
+*se reprend
+Oui...évidemment...le secret...
+*rabaisse sa tunique
+J&#039;imagine bien qu&#039;il n&#039;y a pas énormément de couches de métal, là. Vu le poids de la pièce... Ou alors elles sont très fines....C&#039;est vrai que c&#039;est un honneur permanent de porter un tel objet et je lui doit déjà la vie à plusieurs reprises. D&#039;ailleurs, je ne manquerai pas d&#039;aller saluer Geminik et de boire quelques bières en sa compagnie à la brasserie de l&#039;avalanche. J&#039;aurais aimé faire graver une rune de confort, qui m&#039;assure en permanence une température et une humidité agréable. Vous savez qui maitriserai le mieux cet art? Et vous pensez que ça passe dans un emplacement comme celui ci?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=26&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=26&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=26&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=26&page=4">
+          4
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

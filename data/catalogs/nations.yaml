@@ -1,0 +1,664 @@
+# Catalogue de nations K&W — Phase 2 import auto (R-12.1)
+# Source paper : regles-papier/extracted/histoires/nations.md
+# Schéma : R-12.1 region (category: nation)
+# Date import : 2026-04-25
+
+version: 2
+metadata:
+  source: paper + web (cartes)
+  imported_at: "2026-04-25"
+  updated_at: "2026-04-25"
+  total_entries: 29  # 18 paper + 11 ajouts web (Portes d'Azrak, Stazyliss, Terres Sauvages, Royaume du Chaos, Onarit, Lounaxill, Île aux Basilics, Montagnes Grises, Treadur, Chez Nous, Terres Sans Noms)
+  changelog:
+    - { date: "2026-04-25", change: "Import initial 18 nations paper" }
+    - { date: "2026-04-25", change: "Ajout 11 régions découvertes via cartes (web)" }
+
+regions:
+
+  # === DUCHÉS ET ROYAUMES HUMAINS ===
+
+  - id: aderand
+    name: "Aderand (Duché d')"
+    category: duchy
+    capital: "Aderand"
+    gentile: ["Adennien", "Adennienne"]
+    official_language: langage_commun
+    population:
+      total: 2100
+      races: { humain: 2100 }
+    average_age: [35, 55]
+    life_expectancy: [80, 90]
+    official_religion: liberte_de_culte
+    government: monarchy  # Royauté (Duché)
+    surface_km2: 5000
+    blason:
+      colors: [vert, bleu, or]
+      symbols: [moulin_a_eau, eau, poisson_or]
+      description: "Vert = prospérité, moulin = industrie, eau = port, poisson d'or = bonne fortune"
+    alliances: []
+    rivalries: [cortega]  # tensions sur formation des serfs
+    factions_present:
+      garde_aderand: { influence: 100, members: 300 }
+    economy: trade
+    notable_features:
+      - "Centre commercial névralgique (port, plaque tournante navale)"
+      - "Liberté de culte officielle (avec Altéria)"
+      - "Refuge mercenaires"
+    political_status: "Neutralité face à l'Alliance, garde limitée à 300 hommes (40+ ans)"
+    metadata: { source: paper, version: 1 }
+
+  - id: alteria
+    name: "Alteria"
+    category: nation
+    capital: "Erune"
+    gentile: ["Alterien", "Alterienne"]
+    official_language: langage_commun
+    population:
+      total: 6500000
+      races: { humain: 6500000 }
+    average_age: [25, 45]
+    life_expectancy: [60, 65]
+    official_religion: liberte_de_culte
+    government: monarchy
+    surface_km2: 240000
+    blason:
+      colors: [or]
+      symbols: [balance_or]
+      description: "Justice unique pour tous, neutralité, tolérance"
+    notable_individuals:
+      - { name: "Princesse Dona Ylénia Maria Santa-Lucarna", role: "souveraine", age_status: "jeune, à marier" }
+    notable_features:
+      - "Anciennement païenne, contraint à liberté de culte par pression Cortégante"
+    metadata: { source: paper, version: 1 }
+
+  - id: cortega
+    name: "Cortega"
+    category: nation
+    capital: "Cortega"
+    gentile: ["Cortégant", "Cortégante"]
+    official_language: langage_commun
+    population:
+      total: 9000000
+      races: { humain: 9000000 }
+    average_age: [20, 40]
+    life_expectancy: [60, 70]
+    official_religion: dieu_unique
+    government: monarchy
+    surface_km2: 370000
+    blason:
+      colors: [rouge, bleu, blanc]
+      symbols: [fontaine_oracle]
+      description: "Rouge = courage, bleu = noblesse, blanc/fontaine = pureté/oracle"
+    notable_features:
+      - "L'Oracle (fontaine prophétique, eau fatale à fortes doses)"
+      - "Inquisition Cortégante"
+    factions_present:
+      inquisition_cortegante: { influence: 80 }
+    rivalries: [aderand]
+    metadata: { source: paper, version: 1 }
+
+  - id: detre
+    name: "Dêtre"
+    category: nation
+    capital: "Asturiev"
+    gentile: ["Dêtoyen", "Dêtoyenne"]
+    official_language: detrusk
+    population:
+      total: 3700000
+      races: { humain: 3700000 }
+    average_age: [20, 30]
+    life_expectancy: [45, 55]
+    official_religion: dieux_paiens
+    government: monarchy
+    surface_km2: 87000
+    blason:
+      colors: [rouge, noir, vert]
+      symbols: [haches_rouges]
+      description: "Mémorial pour les morts, menace pour les autres nations"
+    notable_individuals:
+      - { name: "Sergeï Svetlatchev", role: "Roi tyran", notes: "Coup d'état, oppression fiscale, 9 filles, 7 ex-femmes décapitées, 8e enceinte enfermée" }
+    rivalries: [enorie]  # roi Victor Armand II l'a défié en duel
+    notable_features:
+      - "Régime tyrannique"
+      - "Source potentielle de conflit (chevaliers d'Enorie veulent libérer la dame du donjon)"
+    metadata: { source: paper, version: 1 }
+
+  - id: dundoria
+    name: "Dundoria"
+    category: nation
+    capital: "Derin"
+    gentile: ["Dundorien", "Dundorienne"]
+    official_language: dundorien
+    population:
+      total: 6000000
+      races: { humain: 6000000 }
+    average_age: [25, 45]
+    life_expectancy: [70, 80]
+    official_religion: dieux_paiens
+    government: monarchy
+    surface_km2: 210000
+    blason:
+      colors: [vert, rouge, or]
+      symbols: [cimeterres_or, croissant_lune, lion_pierre]
+    notable_features:
+      - "Pays le plus avancé en alchimie"
+      - "Quête de l'Élixir de Longue Vie et de la Pierre Philosophale"
+    rivalries: [yonkado]
+    metadata: { source: paper, version: 1 }
+
+  - id: empire
+    name: "Empire (l')"
+    category: nation
+    capital: "Elioquant"
+    gentile: ["Impérial", "Impériale"]
+    official_language: langage_commun
+    population:
+      total: 8500000
+      races: { humain: 8500000 }
+    average_age: [25, 45]
+    life_expectancy: [70, 80]
+    official_religion: dieux_paiens
+    government: imperial
+    surface_km2: 330000
+    blason:
+      colors: [rouge, or, noir]
+      symbols: [aigle_bicephale]
+      description: "Faits d'armes, sang versé, valeur martiale, discipline"
+    notable_individuals:
+      - { name: "Anatole Léorich 'Le Marchand'", role: "Empereur", traits: "non marié, éloquent, attachement extrême à sa nièce Christie Léorich" }
+    notable_features:
+      - "Politique d'expansion historique (Marc Hallen, Daniel Féro)"
+      - "Empereur élu par le peuple OU par défi à l'Empereur"
+      - "Membre de l'Alliance (depuis 978)"
+    alliances: [cortega, fauche_le_vent, foret_de_tyrkan, haut_royaume]
+    rivalries: [terres_du_nord, dundoria]
+    metadata: { source: paper, version: 1 }
+
+  - id: enorie
+    name: "Enorie (l')"
+    category: nation
+    capital: "Monastie"
+    gentile: ["Enorien", "Enorienne"]
+    official_language: langage_commun
+    population:
+      total: 18000
+      races: { humain: 18000 }
+    average_age: [25, 50]
+    life_expectancy: [75, 80]
+    official_religion: dieu_unique
+    government: monarchy
+    surface_km2: 70000
+    blason:
+      colors: [or, bleu, blanc]
+      symbols: [croix_blanche, fleur_lys_or, coupe_cuivre]
+      description: "Or = qualités éclatantes, bleu = noblesse, croix = piété, fleur de lys = noblesse royale, coupe = humilité chevaliers errants"
+    notable_individuals:
+      - { name: "Victor Armand II 'Le Généreux' de Bourgonil", role: "Roi", age: 48, notes: "A défié le tyran Svetlatchev en duel" }
+    family_tree: "Famille de Bourgonil (lignée détaillée dans nations.md)"
+    notable_features:
+      - "Chevaliers errants célèbres"
+    metadata: { source: paper, version: 1 }
+
+  - id: fauche_le_vent
+    name: "Fauche-le-Vent"
+    category: nation
+    capital: "Caréon"
+    gentile: ["Carénien", "Carénienne"]
+    official_language: langage_commun
+    population:
+      total: 4100000
+      races: { humain: 4100000 }
+    average_age: [25, 40]
+    life_expectancy: [70, 80]
+    official_religion: dieu_unique
+    government: monarchy
+    surface_km2: 158000
+    blason:
+      colors: [or, noir, blanc, vert]
+      symbols: [croix_blanches, croix_verte, tete_cerf_blanc]
+      description: "Croix blanches = mourir pour Dieu/Seigneur/idées, vert = forêts, cerf = roi"
+    notable_features:
+      - "Nation des Arts (poésie, dessin, peinture, musique, chant, chasse)"
+      - "Chasse considérée comme art (meilleurs chasseurs)"
+      - "Tensions avec Foret de Tyrkan + Cortega (Escarmouches secrètes)"
+    alliances: [empire, cortega, foret_de_tyrkan, haut_royaume]
+    rivalries: [foret_de_tyrkan, cortega]  # tensions internes Alliance
+    metadata: { source: paper, version: 1 }
+
+  - id: irtanie
+    name: "Irtanie (l')"
+    category: nation
+    capital: "Felderio"
+    gentile: ["Irtanien", "Irtanienne"]
+    official_language: irtanien
+    population:
+      total: 25000000  # estimation, pas de recensement
+      races: { humain: 25000000 }
+      hidden_population: "1.5x estimation possible"
+    average_age: [15, 25]
+    life_expectancy: [35, 40]
+    official_religion: dieu_unique
+    government: anarchy  # tyrannie + anarchie
+    surface_km2: 310000
+    blason:
+      colors: [jaune, brun, noir]
+      symbols: [longue_noire]
+      description: "Jaune = plaines, brun = montagnes, noir = fleuve Longue Noire"
+    factions_present:
+      famille_clemente: { influence: 100, type: criminal_mafia, hidden_government: true }
+    notable_features:
+      - "Double politique : 'Le Masque' (tyrannie + anarchie publique) + 'Gouvernement Caché' (mafias)"
+      - "Famine endémique, banalisation cannibalisme"
+      - "Illettrisme à >99%"
+      - "Aucune loi écrite"
+    rivalries: [monde_sombre, blanc_royaume, terres_sauvages, dundoria]
+    metadata: { source: paper, version: 1 }
+
+  - id: yonkado
+    name: "Yonkado (Le)"
+    category: nation
+    capital: "Tsaï' Maï Do"
+    gentile: ["Yonkadien", "Yonkadienne"]
+    official_language: yonnen
+    population:
+      total: 8900000
+      races: { humain: 8900000 }
+    average_age: [25, 35]
+    life_expectancy: [40, 50]
+    official_religion: dieux_orientaux
+    government: imperial
+    surface_km2: 190000
+    blason:
+      colors: [rouge, blanc]
+      symbols: [dragon_blanc, perle_dragon]
+    notable_features:
+      - "Détient le secret de la porcelaine ('or blanc')"
+      - "Meilleurs potiers du monde"
+    rivalries: [dundoria]  # Guerre des Sources
+    metadata: { source: paper, version: 1 }
+
+  # === ELFES ===
+
+  - id: blanc_royaume
+    name: "Blanc Royaume (Le)"
+    category: nation
+    capital: "Imor Nahram"
+    gentile: ["Nacrien", "Nacrienne"]
+    official_language: elfique
+    population:
+      total: 2000000
+      races: { elfe_de_nacre: 2000000 }
+    official_religion: dieux_elfiques
+    surface_km2: 25000
+    blason:
+      symbols: [provocation_haut_royaume]
+      description: "Ressemble au blason Haut Elfe, couleurs et lunes inversées (provocation)"
+    alliances: [monde_sombre]  # Alliance Elfique de l'Est
+    notable_features:
+      - "Procréatrices : femmes enceintes prises en charge par la nation"
+      - "Piercings, tatouages, narcotiques"
+      - "Guerriers fanatiques (substances hallucinogènes)"
+      - "Terres incultivables, dépendant Monde Sombre pour ressources"
+    metadata: { source: paper, version: 1 }
+
+  - id: foret_de_tyrkan
+    name: "Tyrkan (Forêt de)"
+    category: nation
+    capital: "Tyrandell"
+    gentile: ["Tyrkan", "Tyrkannaise"]
+    official_language: elfique
+    population:
+      total: 2100000
+      races: { elfe_des_bois: 2100000 }
+    official_religion: cultes_elfiques
+    surface_km2: 295000
+    blason:
+      symbols: [serment_ecorce]
+      description: "Serment passé avec les esprits de la forêt"
+    notable_features:
+      - "Serment d'Écorce : tout intrus puni par flèches"
+      - "Aucune expansion, aucun recul du territoire"
+      - "Voyageurs perdus définitivement"
+    alliances: [empire, cortega, fauche_le_vent, haut_royaume]
+    metadata: { source: paper, version: 1 }
+
+  - id: haut_royaume
+    name: "Haut Royaume (Le)"
+    category: nation
+    capital: "Heldannya"
+    gentile: ["Haut elfe"]
+    official_language: elfique
+    population:
+      total: 2000000
+      races: { haut_elfe: 2000000 }
+    official_religion: dieux_elfiques
+    surface_km2: 260000
+    blason:
+      colors: [bleu, blanc, argent]
+      symbols: [trois_lunes]
+      description: "Trois lunes (Haut elfe, Elfe des Bois, Elfes du Soleil/Sombres)"
+    government: oligarchy  # couples dirigeants élus
+    notable_features:
+      - "Gouvernance par couples élus (perte d'autorité si conjoint disparaît)"
+      - "Bienveillance envers les humains (rôle de médiateur historique)"
+    alliances: [empire, cortega, fauche_le_vent, foret_de_tyrkan]
+    metadata: { source: paper, version: 1 }
+
+  - id: monde_sombre
+    name: "Monde Sombre (Le)"
+    category: nation
+    capital: "Vallandr"
+    gentile: ["Elfe Sombre"]
+    official_language: elfique
+    population:
+      total: 1800000  # estimation
+      races: { elfe_sombre: 1800000 }
+    official_religion: cultes_elfiques
+    surface_km2: 385000
+    blason:
+      colors: [bleu, noir, argent]
+      symbols: [anneau_argent_brise, larmes_blanches]
+      description: "Scission des elfes (3 larmes pour 3 peuples elfiques) ou larmes de Louénill"
+    notable_features:
+      - "Plus petit ratio habitant/km² du monde"
+      - "Rapports sociaux extrêmement difficiles"
+      - "1/3 des nouveaux-nés abandonnés (devenant 'Sans Noms' soldats)"
+    alliances: [blanc_royaume]  # Alliance Elfique de l'Est
+    metadata: { source: paper, version: 1 }
+
+  # === RACES NON-HUMAINES / SPÉCIALES ===
+
+  - id: collines_d_ico
+    name: "Collines d'Ico (Les)"
+    category: nation
+    capital: "Kilioka"
+    gentile: ["Icorien", "Icorienne"]
+    official_language: gnomique
+    population:
+      total: ~  # inconnu
+      races: { gnome: "majoritaire", autres: "multiple" }
+    official_religion: dieux_gnomiques
+    government: democracy
+    surface_km2: 30000
+    blason:
+      colors: [vert, blanc]
+      symbols: [rose, 15_points]
+      description: "15 domaines, rose mobile selon région"
+    notable_features:
+      - "15 domaines (Icomi, Oumic, Piscio, Tahic, Imouc, Niotaic, Cipli, Pilac, Miotaic, Paclio, Dorrio, Villmia, Octocia, Neplia, Sarmio)"
+      - "Protection tyrkanaise informelle"
+      - "Humour particulier (référence livre 'La Triste et Pathétique Histoire de George Brandelle')"
+    metadata: { source: paper, version: 1 }
+
+  # === CONTRÉES SPÉCIALES ===
+
+  - id: grand_desert
+    name: "Grand Désert (Le)"
+    category: wilderness
+    capital: "La Cité des Failles"
+    gentile: "Hommes des Sables"
+    official_language: multiple
+    population:
+      total: [300, 1000]  # entre 300 et 1000
+      races: { multiple: 1000 }
+    official_religion: sans_religion
+    surface_km2: 110000
+    blason:
+      colors: [jaune, noir]
+      symbols: [croix_4_points]
+      description: "Jaune = sable, croix noire = signe des renégats / peines capitales"
+    notable_features:
+      - "Cité des Failles : nid de criminels, exilés ; basée sur un puits"
+      - "Vers des sables (créatures géantes 15m+, attirées par vibrations régulières)"
+      - "Caravanes de l'Espoir (jeunes mercenaires traversant le désert)"
+    inhabitants_origin: "Renégats, exilés, ceux qui renient religion et patrie"
+    metadata: { source: paper, version: 1 }
+
+  - id: landes_desertiques
+    name: "Landes Désertiques (les)"
+    category: wilderness
+    capital: "Narcondre"
+    gentile: ["Funeste"]
+    official_language: lingua_mortis
+    population:
+      total: ~  # inconnu, fortement variable
+      races: { mort_vivant: "indéterminé" }
+    official_religion: culte_de_la_mort
+    surface_km2: ~  # inconnue
+    blason:
+      colors: [gris]
+      symbols: [bannieres_dechirees]
+      description: "Bannières déchirées (ennemis vaincus)"
+    notable_features:
+      - "Faune et flore rares (herbes recherchées par les alchimistes)"
+      - "Nécropoles, royaume des morts-vivants"
+      - "Grande source d'ingrédients alchimiques rares"
+    metadata: { source: paper, version: 1 }
+
+  - id: terres_du_nord
+    name: "Terres du Nord (les)"
+    category: nation
+    capital: "Hildurm"
+    gentile: ["Viking"]
+    official_language: nordique
+    population:
+      total: 3200000
+    average_age: [20, 30]
+    life_expectancy: [40, 50]
+    official_religion: dieux_vikings
+    government: tribal  # Jarls
+    surface_km2: 175000
+    blason:
+      colors: [rouge]
+      symbols: [hugin_munin, drakkar]
+      description: "Hugin et Munin (corbeaux d'Odin), drakkar viking"
+    notable_features:
+      - "Origine étrangère ('Hildorom' = voyageur perdu)"
+      - "8 tribus issues du premier Jarl Sorolson"
+      - "Jarl = chef de tribu, suivi librement"
+      - "Roi unique nommé en cas de conflit"
+      - "Commerce + pillage (origine du nom 'Viking' = pillard)"
+      - "Flotte commerciale et militaire dominante"
+      - "Commerce de la glace en plein essor"
+    metadata: { source: paper, version: 1 }
+
+  # === NOUVELLES RÉGIONS (ajout 2026-04-25 via cartes mondiale + régionales) ===
+
+  - id: portes_d_azrak
+    name: "Les Portes d'Azrak"
+    category: nation
+    capital: "Azrak"
+    gentile: ["Nain", "Naine"]
+    official_language: nain
+    population:
+      total: ~  # inconnu, mais nombreux (33 villes recensées sur la carte)
+      races: { nain: "majoritaire" }
+    official_religion: ~  # à investiguer (panthéon nain non documenté en paper)
+    government: tribal  # à valider (probable monarchie/clanique)
+    surface_km2: ~
+    blason: ~  # 4 mini-flag web (24.jpg, flag-portes-azrak-mini.jpg) à analyser
+    notable_features:
+      - "Nation entièrement fermée derrière 10 portes fortifiées (Nord, Brameust, Melaran, Volcan, Niebel, Lâche, Orotrim, Waldnor, Gruduria, Sud)"
+      - "Volcans actifs (cohérent avec forge naine)"
+      - "Glaciers (commerce de glace concurrent des Vikings)"
+      - "33 villes recensées sur la carte régionale (cf. cities-from-maps.yaml)"
+      - "Patrie principale des Nains (cf. bestiaire.yaml.nain.habitat)"
+      - "Lac d'Herestos central"
+    rivalries: []  # à creuser
+    alliances: []  # à creuser
+    image_assets:
+      regional_map: "site/download/map/portes-azrak.jpg"
+      flag: "site/img/flags/24.jpg"  # web land-id 24
+      flag_mini: "site/img/flags/flag-portes-azrak-mini.jpg"
+    metadata: { source: web, version: 1, discovered_via: "carte régionale + carte mondiale", paper_status: "absent_de_nations_md" }
+
+  - id: stazyliss
+    name: "Stazyliss"
+    category: nation
+    capital: ~
+    gentile: ["Homme Lézard", "Femme Lézard"]
+    official_language: reptilien
+    population:
+      total: ~
+      races: { homme_lezard: "majoritaire" }
+    official_religion: dieux_hommes_lezards  # cf. religions.yaml
+    government: tribal
+    surface_km2: ~
+    notable_features:
+      - "Patrie principale des Hommes-Lézards (cf. bestiaire.yaml.homme_lezard.habitat)"
+      - "Visible sur cartes yonkado.jpg et irtanie.jpg (frontière entre Yonkado/Lounaxill)"
+      - "Pacifique, isolationniste"
+    image_assets:
+      visible_on_maps: ["site/download/map/yonkado.jpg", "site/download/map/irtanie.jpg"]
+    metadata: { source: web, version: 1, discovered_via: "cartes régionales", paper_status: "habitat mentionné dans bestiaire mais pas en entrée nations" }
+
+  - id: terres_sauvages
+    name: "Les Terres Sauvages"
+    category: wilderness
+    capital: ~  # pas de capitale (zone tribale)
+    gentile: ~
+    official_language: multiple  # orc, gobelin, etc.
+    population:
+      races: { orc: "présent", ogre: "présent", gobelin: "présent", troll: "présent" }
+    official_religion: dieux_gobelinoides
+    government: tribal
+    surface_km2: ~  # vaste
+    notable_features:
+      - "Habitat principal des races sauvages (Orc, Ogre, Gobelin, Troll cf. bestiaire.yaml)"
+      - "Zone du sud-est, frontière Dundoria/Yonkado"
+      - "Cible récurrente des escarmouches Dundoriennes (cf. nations.yaml.dundoria)"
+    rivalries: [dundoria, irtanie]
+    metadata: { source: web, version: 1, discovered_via: "carte mondiale + bestiaire", paper_status: "habitat mentionné dans bestiaire mais pas en entrée nations" }
+
+  - id: royaume_du_chaos
+    name: "Royaume du Chaos"
+    category: wilderness  # ou nation hostile non-civilisée
+    capital: ~
+    gentile: ~
+    official_language: ~
+    population:
+      total: ~
+      races: ~
+    official_religion: chaotiques_puissances  # cf. religions.yaml
+    government: anarchy  # chaotique par essence
+    surface_km2: ~
+    notable_features:
+      - "Frontière nord de la Forêt de Tyrkan, des Terres du Nord et de Detre"
+      - "Probablement habitat des Chaotiques Puissances (Kral, Athörn, Tennesse, Gereth, Makalès, Nosgler, Velenas — cf. religions.yaml)"
+      - "Visible sur la carte mondiale et adjacent à Detre, Sombre Monde, Terres du Nord"
+    metadata: { source: web, version: 1, discovered_via: "carte mondiale", paper_status: "absent_de_nations_md" }
+
+  - id: onarit
+    name: "Onarit"
+    category: nation
+    capital: ~
+    gentile: ~
+    official_language: ~
+    population:
+      total: ~
+      races: ~
+    official_religion: ~
+    government: ~
+    surface_km2: ~
+    notable_features:
+      - "Nord-est, derrière les Montagnes Grises"
+      - "Adjacent à Treadur (NE des Collines d'Ico)"
+      - "Adjacent à Irtanie (frontière nord)"
+    image_assets:
+      visible_on_maps: ["site/download/map/terres-oubliees.jpg", "site/download/map/collines-ico.jpg", "site/download/map/irtanie.jpg"]
+    metadata: { source: web, version: 1, discovered_via: "carte mondiale + cartes régionales", paper_status: "absent_de_nations_md" }
+
+  - id: lounaxill
+    name: "Lounaxill"
+    category: nation
+    capital: ~
+    gentile: ~
+    official_language: ~
+    population:
+      total: ~
+      races: ~
+    official_religion: ~
+    government: ~
+    surface_km2: ~
+    notable_features:
+      - "Est, entre Cortega/Alteria et le Sombre Monde / Blanc Royaume"
+      - "Origine connue de l'Opium (cf. catalogs/poisons via R-9.35) : 'centre de l'Irtanie, Lounaxill'"
+      - "Origine narrative de la Mandragore (Hyoscyamine, cf. poisons.md)"
+      - "Adjacent à Yonkado, Irtanie, Stazyliss"
+    cross_references:
+      - "Mentionné explicitement dans poisons.md (Opium, Hyoscyamine, Scopolamine)"
+      - "Mentionné dans champignons-toxiques.md"
+    image_assets:
+      visible_on_maps: ["site/download/map/terres-oubliees.jpg", "site/download/map/yonkado.jpg", "site/download/map/irtanie.jpg"]
+    metadata: { source: web + paper_indirect, version: 1, discovered_via: "carte mondiale + mentions paper", paper_status: "mentionné dans poisons.md mais pas en entrée nations" }
+
+  - id: ile_aux_basilics
+    name: "L'Île aux Basilics"
+    category: location  # île
+    capital: ~
+    gentile: ~
+    official_language: ~
+    population:
+      races: { basilic: "biotope_principal" }  # créature à ajouter au bestiaire
+    notable_features:
+      - "Île au sud, entre Haut Royaume et Grand Désert"
+      - "Habitat suggéré par le toponyme : créature `basilic` (à ajouter au bestiaire)"
+      - "Probablement inhospitalière, visitée par chasseurs de monstres"
+    todo: "Ajouter 'basilic' au bestiaire.yaml (créature pétrifiante classique des bestiaires médiévaux)"
+    image_assets:
+      visible_on_maps: ["site/download/map/terres-oubliees.jpg"]
+    metadata: { source: web, version: 1, discovered_via: "carte mondiale", paper_status: "absent_de_nations_md" }
+
+  - id: montagnes_grises
+    name: "Les Montagnes Grises"
+    category: mountain_range  # géographie pure, pas une nation
+    capital: ~
+    gentile: ~
+    notable_features:
+      - "Chaîne montagneuse nord-est, frontière nord de Detre"
+      - "Sépare Detre/Sombre Monde au sud du Royaume du Chaos au nord"
+      - "Adjacent au Onarit"
+    image_assets:
+      visible_on_maps: ["site/download/map/terres-oubliees.jpg", "site/download/map/detre.jpg", "site/download/map/sombre-monde.jpg"]
+    metadata: { source: web, version: 1, discovered_via: "carte mondiale + cartes régionales", paper_status: "absent_de_nations_md" }
+
+  - id: treadur
+    name: "Treadur"
+    category: nation  # ou wilderness, à valider
+    capital: ~
+    gentile: ~
+    notable_features:
+      - "Nord-est des Collines d'Ico"
+      - "Adjacent à Onarit"
+      - "Possible zone tampon ou sous-région"
+    image_assets:
+      visible_on_maps: ["site/download/map/collines-ico.jpg"]
+    metadata: { source: web, version: 1, discovered_via: "carte régionale Collines d'Ico", paper_status: "absent_de_nations_md" }
+
+  - id: chez_nous
+    name: "Chez Nous"
+    category: nation  # ou région indépendante, à valider
+    capital: ~
+    gentile: ~
+    notable_features:
+      - "Frontière ouest de Fauche-le-Vent et nord du Haut Royaume"
+      - "Visible sur fauche-le-vent.jpg et haut-royaume.jpg"
+      - "Probable région-tampon ou nation indépendante"
+    image_assets:
+      visible_on_maps: ["site/download/map/fauche-le-vent.jpg", "site/download/map/haut-royaume.jpg"]
+    metadata: { source: web, version: 1, discovered_via: "cartes régionales", paper_status: "absent_de_nations_md" }
+
+  - id: terres_sans_noms
+    name: "Les Terres Sans Noms"
+    category: wilderness  # zone tampon
+    capital: ~
+    gentile: ~
+    notable_features:
+      - "Visible à l'est de Cortega sur cortega.jpg"
+      - "Adjacent au Grand Désert et aux Portes d'Azrak"
+      - "Possible zone d'opération des assassins 'Sans Noms' (organisations.yaml.sans_noms) — origine du nom ?"
+    cross_references:
+      - "Lien possible avec organisations.yaml.sans_noms (assassins Monde Sombre)"
+    image_assets:
+      visible_on_maps: ["site/download/map/cortega.jpg"]
+    metadata: { source: web, version: 1, discovered_via: "carte régionale Cortega", paper_status: "absent_de_nations_md" }

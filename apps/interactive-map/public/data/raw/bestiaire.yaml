@@ -1,0 +1,941 @@
+# Bestiaire K&W — Phase 2 import auto (R-10.19, R-11.16)
+# Source paper : regles-papier/extracted/listes/bestiaire.md
+# Schéma : R-11.3 creature
+# Date import : 2026-04-25
+
+version: 1
+metadata:
+  source: paper
+  imported_at: "2026-04-25"
+  total_entries: 30
+
+# Schéma minimal (cf. R-11.3) :
+#   id, name, category, size_m, life_expectancy
+#   xp_category (multiplicateur XP par niveau)
+#   vitality_base, speed_factor_base, will_factor_base
+#   attribute_max: { strength, dexterity, stamina, aestheticism, charisma, empathy, intelligence, reflexes, perception }
+#   innate_atouts, innate_handicaps, resistances
+#   intelligence_level, language_capable
+#   habitat, social_structure
+#   playable (true = race jouable D3, false = créature non-jouable)
+#   lore (descriptif narratif)
+
+creatures:
+
+  # === HUMAINS ET PROCHES ===
+
+  - id: humain
+    name: "Humain, -e"
+    category: humanoid
+    size_m: 1.75
+    life_expectancy: 75
+    xp_category: 20
+    vitality_base: 20
+    speed_factor_base: 8
+    will_factor_base: 12
+    attribute_max:
+      strength: 5
+      dexterity: 5
+      stamina: 5
+      aestheticism: 5
+      charisma: 5
+      empathy: 5
+      intelligence: 5
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Anti-limites physiques"]
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Empire", "Enorie", "Aderand", "Terres du Nord", "Alteria", "Cortega", "Dundoria", "Yonkado", "Irtanie", "Dêtre"]
+    social_structure: civilized
+    playable: true
+    lore: "Race-pivot polyvalente. Capable du meilleur comme du pire."
+    metadata: { source: paper, version: 1 }
+
+  - id: demi_elfe
+    name: "Demi-elfe"
+    category: humanoid
+    size_m: 1.80
+    life_expectancy: 2000
+    xp_category: 20
+    vitality_base: 18
+    speed_factor_base: 8
+    will_factor_base: 11
+    attribute_max:
+      strength: 5
+      dexterity: 6
+      stamina: 4
+      aestheticism: 5
+      charisma: 5
+      empathy: 5
+      intelligence: 5
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Dépassement de soi", "Vision nocturne"]
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["parmi les Elfes ou les Humains"]
+    social_structure: civilized
+    playable: true
+    lore: "Issu d'une union humain × elfe. Mentalité variable selon enfance."
+    metadata: { source: paper, version: 1 }
+
+  # === ELFES ===
+
+  - id: haut_elfe
+    name: "Haut-elfe, -"
+    category: humanoid
+    size_m: 1.90
+    life_expectancy: -1  # immortel
+    xp_category: 20
+    vitality_base: 15
+    speed_factor_base: 7
+    will_factor_base: 10
+    attribute_max:
+      strength: 4
+      dexterity: 6
+      stamina: 4
+      aestheticism: 6
+      charisma: 6
+      empathy: 6
+      intelligence: 7
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Vision nocturne"]
+    resistances:
+      - { type: alcool, value: 30, source: "race:haut_elfe" }
+      - { type: maladies, value: 30, source: "race:haut_elfe" }
+      - { type: vision, value: 110, source: "race:haut_elfe" }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Haut Royaume"]
+    social_structure: civilized
+    playable: true
+    lore: "Cités blanches utopiques, sagesse, calme."
+    metadata: { source: paper, version: 1 }
+
+  - id: elfe_des_bois
+    name: "Elfe des Bois"
+    category: humanoid
+    size_m: 1.85
+    life_expectancy: -1
+    xp_category: 20
+    vitality_base: 17
+    speed_factor_base: 7
+    will_factor_base: 10
+    attribute_max:
+      strength: 4
+      dexterity: 6
+      stamina: 4
+      aestheticism: 6
+      charisma: 5
+      empathy: 5
+      intelligence: 6
+      reflexes: 6
+      perception: 6
+    innate_atouts: ["Vision nocturne"]
+    resistances:
+      - { type: alcool, value: 24 }
+      - { type: maladies, value: 30 }
+      - { type: vision, value: 110 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Forêt de Tyrkan"]
+    social_structure: civilized
+    playable: true
+    lore: "Philosophie de l'équilibre, archers réputés."
+    metadata: { source: paper, version: 1 }
+
+  - id: elfe_sombre
+    name: "Elfe Sombre"
+    category: humanoid
+    size_m: 1.90
+    life_expectancy: -1
+    xp_category: 20
+    vitality_base: 16
+    speed_factor_base: 7
+    will_factor_base: 8
+    attribute_max:
+      strength: 4
+      dexterity: 6
+      stamina: 4
+      aestheticism: 6
+      charisma: 7
+      empathy: 4
+      intelligence: 6
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Vision nocturne"]
+    resistances:
+      - { type: alcool, value: 30 }
+      - { type: maladies, value: 30 }
+      - { type: vision, value: 110 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Monde Sombre"]
+    social_structure: civilized
+    playable: true
+    lore: "Sans larmes, sans sentiments envers les étrangers. Présage funeste."
+    metadata: { source: paper, version: 1 }
+
+  - id: elfe_de_nacre
+    name: "Elfe de Nacre"
+    category: humanoid
+    size_m: 1.85
+    life_expectancy: -1
+    xp_category: 20
+    vitality_base: 16
+    speed_factor_base: 7
+    will_factor_base: 10
+    attribute_max:
+      strength: 4
+      dexterity: 6
+      stamina: 5
+      aestheticism: 6
+      charisma: 5
+      empathy: 5
+      intelligence: 6
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Vision nocturne"]
+    resistances:
+      - { type: alcool, value: 30 }
+      - { type: drogues, value: 12 }
+      - { type: maladies, value: 30 }
+      - { type: vision, value: 110 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Blanc Royaume"]
+    social_structure: civilized
+    playable: true
+    lore: "Le plus cruel des peuples. Drogues, piercings, prisonniers."
+    notes_kw_invention: true
+    metadata: { source: paper, version: 1 }
+
+  # === PETITES RACES ===
+
+  - id: nain
+    name: "Nain, -e"
+    category: humanoid
+    size_m: 1.30
+    life_expectancy: 500
+    xp_category: 20
+    vitality_base: 25
+    speed_factor_base: 9
+    will_factor_base: 9
+    attribute_max:
+      strength: 7
+      dexterity: 5
+      stamina: 7
+      aestheticism: 4
+      charisma: 5
+      empathy: 4
+      intelligence: 5
+      reflexes: 4
+      perception: 4
+    innate_atouts: ["Force de géant"]
+    resistances:
+      - { type: alcool, value: 30 }
+      - { type: drogues, value: 21 }
+      - { type: maladies, value: 21 }
+      - { type: poisons, value: 21 }
+      - { type: magie, value: 15 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Portes d'Azrak"]
+    social_structure: civilized
+    playable: true
+    lore: "Entêtés, déterminés. Meilleurs artisans (architecture, joaillerie, forge, brasseurs de bières)."
+    metadata: { source: paper, version: 1 }
+
+  - id: hobbit
+    name: "Hobbit"
+    category: humanoid
+    size_m: 1.10
+    life_expectancy: 95
+    xp_category: 16
+    vitality_base: 13
+    speed_factor_base: 8
+    will_factor_base: 15
+    attribute_max:
+      strength: 3
+      dexterity: 5
+      stamina: 4
+      aestheticism: 5
+      charisma: 3
+      empathy: 5
+      intelligence: 5
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Pieds poilus"]
+    resistances:
+      - { type: fumee, value: 60 }
+      - { type: magie, value: 60 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["paysans, vallées"]
+    social_structure: civilized
+    playable: true
+    lore: "Paisibles paysans. Tabac, agriculture. Déplacement silencieux."
+    metadata: { source: paper, version: 1 }
+
+  - id: gnome
+    name: "Gnome"
+    category: humanoid
+    size_m: 0.6
+    life_expectancy: 200
+    xp_category: 15
+    vitality_base: 12
+    speed_factor_base: 8
+    will_factor_base: 15
+    attribute_max:
+      strength: 2
+      dexterity: 5
+      stamina: 3
+      aestheticism: 5
+      charisma: 3
+      empathy: 5
+      intelligence: 5
+      reflexes: 5
+      perception: 6
+    innate_atouts: ["Affinité avec les illusions", "Vision nocturne"]
+    resistances:
+      - { type: magie, value: 20 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Collines d'Ico"]
+    social_structure: civilized
+    playable: true
+    lore: "Mystérieux, joyeux. Plus grands illusionnistes."
+    metadata: { source: paper, version: 1 }
+
+  - id: gobelin
+    name: "Gobelin, -e"
+    category: humanoid
+    size_m: 0.5
+    life_expectancy: 15
+    xp_category: 12
+    vitality_base: 11
+    speed_factor_base: 8
+    will_factor_base: 14
+    attribute_max:
+      strength: 2
+      dexterity: 4
+      stamina: 4
+      aestheticism: 1
+      charisma: 2
+      empathy: 2
+      intelligence: 4
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Frénésie collective", "Vision nocturne"]
+    resistances:
+      - { type: maladies, value: 16 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Terres Sauvages"]
+    social_structure: tribal
+    playable: true
+    lore: "Sale, vert, sournois. Pillent en nombre. Nocturne."
+    metadata: { source: paper, version: 1 }
+
+  # === RACES MASSIVES ===
+
+  - id: orc
+    name: "Orc"
+    category: humanoid
+    size_m: 1.60
+    life_expectancy: 35
+    xp_category: 20
+    vitality_base: 27
+    speed_factor_base: 8
+    will_factor_base: 12
+    attribute_max:
+      strength: 6
+      dexterity: 4
+      stamina: 6
+      aestheticism: 1
+      charisma: 5
+      empathy: 4
+      intelligence: 4
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Peur", "Vision nocturne"]
+    resistances:
+      - { type: maladies, value: 4 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Terres Sauvages"]
+    social_structure: tribal
+    playable: true
+    lore: "Brutalité, violence, pillage. Soldats parfaits sous bon chef."
+    metadata: { source: paper, version: 1 }
+
+  - id: ogre
+    name: "Ogre, -sse"
+    category: humanoid
+    size_m: 3.0
+    life_expectancy: 300
+    xp_category: 38
+    vitality_base: 58
+    speed_factor_base: 11
+    will_factor_base: 14
+    attribute_max:
+      strength: 23
+      dexterity: 3
+      stamina: 35
+      aestheticism: 1
+      charisma: 4
+      empathy: 3
+      intelligence: 4
+      reflexes: 3
+      perception: 4
+    innate_atouts: ["Terreur"]
+    resistances:
+      - { type: feu, value: 54 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Terres Sauvages"]
+    social_structure: tribal
+    playable: true
+    lore: "Énormes créatures grasses. Carnivores, friands de chair humaine, surtout enfants."
+    metadata: { source: paper, version: 1 }
+
+  - id: troll
+    name: "Troll, -ope"
+    category: humanoid
+    size_m: 3.60
+    life_expectancy: -1  # immortel
+    xp_category: 48
+    vitality_base: 120
+    speed_factor_base: 10
+    will_factor_base: 13
+    attribute_max:
+      strength: 37
+      dexterity: 3
+      stamina: 33
+      aestheticism: 1
+      charisma: 4
+      empathy: 2
+      intelligence: 2
+      reflexes: 4
+      perception: 4
+    innate_atouts: ["Auto régénération", "Terreur", "Vision nocturne"]
+    innate_handicaps: ["Aube pétrificatrice"]
+    resistances:
+      - { type: maladies, value: 20 }
+      - { type: poisons, value: 11 }
+    intelligence_level: semi_sentient
+    language_capable: true  # rarement
+    habitat: ["Terres Sauvages"]
+    social_structure: solitary
+    playable: true
+    lore: "Force brute. Régénération, mais pétrifié à l'aube."
+    metadata: { source: paper, version: 1 }
+
+  # === CRÉATURES MYTHOLOGIQUES ===
+
+  - id: centaure
+    name: "Centaure, -sse"
+    category: humanoid
+    size_m: 2.40
+    life_expectancy: 100
+    xp_category: 22
+    vitality_base: 35
+    speed_factor_base: 8
+    will_factor_base: 11
+    attribute_max:
+      strength: 7
+      dexterity: 5
+      stamina: 7
+      aestheticism: 5
+      charisma: 6
+      empathy: 5
+      intelligence: 5
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Vélocité"]
+    resistances:
+      - { type: alcool, value: 11 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: []
+    social_structure: tribal
+    playable: true
+    lore: "Forces de la nature. Esprits violents, attirance pour le bon vin."
+    metadata: { source: paper, version: 1 }
+
+  - id: dryade
+    name: "Dryade"
+    category: spirit
+    size_m: 1.70
+    life_expectancy: -1
+    xp_category: 20
+    vitality_base: 16
+    speed_factor_base: 8
+    will_factor_base: 10
+    attribute_max:
+      strength: 4
+      dexterity: 6
+      stamina: 4
+      aestheticism: 7
+      charisma: 6
+      empathy: 5
+      intelligence: 5
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Lingua vegetalis", "Vegothropie"]
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Forêt de Tyrkan", "Collines d'Ico"]
+    social_structure: solitary
+    playable: true
+    lore: "Nymphes des arbres. Toujours féminines. Transformation en arbre possible."
+    metadata: { source: paper, version: 1 }
+
+  - id: ondine
+    name: "Ondine"
+    category: spirit
+    size_m: 1.75
+    life_expectancy: -1
+    xp_category: 19
+    vitality_base: 16
+    speed_factor_base: 8
+    will_factor_base: 12
+    attribute_max:
+      strength: 3
+      dexterity: 5
+      stamina: 3
+      aestheticism: 8
+      charisma: 3
+      empathy: 6
+      intelligence: 5
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Chant envoûtant", "Race aquatique"]
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["points d'eaux vives"]
+    social_structure: solitary
+    playable: true
+    lore: "Nymphes des eaux. Charme surnaturel. Acquièrent une âme par mariage."
+    metadata: { source: paper, version: 1 }
+
+  # === FÉLIDÉS ===
+
+  - id: chigr
+    name: "Chigr"
+    category: humanoid
+    size_m: 1.70
+    life_expectancy: 50
+    xp_category: 16
+    vitality_base: 14
+    speed_factor_base: 7
+    will_factor_base: 10
+    attribute_max:
+      strength: 4
+      dexterity: 5
+      stamina: 3
+      aestheticism: 5
+      charisma: 3
+      empathy: 5
+      intelligence: 4
+      reflexes: 6
+      perception: 6
+    innate_atouts: ["Équilibre contrôlé", "Retombe sur ses pattes", "Vision nocturne"]
+    resistances:
+      - { type: chaleur, value: 3 }
+    intelligence_level: sentient
+    language_capable: true
+    social_structure: tribal
+    playable: true
+    lore: "Le plus petit des félidés. Mélange humain × petit félin (chat, lynx, ocelot)."
+    notes_kw_invention: true
+    metadata: { source: paper, version: 1 }
+
+  - id: khochigr
+    name: "Khochigr"
+    category: humanoid
+    size_m: 1.90
+    life_expectancy: 55
+    xp_category: 20
+    vitality_base: 19
+    speed_factor_base: 8
+    will_factor_base: 10
+    attribute_max:
+      strength: 5
+      dexterity: 4
+      stamina: 5
+      aestheticism: 5
+      charisma: 5
+      empathy: 4
+      intelligence: 4
+      reflexes: 6
+      perception: 6
+    innate_atouts: ["Équilibre contrôlé", "Retombe sur ses pattes", "Vision nocturne"]
+    resistances:
+      - { type: chaleur, value: 6 }
+    intelligence_level: sentient
+    language_capable: true
+    social_structure: tribal
+    playable: true
+    lore: "Mélange équilibré humain × félin moyen (léopard, panthère, puma, jaguar, guépard)."
+    notes_kw_invention: true
+    metadata: { source: paper, version: 1 }
+
+  - id: khogr
+    name: "Khogr"
+    category: humanoid
+    size_m: 1.95
+    life_expectancy: 60
+    xp_category: 20
+    vitality_base: 22
+    speed_factor_base: 8
+    will_factor_base: 10
+    attribute_max:
+      strength: 6
+      dexterity: 4
+      stamina: 6
+      aestheticism: 5
+      charisma: 7
+      empathy: 4
+      intelligence: 4
+      reflexes: 6
+      perception: 6
+    innate_atouts: ["Équilibre contrôlé", "Retombe sur ses pattes", "Vision nocturne"]
+    resistances:
+      - { type: chaleur, value: 9 }
+    intelligence_level: sentient
+    language_capable: true
+    social_structure: tribal
+    playable: true
+    lore: "Plus grand des félidés (lion, tigre). Force de la nature, prédateur."
+    notes_kw_invention: true
+    metadata: { source: paper, version: 1 }
+
+  # === HOMMES-X (anthropomorphes) ===
+
+  - id: canidae
+    name: "Canidae"
+    category: humanoid
+    size_m: 2.10
+    life_expectancy: 65
+    xp_category: 20
+    vitality_base: 24
+    speed_factor_base: 8
+    will_factor_base: 9
+    attribute_max:
+      strength: 5
+      dexterity: 4
+      stamina: 7
+      aestheticism: 4
+      charisma: 5
+      empathy: 5
+      intelligence: 5
+      reflexes: 5
+      perception: 7
+    innate_atouts: ["Flaire infaillible", "Pisteur né"]
+    resistances:
+      - { type: fatigue, value: 25 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["orées de forêts, plaines karstiques, grottes"]
+    social_structure: pack  # meutes
+    playable: true
+    lore: "Hommes-loup / Hommes-chien. Endurance et flaire. Sous-espèce : Gnolls (mélange humain + hyène)."
+    sub_species: ["gnolls"]
+    metadata: { source: paper, version: 1 }
+
+  - id: homme_lezard
+    name: "Homme Lézard / Femme Lézard"
+    category: humanoid
+    size_m: 1.80
+    life_expectancy: 70
+    xp_category: 18
+    vitality_base: 16
+    speed_factor_base: 7
+    will_factor_base: 9
+    attribute_max:
+      strength: 4
+      dexterity: 5
+      stamina: 4
+      aestheticism: 4
+      charisma: 4
+      empathy: 3
+      intelligence: 5
+      reflexes: 8
+      perception: 6
+    innate_atouts: ["Sang-froid", "Vision nocturne"]
+    innate_handicaps: ["Organisme fragile"]
+    resistances:
+      - { type: chaleur, value: 36 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Stazyliss"]
+    social_structure: tribal
+    playable: true
+    lore: "Imperturbables, escarmouches ciblées. Pacifiques, isolationnistes."
+    notes_kw_invention: true
+    metadata: { source: paper, version: 1 }
+
+  - id: homme_oiseau
+    name: "Homme Oiseau / Femme Oiselle"
+    category: humanoid
+    size_m: 1.85
+    life_expectancy: 90
+    xp_category: 22
+    vitality_base: 18
+    speed_factor_base: 8
+    will_factor_base: 11
+    attribute_max:
+      strength: 5
+      dexterity: 5
+      stamina: 5
+      aestheticism: 6
+      charisma: 5
+      empathy: 5
+      intelligence: 5
+      reflexes: 5
+      perception: 7
+    innate_atouts: ["Vol"]
+    resistances:
+      - { type: vision, value: 235 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Grande Cité Haute (palais flottant)"]
+    social_structure: civilized
+    playable: true
+    lore: "Pacifique, discret, légendaire."
+    notes_kw_invention: true
+    metadata: { source: paper, version: 1 }
+
+  - id: homme_rat
+    name: "Homme Rat / Femme Ratte"
+    category: humanoid
+    size_m: 1.50
+    life_expectancy: 45
+    xp_category: 18
+    vitality_base: 15
+    speed_factor_base: 7
+    will_factor_base: 14
+    attribute_max:
+      strength: 4
+      dexterity: 5
+      stamina: 6
+      aestheticism: 2
+      charisma: 4
+      empathy: 4
+      intelligence: 5
+      reflexes: 6
+      perception: 6
+    innate_atouts: ["Frénésie collective", "Vision nocturne"]
+    resistances:
+      - { type: maladies, value: 49 }
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Souterrain"]
+    social_structure: civilized  # Empire
+    playable: true
+    lore: "Sociaux, imprévisibles, adaptatifs. Empereur héréditaire par joutes."
+    notes_kw_invention: true
+    metadata: { source: paper, version: 1 }
+
+  # === MORT-VIVANTS ===
+
+  - id: fantome
+    name: "Fantôme"
+    category: undead
+    size_m: 0  # dépend de la race de base
+    life_expectancy: -1
+    xp_category: 31
+    vitality_base: 13
+    speed_factor_base: 10
+    will_factor_base: 2
+    attribute_max:
+      strength: 3
+      dexterity: 3
+      stamina: 3
+      aestheticism: 3
+      charisma: 4
+      empathy: 4
+      intelligence: 5
+      reflexes: 3
+      perception: 4
+    innate_atouts: ["Immatérialité", "Mort-vivant", "Possession", "Vision nocturne", "Vol"]
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Landes Désertiques"]
+    social_structure: solitary
+    playable: false
+    lore: "Âmes errantes avec mission. Possession = 1 par défaut."
+    metadata: { source: paper, version: 1 }
+
+  - id: squelette
+    name: "Squelette"
+    category: undead
+    size_m: 0  # celle de l'ancienne race
+    life_expectancy: -1
+    xp_category: 16
+    vitality_base: 15
+    speed_factor_base: 8
+    will_factor_base: 1
+    attribute_max:
+      strength: 4
+      dexterity: 4
+      stamina: 5
+      aestheticism: 1
+      charisma: 2
+      empathy: 1
+      intelligence: 4
+      reflexes: 4
+      perception: 3
+    innate_atouts: ["Jusqu'à la mort", "Mort-vivant", "Peur"]
+    intelligence_level: instinctive  # parfois plus selon l'individu
+    language_capable: false  # généralement
+    habitat: ["Landes Désertiques", "nécropoles"]
+    social_structure: pack
+    playable: false
+    lore: "Relevés par nécromancie. Sans peur, sans tentation, sans remords."
+    metadata: { source: paper, version: 1 }
+
+  - id: vampire
+    name: "Vampire, sse"
+    category: undead
+    size_m: 1.75
+    life_expectancy: -1
+    xp_category: 30
+    vitality_base: 35
+    speed_factor_base: 8
+    will_factor_base: 10
+    attribute_max:
+      strength: 7
+      dexterity: 5
+      stamina: 7
+      aestheticism: 6
+      charisma: 7
+      empathy: 6
+      intelligence: 5
+      reflexes: 5
+      perception: 5
+    innate_atouts: ["Baiser de la nuit", "Baiser des ténèbres", "Brumathropie", "Chiroptèrothropie", "Lycanthropie", "Mort-vivant", "Vision nocturne"]
+    innate_handicaps: ["Aube meurtrière", "Sans reflet", "Soif de sang"]
+    intelligence_level: sentient
+    language_capable: true
+    habitat: ["Partout"]
+    social_structure: solitary
+    playable: true  # via transformation D3 Q-D3.5
+    lore: "Humains qui ont embrassé la mort. Beauté ténébreuse, canines, peau froide."
+    metadata: { source: paper, version: 1 }
+
+  - id: loup_garou
+    name: "Loup-garou, Louve-garou"
+    category: humanoid  # forme hybride
+    size_m: 2.50
+    life_expectancy: 50
+    xp_category: 45
+    vitality_base: 41
+    speed_factor_base: 7
+    will_factor_base: 15
+    attribute_max:
+      strength: 10
+      dexterity: 4
+      stamina: 8
+      aestheticism: 4
+      charisma: 5
+      empathy: 2
+      intelligence: 4
+      reflexes: 7
+      perception: 7
+    innate_atouts: ["Auto régénération", "Humanothropie", "Lycanthropie", "Morsure lupine", "Terreur", "Vision nocturne"]
+    innate_handicaps: ["Brûlure de l'argent", "Rage lunaire"]
+    intelligence_level: sentient  # forme humaine ; instinctive en forme bestiale
+    language_capable: true  # en forme humaine
+    habitat: ["régions peuplées d'humains"]
+    social_structure: pack  # parmi les loups
+    playable: true  # via Morsure lupine D3 Q-D3.5
+    lore: "Vit parmi les hommes, transformation pleine lune. Société secrète parmi les meutes de loups."
+    metadata: { source: paper, version: 1 }
+
+  # === ANIMAUX ===
+
+  - id: cheval
+    name: "Cheval, Jument"
+    category: beast
+    size_m: 1.80
+    life_expectancy: 25
+    xp_category: 16
+    vitality_base: 35
+    speed_factor_base: 8
+    will_factor_base: 16
+    attribute_max:
+      strength: 8
+      dexterity: 2
+      stamina: 8
+      aestheticism: 4
+      charisma: 1
+      empathy: 2
+      intelligence: 2
+      reflexes: 3
+      perception: 4
+    innate_atouts: ["Vélocité"]
+    intelligence_level: instinctive
+    language_capable: false
+    social_structure: pack  # troupeau
+    playable: false
+    lore: "Plus belle conquête de l'homme. Transport, symbole de richesse."
+    metadata: { source: paper, version: 1, default_mount: true }
+
+  - id: chat
+    name: "Chat, -te"
+    category: beast
+    size_m: 0.25
+    life_expectancy: 15
+    xp_category: 12
+    vitality_base: 4
+    speed_factor_base: 7
+    will_factor_base: 13
+    attribute_max:
+      strength: 1
+      dexterity: 6
+      stamina: 1
+      aestheticism: 4
+      charisma: 1
+      empathy: 3
+      intelligence: 2
+      reflexes: 6
+      perception: 7
+    innate_atouts: ["Équilibre contrôlé", "Retombe sur ses pattes", "Vision nocturne"]
+    intelligence_level: instinctive
+    language_capable: false
+    social_structure: solitary
+    playable: false
+    lore: "Lien occulte. Familier de sorcière par excellence. Neuf vies."
+    metadata: { source: paper, version: 1, common_familiar: true }
+
+  - id: loup
+    name: "Loup, Louve"
+    category: beast
+    size_m: 0.8
+    life_expectancy: 50
+    xp_category: 16
+    vitality_base: 12
+    speed_factor_base: 7
+    will_factor_base: 13
+    attribute_max:
+      strength: 4
+      dexterity: 4
+      stamina: 6
+      aestheticism: 4
+      charisma: 5
+      empathy: 3
+      intelligence: 3
+      reflexes: 6
+      perception: 7
+    innate_atouts: ["Frénésie collective", "Vision nocturne"]
+    intelligence_level: instinctive
+    language_capable: false
+    habitat: ["forêts"]
+    social_structure: pack  # 3-15 individus
+    playable: false
+    lore: "Prédateur des forêts. En meute (3-15). Origine du mythe loup-garou."
+    metadata: { source: paper, version: 1 }

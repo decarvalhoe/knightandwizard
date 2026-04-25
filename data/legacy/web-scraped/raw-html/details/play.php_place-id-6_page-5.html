@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=6">L'oasis de Laura</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=52">
+        <img src="../img/characters-profil/52.jpg" alt="Hafed" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=52">Hafed</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=92">
+        <img src="../img/characters-profil/92.jpg" alt="John" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=92">John</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=6&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Bon et bien... prenez chacun une jambe et je m'occupe de son torse. Essayez de ne pas trop le brusquer ! *Emmène Hafed à l'ombre*. Est-il possible d'avoir à boire et à manger pour cet homme? D'ailleurs il y en a plein d'autres à la cave qui doivent mourir de faim !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Laura<br />
+
+                <a href="character-detail.php?id=90">
+                    <img src="../img/characters-profil/90.jpg" alt="Laura" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.10.18
+            </div>
+
+            <div class="forum-post-content">
+                J'ai des cuisines avec tout le personnel nécéssaire. Du moins dans mes souvenirs. Ils pourraient préparer à manger, mais ne faut-il pas garder un oeil sur ce démon? Je ne me sens pas très en sécurité à vrai dire !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Hafed<br />
+
+                <a href="character-detail.php?id=52">
+                    <img src="../img/characters-profil/52.jpg" alt="Hafed" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Haaaaa.... merci.... il fait tellement chaud ici en haut... !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Sela regarde Len, Halfed en pensant : - Mais ils étaient là eux, pis c'est qui Halfed(, j'ai trop bu ou quoi!* Pis regarde Laura en pensant : c'est quoi ce délire de cuisine maintenant*
+- Bon... *Hésite sur tout et décide de patienter encore*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Alors oui Len joue avec vous, mais il n'utilisera pas de sorts (trop compliqué pour moi à gérer en combat). Ensuite Hafed c'est le mage que vous êtes allés chercher en bas (Sindalia et Akbar si je ne me trompe) pour avoir des conseils en démonologie car ils ne savaient pas trop quoi faire. Il est gentiment monté et a expliqué des choses sur les démons.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Soudain cela me revient*
+- Bon allons voir ce qui se trame en cuisine et éventuellement trouver à manger et de la bière. :)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.10.18
+            </div>
+
+            <div class="forum-post-content">
+                [Pense: Si ils ont fait des travaux à la cave, il y a peut être encore des outils. Allons voir ça.]
+
+*Se dirige dans la cave et observe.*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.10.18
+            </div>
+
+            <div class="forum-post-content">
+                 Alors vous vous séparez en deux groupe. 
+
+Le groupe 1, composé de Sela et Len vont voir dans la cuisine, ou ils tombent nez-à-nez avec trois mecs, tous les trois bedonnant, en train de taper le carton autour d'une petite table ronde. Ca a l'air d'être une grande cuisine. 
+
+Le groupe 2, composé d'Andalur, descend à la cave. Là il y a plusieurs portes et après avoir fouillé un peu tu trouves: 
+- des tunnels genre mine abandonnée. 
+-une quarantaine de mecs en haillons entrain de discuter dans plusieurs langues différentes de ce qu'ils vont faire de leur vie (c'est assez animé). Il y a des hommes, des femmes, des jeunes et des vieux. Il y a même deux hommes-lezards. Certain(e)s semblent malades, ou en tout cas en piteux état physique.
+ -Une machine avec une sorte de pommeau de douche qui semble se fixer sur la tête de gens, des tuyaux, des tubes, des contenants en verre, tout un attirail d'alchimie et un levier. Dans la même pièce il y a une armoire ouverte, avec plein de potions vides.
+ -Une pièce qui semble être une sorte de dépotoir dans laquelle tu trouves tout un tas de choses diverses et variés (si tu cherche quelque chose de précis dis-moi quoi).
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.10.18
+            </div>
+
+            <div class="forum-post-content">
+                [Andalur cherche surtout une masse. Peut être s'en sont-ils servit pour creuser.]
+
+*Jette un coup d'oeil à l'état des hommes lézards en passant.*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Alors tu trouves sans soucis une masse. Il y a également plein d'autres outils, entre autre de jardinage (plus des pelles, des pioches, etc).
+
+Je me suis peut-être mal exprimé mais je voulais dire que dans le tas des 40 hommes et femmes il y en a qui sont mal en point, assis ou même couchés à même le sol. Lorsque tu t'approches des hommes lézards, ils sont entrain de discuter entre eux en yonkadien. Il y a un mâle et une femelle. Le mâle semble assez en forme alors que la femelle semble plus décharnée. Le mâle se retourne vers toi et te toise du regard.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=6&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=6&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=6&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=6&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=6&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=6&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=6&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=6&page=8">
+          8
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

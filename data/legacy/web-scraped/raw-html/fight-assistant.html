@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1>Assistant de combat</h1>
+
+<div id="TD-counter">
+    <h2>DT</h2>
+
+    <div id="TD-container">
+        0
+    </div>
+
+    <div id="TD-buttons">
+        <div class="left-button">
+            <form action="fight-assistant.php" method="post" class="form">
+                <input type="hidden" name="TD" value="0">
+                <input type="hidden" name="nextTD" value="-">
+                <input type="submit" value="Pr&eacute;c&eacute;dent" />
+            </form>
+        </div>
+
+        <div>
+            <form action="fight-assistant.php" method="post" class="form">
+                <input type="hidden" name="TD" value="0">
+                <input type="hidden" name="nextTD" value="+">
+                <input type="submit" value="Suivant" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<h2>PNJ</h2>
+
+<div id="add-npc-form">
+    <form action="fight-assistant.php" method="post" class="form">
+        PNJ commun :
+        <select name="NpcId">
+                            <option value="0">Garde Canidae</option>
+                            <option value="1">Garde Humain</option>
+                            <option value="2">Garde Gobelin</option>
+                            <option value="3">Garde Squelette</option>
+                            <option value="4">Garde Zombie</option>
+                            <option value="5">Rôdeur Loup</option>
+                            <option value="6">Fantassin Humain</option>
+                    </select>
+
+        <input type="number" name="nbrOfNewNpc" value="0" max="100">
+
+        <input type="hidden" name="action" value="addNpc">
+        <input type="hidden" name="TD" value="0">
+        <input type="hidden" name="nextTD" value="">
+        <input type="submit" value="Ajouter" />
+    </form>
+</div>
+
+<div id="reset-npc-button">
+    <form action="fight-assistant.php" method="post" class="form">
+        <input type="hidden" name="action" value="resetNpc">
+        <input type="hidden" name="TD" value="0">
+        <input type="hidden" name="nextTD" value="">
+        <input type="submit" value="Reset" />
+    </form>
+</div>
+
+<div id="npc-panel">
+    </div>
+
+<div id="npc-roll">
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

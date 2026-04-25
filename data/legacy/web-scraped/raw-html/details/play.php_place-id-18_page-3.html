@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=18">Château d'Aljoteria</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=142">
+        <img src="../img/characters-profil/142.jpg" alt="Abdullah" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=142">Abdullah</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=143">
+        <img src="../img/characters-profil/143.jpg" alt="Irina" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=143">Irina</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=144">
+        <img src="../img/characters-profil/144.jpg" alt="Valentin de Provoda" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=144">Valentin de Provoda</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=145">
+        <img src="../img/characters-profil/145.jpg" alt="Roxane" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=145">Roxane</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=146">
+        <img src="../img/characters-profil/146.jpg" alt="Yi Yong" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=146">Yi Yong</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=147">
+        <img src="../img/characters-profil/147.jpg" alt="Erasme" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=147">Erasme</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=148">
+        <img src="../img/characters-profil/148.jpg" alt="Eduardo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=148">Eduardo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=149">
+        <img src="../img/characters-profil/149.jpg" alt="Oscar" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=149">Oscar</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=150">
+        <img src="../img/characters-profil/150.jpg" alt="Tan le grand" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=150">Tan le grand</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=18&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Oscar<br />
+
+                <a href="character-detail.php?id=149">
+                    <img src="../img/characters-profil/149.jpg" alt="Oscar" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Hmmm cela m&#039;ennuierait que vous lui cassiez les jambes. Auriez-vous un exemple de situation où pour le protéger il faudrait faire une telle chose?  Parlons de vos amis, vous les protégez aussi n&#039;est-ce pas? Avez-vous déjà pensé à leur casser les jambes à eux aussi?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Oui ça m&#039;arrive souvent. Même si pour mes compagnons c&#039;est plutôt la tête que je songe à casser, mais bref.
+
+Imaginons que nous disions à Tan de ne pas s&#039;éloigner de nous pour sa sécurité. Admettons qu&#039;il outrepasse cette directive. Dans ce cas nous devrons le retrouver, suite à quoi nous n&#039;aurons plus confiance en sa parole vous en convenez. Dès lors, la fois suivante où nous souhaiterons qu&#039;il reste tranquil, il nous sera plus simple de lui briser les jambes pour s&#039;assurer qu&#039;il ne bouge pas. Peut être les bras également. A voir.
+
+Bien entendu, nous nous engageons à vous le rendre en un seul morceau. Sindalia possède un sort de soin ultime.
+
+A moins que vous n&#039;estimiez que la consigne de ne pas lui faire de mal est plus importante que d&#039;assurer sa sécurité. Dans ce cas, si il s&#039;enfuit, nous ne le rechercherons tout simplement pas et il se débrouillera pour nous retrouver si il ne meurt pas.
+
+Pour moi, les deux versions conviennes. J&#039;ai juste besoin que vous définissiez la procédure à mettre en oeuvre lorsque le jeune se mettra lui-même en danger.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.03.19
+            </div>
+
+            <div class="forum-post-content">
+                * Regarde Andalur en faisant des signes affirmatifs de la tête
+*Jette un œil à la réaction de Tan quand notre duelliste évoque la notion de &quot;briser les jambes pour s&#039;assurer qu&#039;il ne bouge pas.&quot; <hr><span class="play-sub-title">Action</span><br /><p>Empathie + Psychologie (diff. 7) => Echec critique (13)</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.03.19
+            </div>
+
+            <div class="forum-post-content">
+                (décidément...Ackbar ne comprend pas Tan...)
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Oscar<br />
+
+                <a href="character-detail.php?id=149">
+                    <img src="../img/characters-profil/149.jpg" alt="Oscar" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Je crois que nous ne nous sommes pas bien compris. Il n&#039;est aucunement question de lui briser quoi que ce soit. Je vous demande de le protéger comme quelqu&#039;un de privilégier dans votre équipe ou... Comme votre supérieur si vous comprenez mieux ce point de vue. Il n&#039;est pas votre subalterne et sa liberté n&#039;a nullement à être remise en cause. S&#039;il vous suit c&#039;est car il le souhaite comme il pourra faire comme bon lui plaira pendant son voyage. Les seuls ordres qu&#039;il a à recevoir sont les miens et ceux de Valentin ici présent. Nous nous assurerons qu&#039;il soit briefé pour ne pas faire de bêtises. Pour le reste si la tâche est trop ardue pour vous peut être que le reste de votre équipe saura s&#039;en charger. <hr><span class="play-sub-title">Action</span><br /><p>Charisme (diff. 7) => 0R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Tan le grand<br />
+
+                <a href="character-detail.php?id=150">
+                    <img src="../img/characters-profil/150.jpg" alt="Tan le grand" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Héhé tu veux m&#039;peter les bras petit elfe tout rigolo? Viens seulement je t&#039;attends!!
+(C&#039;est ça la réaction de Tan).
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.03.19
+            </div>
+
+            <div class="forum-post-content">
+                (c&#039;est ce qu&#039;Ackbar &quot;empathise&quot; de Tan? ou il le dit vraiment?)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.03.19
+            </div>
+
+            <div class="forum-post-content">
+                A Oscar: Alors là, c&#039;est moi qui comprend pas bien...Notre supérieur nous guide, il ne nous suis pas...et il ne m&#039;apparait pas raisonnable de nous laisser guider, on ne sais où par un &quot;supérieur&quot; (fait son geste des guillemets) de 17 printemps. 
+Regarde Tan: Tu es bien Tan le Grand? Et pas Tan le Sage, que je sache? Et tu veux découvrir le monde? C&#039;est bien ça? 
+A Oscar: Et bien, on ne devient pas Guide quand on découvre...Alors supérieur, pour moi, c&#039;est non. S&#039;il s&#039;agit de le protéger, le contrat est tout autre et là, je retourne à la question d&#039;Andalur que je vais reformuler: Si nous devons protéger Tan et que le principal danger pour lui est lui-même, quel est notre marge de manœuvre? Concrètement, s&#039;il fugue, vu que c&#039;est un vampire, nous n&#039;avons peu de chance de pouvoir le rattraper. Ensuite, s&#039;il se met en danger, je sais pas, moi, en se transformant en chauve-souris devant une foule qui le poursuit pour le clouer à une porte de grange, par exemple. Cela veut il dire qu&#039;on doit risquer notre vie pour le protéger? 
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Oscar<br />
+
+                <a href="character-detail.php?id=149">
+                    <img src="../img/characters-profil/149.jpg" alt="Oscar" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.03.19
+            </div>
+
+            <div class="forum-post-content">
+                Par supérieur j&#039;entendais quelqu&#039;un d&#039;important, comme un noble que vous escortez par exemple. Vous parlez de fugue mais Tan ne sera pas votre captif. Il pourra faire ce qu&#039;il veut et vous le protégerez de votre mieux, voilà tout. Maintenant je suis fatigué de m&#039;expliquer devant des enfants, je vais retourner dans mes quartiers. *L&#039;air devient soudainement plus froid* *Oscar se lève de sa chaise et s&#039;en va en lévitant au-dessus du sol*.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.03.19
+            </div>
+
+            <div class="forum-post-content">
+                (c&#039;est ce que Tan a dit, pour l&#039;echec critique en détéction du mensonge et bien il avait l&#039;air d&#039;un bon garçon pas du tout en pleine crise d&#039;adolescence)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=18&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=18&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=18&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=18&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=18&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=18&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=18&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=18&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=18&page=9">
+          9
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

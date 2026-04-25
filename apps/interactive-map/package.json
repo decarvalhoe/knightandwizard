@@ -1,0 +1,21 @@
+{
+  "name": "knight-and-wizard-interactive-map",
+  "version": "0.1.0",
+  "description": "Carte interactive du monde Knight and Wizard — Phase 2 axe A bis",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "yaml2geojson": "python tools/yaml_to_geojson.py"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "vite": "^7.1.5"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

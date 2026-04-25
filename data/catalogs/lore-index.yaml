@@ -1,0 +1,79 @@
+# Index du lore narratif K&W — Phase 2 import (R-12.12)
+# Schéma : R-12.12 lore_entry
+# Date import : 2026-04-25
+
+version: 1
+metadata:
+  source: paper
+  imported_at: "2026-04-25"
+  total_entries: 6
+
+# Le lore narratif n'est pas converti en YAML structuré — il est référencé tel quel
+# depuis ses fichiers source. Le moteur peut indexer ces fichiers pour recherche
+# vector ou full-text selon R-13.8 (architecture mémoire LLM).
+
+lore_entries:
+
+  - id: creation_terres_oubliees
+    title: "La Création des Terres Oubliées"
+    category: creation_myth
+    era: ancient  # mythe fondateur
+    source_file: "regles-papier/extracted/histoires/la-creation-des-terres-oubliees.md"
+    line_count: 752
+    summary: "Mythe fondateur du monde K&W. Récit de la création des Terres Oubliées."
+    truth_status: rumored  # mythe, à interpréter narrativement
+    known_to: [erudit, clerc, mage, bardes]
+    related_regions: [all]
+    metadata: { source: paper, version: 1, format: narrative_preserved_as_is }
+
+  - id: organisations
+    title: "Organisations et Factions"
+    category: faction_directory
+    era: current
+    source_file: "regles-papier/extracted/histoires/organisations.md"
+    line_count: 56
+    summary: "Liste des organisations, guildes, ordres et factions du monde."
+    truth_status: confirmed
+    related_factions: all
+    metadata: { source: paper, version: 1, format: narrative_preserved_as_is, todo: "À parser en faction.yaml" }
+
+  - id: us_et_coutumes
+    title: "Us et Coutumes"
+    category: folklore
+    era: current
+    source_file: "regles-papier/extracted/histoires/us-et-coutumes.md"
+    line_count: 23
+    summary: "Coutumes par culture (Nains, Hobbits, etc.)."
+    truth_status: confirmed
+    metadata: { source: paper, version: 1, format: narrative_preserved_as_is }
+
+  - id: blagues_dictons_proverbes
+    title: "Blagues, Dictons et Proverbes"
+    category: folklore
+    era: current
+    source_file: "regles-papier/extracted/histoires/blagues-dictons-et-proverbes.md"
+    line_count: 79
+    summary: "Sagesse populaire, dictons, blagues — culture orale."
+    truth_status: confirmed
+    metadata: { source: paper, version: 1, format: narrative_preserved_as_is }
+
+  - id: nations_descriptifs
+    title: "Descriptifs narratifs des nations"
+    category: regional_history
+    era: current
+    source_file: "regles-papier/extracted/histoires/nations.md"
+    line_count: 221
+    summary: "Description narrative complète des 18 nations (capitales, dirigeants, conflits, événements). Stats structurées dans nations.yaml."
+    truth_status: confirmed
+    related_regions: [aderand, alteria, blanc_royaume, collines_d_ico, cortega, detre, dundoria, empire, enorie, fauche_le_vent, grand_desert, haut_royaume, irtanie, landes_desertiques, monde_sombre, terres_du_nord, foret_de_tyrkan, yonkado]
+    metadata: { source: paper, version: 1, format: narrative_preserved_as_is, structured_data: catalogs/nations.yaml }
+
+  - id: bestiaire_descriptifs
+    title: "Descriptifs narratifs du bestiaire"
+    category: creature_lore
+    era: current
+    source_file: "regles-papier/extracted/listes/bestiaire.md"
+    line_count: 1001
+    summary: "Description narrative complète du bestiaire (~30 entrées). Stats structurées dans bestiaire.yaml."
+    truth_status: confirmed
+    metadata: { source: paper, version: 1, format: narrative_preserved_as_is, structured_data: catalogs/bestiaire.yaml }

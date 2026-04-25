@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=23">La taverne des Bolichons</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=119">
+        <img src="../img/characters-profil/119.jpg" alt="Gilbert" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=119">Gilbert</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=156">
+        <img src="../img/characters-profil/156.jpg" alt="Jean" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=156">Jean</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=23&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Jean<br />
+
+                <a href="character-detail.php?id=156">
+                    <img src="../img/characters-profil/156.jpg" alt="Jean" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Santé ! * Fait s&#039;entrechoquer vos tasses*. Oui, oui en effet je suis devin, mais ne vous inquiétez pas, vous pouvez le dire à voix haute. Je suis un devin itinérant. Je me base sur mes rêves prémonitoires pour aller ou on a besoin de moi! Parfois c&#039;est utile et parfois pas, le destin est bien capricieux ! Et vous? <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage carénien (diff. 7) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Je suis aussi magicien, abjurateur, pour être plus précis. Je voyage avec le groupe juste ici derrière...*fais un petit signe discret du pouce
+
+Je pense que le destin pourrait vous avoir amené ici pour nous rencontrer...Est-ce ce que vous avez vu en rêve? D&#039;ailleurs, parler vous Alterien ou Cortegan? <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage carénien (diff. 7) => 0R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.07.19
+            </div>
+
+            <div class="forum-post-content">
+                *putain, c&#039;est moi ou je sais plus parler??
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Jean<br />
+
+                <a href="character-detail.php?id=156">
+                    <img src="../img/characters-profil/156.jpg" alt="Jean" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Haaaaa maaaaiiiisss.... j&#039;ai rien compris ! Je crois que vous confondez le tu avec le nous, la forme adverbiale avec le participe passé et peut-être aussi l&#039;adjectif &quot;courroucé&quot; avec &quot;salade&quot;. Hmmm. Mais ce n&#039;est pas votre langue natale n&#039;est-ce pas? Je connais d&#039;autres langages, laissez-moi essayer... <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage carénien (diff. 7) => 4R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Jean<br />
+
+                <a href="character-detail.php?id=156">
+                    <img src="../img/characters-profil/156.jpg" alt="Jean" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Peut-être parlez-vous le dundorien? <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage dundorien (diff. 7) => 4R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Jean<br />
+
+                <a href="character-detail.php?id=156">
+                    <img src="../img/characters-profil/156.jpg" alt="Jean" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Ou connaissez-vous le nordique par pur hasard?  <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage nordique (diff. 7) => 2R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Jean<br />
+
+                <a href="character-detail.php?id=156">
+                    <img src="../img/characters-profil/156.jpg" alt="Jean" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Ou peut-être parler irtanien? Mais moi pas bon ! <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage irtanien (diff. 7) => 0R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Désolé, ça fait si longtemps que je ne parle pas ma langue maternelle que je n&#039;arrive même plus à articuler le moindre mot. Je dois vraiment avoir un accent terrible 
+*s&#039;en veux, semble attristé.
+Je disais:
+Je suis aussi magicien, abjurateur, pour être plus précis. Je voyage avec le groupe juste ici derrière...*fais un petit signe discret du pouce Je pense que le destin pourrait vous avoir amené ici pour nous rencontrer...Est-ce ce que vous avez vu en rêve? D&#039;ailleurs, parler vous Alterien ou Cortegan? ...et j&#039;ai la réponse à ma dernière question...
+
+ <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage cortegan (diff. 7) => 4R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Jean<br />
+
+                <a href="character-detail.php?id=156">
+                    <img src="../img/characters-profil/156.jpg" alt="Jean" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.07.19
+            </div>
+
+            <div class="forum-post-content">
+                *Secoue la tête* No no parlare du !!! * Fais des signes de la main vers sa bouche et ses oreilles*  <hr><span class="play-sub-title">Action</span><br /><p>Intelligence (diff. 20) => 0R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.07.19
+            </div>
+
+            <div class="forum-post-content">
+                * se concentre pour essayer de retrouver ses mots:
+Je disais:
+Je suis aussi magicien, abjurateur, pour être plus précis. Je voyage avec le groupe juste ici derrière...*fais un petit signe discret du pouce Je pense que le destin pourrait vous avoir amené ici pour nous rencontrer...Est-ce ce que vous avez vu en rêve?  <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Langage carénien (diff. 7) => 2R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=23&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=23&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=23&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=23&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=23&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=23&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=23&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=23&page=8">
+          8
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

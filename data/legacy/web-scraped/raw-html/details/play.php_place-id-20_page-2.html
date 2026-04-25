@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=20">La posada de truchas doradas</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=2">
+        <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=2">Lenirdyl Al Menolda Dufaux</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=78">
+        <img src="../img/characters-profil/78.jpg" alt="Feng" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=78">Feng</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=87">
+        <img src="../img/characters-profil/87.jpg" alt="Petit gourou" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=87">Petit gourou</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=88">
+        <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=88">Archibald Baudoin</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=94">
+        <img src="../img/characters-profil/94.jpg" alt="Marie" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=94">Marie</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=160">
+        <img src="../img/characters-profil/160.jpg" alt="Féline" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=160">Féline</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=20&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.07.19
+            </div>
+
+            <div class="forum-post-content">
+                *Essaie de faire plus de bruit que Feng en mâchant très fort et en remplissant de manière obscène sa bouche de nourriture*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.07.19
+            </div>
+
+            <div class="forum-post-content">
+                *se ressert à boire
+
+Il faudrait quand même qu&#039;on s&#039;organise pour nos déplacements, histoire de ne pas retomber dans un piège aussi facilement. La carriole (prononcez &quot;carry all&quot;) est pas faite pour être manipulée facilement en cas d&#039;attaque. Ce qu&#039;il nous faudrait, c&#039;est un éclaireur, quelqu’un pour anticiper un peu les attaques...vous en dites quoi?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Histoire qu&#039;il se fasse dégommer seul? Ben c&#039;est pas pour moi ça ! *Crounch Crounch crounch*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Feng<br />
+
+                <a href="character-detail.php?id=78">
+                    <img src="../img/characters-profil/78.jpg" alt="Feng" height="100" width="80">
+                </a>
+
+                <br />
+
+                31.07.19
+            </div>
+
+            <div class="forum-post-content">
+                Ni pour moi, je ssssssuis lent, je prend de la place, et je ne ssssssais pas me battre. *CROUNCH CROUNCH CROUNCH*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Ca pourrait être quelqun de particulièrement furtif ou de quelqun qui resterai hors de portée du commun des mortels, comme Archibald, par exemple...
+*se retourne et le regarde
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.08.19
+            </div>
+
+            <div class="forum-post-content">
+                * Hoche la tête en signe d&#039;approbation aux mots d&#039;Akbar. *
+
+Ce serait bien également qu&#039;on cesse de se déplacer dans des carioles de maraîchers. On pourrait investir dans des modifications. Je penses à un blindage, une sortie de secours en dessous, une entrée/sortie sur le toit pour Archibald et enfin on pourrait avoir une tourelle pour Sela.
+Nos chevaux également mériteraient d&#039;avoir un peu de protection.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Archibald Baudoin<br />
+
+                <a href="character-detail.php?id=88">
+                    <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" height="100" width="80">
+                </a>
+
+                <br />
+
+                02.08.19
+            </div>
+
+            <div class="forum-post-content">
+                *lève le nez de son livre de pitions*
+
+Encore besoin de moi ? Et qu&#039;est-ce qui vous fait dire que je serais d&#039;accord d&#039;aller me brûler les ailes ? Hein ? Je vous rappelle que la dernière fois j&#039;étais à deux plumes de me faire plumer ! Je n&#039;ai ni le gabarit ni les compétences de me battre à ce niveau. Et franchement, les morts vivants, très peu pour moi !
+
+*remet le nez dans son livre avec le teint plus pâle et les mains tramblantes*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Ch&#039;ai pas si on pourra avoir un &quot;blindage&quot; (*fait le signe des guillemets) mais au moins une caisse en bois. Après, je peux m&#039;occuper des portes, ça, c&#039;est facile. Pour la tourelle, je sais pas, des meurtrières serait déja pas mal, non?
+
+Ah, bein vous faites bien d&#039;en parler, Archibald, de vos compétences de combat...La première chose à retenir, c&#039;est que dès que vous êtes à portée de flèche ou de massue, vous êtes un pi...homme mort. Donc la règle, pour vous, c&#039;est de ne jamais être à moins de 30m du sol en cas de combat. De la haut, vous pouvez utiliser votre arc et vos flèches, voir la scène, nous informer...et ne pas mourir. C&#039;est également pour cette raison que vous ferez le meilleur éclaireur de nous tous. Mais le raz-motte, c&#039;est fini.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Et je dis 30 m pour ne pas dire 50 ou 100...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.08.19
+            </div>
+
+            <div class="forum-post-content">
+                Je suis d&#039;accord avec Akbar. Nous ne vous demandons pas de vous mettre en danger mais juste de nous avertir et de vous tenir à l&#039;écart si il y a du grabuge.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=20&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=20&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=20&page=3">
+          3
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

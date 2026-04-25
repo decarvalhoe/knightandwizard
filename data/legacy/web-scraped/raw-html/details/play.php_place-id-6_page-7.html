@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=6">L'oasis de Laura</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=52">
+        <img src="../img/characters-profil/52.jpg" alt="Hafed" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=52">Hafed</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=92">
+        <img src="../img/characters-profil/92.jpg" alt="John" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=92">John</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=6&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                03.10.18
+            </div>
+
+            <div class="forum-post-content">
+                
+            Vous vous trouvez dans les jardins de la maison de Laura. D'un côté sa maison, type maison de maître, avec un palier et une entrée, de l'autre des jardins (avec entre autre un labyrinthe) puis l'oasis à proprement parler. Il y a des palmiers au bord de l'eau. Autour de vous, 2 cadavres, un mec entrain de geindre (il est certainement mortellement touché). Il y a également Laura qui est recroquevillée sur elle-même et qui se tient le visage dans les mains.
+        
+Il y a également ce fameux pentagramme en pierre, que vous avez entouré de sel, avec un gros démon de presque 5m de haut qui est sous le contrôle de Sindalia.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *S'approche de Laura et s'accroupi pour se mettre à son niveau*
+
+Expliquez-moi pourquoi vous avez invoqué ce démon.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Archibald Baudoin<br />
+
+                <a href="character-detail.php?id=88">
+                    <img src="../img/characters-profil/88.jpg" alt="Archibald Baudoin" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Est remonté sur le toit après avoir amené le sel, en tremblant*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Laura<br />
+
+                <a href="character-detail.php?id=90">
+                    <img src="../img/characters-profil/90.jpg" alt="Laura" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Tremblotte à 8 R* 
+Je vous l'ai déjà dit, c'est le démon qui m'a obligée.... cela fait des années qu'il m'oblige à travailler pour lui !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                04.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Est-ce que vous pouvez prouvez ce que vous dites ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Laura<br />
+
+                <a href="character-detail.php?id=90">
+                    <img src="../img/characters-profil/90.jpg" alt="Laura" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Et bien, heu, comment le pourrais-je?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Sela qui regarde la scène perpelexe, en doutant des paroles de Laura, toujours sa main à l'arme au cas où*
+
+- Mouais... Laura... Avez-vous une marque sur vous qui serai apparut depuis votre obligation à travailler pour le démon? Ou quoi que se soit d'étrange à vos yeux?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Laura<br />
+
+                <a href="character-detail.php?id=90">
+                    <img src="../img/characters-profil/90.jpg" alt="Laura" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.10.18
+            </div>
+
+            <div class="forum-post-content">
+                Je... Je n'en sais rien ! C'est comme si je vivais dans un rêve depuis tellement longtemps ! *Une larme coule sur sa joue*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.10.18
+            </div>
+
+            <div class="forum-post-content">
+                
+Sindalia et Akbar ont déjà fait des jets de détection du mensonge sur Laura et pensent qu'elle dit la vérité. A noter qu'elle a vraiment l'air jeune, pas plus de 18 ans à vue de nez.
+
+Il y a aussi Hafed, un des mages que vous avez fait venir du sous-sol. Il est du type dundorien, est maigre comme un clou et très pâle. Subitement il s'affaisse sur le sol, visiblement il est tombé dans les pommes!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                05.10.18
+            </div>
+
+            <div class="forum-post-content">
+                *Jette un regard désintéressé au nouveau venu qui vient de s'écrouler puis revient à Laura*
+
+Durant ces années de servitude, que vous as t-il demandé de faire d'autre ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=6&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=6&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=6&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=6&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=6&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=6&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=6&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=6&page=8">
+          8
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

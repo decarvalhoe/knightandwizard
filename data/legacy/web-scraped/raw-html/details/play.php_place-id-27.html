@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=27">Aux Acolytes Anonymes</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=11">
+        <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=11">Giovanni Marzo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=176">
+        <img src="../img/characters-profil/176.jpg" alt="Filomena" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=176">Filomena</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=190">
+        <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=190">Marzia Moretti</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=27&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.05.20
+            </div>
+
+            <div class="forum-post-content">
+                @Akbar : Ce ne sera pas possible pour les raisons que je vous ai dis avant.
+Il ne vous apprécie gère. Il se méfie encore passablement de moi car je suis nouveau dans leur cercle. De plus la balance de service est plutôt en sa faveur en ce moment. Et pour finir, étant donné que c&#039;est lui qui m&#039;a renseigné pour votre problème d&#039;assassin. Si il avais voulu faire plus, ce serait probablement déjà fait.
+
+Vous pouvez essayer d&#039;aller le voir mais je penses que c&#039;est beaucoup trop tôt et donc risqué pour vous... Et pour moi.
+
+Finalement, n&#039;oubliez pas que ce sont des chefs de guildes, pas des caissiers. Si vous souhaitez acheter un service vous traîtez en principe avec leurs hommes.
+Seules les plus grosses affaires requière leur interventions.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Si tout le monde est prêt, je peux clore la scène et nos personnages peuvent se déplacer.
+La question principale étant, où irez-vous?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Grumtark<br />
+
+                <a href="character-detail.php?id=183">
+                    <img src="../img/characters-profil/183.jpg" alt="Grumtark" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP] De mon point de vue on devrai si dirigé chez un des trois autre.
+A vrai dire j&#039;ai bien envie de tous les rencontrés, ça à lair de perso trop cool :)
+Du point de vue de mes personnages, Nerrak veux voir Enzo pour son deal avec Giovanni.
+Et notre groupe souhaite aussi ouvrir un Casino ce qui n&#039;est pas une une mince affaire.
+Je propose donc, qu&#039;on admette que Wiebke a fait entre temps couvrir le toit et installé une table de quoi se retrouvé tous a notre manoir pour choisir l&#039;angle d&#039;attaque, quand on rencontreras Enzo.
+Et profité pour en faire si possible un allié qui nous aideras dans notre situation délicate, soit par ses moyen soit en nous aidant à rentrer en contact avec Dante.
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1067&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP] Le manoir me parait une bonne idée en effet. On pourra constater l&#039;avancée des travaux. Je pense qu&#039;entre temps si des jours se passent, Ackbar va se tenir un peu à l&#039;écart, surtout de Nerrak, qui l&#039;irrite un peu par son manque de savoir-vivre et de délicatesse. Il ira aussi voir les sœurs De Chantemerle pour prendre des nouvelles de Anne et discuter magie avec Valentine. Avant de se rendre la bas, il se lancera une intelligence pour eviter de passer pour un débile quand elle lui parle.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Grumtark<br />
+
+                <a href="character-detail.php?id=183">
+                    <img src="../img/characters-profil/183.jpg" alt="Grumtark" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP] j&#039;imaginais pas qu&#039;elle allais générer pareil reaction, mais c&#039;est marrant :D 
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1069&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP] moi non plus...c&#039;était pas calculé. Mais se planter un couteau dans la main à table pendant le repas, je pense que pour Ackbar, ça transgresse quelque chose de l&#039;ordre du sacré...et apparemment, il n&#039;a pas beaucoup d&#039;estime pour les familiers que ne sont pas des êtres à ses yeux parce qu&#039;ils n&#039;ont pas d’âme
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Grumtark<br />
+
+                <a href="character-detail.php?id=183">
+                    <img src="../img/characters-profil/183.jpg" alt="Grumtark" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP] Alors que Sindalia elle préfère se mettre en danger elle même plutôt que blesser un des ces précieux familier, ses familier en sont bien conscient... elle ne risque jamais, vraiment jamais, de les blesser ou de les mettre en danger et les a en haute estime et ça depuis la creation du personnage. Je pense qu&#039;elle les considère comme ses filles... du coup ça m&#039;a bien touché la scène la cadette de Chantemerle.
+
+Btw, je me permet des envolées philosophique avec Grum parce qu&#039;elle est aussi intelligente que Sindalia et que je trouvais marrant qu&#039;elle s’interroge sur la condition humaine de façon instinctive.   
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1072&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Les personnages se dirigent donc vers le manoir de Rosselini.
+Je ne penses pas forcément faire défiler les jours.
+
+Giovanni vous dira encore qu&#039;il est important d&#039;appeler les gens dans la mafia par leur &quot;vrai nom&quot; (celui qu&#039;on a mérité).
+Il vous donne les nom de chacun des parrains.
+
+=== Résumé ===
+
+Dante
+Nom : Orchestra
+Activité : Agression et assassinat
+Guilde : Tenebrae
+
+Claudia
+Nom : Melancholia
+Activité : Prostitution
+Guilde : Les larmes de diamants
+
+Enzo
+Nom : Quarantanove
+Activité : Jeu d&#039;argent
+Guilde : Fortuna
+
+Chloe
+Nom : Caligo
+Activité : Vol / recèle
+Guilde : Erbaccia
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                <div class="forum-post-demarcation-line">Fin de la scène</div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [HRP] Ackbar, lui, considère exactement ses familiers comme des extensions de lui même, à l&#039;image de la queue du lézard. Il y est attaché...jusqu&#039;à qu&#039;il soit plus utile qu&#039;il en soit détaché. Il y a vraiment une notion &quot;utilitaire&quot; dans ses familiers et ne les considère pas comme vivant...tout du moins pas comme des êtres. Un être a une capacité à vivre de façon autonome (il ne meurt pas quand son magicien meurt!), se nourrit, dort, se reproduit, a une histoire, une naissance et une mort...et surtout a une âme. Dans son échelle de valeur, ils sont entre l&#039;objet magique auquel il tient et l&#039;être vivant qui a de l&#039;importance à ses yeux.
+(jet d&#039;apprentissage pour les noms=&gt; int+apprentissage <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Apprentissage (diff. 6) => 4R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=27&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=27&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=27&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=27&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=27&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=27&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=27&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=27&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=27&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=27&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=27&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=27&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=27&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=27&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=27&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=27&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=27&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=27&page=18">
+          18
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

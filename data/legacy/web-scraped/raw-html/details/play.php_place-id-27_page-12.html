@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=27">Aux Acolytes Anonymes</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=11">
+        <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=11">Giovanni Marzo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=176">
+        <img src="../img/characters-profil/176.jpg" alt="Filomena" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=176">Filomena</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=190">
+        <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=190">Marzia Moretti</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=27&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *Sela sourit à Nerrak en lui faisant ub clin d&#039;œil et se retrouve pour écouter Sindelia
+
+Leve son verre à Sindelia
+
+- nous devrions voir essayer de bouche à oreille de tout manière cela va aller très vite, les coincés et les bons gens vont vite enfin trouver liberté et se ruer sur les jeux pour se distraire. Il faudra juste penser à avoir de bon garde pour éviter le pire... 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *Lève son verre en retour a Sela et trempe les lèvre avec distinction*
+
+Bien dans ce cas c&#039;est décidé, un don, un Gala et une maison de jeux !
+Voilà qui semble bien festif !
+
+A la notre, à une Alteria prospère et heureuse ! 
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=760&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Colonel Hohenshmidthart Wiebke<br />
+
+                <a href="character-detail.php?id=195">
+                    <img src="../img/characters-profil/195.jpg" alt="Colonel Hohenshmidthart Wiebke" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                (Hmmm... ma competence d&#039;urbanisme n&#039;existe pas encore, mais) 
+Che peu fous dire que l&#039;argent que nous avons serais probablement suffisante pour construire un beau bâtiment... mais probablement pas pour faire un don substantiel en plus...  Il faudrait attendre les premiers bénéfices probablement...
+
+Et pourquoi pas organiser un Gala en guise d&#039;inauguration de la Maison de Jeu ?  
+Si le but est d&#039;attirer des lointain et riches investisseurs, c&#039;est une belle occasion non ?
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=761&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Un gala, hm... Encore une robe... hummm.... Est ce que au moins on pourra boire des coups? 
+Et faire des bras de fer? 
+Et manger? 
+
+Sinon Colonel, oui c&#039;est une bonne occasion.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Si vous cherchez des fortunes locales, vous pouvez avec Claudia Berruchi. Ici on l&#039;appel la Grande Dame. C&#039;est elle qui gère les filles de la ville. Probable qu&#039;elle rivalise niveau fortune avec Terrera.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                (@Eric 2: Pour ton jet de psycho, Ackbar n&#039;est pas humain même s&#039;il a grandis parmi eux, il garde des archaïsme hobbit ;-P )
+-
+Je vois que les idées avancent...Peut-être pourrait on trouver un endroit qui existe déjà et le transformer. On aura ainsi moins de frais. Pour une maison de jeu, il faudra trouver des gens compétents et de confiance pour donner les cartes, vérifier la triche, assurer la sécurité...commençons par organiser quelques tournois de poker et de dés avant afin de recruter les meilleurs joueurs chez nous...il me semble que c&#039;est le meilleur moyen de pas les voir nous piller.
+Pour ce qui est de la religion, je ne crois pas que dans la doctrine du Dieu Unique, le jeu soit démoniaque...après tout, les enfants jouent pour apprendre...Je pense que c&#039;est vraiment une interprétation de l&#039;inquisition.
+*Lève son verre avec l&#039;assemblée
+*Se retourne vers Sela et lui dit, à voie basse mais pas de façon inaudible pour la table, avec un air étonné:
+-D&#039;où ça sort cette idée saugrenue de faire des bras de fer...on peut pas se contenter de manger et de boire, comme d&#039;habitude? <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Théologie + Théologie du Dieu Unique (diff. 5) => 5R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                E2 faisait probablement un jet lié à la Princesse Hylenia. Je vous invite à preciser dans vos post votre interprétation de vos jets d&#039;actions.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Bin, déjà que la robe C est vraiment hum.. Vraiment.. Rhô pis le sbrss de fer c&#039;est génial...
+Ronchonne tout bas : je préfère ça, à la robe... 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                -Je suis sur qu&#039;elle t&#039;ira très bien, cette robe... C&#039;est juste une question de protocole...si ça poursuit nos intérêts... Je me serait mis en robe s&#039;il l&#039;avait fallu (jet de mensonge-&gt;charisme-comédie-mensonge que j&#039;ai pas)
+
+Il faudra qu&#039;on parle aussi à cette Claudia Berruchi...étonnant même qu&#039;on ne l&#039;aie jamais croisée, vu les gens qu&#039;on fréquente habituellement *scinique <hr><span class="play-sub-title">Action</span><br /><p>Charisme + Comédie (diff. 6) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Je veux bien te voir robe moi aussi..
+Merci Akbar * Sela sourit 
+
+Giovanni, dis-nous où est ce qu&#039;on pourrait trouver Claudia?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=27&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=27&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=27&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=27&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=27&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=27&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=27&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=27&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=27&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=27&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=27&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=27&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=27&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=27&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=27&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=27&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=27&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=27&page=18">
+          18
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

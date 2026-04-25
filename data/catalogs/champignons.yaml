@@ -1,0 +1,150 @@
+# Catalogue de champignons K&W — Phase 2 import auto (R-10.19)
+# Source paper : regles-papier/extracted/infos/champignons-toxiques.md
+# Schéma : R-10.8 (sous-catégorie de poison R-9.35) ou ingredient pour R-10.20
+# Date import : 2026-04-25
+
+version: 1
+metadata:
+  source: paper
+  imported_at: "2026-04-25"
+  total_entries: 7  # syndromes documentés ; chaque syndrome regroupe plusieurs espèces
+  ambiguities: |
+    Le legacy paper (champignons-toxiques.md) regroupe par syndrome plutôt que par espèce.
+    L'import auto réplique cette structure. Édition admin pour décomposer par espèce si nécessaire.
+
+# Le bestiaire de champignons est principalement utilisé comme :
+# - poisons R-9.35 (la plupart des espèces toxiques)
+# - ingrédients alchimiques R-10.20 (pour potions)
+# - nourriture sauvage (pour les comestibles, narratif)
+# - hallucinogènes (état altéré R-9.27)
+
+mushroom_syndromes:
+
+  - id: syndrome_phalloidien
+    name: "Syndrome phalloïdien"
+    species:
+      - "Amanite phalloïde"
+      - "Amanite vireuse"
+      - "Lépiote brune"
+      - "Lépiote brune incarnate"
+      - "Galère marginée"
+    confused_with:
+      - "Amanite citrine"
+      - "Russule charbonnière"
+      - "Russule vert-de-gris"
+      - "Tricholome équestre"
+      - "Agaric comestible"
+    lethal_dose: { value: 5, unit: g, notes: "5-50g, un chapeau suffit" }
+    onset: "10 à 12 heures en moyenne"
+    symptoms: "Diarrhées, vomissements, déshydratation sévère, chute de tension, crampes abdominales. Destruction des cellules du foie, insuffisance rénale, hémorragie digestive, coma."
+    death_window: "6 à 8 jours dans 10-30% des cas"
+    rarity: "Bois feuillus (chênes) ou conifères, sols variés (calcaires, siliceux), été-automne"
+    antidote: "Lavage d'estomac dans la première heure, sinon aucun connu à l'époque"
+    poison_link: ~  # lien R-9.35 si appliqué comme poison
+    metadata: { source: paper, version: 1, severity: lethal }
+
+  - id: syndrome_orellanien
+    name: "Syndrome orellanien"
+    species:
+      - "Cortinaire couleur de rocou"
+      - "Cortinaire très élégant"
+    confused_with:
+      - "Chanterelle"
+      - "Tricholome équestre"
+    lethal_dose: { value: 100, unit: g, notes: "2 ou 3 champignons" }
+    onset: "2 à 20 jours"
+    symptoms: "Vomissements, nausées, diarrhées, soif intense, brûlures des lèvres, douleurs dorsales, fatigue, maux de tête, frissons, sueurs nocturnes (sans fièvre). Insuffisance rénale aiguë progressive."
+    death_window: "Dans le mois (insuffisance rénale chronique 30-50% des cas)"
+    rarity: "Plaine sous feuillus (bouleaux, chênes, châtaigniers), montagne (hêtres, conifères), sols acides, été-automne"
+    antidote: "Lavage d'estomac dans la première heure sinon aucun"
+    metadata: { source: paper, version: 1, severity: lethal_delayed }
+
+  - id: syndrome_gyromitrien
+    name: "Syndrome gyromitrien"
+    species:
+      - "Gyromitre 'comestible'"
+      - "Gyromitre géant"
+      - "Gyromitre en turban"
+      - "Gyromitre des Helvelles"
+    confused_with: ["Morilles"]
+    lethal_dose: { value: 1, unit: kg, notes: "Possibilité d'administration sur plusieurs jours" }
+    onset: "6 à 24 heures"
+    symptoms: "Nausées, vomissements, crampes abdominales, vertiges, incoordination motrice, troubles de la conscience, convulsions, coma, fièvre, fatigue, hépatite, insuffisance rénale."
+    death_window: "Formes mortelles rares (2-4%), atteinte massive du foie"
+    rarity: "Pays scandinaves, Europe centrale, nord/nord-ouest. Sous pins dans landes à bruyères, terrains siliceux, fin hiver mars-mai"
+    antidote: "Vitamine B6 (riz complet, foie, avocat, banane, germes de céréales, levure de bière)"
+    metadata: { source: paper, version: 1, severity: rarely_lethal }
+
+  - id: syndrome_muscarinien
+    name: "Syndrome muscarinien (sudorien)"
+    species:
+      - "Inocybe de Patouillard"
+      - "Une quinzaine de Clitocybes blancs"
+    confused_with:
+      - "Grisets / Tricholome terreux"
+      - "Mousserons de la Saint-Georges"
+    lethal_dose: { value: ~, unit: ~, notes: "Pas mortel" }
+    onset: "15 minutes à 2 heures"
+    symptoms: "Exagération des sécrétions: sueurs, larmoiement, salivation, nez qui coule. Pupille rétrécie, vomissements, ralentissement du cœur, contraction des muscles lisses (bronches et tube digestif)"
+    regression: "Régression des symptômes après 2 heures"
+    rarity: "Sur les chemins, dans les parcs (sous tilleuls), bois aérés de feuillus, sol calcaire, mai-juillet"
+    antidote: "Atropine (extrait de la belladone), réhydratation"
+    metadata: { source: paper, version: 1, severity: non_lethal }
+
+  - id: syndrome_pantherinien
+    name: "Syndrome panthérinien"
+    species:
+      - "Amanite tue-mouches"
+      - "Amanite panthère"
+    confused_with:
+      - "Amanite épaisse"
+      - "Amanite vaginée"
+      - "Amanite des Césars"
+      - "Amanite vineuse / golmotte"
+    lethal_dose: { value: ~, unit: ~, notes: "Symptômes disparaissent en moins de 48h (2-10h en moyenne)" }
+    onset: "30 min à 2 heures"
+    symptoms: "Troubles digestifs, état d'excitation, agitation, euphorie, délire, état de torpeur, abattement, sommeil profond, convulsions, rarement troubles cardiaques."
+    rarity: "Bois de conifères ou feuillus (bouleaux), terrain acide, août-octobre"
+    antidote: "Mise au calme"
+    hallucinogenic: true
+    metadata: { source: paper, version: 1, severity: non_lethal_hallucinogenic }
+
+  - id: syndrome_psylocibien
+    name: "Syndrome psilocybien (hallucinogène)"
+    species: ["Psilocybe fer de lance"]
+    confused_with: []
+    lethal_dose: { value: ~, unit: ~, notes: "Pas mortel, souvent intoxication volontaire" }
+    onset: "30 minutes à 1 heure"
+    duration: "Symptômes disparaissent après 4 heures"
+    symptoms: "Agitations, incoordination musculaire, hallucinations visuelles, renforcement acuité visuelle/auditive, diminution concentration, hilarité, euphorie ou angoisse. Sentiments d'irréalité. Quantités importantes : troubles cardiaques, convulsions, coma."
+    rarity: "Nord-ouest du monde connu (Europe), prairies, pâturages, terrains herbeux humides et acides, septembre-décembre"
+    antidote: "Lavage de l'estomac, mise au repos et surveillance"
+    hallucinogenic: true
+    metadata: { source: paper, version: 1, severity: hallucinogenic, recreational_use_documented: true }
+
+  - id: syndrome_coprinien
+    name: "Syndrome coprinien"
+    species:
+      - "Coprin noir d'encre"
+      - "Coprin chevelu"
+    notes: "Toxique mais pas mortel. Comestible si aucune consommation d'alcool."
+    onset: "30 minutes après absorption de boissons alcoolisées (et durant les 3-5 jours suivants l'ingestion du champignon)"
+    symptoms: "Sensation de malaise, rougeur cutanée, gonflement thorax/visage (bouffées chaleur), céphalées, sueurs, accélération rythme cardiaque, hypotension."
+    rarity: "Bois clairs ou lisière, bois en décomposition, humus, printemps-automne"
+    antidote: "Proscrire l'alcool pendant 3-5 jours"
+    interaction_with_alcohol: true
+    metadata: { source: paper, version: 1, severity: non_lethal_alcohol_interaction }
+
+  - id: syndrome_paxillien
+    name: "Syndrome paxillien"
+    species: ["Paxille enroulé"]
+    confused_with:
+      - "Chanterelle"
+      - "Paxille à pied noir"
+    lethal_dose: { value: ~, unit: ~, notes: "Réaction allergique, peut conduire à la mort en quelques heures" }
+    onset: "1 à 3h après une seconde ingestion. Pas de symptômes possibles à la première ingestion."
+    symptoms: "Insuffisance rénale, sang dans les urines, anémie (destruction globules rouges), nausées, vomissements, diarrhées, douleurs abdominales, baisse tension, perte connaissance, reins douloureux."
+    rarity: "Bois feuillus et conifères, printemps-automne"
+    antidote: "Inoffensif pour certains, aucun pour les autres"
+    notes: "Allergique cumulatif"
+    metadata: { source: paper, version: 1, severity: allergic_cumulative }

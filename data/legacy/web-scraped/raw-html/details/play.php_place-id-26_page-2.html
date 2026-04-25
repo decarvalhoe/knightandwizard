@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=26">La 8ème Forge</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=194">
+        <img src="../img/characters-profil/194.jpg" alt="Kvild Docre" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=194">Kvild Docre</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=26&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Maître nain :
+Ah ça oui Monsieur ! Pour les variations de température et résistances, il vous faut vous adresser au Vénérable Equigéliak de Baratran. Ne cherchez pas plus loin ! D&#039;ailleurs à part lui, je doute qu&#039;un autre Maître des Runes accepte de faire un travail tel que vous le décrivez.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Voila une précieuse information! Et vous saurez surement me dire où je peux trouver le Vénérable Equigéliak de Baratran?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Maître nain :
+Eh bien, lorsqu&#039;il n&#039;est pas en déplacement, il réside dans la ville de ses ancêtres à Baratran. C&#039;est au Nord-Ouest d&#039;ici. A l&#039;Ouest de la capitale.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Bien...Il faudra que je rende visite à ce nain...mais pas avant d&#039;avoir revu ce bon vieux Geminik.
+Et vous, maitre nain, c&#039;est quoi votre spécialité, en forge...je veux dire, hormis les balances de 6m de haut en or massif?
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Maître nain:
+Ma spécialité à moi ce sont les espacements runiques mon bon Monsieur !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                15.03.20
+            </div>
+
+            <div class="forum-post-content">
+                C&#039;est juste, on ne s&#039;est même pas présenté. Je suis Ackbar, abjurateur au service de la princesse d&#039;Alteria. Certains me surnomment le Bourdon.
+*lui tend la main
+Enchanté de faire votre connaissance
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Et vous, maitre nain, comment vous appelez-vous?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Kvild Docre<br />
+
+                <a href="character-detail.php?id=194">
+                    <img src="../img/characters-profil/194.jpg" alt="Kvild Docre" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Le Bourdon ? Jamais entendu parlé. Moi c&#039;est Kvild et je suis heureux de faire votre connaissance également. [Dit-il en te serrant la main.]
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Thorin Vineman<br />
+
+                <a href="character-detail.php?id=127">
+                    <img src="../img/characters-profil/127.jpg" alt="Thorin Vineman" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Et moi c&#039;est Thorin, et si je vous ais bien compris, cela voudrais dire que les objets runiques des nains pourraient être utilisés contre le Chaos puisqu&#039;ils ne se pas magiques. Si c&#039;est effectivement le cas, mon peuple n&#039;a jamais été mit au courant.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Ah ouais...c&#039;est pas une mauvaise idée, ça...Vous croyez, Kvild, qu&#039;il serait possible de faire une rune qui garde éloigne l’énergie? Je veux dire une rune qui permettrait de tenir éloignée toutes ces créatures maléfiques en leur coupant leur source d&#039;air: l&#039;énergie...Ca serait une sacrément bonne arme, ça..
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=26&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=26&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=26&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=26&page=4">
+          4
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

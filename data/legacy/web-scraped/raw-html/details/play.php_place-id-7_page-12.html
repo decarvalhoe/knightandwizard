@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=7">Auberge de Puercos</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=14">
+        <img src="../img/characters-profil/14.jpg" alt="Sighild" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=14">Sighild</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=7&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Feng<br />
+
+                <a href="character-detail.php?id=78">
+                    <img src="../img/characters-profil/78.jpg" alt="Feng" height="100" width="80">
+                </a>
+
+                <br />
+
+                16.12.18
+            </div>
+
+            <div class="forum-post-content">
+                Hmmm. A vrai dire, sans vouloir vous offusquer, je pense que ces rubis auraient du revenir en totalité aux travailleurs qui ont passé des années dans ces mines. Je ne vois pas exactement pourquoi vous en avez gardé autant.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                16.12.18
+            </div>
+
+            <div class="forum-post-content">
+                Parce qu'on le pouvait.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                16.12.18
+            </div>
+
+            <div class="forum-post-content">
+                Personnellement, je vois plus ça comme un butin. Concrètement, on a combattu un démon et des gardes, démantelé un trafique de rubis des plus douteux. Parce que oui, c'est douteux de faire miner des rubis par des magiciens à qui on a subtilisé l'âme après avoir pactisé avec un démon pour avoir la jeunesse éternelle. On a aussi démembré un gang anti-magicien qui les kidnappaient pour les proposer à Laura, certainement en échange de rubis ou d'or. Et on combattu un démon haut de quatre mètres 
+*se retourne vers Feng - qui en passant à corrompu mon âme et lu tous mes souvenirs.
+*se retourne vers le reste de la table, visiblement irrité.
+Puis on a démonté la machine permettant de faire ces ignominies et condamné la mine maudite. Maintenant, on a surement un démon qui nous persécute.
+Ensuite, on a trouvé des rubis. Ah, et les magiciens - qu'on a sauvés, fait nourrir, et raccompagnés à l'extérieur du désert, saint et sauf - ça ne semblait pas les interesser beaucoup, les rubis. Ils n'ont pas cherché une seule seconde le fruit de leur travail et on leur a distribué un des deux sacs de rubis, sans qu'ils n'aient rien demandés.
+*Se retourne à nouveau vers Feng
+Alors si tu trouves que tous les risques et dangers futurs qui nous concernent ne méritent qu'un 
+*fait le geste des guillemets 
+"Merci, mais c'est normal de nous avoir sauvé gratos et de nous redistribuer le fruit de notre travail" et bien, sans vouloir t'offenser, ce manque de reconnaissance m'offense!
+Ces rubis, on les a pas volés, on les a gagné, comme les mineurs qui les ont extraits!
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                16.12.18
+            </div>
+
+            <div class="forum-post-content">
+                * se retourne de nouveau vers Feng
+D'ailleurs, sans nous, vous seriez tous mort au fond de cette mine, sans avoir touché un seul rubis en échange. Tu aurais payé combien, pour ta libération, toi? 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Feng<br />
+
+                <a href="character-detail.php?id=78">
+                    <img src="../img/characters-profil/78.jpg" alt="Feng" height="100" width="80">
+                </a>
+
+                <br />
+
+                16.12.18
+            </div>
+
+            <div class="forum-post-content">
+                Et bien, vous avez certainement raison, mais je n'aurais pas fait comme vous, voilà tout.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.12.18
+            </div>
+
+            <div class="forum-post-content">
+                *regarde tout le monde tour à tour. Lève mon verre en direction d'Andalur et d'Akbar en signe de soutien, et le boit d'une traite!
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Gilbert<br />
+
+                <a href="character-detail.php?id=119">
+                    <img src="../img/characters-profil/119.jpg" alt="Gilbert" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.12.18
+            </div>
+
+            <div class="forum-post-content">
+                Hé si tout le monde veut retirer ses cailloux du jeu... Mec ! *En regardant dans la direction d'Akbar*. C'est moi qui t'ai sorti du pétrin au final. Et t'as récupéré plein de jolis objets de la caravane... t'as pensé à me remercier ou me rétribuer? Elle vaut combien ta vie au fait?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Feng<br />
+
+                <a href="character-detail.php?id=78">
+                    <img src="../img/characters-profil/78.jpg" alt="Feng" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.12.18
+            </div>
+
+            <div class="forum-post-content">
+                Ha au fait, je souhaiterais que vous ne me tutoyez pas. On ne se connaît pas bien au final.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.12.18
+            </div>
+
+            <div class="forum-post-content">
+                (Gilbert, c'est le bibliothécaire qui nous a confié la mission de l'escorter?)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Petit gourou<br />
+
+                <a href="character-detail.php?id=87">
+                    <img src="../img/characters-profil/87.jpg" alt="Petit gourou" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.12.18
+            </div>
+
+            <div class="forum-post-content">
+                (Oui)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=7&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=7&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=7&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=7&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=7&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=7&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=7&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=7&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=7&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=7&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=7&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=7&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=7&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=7&page=14">
+          14
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

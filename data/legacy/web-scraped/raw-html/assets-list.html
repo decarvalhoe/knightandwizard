@@ -1,0 +1,3981 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h2>Liste d'atouts</h2>
+
+<a href="levels-assets-list.php">Atouts de niveaux</a>
+
+<br />
+<br />
+
+<form action="assets-list.php" method="get" class="form">
+	Tri par :
+
+    <select name="order">
+		<option value="name">nom</option>
+        <option value="value">valeur</option>
+    </select>
+
+    <input type="submit" value="Trier" />
+</form>
+
+<br />
+
+<table>
+	<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Effet</th>
+			<th>Valeur</th>
+			<th>Activation</th>
+			<th>Type</th>
+		</tr>
+	</thead>
+
+			<tr>
+			<td>Abordage</td>
+			<td>Additionne le niveau au nombre de dés lors d’un combat sur un navire.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Accoutumance à la douleur</td>
+			<td>Diminue la difficulté des jets d’endurance de 1.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Adrénaline</td>
+			<td>Pendant toute la durée d’un combat, le personnage peut augmenter sa force, son endurance, ses réflexes  et sa dextérité de 1.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Affinité arcanique</td>
+			<td>Le personnage apprend de nouveaux sorts, avec une aisance déconcertante. Le nombre de jours de son apprentissage sont divisés par son niveau en « Affinité arcanique » + 1. Soit s’il n’a qu’un point dans cet atout, ses jours d’apprentissage seront divisés par 2.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Affinité avec les illusions</td>
+			<td>Le personnage à tellement l'habitude de vivre entouré d'illusion que son sens de détection de celles-ci s'est fortement aiguisé. Il bénéficie d'une difficulté baissée de 3 pour tout jet de détection d'illusions.</td>
+            <td>145</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Agilité</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet de danse.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Agitateur</td>
+			<td>Le personnage peut prendre son niveau en « Agitateur » en dès supplémentaire lors d’un combat dont il est responsable.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Alcool violent</td>
+			<td>Lorsque le personnage combat ivre, il peut ajouter un dés par point dans « Alcool violent » à choix dans sa force ou endurance. Cette répartition peut être changée d’un combat à l’autre.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Allègement</td>
+			<td>Le personnage peut confectionner des objets pesant X % de poids de moins que la normal (arrondi a l’inférieur) dans son domaine.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ambidextrie</td>
+			<td>Annule les pénalités dues à l’usage de la « mauvaise main ».</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ames jumelles</td>
+			<td>Le personnage ressent ce que ressent son âme jumelle, peut connaître son état et sait dans quelle direction aller pour la retrouver, même si celle-ci se trouve a l’autre bout du monde.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ami des touts petits</td>
+			<td>Le personnage est très vite accepter et apprécier par les enfants.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Amnésie</td>
+			<td>Le personnage peut effacer sa présence de la mémoire d’une personne en remontant dans celle-ci jusqu'à un maximum d’une minute par niveau. La victime effectue un test de volonté (difficulté plus le niveau ennemi) pour ne pas oublier.</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Analyse</td>
+			<td>Le personnage peut prendre connaissance du nombre de points d’un autre personnage dans une aptitude, compétence ou spécialisation que celui-ci laisse transparaître.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ancrage</td>
+			<td>Le personnage peut, suite aux pas d’araignée rester au mur ou même au plafond la tête en bas. Cet effet dure aussi longtemps que le désire le personnage, mais celui-ci ne peut ni se mouvoir, ni dormir et de plus il en viendrait à tomber si un point de dégât lui était fait.</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Anosmie</td>
+			<td>Le personnage ne possède aucun sens de l'odorat.</td>
+            <td>-1500</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Anti-bluff</td>
+			<td>Additionne le niveau au nombre de dés pour déceler les mensonges.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Anti-délivrance</td>
+			<td>Un personnage utilisant cet atout peut déduire son niveau aux malus d’affaiblissement du personnage qu’il maltraite (et ainsi lui faire mal plus longtemps). Cet atout ne s’applique que lorsque celui qui le possède le décide.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Anticipation magique</td>
+			<td>Le magicien peut incanter un sort sans le lancer, celui-ci est alors anticipé. Une fois le sort anticipé, le magicien peut le lancer à tout moment en 1 DT. Le magicien peut anticiper 1 sort par niveau en anticipation magique.
+Les sorts sont visibles et accompagnent le magicien, leurs apparences et comportement dépendent de leurs effets. Un sort anticipé reste en suspens jusqu’à ce qu’il soit lancé. Si le lanceur de sort s’endort, perd connaissance ou meurt, le sort est alors libéré sur une cible aléatoire si celui en requiert une.</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Antilimite physique</td>
+			<td>Le coût d’un point supplémentaire dans une aptitude, une fois la limite physique atteinte, est de NA x 10.</td>
+            <td>1800</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Apaisement</td>
+			<td>Soigne les blessures par le touché. La vitalité ainsi récupérée est égale au niveau du soignant.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Apprentissage rapide</td>
+			<td>Le personnage additionne son niveau au nombre de réussites qu’il obtient lors d’un jet d’apprentissage.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Armure partielle</td>
+			<td>Si dans sa touche (après une éventuelle esquive), un adversaire ne dépasse pas le score d’armure partielle du personnage, son coups sera alors dévier automatiquement dans une partie d’armure que possède le personnage (la plus proche par rapport au coups donné). Par exemple, si un personnage à un score de 2 en armure partielle et qu’on la touche avec 3 réussites. Si celle-ci fait une réussite d’esquive, ses deux point d’armure partielle contre alors les deux réussites restante de son attaquant. Le coup sera alors dévié dans une pièce d’armure (ce pourrait aussi être dans un pendentif, ou autre).</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Art de la charpente</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage fait des travaux de charpenterie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Art de la chasse</td>
+			<td>Additionne le niveau au nombre de dès lorsque le personnage chasse.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Art de la pêche</td>
+			<td>Cet atout additionne le niveau au nombre de dès lorsque le personnage pêche.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Art de la table</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage fait des travaux liés à la restauration.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Art de la vannerie</td>
+			<td>Cet atout additionne le niveau au nombre de dès lorsque le personnage fait un travail de vannerie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Art de recevoir</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage fait des travaux d'hôtellerie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Art du tonneau</td>
+			<td>Cet atout additionne le niveau au nombre de dès lorsque le personnage confectionne un tonneau.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Art littéraire</td>
+			<td>Additionne le niveau au nombre de dès lorsque le personnage écrit.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Art occulte</td>
+			<td>Le personnage peut choisir un sort de magie noire qu’il ajoute à sa feuille de personnage, comme s'il était magicien. Ce sort doit, bien sur être appris pour pouvoir être lancé. Le personnage débute avec un score de 0 dans le sort choisit (il peut donc le lancé juste avec ses points d’intelligence au début, puis payer des points supplémentaire dans le sort avec ses points d’expériences). Si le personnage ne possédait pas de point d’énergie, il débute avec un total de 40 points. Il peut aux mêmes conditions que les magiciens faire évoluer cette limite. Cet atout peut être cumulé pour permettre l’utilisation de plusieurs sorts.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Artisan du mensonge</td>
+			<td>Diminue la difficulté d’un jet de mensonge de 1 par point dans cet atout.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Assassinat</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage assassine quelqu’un.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Astre régénérateur</td>
+			<td>Le personnage choisit un astre ainsi qu’un moment de la journée (par exemple le soleil de midi). Quand celui-ci regarde son astre au moment choisit, il récupère tous ses points de vitalité et perd toute trace fatigue.</td>
+            <td>12000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Atterrissage</td>
+			<td>Le personnage peut amortir une chute de 1m par niveau sans être aucunement blessé à condition qu’il retombe sur ses jambes.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Attrait du gain</td>
+			<td>Cet atout permet à un personnage d’ignorer un test de volonté lorsque son intérêt financier est en jeu.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Aube meurtrière</td>
+			<td>Les rayons de soleil brûlent le personnage comme le feraient des flammes.</td>
+            <td>-5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Audition</td>
+			<td>L'audition est représentée en pourcentage, ce qui signifie qu’un homme en bonne forme possède une audition de 100%. Un personnage ayant 200% d'audition entendra donc deux fois mieux.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Aura bénéfique</td>
+			<td>Le personnage dégage une aura qui empêche tout sort de magie noire d’être incantée sur un rayon d’un mètre par niveau, par un magicien d’un niveau inférieur.</td>
+            <td>8000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Aura magique</td>
+			<td>Le magicien peut manifester son énergie visuellement autour de lui sous la forme et la couleur la plus proche de sa magie. Par exemple, des éclairs parcourront le corp d'un élémentaliste de foudre.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Aura maléfique</td>
+			<td>Le personnage dégage une aura qui empêche tout sort de magie blanche d’être incantée sur un rayon d’un mètre par niveau, par un magicien d’un niveau inférieur.</td>
+            <td>8000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Auto-soin</td>
+			<td>Soigne les blessures du personnage, par sa propre concentration. La vitalité ainsi récupérée est égale au niveau.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Autocombustion</td>
+			<td>Le corps du personnage se met subitement à brûler. Ces flammes infligent 1 point de dégâts par point dans cet atout par DT au personnage ainsi qu'à tout ceux qui entrent en contact avec lui durant la durée de son autocombustion.
+Cet état dure 1 minute par niveau.</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Autodidacte</td>
+			<td>Le personnage peut apprendre par lui-même des sorts qu’il a vu et entendu incanter. Le temps d’apprentissage est le double du temps normal (moins le jet d’autodidacticité).</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Autorégénération</td>
+			<td>Le corps du personnage se régénère de lui-même en permanence. Ses membres perdus repoussent et ses plaies se referment à vue d’œil. Tout les 10 DT, le personnage récupère un point de vitalité. Cet atout prend fin à la mort du personnage.</td>
+            <td>1500</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Aveugle</td>
+			<td>Le personnage est incapable de voir.</td>
+            <td>-5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Baiser de la nuit</td>
+			<td>Le personnage peut faire boire à un humain, un peu de son sang vampirique pour transformer sa proie en goule. La quantité de sang nécéssaire à la transformation peut être ingérée en une ou plusieurs fois.</td>
+            <td>1300</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Baiser des ténèbres</td>
+			<td>Le personnage peut, après avoir vider un humain d’une partie de son sang, lui faire boire de son sang vampirique pour transformer sa proie en vampire. Cette opération peut être faîte en une fois ou sur plusieurs nuits.</td>
+            <td>2200</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Baiser purificateur</td>
+			<td>En embrassant la personne qu’il aime, le personnage peut dissiper tous les sorts actifs sur celle-ci.</td>
+            <td>10000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Baiser salvateur</td>
+			<td>En embrassant la personne qu’il aime, le personnage peut rendre la vie à celle-ci. La mort du personnage ramené ne doit pas être plus ancienne qu’une minute par niveau du personnage la ramenant.</td>
+            <td>18000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Baiser vivifiant</td>
+			<td>Le personnage peux rendre un nombre de point de vitalité égal à son niveau à la personne qu'il aime simplement en l'embrassant.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Beauté désarmante</td>
+			<td>Le personnage radie d’une telle beauté que si quelqu’un (qui pourrait être attiré par lui) désire lui nuire, celui-ci doit faire un jet de volonté en le voyant avec une difficulté supplémentaire égale à l’esthétique – 5 du personnage possédant l’atout.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Bluff</td>
+			<td>Cet atout diminue la difficulté des jets de mensonge de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Bonne nuit</td>
+			<td>Le personnage peut de son regard endormir celui ou ceux (une personne par niveau) qui le croiseront, sous un jet de volonté avec comme difficulté supplémentaire le niveau du personnage.</td>
+            <td>6000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Bouc émissaire</td>
+			<td>En regardant quelqu’un dans les yeux, le personnage peut manipuler son mental de manière à ce qu’il soit persuadé d’avoir commis un crime effectué par le personnage. C’est effet dure 1 jour par niveau.</td>
+            <td>9000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Bouclier des arcanes</td>
+			<td>Le magicien peut à tout moment expulser l’énergie magique de son corps sous la forme d’une bulle protectrice prenant la teinte de la magie du lanceur. Ce bouclier se développe en 1 DT et peut être dissipé à n’importe quel moment. Durant cette période, le magicien acquiert une protection totale égale à son niveau. Le bouclier des arcanes coûte 1 point d’énergie par DT. Notons encore qu’il ne s’agit pas là d’un sort, mais d’un atout, ce qui permet de l’utiliser en incantant un autre sort par exemple.</td>
+            <td>9000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Boussole interne</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet d’orientation.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Brûlure de l’argent</td>
+			<td>Annule l’autorégénération lorsque le personnage est blessé par de l’argent. Ce type de blessures guérit normalement.</td>
+            <td>-100</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Brumathropie</td>
+			<td>Permet au personnage de se changer en brume. La transformation prend 50 DT. Cette forme brumeuse prend grossièrement la forme du personnage et quelqu’un d’attentif pourra le détecter.</td>
+            <td>2600</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Brume</td>
+			<td>Le personnage peut embrumer autour de lui dans un rayon étant égal à son niveau. Celui-ci n’a aucune pénalité de vision dans sa propre brume.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Cachette secrète</td>
+			<td>Le personnage peut faire disparaître un objet (n’étant pas plus grand que lui) pendant une minute par niveau. Passé ce délai, l’objet tombe à terre des vêtements du personnage. Durant le laps de temps de disparition, l'objet demeurera introuvable.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Caresse charnelle</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet de sexualité.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Cérébralité</td>
+			<td>Le personnage peut décider de parler avec un langage cérébral et incompréhensible au commun des mortels en faisant maintes métaphores et autres jeux de langage à chacun de ses mots, si bien que seul ceux qui possèdent cet atout peuvent se comprendre entre eux. Les personnages doivent néanmoins parler la même langue.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Chance</td>
+			<td>Le joueur peut refaire (ou faire refaire), un jet directement lié à son personnage.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Chant envoûtant</td>
+			<td>Lorsque le personnage se met à chanter, les personnes autour de lui doivent faire un test de volonté pour ne pas être séduites (difficulté +1 par niveau du chanteur). Cet état se dissipe lentement après le chant (1 heure par réussite).</td>
+            <td>500</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Charme ténébreux</td>
+			<td>Le personnage possède de par son côté obscur un charme surnaturel.
+Les personnes (de races « compatibles ») sont déstabilisées en sa présence et ajoute un malus égal au niveau du personnage à leur jet de volonté lorsque le personnage tente de les séduire.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Chiroptèrothropie</td>
+			<td>Le personnage possède la capacité de se transformer en chauve-souris. La transformation prend 50 DT (soit 10 secondes).</td>
+            <td>1565</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Concentration</td>
+			<td>Le personnage peut décider de retarder son attaque, diminuant ainsi la difficulté de son jet pour toucher de 1 pour chaque DT supplémentaire accordé.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Conceptualisation</td>
+			<td>Le personnage peut inventer de nouveaux sorts propre à sa magie. Le temps nécessaire à la création d’un nouveau sort est de 100 jours pour un sort de base moins le jet de conceptualisation. Ce nombre peut varier en fonction du sort recherché, à discretion du MJ.</td>
+            <td>6000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Conceptualisation étendue</td>
+			<td>Le personnage peut inventer de nouveau sort de n’importe quel type de magie. Le temps nécessaire à la création d’un nouveau sort est de 100 jours pour un sort de basse (moins le jet de conceptualisation) (ce nombre varie en fonction du sort recherché à discretion du MJ).</td>
+            <td>7000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Condition</td>
+			<td>L'objet conçu avec une condition n'actionnera son effet magique que lorsque la condition imposée par celui qui l'a crée est remplie (par exemple une épée qui brille seulement en présence des orcs).</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Connaissance de l’ennemi</td>
+			<td>Le personnage n’oublie pas les ennemis qu’il a combattus et apprend de fois en fois un peu plus sur leurs techniques de combat respectives. Le personnage gagne un bonus de 1 sur les jets de dès qui entre en opposition avec ceux de son adversaire, pour chaque combat qu’il a déjà mené avec celui-ci. Ces points des bonus sont limités au score de connaissance de l’ennemi du personnage.
+Par exemple un personnage avec un score de 3 en connaissance de l’ennemi, qui a déjà combattu deux fois le même adversaire aura à présent une difficulté baissée de 2 lorsqu’il combattra à nouveau contre lui. Puis, cette difficulté sera baissée de 3 et ne montera pas plus haut tant que le niveau du personnage en « Connaissance de l’ennemi » ne dépasse pas 3.</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Connaisseur</td>
+			<td>En goûtant, sentant, etc, le personnage est capable de citer les ingrédients d’une potion ou autre mixture. Il ne peut cependant déterminer que des ingrédients qu’il connaît et ne bénéficie pas d'information quant aux quantités.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Contagion</td>
+			<td>Le personnage est contagieux de par ses morsures ou éventuellement griffure. La maladie transmise est au choix du joueur ou maître de jeu. Pour ne pas tomber malade, la cible diot faire un jet d'endurance avec pour difficilté suppléementaire le nombre de point en « Contagion » du personnage.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Cordon-bleu</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage cuisine.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Corne aux mains</td>
+			<td>Le personnage bénéficie d’une protection supplémentaire de 1 en P, E, C et T sur l'intérieure de ses mains.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Coup de crayon</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage dessine.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Coup de pinceau</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage peint.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Coup décisif</td>
+			<td>Additionne le niveau au nombre de dés pour toucher, lorsque le personnage utilise son arme de prédilection.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Coup du bûcheron</td>
+			<td>Additionne 1 dégât automatique, lorsque le personnage utilise une cognée.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Coup mortel</td>
+			<td>Additionne automatiquement le niveau du personnage, aux dégâts infligés par celui-ci. Un seul coup mortel peut être porté à la fois.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Coupe du bois</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage bûcheronne.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Coups vicieux</td>
+			<td>Le personnage peut déduire son niveau à l’endurance de sa cible pour 1 action.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Cours toujours</td>
+			<td>Lorsque le personnage prend la fuite, il additionne automatiquement son niveau à son nombre de réussites.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Court répit</td>
+			<td>Le personnage réduit son temps de sommeil nécéssaire de 2 heures.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Crâne dur</td>
+			<td>Les dégâts infligés dans la tête ne sont pas doublés.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Cri du condamné</td>
+			<td>Lorsque le personnage frappe sa cible et que celle-ci émet un son de souffrance, les personnages à proximité pouvant entendre ce son, doivent effectuer un test de volonté (difficulté + les dégâts qui ont été infligés) pour ne pas être effrayés.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Cris de guerre</td>
+			<td>Le personnage pousse un tel cri de guerre que ses compagnons (capable de l’entendre) se sentent galvanisés par celui-ci et obtiennent 1 dès supplémentaire pour tous leurs jets guerriers du combat en court.</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Culture générale</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet de connaissance.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Débordement d’énergie</td>
+			<td>Cet atout permet au magicien de dépasser son propre quota d’énergie à l’aide de moyen auxiliaire tel que des potions d’énergie, des drains d’énergie, etc.</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Défense</td>
+			<td>Additionne le niveau au nombre de dés lors d’un combat défensif avec l’arme de prédilection.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Dent contre</td>
+			<td>Cet atout est à choisir avec une race ou une classe. Il diminue la difficulté de 1, de tout jet pouvant nuire à la une cible appartenant au groupe choisi.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Dents de sabres</td>
+			<td>Le personnage possède des crocs plus acérées et une mâchoire plus puissante. Une morsure de sa part fera un dégât supplémentaire par point dans cet atout.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Dépassement de soi</td>
+			<td>Le coût d’un point supplémentaire dans une aptitude, au delà de la limite physique est de NA x 15.</td>
+            <td>900</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Déplacement somnambule</td>
+			<td>Le personnage peut continuer d'avancer tout en dormant. Un déplacement somnambule peu impliquer des notions fort simples tel que suivre quelque chose ou se diriger droit dans dans une direction donnée. Les opérations plus complexes comme éviter un obstacle ou choisir une nouvelle direction sont quant à elles impossibles dans cet état.</td>
+            <td>1000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Désactivation</td>
+			<td>Permet au magicien de désactiver à tout moment l'un de ces propre sort actif.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Désamorçage des pièges magiques</td>
+			<td>Le personnage peut désamorcer des pièges tendus magiquement en faisant un jet de désamorçage traditionnel.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Détection des coups portants</td>
+			<td>Le personnage a une telle habitude du combat que son instinct lui indique automatiquement si un coup donné dans sa direction en corps à corps le touchera ou non.
+Le joueur peut donc savoir si son adversaire le touche avant de décider de son action (esquive, parade, continuer sa propre action, etc).
+Ne s’applique qu’aux coups donnés en corps à corps et visible par le personnage.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Détection des pièges magiques</td>
+			<td>Le personnage peut détecter des pièges tendus magiquement en faisant un jet de détection traditionnel.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Détection des projectiles portants</td>
+			<td>Le personnage à une telle habitude d’être sous les feux balistiques qu’il a développé un instinct lui indiquant si le projectile lui est ou non, destiné.
+Le joueur peut donc savoir si le projectile le touche avant de décider de son action (esquive, parade, continuer sa propre action, etc).
+La détection des projectiles portant ne s’applique qu’aux projectiles que le personnage peut voir.</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Détection du défaut</td>
+			<td>Le personnage peut savoir automatiquement le défaut d’un objet (ou son principal point faible) en observant celui-ci.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Développement avancé</td>
+			<td>Le magicien peut développer et apprendre un sort qu’il possède en sort mineur, majeur, standard, de masse ou de distance. Le temps du développement dure le double du temps d’apprentissage du sort sur lequel travaille le personnage (moins le jet de développement).</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Développement magique</td>
+			<td>Le magicien peut développer et apprendre un sort qu’il possède en sort mineur, majeur ou standard. Le temps du développement dure le double du temps d’apprentissage du sort sur lequel travaille le personnage (moins le jet de développement).</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Discrétion</td>
+			<td>Diminue la difficulté de 5 sur un jet de furtivité.</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Disparition</td>
+			<td>Le personnage peut se cacher quelque part, non loin de l’endroit où il utilise cet atout. Cette action se fait en une fraction de seconde (1DT), cependant, personne ne doit le regarder s’il veut pouvoir disparaître.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Dissimulation</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet basé sur le camouflage.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Doigts de fée</td>
+			<td>Diminue la difficulté d’un jet basé sur le doigté de 1 par point dans l’atout.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Domination post-mortem</td>
+			<td>Le personnage ajoute 5 à la catégorie maximal de créature qu’il peut relever lors d’un appel des morts.</td>
+            <td>1</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Don pour les langues</td>
+			<td>Le personnage divise ses jours d’apprentissage par son niveau, lors de l’apprentissage d’une langue (arrondi au supérieur).</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Douleur aigüe</td>
+			<td>Les blessures infligées par le personnage ne font pas plus de dégât, mais provoque le double de la douleur normale. Cet atout dure une minute par niveau.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Droit unique de révocation</td>
+			<td>Le magicien est le seul à pouvoir révoquer une invocation qu’il a lui-même faite. Si celui-ci devait mourir, aucune révocation ne serait plus possible pour les objets ou créatures transporter par le magicien.</td>
+            <td>7000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Duel</td>
+			<td>Additionne le niveau au nombre de dés lors d’un duel.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Dulcinée</td>
+			<td>Cet atout est à choisir avec la dame des pensées du personnage. Lorsque celui-ci combat sous le regard de sa dulcinée, son niveau lui est accordé en dès supplémentaire pour toutes ses actions. Cet atout se lit au féminin comme au masculin.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Eau bénite</td>
+			<td>L’eau bénite par le personnage inflige 1 point de dégât (endurable) aux adorateurs opposés à sa foi.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Echappée belle</td>
+			<td>Le personnage peut déduire son niveau au nombre de réussites obtenues par un autre personnage, lorsque ce dernier entreprend une action contre lui.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Effet apeurant</td>
+			<td>Le personnage a la capacité de  créer des œuvres ou objets étrangement malsains. Les personnages désirant s’en approcher doivent réussir un test de volonté.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Effet de lumière</td>
+			<td>Permet de fabriquer des objets qui brillent plus ou moins en fonction du niveau de l’artisan au moment où il l’a conçu (la couleur, sera la plus approprier à l’objet).</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Effet sonore</td>
+			<td>Permet de fabriquer des objet qui émettent un bruit plus ou moins fort en fonction du niveau de l’artisan, au moment ou il l’a conçu (le son, sera le plus approprier à l’objet).</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Elaboration</td>
+			<td>Permet d’élaborer une arme faisant 1 dégât supplémentaire à une race choisie. Celle-ci est sélectionnée par l’artisan lorsqu’il crée l’arme.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Elémentaliste de l’élément</td>
+			<td>L’élémentaliste possède un tel degré d’affinité avec l’élément dont il est enfant que tous les sorts de cet élément voient leur difficulté baisser de 1.
+Par exemple, un élémentaliste de feu lancera avec un bonus de 1 les sorts de feu.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Elevage</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage élève ses animaux de prédilections.</td>
+            <td>0</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Energie à l’honneur</td>
+			<td>Le personnage teint l’air qui l’entoure, de la couleur de sa magie dans un rayon égal à son niveau en mètre. Dans cet environnement les sorts de la magie à l’honneur voient leurs difficultés baissées de 1 pendant 10 minutes/niveau. Mettre une énergie à l’honneur prend 10DT non réductible.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Energie au déshonneur</td>
+			<td>Une vague jaune d’énergie s’extirpe du personnage en chassant une autre couleur dans un rayon égal au niveau du magicien en mètre. Dans cet environnement, tout sort lancé de la magie au déshonneur (choisie par le magicien lorsqu’il active son atout) verra sa difficulté augmenter de 1 pendant 10 minutes/niveau. Mettre une énergie au déshonneur prend 10DT non réductible.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Energie latente</td>
+			<td>Chaque fois que le personnage passe le niveau, son niveau en « Energie latente » multiplié par 3 est ajouté à ses points d'énergie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Enfant de la nature</td>
+			<td>La nature reconnaît dans le personnage un de ses enfants. Ainsi, les végétaux se tordent pour aider le personnage, les racines se retirent devant ses pieds, les branches des arbres le protègent de la pluie et du soleil, etc.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Enfant de l’élément</td>
+			<td>Cet atout est à choisir avec un élément (eau, feu, terre, pierre, glace, air, etc) Les éléments sont toujours matériels (pas d’ombre ou de lumière par exemple).
+L’élément reconnaît dans le personnage l'un des siens. Ainsi, cet élément se tordra, se déformera, se déplacera, etc pour aider le personnage.
+Par exemple un fils du feu passera dans des flammes sans être brûler car celles-ci s’écarteront de lui pour ne pas lui faire de mal (ce qui ne le protège pas de la chaleur ni de la fumée toutefois). 
+Un personnage ne peut être l’enfant de plusieurs éléments.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Enseignement efficace</td>
+			<td>Le personnage additionne automatiquement son niveau au nombre de réussites qu’il effectue lors d’un jet d’enseignement.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Epaules solides</td>
+			<td>Le personnage peut porter 1kg supplémentaire par niveau sans être gêné par le poids.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Epuration</td>
+			<td>Le personnage prend 1 dé supplémentaire pour toutes les actions visant à nuire à un sorcier.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Equilibre contrôlé</td>
+			<td>Le personnage possède un sens inné de l’équilibre et diminue la difficulté de touts les jets basés sur l’équilibre de 3.</td>
+            <td>450</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Erreur de la nature</td>
+			<td>Diminue la difficulté de 1, de tout jet pouvant nuire à une cible de même race que celle du personnage.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Escroquerie</td>
+			<td>Additionne le niveau au nombre de dés lors d’une tentative d'escroquerie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Espionnage</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet d’espionnage.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Esprit logique</td>
+			<td>Le personnage divise ses jours d’apprentissage par son niveau, dans les sciences mathématique (arrondi au supérieur).</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Esprit mercatique</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet de marchandage.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Estimation</td>
+			<td>Le personnage peut définir le nombre de réussites effectuées sur une réalisation (objet, concoction, danse, etc) dans son domaine de prédilection en utilisant ses sens (vue, odorat, goût, etc).</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Extermination</td>
+			<td>Additionne le niveau au nombre de dés lors d’un combat contre un ou plusieurs monstres.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Facture d'arc</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage construit un arc.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Familier</td>
+			<td>Le personnage est aidé d’une créature qui peut prendre n’importe quelle forme.
+Ce suivant magique doit posséder une feuille de personnage dans laquelle son possesseurs pourra dépenser son niveau x 100 en points d’expérience selon les pondération du jeu (Attributs = NAx5, compétence = NAx3, Vitalité = 10, etc.) Les limites physique ne s’appliquent pas aux familiers. Leurs facteurs de vitesse et de volonté de base sont de 8.
+Les familiers ne peuvent avoir de points dans une connaissance (mathématique, géographie, etc.) que le magicien ne possède pas. Ils ne possèdent ni race, ni catégorie (ils sont donc toujours considéré comme niveau 1), ni orientation, ni classe (et n’ont donc pas accès aux atouts qui y sont relatifs.)
+Ils ont toutefois le droit d’avoir des atouts (considérés comme atouts de race). Pour ajouter un atout à son familier, un magicien doit dépenser la valeur de l’atout choisit divisé par 10. Par exemple, un familier hiboux ne pourra voler que si son magicien investit 200 points (valeur de l’atout = 2000) dans cet atout.
+La prise d’handicap alloue la valeur de celui-ci divisé par 10 en points supplémentaire au familier.
+Les familiers doivent impérativement avoir au minimum 1 point de vitalité.
+A chaque passage de niveau, le familier renaît et ses nouveau points peuvent lui être attribués. Il peut décider de conserver sa forme ou de la modifier pour une autre au choix du personnage, c’est aussi comme cela qu’il est possible de récupérer un familier mort.</td>
+            <td>500</td>
+			<td>Permanent</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Familier supplémentaire</td>
+			<td>Le personnage peut avoir un familier supplémentaire. Si le magicien avait placé des atouts en son familier, le nouveau hérite également de ceux-ci.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Familier vigoureux</td>
+			<td>Le familier du magicien augmente ses points de vitalités par le niveau de son propriétaire.</td>
+            <td>8000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Feinte du bûcheron</td>
+			<td>Le personnage peut frapper du dos de sa cognée et occasionné l’intégralité des dégâts de celle-ci sous la forme contendante.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Fidèle hombre</td>
+			<td>Le personnage peut se servir de son hombre pour effectuer 1 action matérielle (prendre des clefs, donner une baffe, etc).</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Flaire infaillible</td>
+			<td>Le personnage possède un flaire hors norme et diminue la difficulté de tous ses jets basés sur l’odorat de 3.</td>
+            <td>500</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Foi</td>
+			<td>Diminue la difficulté d’un jet de volonté de 5.</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Folie furieuse</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet de force et endurance, lorsque le personnage est fou furieux (c’est à lui de décider d’activer ou non cet état) mais il réduit alors l’empathie, l’intelligence et la perception à 1. Cet état dure 25 DT/niveau (non réductible).</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Force de géant</td>
+			<td>Une fois atteint sa limite physique, les points supplémentaires pour la force ne coûtent que NA x 10 (à la place de NA x 20).</td>
+            <td>200</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Force de l’ours</td>
+			<td>Diminue la difficulté des jets de force de 1.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Force d’esprit</td>
+			<td>Permet d'effectuer un test de volonté pour échapper aux effets d’un sort d’illusion.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Forteresse mentale</td>
+			<td>Le personnage possède un lourd passé qu’il a décidé d’enfermer à double tour dans sa mémoire. Lorsqu’un sort ou atout de pénétration mental est lancé sur le personnage (par exemple contrôle mental, vision de rêve, vol de secret, …), celui-ci se fait avec une difficulté supplémentaire égal au niveau du personnage. Si aucun jet n’est demandé (comme pour l’atout « Vol de secret ») un jet d’intelligence de l’intrus se fait avec une difficulté supplémentaire égal au niveau du personnage comme pour les sorts.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Frappe affaiblissante</td>
+			<td>Augmente le facteur de vitesse d’un personnage ou d’une créature blessée par le personnage. L’augmentation est égale au nombre de points de dégât infligé. Cet état se prolonge un tour (50 DT) par niveau.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Frénésie collective</td>
+			<td>Lors d’un jet de peur, le personnage peut déduire 1 à son facteur de volonté pour chaque personnage de la même race que lui l’accompagnant.</td>
+            <td>400</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Fureur guerrière</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet de force, pendant un combat.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Garde rapprochée</td>
+			<td>Additionne le niveau pour toute action visant la sauvegarde de son employeur.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Généralisation</td>
+			<td>Permet au personnage d’utiliser l’atout « Répondre à l’insulte » non plus sur une personne, mais sur une race (nation pour les humains) ou sur une classe.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Grâce</td>
+			<td>Le personnage peut accorder sa grâce à n'importe qui sauf lui-même. Celui-ci implique une difficulté de +1 pour tout jet destiné à nuire au porteur de la grâce.
+Un même personnage peut scinder ses grâces sur plusieurs personne en répartissant ses points s'il en possède plus d'un.
+La grace retombe dès que le donneur le désire ou qu'il meure.</td>
+            <td>8000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Grand amour</td>
+			<td>Additionne le niveau aux points d’aptitudes physiques du personnage, son niveau, lorsque son grand amour se voit menacé directement.</td>
+            <td>3</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Grêle de flèches</td>
+			<td>Le personnage peut ajouter une flèche à son tir par point en "Grêle de flèches". S'il possède plusieurs points dans cet atout, il pourra diviser ses flèche additionnelles comme bon lui semble (ex: un archer ayant Grêle de flèches : 3 pourra faire un tir avec 2 flèches, suivit d'un autre avec 3 flèches).
+Les flèches tirées ont toutes la même cible.</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Griffes acérées</td>
+			<td>Le personnage possède des griffes plus acérées et plus dures que la moyenne. Une griffure de sa part fera 1 dégât supplémentaire.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Guérison</td>
+			<td>Additionne le niveau au nombre de dés lors d’une intervention médicale.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Humanothropie</td>
+			<td>Le personnage possède la capacité de se transformer en humain. La transformation prend 50 DT (soit 10 secondes).</td>
+            <td>1700</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Hybridation du familier</td>
+			<td>Lors de l'acquisition de cet atout, le magicien doit choisir une partie du corps de son familier (ex. un bras, les yeux, la peau, ...). Une fois le familier rappeler dans son magicien, ce dernier pourra modifier sa propre forme en substituant la zone corporelle choisie par celle de son familier.
+Le nouveau membre peut être un simple ajout (ex. un humain peut obtenir les ailes de son familier dragon).
+Le nouveau membre possède toutes les atouts liés à cette zone du corps du familier mais ne modifie ni les points de vitalité, ni le facteur de vitesse du magicien.
+Cet atout peut être cumulé avec des zones du corps diverses ou similaire.
+Le magicien ne peut choisir de substituer sa propre tête.</td>
+            <td>12000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Hypersensibilité</td>
+			<td>Le personnage peut ressentir les émotions d’une autre personne en la touchant.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Hypnotisme artistique</td>
+			<td>Le personnage peut hypnotiser (sous jet de volonté) en exerçant son art. Cet effet dure un tour (soit 50 DT) par niveau.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Immatérialité</td>
+			<td>Le personnage est absent du monde physique. Ce qui signifie que toute interaction physique avec son environnement lui est impossible.</td>
+            <td>0</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Immobilisme</td>
+			<td>Le personnage peut se rendre parfaitement immobile sans effectuer aucun jet de dés pendant un temps maximum de 10 minutes par niveau.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Imparable</td>
+			<td>Toutes personnes essayant de parer le personnage, augmente leurs difficultés de 1 et ceci pendant 1 tours (50DT) par niveau.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Incantation silencieuse</td>
+			<td>Le personnage à la capacité de réciter ses formules magiques dans sa tête lorsqu’il jette un sort et donc de rester silencieux en lançant un sort.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Incantation stoïque</td>
+			<td>Le personnage a la capacité de lancer ses sorts uniquement de par la force de sa parole sans besoin de gestuelle.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Indestructible</td>
+			<td>Le personnage peut construire des objets (dans son domaine de prédilection) pratiquement indestructible. Le seul moyen de les détruire est de le faire sur le lieux où celui-ci à été construit.
+Cet atout demande 30 réussites de création (à cumuler en cas d'atout cumulé sur une même création).</td>
+            <td>6000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Inesquivable</td>
+			<td>Toutes personnes essayant d’esquiver le personnage, augmente leurs difficultés de 1 et ceci pendant 1 tours (50DT) par niveau.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Infiltration arcanique</td>
+			<td>Le magicien est un tel spécialiste des flux arcaniques utilisés dans la magie qu'il est capable d'injecter un sort dans l'énergie drainée par un autre magicien qui lance lui-même un sort.
+A la fin du TI du sort infecté, les deux sorts sont automatiquement lancés en même temps (sans tenir compte du TI du sort parasite).
+Si le sort clandestin est un sort d'abjuration, ce dernier possède la priorité dans la résolution (priorité au défenseur).</td>
+            <td>16000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Inquisition</td>
+			<td>Ajoute son niveau en dès lors d'un jet d'investigation religieuse.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Inversion des énergies</td>
+			<td>Le personnage possède un tel niveau de maîtrise en magie qu’il peut inverser sens dans lequel l’énergie le traverse lorsqu’il incante un sort. Cette pratique très risquée à but de lancer des sorts sans utiliser d’énergie.
+Le personnage peut choisir de lancer ses sorts soit avec ses point d’énergie, soit avec ses points de vitalité. Le mélange des deux pour une même incantation n’est pas permis.</td>
+            <td>12000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Invisibilité</td>
+			<td>Le personnage peut se rendre invisible. Cet état peut durer jusqu’à 1 minute par niveau.</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Jamais sans mon arme</td>
+			<td>Le personnage ne lâche jamais son arme sans son consentement (sauf s’il est mort ou inconscient).</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Jusqu'à la mort</td>
+			<td>Le personnage ne mourra que lorsque sa vitalité sera réduite à 0.</td>
+            <td>1200</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Juste cause</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage défend les faibles (directement). Par exemple sauver une jeune dame en détresse comptera comme directe, alors que sauver le monde en détruisant un objet magique sera indirecte.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Langage aquatique</td>
+			<td>Cet atout permet au personnage de parfaitement comprendre et d’être compris de toutes les créatures aquatiques.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Langage canin</td>
+			<td>Cet atout permet au personnage de parfaitement comprendre et d’être compris de tous les canidés.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Langage de la vermine</td>
+			<td>Cet atout permet au personnage de parfaitement comprendre et d’être compris de tous les insectes, vers et arachnides.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Langage félin</td>
+			<td>Cet atout permet au personnage de parfaitement comprendre et d’être compris de tous les félins.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Langage reptilien</td>
+			<td>Cet atout permet au personnage de parfaitement comprendre et d’être compris de tous les reptiles.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Langage rongeur</td>
+			<td>Cet atout permet au personnage de parfaitement comprendre et d’être compris de tous les rongeurs.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Langue de bois</td>
+			<td>Cet atout renforce la crédibilité du personnage et la fluidité de son discours, lorsque celui-ci tente d’échapper à une question. Le questionneur doit faire un jet d’intelligence (difficulté = 7 + niveau du parleur), pour se rendre compte de l’embrouille.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Leurre</td>
+			<td>Le personnage peut changer l’apparence d’un objet en un autre (les objets doivent être de tailles similaires) pour une durée de 1 minute par niveau.</td>
+            <td>6000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Levée d'atout</td>
+			<td>Cet atout est à prendre en choisissant en autre atout. Le personnage pourra dès lors, quand il le désirera, annuler les effets de cet atout choisit pendant la période de temps qu’il lui conviendra.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Lévitation</td>
+			<td>Le personnage peut élever son corps dans les airs et se déplacer en hauteur grâce à la force de son esprit. La vitesse d’un tel déplacement se joue avec un jet d’intelligence. La hauteur maximale que le personnage peut atteindre est égale à son niveau.</td>
+            <td>9000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Libération d’énergie</td>
+			<td>Le personnage peut libérer son énergie qui le quitte sous la forme d’une déflagration teintée de sa couleur. Toutes personnes prisent dans celle-ci doivent faire un jet de force pour ne pas être éjectées. La difficulté  du jet de force est de 1 par point d’énergie dépensé. Donc si un magicien dépense 7 point d’énergie, la difficulté du jet sera de 7. La zone de déflagration possède un rayon de 1m/niveau.
+(Permanent)
+(Atout de niveau 3 de l’orientation : Magicien)"</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Liens d’amitiés</td>
+			<td>Le personnage peut défaire un nœud par le simple touché.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Liens spirituels</td>
+			<td>Permet de connaître l’état de santé des créatures liées (invocables) en temps réel. Si une créature souffre, l’invocateur sentira que quelque chose ne va pas avec la créature en question.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Lingua végétalis</td>
+			<td>Le personnage peut communiquer avec les végétaux.</td>
+            <td>500</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Loup de mer</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage dirige un bateau.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Lycanthropie</td>
+			<td>Permet au personnage de se transformer en loup. La transformation prend 50 DT (10 secondes).</td>
+            <td>1565</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Magie banche</td>
+			<td>Diminue la difficulté de tous les sorts de magie blanche 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magie bleue</td>
+			<td>Diminue la difficulté de tous les sorts élémentaux de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magie brune</td>
+			<td>Diminue la difficulté de tous les sorts divinatoire de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magie grise</td>
+			<td>Diminue la difficulté de tous les sorts nécromancienne de 1.</td>
+            <td>0</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magie jaune</td>
+			<td>Diminue la difficulté de tous les sorts d'abjuration de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magie noire</td>
+			<td>Diminue la difficulté de tous les sorts de magie noire de 1.</td>
+            <td>0</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magie orange</td>
+			<td>Diminue la difficulté de tous les sorts oranges de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magie rouge</td>
+			<td>Diminue la difficulté de tous les sorts d'altération de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magie turquoise</td>
+			<td>Diminue la difficulté de tous les sorts d'enchantement de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magie verte</td>
+			<td>Diminue la difficulté de tous les sorts de magie verte de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magie violette</td>
+			<td>Diminue la difficulté de tous les sorts d'illusion de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Magnétisme</td>
+			<td>Diminue la difficulté pour plaire, dans le domaine de prédilection, de 5.</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Main du magicien</td>
+			<td>Permet au magicien de lancer 1 sorts depuis son familier.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Main verte</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage entretien des végétaux.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Maître du mensonge</td>
+			<td>Le personnage peut ajouter son niveau à son nombre de dès lors d'un jet de mensonge.</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maître en choc</td>
+			<td>Le personnage inflige un dégât supplémentaire automatique, lorsque celui-ci inflige des dégâts contondants.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maître en guérison</td>
+			<td>Tous les sorts de guérison du personnage voient leur difficulté réduite de 1 par point dans cet atout.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maître en lame</td>
+			<td>Le personnage inflige un dégât supplémentaire automatique, lorsque celui-ci inflige des dégâts tranchants.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maître en perforation</td>
+			<td>Le personnage inflige 1 dégât supplémentaire automatique, lorsque celui-ci inflige des dégâts perforants.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maître en sort de masse</td>
+			<td>Tous les sorts de masse du personnage voient leur difficulté réduite de 1.</td>
+            <td>11000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maître en sort majeur</td>
+			<td>Tous les sorts majeurs du personnage voient leur difficulté réduite de 1.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maître en sort mineur</td>
+			<td>Tous les sorts mineurs du personnage voient leur difficulté réduite de 1.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maîtrise de la bête</td>
+			<td>Le personnage peut maîtriser ses actions lorsqu’il est transformé en Loup-Garou. Son agressivité reste toutefois énorme.</td>
+            <td>6000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maîtrise de la hache</td>
+			<td>Diminue la difficulté d’un jet de hache de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maîtrise de l’armure</td>
+			<td>Permet d’augmenter les caractéristiques (PECT) d’une armure lors de sa fabrication. Le nombre de points supplémentaire à allouer est égal au nombre de point dans cet atout. La disposition des points additionnels peut varier d'une armure à l'autre.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maîtrise de l’énergie</td>
+			<td>Cet atout modifie l’atout « Energie à l’honneur » de la manière suivante : Le personnage teint l’air qui l’entoure de la couleur de sa magie dans un rayon égal à son niveau en mètre. Cette couleur est nettement plus intense que dans le simple « Energie à l’honneur ». Dans cet environnement les sorts de la couleur maîtrisées voient leurs difficultés baissées de 1 pendant 10 minutes/niveau. Ce bonus ne s’applique pas au magicien qui lui bénéficie d’un bonus égal à son niveau. Maîtriser une énergie prend 10DT non réductible. Cet atout modifie de manière permanente l’ « Energie à l’honneur » qui lui reste éphémère, ce qui signifie que passer d’un atout à l’autre n’amène pas de point supplémentaire dans l’atout.</td>
+            <td>15000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maîtrise de soi</td>
+			<td>Cet atout permet au personnage de diminuer son nombre de réussites lors d’un jet. Cette diminution est au choix du joueur.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Maîtrise des fragrances</td>
+			<td>Additionne le niveau au nombre de dés lors sur un jet de création de parfum.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Maîtrise équestre</td>
+			<td>Additionne le niveau au nombre de dés pour une manœuvre équestre.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Maîtrise martiale</td>
+			<td>Diminue de 5 la difficulté d’un jet de combat dans le domaine de prédilection.</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Martyrisation</td>
+			<td>Cet atout est à choisir avec une personne. Il additionne le niveau du personnage en dés à tous les jets pouvant nuire à la cible choisie. Si la cible vient à mourir ou à disparaître depuis trop longtemps, l’atout peut être reporté sur quelqu’un d’autre.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Mécanisme d’autodéfense</td>
+			<td>Le personnage a vécut une expérience si traumatisante qu’il génère un mécanisme d’autodéfense lorsque les circonstances font que ses mauvais souvenirs resurgissent. Dès lors, le personnage gagne son niveau en dès supplémentaire pour toutes actions lui permettant de mettre un terme aux circonstances lui rappelant sa tragique histoire.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Méfait</td>
+			<td>Diminue la difficulté de 5 lorsque le personnage nuit à un autre.</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Mémoire photographique</td>
+			<td>Le personnage peut enregistrer parfaitement une scène qu’il a vu. Il peut à tout moment échanger cette image pour celle qu’il a devant les yeux. Cet atout peut être cumulé pour augmenter le nombre d’image en mémoire du personnage. Cet atout est réservé aux personnages versés dans les arts visuels.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Mimétisme</td>
+			<td>La peau du personnage prend la couleur de son environnement. Cet état peut durer autant de temps que désirer. Par contre, si l’environnement vient à changer de couleur, la peau elle, ne peut changer de teinte (ou revenir à la normale) qu’une fois par niveau.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Mobilisation post-mortem</td>
+			<td>Lorsque le personnage fait un appel des morts, le nombre de revenant peut être au maximum de : son niveau X (mobilisation post-mortem + 1).
+Autrement dit, si un magicien ne possède pas cet atout, il relèvera son niveau au maximum de morts, s’il possède un points en mobilisation post-mortem, il relèvera 2X fois son niveau, puis trois fois s’il reprend à nouveau cet atout, et ainsi de suite.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Modèle</td>
+			<td>Cet atout est à choisir avec une personne. Le personnage peut dès lors ajouter son niveau en dés pour représenter son modèle.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Modulation de souvenir</td>
+			<td>Le personnage peut moduler le souvenir d’une personne en changeant un détail, et ce de manière permanente même si on essaye de lui rendre la mémoire.</td>
+            <td>7000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Mon précieux</td>
+			<td>Le personnage peut choisir 1 objet (qu’il voit) et saura dès lors en permanence dans quelle direction aller pour retrouver celui-ci. Il peut décider de changer d’objet quand il le souhaite.</td>
+            <td>8000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Morsure lupine</td>
+			<td>Si le personnage mord un autre personnage humain, celui-ci devient un Loup-garou.</td>
+            <td>2300</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Mort dans le sillage</td>
+			<td>Le personnage est si profondément mauvais que sous ses pas l’herbe meurt et ne repousse qu’à grand peine. La végétation ne peut repousser qu’après une durée égale au niveau du personnage en année.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Mort-vivant</td>
+			<td>En tant que mort, le personnage ne respire plus, son cœur ne bat plus, son teint s’éclaircit et sa peau se refroidit.</td>
+            <td>0</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Motivation macabre</td>
+			<td>Lors d’un combat, le personnage peut ajouter un dès à chacune de ses actions pour chaque ennemi qu’il aura tué. Le nombre de dès ainsi additionnés ne peut dépasser le score du personnage en « Motivation macabre ».</td>
+            <td>6000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Muet</td>
+			<td>Le personnage est incapable de parler.</td>
+            <td>-2500</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Musique stimulante</td>
+			<td>Lorsque le personnage joue de la musique, il stimule une émotion (choisie de part le style musical) chez les personnes l’entendant.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Narration palpitante</td>
+			<td>Additionne le niveau au nombre de dés pour raconter une histoire.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Né pour tuer</td>
+			<td>Le personnage apprend de nouvelle technique de combat ou utilisation d’arme, avec une aisance déconcertante. Le nombre de jours de son apprentissage sont divisés par son niveau.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Nuit blanche</td>
+			<td>Permet au personnage de ne pas dormir pendant 1 nuit, sans pour autant avoir des malus.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Odeur du sang</td>
+			<td>Le personnage peut pister à l’instinct un autre personnage ou une créature qu’il aurait blessé au préalable. Cet atout possède un rayon d’action de 1 km par niveau. Si la proie récupère de ses plaies ou, si le personnage interrompt sa chasse pendant plus que son niveau en jour, la piste est perdue.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Oeil du margoulin</td>
+			<td>Le personnage voit naturellement scintiller les objets ayant de la valeur.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Orateur idéal</td>
+			<td>Ajoute le niveau du personnage à ses dès lors d'un jet de discours.</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Orfèvrerie</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage fait des travaux d’orfèvre.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Organisme fragile</td>
+			<td>L’organisme du personnage est particulièrement sensible aux maladies (deux fois plus).</td>
+            <td>-500</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Osmose avec la nature</td>
+			<td>Permet au personnage d’ajouter son niveau en nombre de dés supplémentaires lorsqu’il effectue un jet basé sur son affinité avec la nature (comme par exemple dresser un animal).</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ostéoderme</td>
+			<td>Le personnage est couvert d’écailles lui conférant une armure de 1 dans un type de dégât au choix (P, E, C ou T).
+Cette protection est valable sur l’ensemble du corps à l’exeption du ventre, cou, des yeux, etc.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Outre l’armure</td>
+			<td>Le personnage frappe de telle manière que les armures sont de moindre efficacité face à ses coups. Les armures (ceci comprend également les armures naturelles telles que les écailles) sont diminuées de un point dans chaque type de dégât (P.E.C.T.) face au personnage.</td>
+            <td>6000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ouvrage</td>
+			<td>Diminue de 5 la difficulté pour un ouvrage dans le domaine de prédilection.</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Paluche</td>
+			<td>Les dégâts occasionner par un coup de poing ou une claque font 1 dégât supplémentaire automatique.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Par-delà les forets</td>
+			<td>Lorsque le personnage se déplace dans les forets, tous ses jets de déplacement ont une difficulté réduite de 1.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Par-delà les marais</td>
+			<td>Lorsque le personnage se déplace dans les marais, tous ses jets de déplacement ont une difficulté réduite de 1.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Par-delà les montagnes</td>
+			<td>Lorsque le personnage se déplace dans les montagnes, tous ses jets de déplacement ont une difficulté réduite de 1.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Parfum de l’ombre</td>
+			<td>Le personnage ne dégage plus aucune odeur corporelle pendant 10 minutes par niveau.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Parole divine</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage prêche la bonne parole.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Partenaire idéal</td>
+			<td>Lorsque le personnage danse avec quelqu’un, celui-ci peut décider de lui transférer un ou plusieurs dés pris dans sa compétence de danse. Cet effet prend fin à la fin de la danse.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Pas d’araignée</td>
+			<td>Avec de l’élan, le personnage peut courrir contre un mur et faire un nombre de pas égal a son niveau, tout en étant jusqu'à perpendiculaire au sol.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Pas léger</td>
+			<td>Permet au personnage de ne plus faire aucune trace de pas en marchant, et ce, sur n’importe quelle surface. Cet effet dure 10 minutes par niveau.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Pasage céleste</td>
+			<td>NA</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Passage à l’ombre</td>
+			<td>Permet au personnage d’entrer intégralement dans sa propre hombre et de se déplacer ainsi ou bon lui semble. C’est état peut durer jusqu’à 1 minute par niveau au maximum.</td>
+            <td>6000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Passage au familier</td>
+			<td>Cet atout permet au personnage d’entrer intégralement dans son familier et d’en sortir quand et ou bon lui semble.
+Ce passage prend un facteur de vitesse.</td>
+            <td>6000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Passe muraille</td>
+			<td>Le corps du personnage devient immatériel et peut donc passer à travers les murs, les gens et tous ce qui est matériel. Cet état peut durer jusqu’à une minute par niveau.</td>
+            <td>10000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Paysannerie</td>
+			<td>Diminue la difficulté de 5 lors d’un jet de paysannerie (dans le domaine de prédilection).</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Pensée profonde</td>
+			<td>Additionne le niveau aux dés lors d’un jet de philosophie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Perception des énergies</td>
+			<td>Le personnage peut à tout moment « enclenché » sa perception des énergies. La couleur de ses iris peut alors changer. Le magicien percevra alors le monde de façon différente. Cet atout lui donne le don de percevoir l'énergie pure. Le magicien qui en est doté voit des brumes colorées scintillantes teintées de la couleur de la magie en question, un peu comme des aurores boréales. Il pourra estimer les stocks d'énergie dans un lieu, percevoir les fortes concentrations d'une énergie, mais il a aura aussi la capacité de voir les mouvements, les variations d'énergie. Si un sort est lancé, il pourra estimer la quantité d'énergie nécessaire pour le lancer, la localisation du lanceur et la nature de l'énergie utilisée (la couleur).</td>
+            <td>7000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Perfectionnisme</td>
+			<td>Permet de retravailler un objet déjà crée de manière à y additionner les réussites de qualité du nouveau jet. Un personnage peut retravailler autant de fois un objet qu’il possède de points de perfectionnisme.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Périple</td>
+			<td>Diminue la difficulté de 5 pour un jet de déplacement (avec le moyen de locomotion de prédilection).</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Persécution</td>
+			<td>Cet atout est à choisir avec une race, voir une classe. Il additionne 1 dé à tous les jets pouvant nuire à la cible choisie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Persistance magique</td>
+			<td>Le magicien peut, en 1 DT, renouveler un sort actif sans faire d’incantation. Ce qui signifie qu’un sort à 3 réussites qui durait 10 minutes sera renouvelé dès le moment ou le magicien utilisera son atout, et repartira pour 10 minutes en conservant ses 3 réussites. Les points d’énergie du sort sont dépensés normalement.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Peur</td>
+			<td>Le personnage provoque la peur chez les autres. Ceux-ci doivent en sa présence faire un test de volonté pour maîtriser leur peur. Un personnage possédant cet atout s’y voit automatiquement immunisé.</td>
+            <td>700</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Peur du noir</td>
+			<td>Le personnage peut lancer une peur du noir sur une personne par niveau. Celles-ci effectuent alors un test de volonté pour ne pas être apeurées. Celui qui échouera à ce test se sentira mal à l’aise et essayera (au possible) d’aller à un endroit plus éclairer. Cet effet dure 10 minutes par niveau.</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Pied marin</td>
+			<td>Avec de l’élan, le personnage peut se déplacer sur de l’eau (ou toute surfaces liquide), d’un nombre de pas égal à son niveau.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Pieds poilus</td>
+			<td>Diminue de 3 la difficulté d’un jet pour se mouvoir silencieusement.</td>
+            <td>500</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Pisteur né</td>
+			<td>Le personnage possède un sens du pistage aiguisé et diminue la difficulté de tous les jets basés sur le pistage de 3.</td>
+            <td>500</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Place à l’ombre</td>
+			<td>Le personnage peut à distance (1m/niveau) éteindre d’un geste de la main une flamme de bougie ou de torche. Cet atout est utilisable une fois par niveau.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Polyvalence</td>
+			<td>Le personnage peut désormais choisir ses les atouts de niveaux dans toutes les orientations (les classes et les conditions demeurent restrictives) jusqu’à un niveau égal à son nombre de point en « Polyvalence » + 1. Cet atout compte comme atout à part entière et ne permet de choisir un autre atout lorsqu’on l'acquière.
+Par exemple, si un guerrier niveau 5 choisit cet atout. Il pourra donc, quand il passera niveau 6, prendre un atout d’artiste niveau 2 (Polyvalence : 1 + 1). Il devra reprendre l’atout « Polyvalence » s’il désire accéder aux atouts de niveau 3 des orientations qui ne sont pas la sienne. Néanmoins, il ne pourra pas choisir l’atout « Musique stimulante » qui est réservé aux bardes car la polyvalence permet juste d’annuler la barrière des orientations.</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Possession</td>
+			<td>Le personnage peut entrer dans un le corps d’un autre personnage vivant. Celui-ci peut tenter de résister en effectuant un jet de volonté avec une difficulté supplémentaire égale au score détenu par le personnage entrant, en Possession. Une fois entré, le personnage peut rester aussi longtemps qu’il le désire tout en contrôlant les mouvements de son hôte. Il n’a par contre pas accès à ses pensées. Un exorcisme peut faire sortir le personnage de force du corps dans lequel il se trouve.</td>
+            <td>3865</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Potion d'énergie</td>
+			<td>Le personnage est capable de confectionner des potions de d'énergie arcanique. Les points restaurés sont égaux au nombre de réussites du jet d'alchimie (diff. 7).</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Potion de vitalité</td>
+			<td>Le personnage est capable de confectionner des potions de vitalité. Les points restaurés sont égaux au nombre de réussites du jet d'alchimie (diff. 9).</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Pour la prime</td>
+			<td>Additionne le niveau au nombre de dés pour permettant d'obtenir une prime directement.
+Arrêter un voleur pour une récompense sera considérer comme directe. Se sauver d'un traquenard pour survire (et arrêter un voleur par la suite) sera considéré comme indirect.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Pouvoir symbolique</td>
+			<td>Lorsque le personnage prend en main un symbole lié à son culte, celui-ci agit sur une distance égale au niveau du personnage. Par exemple un crucifix brûlera un vampire en entrant au contact avec sa peau. Mais si le personnage tenant le crucifix possède cet atout, il brûlera le vampire à un mètre par niveau (depuis le crucifix).</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Précision</td>
+			<td>Additionne le niveau aux dés lors d’un jet de tir avec l’arme de prédilection.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Pressentiment de la cible</td>
+			<td>Le personnage à une telle habitude d’être la cible d’attaque qu’il en a développé un sens tout particulier de défense. Sons instinct lui indiquent infailliblement lorsque qu’un projectile, coup, ou autre forme d’agression en viendront à le heurter (même s’il ne peut le voir ou s’il est endormi).
+Le joueur peut donc choisir l’action de son personnage après avoir été informé qu’un danger le touche.</td>
+            <td>11000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Production</td>
+			<td>Diminue la difficulté de 5 pour la construction d’un objet.</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Projections cauchemardesques</td>
+			<td>En touchant un être, le personnage peut lui faire voir (sous la forme d’un flash) tout le mal que le personnage serait prêt à lui faire. Ces visions durent 1 DT par niveaux.</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Protection divine</td>
+			<td>Dévie automatiquement un coup porté. L’utilisation de cet atout doit être décidé juste avant le jet de force de l’adversaire.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Purification céleste</td>
+			<td>NA</td>
+            <td>525</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Race aquatique</td>
+			<td>Le personnage peut respirer normalement sous l’eau. Ses jets de nage se ont une difficulté diminuée de 3.</td>
+            <td>1485</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Rage</td>
+			<td>Cet atout permet au personnage d’ignorer tous les malus dus aux coups encaisser, cet état dure un tour (50 DT) par niveau.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Rage lunaire</td>
+			<td>Les nuits de pleine lune, le personnage se transforme en Loup-Garou. Il ne contrôle plus ses actions et est pris d’une furie meurtrière. Le lendemain, le personnage, revenu sous sa forme de base (humain ou loup), ne se souvient de rien de ce qu’il a fait et est terriblement fatigué. La rage lunaire est la seule manière, dans un premier temps d’accéder à la forme de Loup-Garou.</td>
+            <td>-1000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Rancune</td>
+			<td>Pendant un combat chaque point de dégât subit est additionné et compte comme dégât automatique lorsque le personnage parvient à toucher celui qu’il l’a blessé.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Rappel de l’arme</td>
+			<td>L’arme revient automatiquement dans les mains de son possesseur au bon vouloir de celui-ci. Ceci compte pour une action (et dure donc un facteur de vitesse).</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Rappel du familier</td>
+			<td>Permet au magicien de rappeler son/ses familier(s) en lui à tout moment. Celui-ci disparaît pour une période choisie par le magicien. Faire entrer ou sortir un familier de soi-même prend un facteur de vitesse.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Recharge rapide</td>
+			<td>Diminue de 1  DT le temps nécessaire au chargement d’une arme de distance. Ce temps ne peut être inférieur à 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Recherche personnelle</td>
+			<td>Permet au personnage d’apprendre des connaissances par lui-même, si celui-ci à la possibilité de faire ses propres expériences.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Reconnaissance du guerrier</td>
+			<td>Lorsque les yeux du personnage croisent ceux d’un autre guerrier, le niveau de celui-ci peut alors lui être révélé.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Réflexes fulgurants</td>
+			<td>Supprime la difficulté supplémentaire (de +1) lors d’un jet de réflexe. Cet atout peut être choisit à condition de posséder un score en réflexes minimum de 4.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Réflexion</td>
+			<td>Diminue la difficulté d’un d’intelligence de 5.</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Regard de braise</td>
+			<td>Annule les pénalités dues à une luminosité trop intense ou même au soleil dans les yeux.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Regard du guerrier</td>
+			<td>Le personnage possède un regard de combattant aguerrit et les gens le ressentent, même s’ils ne comprennent pas toujours pourquoi. Les personnages peuvent faire un jet de volonté avec le niveau du guerrier comme difficulté supplémentaire pour ne pas êtres intimidés.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Régénération des membres</td>
+			<td>Le personnage peut régénérer un membre coupé. Le temps de la repousse est de 30 jours moins le niveau du personnage.</td>
+            <td>8000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Renaissance céleste</td>
+			<td>NA</td>
+            <td>6000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Répondre à l’insulte</td>
+			<td>Le personnage peut s’ajouter son niveau en nombre de dés lorsqu’il frappe sur quelqu’un l’aillant insulté. Les dés gagnés de la sorte peuvent êtres répartis au gré du joueur dans ses aptitudes physiques. Cet état dure jusqu'à ce que l’insolent ait reçu la correction qu’il mérite.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Repos du guerrier</td>
+			<td>Le personnage récupère le double de points de vitalité lors d’une nuit de sommeil.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Répulsion</td>
+			<td>Le personnage arrive à canaliser son énergie pour la libérer dans une direction bien précise. Généralement c’est de la paume de la main que sors cette force invisible qui repousse les corps.
+La portée de cette force (comparable à celle d’un vent) est de 1 mètre par niveau du magicien. Tout personnage pris dans la répulsion doit faire un jet de force pour ne pas être repoussé.
+La difficulté  du jet de force est de 1 par point d’énergie dépensé. Donc si un magicien dépense 7 point d’énergie, la difficulté du jet sera de 7.</td>
+            <td>7000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance à la chaleur</td>
+			<td>Le personnage résiste plus aisément à la chaleur. Jet en dessous de la résistance sur D100 pour résister.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance à la fatigue</td>
+			<td>Le personnage résiste plus aisément à la fatigue. Jet en dessous de la résistance sur D100 pour résister.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance à la fumée</td>
+			<td>Le personnage résiste plus aisément à la fumée. Jet en dessous de la résistance sur D100 pour résister.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance à la magie</td>
+			<td>Le personnage résiste plus aisément à la magie. Jet en dessous de la résistance sur D100 pour résister.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance à l’alcool</td>
+			<td>Le personnage résiste plus aisément à l'alcool. Jet en dessous de la résistance sur D100 pour résister.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance au feu</td>
+			<td>Le personnage résiste plus aisément au feu. Jet en dessous de la résistance sur D100 pour résister.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance au froid</td>
+			<td>Le personnage résiste plus aisément au froid. Jet en dessous de la résistance sur un D100 pour résister.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance aux drogues</td>
+			<td>Le personnage résiste plus aisément aux drogues. Jet en dessous de la résistance sur D100 pour résister.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance aux maladies</td>
+			<td>Le personnage résiste plus aisément aux maladies. Jet en dessous de la résistance sur D100 pour résister.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance aux poisons</td>
+			<td>Le personnage résiste plus aisément aux poisons. Jet en dessous de la résistance sur D100 pour résister.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résistance sélective</td>
+			<td>Cet atout permet au personnage de choisir s'il souhaite ou non utiliser sa résistance. Pour choisir cet atout, le personnage doit posséder au minimum une résistance.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résonance</td>
+			<td>Le magicien peut utiliser son énergie pour entrer en résonance avec l'un de ses sorts et augmenter la puissance de celui-ci. Moyennant 10 points d'énergie, le personnage peut, en un facteur de vitesse, ajouter une réussite à l'un de ses propre sorts actif lancé précédemment.
+Si le personnage possède plusieurs points en Résonance, il pourra réitéré son action mais devra à nouveau dépenser l'énergie ainsi que le facteur de vitesse.</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résonance avancée</td>
+			<td>En plus de pouvoir utiliser son atout de résonance sur ses propres sorts, le magicien peut l'utiliser sur n'importe quel sort de sa couleur magique peu importe le lanceur dudit sort.</td>
+            <td>6000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ressentir la magie</td>
+			<td>Permet au personnage de ressentir le rayonnement de la magie sur un rayon d’un mètre par niveau.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ressentir la trace du mal</td>
+			<td>Permet au personnage de ressentir la présence du mal que se soit une personne, un acte ou autre. Plus le mal est grand, et plus le personnage le  ressentira fort au fond de lui. De plus, le personnage peut ressentir la trace d’un mal ayant été à l’endroit où il se trouve. 
+Par exemple, un personnage se trouvant là ou un démon à foulé le sol, pourra encore ressentir sa trace. L’importance de cette sensation est fonction du mal en question et du temps écoulé depuis. Le personnage sait si le mal qu’il ressent est dû à un événement passé ou présent.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ressentir le bien</td>
+			<td>Permet au personnage de ressentir la présence du bien, que se soit une personne, un acte ou autre. Plus le bien est grand, et plus le personnage le ressentira fort au fond de lui.</td>
+            <td>150</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ressentir le magicien</td>
+			<td>Permet au magicien de ressentir la présence d’autres magiciens sur une distance d’un mètre par niveau.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ressentir le mal</td>
+			<td>Permet au personnage de ressentir la présence du mal, que se soit une personne, un acte ou autre. Plus le mal est grand, et plus le personnage le  ressentira fort au fond de lui.</td>
+            <td>150</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ressentir l’arme</td>
+			<td>Le personnage peut d’instinct ressentir une arme à proximité de lui. Par exemple, si un personnage cache un couteau dans sa botte, il ne saura pas qu’il s’agit d’un couteaux, mais son instinct lui soufflera de se méfier de cette botte. Ceci agit sur un rayon d’un mètre par niveau.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Résurrection</td>
+			<td>Le personnage peut ramener un mort à la vie (comme avec le sort de magie blanche).
+La mort du sujet, ne doit pas remonter à plus du niveau en minutes de celui qui le ramène.</td>
+            <td>18000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Retombe sur ses pattes</td>
+			<td>Permet de retomber automatiquement sur ses pattes ou pieds.</td>
+            <td>350</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Retraite stratégique</td>
+			<td>Permet à un personnage de diminuer la difficulté d’un jet de fuite de 1.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Rien à perdre</td>
+			<td>Le personnage déduit automatiquement son niveau aux malus distribuer lors d’un jet de volonté dans une situation dangereuse.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Robustesse</td>
+			<td>Donne une résistance de +1C au corps du personnage.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ruée</td>
+			<td>La charge du personnage inflige un dégât supplémentaire par point dans cet atout.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sacrifice</td>
+			<td>Le personnage peut décider de se sacrifier pour ramener quelqu’un à la vie. Ce personnage ne doit pas être mort depuis plus que d’heure par niveau du personnage qui se sacrifie.</td>
+            <td>9000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sacrifice d’énergie</td>
+			<td>Le magicien peut sacrifier autant de point d’énergie qu’il le souhaite en faisant perdre à un autre magicien (à une distance maximum de 1m/niveau) ce même nombre de points d’énergie.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sang-froid</td>
+			<td>Le personnage ne tient compte d'aucun malus d'augmentation de son facteur de volonté.</td>
+            <td>550</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sans forme</td>
+			<td>Le personnage peut d’un regard dans les yeux de sa victime effacer sa forme de la mémoire de celle-ci. La cible doit faire un test d’intelligence de difficulté égal au niveau du lanceur pour ne pas oublier. Une personne ayant oublié une forme, ne s’en souviendra que si elle la revoit à nouveau.</td>
+            <td>7000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sans hombre</td>
+			<td>Le personnage peut faire disparaître son hombre pendant une minute par niveau.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sans nom</td>
+			<td>Le personnage peut d’un regard dans les yeux de sa victime effacer son nom de la mémoire de celle-ci. La cible doit faire un test d’intelligence de difficulté égal au niveau du lanceur pour ne pas oublier. Une personne ayant oublié un nom, ne le retrouvera que si on le lui redit à nouveau.</td>
+            <td>7000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sans reflet</td>
+			<td>Le personnage n’a aucun reflet, que ce soit dans l’eau, dans un miroir, ou toute surface réfléchissante.</td>
+            <td>-200</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sans visage</td>
+			<td>Le personnage peut d’un regard dans les yeux de sa victime effacer son visage de la mémoire de celle-ci. La cible doit faire un test d’intelligence de difficulté égal au niveau du lanceur pour ne pas oublier. Une personne ayant oublié un nom, ne le retrouvera que s’il l’entend à nouveau.</td>
+            <td>7000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Santé de fer</td>
+			<td>Chaque fois que le personnage passe un niveau, il ajoute alors son nouveau niveau en « Santé de fer » à ses points de vitalité.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Saut de l’ange</td>
+			<td>Le personnage peut effectuer un saut d’une hauteur égale à son niveau en mètre.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Savoir la magie</td>
+			<td>Permet au magicien d’identifier le type de magie qu’il ressent sur 1 mètre par niveau autour de lui.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Savoir l’arme</td>
+			<td>Permet au personnage d’identifier le type d’arme qu’il ressent sur 1 mètre par niveau autour de lui.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Science de la vie</td>
+			<td>Additionne le niveau du personnage au nombre de dès lancés lors d’un jet d’alchimie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Science des plantes</td>
+			<td>Additionne le niveau du personnage au nombre de dès lancés lors d’un jet d’herboristerie.</td>
+            <td>0</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Secret des poignards volants</td>
+			<td>Le personnage peut faire effectuer une courbe par niveau à un couteau de jet qu’il a lui-même lancé.</td>
+            <td>2000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Self-contrôle</td>
+			<td>Le personnage possède la totale maîtrise de ses propres faits et gestes. Lors d’un jet, il peut définir un nombre de réussites maximum qu’il ne dépassera pas.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sens de la scène</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet de comédie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Sens des affaires</td>
+			<td>Diminue la difficulté de 5 lors d’un jet de commerce.</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Sens du danger</td>
+			<td>Le personnage a l’habitude du danger dans son quotidien. Tant et si bien qu’il arrive à le flairer. Il ajoute donc son niveau en dés lors de jets de perceptions qui pourraient le prévenir d’un danger.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sens du familier</td>
+			<td>Le personnage peut choisir un sens par lequel il sera lié à son familier. Par exemple s’il choisit la vue, il verra tout ce que voie son familier.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sens en éveil</td>
+			<td>Ajoute le niveau du personnage à ses dès lors d'un jet de perception.</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Sens politique</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet de politique.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Sentir la mort</td>
+			<td>Le personnage à développé la capacité de sentir l’odeur de la mort. Il détecte donc automatiquement la présence de cadavre ainsi que les Mort-Vivants sur un rayon de 3 mètres par niveaux. Il est aussi capable d’indiquer la direction d’où lui viens cette « odeur ».</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Séquelles</td>
+			<td>Les coups portés par le personnage ne peuvent êtres soignés par l'atout "Régénération".</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Serrer les dents</td>
+			<td>Le personnage peut, une fois par niveau, annuler un jet de force lors d’une frappe qu’il reçoit, ne subissant ainsi que les dégâts automatiques.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Service</td>
+			<td>Diminue la difficulté de 5 pour un jet de tâches domestiques (dans le domaine de prédilection).</td>
+            <td>500</td>
+			<td>Ephémère</td>
+			<td>
+									Orientation
+							</td>
+		</tr>
+			<tr>
+			<td>Servitude</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage sert son maître. La tâche que le personnage effectue doit être en rapport avec sa condition de domestique.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Seul contre tous</td>
+			<td>Le personnage additionne à ses jets de dés, un dé supplémentaire par ennemi qu’il combat en plus du premier.</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Silence de mort</td>
+			<td>Le personnage crée un silence anormal d’ou aucun son ne pourra s’échapper. Celui-ci s’étend sur un rayon d’un mètre par niveau autour du personnage et dure une minute par niveau. Cet espace insonorisé ne se déplace pas avec le personnage une fois libéré.</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Soif de sang</td>
+			<td>Le personnage ne peut se nourrir que de sang.</td>
+            <td>-1000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Soleil pétrificateur</td>
+			<td>Les rayons du soleil change le personnage en pierre. Un personnage ainsi statufié ne reviens pas à son état normal une fois la nuit venue.</td>
+            <td>-5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sommeil léger</td>
+			<td>Annule les malus dus au sommeil d’un personnage, pour les jets de perception.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Son envoûtant</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage joue de son instrument de prédilection.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Sonar</td>
+			<td>Le personnage est doté d'un sonar lui permettant de se repérer dans l'espace par retour d'ultrasons qu'il émet.
+Ses jets de reconnaissance lié à son environnement passent par l'ouïe lorsqu'il utilise cet atout.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sourd</td>
+			<td>Le personnage est incapable d'entendre.</td>
+            <td>-2500</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Souvenir de la bête</td>
+			<td>Le personnage arrive à se souvenir de se qu’il a fait les soirs de pleine lune lorsqu’il était changé en Loup-Garou.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sublimation</td>
+			<td>Les objet créés par le personnage (dans son domaine de prédilection) octroient un bonus de +1 en esthétisme à son porteur par points en Sublimation.
+Un objet offrant un bonus de X doit avoir un minimum de X * 5 réussites lors de sa création (ceci représentant une qualité supérieure).
+Les points de cet atout peuvent être distribués dans la journée selon la volonté du joueur.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Subtilisation</td>
+			<td>Additionne son niveau au nombre de dès lorsque le personnage effectue un vol.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Survie</td>
+			<td>Le personnage n’accumule des malus de blessure qu’à partir du quart (et non de la moitié) de sa vitalité.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Sus aux magiciens</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage nui à un magicien.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Télékinésie</td>
+			<td>Le personnage peut soulever et déplacer de la matière solide dans les airs (les liquides et gazeux ne sont donc pas inclus). Pour se faire, le personnage doit s'aider au moins une de ses main et se concentrer sur la cible qu'il souhaite déplacer. La vitesse maximale est égale au niveau du magicien en km/h. Le poids maximal déplacé est de 1kg/niveaux. Enfin, pour mouvoir un objet, le personnage doit l'avoir vu au préalable et celui-ci doit se trouver dans un rayon de 1 m/niv. du personnage.
+Si un jet est requis au travers d'une manipulation télékinésique, alors l'Intelligence substituera la Force et la Perception remplacera la Dextérité pour les aptitudes. Les compétences restent inchangées.</td>
+            <td>6000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Télékinésie avancée</td>
+			<td>Le personnage peut maintenant utiliser sa télékinésie sans forcément devoir utiliser ses mains. Il peut également déplacer la matière quelle qu’elle soit (solide, liquide, gazeux, etc) ce qui signifie que l'atout permet également d'utiliser l'air pour envoyé des déflagrations.
+ La vitesse maximale des déplacement est égale au niveau en m/s du personnage.</td>
+            <td>10000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Télékinésie lourde</td>
+			<td>Le poids maximal déplacé par le personnage grace à sa télékinésie est maintenant égale à son niveau en "Télékinésie lourde" + 1 kg/niveaux.</td>
+            <td>8000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Télépathie</td>
+			<td>Le personnage peut entrer en contact avec une personne de par la pensée, il doit pour cela voir cette personne.</td>
+            <td>600</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Téléportation</td>
+			<td>Le personnage peut se téléporter dans un lieu à portée de vue et à 1m de distance par niveau maximum.</td>
+            <td>6000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Temps d’arrêt</td>
+			<td>Le personnage peut se stopper net ou et quand bon lui semble pendant 1 DT/niveau. Pendant se temps il peut entreprendre des action (comme par exemple se rattraper lors d’une chute qu’il peut stopper).</td>
+            <td>7000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ténacité</td>
+			<td>Donne une résistance de +1E au corps du personnage.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Terreur</td>
+			<td>Le personnage provoque la terreur chez les autres. Ceux-ci doivent, en sa présence, faire un test de volonté avec une difficulté supplémentaire égale au niveau du personnage terrifiant pour maîtriser leur peur. Un personnage possédant cet atout y est automatiquement immunisé ainsi qu’à la Peur.</td>
+            <td>1050</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Tornade de coups</td>
+			<td>Additionne un coup porté par le personnage lorsque celui-ci utilise cet atout (les coups sont tous identiques).</td>
+            <td>5000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Totem</td>
+			<td>Cet atout est à choisir avec une race animale se rapprochant du personnage. Les animaux de cette race reconnaissent le personnage comme l’un des leurs et ne lui feront aucun mal. Au contraire, s’ils ont la possibilité de l’aider, ils le feront dans la mesure de leurs moyens. Cet atout ne peut être choisit qu’une seule fois et ne peut être combiné avec l’atout « Enfant de l’élément ».</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Touché léger</td>
+			<td>Additionne le niveau au nombre de dés pour toucher quelqu’un sans que celui-ci ne le remarque.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Toujours sur soi</td>
+			<td>Le personnage peut choisir 1 objet qu’il peut faire disparaître et réapparaître à volonté dans sa main. Le poids de cet objet est toujours comptabilisé.</td>
+            <td>7000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Tour de passe-passe</td>
+			<td>Additionne le niveau au nombre de dés lors d’un tour de passe-passe.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Tranchant</td>
+			<td>Les armes tranchantes créés par le personnage inflige un dégât de +1 T. Un objet ayant un bonus de X Tranchant supplémentaire doit avoir un minimum de X * 5 réussites lors de sa création (ceci représente une qualité supérieure). Les points de cet atout peuvent être distribués dans la journée selon la volonté du joueur.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Transfert de vision</td>
+			<td>NA</td>
+            <td>100</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Transfert spatial</td>
+			<td>Cet atout est à choisir avec un lieu. Dès lors, le magicien peut, en faisant une invocation standard, décider de transférer sa cible dans ce lieu choisit. Le lieu peut être changé par le magicien à tout moment pour autant que celui-ci se trouve dans la nouvelle zone choisie.</td>
+            <td>9000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Transformation hybride</td>
+			<td>Le personnage peut se transformer en Loup-Garou quand il le désire. Il ne peut toutefois pas décider de ne pas se transformer les nuits de pleine lune.</td>
+            <td>9000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Traque</td>
+			<td>Additionne le niveau au nombre de dés, lors d’un jet de pistage ou autre investigation forestière.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Travail de la peau</td>
+			<td>Additionne le niveau au nombre de dès lorsque le personnage effectue un travail de tannerie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Travail du bois</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage fait des travaux de menuiserie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Travail du métal</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage forge.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Travail du récipient</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage fait des travaux de poterie.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Travail du textile</td>
+			<td>Additionne le niveau au nombre de dés lors d’un jet de couture.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Trompe la mort</td>
+			<td>Permet au personnage de simuler un mort. La peau se blanchit, le cœur ralentit et n’est presque plus perceptible, il en va de même pour la respiration. Cet état peut être conservé 10 minutes par niveau.</td>
+            <td>3000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Trop facile</td>
+			<td>Diminue la difficulté d’un sort choisi de 1. Le sort est à définir avec la prise de l'atout et ne peut être changer par la suite.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Tuons la bête</td>
+			<td>Le personnage choisit un monstre sur lequel, il infligera automatiquement son niveau en dégât supplémentaire lorsqu’il touchera celui-ci.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Unicité</td>
+			<td>Les ouvrages du personnage (dans son domaine) ne peuvent êtres recopiés. Son travail lui est si propre que quelqu’un ayant les connaissances suffisantes pourra déterminer la personne qui à fabriquer l’objet en question.</td>
+            <td>3000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Vade rétro</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage effectue un exorcisme.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Vegothropie</td>
+			<td>Le personnage peut se transformer en plante. La durée de la transformation est de 10 minutes. La plante en question est relative au personnage.</td>
+            <td>1200</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Vélocité</td>
+			<td>Diminue de 3 la difficulté de course.</td>
+            <td>600</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ventre du magicien</td>
+			<td>Le familier peut, en se nourrissant, sustenter son magicien.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Ventre vide</td>
+			<td>Lorsque le personnage tente d’obtenir de la nourriture, ses actions ont une difficulté diminuée de 1 par point dans cet attout.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Verrouillage de souvenir</td>
+			<td>Le personnage peut mettre un verrou sur un souvenir d’une personne, de manière à ce que elle-ci n’y ait plus accès, même si on essaye de le lui rendre la mémoire.</td>
+            <td>7000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Victime</td>
+			<td>Le personnage peut choisir 1 être vivant (qu’il voit) et saura en permanence dans quelle direction aller pour retrouver celui-ci. Il peut décider de changer d’être quand il le souhaite.</td>
+            <td>8000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Vision</td>
+			<td>La vision est représentée en pourcentage, ce qui signifie qu’un homme en bonne forme possède une vision de 100%. Un personnage ayant 200% en vision verra donc deux fois plus loin et plus précisément.</td>
+            <td>2</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Vision nocturne</td>
+			<td>Le personnage est nyctalope.</td>
+            <td>1000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Vision thermique</td>
+			<td>Permet au personnage de voir toutes sources de chaleur. Celles-ci brillent, ce qui les rend donc visibles même dans le noir total.</td>
+            <td>4000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Visions cauchemardesques</td>
+			<td>En touchant un être, le personnage peut lui faire voir (sous forme d’un flash) des visions du mal qu’à fait le personnage. Ces visions durent 1 DT par niveau.</td>
+            <td>4000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Voix intense</td>
+			<td>Additionne le niveau au nombre de dés lorsque le personnage chante.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Classe
+							</td>
+		</tr>
+			<tr>
+			<td>Voix surnaturelle</td>
+			<td>Le personnage peut, quand il le désire, moduler sa voix qui devient alors plus impressionnante mais d’aspect non naturel. Quand le personnage utilise sa voix surnaturelle, il additionne son niveau au nombre de dès lors d’un jet de charisme.</td>
+            <td>5000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Vol</td>
+			<td>Le personnage peut voler. Que ce soit grâce à des ailes, une faculté mentale ou autres, celui-ci peut se déplacer librement dans les airs.</td>
+            <td>2000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Vol de familier</td>
+			<td>Le magicien peut détourner le lien qui relie un autre magicien à son familier et rediriger ce lien vers lui-même. De la sorte, le personnage peut avoir un familier supplémentaire. Ce nouveau familier reste lié et au service du personnage aussi longtemps que l'atout est actif sur lui. La mort du familier entraîne un retour de celui-ci à son propriétaire d'origine.</td>
+            <td>20000</td>
+			<td>Permanent</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+			<tr>
+			<td>Vol de secret</td>
+			<td>Le personnage peut entendre pendant 1 minute par niveau ce qu’un autre personnage se dit mentalement. Il peut également voir les images que celui-ci s’imagine. Toutefois, pour pénétrer le mental de quelqu'un, le personnage utilisant cet atout doit vaincre sa cible sur un jet d’intelligence réciproque (difficulté de 7). Sa cible doit être à porter de vue.</td>
+            <td>6000</td>
+			<td>Ephémère</td>
+			<td>
+									Neutre
+							</td>
+		</tr>
+	</table>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

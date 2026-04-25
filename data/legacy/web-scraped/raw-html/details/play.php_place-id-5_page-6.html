@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=5">Restaurant de la Tonnella</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=5&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.05.18
+            </div>
+
+            <div class="forum-post-content">
+                *Sela boit une bière*
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.05.18
+            </div>
+
+            <div class="forum-post-content">
+                *Sindalia fulmine tout en griffonnant dans un grimoire, a une vitesse qui semble faire fumer sa plume, tout en grommelant un charabia incompréhensible*  
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=136&place-id=5" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                08.05.18
+            </div>
+
+            <div class="forum-post-content">
+                *Len gratouille Féline tout en lisant un parchemin* Hmmm alors... ce sera bientôt la guerre. Au cas ou il n'y a pas d'entente entre nos deux camps, il faudra mettre au point une stratégie... n'est-ce pas cheffe du cheptel magistique?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.05.18
+            </div>
+
+            <div class="forum-post-content">
+                Il n'y aura certainement pas de décision prise sur le champs. 
+En fait, ils ont proposé à Ackbar de nous trahir mais pas plus pour l'instant. Ils ne s'attendent certainement pas à ce qu'Ackbar aille leur dire non accompagné de toute l'équipe.
+Je me demande si nous devrions l'accompagné en fin de compte. Car si vous y aller avec lui sous le couvert du drapeau blanc, alors ils comprendront que la réponse est forcément non. Du coup, cela ne nous avancera pas à grand chose...
+Je pense qu'on devrait déjà décider de la réponse d'Ackbar. Est ce qu'on se contente de refuser ou alors on leur fait croire qu'il accepte ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                09.05.18
+            </div>
+
+            <div class="forum-post-content">
+                *finit d'avaler sa bouchée
+En effet, je trouve pas que c'est une bonne idée d'y aller tous avec un drapeau blanc...Si on fait quelque chose d'aussi officiel, c'est soit pour refuser la trahison soit pour accepter une reddition...mais pas pour accepter une trahison. Je pense que je dois y aller seul, discrètement. Une autre alternative, c'est d'envoyer plusieurs négociateurs, genre le Général, le maire et d'autres, pour brouiller les piste et que je puisse parler les yeux dans les yeux avec Ludwick.
+
+Je dois déjà m'assurer que le dôme d'abjuration n'est pas que l'expression d'un rêve mais qu'il maitrise bien ce sort. Une fois cette certitude établie, on peut envisager plusieurs plans...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sighild<br />
+
+                <a href="character-detail.php?id=14">
+                    <img src="../img/characters-profil/14.jpg" alt="Sighild" height="100" width="80">
+                </a>
+
+                <br />
+
+                10.05.18
+            </div>
+
+            <div class="forum-post-content">
+                Je pense aussi qu'Akbar devrait y aller seul. Ludwick a clairement dit que prendre le pays ne l'intéressait pas, ce qu'il faut savoir maintenant c'est si le reste de l'Empire pense comme lui. Si ça se trouve, on peut éviter la guerre en laissant Akbar lui parler et voir s'il peut investiguer à ce sujet.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=5&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=5&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=5&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=5&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=5&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=5&page=6">
+          6
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=2">Palais d'Erune</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=1">
+        <img src="../img/characters-profil/1.jpg" alt="Andalur" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=1">Andalur</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=3">
+        <img src="../img/characters-profil/3.jpg" alt="Enola Nimendez" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=3">Enola Nimendez</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=6">
+        <img src="../img/characters-profil/6.jpg" alt="Selandra" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=6">Selandra</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=7">
+        <img src="../img/characters-profil/7.jpg" alt="Akbar" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=7">Akbar</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=8">
+        <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=8">Ylenia Maria di Santa Lucia</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=12">
+        <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=12">Sindalia Androulya Lissentia</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=15">
+        <img src="../img/characters-profil/15.jpg" alt="MJ" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=15">MJ</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=121">
+        <img src="../img/characters-profil/121.jpg" alt="Victorine Claire de Chantemerle" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=121">Victorine Claire de Chantemerle</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=129">
+        <img src="../img/characters-profil/129.jpg" alt="Alberto Bratelli (Braal)" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=129">Alberto Bratelli (Braal)</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=181">
+        <img src="../img/characters-profil/181.jpg" alt="Tronchetto" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=181">Tronchetto</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=182">
+        <img src="../img/characters-profil/182.jpg" alt="Nerrak" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=182">Nerrak</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=183">
+        <img src="../img/characters-profil/183.jpg" alt="Grumtark" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=183">Grumtark</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=212">
+        <img src="../img/characters-profil/212.jpg" alt="Romeo Scopoli" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=212">Romeo Scopoli</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=2&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                                                                                                    <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.04.20
+            </div>
+
+            <div class="forum-post-content">
+                Petit retour en arrière. Je me suis rendu compte que j&#039;ai oublié de vous faire jouer une petite scène.
+On est au moment ou vous parliez avec Ylenia juste après qu&#039;elle vous ait demandé un feed back de Janko.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.04.20
+            </div>
+
+            <div class="forum-post-content">
+                Je voulais encore vous demander, que pensez-vous de Victorine ?
+Tehlar souhaiterait prendre sa retraite et j&#039;ai besoin que quelqu&#039;un à la direction des écoles de magie du pays. Je nommerai bien Sindalia ou encore Akbar à ce poste, mais étant donné que vous êtes souvent en vadrouille...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.04.20
+            </div>
+
+            <div class="forum-post-content">
+                ... Hm... Elle m agace par moment mais elle est adorable. Question magie je ne peux point juger son travail car je ne suis pas la dedans moi 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.04.20
+            </div>
+
+            <div class="forum-post-content">
+                (jet de empathie/recrutement/recrutement de cadre supérieur/recrutement de cadre supérieur d&#039;école de magie/recrutement de cadre supérieur d&#039;école de magie de sexe féminin)  <hr><span class="play-sub-title">Action</span><br /><p>Empathie (diff. 7) => 2R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.04.20
+            </div>
+
+            <div class="forum-post-content">
+                Elle est extrêmement douée en théorie, magie conceptuelle et mathématique, parfaite pour faire de la recherche ou donner des cours de théorie. Après, sur le plan de la pratique, on l&#039;a peu vu à l’œuvre, et jamais en situation de stress intense. Si son rôle est cantonné dans une bibliothèque ou une salle de classe, elle pourrait être un atout certain pour la nation, si son rôle est de former des mages de bataille...je suis pas certain que ce soit la bonne personne. Il serait intéressant de proposer à Tehlar de travailler une année ou deux avec elle, histoire qu&#039;il puisse lui transmettre son expérience de directeur et quelques astuces dont il a le secret...et il faut surtout voir si elle est intéressée; après tout, elle est de Fauchlevent, pas d&#039;Altéria. 
+
+Et toi, Ylenia, t&#039;en penses quoi, de Victorine?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.04.20
+            </div>
+
+            <div class="forum-post-content">
+                Oh non, Braal continuera à former les magiciens au combat, je ne souhaite pas lui ôter cette assignation.
+
+Pour le travail de Directeur Magistique, il réside essentiellement dans l&#039;étude d&#039;investissement, gestion des ressources, comptabilité, veille, et bien sûr, il devient par défaut l&#039;un de mes Grand Conseiller.
+
+Quant à Victorine... * Prend une seconde de réflexion. *
+
+Je dirais que c&#039;est une théoricienne pragmatique. Ses raisonnements semblent fort logiques. Elle dispose d&#039;une bonne mémoire et visiblement d&#039;une capacité d&#039;apprentissage importante. Ca fait beaucoup de qualités.
+Mais elle est également fort réservée et psychologiquement forte, ce qui rend son analyse compliquée. Or, je sais que certaines personnes se révèlent plus facilement lorsqu&#039;ils se sentent en danger. Vous qui l&#039;avez vus dans votre dernier voyage devriez avoir une idée de si la nation peut lui faire confiance ou non.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                21.04.20
+            </div>
+
+            <div class="forum-post-content">
+                De mon point de vue, elle serait capable d&#039;endossé le rôle en théorie.
+En pratique, je ne crois pas qu&#039;elle n&#039;ai la crédibilité nécessaire. Elle n&#039;est en sois pas Arc Magicienne et risque de devoir luter pour gagner la confiance de ces collaborateurs, majoritairement plus âgés et expérimentés. 
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=945&place-id=2" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                21.04.20
+            </div>
+
+            <div class="forum-post-content">
+                De plus la situation compliqué avec ça sœur risque d&#039;être exposée si elle devait devenir un personnage public.
+
+Cela-dit Tehlar est très loin d&#039;être au bout de ces ressources et je ne suis pas prête a passer mon dernier examen dans un futur proche. Je doute donc que quelqu&#039;un n&#039;arrive à le tuer jusqu&#039;à ce que je m&#039;en occupe.
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=946&place-id=2" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                21.04.20
+            </div>
+
+            <div class="forum-post-content">
+                Le tuer ?!? Est-ce là une métaphore de magicien ou d&#039;elfe sombre?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                22.04.20
+            </div>
+
+            <div class="forum-post-content">
+                Quoi qu&#039;il en soit, j&#039;entends vos conseils de prudence. On dirait bien qu&#039;Alteria va devoir se passer de Grand Mage pendant un moment.
+Tehlar m&#039;a demandé avec tant de véhémence de lui accorder sa retraite que je n&#039;ai su que faire que de la-lui accorder. Je ne tiens pas à ce que mes conseillers travaillent à contre-coeur...
+
+Merci de votre franchise mes amis.
+Peut-être que lorsque nous aurons trouvé quelqu&#039;un digne de ce poste, alors nous pourrons nommer Victorine Grande Enchanteresse du royaume. A voir.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+    <div id="forum-post-options">
+        <form action="play.php?action=new-comment&place-id=2" method="post" class="form">
+            <div id="play-select-character">
+                <select name="character-id" id="play-character-selector" onchange="loadChar()">
+                                                                                                                                                                <option value="183">Grumtark</option>
+                                                                                                <option value="182">Nerrak</option>
+                                                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                                                        </select>
+            </div>
+
+            <div id="play-action-comment-fields">
+                <div id="play-comment-field">
+                    <span class="play-sub-title">Texte</span>
+
+                    <div id="play-comment-form">
+                        <textarea rows="4" cols="70" name="comment"></textarea>
+                    </div>
+                </div>
+
+                <div id="play-action-field">
+                    <span class="play-sub-title">Action</span>
+
+                    <div id="play-action-form">
+                        <select name="action-attribute">
+                            <option value="">Attributs</option>
+                            <option id="attribute-strength" value="strength"></option>
+                            <option id="attribute-dexterity" value="dexterity"></option>
+                            <option id="attribute-stamina" value="stamina"></option>
+
+                            <option id="attribute-aestheticism" value="aestheticism"></option>
+                            <option id="attribute-charisma" value="charisma"></option>
+                            <option id="attribute-empathy" value="empathy"></option>
+
+                            <option id="attribute-intelligence" value="intelligence"></option>
+                            <option id="attribute-perception" value="perception"></option>
+                            <option id="attribute-reflexes" value="reflexes"></option>
+                        </select>
+
+                        <select name="action-skill" id="play-action-form-select-skill">
+                            <option value="">Compétences</option>
+                        </select>
+
+                        <div id="play-action-form-specialisations-container">
+                            <span class="play-sub-title">Spécialisations</span><br />
+                            <span id="play-action-form-check-specialisations"></span>
+                        </div>
+
+                        <div id="play-action-form-difficulty">
+                            Difficulté : <input type="number" name="difficulty" value="7" min="2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="play-action-mj-fields">
+                <span class="play-sub-title">Option de MJ</span>
+
+                <div id="mj-options-selector">
+                    <select name="mj-option-id">
+                        <option value="">Aucune</option>
+                        <option value="1">Faire une ligne de démarcation</option>
+                    </select>
+                </div>
+
+                <br />
+
+                <a href="" id="play-action-new-challenge-link">Créer un défi</a>
+            </div>
+
+            <div id="post-button">
+                <input type="hidden" id="hidden-place-id" value="2" />
+                <input type="submit" value="Poster" />
+            </div>
+        </form>
+    </div>
+
+    
+        <script>
+            $(window).on("load", loadChar);
+
+            function loadChar() {
+                var xhttp = new XMLHttpRequest();
+                var charId = $('#play-character-selector').val();
+
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        JsonChar = JSON.parse(this.responseText);
+
+                        if(JsonChar.status['id'] != 5){
+                            $("#play-action-field").show();
+                            $("#play-action-mj-fields").hide();
+
+                            document.getElementById("attribute-strength").innerHTML = "Force : " + JsonChar.strength;
+                            document.getElementById("attribute-dexterity").innerHTML = "Dextérité : " + JsonChar.dexterity;
+                            document.getElementById("attribute-stamina").innerHTML = "Endurance : " + JsonChar.stamina;
+
+                            document.getElementById("attribute-aestheticism").innerHTML = "Esthétisme : " + JsonChar.aestheticism;
+                            document.getElementById("attribute-charisma").innerHTML = "Charisme : " + JsonChar.charisma;
+                            document.getElementById("attribute-empathy").innerHTML = "Empathie : " + JsonChar.empathy;
+
+                            document.getElementById("attribute-intelligence").innerHTML = "Intelligence : " + JsonChar.intelligence;
+                            document.getElementById("attribute-perception").innerHTML = "Perception : " + JsonChar.perception;
+                            document.getElementById("attribute-reflexes").innerHTML = "Réflexes : " + JsonChar.reflexes;
+
+                            $("#play-action-form-select-skill").empty();
+                            $("#play-action-form-select-skill").append("<option value=''>Compétences</option>");
+
+                            $.each(JsonChar.skills, function(index, value) {
+                                if(value['level'] == 0){
+                                    $("#play-action-form-select-skill").append("<option value='" + value['id'] + "'>" + value['name'] + " : " + value['points'] + "</option>");
+                                }
+                            });
+
+                            $("#play-action-form-check-specialisations").empty();
+
+                            $.each(JsonChar.skills, function(index, value) {
+                                if(value['level'] != 0){
+                                    $("#play-action-form-check-specialisations").append("<input type='checkbox' name='specialisations[]' value='" + value['id'] + "'> " + value['name'] + " : " + value['points'] + "<br />");
+                                }
+                            });
+                        }else{
+                            $("#play-action-field").hide();
+                            $("#play-action-mj-fields").show();
+
+                            var placeId = $('#hidden-place-id').val();
+
+                            $('#play-action-new-challenge-link').attr("href", "new-challenge.php?mj-id=" + JsonChar.id + "&place-id=" + placeId);
+                        }
+                    }
+                };
+
+                xhttp.open("GET", "play.php?action=get-json-character&charId=" + charId, true);
+                xhttp.send();
+            }
+        </script>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=2&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=2&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=2&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=2&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=2&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=2&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=2&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=2&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=2&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=2&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=2&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=2&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=2&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=2&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=2&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=2&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=2&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=2&page=18">
+          18
+      </a>
+          <a href="play.php?place-id=2&page=19">
+          19
+      </a>
+          <a href="play.php?place-id=2&page=20">
+          20
+      </a>
+          <a href="play.php?place-id=2&page=21">
+          21
+      </a>
+          <a href="play.php?place-id=2&page=22">
+          22
+      </a>
+          <a href="play.php?place-id=2&page=23">
+          23
+      </a>
+          <a href="play.php?place-id=2&page=24">
+          24
+      </a>
+          <a href="play.php?place-id=2&page=25">
+          25
+      </a>
+          <a href="play.php?place-id=2&page=26">
+          26
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=27">Aux Acolytes Anonymes</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=11">
+        <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=11">Giovanni Marzo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=176">
+        <img src="../img/characters-profil/176.jpg" alt="Filomena" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=176">Filomena</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=190">
+        <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=190">Marzia Moretti</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=27&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Et bien dit donc, tout ce spectacle. On peut ranger nos couteaux et s&#039;y mettre ? 
+Nerrak la prochaine fois demande moi, j&#039;aurai plaisir à jouer avec ta main mais sans te faire mal. 
+*Pendant que Sela le dit, elle joue avec son couteau <hr><span class="play-sub-title">Action</span><br /><p>Dextérité + Jeu du couteau + Esquive (diff. 7) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Enola Nimendez<br />
+
+                <a href="character-detail.php?id=3">
+                    <img src="../img/characters-profil/3.jpg" alt="Enola Nimendez" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Olala ! Pire qu&#039;une garçon...
+
+* Lance successivement un sort de guérison des muscles puis de la peau sur Nerrak *
+
+Intelligence + Guérison des muscles (diff. 7) =&gt; 2R
+Intelligence + Guérison de la peau (diff. 7) =&gt; 2R
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                06.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Alors cette soupe de poisson ?
+
+Puisque vous semblez décidez à vous mêlez aux Mafias, je vais vous filer un coup de pouce, histoire de ne pas perdre de bons clients.
+
+Alors tout d&#039;abord les règles fondamentales :
+
+- Lors de votre première visite, vous amenez un cadeau. Puis une fois de temps à autre selon votre entente et vos affaires.
+- Chez eux, ils sont maîtres absolus. Ca implique un droit de vie ou de mort. Donc évitez de remettre en cause leurs avis ou leurs ordres.
+- Jamais de fuite sur ce que eux ou leurs hommes vous diront, y comprit envers Ylenia.
+- Personne ne marche sur les plate bandes des autres. Si on a besoin, on demande un service.
+- Si l&#039;un de nous devait mourrir son remplacent serait élu par ses hommes.
+- Enfin, un marché se scelle par une poignée de main. On ne revient pas dessus sous peine de mort.
+
+
+Simple non ? Bon maintenant les lascars à présent :
+
+- Enzo — pour les jeux d&#039;argents — aime l&#039;or. Il se fait volontairement passer pour plus bête qu&#039;il ne l&#039;est, mais ne vous y trompez pas, il a l&#039;esprit vif et... créatif.
+
+- Dante — pour les aggressions — est le plus prudent de nous 5. Il m&#039;a presque fallu une année pour le rencontrer. Il aime le pouvoir, mais le consomme toujours en retrait à l&#039;abri des regards. Je peux  aussi vous dire qu&#039;il déteste les surprises.
+
+- Claudia — pour la prostitution — est la plus mystérieuse sans aucun doute. Je n&#039;ai aucune idée de ce qui l&#039;anime, mais elle ne semble pas vous craindre.
+
+- Chloe — pour le vol — est complètement folle. C&#039;est d&#039;ailleurs une bonne cliente à moi. Elle aime le challenge et a le goût du risque. Se sentir vivante est son souci premier. Si vous allez la voir, vous pouvez lui offrir ceci. *Pose une petite fiole de liquide rougeâtre sur la table* C&#039;est sa drogue préférée.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.05.20
+            </div>
+
+            <div class="forum-post-content">
+                @Sela *Laisse sa deuxième main à Sela en pleine confiance pour qu&#039;elle joue avec sans même regarder* &quot;Tu dois m&#039;enseigner ça !&quot;
+
+Ooooooh &quot;nous 5&quot; ! et on à laissé passé ça... Don Marzo est donc le régisseur des traffic de stupéfiant, navré de ne pas t&#039;avoir traité comme une star avant ! (Et pour une fois elle l&#039;a pas crié...) Du coup notre Giovanni il aime quoi ?
+
+@Enola, {le temps que tu prenne la mais de Nerrak elle n&#039;a plus de blessure, même pas l&#039;ombre d&#039;une cicatrice}
+
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1052&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Bein oui, c&#039;est pas en vous offrant des verres que je gagne ma vie voyons.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Enola Nimendez<br />
+
+                <a href="character-detail.php?id=3">
+                    <img src="../img/characters-profil/3.jpg" alt="Enola Nimendez" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.05.20
+            </div>
+
+            <div class="forum-post-content">
+                @Nerrak : Mais comment tu l&#039;as faites? Il y a une instante tou étais toute trouée...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Nerrak<br />
+
+                <a href="character-detail.php?id=182">
+                    <img src="../img/characters-profil/182.jpg" alt="Nerrak" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.05.20
+            </div>
+
+            <div class="forum-post-content">
+                @Enola Ah ça... euh... bah je sais pas... je suis un dragon avant tout... je suppose... je suppose que ça viens de ça... Merci de t&#039;en soucié Enola !
+
+@Giovanni Les gens t&#039; amène qui comme cadeau à toi ? du coup ?
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=1057&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Giovanni Marzo<br />
+
+                <a href="character-detail.php?id=11">
+                    <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Des clients Ahaha !
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Quand Nerrak plante son couteau dans sa propre paume
+Jet de volonté: diff 15+6-&gt; 0R
+*Est profondément dégouté et a un haut-le cœur quand il voit la scène, à la limite de vomir. Met sa main devant sa bouche. Par contre, il n&#039;est pas du tout intimidé. Se reprend et avec aplomb, répond.
+
+Int+arcanologie: 4R (pour savoir si un familier à un libre arbitre, vu qu&#039;Abu en a très peu)
+Int+théologie+théologie du Dieu Unique: 6R (pour savoir si un familier a une âme, donc est un être)
+
+@Nerrak: 
+-Alors primo: quand je parlais d&#039;être de chair et d&#039;os, je pensais plutôt à Grumtark qui ne me semble pas si matérielle que ça...
+*compte sur les doigts de sa main droite, utilisant l&#039;indexe de l&#039;autre main pour accentuer le décompte.
+
+-Secondo: Bien que composée de chair et d&#039;os, tu es comme la queue d&#039;un lézard. Il peut la sacrifier en cas de besoin, une autre repoussera. Tu est faite de chair et d&#039;os, tu as ta personnalité et ton libre arbitre...d&#039;accord.. mais tu n&#039;a pas d&#039;âme...pas d&#039;histoire et ça ne fait donc techniquement pas de toi &quot;un être à part entière&quot; *fait les guillemets. Quand à savoir si le lézard choisis de sacrifier sa queue ou autre chose, je n&#039;en sais rien mais de toute façon le choix ne m&#039;appartient pas. 
+*marque le second point sur sa main droite
+
+-Tercio:  Accomplir des gestes aussi écœurant à table est proprement inacceptable. Nous sommes dans un restaurant, les gens mangent et n&#039;ont pas à soutenir l&#039;image de ta main sanguinolente transpercé d&#039;une lame. C&#039;est dégoutant.
+*marque le troisième point sur sa main droite
+
+-Et pour finir, si je proposais Grumtark plutôt que toi, c&#039;est précisément parce que tu n&#039;est pas du tout à la hauteur de cette mission. D&#039;ailleurs, je te remercie d&#039;avoir apporté de l&#039;eau à mon moulin par cette démonstration d&#039;impulsivité et de stupidité. *Montre le sang qu&#039;elle est en train de nettoyer.
+Mais passons...
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                07.05.20
+            </div>
+
+            <div class="forum-post-content">
+                @A l&#039;arrivée de Giovanni:
+
+Excellente...avec ses petit croutons, en plus...
+
+*Ecoute attentivement les règles et les descriptions qui s&#039;en suivent
+
+Int+apprentissage: pour les apprendre
+
+Mmhh...quand on devra entrer en contact avec Enzo, j&#039;ai une bonne idée de cadeau qui ne devrait pas le laisser indifférent 
+* fouille dans sa besace et en sort une pièce d&#039;or à l&#039;effigie du roi Salomon. La pose sur la table et la glisse par télékinésie au milieu de la table. Arrivée en son centre, la surélève de deux centimètres et lui imprime un mouvement de vrille lent, histoire de montrer l&#039;objet à toute l&#039;assemblée.
+
+-Par contre, pour Dante, je suis pas sur d&#039;avoir bien compris...qu&#039;est ce qu&#039;on pourrait lui offrir qui lui donnerait du pouvoir à consommer discrètement...Ça m&#039;inspire pas grand-chose...
+
+*s&#039;illumine...lève un index @Giovanni
+
+-En fait, avant de le rencontrer - ce qui semble compliqué - , on pourrait plutôt lui faire demander un service par tes soins, Giovanni, non? Comme éliminer la menace qui nous concerne ou...avoir plus d&#039;informations pour pouvoir le faire nous même...ou...un truc du genre, quoi <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Apprentissage (diff. 6) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=27&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=27&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=27&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=27&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=27&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=27&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=27&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=27&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=27&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=27&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=27&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=27&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=27&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=27&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=27&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=27&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=27&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=27&page=18">
+          18
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

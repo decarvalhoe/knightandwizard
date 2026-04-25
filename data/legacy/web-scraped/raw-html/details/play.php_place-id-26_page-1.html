@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=26">La 8ème Forge</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=194">
+        <img src="../img/characters-profil/194.jpg" alt="Kvild Docre" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=194">Kvild Docre</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=26&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Une rune d&#039;antimagie...une rune d&#039;annihliation
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Kvild Docre<br />
+
+                <a href="character-detail.php?id=194">
+                    <img src="../img/characters-profil/194.jpg" alt="Kvild Docre" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Alors ça pour vous répondre, vous tout intérêt à vous renseigner auprès des guildes de graveurs. Moi je ne suis qu&#039;un humble forgeron...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Humilité inversement proportionnelle à la qualité de votre travail....
+Y a t&#039;il une guilde de graveur pas loin?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Le terme &quot;humble&quot; sonne en effet en décalage avec ce que vous voyez.
+La 8éme Forge est la plus grande et la plus réputée de Niebel. Vous avez aperçu une quinzaines de nains y travaillant sur trois étages sur des articles allant des armes et armures aux fers à cheval et rivets.
+De plus, vous venez de lui faire un versement de 70 millions, ce qui fait que Kvild, le maître de Forge est peut-être actuellement plus riche qu&#039;Hylenia.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Kvild Docre<br />
+
+                <a href="character-detail.php?id=194">
+                    <img src="../img/characters-profil/194.jpg" alt="Kvild Docre" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Oui vous pouvez aller voir les Kreist de ma part. Il sont juste dans la rue parallèle en aval. Il existent beaucoup de guildes de graveurs dans nos Montagnes mais eux ont la renommée d&#039;avoir eût 4 Maîtres des Runes dont un est encore en vie. C&#039;est une sacrée carte de visite ! Autant vous dire que lorsque j&#039;ai choisis d&#039;ouvrir ma propre forge, la proximité avec les Kreist à pesé lourd... [il regarde la commande d&#039;Alteria] dans la balance.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Nous irons les voir avec grand plaisir...N&#039;est-ce pas Thorine? Une dernière question, pour être sur que j&#039;ai bien compris la base du fonctionnement d&#039;une rune...elle est forcement appliquée sur un objet? Je veux dire...une rune ne peux pas exister juste pour elle même, elle doit forcement faire résonner un objet pour en modifier les propriétés?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Kvild Docre<br />
+
+                <a href="character-detail.php?id=194">
+                    <img src="../img/characters-profil/194.jpg" alt="Kvild Docre" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.03.20
+            </div>
+
+            <div class="forum-post-content">
+                En fait oui mais par défaut. C&#039;est à dire que puisque nos runes sont des gravures, ce sont en fin de compte comme des absences de matière qui trace un certain motif. Or, qui dit absence de matière dit forcément qu&#039;il y a un support, vous comprenez? C&#039;est là que j&#039;interviens !
+Il y a des graveurs qui ont essayés de construirent la matière autour de la rune. Une sorte de moulage... Mais ça n&#039;a jamais rien donné. Le mieux reste d&#039;abraser la matière sur un objet existant.
+C&#039;est pour ça aussi que si vous peignez une rune naine cela n&#039;aura aucun effet puisqu&#039;il n&#039;y aura pas de creu et donc de ce fait, pas de résonance.
+
+Les gnomes ont des runes qui fonctionne par dessin. Mais ça je ne suis pas assez expert pour bien en parler.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.03.20
+            </div>
+
+            <div class="forum-post-content">
+                les gnomes...pfff...surement des illusions, de l’esbroufe. Quand on résiste un tant soi peu à la magie, on se rend compte que ce n&#039;est qu&#039;un peuple d&#039;escroc qui vit comme drogué à la magie de l&#039;illusion. Si ça trouve, ils n&#039;ont jamais eu la moindre rune chez eux...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                20.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Faut vraiment qu&#039;on aille voir les Kreist
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                <div class="forum-post-demarcation-line">Fin de la scène</div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=26&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=26&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=26&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=26&page=4">
+          4
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

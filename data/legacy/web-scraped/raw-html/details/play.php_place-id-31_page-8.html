@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=31">Castello di Sala</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=31&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Alberto Bratelli (Braal)<br />
+
+                <a href="character-detail.php?id=129">
+                    <img src="../img/characters-profil/129.jpg" alt="Alberto Bratelli (Braal)" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Hum... non je ne me déplace ni dans les airs ni dans Tronchetto.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Je vous ai rédigé une lettre attestant de votre mission pour la couronne d&#039;Alteria et qui explique la teneur de votre voyage.
+
+* Vous tend une enveloppe cacheté aux armoiries des di Santa Lucia. *
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                *s&#039;en saisit
+Merci
+Dans tous les cas, Braal, je pense qu&#039;il ne serait pas inutile que tu apprennes à voler...Un magicien est plus efficace quand il a de la hauteur et qu&#039;il est en retrait...souhaiterais-tu que je te mette des ailes afin que tu puisse t&#039;entrainer? Au cas ou nous repassons par ici, peut-être pourras-tu te joindre à nous à ce moment-là...
+
+Je pense que Janko nous serait des plus utiles dans l&#039;immédiat, qu&#039;en pensez-vous? Il est travailleur, très vigilent et ne mange presque rien. Il a tout pour plaire.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Pour l&#039;heure, Braal assure ma sécurité. Il n&#039;est pas prévu qu&#039;il se mette en retrait ou même qu&#039;il passe du temps à apprendre à voler.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Jenko me paraît une bonne idée.
+
+Notre vie est la tienne Princess Ylenia. *avec un petit signe de tête style révérence.
+
+Devenir folle ? Nerrak J ai déjà monter des chevaux sans selle et je tenais bien en place. 
+
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Alors qu&#039;Ylenia souriait gracieusement en remerciement Sindalia et Sela qui lui promettaient d&#039;accomplir la mission confiée, le PPP annonce soudain : &quot;Le Prince Oherim Kaleth Mereha de Khyr !&quot;
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Oherim Kaleth Mereha<br />
+
+                <a href="character-detail.php?id=215">
+                    <img src="../img/characters-profil/215.jpg" alt="Oherim Kaleth Mereha" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                * Entre dans la pièce, fait une petite révérence à l&#039;assemblée et vous parle d&#039;une voie douce mais affirmée. *
+
+Princesse Ylenia, je m&#039;apprête à rentrer dans mon royaume, là où les ombres ne sont pas des pièges mais des refuges.
+
+Avant de partir je tenais toutefois à vous demander pourquoi le hobbit a t-il triché en usant de sa magie pour finalement me laisser gagner ce concours ?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Marmonne dans ma bouche...
+
+Moui, moi aussi... 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                * Visiblement prise au dépourvu. *
+
+Je... J&#039;ignorais que le Chevalier de Rossellini avait usé de magie durant le tournois... Je vous prie d&#039;accepter les excuses de notre nation pour cet incident.
+
+Quant au fait qu&#039;il vous ait laissé gagné, à vrai dire, ce fut le seul moyen que j&#039;ai trouvé pour que vous acceptiez mon invitation à mon mariage. Là encore je ne peut que vous demander de me pardonner cette faiblesse qui fût la mienne.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                MJ<br />
+
+                <a href="character-detail.php?id=15">
+                    <img src="../img/characters-profil/15.jpg" alt="MJ" height="100" width="80">
+                </a>
+
+                <br />
+
+                25.06.20
+            </div>
+
+            <div class="forum-post-content">
+                Un silence pesant s&#039;instale.
+Vous savez que cela fait bientôt un an qu&#039;Ylenia fait tout ce qu&#039;elle peut pour nouer une alliance avec les Elfe des Bois sans succès, et là encore les choses semblent mal tourner.
+
+Le Prince Oherim regarde alors en direction d&#039;Akbar semblant le dévisager.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=31&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=31&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=31&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=31&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=31&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=31&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=31&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=31&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=31&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=31&page=10">
+          10
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

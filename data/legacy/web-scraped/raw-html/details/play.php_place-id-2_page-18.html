@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=2">Palais d'Erune</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=1">
+        <img src="../img/characters-profil/1.jpg" alt="Andalur" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=1">Andalur</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=3">
+        <img src="../img/characters-profil/3.jpg" alt="Enola Nimendez" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=3">Enola Nimendez</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=6">
+        <img src="../img/characters-profil/6.jpg" alt="Selandra" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=6">Selandra</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=7">
+        <img src="../img/characters-profil/7.jpg" alt="Akbar" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=7">Akbar</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=8">
+        <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=8">Ylenia Maria di Santa Lucia</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=12">
+        <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=12">Sindalia Androulya Lissentia</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=15">
+        <img src="../img/characters-profil/15.jpg" alt="MJ" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=15">MJ</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=121">
+        <img src="../img/characters-profil/121.jpg" alt="Victorine Claire de Chantemerle" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=121">Victorine Claire de Chantemerle</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=129">
+        <img src="../img/characters-profil/129.jpg" alt="Alberto Bratelli (Braal)" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=129">Alberto Bratelli (Braal)</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=181">
+        <img src="../img/characters-profil/181.jpg" alt="Tronchetto" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=181">Tronchetto</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=182">
+        <img src="../img/characters-profil/182.jpg" alt="Nerrak" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=182">Nerrak</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=183">
+        <img src="../img/characters-profil/183.jpg" alt="Grumtark" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=183">Grumtark</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=212">
+        <img src="../img/characters-profil/212.jpg" alt="Romeo Scopoli" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=212">Romeo Scopoli</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=2&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                                                                                                    <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.03.20
+            </div>
+
+            <div class="forum-post-content">
+                @Victorine:
+-Mais si vous croisez ce que je vous raconte à propos du chaos et vos exceptionnelles connaissances de magie conceptuelles, rien ne vous interpelle? (je lui parle du lien hypothétique avec les rêves, de l&#039;organisation de la magie chaotique, de son expansion, des rythmes &quot;cardiaque&quot; du chaos)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Salue Ragnar d&#039;un signe de tête quand il sort.
+
+*Se présente devant sa Reine et s&#039;incline poliment. Ouvre la bouche pour prendre la parole mais est devancé par Sindalia <hr><span class="play-sub-title">Action</span><br /><p>Charisme + Etiquette + Etiquette altérienne (diff. 5) => 1R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.03.20
+            </div>
+
+            <div class="forum-post-content">
+                Parlez donc, vous avez toute mon attention.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Selandra<br />
+
+                <a href="character-detail.php?id=6">
+                    <img src="../img/characters-profil/6.jpg" alt="Selandra" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *regarde Ragnar partir, baisse la tête et suis tout le monde et attend... 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *Regarde en direction de Sindalia et voyant qu&#039;elle ne prenait étonnement pas la parole, il se lança.
+
+Bonjour Ylenia,
+Voila, on vient te voir pour te faire part d&#039;une idée qui nous est venue. Il nous reste une petite fortune amassée lors de précédentes aventures et nous souhaitions la réinvestir pour soutenir Alteria. Notre projet est d&#039;ouvrir une maison de jeu afin d&#039;attirer les gens fortunés des alentours mais aussi des pays où le jeu est un péché. Pour accroitre la notoriété ce notre établissement, nous souhaitions organiser un gala auquel nous sommes très honorés de t&#039;inviter...enfin...si t&#039;es d&#039;accord, bien sur...enfin, si t&#039;es d&#039;accord aussi pour la maison de jeu...&#039;fin tu vois quoi?!
+ <hr><span class="play-sub-title">Action</span><br /><p>Charisme (diff. 7) => Echec critique (37)</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                28.03.20
+            </div>
+
+            <div class="forum-post-content">
+                (jet de charisme pour prendre la parole en public devant la Reine qui l&#039;impressionne par sa stature retrouvée mais aussi impressionné parce qu&#039;il lui semblait que Sindalia était plus légitime que lui pour parler)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                29.03.20
+            </div>
+
+            <div class="forum-post-content">
+                * Sourit poliment suite à la tentative de charisme d&#039;Akbar *
+
+Ainsi, vous désirez ouvrir une maison de jeu... Ce type d&#039;établissement n&#039;est généralement pas reconnu pour le soutient qu&#039;il apporte aux nations qui les abritent. Ce sont d&#039;habitude des marchands d&#039;illusions qui contribuent à appauvrir ceux qui ont la naïveté d&#039;espérer que le hasard leur porte une vie meilleure.
+
+Je ne puis donc soutenir ouvertement ce projet.
+Néanmoins, la nature de l&#039;homme est ce qu&#039;elle est, et tôt ou tard ce genre de bâtiments réapparaîtront à Erune. Ce jour là, je préfèrerai avoir un contrôle sinon un suivi sur ce qu&#039;il se passe à l&#039;intérieur de ceux-ci. Je vous donne donc mon accord en partant du principe que votre fidélité envers moi est plus importante que l&#039;attrait des gains hypothétiques de votre entreprise.
+Vous pouvez prendre l&#039;ancien manoir de Rossellini au Sud-Est de la ville. Il n&#039;est plus habité depuis la catastrophe du Dragon et nécessitera donc des travaux de restauration.
+
+Quant à ma participation pour votre gala d&#039;inauguration, vous comprenez que je ne pourrai être présente, même si votre invitation me touche. <hr><span class="play-sub-title">Action</span><br /><p>Intelligence + Economie (diff. 6) => 13R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                29.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *Se ressaisit 
+
+Entendu...J&#039;ai peut-être pas été clair, mais l&#039;objectif est effectivement pas de plumer les pauvres altériens  utopistes mais plutôt de faire un établissement luxueux afin d&#039;attirer les fortunés, et dans l&#039;idéal, les riches des autres pays. Le fond de notre pensée est de ne pas faire de bénéfices personnels mais de réinvestir ces revenus dans des bonnes œuvres. Rien de vous empêche, par ailleurs, Ylenia, de prélever des taxes sur ces bénéfices afin que ça profite aussi directement à la nation. Je pense même que ça serait une brillante idée et que ça vous donnerait une certaine main mise sur les autres maisons de jeu qui pourraient naitre.
+Pour ce qui est du gala...à la base, c’était deux idées séparées que nous avons prévu de réunir. Nous voulions faire un gala pour pouvoir inviter les riches des autres nations et leur faire part de l&#039;ouverture de notre établissement. Mais si vous ne pouvez y prendre part, j&#039;ai l&#039;impression que ça perd de son sens...Si nous organisons un gala international de soutien à l’hôpital et que nous en profitons pour faire discrètement connaitre aux invités l’existence de notre maison de jeu, participerez-vous?
+Sinon, avez-vous une meilleures idée pour l&#039;utilisation de 470 pièces d&#039;or?
+
+(jet d&#039;intelligence+économie que je n&#039;ai pas pour l&#039;histoire des taxes) <hr><span class="play-sub-title">Action</span><br /><p>Intelligence (diff. 7) => 6R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                29.03.20
+            </div>
+
+            <div class="forum-post-content">
+                * Adresse une sourire presque mélancolique à Akbar *
+
+Vous vous êtes parfaitement exprimé Akbar, n&#039;ayez aucun doute à ce sujet. Et je suis certaine que vos pensées sont emplies de bonne volontés. J&#039;avoue ne pas savoir comment vous comptez mettre en place votre système de tourisme élitiste, mais l&#039;expérience à démontrée à plusieurs reprises que votre groupe est plein de ressources.
+
+Pour cette soirée de gala, si elle est faîte dans un but autre que commerciale, je pourrai peut-être y assister.
+
+Enfin, si j&#039;avais 470&#039;000 écus à dépenser, je choisirais un secteur d&#039;activité à développer et ferais en sorte que la nation soit reconnue pour son avancement dans cette discipline, par exemple en ouvrant une école. Il est probable que le secteur en question serait choisit pour l&#039;avantage stratégique qu&#039;il offrirait en cas de conflit avec une autre nation.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                29.03.20
+            </div>
+
+            <div class="forum-post-content">
+                *limite à lui couper la parole tellement il est enjoué par sa proposition
+
+Comme une école militaire, d&#039;archerie ou d&#039;ingénieurs en machines de guerre? Ou alors une école de magie élémentaire? Ce genre de chose? <hr><span class="play-sub-title">Action</span><br /><p>Intelligence (diff. 7) => 2R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+    <div id="forum-post-options">
+        <form action="play.php?action=new-comment&place-id=2" method="post" class="form">
+            <div id="play-select-character">
+                <select name="character-id" id="play-character-selector" onchange="loadChar()">
+                                                                                                                                                                <option value="183">Grumtark</option>
+                                                                                                <option value="182">Nerrak</option>
+                                                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                                                        </select>
+            </div>
+
+            <div id="play-action-comment-fields">
+                <div id="play-comment-field">
+                    <span class="play-sub-title">Texte</span>
+
+                    <div id="play-comment-form">
+                        <textarea rows="4" cols="70" name="comment"></textarea>
+                    </div>
+                </div>
+
+                <div id="play-action-field">
+                    <span class="play-sub-title">Action</span>
+
+                    <div id="play-action-form">
+                        <select name="action-attribute">
+                            <option value="">Attributs</option>
+                            <option id="attribute-strength" value="strength"></option>
+                            <option id="attribute-dexterity" value="dexterity"></option>
+                            <option id="attribute-stamina" value="stamina"></option>
+
+                            <option id="attribute-aestheticism" value="aestheticism"></option>
+                            <option id="attribute-charisma" value="charisma"></option>
+                            <option id="attribute-empathy" value="empathy"></option>
+
+                            <option id="attribute-intelligence" value="intelligence"></option>
+                            <option id="attribute-perception" value="perception"></option>
+                            <option id="attribute-reflexes" value="reflexes"></option>
+                        </select>
+
+                        <select name="action-skill" id="play-action-form-select-skill">
+                            <option value="">Compétences</option>
+                        </select>
+
+                        <div id="play-action-form-specialisations-container">
+                            <span class="play-sub-title">Spécialisations</span><br />
+                            <span id="play-action-form-check-specialisations"></span>
+                        </div>
+
+                        <div id="play-action-form-difficulty">
+                            Difficulté : <input type="number" name="difficulty" value="7" min="2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="play-action-mj-fields">
+                <span class="play-sub-title">Option de MJ</span>
+
+                <div id="mj-options-selector">
+                    <select name="mj-option-id">
+                        <option value="">Aucune</option>
+                        <option value="1">Faire une ligne de démarcation</option>
+                    </select>
+                </div>
+
+                <br />
+
+                <a href="" id="play-action-new-challenge-link">Créer un défi</a>
+            </div>
+
+            <div id="post-button">
+                <input type="hidden" id="hidden-place-id" value="2" />
+                <input type="submit" value="Poster" />
+            </div>
+        </form>
+    </div>
+
+    
+        <script>
+            $(window).on("load", loadChar);
+
+            function loadChar() {
+                var xhttp = new XMLHttpRequest();
+                var charId = $('#play-character-selector').val();
+
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        JsonChar = JSON.parse(this.responseText);
+
+                        if(JsonChar.status['id'] != 5){
+                            $("#play-action-field").show();
+                            $("#play-action-mj-fields").hide();
+
+                            document.getElementById("attribute-strength").innerHTML = "Force : " + JsonChar.strength;
+                            document.getElementById("attribute-dexterity").innerHTML = "Dextérité : " + JsonChar.dexterity;
+                            document.getElementById("attribute-stamina").innerHTML = "Endurance : " + JsonChar.stamina;
+
+                            document.getElementById("attribute-aestheticism").innerHTML = "Esthétisme : " + JsonChar.aestheticism;
+                            document.getElementById("attribute-charisma").innerHTML = "Charisme : " + JsonChar.charisma;
+                            document.getElementById("attribute-empathy").innerHTML = "Empathie : " + JsonChar.empathy;
+
+                            document.getElementById("attribute-intelligence").innerHTML = "Intelligence : " + JsonChar.intelligence;
+                            document.getElementById("attribute-perception").innerHTML = "Perception : " + JsonChar.perception;
+                            document.getElementById("attribute-reflexes").innerHTML = "Réflexes : " + JsonChar.reflexes;
+
+                            $("#play-action-form-select-skill").empty();
+                            $("#play-action-form-select-skill").append("<option value=''>Compétences</option>");
+
+                            $.each(JsonChar.skills, function(index, value) {
+                                if(value['level'] == 0){
+                                    $("#play-action-form-select-skill").append("<option value='" + value['id'] + "'>" + value['name'] + " : " + value['points'] + "</option>");
+                                }
+                            });
+
+                            $("#play-action-form-check-specialisations").empty();
+
+                            $.each(JsonChar.skills, function(index, value) {
+                                if(value['level'] != 0){
+                                    $("#play-action-form-check-specialisations").append("<input type='checkbox' name='specialisations[]' value='" + value['id'] + "'> " + value['name'] + " : " + value['points'] + "<br />");
+                                }
+                            });
+                        }else{
+                            $("#play-action-field").hide();
+                            $("#play-action-mj-fields").show();
+
+                            var placeId = $('#hidden-place-id').val();
+
+                            $('#play-action-new-challenge-link').attr("href", "new-challenge.php?mj-id=" + JsonChar.id + "&place-id=" + placeId);
+                        }
+                    }
+                };
+
+                xhttp.open("GET", "play.php?action=get-json-character&charId=" + charId, true);
+                xhttp.send();
+            }
+        </script>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=2&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=2&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=2&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=2&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=2&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=2&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=2&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=2&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=2&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=2&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=2&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=2&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=2&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=2&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=2&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=2&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=2&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=2&page=18">
+          18
+      </a>
+          <a href="play.php?place-id=2&page=19">
+          19
+      </a>
+          <a href="play.php?place-id=2&page=20">
+          20
+      </a>
+          <a href="play.php?place-id=2&page=21">
+          21
+      </a>
+          <a href="play.php?place-id=2&page=22">
+          22
+      </a>
+          <a href="play.php?place-id=2&page=23">
+          23
+      </a>
+          <a href="play.php?place-id=2&page=24">
+          24
+      </a>
+          <a href="play.php?place-id=2&page=25">
+          25
+      </a>
+          <a href="play.php?place-id=2&page=26">
+          26
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

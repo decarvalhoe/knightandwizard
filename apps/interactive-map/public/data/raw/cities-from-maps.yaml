@@ -1,0 +1,595 @@
+# Villes extraites des cartes régionales — Phase 2 axe A bis
+# Sources : 15 cartes JPG dans site/download/map/ (lecture visuelle)
+# Date import : 2026-04-25
+
+version: 1
+metadata:
+  source: visual_extraction_from_maps
+  imported_at: "2026-04-25"
+  total_cities_extracted: 280  # approximatif
+  notes: |
+    Extraction visuelle depuis les 15 cartes régionales JPG.
+    Les noms peuvent contenir des fautes d'OCR — à valider.
+    Les "portes" du territoire nain (Portes d'Azrak) sont des points fortifiés, pas des villes per se.
+    Beaucoup de villages micro-localités sont juste indiqués par un nom sans détail.
+
+# Schéma simple :
+#   id: <slug>, name: <string>, parent_region: <region_id>
+#   role: capital | major_city | town | village | landmark
+#   notes: optionnel
+
+# === ALTERIA ===
+
+alteria_cities:
+  parent_region: alteria
+  source_map: "site/download/map/alteria.jpg"
+  capital:
+    - { id: erune, name: "Erune", role: capital, notes: "Capitale d'Alteria" }
+  major_cities:
+    - { id: gelario, name: "Gelario", role: major_city }
+    - { id: tertoria, name: "Tertoria", role: major_city }
+    - { id: cebrada, name: "Cebrada", role: major_city }
+    - { id: olbadio, name: "Olbadio", role: major_city }
+    - { id: sevoles, name: "Sevoles", role: major_city }
+    - { id: impole, name: "Impole", role: major_city, web_id: 25 }
+    - { id: lugina, name: "Lugina", role: major_city }
+    - { id: abejuan, name: "Abejuan", role: major_city, notes: "Maison-mère des Chiromanciens (organisations.yaml)" }
+    - { id: sala, name: "Sala", role: town, web_id: 30 }
+  villages:
+    - eboria, val_d_ora, salgueda, sao_guerda, espovora, la_quaglia, el_norreno
+    - greatorga, greba, bellisse, venasia, riciano, plamus_greo, pasciso
+    - hueseroca, mont_charoia, parielo, gretto, oruyo, jezano, pico_rhello
+    - gueceno, carvodi, ilcuen, le_bosque, jelda, pontevila, romana, baroste
+    - lugana, vagame
+  zones:
+    - serrano_de_santa, la_voltega, plaines_vieux, plaines_tiranna
+    - lac_de_gueda, lac_de_caran, mont_charoia, las_montagnas_del_naste
+    - lac_espalla
+  borders: [foret_de_tyrkan, collines_d_ico, portes_d_azrak, grand_desert, cortega]
+
+# === COLLINES D'ICO ===
+
+collines_ico_cities:
+  parent_region: collines_d_ico
+  source_map: "site/download/map/collines-ico.jpg"
+  capital:
+    - { id: kilioka, name: "Kilioka", role: capital, domain: piscio }
+  major_cities:  # chefs-lieux des 15 domaines
+    - { id: daniark, name: "Daniark", role: major_city, domain: neplia }
+    - { id: runilio, name: "Runilio", role: major_city, domain: pilac }
+    - { id: caldorak, name: "Caldorak", role: major_city, domain: imouc }
+    - { id: alkio, name: "Alkio", role: major_city, domain: icomi }
+    - { id: nekia, name: "Nekia", role: major_city, domain: oumic }
+    - { id: ranadio, name: "Ranadio", role: major_city, domain: octocia }
+    - { id: riokia, name: "Riokia", role: major_city, domain: niotaic }
+    - { id: enyak, name: "Enyak", role: major_city, domain: villmia }
+  villages:
+    - murtanai, luminokia, egaloia, ekrilia, viarnarak, tainadok, kornia
+    - sentaio, vainotka, murtana, adiltir, ortaiba
+  zones:
+    - foret_d_aikar, les_collines_vertes, mts_atanal, lac_viceppe
+    - bosquets_d_iarak
+  borders: [foret_de_tyrkan, treadur, onarit, alteria]
+  notes: "15 domaines (cf. nations.yaml.collines_d_ico). Chaque domaine a un chef-lieu visible sur la carte."
+
+# === DÊTRE ===
+
+detre_cities:
+  parent_region: detre
+  source_map: "site/download/map/detre.jpg"
+  capital:
+    - { id: asturiev, name: "Asturiev", role: capital, notes: "Donjon où la 8e épouse du Roi tyran est enfermée" }
+  cities:
+    - { id: bosojno, name: "Bosojno", role: town }
+    - { id: kajce, name: "Kajce", role: town }
+    - { id: tresgrad, name: "Tresgrad", role: town }
+    - { id: kresica, name: "Kresica", role: town }
+    - { id: pegrina, name: "Pegrina", role: town }
+    - { id: salkzor, name: "Salkzor", role: town }
+    - { id: vorojkiv, name: "Vorojkiv", role: town }
+    - { id: umijek, name: "Umijek", role: town }
+    - { id: betanka, name: "Betanka", role: major_city }
+    - { id: svetja, name: "Svetja", role: town }
+    - { id: vos, name: "Vos", role: town }
+    - { id: proda, name: "Proda", role: town }
+    - { id: zaleska, name: "Zaleska", role: town }
+    - { id: orospic, name: "Orospic", role: town }
+    - { id: kazma, name: "Kazma", role: town }
+  zones:
+    - le_mur, monts_drovska, chaine_de_telga, plaine_des_combattants
+    - lac_doronov, lac_d_eij, lac_kosjnev, lac_sirjuv, lac_de_betanka
+    - fleuve_korklav, la_kosnopa
+  borders: [royaume_du_chaos, montagnes_grises, irtanie, sombre_monde]
+
+# === DUNDORIA ===
+
+dundoria_cities:
+  parent_region: dundoria
+  source_map: "site/download/map/dundoria.jpg"
+  capital:
+    - { id: derin, name: "Derin", role: capital }  # nations.yaml indique Derin, pas vu nettement sur carte
+  cities:
+    - { id: jalaam, name: "Jalaam", role: major_city }
+    - { id: gefah, name: "Gefah", role: major_city }
+    - { id: sounice, name: "Sounice", role: town }
+    - { id: oussben, name: "Oussben", role: town }
+    - { id: khabil_wafen, name: "Khabil Wafen", role: major_city }
+    - { id: ismawad, name: "Ismawad", role: major_city }
+    - { id: jabal_beir, name: "Jabal Beir", role: major_city }
+    - { id: oumick, name: "Oumick", role: town }
+    - { id: qaeid, name: "Qaeid", role: town }
+    - { id: miloudjem, name: "Miloudjem", role: town }
+    - { id: zhor_hevat, name: "Zhor Hevat", role: town }
+    - { id: isna_byri, name: "Isna Byri", role: town }
+    - { id: shoyim, name: "Shoyim", role: town }
+  zones:
+    - le_grand_lac_latran, plats_desertiques
+  borders: [grand_desert, yonkado, irtanie, landes_desertiques, terres_sauvages]
+
+# === EMPIRE ===
+
+empire_cities:
+  parent_region: empire
+  source_map: "site/download/map/empire.jpg"
+  capital:
+    - { id: elioquant, name: "Elioquant", role: capital, notes: "Maison-mère des Astrologues" }
+  islands:
+    - { id: hitelen, name: "Hitelen", role: town, type: island }
+    - { id: stanon, name: "Stanon", role: town, type: island }
+  cities:
+    - { id: welty, name: "Welty", role: town }
+    - { id: milhery, name: "Milhery", role: town }
+    - { id: jillford, name: "Jillford", role: major_city }
+    - { id: delchester, name: "Délchester", role: major_city }
+    - { id: ardeen, name: "Ardeen", role: major_city }
+    - { id: shirlingt, name: "Shirlingt", role: major_city }
+    - { id: lifield, name: "Lifield", role: town }
+    - { id: sectown, name: "Sectown", role: town }
+    - { id: walkston, name: "Walkston", role: town }
+    - { id: sobradge, name: "Sobradge", role: town }
+    - { id: vintale, name: "Vintale", role: major_city }
+    - { id: meidon, name: "Meidon", role: major_city }
+    - { id: costor, name: "Costor", role: town }
+    - { id: crey, name: "Crey", role: town }
+    - { id: denes, name: "Denes", role: town }
+    - { id: trumburg, name: "Trumburg", role: town }
+    - { id: sissvick, name: "Sissvick", role: town }
+    - { id: forhey, name: "Forhey", role: town }
+    - { id: sileker, name: "Sileker", role: town }
+    - { id: parteld, name: "Parteld", role: town }
+    - { id: telury, name: "Telury", role: town }
+    - { id: crahar, name: "Crahar", role: town }
+    - { id: tarvuish, name: "Tarvuish", role: town }
+    - { id: nawel, name: "Nawel", role: town }
+    - { id: tayford, name: "Tayford", role: town }
+    - { id: danot, name: "Danot", role: town }
+    - { id: telfage, name: "Telfage", role: town }
+    - { id: st_eldrick, name: "St-Eldrick", role: town }
+    - { id: swipoo, name: "Swipoo", role: town }
+    - { id: silester, name: "Silester", role: town }
+    - { id: foriney, name: "Foriney", role: town }
+    - { id: tarwush, name: "Tarwush", role: town }
+    - { id: muar, name: "Muar", role: town }
+    - { id: selten, name: "Selten", role: town }
+  zones:
+    - plaines_d_udon, plaines_du_centre, foret_d_aide, lac_du_sehi
+    - colline_d_estel
+  borders: [foret_de_tyrkan, enorie, fauche_le_vent]
+
+# === ENORIE ===
+
+enorie_cities:
+  parent_region: enorie
+  source_map: "site/download/map/enorie.jpg"
+  capital:
+    - { id: monastie, name: "Monastie", role: capital }
+  cities:
+    - { id: bourgonil, name: "Bourgonil", role: major_city, type: island, notes: "Siège de la famille royale de Bourgonil" }
+    - { id: pedrune, name: "Pédrune", role: town }
+    - { id: brincour, name: "Brincour", role: town }
+    - { id: silfany, name: "Silfany", role: major_city }
+    - { id: goorate, name: "Goorate", role: major_city }
+    - { id: feyley, name: "Feyley", role: town }
+    - { id: rolin, name: "Rolin", role: town }
+    - { id: grangle, name: "Grangle", role: major_city }
+    - { id: lunon, name: "Lunon", role: major_city }
+    - { id: pledre, name: "Plèdre", role: major_city }
+    - { id: fridlin, name: "Fridlin", role: major_city }
+    - { id: quepet, name: "Quepet", role: town }
+    - { id: deenit, name: "Deenit", role: town, notes: "Possible maison-mère des Géomanciens (anomalie source)" }
+    - { id: nefill, name: "Nefill", role: town }
+    - { id: paisendre, name: "Païsendre", role: town }
+    - { id: plaindeu, name: "Plaindeu", role: town }
+    - { id: beldon, name: "Beldon", role: town }
+    - { id: joren, name: "Joren", role: town }
+    - { id: centaury, name: "Centaury", role: town }
+    - { id: tayhin, name: "Tayhin", role: town }
+    - { id: marall, name: "Marall", role: town }
+    - { id: kweldon, name: "Kweldon", role: town }
+    - { id: aquil, name: "Aquil", role: town }
+  zones:
+    - plateau_libre, foret_du_juste, monts_des_brunes, monts_gluans
+  borders: [empire, cortega]
+
+# === FAUCHE-LE-VENT ===
+
+fauche_le_vent_cities:
+  parent_region: fauche_le_vent
+  source_map: "site/download/map/fauche-le-vent.jpg"
+  capital:
+    - { id: careon, name: "Caréon", role: capital }
+  cities:
+    - { id: entedeu, name: "Entédèu", role: major_city }
+    - { id: grilois, name: "Grilois", role: major_city }
+    - { id: talignon, name: "Talignon", role: town }
+    - { id: palenvau, name: "Palenvau", role: town }
+    - { id: dentive, name: "Dentive", role: major_city }
+    - { id: edrideris, name: "Edrideris", role: town }
+    - { id: miges, name: "Migès", role: town }
+    - { id: tourde, name: "Tourde", role: major_city }
+    - { id: divellie, name: "Divellie", role: major_city }
+    - { id: marendon, name: "Marendon", role: major_city }
+    - { id: ribalen, name: "Ribalen", role: major_city }
+    - { id: tirevix, name: "Tirevix", role: town }
+    - { id: mecride, name: "Mecride", role: town }
+    - { id: crozon, name: "Crozon", role: town }
+    - { id: drugeau_la_norme, name: "Drugeau-la-Norme", role: town }
+    - { id: tireux, name: "Tireux", role: town }
+    - { id: saint_jules, name: "Saint-Jules", role: town }
+    - { id: chez_nous, name: "Chez Nous", role: border_town }
+    - { id: saivre, name: "Saivre", role: town, web_id: 22 }
+  zones:
+    - bosquets_de_l_embuscade, fort_sarinne, vol_des_elfes
+    - massif_du_brunia, foret_galantt, foret_du_lapin, foret_bolfei
+  borders: [empire, foret_de_tyrkan, portes_d_azrak, cortega]
+
+# === FORÊT DE TYRKAN ===
+
+foret_tyrkan_cities:
+  parent_region: foret_de_tyrkan
+  source_map: "site/download/map/foret-tyrkan.jpg"
+  capital:
+    - { id: tyrandell, name: "Tyrandell", role: capital }
+  cities:
+    - { id: avorrwen, name: "Avorrwen", role: major_city }
+    - { id: talvr, name: "Talvr", role: town }
+    - { id: sadaron, name: "Sadaron", role: town }
+    - { id: talanai, name: "Talanai", role: town }
+    - { id: mihaven, name: "Mihaven", role: town }
+    - { id: eloracya, name: "Eloracya", role: town }
+    - { id: zavynell, name: "Zavynell", role: town }
+    - { id: doluvel, name: "Doluvel", role: town }
+    - { id: beerwen, name: "Beerwen", role: town }
+    - { id: geandere, name: "Geandere", role: town }
+    - { id: torrevidor, name: "Torrevidor", role: town }
+    - { id: dorina, name: "Dorina", role: town }
+    - { id: ambocissi, name: "Ambocissi", role: town }
+    - { id: kelduiss, name: "Kelduiss", role: town }
+    - { id: asyril, name: "Asyril", role: town }
+    - { id: kiraerss, name: "Kiraerss", role: town }
+    - { id: eccnoe, name: "Eccnoe", role: town }
+    - { id: welonkas, name: "Welonkas", role: town }
+    - { id: ulzonkas, name: "Ulzonkas", role: town }
+    - { id: sciandel, name: "Sciandel", role: town }
+    - { id: hyertodyess, name: "Hyertodyess", role: town }
+    - { id: pellipe, name: "Pellipe", role: town }
+    - { id: marlonil, name: "Marlonil", role: town }
+    - { id: narthias, name: "Narthias", role: town }
+    - { id: wendees, name: "Wendees", role: town }
+    - { id: doganai, name: "Doganai", role: town }
+    - { id: subelyss, name: "Subelyss", role: town }
+    - { id: hyrtul, name: "Hyrtul", role: town }
+  zones:
+    - foret_de_tyrkan, foret_d_oconu, mont_taykak
+    - la_padousera, la_grande_glave
+  borders: [empire, collines_d_ico, alteria, fauche_le_vent]
+
+# === HAUT ROYAUME ===
+
+haut_royaume_cities:
+  parent_region: haut_royaume
+  source_map: "site/download/map/haut-royaume.jpg"
+  capital:
+    - { id: heldannya, name: "Heldannya", role: capital, web_variant: "Helldannya" }
+  islands:
+    - { id: ile_cun_ithil, name: "Île Cun-Ithil", role: island_group, sub_locations: [amucune, unducune] }
+    - { id: ile_d_iridyl, name: "Île d'Iridyl", role: island }
+    - { id: ile_de_muridielle, name: "Île de Muridielle", role: island }
+    - { id: ile_de_nusylis, name: "Île de Nusylis", role: island }
+    - { id: ile_de_calverond, name: "Île de Calverond", role: island, sub_locations: [eressa_tirjos] }
+  cities:
+    - { id: talatair, name: "Talatair", role: town }
+    - { id: earelia, name: "Earelia", role: town }
+    - { id: thuldurim, name: "Thuldurim", role: town }
+    - { id: earlis, name: "Earlis", role: town }
+    - { id: taletsir, name: "Taletsir", role: town }
+    - { id: hernfegas, name: "Hernfegas", role: town }
+    - { id: vaheriss, name: "Vaheriss", role: major_city }
+    - { id: rodalis, name: "Rodalis", role: town }
+    - { id: trian_falas, name: "Trian-Falas", role: town }
+    - { id: tallia, name: "Tallia", role: town }
+    - { id: oronalis, name: "Oronalis", role: town }
+    - { id: narthelia, name: "Narthelia", role: major_city }
+    - { id: suaeu, name: "Suaeu", role: town }
+    - { id: ludith, name: "Ludith", role: town }
+    - { id: ombrosil, name: "Ombrosil", role: town }
+    - { id: vanthel, name: "Vanthel", role: town }
+    - { id: tavhulcia, name: "Tavhulcia", role: town }
+    - { id: lichmpod, name: "Lichmpod", role: town }
+    - { id: takimis, name: "Takimis", role: town }
+    - { id: siretarms, name: "Siretarms", role: town }
+    - { id: metiras, name: "Metiras", role: town }
+    - { id: eralios, name: "Eralios", role: town }
+    - { id: luntith, name: "Luntith", role: town }
+    - { id: lunte, name: "Lunte", role: town }
+  zones:
+    - foret_de_synadie, foret_de_galiosa, foret_d_ocaluss
+    - foret_de_diryyen, foret_de_ndoria, foret_d_arthen
+    - chaines_angeppes, plaines_d_acgalath
+    - cordillere_de_yol, troue_de_lente, troue_de_moryliss
+  borders: [chez_nous, cortega]
+  notes: "Visualisation : Pieuvre géante au nord (kraken ?), à signaler dans bestiaire ?"
+
+# === IRTANIE ===
+
+irtanie_cities:
+  parent_region: irtanie
+  source_map: "site/download/map/irtanie.jpg"
+  capital:
+    - { id: felderio, name: "Felderio", role: capital }
+  cities:
+    - { id: ibravnick, name: "Ibravnick", role: town }
+    - { id: qetekzhov, name: "Qetekzhov", role: town }
+    - { id: lokta, name: "Lokta", role: town }
+    - { id: baimora, name: "Baimora", role: town }
+    - { id: niksk, name: "Niksk", role: town }
+    - { id: detsenkov, name: "Detsenkov", role: town }
+    - { id: branicolli, name: "Branicolli", role: major_city }
+    - { id: arinoava, name: "Arinoava", role: major_city }
+    - { id: berana, name: "Berana", role: town }
+    - { id: prildag, name: "Prildag", role: town }
+    - { id: gotschern, name: "Gotschern", role: major_city }
+    - { id: pentuppi, name: "Pentuppi", role: town }
+    - { id: felinov, name: "Felinov", role: town }
+    - { id: ameral, name: "Ameral", role: town, web_id: 14 }
+    - { id: edirvirkel, name: "Edirvirkel", role: town }
+    - { id: protchkev, name: "Protchkev", role: town }
+    - { id: poltinek, name: "Poltinek", role: town }
+    - { id: st_cresas, name: "St-Crésas", role: town }
+    - { id: birikov, name: "Birikov", role: town }
+    - { id: peluna, name: "Peluna", role: town }
+    - { id: bertisch, name: "Bertisch", role: town }
+    - { id: caliopoñi, name: "Caliopoñi", role: town }
+  zones:
+    - les_monts_hirardus, la_longue_noire
+  borders: [onarit, detre, dundoria, yonkado, lonaxill, blanc_royaume, sombre_monde]
+  border_with: stazyliss  # mentionné comme nation/zone à l'ouest
+
+# === PORTES D'AZRAK (territoire nain) ===
+
+portes_d_azrak_cities:
+  parent_region: portes_d_azrak
+  source_map: "site/download/map/portes-azrak.jpg"
+  capital:
+    - { id: azrak, name: "Azrak", role: capital_centre, notes: "Centre du territoire nain" }
+  major_cities:
+    - { id: tumargar, name: "Tumargar", role: town }
+    - { id: bafag, name: "Bafag", role: town }
+    - { id: emerg_bafag, name: "Emerg-Bafag", role: town }
+    - { id: farnag, name: "Farnag", role: town }
+    - { id: gruduria, name: "Gruduria", role: major_city }
+    - { id: vaitorgar, name: "Vaitorgar", role: town }
+    - { id: kalorat, name: "Kalorat", role: town }
+    - { id: kenona, name: "Kenona", role: town }
+    - { id: narenona, name: "Narenona", role: town }
+    - { id: korrec, name: "Korrec", role: town }
+    - { id: ivariek, name: "Ivariek", role: town }
+    - { id: tornaca, name: "Tornaca", role: town }
+    - { id: drannia, name: "Drannia", role: town }
+    - { id: galareust, name: "Galareust", role: town }
+    - { id: galin, name: "Galin", role: town }
+    - { id: kad, name: "Kad", role: town }
+    - { id: mooran, name: "Mooran", role: town }
+    - { id: wario, name: "Wario", role: town }
+    - { id: narwar, name: "Narwar", role: town }
+    - { id: rastrek, name: "Rastrek", role: town }
+    - { id: kernar, name: "Kernar", role: town }
+    - { id: waldek, name: "Waldek", role: town }
+    - { id: ert_oria_fel, name: "Ert-Oria-Fel", role: town }
+    - { id: faruv, name: "Faruv", role: town }
+    - { id: aardrek, name: "Aardrek", role: town }
+    - { id: walnoir, name: "Walnoir", role: town }
+    - { id: orotrinek, name: "Orotrinek", role: town }
+    - { id: frenkov, name: "Frenkov", role: town }
+    - { id: gameñor, name: "Gameñor", role: town }
+    - { id: niebel, name: "Niebel", role: town, web_id: 19 }
+    - { id: denir, name: "Denir", role: town }
+    - { id: baratrat, name: "Baratrat", role: town }
+    - { id: melaran, name: "Melaran", role: town }
+  fortified_gates:  # Les "Portes" sont des points fortifiés frontaliers, pas des villes
+    - { id: porte_du_nord, name: "Porte du Nord", role: gate, type: fortified_pass }
+    - { id: porte_de_brameust, name: "Porte de Brameust", role: gate, type: fortified_pass }
+    - { id: porte_de_melaran, name: "Porte de Melaran", role: gate, type: fortified_pass }
+    - { id: porte_du_volcan, name: "Porte du Volcan", role: gate, type: fortified_pass, near: volcan }
+    - { id: porte_de_niebel, name: "Porte de Niebel", role: gate, type: fortified_pass }
+    - { id: porte_de_lache, name: "Porte de Lâche", role: gate, type: fortified_pass }
+    - { id: porte_d_orotrim, name: "Porte d'Orotrim", role: gate, type: fortified_pass }
+    - { id: porte_de_waldnor, name: "Porte de Waldnor", role: gate, type: fortified_pass }
+    - { id: porte_de_gruduria, name: "Porte de Gruduria", role: gate, type: fortified_pass }
+    - { id: porte_du_sud, name: "Porte du Sud", role: gate, type: fortified_pass }
+  zones:
+    - lac_d_herestos, glacier_central, volcan, freuxon, kithru, reuxgian
+  borders: [fauche_le_vent, alteria, cortega]
+  notes: |
+    Confirmation : "Les Portes d'Azrak" = nation naine entièrement entourée de portes fortifiées.
+    Habitat principal des Nains (cf. bestiaire.yaml.nain.habitat).
+    Glaciers et volcans présents (commerce de glace cf. nations.yaml.terres_du_nord).
+    À AJOUTER comme nouvelle entrée dans nations.yaml.
+
+# === SOMBRE MONDE ===
+
+sombre_monde_cities:
+  parent_region: monde_sombre
+  source_map: "site/download/map/sombre-monde.jpg"
+  capital:
+    - { id: vallandr, name: "Vallandr", role: capital }
+  cities:
+    - { id: edranem, name: "Edranem", role: major_city }
+    - { id: demorann, name: "Demorann", role: town }
+    - { id: vichulm, name: "Vichulm", role: town }
+    - { id: seltak, name: "Seltak", role: town }
+    - { id: elimmidar, name: "Elimmidar", role: major_city }
+    - { id: lornath, name: "Lornath", role: major_city }
+    - { id: nusyl, name: "Nusyl", role: town }
+    - { id: soertan, name: "Soertan", role: town }
+    - { id: theornn, name: "Theornn", role: major_city }
+    - { id: hanaronn, name: "Hanaronn", role: major_city }
+    - { id: hurl, name: "Hurl", role: town }
+    - { id: idilana, name: "Idilana", role: town }
+    - { id: lonar, name: "Lonar", role: town }
+    - { id: homulus, name: "Homulus", role: town }
+    - { id: krilyt, name: "Krilyt", role: town }
+    - { id: galerak, name: "Galerak", role: town }
+    - { id: hormur, name: "Hormur", role: town }
+    - { id: harm, name: "Harm", role: town }
+    - { id: rendomur, name: "Rendomur", role: town }
+    - { id: lahurnn, name: "Lahurnn", role: major_city }
+    - { id: iriar, name: "Iriar", role: town }
+    - { id: kalandeor, name: "Kalandeor", role: town }
+    - { id: herlund, name: "Herlund", role: town }
+    - { id: drenom, name: "Drenom", role: town }
+    - { id: l_ordral, name: "L'Ordral", role: town }
+  zones:
+    - foret_d_aftertif, foret_de_trill, foret_des_sentiers
+    - les_montagnes_remp_de_fer, la_vallee_du_retour
+    - lac_aktar, fleuve_de_la_derniere_chance
+    - bois_de_lune, riviere_noire, le_mont_solitaire
+    - le_cimetiere_des_pleurs, plaine_amere, bois_des_soupirs
+    - la_source_d_inys, le_mur
+  borders: [royaume_du_chaos, montagnes_grises, detre, irtanie, blanc_royaume]
+
+# === TERRES DU NORD ===
+
+terres_du_nord_cities:
+  parent_region: terres_du_nord
+  source_map: "site/download/map/terres-nord.jpg"
+  capital:
+    - { id: hildurm, name: "Hildurm", role: capital, notes: "1ère tribu fondée par Sorolson" }
+  cities:
+    - { id: aldar, name: "Aldar", role: tribal_capital, notes: "Tribu d'une fille de Sorolson" }
+    - { id: snorrig, name: "Snorrig", role: tribal_capital, notes: "Tribu d'une fille de Sorolson" }
+    - { id: rimgard, name: "Rimgard", role: tribal_capital, notes: "Tribu d'une fille de Sorolson" }
+    - { id: varfar, name: "Varfar", role: tribal_capital, notes: "Tribu d'une fille de Sorolson" }
+    - { id: thildor, name: "Thildor (Hildor)", role: tribal_capital, notes: "Tribu d'un fils de Sorolson" }
+    - { id: otten, name: "Otten (Otyn)", role: tribal_capital, notes: "Tribu d'un fils de Sorolson" }
+    - { id: alayr, name: "Alayr (Altyr)", role: tribal_capital, notes: "Tribu d'un fils de Sorolson" }
+  zones:
+    - les_monts_glaces, plaine_des_dieux, crevasses_d_azemnur
+    - chaine_des_loups, la_plaine_alda, pic_de_glace
+    - chaine_d_nesnope
+  borders: [royaume_du_chaos, foret_de_tyrkan, empire, collines_d_ico]
+  notes: |
+    Confirmation lore : 8 tribus issues de Sorolson (1 + 7 enfants).
+    Hildurm = Hildurm + Aldar, Snorrig, Rimgard, Varfar (filles) + Thildor, Otyn, Altyr (garçons).
+    Les noms sur la carte sont légèrement différents du paper (Otten ≈ Otyn, Alayr ≈ Altyr).
+
+# === YONKADO ===
+
+yonkado_cities:
+  parent_region: yonkado
+  source_map: "site/download/map/yonkado.jpg"
+  capital:
+    - { id: tsai_mai_do, name: "Tsai'Maï Do", role: capital }
+  cities:
+    - { id: paypao, name: "Paypao", role: major_city }
+    - { id: gon_mi, name: "Gon'mi", role: major_city }
+    - { id: sei_an, name: "Sei'an", role: major_city }
+    - { id: tseliang, name: "Tseliang", role: town }
+    - { id: endu_zi, name: "Endu'zi", role: major_city }
+    - { id: nebholi, name: "Nebholi", role: town }
+    - { id: qumao, name: "Qumao", role: major_city }
+    - { id: ling_he, name: "Ling'he", role: major_city }
+    - { id: beizu, name: "Beizu", role: major_city }
+    - { id: wogan, name: "Wogan", role: town }
+    - { id: fuji, name: "Fuji", role: major_city }
+    - { id: enzhou, name: "Enzhou", role: major_city }
+    - { id: hubei, name: "Hubei", role: major_city }
+    - { id: jiran_chung, name: "Jiran Chung", role: major_city }
+    - { id: bailing, name: "Bailing", role: town }
+    - { id: zhanguan, name: "Zhanguan", role: major_city }
+    - { id: dujishan, name: "Dujishan", role: town }
+    - { id: daghai, name: "Daghai", role: town }
+    - { id: kozu, name: "Kozu", role: town }
+    - { id: kanjvi, name: "Kanjvi", role: town }
+    - { id: yuxion, name: "Yuxion", role: town }
+    - { id: luoming, name: "Luoming", role: major_city }
+    - { id: puy_fu, name: "Puy'fu", role: major_city }
+    - { id: xiaoxi, name: "Xiaoxi", role: town }
+  zones:
+    - les_derniers_bosquets, plaine_du_yonk
+    - rongzhen, foret_des_irtaniens, foret_yi
+    - lac_rizing, lac_tse, lac_ampao
+    - la_baif_ji
+  borders: [stazyliss, lonaxill, irtanie, dundoria, grand_desert]
+
+# === RÉGIONS NOUVELLES VISIBLES SUR CARTES VOISINES ===
+
+newly_visible_regions:
+  - id: stazyliss
+    name: "Stazyliss"
+    visible_on_maps: [yonkado.jpg, irtanie.jpg]
+    location: "Entre Yonkado et Irtanie/Lonaxill"
+    notes: "Nation séparée, possible patrie des Hommes-Lézards (cf. bestiaire.yaml.homme_lezard.habitat: 'Stazyliss')"
+    todo: "À ajouter à nations.yaml"
+
+  - id: treadur
+    name: "Treadur"
+    visible_on_maps: [collines-ico.jpg]
+    location: "Nord-est des Collines d'Ico"
+    notes: "Probablement zone tampon ou sous-région d'Onarit"
+    todo: "À investiguer"
+
+  - id: chez_nous
+    name: "Chez Nous"
+    visible_on_maps: [fauche-le-vent.jpg, haut-royaume.jpg]
+    location: "Frontière ouest de Fauche-le-Vent et nord du Haut Royaume"
+    notes: "Probablement région-tampon, possible nation indépendante"
+    todo: "À investiguer"
+
+# === SUMMARY ===
+
+summary:
+  total_cities_extracted: 280  # approximatif
+  per_region:
+    alteria: 9 + ~20 villages
+    collines_d_ico: 9 + ~10 villages
+    detre: 16
+    dundoria: 13
+    empire: 35
+    enorie: 23
+    fauche_le_vent: 19
+    foret_de_tyrkan: 28
+    haut_royaume: 24 + 5 îles
+    irtanie: 22
+    portes_d_azrak: 33 villes + 10 portes fortifiées
+    sombre_monde: 25
+    terres_du_nord: 7 + zones glaciaires
+    yonkado: 25
+    cortega: 15  # déjà extrait dans world-map.yaml
+
+  newly_discovered_regions_via_maps:
+    - stazyliss (Hommes-Lézards)
+    - treadur
+    - chez_nous
+
+  cross_references_to_other_catalogs:
+    - "Abejuan (Alteria) = maison-mère Chiromanciens (organisations.yaml)"
+    - "Elioquant (Empire) = maison-mère Astrologues (organisations.yaml)"
+    - "Heldannya (Haut Royaume) = maison-mère Augures (organisations.yaml)"
+    - "Hildurm (Terres du Nord) = capitale viking, possiblement maison-mère Géomanciens (anomalie organisations.yaml dit 'Deonit' qui est en fait une ville d'Enorie)"
+    - "Bourgonil (Enorie) = siège famille royale (cf. nations.yaml.enorie.notable_individuals)"
+    - "Asturiev (Detre) = donjon du Roi Tyran (cf. nations.yaml.detre.notable_individuals)"
+
+  visual_anomalies:
+    - "Pieuvre géante visible au nord du Haut Royaume (haut-royaume.jpg) — kraken / créature à ajouter au bestiaire ?"
+    - "Volcans dans le territoire des Portes d'Azrak — habitat naturel des nains forgerons"

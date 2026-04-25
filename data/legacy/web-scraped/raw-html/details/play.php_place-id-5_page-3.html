@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=5">Restaurant de la Tonnella</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=5&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.05.18
+            </div>
+
+            <div class="forum-post-content">
+                J'ai le sentiment que vous pariez beaucoup sur un coup de chance...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                17.05.18
+            </div>
+
+            <div class="forum-post-content">
+                Bein il faut déjà aller voir ce qu'ils proposent, après on pourra décider...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.05.18
+            </div>
+
+            <div class="forum-post-content">
+                'fin c'est pas vraiment exact, il faut surtout savoir ce qu'on cherche à obtenir avant d'aller négocier...alors si vous avez des meilleures idées, je vous écoute...
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                18.05.18
+            </div>
+
+            <div class="forum-post-content">
+                J'aurais aimé avoir au moins une ébauche de plan. *dit-elle sur un ton attristé*
+
+Les généraux font ce qu'ils peuvent, ils se creusent la têtes mais aucun n'a encore proposé quelque chose de viable. La combinaison de l'Oracle cortégan et de la force militaire impériale semble infaillible... En résumé, leur plan c'est de se terrer derrière nos mûrs et qu'on résiste le plus longtemps possible. C'est d'une stupidité sans nom. Sans aucun espoir de réussite, je signerai la rédition du pays avant qu'il n'y ait de morts.
+
+Je comprends bien que notre seul espoir réside dans une solution astucieuse que vous pourriez mener à bien, mais on aucune idée de quoi faire... Je crains le pire pour notre joli pays un peu trop libre.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                19.05.18
+            </div>
+
+            <div class="forum-post-content">
+                Nous pouvons toujours imaginer une attaque éclair de leurs magiciens et généraux. Seulement ceux qui suivraient un tel plan ont peu de chances de s'en sortir vivant...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                21.05.18
+            </div>
+
+            <div class="forum-post-content">
+                C'est vrai que c'est possible, mais ça me semble foireux aussi...Ludwick aura vite fait de dissiper nos vitesses et paf...on est mort. Je continue à croire que c'est plus malin d'essayer de diviser leurs forces...On sait que l'Empire ne souhaite pas monter plus haut en Alteria...'fin on crois savoir, et c'est bien ça qu'il faut aller vérifier pour en être sur.
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Lenirdyl Al Menolda Dufaux<br />
+
+                <a href="character-detail.php?id=2">
+                    <img src="../img/characters-profil/2.jpg" alt="Lenirdyl Al Menolda Dufaux" height="100" width="80">
+                </a>
+
+                <br />
+
+                26.05.18
+            </div>
+
+            <div class="forum-post-content">
+                Qu'est-ce que tu en penses princesse? Sinon je me demandais, n'y aurait-il pas moyen de nous faire aider par cet espèce de dieu du Chaos qui nous a tatoué? Il ne semble pas hostile et très puissant. Il a même ramené Akbar à la vie et donc il semble vouloir nous aider d'une manière ou d'une autre. Je me disais que peut-être si on mettait nos sens en commun... je sais pas moi en faisant une sorte de ronde ou un truc comme ça... peut-être que cela le ferait apparaître?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Ylenia Maria di Santa Lucia<br />
+
+                <a href="character-detail.php?id=8">
+                    <img src="../img/characters-profil/8.jpg" alt="Ylenia Maria di Santa Lucia" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.05.18
+            </div>
+
+            <div class="forum-post-content">
+                Faire apparaître un dieu du Chaos ? ... Au moins, l'oracle ne pourrait pas prédire ses actions...
+*Regarde Len en souriant tristement*
+Malheureusement je n'ai jamais fais ça. Je ne sais pas quoi faire pour manifester votre... Chose. A part en vous tuant.
+
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.05.18
+            </div>
+
+            <div class="forum-post-content">
+                (Fais un jet de connaissance en magie du chaos: 7R)
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                27.05.18
+            </div>
+
+            <div class="forum-post-content">
+                Bah, on sait déjà que ce dieux apparait quand je meurs, certes, mais on sait aussi que les très forts dégagement énergétiques attirent le chaos. J'y avais déjà pensé, mais si Ludwick lance sont sort sur la ville, avec la porte que nous a générée Ariane, ça peut nous faire déferler le chaos par ici. Après, soit dans la ville on sera protègés, soit Ludwick va se ramasser une quantité de mana telle qu'il va en mourir sur le coup... Soit les deux jusqu'a ce que Ludwick meurt...Le prblème, dans tout ça, c'est que faire déferler le chaos par ici, ça me parait plus que risqué, une fois qu'ils auront combatu - s'ils le souhaitent , ça ont sait pas - ils vont tuer chaque habitant restant jusqu'à qu'ils meurent tous...et ça, c'est un peu trop aléatoire, je dirais.... (avec 7R, je fais une autre hypothèse?)
+
+Par ailleurs, je me demande bien ce que ce type qui a flirté avec le cœur du chaos vient faire là, en passant...
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=5&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=5&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=5&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=5&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=5&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=5&page=6">
+          6
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>

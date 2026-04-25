@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<html lang="fr-FR">
+	<head>
+		<title>Knight and Wizard</title>
+
+		<meta charset="UTF-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet/less" type="text/css" href="../stylesheet/user.less" />
+		<script src="../includes/js/less.min.js" ></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main-menu">
+    <div class="main-menu-element">
+        <a href="index.php">Accueil</a>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Documents</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="weapons-list.php">Armes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="assets-list.php">Atouts</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="races-list.php">Bestiaire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="download.php">Cartes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="classes-list.php">Classes</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="skills-list.php">Compétences</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="spells-list.php">Grand Grimoire</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="potions-list.php">Potions</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="rules.php">Règles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Aide de soirée</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="dice-roller.php">Lanceur de d&egrave;s</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="fight-assistant.php">Assistant de combat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Personnages</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="characters.php">Mes personnages</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="all-characters.php">Tout les personnages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-menu-element">
+        <div class="dropdown">
+            <span>Forum</span>
+
+            <div class="dropdown-content">
+                <div class="sub-menu-element">
+                    <a href="world-map.php">Carte du monde</a>
+                </div>
+
+                <br />
+
+                <div class="sub-menu-element">
+                    <a href="map.php">Tout les lieux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="main-menu-element">
+        <a href="fight.php?arena-id=1">Combat</a>
+    </div>
+-->    
+
+    <div class="main-menu-element">
+        <a href="my-account.php">Mon compte</a>
+    </div>
+</div>
+
+
+		<div id="main">
+<h1><a href="play.php?place-id=27">Aux Acolytes Anonymes</a></h1>
+
+<span class="play-sub-title">Personnages présents :</span>
+
+<br />
+
+<div class="characters-container">
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=11">
+        <img src="../img/characters-profil/11.jpg" alt="Giovanni Marzo" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=11">Giovanni Marzo</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=176">
+        <img src="../img/characters-profil/176.jpg" alt="Filomena" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=176">Filomena</a>
+</div>
+
+            <div class="character-thumbnail">
+    <a href="character-detail.php?id=190">
+        <img src="../img/characters-profil/190.jpg" alt="Marzia Moretti" style="width:100%">
+    </a>
+
+    <br />
+
+    <a href="character-detail.php?id=190">Marzia Moretti</a>
+</div>
+
+    </div>
+
+<div id="include-character">
+    <form action="play.php?place-id=27&action=place-character" method="post" class="form">
+        <select name="character-id">
+            <option value="">Inclure un personnage</option>
+
+                                                <option value="197">Amaterasu</option>
+                                                                <option value="195">Colonel Hohenshmidthart Wiebke</option>
+                                                                <option value="183">Grumtark</option>
+                                                                <option value="182">Nerrak</option>
+                                                                <option value="12">Sindalia Androulya Lissentia</option>
+                                                                <option value="196">Susanoo Shizu</option>
+                                    </select>
+
+            <input type="submit" value="Entrez" />
+    </form>
+</div>
+
+<br />
+
+                        <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.05.20
+            </div>
+
+            <div class="forum-post-content">
+                *chuchote @Akbar* Ce n&#039;est pas une nouvelle information cela dit étant donné que j&#039;en ai déjà parlé à la reine...
+
+*Haute voix* Haha, il en faut plus que ça pour affecter ma brave Nerrak, elle est l&#039;incarnation de ma vaillance après tout *sourie*
+
+*chuchote @Akbar* Je doute que nous trouvions des racontars à notre sujet qui nous protégerais bien longtemps... Jouons plutôt à leur jeu et trouvons comment les éliminer rapidement... nous avons l&#039;avantage du terrain, si ils était d&#039;ici, ils n&#039;auraient pas besoins d&#039;information a notre sujet.
+
+*Haute voix à Giovanni alors qu&#039;elle lui parle simultanément par télépathie* En parlant du loup, j&#039;ai cru comprendre que vous alliez monté une affaire ?
+
+*Par télépathie à Giovanni* Donne nous une piste pour rencontré qui dirige les bas fonds d&#039;Erune par écrit, nous devons prendre l&#039;initiative sur cette situation et je ne veux surtout pas mêler à cette histoire, ni toi, ni ces lieux. Bien que je n&#039;ai rien à te proposé de suite, je te dédommagerai dès que possible. 
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=988&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [Pour ton jet -&gt; En se qui te concerne, tu ne détecte pas de code, juste une accroche pour feindre l&#039;ignorance dans un sujet volage] 
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=989&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Andalur<br />
+
+                <a href="character-detail.php?id=1">
+                    <img src="../img/characters-profil/1.jpg" alt="Andalur" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.05.20
+            </div>
+
+            <div class="forum-post-content">
+                [Andalur semble visiblement touché des paroles de Sindalia.]
+
+Cette hallebarde est magnifique il est vrai... [Semble gêné.]  Et ton armure est digne des meilleurs forges.
+J&#039;aurais plaisir à t&#039;enseigner ce que je sais, mais je n&#039;ai aucune connaissance dans le maniement des lances.
+
+[Semble hésité à ajouté quelque chose.]
+
+Et... ... Nous avons sans doute passés trop de temps avec des humains, mais... j&#039;apprécie de te voir ainsi heureuse. [Lance un sourire à Sindalia.] <hr><span class="play-sub-title">Action</span><br /><p>Esthétisme + Séduction (diff. 6) => 2R</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.05.20
+            </div>
+
+            <div class="forum-post-content">
+                * Entre deux gorgées, toujours discrètement
+
+Exactement ce que je pensais faire...diffuser une fausse information pour les amener là où on les attends pour les éliminer...Ou alors découvrir de qui il s&#039;agit. Même les assassins mangent, dorment et font  leurs besoins...autant d&#039;occasions pour trépasser. C&#039;est une autre façon de faire.
+
+-Tu pourrais nous présenter des gens qui en saurait plus, Giovanni?
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.05.20
+            </div>
+
+            <div class="forum-post-content">
+                *chuchote @Akbar* C&#039;est donc décidé; désinformation, embuscade. Met au parfum Sela, elle sera d&#039;une grande aide. Pour l&#039;heure, nous allons prendre congé de vous avec Andalur.
+Je vais te laisser Grumtark et Nerrak à Sela durant mon absence... dans le doute...
+
+@Andalur Je veux que nous soyons le couple le plus crains des champs de batailles ! Plus crains qu&#039;un assault de furies elf de nacre ! Viens ! 
+*Elle te prends par la main et s&#039;en vas en direction du quand camp d&#039;entrainement du palais ou tout est déjà en place, pour un entrainement intensif, armes d&#039;entrainement, quintaine, mannequin... la total !*
+Après t&#039;avoir proposer un combat un main nue pour s’échauffer, elle vas s&#039;atteler à la découverte de ces armes, elle souhaitera essayer ton hallebarde aussi et l&#039;entrainement fini elle t’attirera prendre un pain avec pour finir dans vos draps douillets, à moins qu&#039;Andalur ne s&#039;y oppose. (Charisme séduction... mais j&#039;ai pas séduction) 
+
+ <hr><span class="play-sub-title">Action</span><br /><p>Charisme (diff. 7) => 3R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=992&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Sindalia Androulya Lissentia<br />
+
+                <a href="character-detail.php?id=12">
+                    <img src="../img/characters-profil/12.jpg" alt="Sindalia Androulya Lissentia" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.05.20
+            </div>
+
+            <div class="forum-post-content">
+                (Bain pas pain... les pains c&#039;est à l&#039;échauffement...)
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=993&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Grumtark<br />
+
+                <a href="character-detail.php?id=183">
+                    <img src="../img/characters-profil/183.jpg" alt="Grumtark" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Bien, il semble maître Bourdon que la maîtresse souhaite que vous vous accommodiez de ma présence... Je ferais en sorte qu&#039;elle soit agréable *te sourie, elle non plus tu ne l&#039;avais jamais vu sourire à croire que l&#039;humeur de Sindalia influence ses familiers*...
+(Elle prends la place de Sindalia lorsqu&#039;elle sera partie, tu ne l&#039;avais pas vu, pas sentie, pas entendue jusque là...) <hr><span class="play-sub-title">Action</span><br /><p>Dextérité + Furtivité (diff. 6) => 6R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=995&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.05.20
+            </div>
+
+            <div class="forum-post-content">
+                (perception, vue, diff +6) pour repérer Grumtark avant qu&#039;elle se pointe <hr><span class="play-sub-title">Action</span><br /><p>Perception + Vue (diff. 12) => Echec critique (11)</p>
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-odd">
+                    <div class="forum-character-profile">
+                Akbar<br />
+
+                <a href="character-detail.php?id=7">
+                    <img src="../img/characters-profil/7.jpg" alt="Akbar" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.05.20
+            </div>
+
+            <div class="forum-post-content">
+                *fait un saut de 20cm quand Grumtark prend la parole et pose sa main sur le coeur
+
+Mais ça va pas ou quoi! T&#039;as malade! Franchement, faut faire gaffe, tu vas t&#039;en prendre une à force de me... de me...* se calme un peu
+
+Faut plus apparaitre comme ça sans prévenir, c&#039;est dangereux! (sur un jet d&#039;empathie, vous comprendrez que c&#039;est dangereux pour Ackbar, pas pour Grumtark).
+
+&#039;tain! *jure dans sa barbe
+
+Je disais donc...ce tableau est magnifique...la pose vous a-t-elle été imposée, Sela? Ou c^&#039;est vous qui avez choisi?
+
+*reporte son verre a ses lèvres et en profite encore pour chuchoter.
+
+-Faut qu&#039;on trouve comme attirer ces...ou cet?..assassin dans une embuscade...Une idée? et toi Giovanni? *avale une grosse rasade, comme si ça allait le guérir de la peur qu&#039;il vient de vivre... et ne prend direct une seconde, avant de poser sa coupe. 
+            </div>
+
+            <div class="forum-post-options">
+                            </div>
+        </div>
+                            <div class="forum-post-even">
+                    <div class="forum-character-profile">
+                Grumtark<br />
+
+                <a href="character-detail.php?id=183">
+                    <img src="../img/characters-profil/183.jpg" alt="Grumtark" height="100" width="80">
+                </a>
+
+                <br />
+
+                01.05.20
+            </div>
+
+            <div class="forum-post-content">
+                Je ne cherchais pas a vous surprendre, maître Bourdon.
+(et quand tu y repense... tu ne l’entends jamais et ne la voie jamais avant qu&#039;elle ne s&#039;exprime... elle n&#039;y rien fait de particulier par rapport à d&#039;habitude.)
+*Elle pause une main sur ton épaule, par convention sociale* <hr><span class="play-sub-title">Action</span><br /><p>Empathie (diff. 7) => 1R</p>
+            </div>
+
+            <div class="forum-post-options">
+                                    <a href="play.php?action=remove-post&post-id=998&place-id=27" title="Supprimer">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                            </div>
+        </div>
+    
+<div id="play-turn-page">
+    Page :
+
+          <a href="play.php?place-id=27&page=1">
+          1
+      </a>
+          <a href="play.php?place-id=27&page=2">
+          2
+      </a>
+          <a href="play.php?place-id=27&page=3">
+          3
+      </a>
+          <a href="play.php?place-id=27&page=4">
+          4
+      </a>
+          <a href="play.php?place-id=27&page=5">
+          5
+      </a>
+          <a href="play.php?place-id=27&page=6">
+          6
+      </a>
+          <a href="play.php?place-id=27&page=7">
+          7
+      </a>
+          <a href="play.php?place-id=27&page=8">
+          8
+      </a>
+          <a href="play.php?place-id=27&page=9">
+          9
+      </a>
+          <a href="play.php?place-id=27&page=10">
+          10
+      </a>
+          <a href="play.php?place-id=27&page=11">
+          11
+      </a>
+          <a href="play.php?place-id=27&page=12">
+          12
+      </a>
+          <a href="play.php?place-id=27&page=13">
+          13
+      </a>
+          <a href="play.php?place-id=27&page=14">
+          14
+      </a>
+          <a href="play.php?place-id=27&page=15">
+          15
+      </a>
+          <a href="play.php?place-id=27&page=16">
+          16
+      </a>
+          <a href="play.php?place-id=27&page=17">
+          17
+      </a>
+          <a href="play.php?place-id=27&page=18">
+          18
+      </a>
+    </div>
+	</div>
+
+	<div id="footer">
+	</div>
+
+	</body>
+</html>
