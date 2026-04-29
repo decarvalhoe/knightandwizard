@@ -304,14 +304,14 @@ curl -sf http://localhost:3002/ready
 - Create: `apps/server/src/knowledge/repository.ts`
 - Create: `apps/server/src/knowledge/search.test.ts`
 
-- [ ] Implement deterministic chunking for Markdown rules.
-- [ ] Implement deterministic chunking for YAML catalogs.
-- [ ] Store chunks in `knowledge_documents` and `knowledge_chunks`.
-- [ ] Add a deterministic test embedding provider.
-- [ ] Test semantic search with inserted fake vectors.
-- [ ] Keep real embedding provider integration out of this task.
-- [ ] Run `pnpm validate`.
-- [ ] Commit with `feat: add knowledge base foundation`.
+- [x] Implement deterministic chunking for Markdown rules.
+- [x] Implement deterministic chunking for YAML catalogs.
+- [x] Store chunks in `knowledge_documents` and `knowledge_chunks`.
+- [x] Add a deterministic test embedding provider.
+- [x] Test semantic search with inserted fake vectors.
+- [x] Keep real embedding provider integration out of this task.
+- [x] Run `pnpm validate`.
+- [x] Commit with `feat: add knowledge base foundation`.
 
 ## Definition of Ready for the Next Product Phase
 

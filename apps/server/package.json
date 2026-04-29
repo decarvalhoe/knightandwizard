@@ -14,12 +14,14 @@
     "typecheck": "tsc -b",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/src/index.js",
-    "db:seed": "tsx src/db/seed.ts"
+    "db:seed": "tsx src/db/seed.ts",
+    "knowledge:dry-run": "tsx src/knowledge/dry-run.ts"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
     "fastify": "^5.8.5",
+    "js-yaml": "^4.1.1",
     "postgres": "^3.4.9"
   },
   "devDependencies": {

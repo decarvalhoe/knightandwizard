@@ -10,7 +10,7 @@ export function getDatabaseUrl(): string {
 }
 
 export function createSqlClient(databaseUrl = getDatabaseUrl()) {
-  return postgres(databaseUrl, { max: 1 });
+  return postgres(databaseUrl, { max: 1, onnotice: () => undefined });
 }
 
 export function createDbClient(sqlClient = createSqlClient()) {

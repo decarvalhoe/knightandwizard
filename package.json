@@ -29,7 +29,8 @@
     "db:reset": "pnpm --filter @knightandwizard/server db:reset",
     "dev:server": "pnpm --filter @knightandwizard/server dev",
     "devlab:reset": "bash scripts/devlab-reset.sh",
-    "db:seed": "pnpm --filter @knightandwizard/server db:seed"
+    "db:seed": "pnpm --filter @knightandwizard/server db:seed",
+    "knowledge:dry-run": "pnpm --filter @knightandwizard/server knowledge:dry-run"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
