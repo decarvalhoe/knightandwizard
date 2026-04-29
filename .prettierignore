@@ -4,8 +4,10 @@ dist/
 coverage/
 .turbo/
 .vite/
+.next/
 .pytest_cache/
 
+apps/cms/.next/
 apps/interactive-map/dist/
 apps/interactive-map/node_modules/
 apps/legacy-php-site/

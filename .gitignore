@@ -15,6 +15,7 @@ coverage/
 .parcel-cache/
 .turbo/
 .vite/
+.next/
 *.tsbuildinfo
 
 # === Python ===
