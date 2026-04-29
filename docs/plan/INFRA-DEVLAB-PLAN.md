@@ -258,13 +258,13 @@ curl -sf http://localhost:3002/ready
 - Create: `apps/server/src/db/seed.ts`
 - Modify: `README.md`
 
-- [ ] Add `devlab:reset` that runs Docker Compose down with volumes and then up.
-- [ ] Add `db:seed` with deterministic records for one catalog document and one game session.
-- [ ] Extend `devlab:test` to verify migrated tables exist.
-- [ ] Document destructive reset behavior in README.
-- [ ] Run `pnpm devlab:reset`, `pnpm db:migrate`, `pnpm db:seed`, and `pnpm devlab:test`.
-- [ ] Run `pnpm validate`.
-- [ ] Commit with `chore: harden local devlab scripts`.
+- [x] Add `devlab:reset` that runs Docker Compose down with volumes and then up.
+- [x] Add `db:seed` with deterministic records for one catalog document and one game session.
+- [x] Extend `devlab:test` to verify migrated tables exist.
+- [x] Document destructive reset behavior in README.
+- [x] Run `pnpm devlab:reset`, `pnpm db:migrate`, `pnpm db:seed`, and `pnpm devlab:test`.
+- [x] Run `pnpm validate`.
+- [x] Commit with `chore: harden local devlab scripts`.
 
 ### Task 5: CI Foundation
 

@@ -27,7 +27,9 @@
     "db:generate": "pnpm --filter @knightandwizard/server db:generate",
     "db:migrate": "pnpm --filter @knightandwizard/server db:migrate",
     "db:reset": "pnpm --filter @knightandwizard/server db:reset",
-    "dev:server": "pnpm --filter @knightandwizard/server dev"
+    "dev:server": "pnpm --filter @knightandwizard/server dev",
+    "devlab:reset": "bash scripts/devlab-reset.sh",
+    "db:seed": "pnpm --filter @knightandwizard/server db:seed"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",

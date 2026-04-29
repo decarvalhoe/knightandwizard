@@ -63,13 +63,24 @@ Prérequis : Docker Engine ou Docker Desktop exposé dans WSL.
 cp .env.example .env
 pnpm install
 pnpm devlab:up
-pnpm devlab:ps
+pnpm db:migrate
+pnpm db:seed
+pnpm devlab:test
 ```
 
 Services locaux :
 
 - PostgreSQL + pgvector : `localhost:55432` vers `5432` dans le conteneur
 - Adminer : `http://localhost:8080`
+- API backend : `http://localhost:3002` via `pnpm dev:server`
+
+Commandes utiles :
+
+```bash
+pnpm devlab:ps      # Liste les services Docker
+pnpm devlab:test    # Vérifie PostgreSQL, pgvector et le schéma migré
+pnpm devlab:reset   # Destructif : supprime les conteneurs et le volume PostgreSQL local
+```
 
 ### Carte interactive (Phase 2B en cours)
 
