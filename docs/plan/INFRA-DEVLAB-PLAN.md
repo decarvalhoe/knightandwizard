@@ -287,13 +287,13 @@ curl -sf http://localhost:3002/ready
 
 - Modify: `CONTRIBUTING.md`
 
-- [ ] Replace npm/manual-test instructions with WSL + pnpm + Docker workflow.
-- [ ] Document branch policy: work on `dev`, PR to `main`, no direct push to `main`.
-- [ ] Document required local gate: `pnpm validate`.
-- [ ] Document package boundaries: `rules-core`, `catalogs`, `apps/server`, `apps/game`, `apps/cms`.
-- [ ] Document agent workflow and reference `AGENTS.md`.
-- [ ] Run `pnpm validate`.
-- [ ] Commit with `docs: update contribution workflow`.
+- [x] Replace npm/manual-test instructions with WSL + pnpm + Docker workflow.
+- [x] Document branch policy: work on `dev`, PR to `main`, no direct push to `main`.
+- [x] Document required local gate: `pnpm validate`.
+- [x] Document package boundaries: `rules-core`, `catalogs`, `apps/server`, `apps/game`, `apps/cms`.
+- [x] Document agent workflow and reference `AGENTS.md`.
+- [x] Run `pnpm validate`.
+- [x] Commit with `docs: update contribution workflow`.
 
 ### Task 7: RAG Foundation Preparation
 
