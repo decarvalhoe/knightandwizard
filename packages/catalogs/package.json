@@ -15,7 +15,7 @@
     "build": "tsc -b",
     "lint": "eslint src",
     "typecheck": "tsc -b",
-    "test": "vitest run"
+    "test": "pnpm --dir ../.. exec vitest run packages/catalogs/src"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",

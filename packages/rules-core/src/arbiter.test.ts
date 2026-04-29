@@ -20,4 +20,8 @@ describe('arbiter authority hierarchy', () => {
     expect(compareArbiterAuthority('auto', 'human_gm')).toBeLessThan(0);
     expect(compareArbiterAuthority('llm', 'llm')).toBe(0);
   });
+
+  it('rejects an unknown arbiter value defensively', () => {
+    expect(() => compareArbiterAuthority('ghost' as never, 'auto')).toThrow('Unknown arbiter');
+  });
 });

@@ -15,6 +15,6 @@
     "build": "tsc -b",
     "lint": "eslint src",
     "typecheck": "tsc -b",
-    "test": "vitest run"
+    "test": "pnpm --dir ../.. exec vitest run packages/rules-core/src"
   }
 }
