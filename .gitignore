@@ -12,6 +12,7 @@ dist/
 build/
 .cache/
 .parcel-cache/
+.turbo/
 .vite/
 *.tsbuildinfo
 

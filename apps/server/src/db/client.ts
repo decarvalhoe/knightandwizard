@@ -3,7 +3,8 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import * as schema from './schema.js';
 
-export const DEFAULT_DATABASE_URL = 'postgresql://knightandwizard:knightandwizard@localhost:55432/knightandwizard';
+export const DEFAULT_DATABASE_URL =
+  'postgresql://knightandwizard:knightandwizard@localhost:55432/knightandwizard';
 
 export function getDatabaseUrl(): string {
   return process.env.DATABASE_URL ?? DEFAULT_DATABASE_URL;

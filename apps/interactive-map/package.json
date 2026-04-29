@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "lint": "eslint src vite.config.js",
     "preview": "vite preview",
     "yaml2geojson": "python tools/yaml_to_geojson.py"
   },

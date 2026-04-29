@@ -38,6 +38,9 @@ pnpm devlab:test    # PostgreSQL, pgvector et schéma migré
 pnpm devlab:reset   # Destructif : supprime les conteneurs et le volume PostgreSQL local
 pnpm db:migrate     # Applique les migrations DB
 pnpm db:seed        # Injecte les seeds de développement déterministes
+pnpm lint           # ESLint sur le code actif
+pnpm format:check   # Vérifie le format Prettier
+pnpm format         # Applique Prettier sur les fichiers actifs
 pnpm validate       # Gate locale complète
 ```
 
@@ -60,6 +63,8 @@ pnpm validate       # Gate locale complète
 - `data/catalogs` : catalogues canoniques importés.
 - `docs/rules` : règles canoniques D1 à D13.
 - `docs/plan` : ADR, roadmap et plans d'exécution.
+
+Turborepo orchestre les tâches workspace (`build`, `typecheck`, `lint`, `test`) quand elles existent dans les packages. pnpm reste le gestionnaire de paquets et l'interface de commande principale.
 
 ## Règles de développement
 
@@ -117,6 +122,8 @@ pnpm validate
 
 Elle couvre actuellement :
 
+- lint ESLint
+- vérification Prettier
 - typecheck TypeScript
 - tests Vitest
 - validation GeoJSON

@@ -8,6 +8,7 @@ Versionnement : [SemVer](https://semver.org/lang/fr/).
 ## [Unreleased]
 
 ### À venir
+
 - Phase 2B itération 2 : digitalisation QGIS effective des frontières
 - Phase 2B itération 3 : recherche full-text dans les popups
 - Phase 2C : moteur de jeu multi-arbitre (player / human_gm / llm / auto)
@@ -21,6 +22,7 @@ Première version structurée du monorepo. Phase 1 (canonisation des règles) et
 ### Ajouté
 
 #### Phase 1 — 13 domaines de règles canoniques
+
 - D1 — Résolution (dés, difficulté, succès, critiques)
 - D2 — Attributs (9 aptitudes + dérivées)
 - D3 — Races (33 races jouables)
@@ -38,6 +40,7 @@ Première version structurée du monorepo. Phase 1 (canonisation des règles) et
 Total : ~230 règles canoniques (R-X.Y), ~70 entrées backlog (Q-X.Y).
 
 #### Phase 2A — 12 catalogues YAML structurés
+
 - `armes.yaml` — 102 armes (mêlée, distance, jet, naturelles, munitions)
 - `protections.yaml` — 49 armures + 11 boucliers + multiplicateurs raciaux
 - `potions.yaml` — 5 potions (3 web + 2 paper)
@@ -54,6 +57,7 @@ Total : ~230 règles canoniques (R-X.Y), ~70 entrées backlog (Q-X.Y).
 Total : ~700 entrées canoniques.
 
 #### Phase 2B — Carte interactive (en cours)
+
 - `apps/interactive-map/` — frontend Vite + Leaflet
 - Stack : Vite 7, Leaflet 1.9, js-yaml 4
 - Script Python `yaml_to_geojson.py` — convertit les YAML en GeoJSON
@@ -61,12 +65,14 @@ Total : ~700 entrées canoniques.
 - UI : recherche, popups, layers, panel info, parchment style
 
 #### Méta-principes
+
 - **Règles vivantes** : tout est versionnable, modifiable, migrable
 - **Pattern mode arbitre** : 4 contrôleurs canoniques avec hiérarchie de fallback
 - **Architecture 3 couches** : ruleset / arbiter / pacing
 - **Méta-modèle item-type-classes** (R-9.30) : extensible par admin/MJ
 
 #### Outils
+
 - Monorepo npm workspaces
 - `.gitignore` complet (Node + Python + QGIS + build outputs)
 - `tools/parse.py` — parser legacy paramétrique (`KW_BASE_URL` env var)

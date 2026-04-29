@@ -1,7 +1,12 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createSqlClient } from '../db/client.js';
 import { runMigrations } from '../db/migrate.js';
-import { createKnowledgeChunk, DeterministicTestEmbeddingProvider, searchKnowledgeChunks, storeKnowledgeChunks } from './repository.js';
+import {
+  createKnowledgeChunk,
+  DeterministicTestEmbeddingProvider,
+  searchKnowledgeChunks,
+  storeKnowledgeChunks
+} from './repository.js';
 
 const sql = createSqlClient();
 const provider = new DeterministicTestEmbeddingProvider();
@@ -20,22 +25,26 @@ describe('knowledge repository', () => {
   });
 
   it('stores chunks and returns ranked vector search results', async () => {
-    await storeKnowledgeChunks(sql, [
-      createKnowledgeChunk({
-        sourcePath: 'test/rules/dice.md',
-        sourceKind: 'rule_markdown',
-        chunkIndex: 0,
-        heading: 'Dice difficulty',
-        text: 'Dice rolls use d10 difficulty thresholds and critical outcomes.'
-      }),
-      createKnowledgeChunk({
-        sourcePath: 'test/rules/magic.md',
-        sourceKind: 'rule_markdown',
-        chunkIndex: 0,
-        heading: 'Magic schools',
-        text: 'Magic schools define spells, energy, familiars and casting time.'
-      })
-    ], provider);
+    await storeKnowledgeChunks(
+      sql,
+      [
+        createKnowledgeChunk({
+          sourcePath: 'test/rules/dice.md',
+          sourceKind: 'rule_markdown',
+          chunkIndex: 0,
+          heading: 'Dice difficulty',
+          text: 'Dice rolls use d10 difficulty thresholds and critical outcomes.'
+        }),
+        createKnowledgeChunk({
+          sourcePath: 'test/rules/magic.md',
+          sourceKind: 'rule_markdown',
+          chunkIndex: 0,
+          heading: 'Magic schools',
+          text: 'Magic schools define spells, energy, familiars and casting time.'
+        })
+      ],
+      provider
+    );
 
     const results = await searchKnowledgeChunks(sql, 'd10 dice difficulty roll', provider, 2);
 

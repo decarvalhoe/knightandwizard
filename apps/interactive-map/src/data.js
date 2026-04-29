@@ -16,7 +16,9 @@ export async function loadData() {
   // Indexer les nations par id pour accès O(1)
   const nationsIndex = {};
   if (nationsYaml?.regions) {
-    nationsYaml.regions.forEach(n => { nationsIndex[n.id] = n; });
+    nationsYaml.regions.forEach((n) => {
+      nationsIndex[n.id] = n;
+    });
   }
 
   return {

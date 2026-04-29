@@ -12,16 +12,16 @@ Ce dépôt n'est pas le CRPG tactique coop. **K&W-game vit dans un dépôt sépa
 
 ## État Actuel
 
-| Domaine | Statut | Ce qui existe aujourd'hui |
-|---|---:|---|
-| Règles canoniques | Stable | 13 domaines D1 à D13, environ 230 règles et 70 entrées backlog dans `docs/rules` |
-| Catalogues | Données stables, schémas à durcir | 13 catalogues YAML/CSV, environ 1100 entrées, 29 assets visuels référencés |
-| Carte interactive | Utilisable, en évolution | App Leaflet, pipeline QGIS, validation GeoJSON et build Vite |
-| Monorepo | Opérationnel | pnpm workspaces, TypeScript strict, Vitest, gate de validation racine |
-| Devlab local | Opérationnel | Docker Compose avec PostgreSQL 16, pgvector et Adminer |
-| Backend | Minimal mais réel | Fastify `apps/server`, migrations Drizzle, endpoints `/health` et `/ready` |
-| Base de connaissance | Fondation prête | Chunker Markdown/YAML offline, embeddings déterministes de test, recherche pgvector testée |
-| CI | Verte | GitHub Actions lance le devlab Docker, les migrations et `pnpm validate` sur `dev` |
+| Domaine              |                            Statut | Ce qui existe aujourd'hui                                                                  |
+| -------------------- | --------------------------------: | ------------------------------------------------------------------------------------------ |
+| Règles canoniques    |                            Stable | 13 domaines D1 à D13, environ 230 règles et 70 entrées backlog dans `docs/rules`           |
+| Catalogues           | Données stables, schémas à durcir | 13 catalogues YAML/CSV, environ 1100 entrées, 29 assets visuels référencés                 |
+| Carte interactive    |          Utilisable, en évolution | App Leaflet, pipeline QGIS, validation GeoJSON et build Vite                               |
+| Monorepo             |                      Opérationnel | pnpm workspaces, TypeScript strict, Vitest, gate de validation racine                      |
+| Devlab local         |                      Opérationnel | Docker Compose avec PostgreSQL 16, pgvector et Adminer                                     |
+| Backend              |                 Minimal mais réel | Fastify `apps/server`, migrations Drizzle, endpoints `/health` et `/ready`                 |
+| Base de connaissance |                   Fondation prête | Chunker Markdown/YAML offline, embeddings déterministes de test, recherche pgvector testée |
+| CI                   |                             Verte | GitHub Actions lance le devlab Docker, les migrations et `pnpm validate` sur `dev`         |
 
 Branche active : `dev`.
 Workspace local de référence : `/home/decarvalhoe/repos/knightandwizard` dans WSL.
@@ -46,12 +46,12 @@ pnpm validate
 
 Services locaux :
 
-| Service | URL / Port | Rôle |
-|---|---|---|
-| PostgreSQL + pgvector | `localhost:55432` | Base applicative, migrations, futurs vecteurs RAG |
-| Adminer | `http://localhost:8080` | Inspection légère de la base en développement |
-| API backend | `http://localhost:3002` | `pnpm dev:server`, expose `/health` et `/ready` |
-| Carte interactive | `http://localhost:5173` | `pnpm dev:map` |
+| Service               | URL / Port              | Rôle                                              |
+| --------------------- | ----------------------- | ------------------------------------------------- |
+| PostgreSQL + pgvector | `localhost:55432`       | Base applicative, migrations, futurs vecteurs RAG |
+| Adminer               | `http://localhost:8080` | Inspection légère de la base en développement     |
+| API backend           | `http://localhost:3002` | `pnpm dev:server`, expose `/health` et `/ready`   |
+| Carte interactive     | `http://localhost:5173` | `pnpm dev:map`                                    |
 
 Checks backend :
 
@@ -62,19 +62,23 @@ curl -sf http://localhost:3002/ready
 
 ## Commandes Clés
 
-| Commande | Effet |
-|---|---|
-| `pnpm validate` | Gate complète : typecheck, tests, validation GeoJSON, build carte, check devlab |
-| `pnpm test` | Suites Vitest des packages et du serveur |
-| `pnpm typecheck` | TypeScript project references pour packages et serveur |
-| `pnpm build:map` | Build production de la carte Leaflet |
-| `pnpm validate:geojson` | Vérifie les données de carte contre les YAML canoniques |
-| `pnpm devlab:up` | Lance PostgreSQL + pgvector et Adminer |
-| `pnpm devlab:test` | Vérifie Docker, PostgreSQL, pgvector et le schéma migré |
-| `pnpm devlab:reset` | Destructif : supprime conteneurs et volume PostgreSQL local |
-| `pnpm db:migrate` | Applique les migrations DB applicatives |
-| `pnpm db:seed` | Injecte des données de développement déterministes |
-| `pnpm knowledge:dry-run` | Découpe règles/catalogues offline, sans appel à un provider d'embeddings |
+| Commande                 | Effet                                                                           |
+| ------------------------ | ------------------------------------------------------------------------------- |
+| `pnpm validate`          | Gate complète : typecheck, tests, validation GeoJSON, build carte, check devlab |
+| `pnpm lint`              | ESLint sur les apps/packages actifs                                             |
+| `pnpm format:check`      | Vérifie le format Prettier                                                      |
+| `pnpm format`            | Applique Prettier sur les fichiers actifs                                       |
+| `pnpm test`              | Suites Vitest des packages et du serveur                                        |
+| `pnpm typecheck`         | TypeScript project references orchestrées par Turborepo                         |
+| `pnpm build`             | Builds workspace orchestrés par Turborepo                                       |
+| `pnpm build:map`         | Build production direct de la carte Leaflet                                     |
+| `pnpm validate:geojson`  | Vérifie les données de carte contre les YAML canoniques                         |
+| `pnpm devlab:up`         | Lance PostgreSQL + pgvector et Adminer                                          |
+| `pnpm devlab:test`       | Vérifie Docker, PostgreSQL, pgvector et le schéma migré                         |
+| `pnpm devlab:reset`      | Destructif : supprime conteneurs et volume PostgreSQL local                     |
+| `pnpm db:migrate`        | Applique les migrations DB applicatives                                         |
+| `pnpm db:seed`           | Injecte des données de développement déterministes                              |
+| `pnpm knowledge:dry-run` | Découpe règles/catalogues offline, sans appel à un provider d'embeddings        |
 
 Sortie actuelle de `pnpm knowledge:dry-run` : `1376` chunks, dont `939` chunks de règles et `437` chunks de catalogues.
 
@@ -167,17 +171,17 @@ Les issues GitHub sont la source opérationnelle pour l'ordre d'exécution : [Gi
 
 ## Documentation
 
-| Document | Rôle |
-|---|---|
-| `AGENTS.md` | Règles pour les agents IA travaillant sur ce repo |
-| `CONTRIBUTING.md` | Workflow de contribution humain et agentique |
-| `docs/HANDOVER.md` | État global du projet et décisions structurantes |
-| `docs/plan/ROADMAP.md` | Roadmap d'implémentation Phase 3+ |
-| `docs/plan/ADR-001-architecture-cible.md` | Décision d'architecture cible |
-| `docs/plan/INFRA-DEVLAB-PLAN.md` | Plan infra/devlab exécuté |
-| `docs/rules/*.md` | Règles canoniques par domaine |
-| `data/catalogs/README.md` | Inventaire et conventions des catalogues |
-| `apps/interactive-map/qgis/README.md` | Workflow QGIS de la carte |
+| Document                                  | Rôle                                              |
+| ----------------------------------------- | ------------------------------------------------- |
+| `AGENTS.md`                               | Règles pour les agents IA travaillant sur ce repo |
+| `CONTRIBUTING.md`                         | Workflow de contribution humain et agentique      |
+| `docs/HANDOVER.md`                        | État global du projet et décisions structurantes  |
+| `docs/plan/ROADMAP.md`                    | Roadmap d'implémentation Phase 3+                 |
+| `docs/plan/ADR-001-architecture-cible.md` | Décision d'architecture cible                     |
+| `docs/plan/INFRA-DEVLAB-PLAN.md`          | Plan infra/devlab exécuté                         |
+| `docs/rules/*.md`                         | Règles canoniques par domaine                     |
+| `data/catalogs/README.md`                 | Inventaire et conventions des catalogues          |
+| `apps/interactive-map/qgis/README.md`     | Workflow QGIS de la carte                         |
 
 ## Pour les Agents
 

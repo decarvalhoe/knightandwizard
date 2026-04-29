@@ -43,16 +43,16 @@ Known gaps:
 
 Existing issues to update before implementation:
 
-| Issue | Action | Reason |
-|---|---|---|
-| `#2` `[3A-01] Initialisation du monorepo pnpm et Turborepo` | Keep open or retitle to tooling hardening | pnpm/workspaces are done, but Turborepo, ESLint, and Prettier are not implemented. |
-| `#3` `[3A-02] Configurer docker-compose.yml...` | Close after adding a completion comment | Docker Compose, pgvector, `.env.example`, README docs, and `pnpm devlab:test` are implemented. Acceptance should mention local port `55432`, not `5432`. |
-| `#4` `[3A-03] Initialiser packages/rules-core` | Close after adding a completion comment | The package is initialized, strict TypeScript builds, and Vitest runs. Actual dice/combat migration is already tracked by `#6` and `#7`. |
-| `#5` `[3A-04] Initialiser packages/catalogs` | Keep open and narrow scope | Package + loader exist, but Zod schemas for all catalogs are not done. |
-| `#19` `[4-02] Configurer le RAG...` | Keep open as Phase 4 epic | It depends on DB schema and server foundations. |
-| `#23` `[INFRA-01] Initialiser apps/server` | Split scope | Current issue mixes server init, DB, routes, auth, CORS, and migrations. First pass should be health/readiness + DB connection only. |
-| `#24` `[INFRA-02] Configurer le pipeline CI/CD` | Update commands | Use `pnpm validate`; do not require `pnpm lint` until lint tooling exists. |
-| `#25` `[INFRA-03] Mettre à jour CONTRIBUTING.md` | Implement soon | Current file still says there are no automated tests and uses npm-era workflow. |
+| Issue                                                       | Action                                    | Reason                                                                                                                                                   |
+| ----------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `#2` `[3A-01] Initialisation du monorepo pnpm et Turborepo` | Keep open or retitle to tooling hardening | pnpm/workspaces are done, but Turborepo, ESLint, and Prettier are not implemented.                                                                       |
+| `#3` `[3A-02] Configurer docker-compose.yml...`             | Close after adding a completion comment   | Docker Compose, pgvector, `.env.example`, README docs, and `pnpm devlab:test` are implemented. Acceptance should mention local port `55432`, not `5432`. |
+| `#4` `[3A-03] Initialiser packages/rules-core`              | Close after adding a completion comment   | The package is initialized, strict TypeScript builds, and Vitest runs. Actual dice/combat migration is already tracked by `#6` and `#7`.                 |
+| `#5` `[3A-04] Initialiser packages/catalogs`                | Keep open and narrow scope                | Package + loader exist, but Zod schemas for all catalogs are not done.                                                                                   |
+| `#19` `[4-02] Configurer le RAG...`                         | Keep open as Phase 4 epic                 | It depends on DB schema and server foundations.                                                                                                          |
+| `#23` `[INFRA-01] Initialiser apps/server`                  | Split scope                               | Current issue mixes server init, DB, routes, auth, CORS, and migrations. First pass should be health/readiness + DB connection only.                     |
+| `#24` `[INFRA-02] Configurer le pipeline CI/CD`             | Update commands                           | Use `pnpm validate`; do not require `pnpm lint` until lint tooling exists.                                                                               |
+| `#25` `[INFRA-03] Mettre à jour CONTRIBUTING.md`            | Implement soon                            | Current file still says there are no automated tests and uses npm-era workflow.                                                                          |
 
 ## New Issue List
 

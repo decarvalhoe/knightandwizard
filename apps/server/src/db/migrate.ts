@@ -53,7 +53,8 @@ export async function runMigrations(): Promise<void> {
   }
 }
 
-const isEntrypoint = process.argv[1] !== undefined && import.meta.url === pathToFileURL(process.argv[1]).href;
+const isEntrypoint =
+  process.argv[1] !== undefined && import.meta.url === pathToFileURL(process.argv[1]).href;
 
 if (isEntrypoint) {
   runMigrations().catch((error: unknown) => {

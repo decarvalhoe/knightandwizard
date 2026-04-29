@@ -10,7 +10,11 @@ describe('knowledge chunker', () => {
     });
 
     expect(chunks).toHaveLength(3);
-    expect(chunks.map((chunk) => chunk.heading)).toEqual(['D1 Resolution', 'R-1.1 Dice roll', 'R-1.2 Critical']);
+    expect(chunks.map((chunk) => chunk.heading)).toEqual([
+      'D1 Resolution',
+      'R-1.1 Dice roll',
+      'R-1.2 Critical'
+    ]);
     expect(chunks[1]).toMatchObject({
       sourcePath: 'docs/rules/01-resolution.md',
       sourceKind: 'rule_markdown',

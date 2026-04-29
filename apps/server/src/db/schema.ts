@@ -1,5 +1,16 @@
 import { sql } from 'drizzle-orm';
-import { customType, index, integer, jsonb, pgTable, text, timestamp, uniqueIndex, uuid, varchar } from 'drizzle-orm/pg-core';
+import {
+  customType,
+  index,
+  integer,
+  jsonb,
+  pgTable,
+  text,
+  timestamp,
+  uniqueIndex,
+  uuid,
+  varchar
+} from 'drizzle-orm/pg-core';
 
 const vector = customType<{ data: number[] | null; driverData: string | null }>({
   dataType() {
@@ -52,7 +63,10 @@ export const gameSessions = pgTable(
     title: text('title').notNull(),
     mode: text('mode').notNull().default('classic_table'),
     status: text('status').notNull().default('planned'),
-    metadata: jsonb('metadata').$type<Record<string, unknown>>().notNull().default(sql`'{}'::jsonb`),
+    metadata: jsonb('metadata')
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default(sql`'{}'::jsonb`),
     createdAt: now(),
     updatedAt: updatedNow()
   },
@@ -72,11 +86,17 @@ export const sessionEvents = pgTable(
     sequence: integer('sequence').notNull(),
     eventType: text('event_type').notNull(),
     actorId: text('actor_id'),
-    payload: jsonb('payload').$type<Record<string, unknown>>().notNull().default(sql`'{}'::jsonb`),
+    payload: jsonb('payload')
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default(sql`'{}'::jsonb`),
     createdAt: now()
   },
   (table) => ({
-    sessionSequenceIdx: uniqueIndex('session_events_session_sequence_idx').on(table.sessionId, table.sequence),
+    sessionSequenceIdx: uniqueIndex('session_events_session_sequence_idx').on(
+      table.sessionId,
+      table.sequence
+    ),
     eventTypeIdx: index('session_events_event_type_idx').on(table.eventType)
   })
 );
@@ -89,7 +109,10 @@ export const auditEvents = pgTable(
     action: text('action').notNull(),
     entityType: text('entity_type').notNull(),
     entityId: text('entity_id'),
-    payload: jsonb('payload').$type<Record<string, unknown>>().notNull().default(sql`'{}'::jsonb`),
+    payload: jsonb('payload')
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default(sql`'{}'::jsonb`),
     createdAt: now()
   },
   (table) => ({
@@ -135,7 +158,10 @@ export const knowledgeChunks = pgTable(
     updatedAt: updatedNow()
   },
   (table) => ({
-    documentChunkIdx: uniqueIndex('knowledge_chunks_document_chunk_idx').on(table.documentId, table.chunkIndex),
+    documentChunkIdx: uniqueIndex('knowledge_chunks_document_chunk_idx').on(
+      table.documentId,
+      table.chunkIndex
+    ),
     sourcePathIdx: index('knowledge_chunks_source_path_idx').on(table.sourcePath),
     sourceKindIdx: index('knowledge_chunks_source_kind_idx').on(table.sourceKind)
   })

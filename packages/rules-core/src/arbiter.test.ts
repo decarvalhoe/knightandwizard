@@ -1,10 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import {
-  ARBITER_PRECEDENCE,
-  compareArbiterAuthority,
-  hasArbiterAuthorityOver
-} from './arbiter.js';
+import { ARBITER_PRECEDENCE, compareArbiterAuthority, hasArbiterAuthorityOver } from './arbiter.js';
 
 describe('arbiter authority hierarchy', () => {
   it('keeps the canonical K&W authority order from D13', () => {

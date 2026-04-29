@@ -1,6 +1,11 @@
 import { createHash } from 'node:crypto';
 import type { SqlClient } from '../db/client.js';
-import { createChunk, type KnowledgeChunk, type KnowledgeSourceKind, stableHash } from './chunker.js';
+import {
+  createChunk,
+  type KnowledgeChunk,
+  type KnowledgeSourceKind,
+  stableHash
+} from './chunker.js';
 
 export interface EmbeddingProvider {
   dimensions: number;

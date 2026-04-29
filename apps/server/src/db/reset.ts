@@ -28,7 +28,8 @@ export async function resetDatabase(): Promise<void> {
   }
 }
 
-const isEntrypoint = process.argv[1] !== undefined && import.meta.url === pathToFileURL(process.argv[1]).href;
+const isEntrypoint =
+  process.argv[1] !== undefined && import.meta.url === pathToFileURL(process.argv[1]).href;
 
 if (isEntrypoint) {
   resetDatabase().catch((error: unknown) => {

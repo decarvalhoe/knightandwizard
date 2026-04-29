@@ -48,7 +48,8 @@ export async function seedDatabase(): Promise<void> {
   }
 }
 
-const isEntrypoint = process.argv[1] !== undefined && import.meta.url === pathToFileURL(process.argv[1]).href;
+const isEntrypoint =
+  process.argv[1] !== undefined && import.meta.url === pathToFileURL(process.argv[1]).href;
 
 if (isEntrypoint) {
   seedDatabase().catch((error: unknown) => {
