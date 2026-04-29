@@ -179,13 +179,13 @@ Acceptance:
 
 - Modify GitHub issues only.
 
-- [ ] Add completion comments to `#3` and `#4` referencing commit `f931dbe`.
-- [ ] Close `#3` and `#4`.
-- [ ] Update `#2` title/body so it only covers remaining tooling: Turborepo decision, ESLint, Prettier.
-- [ ] Update `#5` title/body so it covers Zod schemas and YAML validation only.
-- [ ] Update `#23` title/body so it covers backend health/readiness only, or replace its broad checklist with links to `INFRA-04`, `INFRA-05`, and `INFRA-06`.
-- [ ] Update `#24` to run `pnpm validate` first; add lint/format only after `INFRA-09`.
-- [ ] Create issues `INFRA-04` through `INFRA-09`, `RAG-01`, and `RAG-02`.
+- [x] Add completion comments to `#3` and `#4` referencing commit `f931dbe`.
+- [x] Close `#3` and `#4`.
+- [x] Update `#2` title/body so it only covers remaining tooling: Turborepo decision, ESLint, Prettier.
+- [x] Update `#5` title/body so it covers Zod schemas and YAML validation only.
+- [x] Update `#23` title/body so it covers backend health/readiness only, or replace its broad checklist with links to `INFRA-04`, `INFRA-05`, and `INFRA-06`.
+- [x] Update `#24` to run `pnpm validate` first; add lint/format only after `INFRA-09`.
+- [x] Create issues `INFRA-04` through `INFRA-09`, `RAG-01`, and `RAG-02`.
 
 Verification:
 
@@ -209,15 +209,15 @@ Expected: `#3` and `#4` closed; new infra issues visible and labeled.
 - Create: `apps/server/src/db/reset.ts`
 - Create: `apps/server/src/db/schema.test.ts`
 
-- [ ] Write an integration test that connects to `DATABASE_URL`, verifies extension `vector`, and checks for required table names.
-- [ ] Run the test and verify it fails before migrations exist.
-- [ ] Install Drizzle dependencies in `apps/server`.
-- [ ] Add schema definitions for catalog documents, sessions, events, audit events, knowledge documents, and knowledge chunks.
-- [ ] Add migration scripts and root scripts.
-- [ ] Run migrations against the WSL devlab.
-- [ ] Run the integration test and verify it passes.
-- [ ] Run `pnpm validate`.
-- [ ] Commit with `feat: add database migration foundation`.
+- [x] Write an integration test that connects to `DATABASE_URL`, verifies extension `vector`, and checks for required table names.
+- [x] Run the test and verify it fails before migrations exist.
+- [x] Install Drizzle dependencies in `apps/server`.
+- [x] Add schema definitions for catalog documents, sessions, events, audit events, knowledge documents, and knowledge chunks.
+- [x] Add migration scripts and root scripts.
+- [x] Run migrations against the WSL devlab.
+- [x] Run the integration test and verify it passes.
+- [x] Run `pnpm validate`.
+- [x] Commit with `feat: add database migration foundation`.
 
 ### Task 3: Backend Health and Readiness API
 

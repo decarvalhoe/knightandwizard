@@ -21,9 +21,12 @@
     "lint:yaml": "echo TODO: implement YAML linting (yamllint or similar)",
     "test": "vitest run",
     "test:unit": "vitest run packages",
-    "typecheck": "tsc -b packages/rules-core packages/catalogs",
+    "typecheck": "tsc -b packages/rules-core packages/catalogs apps/server",
     "build": "pnpm typecheck && pnpm build:map",
-    "validate": "pnpm typecheck && pnpm test && pnpm validate:geojson && pnpm build:map && pnpm devlab:test"
+    "validate": "pnpm typecheck && pnpm test && pnpm validate:geojson && pnpm build:map && pnpm devlab:test",
+    "db:generate": "pnpm --filter @knightandwizard/server db:generate",
+    "db:migrate": "pnpm --filter @knightandwizard/server db:migrate",
+    "db:reset": "pnpm --filter @knightandwizard/server db:reset"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
