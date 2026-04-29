@@ -60,11 +60,22 @@ data/legacy/_tmp_extract/
 *.qgs~
 *.qgz~
 .qgis/
+*.gpkg-shm
+*.gpkg-wal
+*.tif.aux.xml
+apps/interactive-map/qgis/kw-world_attachments.zip
+apps/interactive-map/qgis/rasters/*.tif
+apps/interactive-map/qgis/snapshots/
 
 # === Generated GeoJSON (regenerable from YAML) ===
 # On ne commit PAS les GeoJSON placeholders : ils sont regénérés par yaml_to_geojson.py
 apps/interactive-map/data/geojson/*.geojson
 apps/interactive-map/data/raw/*.yaml
+
+# === Local agent/browser tooling ===
+.playwright-mcp/
+.superpowers/
+kwg-*.png
 
 # === PHP legacy site uploads ===
 apps/legacy-php-site/site/uploads/

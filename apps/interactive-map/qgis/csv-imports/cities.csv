@@ -1,316 +1,316 @@
-id,name,parent_region,role,notes
-erune,Erune,alteria,capital,Capitale d'Alteria
-gelario,Gelario,alteria,major_city,
-tertoria,Tertoria,alteria,major_city,
-cebrada,Cebrada,alteria,major_city,
-olbadio,Olbadio,alteria,major_city,
-sevoles,Sevoles,alteria,major_city,
-impole,Impole,alteria,major_city,
-lugina,Lugina,alteria,major_city,
-abejuan,Abejuan,alteria,major_city,Maison-mère des Chiromanciens (organisations.yaml)
-sala,Sala,alteria,town,
-"eboria, val_d_ora, salgueda, sao_guerda, espovora, la_quaglia, el_norreno","Eboria, Val D Ora, Salgueda, Sao Guerda, Espovora, La Quaglia, El Norreno",alteria,village,
-"greatorga, greba, bellisse, venasia, riciano, plamus_greo, pasciso","Greatorga, Greba, Bellisse, Venasia, Riciano, Plamus Greo, Pasciso",alteria,village,
-"hueseroca, mont_charoia, parielo, gretto, oruyo, jezano, pico_rhello","Hueseroca, Mont Charoia, Parielo, Gretto, Oruyo, Jezano, Pico Rhello",alteria,village,
-"gueceno, carvodi, ilcuen, le_bosque, jelda, pontevila, romana, baroste","Gueceno, Carvodi, Ilcuen, Le Bosque, Jelda, Pontevila, Romana, Baroste",alteria,village,
-"lugana, vagame","Lugana, Vagame",alteria,village,
-kilioka,Kilioka,collines_d_ico,capital,
-daniark,Daniark,collines_d_ico,major_city,
-runilio,Runilio,collines_d_ico,major_city,
-caldorak,Caldorak,collines_d_ico,major_city,
-alkio,Alkio,collines_d_ico,major_city,
-nekia,Nekia,collines_d_ico,major_city,
-ranadio,Ranadio,collines_d_ico,major_city,
-riokia,Riokia,collines_d_ico,major_city,
-enyak,Enyak,collines_d_ico,major_city,
-"murtanai, luminokia, egaloia, ekrilia, viarnarak, tainadok, kornia","Murtanai, Luminokia, Egaloia, Ekrilia, Viarnarak, Tainadok, Kornia",collines_d_ico,village,
-"sentaio, vainotka, murtana, adiltir, ortaiba","Sentaio, Vainotka, Murtana, Adiltir, Ortaiba",collines_d_ico,village,
-asturiev,Asturiev,detre,capital,Donjon où la 8e épouse du Roi tyran est enfermée
-bosojno,Bosojno,detre,town,
-kajce,Kajce,detre,town,
-tresgrad,Tresgrad,detre,town,
-kresica,Kresica,detre,town,
-pegrina,Pegrina,detre,town,
-salkzor,Salkzor,detre,town,
-vorojkiv,Vorojkiv,detre,town,
-umijek,Umijek,detre,town,
-betanka,Betanka,detre,major_city,
-svetja,Svetja,detre,town,
-vos,Vos,detre,town,
-proda,Proda,detre,town,
-zaleska,Zaleska,detre,town,
-orospic,Orospic,detre,town,
-kazma,Kazma,detre,town,
-derin,Derin,dundoria,capital,
-jalaam,Jalaam,dundoria,major_city,
-gefah,Gefah,dundoria,major_city,
-sounice,Sounice,dundoria,town,
-oussben,Oussben,dundoria,town,
-khabil_wafen,Khabil Wafen,dundoria,major_city,
-ismawad,Ismawad,dundoria,major_city,
-jabal_beir,Jabal Beir,dundoria,major_city,
-oumick,Oumick,dundoria,town,
-qaeid,Qaeid,dundoria,town,
-miloudjem,Miloudjem,dundoria,town,
-zhor_hevat,Zhor Hevat,dundoria,town,
-isna_byri,Isna Byri,dundoria,town,
-shoyim,Shoyim,dundoria,town,
-elioquant,Elioquant,empire,capital,Maison-mère des Astrologues
-welty,Welty,empire,town,
-milhery,Milhery,empire,town,
-jillford,Jillford,empire,major_city,
-delchester,Délchester,empire,major_city,
-ardeen,Ardeen,empire,major_city,
-shirlingt,Shirlingt,empire,major_city,
-lifield,Lifield,empire,town,
-sectown,Sectown,empire,town,
-walkston,Walkston,empire,town,
-sobradge,Sobradge,empire,town,
-vintale,Vintale,empire,major_city,
-meidon,Meidon,empire,major_city,
-costor,Costor,empire,town,
-crey,Crey,empire,town,
-denes,Denes,empire,town,
-trumburg,Trumburg,empire,town,
-sissvick,Sissvick,empire,town,
-forhey,Forhey,empire,town,
-sileker,Sileker,empire,town,
-parteld,Parteld,empire,town,
-telury,Telury,empire,town,
-crahar,Crahar,empire,town,
-tarvuish,Tarvuish,empire,town,
-nawel,Nawel,empire,town,
-tayford,Tayford,empire,town,
-danot,Danot,empire,town,
-telfage,Telfage,empire,town,
-st_eldrick,St-Eldrick,empire,town,
-swipoo,Swipoo,empire,town,
-silester,Silester,empire,town,
-foriney,Foriney,empire,town,
-tarwush,Tarwush,empire,town,
-muar,Muar,empire,town,
-selten,Selten,empire,town,
-monastie,Monastie,enorie,capital,
-bourgonil,Bourgonil,enorie,major_city,Siège de la famille royale de Bourgonil
-pedrune,Pédrune,enorie,town,
-brincour,Brincour,enorie,town,
-silfany,Silfany,enorie,major_city,
-goorate,Goorate,enorie,major_city,
-feyley,Feyley,enorie,town,
-rolin,Rolin,enorie,town,
-grangle,Grangle,enorie,major_city,
-lunon,Lunon,enorie,major_city,
-pledre,Plèdre,enorie,major_city,
-fridlin,Fridlin,enorie,major_city,
-quepet,Quepet,enorie,town,
-deenit,Deenit,enorie,town,Possible maison-mère des Géomanciens (anomalie source)
-nefill,Nefill,enorie,town,
-paisendre,Païsendre,enorie,town,
-plaindeu,Plaindeu,enorie,town,
-beldon,Beldon,enorie,town,
-joren,Joren,enorie,town,
-centaury,Centaury,enorie,town,
-tayhin,Tayhin,enorie,town,
-marall,Marall,enorie,town,
-kweldon,Kweldon,enorie,town,
-aquil,Aquil,enorie,town,
-careon,Caréon,fauche_le_vent,capital,
-entedeu,Entédèu,fauche_le_vent,major_city,
-grilois,Grilois,fauche_le_vent,major_city,
-talignon,Talignon,fauche_le_vent,town,
-palenvau,Palenvau,fauche_le_vent,town,
-dentive,Dentive,fauche_le_vent,major_city,
-edrideris,Edrideris,fauche_le_vent,town,
-miges,Migès,fauche_le_vent,town,
-tourde,Tourde,fauche_le_vent,major_city,
-divellie,Divellie,fauche_le_vent,major_city,
-marendon,Marendon,fauche_le_vent,major_city,
-ribalen,Ribalen,fauche_le_vent,major_city,
-tirevix,Tirevix,fauche_le_vent,town,
-mecride,Mecride,fauche_le_vent,town,
-crozon,Crozon,fauche_le_vent,town,
-drugeau_la_norme,Drugeau-la-Norme,fauche_le_vent,town,
-tireux,Tireux,fauche_le_vent,town,
-saint_jules,Saint-Jules,fauche_le_vent,town,
-chez_nous,Chez Nous,fauche_le_vent,border_town,
-saivre,Saivre,fauche_le_vent,town,
-tyrandell,Tyrandell,foret_de_tyrkan,capital,
-avorrwen,Avorrwen,foret_de_tyrkan,major_city,
-talvr,Talvr,foret_de_tyrkan,town,
-sadaron,Sadaron,foret_de_tyrkan,town,
-talanai,Talanai,foret_de_tyrkan,town,
-mihaven,Mihaven,foret_de_tyrkan,town,
-eloracya,Eloracya,foret_de_tyrkan,town,
-zavynell,Zavynell,foret_de_tyrkan,town,
-doluvel,Doluvel,foret_de_tyrkan,town,
-beerwen,Beerwen,foret_de_tyrkan,town,
-geandere,Geandere,foret_de_tyrkan,town,
-torrevidor,Torrevidor,foret_de_tyrkan,town,
-dorina,Dorina,foret_de_tyrkan,town,
-ambocissi,Ambocissi,foret_de_tyrkan,town,
-kelduiss,Kelduiss,foret_de_tyrkan,town,
-asyril,Asyril,foret_de_tyrkan,town,
-kiraerss,Kiraerss,foret_de_tyrkan,town,
-eccnoe,Eccnoe,foret_de_tyrkan,town,
-welonkas,Welonkas,foret_de_tyrkan,town,
-ulzonkas,Ulzonkas,foret_de_tyrkan,town,
-sciandel,Sciandel,foret_de_tyrkan,town,
-hyertodyess,Hyertodyess,foret_de_tyrkan,town,
-pellipe,Pellipe,foret_de_tyrkan,town,
-marlonil,Marlonil,foret_de_tyrkan,town,
-narthias,Narthias,foret_de_tyrkan,town,
-wendees,Wendees,foret_de_tyrkan,town,
-doganai,Doganai,foret_de_tyrkan,town,
-subelyss,Subelyss,foret_de_tyrkan,town,
-hyrtul,Hyrtul,foret_de_tyrkan,town,
-heldannya,Heldannya,haut_royaume,capital,
-talatair,Talatair,haut_royaume,town,
-earelia,Earelia,haut_royaume,town,
-thuldurim,Thuldurim,haut_royaume,town,
-earlis,Earlis,haut_royaume,town,
-taletsir,Taletsir,haut_royaume,town,
-hernfegas,Hernfegas,haut_royaume,town,
-vaheriss,Vaheriss,haut_royaume,major_city,
-rodalis,Rodalis,haut_royaume,town,
-trian_falas,Trian-Falas,haut_royaume,town,
-tallia,Tallia,haut_royaume,town,
-oronalis,Oronalis,haut_royaume,town,
-narthelia,Narthelia,haut_royaume,major_city,
-suaeu,Suaeu,haut_royaume,town,
-ludith,Ludith,haut_royaume,town,
-ombrosil,Ombrosil,haut_royaume,town,
-vanthel,Vanthel,haut_royaume,town,
-tavhulcia,Tavhulcia,haut_royaume,town,
-lichmpod,Lichmpod,haut_royaume,town,
-takimis,Takimis,haut_royaume,town,
-siretarms,Siretarms,haut_royaume,town,
-metiras,Metiras,haut_royaume,town,
-eralios,Eralios,haut_royaume,town,
-luntith,Luntith,haut_royaume,town,
-lunte,Lunte,haut_royaume,town,
-felderio,Felderio,irtanie,capital,
-ibravnick,Ibravnick,irtanie,town,
-qetekzhov,Qetekzhov,irtanie,town,
-lokta,Lokta,irtanie,town,
-baimora,Baimora,irtanie,town,
-niksk,Niksk,irtanie,town,
-detsenkov,Detsenkov,irtanie,town,
-branicolli,Branicolli,irtanie,major_city,
-arinoava,Arinoava,irtanie,major_city,
-berana,Berana,irtanie,town,
-prildag,Prildag,irtanie,town,
-gotschern,Gotschern,irtanie,major_city,
-pentuppi,Pentuppi,irtanie,town,
-felinov,Felinov,irtanie,town,
-ameral,Ameral,irtanie,town,
-edirvirkel,Edirvirkel,irtanie,town,
-protchkev,Protchkev,irtanie,town,
-poltinek,Poltinek,irtanie,town,
-st_cresas,St-Crésas,irtanie,town,
-birikov,Birikov,irtanie,town,
-peluna,Peluna,irtanie,town,
-bertisch,Bertisch,irtanie,town,
-caliopoñi,Caliopoñi,irtanie,town,
-azrak,Azrak,portes_d_azrak,capital_centre,Centre du territoire nain
-tumargar,Tumargar,portes_d_azrak,town,
-bafag,Bafag,portes_d_azrak,town,
-emerg_bafag,Emerg-Bafag,portes_d_azrak,town,
-farnag,Farnag,portes_d_azrak,town,
-gruduria,Gruduria,portes_d_azrak,major_city,
-vaitorgar,Vaitorgar,portes_d_azrak,town,
-kalorat,Kalorat,portes_d_azrak,town,
-kenona,Kenona,portes_d_azrak,town,
-narenona,Narenona,portes_d_azrak,town,
-korrec,Korrec,portes_d_azrak,town,
-ivariek,Ivariek,portes_d_azrak,town,
-tornaca,Tornaca,portes_d_azrak,town,
-drannia,Drannia,portes_d_azrak,town,
-galareust,Galareust,portes_d_azrak,town,
-galin,Galin,portes_d_azrak,town,
-kad,Kad,portes_d_azrak,town,
-mooran,Mooran,portes_d_azrak,town,
-wario,Wario,portes_d_azrak,town,
-narwar,Narwar,portes_d_azrak,town,
-rastrek,Rastrek,portes_d_azrak,town,
-kernar,Kernar,portes_d_azrak,town,
-waldek,Waldek,portes_d_azrak,town,
-ert_oria_fel,Ert-Oria-Fel,portes_d_azrak,town,
-faruv,Faruv,portes_d_azrak,town,
-aardrek,Aardrek,portes_d_azrak,town,
-walnoir,Walnoir,portes_d_azrak,town,
-orotrinek,Orotrinek,portes_d_azrak,town,
-frenkov,Frenkov,portes_d_azrak,town,
-gameñor,Gameñor,portes_d_azrak,town,
-niebel,Niebel,portes_d_azrak,town,
-denir,Denir,portes_d_azrak,town,
-baratrat,Baratrat,portes_d_azrak,town,
-melaran,Melaran,portes_d_azrak,town,
-porte_du_nord,Porte du Nord,portes_d_azrak,gate,
-porte_de_brameust,Porte de Brameust,portes_d_azrak,gate,
-porte_de_melaran,Porte de Melaran,portes_d_azrak,gate,
-porte_du_volcan,Porte du Volcan,portes_d_azrak,gate,
-porte_de_niebel,Porte de Niebel,portes_d_azrak,gate,
-porte_de_lache,Porte de Lâche,portes_d_azrak,gate,
-porte_d_orotrim,Porte d'Orotrim,portes_d_azrak,gate,
-porte_de_waldnor,Porte de Waldnor,portes_d_azrak,gate,
-porte_de_gruduria,Porte de Gruduria,portes_d_azrak,gate,
-porte_du_sud,Porte du Sud,portes_d_azrak,gate,
-vallandr,Vallandr,monde_sombre,capital,
-edranem,Edranem,monde_sombre,major_city,
-demorann,Demorann,monde_sombre,town,
-vichulm,Vichulm,monde_sombre,town,
-seltak,Seltak,monde_sombre,town,
-elimmidar,Elimmidar,monde_sombre,major_city,
-lornath,Lornath,monde_sombre,major_city,
-nusyl,Nusyl,monde_sombre,town,
-soertan,Soertan,monde_sombre,town,
-theornn,Theornn,monde_sombre,major_city,
-hanaronn,Hanaronn,monde_sombre,major_city,
-hurl,Hurl,monde_sombre,town,
-idilana,Idilana,monde_sombre,town,
-lonar,Lonar,monde_sombre,town,
-homulus,Homulus,monde_sombre,town,
-krilyt,Krilyt,monde_sombre,town,
-galerak,Galerak,monde_sombre,town,
-hormur,Hormur,monde_sombre,town,
-harm,Harm,monde_sombre,town,
-rendomur,Rendomur,monde_sombre,town,
-lahurnn,Lahurnn,monde_sombre,major_city,
-iriar,Iriar,monde_sombre,town,
-kalandeor,Kalandeor,monde_sombre,town,
-herlund,Herlund,monde_sombre,town,
-drenom,Drenom,monde_sombre,town,
-l_ordral,L'Ordral,monde_sombre,town,
-hildurm,Hildurm,terres_du_nord,capital,1ère tribu fondée par Sorolson
-aldar,Aldar,terres_du_nord,tribal_capital,Tribu d'une fille de Sorolson
-snorrig,Snorrig,terres_du_nord,tribal_capital,Tribu d'une fille de Sorolson
-rimgard,Rimgard,terres_du_nord,tribal_capital,Tribu d'une fille de Sorolson
-varfar,Varfar,terres_du_nord,tribal_capital,Tribu d'une fille de Sorolson
-thildor,Thildor (Hildor),terres_du_nord,tribal_capital,Tribu d'un fils de Sorolson
-otten,Otten (Otyn),terres_du_nord,tribal_capital,Tribu d'un fils de Sorolson
-alayr,Alayr (Altyr),terres_du_nord,tribal_capital,Tribu d'un fils de Sorolson
-tsai_mai_do,Tsai'Maï Do,yonkado,capital,
-paypao,Paypao,yonkado,major_city,
-gon_mi,Gon'mi,yonkado,major_city,
-sei_an,Sei'an,yonkado,major_city,
-tseliang,Tseliang,yonkado,town,
-endu_zi,Endu'zi,yonkado,major_city,
-nebholi,Nebholi,yonkado,town,
-qumao,Qumao,yonkado,major_city,
-ling_he,Ling'he,yonkado,major_city,
-beizu,Beizu,yonkado,major_city,
-wogan,Wogan,yonkado,town,
-fuji,Fuji,yonkado,major_city,
-enzhou,Enzhou,yonkado,major_city,
-hubei,Hubei,yonkado,major_city,
-jiran_chung,Jiran Chung,yonkado,major_city,
-bailing,Bailing,yonkado,town,
-zhanguan,Zhanguan,yonkado,major_city,
-dujishan,Dujishan,yonkado,town,
-daghai,Daghai,yonkado,town,
-kozu,Kozu,yonkado,town,
-kanjvi,Kanjvi,yonkado,town,
-yuxion,Yuxion,yonkado,town,
-luoming,Luoming,yonkado,major_city,
-puy_fu,Puy'fu,yonkado,major_city,
-xiaoxi,Xiaoxi,yonkado,town,
+id,name,parent_region,role,notes,lon,lat
+erune,Erune,alteria,capital,Capitale d'Alteria,65.0,55.0
+gelario,Gelario,alteria,major_city,,63.8941,56.0134
+tertoria,Tertoria,alteria,major_city,,65.1307,53.5057
+cebrada,Cebrada,alteria,major_city,,65.9131,56.19
+olbadio,Olbadio,alteria,major_city,,63.5228,54.7395
+sevoles,Sevoles,alteria,major_city,,66.2651,54.1941
+impole,Impole,alteria,major_city,,64.6118,56.4489
+lugina,Lugina,alteria,major_city,,64.3074,53.6695
+abejuan,Abejuan,alteria,major_city,Maison-mère des Chiromanciens (organisations.yaml),66.4095,55.513
+sala,Sala,alteria,town,,62.6903,55.9567
+"eboria, val_d_ora, salgueda, sao_guerda, espovora, la_quaglia, el_norreno","Eboria, Val D Ora, Salgueda, Sao Guerda, Espovora, La Quaglia, El Norreno",alteria,village,,66.4792,51.8279
+"greatorga, greba, bellisse, venasia, riciano, plamus_greo, pasciso","Greatorga, Greba, Bellisse, Venasia, Riciano, Plamus Greo, Pasciso",alteria,village,,66.0525,58.338
+"hueseroca, mont_charoia, parielo, gretto, oruyo, jezano, pico_rhello","Hueseroca, Mont Charoia, Parielo, Gretto, Oruyo, Jezano, Pico Rhello",alteria,village,,61.9689,53.25
+"gueceno, carvodi, ilcuen, le_bosque, jelda, pontevila, romana, baroste","Gueceno, Carvodi, Ilcuen, Le Bosque, Jelda, Pontevila, Romana, Baroste",alteria,village,,68.417,54.2425
+"lugana, vagame","Lugana, Vagame",alteria,village,,62.9925,57.867
+kilioka,Kilioka,collines_d_ico,capital,,75.0,62.0
+daniark,Daniark,collines_d_ico,major_city,,73.8941,63.0134
+runilio,Runilio,collines_d_ico,major_city,,75.1307,60.5057
+caldorak,Caldorak,collines_d_ico,major_city,,75.9131,63.19
+alkio,Alkio,collines_d_ico,major_city,,73.5228,61.7395
+nekia,Nekia,collines_d_ico,major_city,,76.2651,61.1941
+ranadio,Ranadio,collines_d_ico,major_city,,74.6118,63.4489
+riokia,Riokia,collines_d_ico,major_city,,74.3074,60.6695
+enyak,Enyak,collines_d_ico,major_city,,76.4095,62.513
+"murtanai, luminokia, egaloia, ekrilia, viarnarak, tainadok, kornia","Murtanai, Luminokia, Egaloia, Ekrilia, Viarnarak, Tainadok, Kornia",collines_d_ico,village,,71.7664,63.3394
+"sentaio, vainotka, murtana, adiltir, ortaiba","Sentaio, Vainotka, Murtana, Adiltir, Ortaiba",collines_d_ico,village,,76.4792,58.8279
+asturiev,Asturiev,detre,capital,Donjon où la 8e épouse du Roi tyran est enfermée,110.0,75.0
+bosojno,Bosojno,detre,town,,108.1568,76.689
+kajce,Kajce,detre,town,,110.2179,72.5095
+tresgrad,Tresgrad,detre,town,,111.5219,76.9834
+kresica,Kresica,detre,town,,107.538,74.5659
+pegrina,Pegrina,detre,town,,112.1085,73.6568
+salkzor,Salkzor,detre,town,,109.353,77.4148
+vorojkiv,Vorojkiv,detre,town,,108.8456,72.7825
+umijek,Umijek,detre,town,,112.3492,75.8551
+betanka,Betanka,detre,major_city,,108.6142,75.574
+svetja,Svetja,detre,town,,111.0565,72.7342
+vos,Vos,detre,town,,110.7518,77.3843
+proda,Proda,detre,town,,107.8349,73.75
+zaleska,Zaleska,detre,town,,112.4407,74.4589
+orospic,Orospic,detre,town,,108.5661,77.0479
+kazma,Kazma,detre,town,,109.6737,72.5214
+derin,Derin,dundoria,capital,,100.0,25.0
+jalaam,Jalaam,dundoria,major_city,,98.8941,26.0134
+gefah,Gefah,dundoria,major_city,,100.1307,23.5057
+sounice,Sounice,dundoria,town,,101.5219,26.9834
+oussben,Oussben,dundoria,town,,97.538,24.5659
+khabil_wafen,Khabil Wafen,dundoria,major_city,,101.2651,24.1941
+ismawad,Ismawad,dundoria,major_city,,99.6118,26.4489
+jabal_beir,Jabal Beir,dundoria,major_city,,99.3074,23.6695
+oumick,Oumick,dundoria,town,,102.3492,25.8551
+qaeid,Qaeid,dundoria,town,,97.6903,25.9567
+miloudjem,Miloudjem,dundoria,town,,101.0565,22.7342
+zhor_hevat,Zhor Hevat,dundoria,town,,100.7518,27.3843
+isna_byri,Isna Byri,dundoria,town,,97.8349,23.75
+shoyim,Shoyim,dundoria,town,,102.4407,24.4589
+elioquant,Elioquant,empire,capital,Maison-mère des Astrologues,35.0,70.0
+welty,Welty,empire,town,,33.1568,71.689
+milhery,Milhery,empire,town,,35.2179,67.5095
+jillford,Jillford,empire,major_city,,35.9131,71.19
+delchester,Délchester,empire,major_city,,33.5228,69.7395
+ardeen,Ardeen,empire,major_city,,36.2651,69.1941
+shirlingt,Shirlingt,empire,major_city,,34.6118,71.4489
+lifield,Lifield,empire,town,,33.8456,67.7825
+sectown,Sectown,empire,town,,37.3492,70.8551
+walkston,Walkston,empire,town,,32.6903,70.9567
+sobradge,Sobradge,empire,town,,36.0565,67.7342
+vintale,Vintale,empire,major_city,,35.4511,71.4306
+meidon,Meidon,empire,major_city,,33.701,69.25
+costor,Costor,empire,town,,37.4407,69.4589
+crey,Crey,empire,town,,33.5661,72.0479
+denes,Denes,empire,town,,34.6737,67.5214
+trumburg,Trumburg,empire,town,,36.9151,71.607
+sissvick,Sissvick,empire,town,,32.5024,70.109
+forhey,Forhey,empire,town,,36.7678,68.2322
+sileker,Sileker,empire,town,,34.891,72.4976
+parteld,Parteld,empire,town,,33.393,68.0849
+telury,Telury,empire,town,,37.4786,70.3263
+crahar,Crahar,empire,town,,32.9521,71.4339
+tarvuish,Tarvuish,empire,town,,35.5411,67.5593
+nawel,Nawel,empire,town,,36.25,72.1651
+tayford,Tayford,empire,town,,32.6157,69.2482
+danot,Danot,empire,town,,37.2658,68.9435
+telfage,Telfage,empire,town,,34.0433,72.3097
+st_eldrick,St-Eldrick,empire,town,,34.1449,67.6508
+swipoo,Swipoo,empire,town,,37.2175,71.1544
+silester,Silester,empire,town,,32.5852,70.647
+foriney,Foriney,empire,town,,36.3432,67.8915
+tarwush,Tarwush,empire,town,,35.4341,72.462
+muar,Muar,empire,town,,33.0166,68.4781
+selten,Selten,empire,town,,37.4905,69.7821
+monastie,Monastie,enorie,capital,,25.0,50.0
+bourgonil,Bourgonil,enorie,major_city,Siège de la famille royale de Bourgonil,23.8941,51.0134
+pedrune,Pédrune,enorie,town,,25.2179,47.5095
+brincour,Brincour,enorie,town,,26.5219,51.9834
+silfany,Silfany,enorie,major_city,,23.5228,49.7395
+goorate,Goorate,enorie,major_city,,26.2651,49.1941
+feyley,Feyley,enorie,town,,24.353,52.4148
+rolin,Rolin,enorie,town,,23.8456,47.7825
+grangle,Grangle,enorie,major_city,,26.4095,50.513
+lunon,Lunon,enorie,major_city,,23.6142,50.574
+pledre,Plèdre,enorie,major_city,,25.6339,48.6405
+fridlin,Fridlin,enorie,major_city,,25.4511,51.4306
+quepet,Quepet,enorie,town,,22.8349,48.75
+deenit,Deenit,enorie,town,Possible maison-mère des Géomanciens (anomalie source),27.4407,49.4589
+nefill,Nefill,enorie,town,,23.5661,52.0479
+paisendre,Païsendre,enorie,town,,24.6737,47.5214
+plaindeu,Plaindeu,enorie,town,,26.9151,51.607
+beldon,Beldon,enorie,town,,22.5024,50.109
+joren,Joren,enorie,town,,26.7678,48.2322
+centaury,Centaury,enorie,town,,24.891,52.4976
+tayhin,Tayhin,enorie,town,,23.393,48.0849
+marall,Marall,enorie,town,,27.4786,50.3263
+kweldon,Kweldon,enorie,town,,22.9521,51.4339
+aquil,Aquil,enorie,town,,25.5411,47.5593
+careon,Caréon,fauche_le_vent,capital,,50.0,60.0
+entedeu,Entédèu,fauche_le_vent,major_city,,48.8941,61.0134
+grilois,Grilois,fauche_le_vent,major_city,,50.1307,58.5057
+talignon,Talignon,fauche_le_vent,town,,51.5219,61.9834
+palenvau,Palenvau,fauche_le_vent,town,,47.538,59.5659
+dentive,Dentive,fauche_le_vent,major_city,,51.2651,59.1941
+edrideris,Edrideris,fauche_le_vent,town,,49.353,62.4148
+miges,Migès,fauche_le_vent,town,,48.8456,57.7825
+tourde,Tourde,fauche_le_vent,major_city,,51.4095,60.513
+divellie,Divellie,fauche_le_vent,major_city,,48.6142,60.574
+marendon,Marendon,fauche_le_vent,major_city,,50.6339,58.6405
+ribalen,Ribalen,fauche_le_vent,major_city,,50.4511,61.4306
+tirevix,Tirevix,fauche_le_vent,town,,47.8349,58.75
+mecride,Mecride,fauche_le_vent,town,,52.4407,59.4589
+crozon,Crozon,fauche_le_vent,town,,48.5661,62.0479
+drugeau_la_norme,Drugeau-la-Norme,fauche_le_vent,town,,49.6737,57.5214
+tireux,Tireux,fauche_le_vent,town,,51.9151,61.607
+saint_jules,Saint-Jules,fauche_le_vent,town,,47.5024,60.109
+chez_nous,Chez Nous,fauche_le_vent,border_town,,51.4142,58.5858
+saivre,Saivre,fauche_le_vent,town,,49.891,62.4976
+tyrandell,Tyrandell,foret_de_tyrkan,capital,,50.0,75.0
+avorrwen,Avorrwen,foret_de_tyrkan,major_city,,48.8941,76.0134
+talvr,Talvr,foret_de_tyrkan,town,,50.2179,72.5095
+sadaron,Sadaron,foret_de_tyrkan,town,,51.5219,76.9834
+talanai,Talanai,foret_de_tyrkan,town,,47.538,74.5659
+mihaven,Mihaven,foret_de_tyrkan,town,,52.1085,73.6568
+eloracya,Eloracya,foret_de_tyrkan,town,,49.353,77.4148
+zavynell,Zavynell,foret_de_tyrkan,town,,48.8456,72.7825
+doluvel,Doluvel,foret_de_tyrkan,town,,52.3492,75.8551
+beerwen,Beerwen,foret_de_tyrkan,town,,47.6903,75.9567
+geandere,Geandere,foret_de_tyrkan,town,,51.0565,72.7342
+torrevidor,Torrevidor,foret_de_tyrkan,town,,50.7518,77.3843
+dorina,Dorina,foret_de_tyrkan,town,,47.8349,73.75
+ambocissi,Ambocissi,foret_de_tyrkan,town,,52.4407,74.4589
+kelduiss,Kelduiss,foret_de_tyrkan,town,,48.5661,77.0479
+asyril,Asyril,foret_de_tyrkan,town,,49.6737,72.5214
+kiraerss,Kiraerss,foret_de_tyrkan,town,,51.9151,76.607
+eccnoe,Eccnoe,foret_de_tyrkan,town,,47.5024,75.109
+welonkas,Welonkas,foret_de_tyrkan,town,,51.7678,73.2322
+ulzonkas,Ulzonkas,foret_de_tyrkan,town,,49.891,77.4976
+sciandel,Sciandel,foret_de_tyrkan,town,,48.393,73.0849
+hyertodyess,Hyertodyess,foret_de_tyrkan,town,,52.4786,75.3263
+pellipe,Pellipe,foret_de_tyrkan,town,,47.9521,76.4339
+marlonil,Marlonil,foret_de_tyrkan,town,,50.5411,72.5593
+narthias,Narthias,foret_de_tyrkan,town,,51.25,77.1651
+wendees,Wendees,foret_de_tyrkan,town,,47.6157,74.2482
+doganai,Doganai,foret_de_tyrkan,town,,52.2658,73.9435
+subelyss,Subelyss,foret_de_tyrkan,town,,49.0433,77.3097
+hyrtul,Hyrtul,foret_de_tyrkan,town,,49.1449,72.6508
+heldannya,Heldannya,haut_royaume,capital,,25.0,35.0
+talatair,Talatair,haut_royaume,town,,23.1568,36.689
+earelia,Earelia,haut_royaume,town,,25.2179,32.5095
+thuldurim,Thuldurim,haut_royaume,town,,26.5219,36.9834
+earlis,Earlis,haut_royaume,town,,22.538,34.5659
+taletsir,Taletsir,haut_royaume,town,,27.1085,33.6568
+hernfegas,Hernfegas,haut_royaume,town,,24.353,37.4148
+vaheriss,Vaheriss,haut_royaume,major_city,,24.3074,33.6695
+rodalis,Rodalis,haut_royaume,town,,27.3492,35.8551
+trian_falas,Trian-Falas,haut_royaume,town,,22.6903,35.9567
+tallia,Tallia,haut_royaume,town,,26.0565,32.7342
+oronalis,Oronalis,haut_royaume,town,,25.7518,37.3843
+narthelia,Narthelia,haut_royaume,major_city,,23.701,34.25
+suaeu,Suaeu,haut_royaume,town,,27.4407,34.4589
+ludith,Ludith,haut_royaume,town,,23.5661,37.0479
+ombrosil,Ombrosil,haut_royaume,town,,24.6737,32.5214
+vanthel,Vanthel,haut_royaume,town,,26.9151,36.607
+tavhulcia,Tavhulcia,haut_royaume,town,,22.5024,35.109
+lichmpod,Lichmpod,haut_royaume,town,,26.7678,33.2322
+takimis,Takimis,haut_royaume,town,,24.891,37.4976
+siretarms,Siretarms,haut_royaume,town,,23.393,33.0849
+metiras,Metiras,haut_royaume,town,,27.4786,35.3263
+eralios,Eralios,haut_royaume,town,,22.9521,36.4339
+luntith,Luntith,haut_royaume,town,,25.5411,32.5593
+lunte,Lunte,haut_royaume,town,,26.25,37.1651
+felderio,Felderio,irtanie,capital,,100.0,55.0
+ibravnick,Ibravnick,irtanie,town,,98.1568,56.689
+qetekzhov,Qetekzhov,irtanie,town,,100.2179,52.5095
+lokta,Lokta,irtanie,town,,101.5219,56.9834
+baimora,Baimora,irtanie,town,,97.538,54.5659
+niksk,Niksk,irtanie,town,,102.1085,53.6568
+detsenkov,Detsenkov,irtanie,town,,99.353,57.4148
+branicolli,Branicolli,irtanie,major_city,,99.3074,53.6695
+arinoava,Arinoava,irtanie,major_city,,101.4095,55.513
+berana,Berana,irtanie,town,,97.6903,55.9567
+prildag,Prildag,irtanie,town,,101.0565,52.7342
+gotschern,Gotschern,irtanie,major_city,,100.4511,56.4306
+pentuppi,Pentuppi,irtanie,town,,97.8349,53.75
+felinov,Felinov,irtanie,town,,102.4407,54.4589
+ameral,Ameral,irtanie,town,,98.5661,57.0479
+edirvirkel,Edirvirkel,irtanie,town,,99.6737,52.5214
+protchkev,Protchkev,irtanie,town,,101.9151,56.607
+poltinek,Poltinek,irtanie,town,,97.5024,55.109
+st_cresas,St-Crésas,irtanie,town,,101.7678,53.2322
+birikov,Birikov,irtanie,town,,99.891,57.4976
+peluna,Peluna,irtanie,town,,98.393,53.0849
+bertisch,Bertisch,irtanie,town,,102.4786,55.3263
+caliopoñi,Caliopoñi,irtanie,town,,97.9521,56.4339
+azrak,Azrak,portes_d_azrak,capital_centre,Centre du territoire nain,60.0,50.0
+tumargar,Tumargar,portes_d_azrak,town,,58.1568,51.689
+bafag,Bafag,portes_d_azrak,town,,60.2179,47.5095
+emerg_bafag,Emerg-Bafag,portes_d_azrak,town,,61.5219,51.9834
+farnag,Farnag,portes_d_azrak,town,,57.538,49.5659
+gruduria,Gruduria,portes_d_azrak,major_city,,61.2651,49.1941
+vaitorgar,Vaitorgar,portes_d_azrak,town,,59.353,52.4148
+kalorat,Kalorat,portes_d_azrak,town,,58.8456,47.7825
+kenona,Kenona,portes_d_azrak,town,,62.3492,50.8551
+narenona,Narenona,portes_d_azrak,town,,57.6903,50.9567
+korrec,Korrec,portes_d_azrak,town,,61.0565,47.7342
+ivariek,Ivariek,portes_d_azrak,town,,60.7518,52.3843
+tornaca,Tornaca,portes_d_azrak,town,,57.8349,48.75
+drannia,Drannia,portes_d_azrak,town,,62.4407,49.4589
+galareust,Galareust,portes_d_azrak,town,,58.5661,52.0479
+galin,Galin,portes_d_azrak,town,,59.6737,47.5214
+kad,Kad,portes_d_azrak,town,,61.9151,51.607
+mooran,Mooran,portes_d_azrak,town,,57.5024,50.109
+wario,Wario,portes_d_azrak,town,,61.7678,48.2322
+narwar,Narwar,portes_d_azrak,town,,59.891,52.4976
+rastrek,Rastrek,portes_d_azrak,town,,58.393,48.0849
+kernar,Kernar,portes_d_azrak,town,,62.4786,50.3263
+waldek,Waldek,portes_d_azrak,town,,57.9521,51.4339
+ert_oria_fel,Ert-Oria-Fel,portes_d_azrak,town,,60.5411,47.5593
+faruv,Faruv,portes_d_azrak,town,,61.25,52.1651
+aardrek,Aardrek,portes_d_azrak,town,,57.6157,49.2482
+walnoir,Walnoir,portes_d_azrak,town,,62.2658,48.9435
+orotrinek,Orotrinek,portes_d_azrak,town,,59.0433,52.3097
+frenkov,Frenkov,portes_d_azrak,town,,59.1449,47.6508
+gameñor,Gameñor,portes_d_azrak,town,,62.2175,51.1544
+niebel,Niebel,portes_d_azrak,town,,57.5852,50.647
+denir,Denir,portes_d_azrak,town,,61.3432,47.8915
+baratrat,Baratrat,portes_d_azrak,town,,60.4341,52.462
+melaran,Melaran,portes_d_azrak,town,,58.0166,48.4781
+porte_du_nord,Porte du Nord,portes_d_azrak,gate,,62.9886,49.7385
+porte_de_brameust,Porte de Brameust,portes_d_azrak,gate,,57.9732,52.2118
+porte_de_melaran,Porte de Melaran,portes_d_azrak,gate,,60.0,47.0
+porte_du_volcan,Porte du Volcan,portes_d_azrak,gate,,62.0268,52.2118
+porte_de_niebel,Porte de Niebel,portes_d_azrak,gate,,57.0114,49.7385
+porte_de_lache,Porte de Lâche,portes_d_azrak,gate,,62.3801,48.1737
+porte_d_orotrim,Porte d'Orotrim,portes_d_azrak,gate,,59.4791,52.9544
+porte_de_waldnor,Porte de Waldnor,portes_d_azrak,gate,,58.3881,47.4698
+porte_de_gruduria,Porte de Gruduria,portes_d_azrak,gate,,62.8978,50.7765
+porte_du_sud,Porte du Sud,portes_d_azrak,gate,,57.339,51.3852
+vallandr,Vallandr,monde_sombre,capital,,125.0,50.0
+edranem,Edranem,monde_sombre,major_city,,123.8941,51.0134
+demorann,Demorann,monde_sombre,town,,125.2179,47.5095
+vichulm,Vichulm,monde_sombre,town,,126.5219,51.9834
+seltak,Seltak,monde_sombre,town,,122.538,49.5659
+elimmidar,Elimmidar,monde_sombre,major_city,,126.2651,49.1941
+lornath,Lornath,monde_sombre,major_city,,124.6118,51.4489
+nusyl,Nusyl,monde_sombre,town,,123.8456,47.7825
+soertan,Soertan,monde_sombre,town,,127.3492,50.8551
+theornn,Theornn,monde_sombre,major_city,,123.6142,50.574
+hanaronn,Hanaronn,monde_sombre,major_city,,125.6339,48.6405
+hurl,Hurl,monde_sombre,town,,125.7518,52.3843
+idilana,Idilana,monde_sombre,town,,122.8349,48.75
+lonar,Lonar,monde_sombre,town,,127.4407,49.4589
+homulus,Homulus,monde_sombre,town,,123.5661,52.0479
+krilyt,Krilyt,monde_sombre,town,,124.6737,47.5214
+galerak,Galerak,monde_sombre,town,,126.9151,51.607
+hormur,Hormur,monde_sombre,town,,122.5024,50.109
+harm,Harm,monde_sombre,town,,126.7678,48.2322
+rendomur,Rendomur,monde_sombre,town,,124.891,52.4976
+lahurnn,Lahurnn,monde_sombre,major_city,,124.0358,48.8509
+iriar,Iriar,monde_sombre,town,,127.4786,50.3263
+kalandeor,Kalandeor,monde_sombre,town,,122.9521,51.4339
+herlund,Herlund,monde_sombre,town,,125.5411,47.5593
+drenom,Drenom,monde_sombre,town,,126.25,52.1651
+l_ordral,L'Ordral,monde_sombre,town,,122.6157,49.2482
+hildurm,Hildurm,terres_du_nord,capital,1ère tribu fondée par Sorolson,60.0,85.0
+aldar,Aldar,terres_du_nord,tribal_capital,Tribu d'une fille de Sorolson,58.8941,86.0134
+snorrig,Snorrig,terres_du_nord,tribal_capital,Tribu d'une fille de Sorolson,60.1307,83.5057
+rimgard,Rimgard,terres_du_nord,tribal_capital,Tribu d'une fille de Sorolson,60.9131,86.19
+varfar,Varfar,terres_du_nord,tribal_capital,Tribu d'une fille de Sorolson,58.5228,84.7395
+thildor,Thildor (Hildor),terres_du_nord,tribal_capital,Tribu d'un fils de Sorolson,61.2651,84.1941
+otten,Otten (Otyn),terres_du_nord,tribal_capital,Tribu d'un fils de Sorolson,59.6118,86.4489
+alayr,Alayr (Altyr),terres_du_nord,tribal_capital,Tribu d'un fils de Sorolson,59.3074,83.6695
+tsai_mai_do,Tsai'Maï Do,yonkado,capital,,115.0,30.0
+paypao,Paypao,yonkado,major_city,,113.8941,31.0134
+gon_mi,Gon'mi,yonkado,major_city,,115.1307,28.5057
+sei_an,Sei'an,yonkado,major_city,,115.9131,31.19
+tseliang,Tseliang,yonkado,town,,112.538,29.5659
+endu_zi,Endu'zi,yonkado,major_city,,116.2651,29.1941
+nebholi,Nebholi,yonkado,town,,114.353,32.4148
+qumao,Qumao,yonkado,major_city,,114.3074,28.6695
+ling_he,Ling'he,yonkado,major_city,,116.4095,30.513
+beizu,Beizu,yonkado,major_city,,113.6142,30.574
+wogan,Wogan,yonkado,town,,116.0565,27.7342
+fuji,Fuji,yonkado,major_city,,115.4511,31.4306
+enzhou,Enzhou,yonkado,major_city,,113.701,29.25
+hubei,Hubei,yonkado,major_city,,116.4644,29.6753
+jiran_chung,Jiran Chung,yonkado,major_city,,114.1396,31.2287
+bailing,Bailing,yonkado,town,,114.6737,27.5214
+zhanguan,Zhanguan,yonkado,major_city,,116.1491,30.9642
+dujishan,Dujishan,yonkado,town,,112.5024,30.109
+daghai,Daghai,yonkado,town,,116.7678,28.2322
+kozu,Kozu,yonkado,town,,114.891,32.4976
+kanjvi,Kanjvi,yonkado,town,,113.393,28.0849
+yuxion,Yuxion,yonkado,town,,117.4786,30.3263
+luoming,Luoming,yonkado,major_city,,113.7713,30.8604
+puy_fu,Puy'fu,yonkado,major_city,,115.3247,28.5356
+xiaoxi,Xiaoxi,yonkado,town,,116.25,32.1651
