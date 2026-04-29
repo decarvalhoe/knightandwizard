@@ -77,6 +77,12 @@ export interface CharacterValidationResult {
   total: number;
 }
 
+export interface CharacterProgression {
+  experiencePoints: number;
+  experienceTotal: number;
+  questPoints: number;
+}
+
 export interface CharacterBase {
   id: string;
   name: string;
@@ -93,6 +99,7 @@ export interface CharacterBase {
   spells: CharacterSpell[];
   equipment: CharacterEquipmentItem[];
   modifiers: CharacterModifier[];
+  progression: CharacterProgression;
   metadata: Record<string, unknown>;
 }
 
@@ -120,6 +127,7 @@ export interface CreatePlayerCharacterInput {
   spells?: CharacterSpell[];
   equipment?: CharacterEquipmentItem[];
   modifiers?: CharacterModifier[];
+  progression?: CharacterProgression;
   metadata?: Record<string, unknown>;
 }
 
@@ -139,6 +147,7 @@ export interface CreateNonPlayerCharacterInput {
   spells?: CharacterSpell[];
   equipment?: CharacterEquipmentItem[];
   modifiers?: CharacterModifier[];
+  progression?: CharacterProgression;
   metadata?: Record<string, unknown>;
 }
 
@@ -272,6 +281,7 @@ export function createPlayerCharacter(input: CreatePlayerCharacterInput): Player
     spells: spells.map(copySpell),
     equipment: (input.equipment ?? []).map((item) => ({ ...item })),
     modifiers: (input.modifiers ?? []).map((modifier) => ({ ...modifier })),
+    progression: copyProgression(input.progression),
     metadata: { ...(input.metadata ?? {}) }
   };
 }
@@ -301,6 +311,7 @@ export function createNonPlayerCharacter(input: CreateNonPlayerCharacterInput): 
     spells: (input.spells ?? []).map(copySpell),
     equipment: (input.equipment ?? []).map((item) => ({ ...item })),
     modifiers: (input.modifiers ?? []).map((modifier) => ({ ...modifier })),
+    progression: copyProgression(input.progression),
     metadata: { ...(input.metadata ?? {}) }
   };
 }
@@ -483,4 +494,12 @@ function copySkill(skill: CharacterSkill): CharacterSkill {
 
 function copySpell(spell: CharacterSpell): CharacterSpell {
   return { ...spell };
+}
+
+function copyProgression(progression?: CharacterProgression): CharacterProgression {
+  return {
+    experiencePoints: progression?.experiencePoints ?? 0,
+    experienceTotal: progression?.experienceTotal ?? 0,
+    questPoints: progression?.questPoints ?? 0
+  };
 }
