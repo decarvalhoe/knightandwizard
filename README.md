@@ -1,5 +1,7 @@
 # Knight and Wizard
 
+[![CI](https://github.com/decarvalhoe/knightandwizard/actions/workflows/ci.yml/badge.svg?branch=dev)](https://github.com/decarvalhoe/knightandwizard/actions/workflows/ci.yml)
+
 > Transposition digitale du jeu de rôle papier **Knight and Wizard**.
 > Monorepo Phase 1+2 — règles canonisées + catalogues structurés + applications.
 

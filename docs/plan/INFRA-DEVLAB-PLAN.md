@@ -273,13 +273,13 @@ curl -sf http://localhost:3002/ready
 - Create: `.github/workflows/ci.yml`
 - Modify: `README.md`
 
-- [ ] Add GitHub Actions workflow for PRs and pushes to `dev`.
-- [ ] Install pnpm using the root `packageManager` value.
-- [ ] Start PostgreSQL + pgvector in CI.
-- [ ] Run migrations.
-- [ ] Run `pnpm validate`.
-- [ ] Add README badge after workflow filename is final.
-- [ ] Commit with `ci: add validation workflow`.
+- [x] Add GitHub Actions workflow for PRs and pushes to `dev`.
+- [x] Install pnpm using the root `packageManager` value.
+- [x] Start PostgreSQL + pgvector in CI.
+- [x] Run migrations.
+- [x] Run `pnpm validate`.
+- [x] Add README badge after workflow filename is final.
+- [x] Commit with `ci: add validation workflow`.
 
 ### Task 6: Contribution Guide Update
 
