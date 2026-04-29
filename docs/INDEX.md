@@ -7,7 +7,13 @@ Index général du monorepo. Pour la vue d'ensemble, voir [`README.md`](../READM
 - [README racine](../README.md) — vue d'ensemble du projet
 - [HANDOVER.md](HANDOVER.md) — état du projet, décisions structurantes
 - [sources.md](sources.md) — inventaire des sources legacy
+- [product/](product/) — vision K&W : assistant MJ/Joueur, moteur tabletop-first, architecture LLM
+- [product/vision-assistant-mj-joueur.md](product/vision-assistant-mj-joueur.md) — vision produit K&W tabletop-first
+- [product/synthese-comprehension.md](product/synthese-comprehension.md) — synthèse de compréhension du projet K&W
+- [product/architecture-strategie-llm.md](product/architecture-strategie-llm.md) — stratégie technique K&W/LLM
 - [rules/](rules/) — 13 domaines de règles canoniques (Phase 1)
+- [game/](game/) — cadrage du projet séparé `knightandwizard-game`
+- [game/knightandwizard-game-foundation.md](game/knightandwizard-game-foundation.md) — document fondateur K&W-game, avec décisions distinctes du dépôt K&W
 
 ## Données
 

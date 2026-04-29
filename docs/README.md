@@ -5,7 +5,9 @@
 - [`HANDOVER.md`](HANDOVER.md) — État global du projet, avancement, décisions structurantes (à lire en premier pour reprendre la session)
 - [`INDEX.md`](INDEX.md) — Index général
 - [`sources.md`](sources.md) — Inventaire des sources legacy (paper + web)
+- [`product/`](product/) — Vision K&W active : assistant MJ/Joueur, moteur tabletop-first, LLM, architecture produit
 - [`rules/`](rules/) — Les **13 domaines de règles canoniques** (Phase 1 close 2026-04-25)
+- [`game/`](game/) — Cadrage du projet séparé `knightandwizard-game` (décisions distinctes)
 
 ## Phase 1 — 13 domaines de règles
 
@@ -29,7 +31,7 @@
 
 - ~230 règles canoniques (R-X.Y)
 - ~70 entrées backlog (Q-X.Z)
-- 5 standby (D5 apprentissage, D8 familier, D7 transformation niveau)
+- Points de précision restants : restrictions/répétabilité de certains atouts familiers + backlogs D9-D13
 
 ## Conventions de notation
 
@@ -38,3 +40,11 @@
 - **Statut** : 🟢 actée / 🟡 partielle / 🔴 trou / ⏸️ standby
 
 Voir [`HANDOVER.md`](HANDOVER.md) pour plus de détail.
+
+## Jeu Digital
+
+Le produit **K&W-game** vit dans un dépôt séparé : `knightandwizard-game`, avec ses propres décisions produit et techniques.
+
+Document fondateur : [game/knightandwizard-game-foundation.md](game/knightandwizard-game-foundation.md).
+
+Le présent dépôt reste le corpus K&W : règles, catalogues, assistant MJ/Joueur, moteur tabletop-first et architecture LLM. Voir [product/](product/).

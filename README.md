@@ -55,6 +55,22 @@ knightandwizard/
 
 ## Démarrage rapide
 
+### Devlab local
+
+Prérequis : Docker Engine ou Docker Desktop exposé dans WSL.
+
+```bash
+cp .env.example .env
+npm install
+npm run devlab:up
+npm run devlab:ps
+```
+
+Services locaux :
+
+- PostgreSQL + pgvector : `localhost:55432` vers `5432` dans le conteneur
+- Adminer : `http://localhost:8080`
+
 ### Carte interactive (Phase 2B en cours)
 
 ```bash

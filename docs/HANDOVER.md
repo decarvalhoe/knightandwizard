@@ -8,6 +8,10 @@
 
 **Phase actuelle** : Phase 1 — extraction règle-par-règle des règles legacy en docs canoniques `rules/0X-domaine.md`.
 
+**Périmètre produit K&W** : ce dépôt porte le corpus source, l'assistant MJ/Joueur tabletop-first, les règles vivantes, le moteur multi-arbitre et l'architecture LLM. Voir [product/](product/).
+
+**Séparation K&W-game** : `knightandwizard-game` est un projet et un dépôt séparés, avec des décisions produit distinctes (CRPG tactique coop). Les docs K&W-game ne remplacent pas les décisions K&W.
+
 **Méthodologie validée** :
 - 13 domaines numérotés D1 à D13 (révisé : à l'origine 12, ajout D13 pour rôles & passation MJ↔PJ)
 - Format de fiche par règle : énoncé legacy → statut (🟢🟡🔴) → cas couverts/ambigus → précisions → transposition par moteur×arbitre×rythme → questions ouvertes

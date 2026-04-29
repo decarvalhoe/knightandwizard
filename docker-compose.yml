@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: kw-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-knightandwizard}
+      POSTGRES_USER: ${POSTGRES_USER:-knightandwizard}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-knightandwizard}
+    ports:
+      - "${POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - kw_postgres_data:/var/lib/postgresql/data
+      - ./infra/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-knightandwizard} -d ${POSTGRES_DB:-knightandwizard}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  adminer:
+    image: adminer:4
+    container_name: kw-adminer
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "${ADMINER_PORT:-8080}:8080"
+
+volumes:
+  kw_postgres_data:
