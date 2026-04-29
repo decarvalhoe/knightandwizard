@@ -182,11 +182,50 @@ L'apprentissage d'une compétence/spécialisation **ne se résume pas au coût X
 
 **Règle générale** : la compétence/spé d'apprentissage et d'enseignement suivent le pattern R-1.2 (pool = aptitude + compétence + spé applicables) avec choix narratif de l'aptitude la plus pertinente.
 
-**Statut** : 🟢 claire (formule du jet) / 🟡 incomplète sur le reste
+### R-5.6-ter - Durée d'apprentissage en jours
+
+**Statut source** : les sources legacy prouvent l'existence d'un apprentissage en jours, de jets d'apprentissage/enseignement et d'atouts de réduction, mais ne donnent pas la formule explicite des jours de base.
+
+**Décision auteur (2026-04-27)** : la règle de travail est fixée comme règle canonique jusqu'à éventuelle réforme future : utiliser le coût XP comme base, avec un multiplicateur simple cohérent avec le style K&W.
+
+```text
+jours_base = coût_XP × 3
+jours_après_jets = jours_base - réussites_apprentissage - réussites_enseignement
+jours_final = max(plancher, jours_après_jets)
+```
+
+**Planchers** :
+
+| Type d'apprentissage | Plancher |
+|---|---:|
+| Compétence ou spécialisation simple | 1 jour |
+| Langue, science, technique complexe | 3 jours |
+| Nouveau sort | 7 jours |
+| Développement de sort | 14 jours |
+| Conceptualisation | 30 jours minimum, sauf validation MJ |
+
+**Modificateurs** :
+- Autodidacte sur un sort : `jours_base × 2`, puis réduction par jet d'autodidacticité.
+- Développement magique / avancé : `temps_apprentissage_sort × 2`, puis réduction par jet de développement.
+- Conceptualisation : 100 jours pour un sort de base, moins jet de conceptualisation, ajustable par le MJ selon le sort.
+- Atouts réducteurs (Affinité arcanique, Don pour les langues, Esprit logique, Né pour tuer) : division après calcul de la base, arrondie au supérieur.
+
+**Exemples de base avant jets/atouts** :
+
+| Action | Coût XP | Jours base |
+|---|---:|---:|
+| Nouvelle compétence / spécialisation | 3 | 9 |
+| Compétence/sp. NA 2 → 3 | 6 | 18 |
+| Compétence/sp. NA 5 → 6 | 15 | 45 |
+| Nouveau sort | 10 | 30 |
+| Sort NA 2 → 3 | 20 | 60 |
+| Sort NA 5 → 6 | 50 | 150 |
+
+**Statut** : 🟢 acté.
+
+**Statut** : 🟢 claire (formule du jet + durée de base + couplage mentor).
 
 **Zones d'ombre restantes** :
-- ⏸️ **Durée de base d'un apprentissage** : trou complet dans les sources écrites (web + paper + code). 4 atouts mentionnent "jours d'apprentissage" comme valeur à diviser, mais le **diviseur de base** n'est nulle part. **Mise en standby — à concevoir ultérieurement** (cf. Q-D5.2-b ci-dessous, à reprendre en phase de spec).
-- ⏸️ **Mécanique exacte du couplage élève/mentor** (réussites cumulées ? seuil ? réduction temps ?) — dépend de la durée de base, donc également en standby. → **Q-D5.2-c (en attente)**
 - Politique de gating narratif des compétences exotiques → **Q-D5.2-d**
 
 ### R-5.7 — Compétence primaire (rappel D4 R-4.5)
@@ -383,6 +422,8 @@ Le catalogue de compétences (familles, compétences, spécialisations, hiérarc
 - **Multi-environnement possible** : variant par-campagne ou par-serveur si l'auteur décide à terme (à creuser)
 - **Workflow de proposition** : un MJ peut proposer un changement, un admin peut le valider (lié au workflow Q-D5.1-a sur la promotion communautaire)
 
+**Recherche Phase 2 à produire** : le principe CMS/règles vivantes est acté, mais l'implémentation doit encore comparer des options concrètes : catalogue versionné en DB, interface admin/MJ, migration automatique vs assistée, rollback, audit, permissions par campagne et impact sur personnages existants.
+
 Cette décision résout aussi **Q-D5.5** (assignation famille des customs : édition par admin/MJ) et **Q-D5.7** (doublons/synonymes : gérés par admin via fusion ou tagging).
 
 ### ~~Q-D5.4~~ — Profondeur d'arbre des spécialisations ✅ **Tranché (2026-04-25)** : politique par mode, alignée sur le pattern 3-modes universel.
@@ -418,14 +459,14 @@ Pas de règle stricte de normalisation — c'est un **arbitrage admin/MJ au cas 
 - [x] ~~Q-D5.1 : politique de création de compétences custom~~ → hybride par mode
 - [x] ~~Q-D5.1-a : promotion communautaire~~ → oui
 - [x] ~~Q-D5.2-a : formule jet apprentissage / enseignement~~ → R-1.2 (apt + comp Apprentissage/Enseignement + spé)
-- [ ] ⏸️ **Q-D5.2-b** : durée de base d'un apprentissage en jours → **mise en standby**, à concevoir en phase de spec
-- [ ] ⏸️ **Q-D5.2-c** : couplage élève/mentor → **en attente** (dépend de Q-D5.2-b)
+- [x] ~~Q-D5.2-b : durée de base d'un apprentissage en jours~~ → `coût_XP × 3 jours`
+- [x] ~~Q-D5.2-c : couplage élève/mentor~~ → `jours - réussites apprentissage - réussites enseignement`
 - [x] ~~**Q-D5.2-d** : gating narratif des spés exotiques~~ → **Option B (2026-04-25)** : validation contextuelle par mode. MJ humain valide narrativement. MJ LLM valide la cohérence avec background (lieu d'origine, historique, voyages, mentors mentionnés). MJ auto : pool restreinte aux spés "natives" (compatibles race + lieu d'origine), les autres requièrent un événement de jeu pour débloquer.
-- [ ] Q-D5.3 : reclasser certaines compétences ou rester strict au web
-- [ ] Q-D5.4 : profondeur d'arbre encouragée ou plafonnée
-- [ ] Q-D5.5 : assignation de famille pour les customs
-- [ ] Q-D5.6 : divergences avec un catalogue paper éventuel
-- [ ] Q-D5.7 : doublons / synonymes dans le catalogue web
+- [x] ~~Q-D5.3 : reclasser certaines compétences ou rester strict au web~~ → catalogue CMS dynamique admin/MJ, web canonique initial
+- [x] ~~Q-D5.4 : profondeur d'arbre encouragée ou plafonnée~~ → politique par mode, MJ papier illimité, LLM/auto catalogue validé
+- [x] ~~Q-D5.5 : assignation de famille pour les customs~~ → édition admin/MJ dans le même arbre
+- [x] ~~Q-D5.6 : divergences avec un catalogue paper éventuel~~ → aucun catalogue paper compétences trouvé, web canonique
+- [x] ~~Q-D5.7 : doublons / synonymes dans le catalogue web~~ → gestion CMS par fusion, renommage, synonymes
 
 **Note importante** : la table dans `documents/atouts/index.md` qui semble lister des "coûts XP" pour les atouts (Affinité arcanique 3000, Né pour tuer 3000, etc.) est en réalité une **table de pondération de game design** (échelle de puissance/équilibre des atouts entre eux) — **pas** des coûts XP payés par les joueurs. Ces valeurs servent à comparer les atouts pour équilibrer le système, pas à les acheter. À garder en tête pour D7 (Progression).
 

@@ -1923,11 +1923,15 @@ Tous appliquent le pattern règle vivante par mode arbitre (humain libre / LLM c
 
 > Cette partie regroupe les points pertinents identifiés mais **non tranchés** dans la session actuelle. Chaque point est un champ ouvert de décision (`Q-D9.X — 🟡 backlog`) avec source documentée. Ils peuvent être ouverts à tout moment dans une session future, soit avant D10, soit en parallèle d'autres domaines, soit après refonte.
 
+**Méthode de clarification (2026-04-27)** : pour chaque sujet combat non tranché, ouvrir une micro-question avec une situation exacte : milieu (`air`, `eau`, `obscurité`, `corde`, etc.), acteurs, position/portée, action déclarée, sens disponibles, équipement utilisé, effet attendu. Les questions trop générales restent en backlog jusqu'à ce que le cas de jeu soit suffisamment précis.
+
 ### Q-D9.33 — 🟡 Combat sous l'eau / aquatique
 
 **Contexte** : R-9.32 C donne un modificateur de terrain pour eau peu profonde (× 0.5) et nage profonde (× 0.4), mais la **mécanique de combat aquatique** (perte d'air, jet de Natation, malus aux armes tranchantes/perforantes selon la résistance de l'eau, propulsion de projectiles) n'est pas formalisée.
 
 **Sources à creuser** : compétence Natation (D5), atouts comme Apnée, monstres aquatiques du bestiaire, sorts élémentaires aquatiques (D8 Élémentaliste).
+
+**Cadrage auteur (2026-04-27)** : jamais formalisé en règle complète. À préciser avant arbitrage : respiration/apnée, maintien de position, armes utilisables, portée des projectiles, sorts sous l'eau, créatures naturellement aquatiques, visibilité, courant, surface/profondeur.
 
 **Décision attendue** : étendre R-9.32 ou créer R-9.45 avec couches `medium: air | water | underwater | submerged_in_X`.
 
@@ -1944,6 +1948,8 @@ Tous appliquent le pattern règle vivante par mode arbitre (humain libre / LLM c
 **Contexte** : R-9.32 C donne `obscurité totale × 0.4` pour le déplacement, mais le combat à l'aveugle (sans vue) n'a pas de mécanique formelle. Atout `Détection des coups portants` requiert vue → impose la nécessité de définir les autres sens.
 
 **Sources** : atouts Vision nocturne, Vision dans le noir, Ouïe affutée, Odorat développé, sorts de lumière/obscurité.
+
+**Cadrage auteur (2026-04-27)** : les personnages nyctalopes ou équivalents peuvent agir grâce à leur sens adapté ; les autres ont besoin d'une source de lumière ou d'un autre sens exploitable. Les malus précis doivent être décidés par cas : obscurité partielle/totale, portée de la vision nocturne, invisibilité, silence, odorat, magie de lumière/ombre.
 
 **Décision attendue** : couche sensorielle (vue/ouïe/odorat/sens vibratoire) + table de modificateurs par sens disponible vs perdu.
 
@@ -2000,6 +2006,8 @@ Tous appliquent le pattern règle vivante par mode arbitre (humain libre / LLM c
 ### Q-D9.44 — 🟡 Combat aérien (volant vs terrestre)
 
 **Contexte** : sorts de vol (D8 Altération, Magie blanche), créatures volantes (dragons, griffons, harpies). Hauteur tactique R-9.43 mais pas combat aérien spécifique.
+
+**Cadrage auteur (2026-04-27)** : deux ennemis volants peuvent entrer en corps à corps. Une cible volante peut être attaquée depuis le sol si l'attaquant dispose d'une portée suffisante (arme longue, projectile, sort, allonge de créature). Le reste n'est pas formalisé.
 
 **Décision attendue** : règles de combat 3D (altitude, montée/descente, plongée pour charger), modificateurs pour terrestre vs aérien.
 

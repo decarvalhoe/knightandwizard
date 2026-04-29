@@ -467,6 +467,8 @@ proverb:
 
 ## Partie G — Backlog D12 (à compléter ultérieurement)
 
+**Cadrage auteur (2026-04-27)** : les sujets économie/monde ne sont pas à trancher par défaut générique. Chaque décision doit partir d'une recherche spécifique avec options concrètes, impacts sur la table, coût d'implémentation et proposition recommandée.
+
 ### Q-D12.14 — 🟡 Import effectif des 18 nations (nations.md)
 
 ### Q-D12.15 — 🟡 Import effectif des religions et 60+ divinités (cultes-et-religions.md)
@@ -486,6 +488,8 @@ proverb:
 ### Q-D12.22 — 🟡 Tables de rencontres aléatoires par région (random encounters)
 
 ### Q-D12.23 — 🟡 Économie dynamique (inflation, événements économiques)
+
+**Recherche attendue** : proposer plusieurs niveaux de simulation avant arbitrage : prix régionaux simples, disponibilité/rareté par région, événements économiques ponctuels, marchés dynamiques complets, marchands itinérants, banques narratives et troc. La décision doit préciser ce qui reste narratif MJ/LLM et ce qui devient calculé par moteur auto.
 
 ### Q-D12.24 — 🟡 Système de saison narrative (cycles de quêtes, rotation)
 

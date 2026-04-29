@@ -237,21 +237,142 @@ Chaque variante est un **sort distinct** dans le grimoire, avec ses propres éne
 
 ---
 
-## Partie F — Familier (en standby D6 Q-D6.6 / D7 Q-D7.7)
+## Partie F — Familier magique (règles retrouvées + table d'atouts)
 
-### R-8.13 — Familier : description courte
+### R-8.13 — Familier : entité magique distincte des compagnons/montures
 
-**Énoncé legacy** ([regles:120-134](documents/regles/index.md)) :
-- Atout d'orientation Magicien (permanent, R-4.4)
-- Le familier peut prendre n'importe quelle forme (chat, rat, hibou, livre ailé, sphère, etc.)
-- Vitalité : `niveau × 5` (web canonique) ou `niveau + 5` (paper) — **web fait foi**
-- Évolue avec l'XP cédé par le maître
-- Renaît à chaque passage de niveau (changement de forme possible)
-- Si meurt : XP cédé perdu, mais atouts placés conservés sur le suivant
+**Sources principales** :
+- [documents/regles/index.md:120-134](documents/regles/index.md) — règles générales : forme, vitalité, renaissance, mort.
+- [documents/atouts/index.md:2290](documents/atouts/index.md) — règle complète de feuille, budget, coûts, atouts et handicaps.
+- [data/catalogs/atouts-values.csv](../../data/catalogs/atouts-values.csv) — table générale des valeurs d'atouts utilisée pour le coût `valeur / 10`.
 
-**STATUT** : ⏸️ **STANDBY** — l'auteur a indiqué que les règles complètes du familier sont **plus complexes** que ce qui est dans les sources actuellement disponibles, et qu'il n'a pas ces règles sous la main pour le moment (cf. D6 Q-D6.6 et D7 Q-D7.7).
+Le familier est un **suivant magique lié au magicien** par l'atout d'orientation `Familier`. Il ne doit pas être confondu avec les compagnons, montures ou animaux non magiques :
 
-**Action** : à reprendre ultérieurement quand l'auteur fournira les règles complètes. Pour la spec digitale, modéliser le familier comme un **personnage secondaire générique** (fiche dérivée du modèle Character) en attendant les règles précises.
+| Type | Modèle |
+|---|---|
+| **Familier magique** | Règles R-8.13 : lien magique, budget `niveau × 100`, renaissance au passage de niveau, atouts comme pseudo-raciaux |
+| **Compagnon / monture non magique** | Personnage ou créature autonome, fiche complète, évolution par XP partagé par son propriétaire PJ/PNJ |
+
+Le texte legacy dit que les familiers sont des "personnages secondaires", mais c'est un raccourci historique : pour la spec, le familier utilise **ses propres règles**.
+
+### R-8.13-a — Forme, taille et vitalité
+
+- Chaque magicien peut posséder un familier via l'atout permanent d'orientation `Familier`.
+- Le familier peut prendre n'importe quelle forme choisie par le magicien : animal classique, objet animé, oeil ailé, livre à pattes, sphère, etc.
+- La **limite de vitalité / volume** est `niveau du magicien × 5`.
+- Le familier doit avoir au moins `1` point de vitalité.
+- Pour une forme non animale, on compare le **volume** plutôt que la taille. Exemple source : au niveau 1, `5` vitalité correspond environ à un chat ou à une sphère de taille ballon de handball.
+- Le magicien peut toujours choisir une forme plus petite que le maximum autorisé.
+
+**Règle d'harmonisation web/paper** : la vitalité `niveau × 5` est traitée comme **cap de vitalité et de volume**. La vitalité effective est inscrite sur la fiche du familier et payée avec les points de création du familier, minimum `1`, maximum le cap sauf atout spécifique.
+
+### R-8.13-b — Feuille et budget de création du familier
+
+Le familier possède une **fiche de personnage dédiée**, mais avec un modèle simplifié :
+
+```text
+budget_total_familier = niveau_du_magicien × 100
+budget_disponible = budget_total_familier - points_deja_engages
+facteur_vitesse_base = 8
+facteur_volonte_base = 8
+vitalite_cap = niveau_du_magicien × 5
+```
+
+Ces points sont des **points de création/évolution du familier**. La source parle de "points d'expérience", mais la spec les isole du partage XP des compagnons/montures pour éviter la confusion.
+
+Le budget est **total par niveau**, pas ajouté intégralement à chaque passage de niveau :
+
+| Niveau du magicien | Budget total familier |
+|---:|---:|
+| 1 | 100 |
+| 2 | 200 |
+| 3 | 300 |
+
+Ce qui a déjà été dépensé est décompté du budget disponible. Au passage de niveau, le magicien peut conserver, retirer ou remanier les choix de son familier : les points précédemment engagés sont récupérables et peuvent être réattribués dans la limite du nouveau budget total.
+
+Les coûts suivent les pondérations XP du jeu :
+
+| Élément acheté sur la fiche du familier | Coût |
+|---|---:|
+| Aptitude | `NA × 5` |
+| Compétence | `NA × 3` |
+| Spécialisation | `NA × 3` |
+| Vitalité | `10` par point |
+| Facteur de vitesse | `(NA - NB + 1) × 25`, avec `NB = 8` |
+| Facteur de volonté | `(NA - NB + 1) × 25`, avec `NB = 8` |
+| Énergie, si autorisée par effet/atout | `3` par point |
+
+Les limites physiques normales ne s'appliquent pas aux familiers.
+
+### R-8.13-c — Restrictions propres au familier
+
+- Le familier n'a **pas de race**, pas de catégorie, pas d'orientation, pas de classe.
+- Il est toujours considéré comme **niveau 1** pour les effets qui demandent son niveau propre.
+- Il n'a pas accès aux atouts d'orientation ou de classe comme un personnage ordinaire.
+- Il peut recevoir des atouts, mais ceux-ci sont traités comme des **atouts raciaux du familier**.
+- Le familier ne peut pas posséder de points dans une connaissance que le magicien ne possède pas lui-même.
+- Les atouts choisis doivent rester validables par le MJ/admin selon la forme du familier. Exemple : `Vol` est cohérent pour un hibou ou un livre ailé, mais doit être justifié pour une sphère ou un crapaud.
+
+### R-8.13-d — Coût des atouts et handicaps du familier
+
+La table générale des valeurs d'atouts est importée dans [data/catalogs/atouts-values.csv](../../data/catalogs/atouts-values.csv). Elle est la règle de coût des atouts et handicaps de familier.
+
+```text
+coût_atout_familier = valeur_atout / 10
+bonus_handicap_familier = abs(valeur_handicap) / 10
+```
+
+Exemples :
+
+| Atout / handicap | Valeur source | Effet budget familier |
+|---|---:|---:|
+| `Vol` | 2000 | coûte 200 points |
+| `Sens du familier` | 2000 | coûte 200 points si porté par le familier ; sinon couche du maître |
+| `Familier vigoureux` | 8000 | coûte 800 points si traité comme atout du familier, ou atout du maître selon build |
+| `Aveugle` | -5000 | donne 500 points supplémentaires |
+| `Sourd` | -2500 | donne 250 points supplémentaires |
+
+**Note de spec** : les valeurs très basses ou atypiques de la table source sont conservées telles quelles. Elles doivent être validées par l'admin si elles produisent des coûts familiers absurdes.
+
+### R-8.13-e — Passage de niveau, mort et renaissance
+
+À chaque passage de niveau du magicien :
+
+- le familier renaît symboliquement ;
+- le magicien peut conserver la forme actuelle ou en choisir une nouvelle ;
+- le budget total devient `nouveau niveau du magicien × 100` ;
+- les points déjà engagés peuvent être conservés, retirés, transformés ou réattribués ;
+- un familier mort peut être récupéré à ce moment ;
+- un magicien qui n'avait pas de familier peut en obtenir un.
+
+Si le familier meurt avant le prochain passage de niveau :
+
+- les points de création investis dans la fiche courante sont perdus jusqu'à renaissance ;
+- le familier ne revient normalement qu'au prochain passage de niveau du magicien ;
+- les atouts de niveau que le magicien a placés dans son familier sont transférés au prochain familier.
+
+### R-8.13-f — Atouts liés au familier
+
+| Atout | Valeur source | Coût `valeur/10` | Effet résumé |
+|---|---:|---:|---|
+| Familier | 500 | 50 | Atout d'orientation Magicien, donne accès au familier |
+| Familier supplémentaire | 10000 | 1000 | Ajoute un familier ; les atouts placés sont hérités |
+| Familier vigoureux | 8000 | 800 | Le familier gagne des points de vitalité selon le niveau du propriétaire |
+| Hybridation du familier | 12000 | 1200 | Le magicien peut substituer une zone de son corps par celle du familier rappelé |
+| Main du magicien | 4000 | 400 | Le magicien peut lancer un sort depuis le familier |
+| Passage au familier | 6000 | 600 | Le magicien entre intégralement dans son familier |
+| Rappel du familier | 3000 | 300 | Le familier peut être rappelé en soi ; entrée/sortie prend un facteur de vitesse |
+| Sens du familier | 2000 | 200 | Lien sensoriel sur un sens choisi |
+| Ventre du magicien | 4000 | 400 | Le familier peut nourrir le magicien en se nourrissant |
+| Vol de familier | 20000 | 2000 | Détourne le lien d'un familier adverse tant que l'atout est actif |
+
+### R-8.13-g — Statut
+
+**Statut** : 🟢 règle source structurée et arbitrée.
+
+**À valider par l'équipe** :
+- les restrictions automatiques sur les atouts absurdes selon la forme du familier ;
+- la répétabilité exacte de `Familier supplémentaire` et `Familier vigoureux`.
 
 ---
 
@@ -315,9 +436,19 @@ Cohérent avec D5 R-5.6-bis (système d'apprentissage à 5 dimensions) :
 - Nouveau sort : 10 XP flat
 - +1 point dans un sort existant : NA × 10
 
-**Durée d'apprentissage en jours** : ⏸️ **STANDBY** (Q-D5.2-b — formule pas documentée).
+**Durée d'apprentissage en jours** : règle D5 R-5.6-ter.
 
-**Statut** : 🟢 claire (en attendant la formule de durée)
+```text
+jours_base = coût_XP × 3
+```
+
+Donc, à titre provisoire :
+- Nouveau sort : `10 XP × 3 = 30 jours` avant jets/atouts.
+- +1 point dans un sort existant : `NA × 10 XP × 3` jours avant jets/atouts.
+- Les réussites d'apprentissage et d'enseignement se soustraient aux jours.
+- Affinité arcanique divise ensuite les jours par `(niveau d'atout + 1)`.
+
+**Statut** : 🟢 claire.
 
 ---
 
@@ -327,7 +458,7 @@ Cohérent avec D5 R-5.6-bis (système d'apprentissage à 5 dimensions) :
 
 | Atout | Niveau | Type | Effet résumé |
 |---|---|---|---|
-| **Familier** | Orient. perm | Permanent | Atout d'orientation (D6 Q-D6.6 standby) |
+| **Familier** | Orient. perm | Permanent | Atout d'orientation, ouvre la fiche de familier D8 R-8.13 |
 | **Énergie latente** | N2 perm | Permanent | +3 × niveau d'atout d'`energyMax` à chaque passage de niveau |
 | **Sens du familier** | N2 perm | Permanent | Sensoriel via le familier |
 | **Aura magique** | N2 éph | Éphémère | Manifestation visuelle d'énergie |
@@ -337,7 +468,7 @@ Cohérent avec D5 R-5.6-bis (système d'apprentissage à 5 dimensions) :
 | **Incantation stoïque** | N3 perm | Permanent | Sort sans gesticulation |
 | **Libération d'énergie** | N3 perm | Permanent | Convertit énergie en déflagration (1m/niveau) |
 | **Persistance magique** | N3 perm | Permanent | Re-lancer un sort actif sans incantation |
-| **Rappel du familier** | N3 | — | (description à creuser) |
+| **Rappel du familier** | N3 | — | Le familier peut être rappelé en soi ; entrée/sortie prend un facteur de vitesse |
 | **Sacrifice d'énergie** | N3 perm | Permanent | Drain d'énergie volontaire sur autre magicien |
 | **Énergie à l'honneur** | N4 éph | Éphémère | -1 difficulté sur école choisie pendant 10 min/niveau |
 | **Énergie au déshonneur** | N4 éph (Abjurateur) | Éphémère | +1 difficulté sur école adverse choisie |
@@ -419,6 +550,8 @@ Les **~889 entrées** du `documents/grimoire/index.md` sont **toutes validées**
 **Critères de classification** (rappel D1 R-1.33) :
 - **Direct** : le sort agit **directement sur la cible vivante** (contrôle mental, transformation, illusion, soins, bénédictions, malédictions personnelles)
 - **Indirect** : le sort **crée, transforme ou invoque** quelque chose qui agit ensuite (boule de feu, enchantement d'objet, invocation, divination)
+
+**Cadrage auteur (2026-04-27)** : `direct_magic` n'est qu'un axe technique nécessaire au moteur de résistance. La magie ne doit pas être réduite à « direct/indirect » : l'audit des sorts doit préparer une taxonomie multi-axes, au minimum cible (`self`, `living`, `object`, `area`, `spirit`, `energy`), mode d'action (`damage`, `heal`, `transform`, `control`, `summon`, `create`, `protect`, `counter`, `detect`, `move`), résistance applicable, durée, concentration, cumul, source/école, portée, conditions de lancement et interactions avec contre-sort/captage/anti-magie.
 
 **Implication** : ce travail est **bloquant pour le moteur de résistance** mais ne bloque pas la spec D8. À planifier dans le plan d'implémentation phase 2.
 
@@ -517,7 +650,7 @@ Le **CMS** + **validation communautaire** sont la base de tout :
 
 ### Q-D8.6 — Familier — règles complètes
 
-⏸️ **STANDBY** : l'auteur n'a pas les règles à jour pour le moment (cf. R-8.13). À reprendre.
+✅ **ACTÉ (2026-04-27)** : les règles de base du familier sont retrouvées et structurées en R-8.13. La table générale des valeurs d'atouts est la règle de coût `valeur / 10`.
 
 ### ~~Q-D8.7~~ — Persistance magique ✅ **Résolu (2026-04-25)** : description complète trouvée dans le lexique.
 
@@ -672,13 +805,13 @@ character_active_spells (
 - [x] ~~Q-D8.3 : formule jet de résistance opposé~~ → variable selon le sort + R-8.19 nouveau type "jet d'aptitude brute" (sans compétence/spé)
 - [x] ~~Q-D8.4 : création de sorts (Conceptualisation)~~ → hybride par mode + CMS + promotion communautaire
 - [x] ~~Q-D8.5 : variantes~~ → sorts distincts apprenables séparément + CMS pour ajustement
-- [ ] ⏸️ **Q-D8.6 : familier** → STANDBY (règles complètes en attente)
+- [x] ~~Q-D8.6 : familier~~ → règles retrouvées ; coût des atouts = table générale `valeur / 10`
 - [x] ~~Q-D8.7 : Persistance magique~~ → résolu par lecture lexique (1 DT, sans incantation, conserve réussites, énergie payée)
 - [x] ~~Q-D8.8 : durée des sorts~~ → R-8.20 système de temps double (narratif + DT) avec instanciation
 - [x] ~~Q-D8.9 : cumul de sorts identiques~~ → typologie par `cumul_type` (buff/debuff/drain/damage/transformation/heal/summon/illusion/permanent_effect)
 - [x] ~~Q-D8.10 : Drain de sort sémantique PS~~ → temporaire, drain `energy` courant (mana), `energyMax` non affecté, récupération via repos/potions standard
 
-**D8 complet** ✅ (9/10 tranchées + 1 standby + 2 nouvelles règles structurantes R-8.19 jet aptitude brute / R-8.20 système de temps double).
+**D8 complet** ✅ (10/10 tranchées ; familier complet + 2 nouvelles règles structurantes R-8.19 jet aptitude brute / R-8.20 système de temps double).
 
 **Nouvelles découvertes structurantes** :
 - **R-8.19 Trois types de jets** distincts (action standard, aptitude brute, volonté D20) — étend D1

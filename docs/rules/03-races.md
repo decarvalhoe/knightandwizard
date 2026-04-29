@@ -532,9 +532,10 @@ Quand un Loup-garou est **confiné** la nuit de pleine lune (pour éviter la lue
 ### ~~Q-D3.5-c~~ — Devenir du personnage transformé ✅ **Tranché (2026-04-25)** : Option (i) — Race change, le reste persiste.
 
 **Mécanique** :
-- Le perso conserve : nom, mémoire, niveau actuel, levelPoints, classe, orientation, compétences, spécialisations, sorts (pour magicien), atouts non-raciaux acquis (orientation, classe, niveau).
+- Le perso conserve : nom, mémoire, levelPoints, classe, orientation, compétences, spécialisations, sorts (pour magicien), atouts non-raciaux acquis hors atouts de niveau.
 - Le perso **perd** : atouts raciaux et handicaps raciaux de l'ancienne race.
 - Le perso **acquiert** : atouts raciaux et handicaps raciaux de la nouvelle race, nouvelle catégorie, nouvelles limites physiques, nouvelles bases (vitalité/FV/FVol).
+- Le niveau est recalculé selon la nouvelle catégorie ; les atouts de niveau déjà acquis sont perdus puis reconstruits selon le nouveau niveau (D7 R-7.18).
 
 **Implications architecturales pour le moteur** (à traiter en D7 Progression) :
 - `Character.race_id` est **mutable** en cours de jeu (pas figé à la création).
@@ -545,10 +546,10 @@ Quand un Loup-garou est **confiné** la nuit de pleine lune (pour éviter la lue
   - Recalculer la base `vitalityMax / speedFactor / willFactor` ? Ou garder les valeurs actuelles ?
   - Recalculer le niveau actuel (`levelPoints / nouvelle_catégorie` peut faire chuter ou monter le niveau)
 
-**Questions secondaires liées (à trancher en D7)** :
-- **Q-D3.5-c-i** : aptitudes au-dessus de la nouvelle limite physique → capping immédiat ou grandfathering (le perso garde mais ne peut plus monter) ?
-- **Q-D3.5-c-ii** : les bases dérivées (vitalityMax, speedFactor, willFactor) sont-elles recalculées ou conservées ?
-- **Q-D3.5-c-iii** : le niveau actuel change-t-il en conséquence du changement de catégorie ?
+**Questions secondaires liées** :
+- **Q-D3.5-c-i** : tranché D7 R-7.16 → capping immédiat.
+- **Q-D3.5-c-ii** : tranché D7 R-7.17 → nouvelle base + delta acquis.
+- **Q-D3.5-c-iii** : tranché D7 R-7.18 → niveau recalculé sur nouvelle catégorie, perte/rebuild des atouts de niveau.
 
 ### ~~Q-D3.6~~ — Atout « Repos du guerrier » ✅ **Tranché (2026-04-25)** :
 
@@ -564,11 +565,16 @@ Les atouts de transformation (Brumathropie, Chiroptèrothropie, Lycanthropie, Hu
 - **Durée de transformation** (50 DT = 10 s pour la plupart) — une action conséquente en combat
 - **Conséquences narratives** de rester en forme alternative (brume = pas d'action physique, plante = immobile, etc.)
 
-### Q-D3.7-a — Lycanthropie volontaire vs involontaire
+### ~~Q-D3.7-a~~ — Lycanthropie volontaire vs involontaire ✅ **Tranché (2026-04-27)**
 
-À vérifier (réponse de l'auteur en attente) : la Lycanthropie du Loup-garou permet-elle la transformation volontaire à tout moment (avec Rage lunaire qui la force la pleine lune) OU est-elle uniquement involontaire (pleine lune) tant qu'on n'a pas l'atout N9 « Transformation hybride » qui débloque le volontaire ?
+Le modèle lycan permet deux formes de base :
+- **Humain de base** avec possibilité de transformation en loup via les atouts de niveau appropriés.
+- **Loup de base** avec possibilité de transformation en humain via les atouts de niveau appropriés.
 
-Le texte de « Transformation hybride » est ambigu : *« Le personnage peut se transformer en Loup-garou quand il le désire »* — le « peut » suggère qu'avant N9, il **ne pouvait pas** volontairement. Donc lecture restrictive = Lycanthropie pré-N9 = uniquement involontaire pleine lune.
+**Politique de jeu** :
+- Pour un **PJ**, la forme humaine de base est le défaut fortement recommandé, sinon le RP devient difficile à gérer.
+- Pour un **PNJ**, la forme loup de base peut être utilisée librement si elle sert la fiction.
+- Les transformations restent portées par les atouts de niveau (`Lycanthropie`, `Humanothropie`, `Transformation hybride`) et par Rage lunaire selon R-3.4.
 
 À confirmer en D4.
 

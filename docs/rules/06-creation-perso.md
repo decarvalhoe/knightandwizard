@@ -370,15 +370,16 @@ Liaisons enfants :
 **Compagnons / montures** :
 - ❌ **N'existent PAS à la création de personnage**
 - Acquisition uniquement **en cours de jeu** (achat, dressage, capture, rencontre RP)
-- Mécanique d'acquisition propre à définir dans un domaine ultérieur (probablement D11 PNJ ou un domaine dédié "Compagnons & Montures")
+- Règle écrite minimale retrouvée : ce sont des personnages/créatures autonomes que leur propriétaire PJ ou PNJ peut faire évoluer en partageant sa propre XP (exemple source : céder de l'XP à un cheval pour améliorer sa course)
+- Les occurrences legacy qui incluent les familiers dans les "personnages secondaires" sont à traiter comme un raccourci ancien : les familiers magiques suivent D8 R-8.13
 
 **Familiers (Magicien)** :
-- ⏸️ **Règles plus complexes que le résumé que j'avais fait** — l'auteur signale qu'il y a un système plus profond qu'il n'a pas sous la main de suite
-- À la création : on note simplement que le Magicien a accès à un familier (via l'atout d'orientation « Familier »)
-- **La spécification complète du familier (forme, stats, évolution, mécanique de mort/changement à chaque niveau) est mise en STANDBY** jusqu'à ce que l'auteur fournisse les règles complètes
-- À reprendre dans un domaine dédié (probablement D8 Magie ou D11 PNJ, ou un nouveau domaine)
+- 🟡 **Règles de base retrouvées et structurées en D8 R-8.13**
+- La fiche de familier est ouverte dans une **phase de création séparée**, une fois le PF finalisé, validé, et la classe de Magicien confirmée (quelle que soit l'école)
+- Le familier utilise un budget total `niveau du magicien × 100`, ses caps `niveau × 5`, ses facteurs base `8`, et ses atouts comme pseudo-raciaux
+- La table générale des valeurs d'atouts est la règle de coût : `valeur / 10`
 
-**Implication pour D6** : l'étape de création **n'inclut pas de slot pour familier/compagnon/monture détaillé**. Pour le Magicien, on note juste que le familier est conceptuellement disponible mais sa spec viendra plus tard.
+**Implication pour D6** : l'étape de création **n'inclut pas de slot pour compagnon/monture non magique détaillé**. Pour le Magicien, la création doit enregistrer l'atout `Familier`, puis déclencher l'étape post-validation de création du familier selon D8 R-8.13.
 
 ### ~~Q-D6.7~~ — Multi-PJ par joueur ✅ **Tranché (2026-04-25)** : Option (b) — **plusieurs PJ actifs, un par table/groupe**.
 
@@ -448,7 +449,7 @@ Liaisons enfants :
 - [x] ~~Q-D6.3-a : drafts simultanés~~ → illimité avec expiration auto
 - [x] ~~Q-D6.4 : templates / archétypes~~ → CMS étendu + générateur PNJ cohérent par niveau (toutes combinaisons, génération en lot, contexte narratif)
 - [x] ~~Q-D6.5 : avertissements de cohérence~~ → 2 couches (mode arbitre × mode UX)
-- [x] ~~Q-D6.6 : familiers / compagnons~~ → compagnons N/A à création ; familier en standby (règles plus complexes à venir)
+- [x] ~~Q-D6.6 : familiers / compagnons~~ → compagnons/montures N/A à création et évoluent par XP partagé ; familier D8 R-8.13 en phase post-validation du PF magicien
 - [x] ~~Q-D6.7 : multi-PJ par joueur~~ → autorisé, 1 PJ par campagne mais 1 PJ peut multi-campagne ; rôles MJ/joueur non-exclusifs
 - [x] ~~Q-D6.8 : impact mécanique de la divinité~~ → opt-in, extensibilité religieuse (autres religions futures avec classes équivalentes nommées différemment)
 - [x] ~~Q-D6.9 : création directe à niveau N > 1~~ → hybride par mode + restrictions XP cohérent + cap MJ
