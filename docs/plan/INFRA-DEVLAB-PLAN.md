@@ -232,21 +232,21 @@ Expected: `#3` and `#4` closed; new infra issues visible and labeled.
 - Create: `apps/server/src/routes/ready.ts`
 - Create: `apps/server/src/routes/health.test.ts`
 
-- [ ] Write tests for `GET /health` and `GET /ready`.
-- [ ] Run tests and verify they fail before routes exist.
-- [ ] Implement Fastify app factory.
-- [ ] Implement `/health` without DB dependency.
-- [ ] Implement `/ready` with DB connectivity and pgvector check.
-- [ ] Add root script `pnpm dev:server`.
-- [ ] Run server locally and verify:
+- [x] Write tests for `GET /health` and `GET /ready`.
+- [x] Run tests and verify they fail before routes exist.
+- [x] Implement Fastify app factory.
+- [x] Implement `/health` without DB dependency.
+- [x] Implement `/ready` with DB connectivity and pgvector check.
+- [x] Add root script `pnpm dev:server`.
+- [x] Run server locally and verify:
 
 ```bash
 curl -sf http://localhost:3002/health
 curl -sf http://localhost:3002/ready
 ```
 
-- [ ] Run `pnpm validate`.
-- [ ] Commit with `feat: add backend health api`.
+- [x] Run `pnpm validate`.
+- [x] Commit with `feat: add backend health api`.
 
 ### Task 4: Devlab Reset and Seed
 

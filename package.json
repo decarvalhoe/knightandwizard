@@ -26,7 +26,8 @@
     "validate": "pnpm typecheck && pnpm test && pnpm validate:geojson && pnpm build:map && pnpm devlab:test",
     "db:generate": "pnpm --filter @knightandwizard/server db:generate",
     "db:migrate": "pnpm --filter @knightandwizard/server db:migrate",
-    "db:reset": "pnpm --filter @knightandwizard/server db:reset"
+    "db:reset": "pnpm --filter @knightandwizard/server db:reset",
+    "dev:server": "pnpm --filter @knightandwizard/server dev"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
