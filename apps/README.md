@@ -15,9 +15,8 @@ Frontend Leaflet pour visualiser le monde K&W :
 **Stack** : Vite + Leaflet.js + js-yaml + Python (génération GeoJSON)
 
 ```bash
-cd apps/interactive-map
-npm install
-npm run dev   # http://localhost:5173
+pnpm install
+pnpm dev:map   # http://localhost:5173
 ```
 
 ### [`legacy-php-site/`](legacy-php-site/) — Site PHP existant (référence)
@@ -38,6 +37,6 @@ Site web original — code PHP pour référence uniquement. **Pas une app mainte
 
 ## Conventions
 
-- Chaque app a son **propre `package.json`** (npm workspaces géré au niveau racine).
+- Chaque app a son **propre `package.json`** (`pnpm` workspaces géré au niveau racine).
 - Données partagées via `data/catalogs/` (lecture seule pour les apps).
 - Documentation des règles dans `docs/rules/` (référence canonique).

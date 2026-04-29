@@ -184,7 +184,7 @@
 **Position** : Phase 1 complète. Choix de continuation possibles :
 
 ### A) Imports effectifs des catalogues legacy ✅ **TERMINÉ (2026-04-25)**
-- ✅ Armes (102 entrées) — `catalogs/armes.yaml` + `armes-ambiguites.md` (12 ambiguïtés documentées)
+- ✅ Armes (107 entrées) — `catalogs/armes.yaml` + `armes-ambiguites.md` (12 ambiguïtés documentées)
 - ✅ Protections (49 + 11 boucliers) — `catalogs/protections.yaml`
 - ✅ Potions (5 entrées) — `catalogs/potions.yaml`
 - ✅ Champignons (8 syndromes) — `catalogs/champignons.yaml`

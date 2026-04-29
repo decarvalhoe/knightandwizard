@@ -8,7 +8,7 @@
 | Phase | Statut | Description |
 |---|---|---|
 | **Phase 1** — Canonisation des règles | ✅ Complète | 13 domaines (D1→D13), ~230 règles, ~70 entrées backlog |
-| **Phase 2A** — Imports catalogues | ✅ Complète | 12 catalogues YAML, ~700 entrées, 29 fichiers images |
+| **Phase 2A** — Imports catalogues | ✅ Complète | 13 catalogues YAML/CSV, ~1100 entrées, 29 fichiers images |
 | **Phase 2B** — Carte interactive | 🔄 En cours | Frontend Leaflet, données placeholder en attente de QGIS |
 | **Phase 2C** — Moteur de jeu | ⏳ À démarrer | Engine multi-arbitre (humain / LLM / auto) |
 | **Phase 2D** — CMS règles | ⏳ À démarrer | Éditeur web pour règles vivantes |
@@ -26,8 +26,8 @@ knightandwizard/
 │   └── rules/                 # 13 domaines de règles (D1→D13)
 │
 ├── data/                      # Données structurées
-│   ├── catalogs/              # 12 catalogues YAML (Phase 2A)
-│   │   ├── armes.yaml         # 102 armes
+│   ├── catalogs/              # 13 catalogues YAML/CSV (Phase 2A)
+│   │   ├── armes.yaml         # 107 armes
 │   │   ├── protections.yaml   # 60 armures + boucliers
 │   │   ├── potions.yaml       # 5 potions
 │   │   ├── champignons.yaml   # 8 syndromes
@@ -61,9 +61,9 @@ Prérequis : Docker Engine ou Docker Desktop exposé dans WSL.
 
 ```bash
 cp .env.example .env
-npm install
-npm run devlab:up
-npm run devlab:ps
+pnpm install
+pnpm devlab:up
+pnpm devlab:ps
 ```
 
 Services locaux :
@@ -74,10 +74,9 @@ Services locaux :
 ### Carte interactive (Phase 2B en cours)
 
 ```bash
-cd apps/interactive-map
-npm install
-python tools/yaml_to_geojson.py  # Génère les GeoJSON depuis les YAML
-npm run dev                       # Lance le serveur Vite (http://localhost:5173)
+pnpm install
+pnpm yaml2geojson  # Génère les GeoJSON depuis les YAML
+pnpm dev:map       # Lance le serveur Vite (http://localhost:5173)
 ```
 
 ### Lecture des règles (Phase 1)
@@ -91,7 +90,7 @@ Les 13 domaines de règles sont dans [`docs/rules/`](docs/rules/) au format Mark
 ### Parcourir les catalogues
 
 ```bash
-cat data/catalogs/README.md   # Index des 12 catalogues
+cat data/catalogs/README.md   # Index des 13 catalogues
 ```
 
 ## Méta-principes du projet

@@ -87,18 +87,19 @@ Ne consulter `docs/game/` que pour comprendre la séparation avec `knightandwiza
 Depuis `/home/decarvalhoe/repos/knightandwizard` :
 
 ```bash
-npm run test
-npm run build:map
-python3 apps/interactive-map/tools/validate_geojson.py
-npm run devlab:ps
+pnpm test
+pnpm typecheck
+pnpm build:map
+pnpm validate:geojson
+pnpm devlab:test
 ```
 
 Pour le devlab :
 
 ```bash
 cp .env.example .env
-npm install
-npm run devlab:up
+pnpm install
+pnpm devlab:up
 ```
 
 Services locaux :

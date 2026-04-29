@@ -13,7 +13,7 @@ Ce dossier contient les imports effectifs des catalogues legacy, structurés sel
 
 | Catalogue | Fichier | Source | Entrées | Statut |
 |---|---|---|---:|---|
-| Armes | `armes.yaml` + `armes-ambiguites.md` | `regles-papier/extracted/listes/armes.md` | 102 | ✅ import auto |
+| Armes | `armes.yaml` + `armes-ambiguites.md` | `regles-papier/extracted/listes/armes.md` | 107 | ✅ import auto |
 | Protections | `protections.yaml` | `regles-papier/extracted/listes/protections.md` | 49 + 11 boucliers | ✅ import auto |
 | Potions | `potions.yaml` | `regles-papier/extracted/listes/rituels-et-potions.md` + `documents/potions/index.md` | 5 | ✅ import auto |
 | Champignons | `champignons.yaml` | `regles-papier/extracted/infos/champignons-toxiques.md` | 8 syndromes (~14 espèces) | ✅ import auto |
@@ -32,7 +32,7 @@ Ce dossier contient les imports effectifs des catalogues legacy, structurés sel
 
 ## Backlogs résolus par cet import
 
-- ✅ Q-D10.14 : Catalogue d'armes complet (102 entrées + 12 ambiguïtés validées)
+- ✅ Q-D10.14 : Catalogue d'armes complet (107 entrées + 12 ambiguïtés validées)
 - ✅ Q-D10.15 : Catalogue de protections (49 + 11 boucliers)
 - ✅ Q-D10.16 : Catalogue de potions (5 entrées de base, extensible)
 - ✅ Q-D10.17 : Catalogue de champignons (8 syndromes)

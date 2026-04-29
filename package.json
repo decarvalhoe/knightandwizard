@@ -3,19 +3,33 @@
   "version": "0.1.0",
   "description": "Knight and Wizard — transposition digitale du JdR papier (Phase 1+2)",
   "private": true,
+  "packageManager": "pnpm@10.33.2",
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
     "devlab:up": "docker compose up -d",
     "devlab:down": "docker compose down",
     "devlab:logs": "docker compose logs -f",
     "devlab:ps": "docker compose ps",
-    "dev:map": "npm run dev --workspace=apps/interactive-map",
-    "build:map": "npm run build --workspace=apps/interactive-map",
-    "yaml2geojson": "python apps/interactive-map/tools/yaml_to_geojson.py",
+    "devlab:test": "bash scripts/check-devlab.sh",
+    "dev:map": "pnpm --filter knight-and-wizard-interactive-map dev",
+    "build:map": "pnpm --filter knight-and-wizard-interactive-map build",
+    "yaml2geojson": "python3 apps/interactive-map/tools/yaml_to_geojson.py",
+    "validate:geojson": "python3 apps/interactive-map/tools/validate_geojson.py",
     "lint:yaml": "echo TODO: implement YAML linting (yamllint or similar)",
-    "test": "echo \"No tests yet — see Phase 3\""
+    "test": "vitest run",
+    "test:unit": "vitest run packages",
+    "typecheck": "tsc -b packages/rules-core packages/catalogs",
+    "build": "pnpm typecheck && pnpm build:map",
+    "validate": "pnpm typecheck && pnpm test && pnpm validate:geojson && pnpm build:map && pnpm devlab:test"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0"
   },
   "engines": {
     "node": ">=20.0.0"
