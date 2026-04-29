@@ -77,3 +77,17 @@ Tous les catalogues sont en YAML (lisible humain + parseable). Chaque entrée po
 - `metadata.source` : `paper` | `web` | `custom`
 - `metadata.inferred` : si `true`, valeurs inférées par le moteur, à valider par admin
 - `metadata.version` : versionning
+
+## Validation Zod
+
+Les catalogues prioritaires (`armes`, `bestiaire`, `protections`, `potions`, `nations`,
+`organisations`, `religions`) sont validés par `@knightandwizard/catalogs`.
+
+API disponible :
+- `loadValidatedCatalog('armes.yaml')` : charge un YAML et applique son schéma Zod.
+- `loadValidatedCatalogs()` : charge tous les catalogues prioritaires.
+- `validateCatalogData(...)` : valide un objet déjà chargé et retourne une erreur contenant le fichier
+  et le chemin de donnée fautif.
+
+Les types inférés (`Weapon`, `BestiaryEntry`, `Protection`, `Potion`, `Nation`, `Organisation`,
+`Religion`, etc.) sont exportés depuis le package pour `apps/server`, `apps/cms` et `apps/game`.
