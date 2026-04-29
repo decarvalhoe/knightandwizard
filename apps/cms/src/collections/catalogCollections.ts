@@ -281,7 +281,7 @@ export const Rules = catalogCollection({
     ),
     textField('sourcePath', true),
     numberField('order'),
-    textareaField('content', true),
+    codeField('content', true, 'markdown'),
     arrayField('tags', [textField('tag', true)])
   ],
   labels: { singular: 'Rule', plural: 'Rules' },
@@ -347,7 +347,23 @@ export const MapCities = catalogCollection({
   fields: [
     relationshipField('parentRegion', 'world-map-regions'),
     relationshipField('nation', 'nations'),
-    selectField('role', ['capital', 'major_city', 'town', 'village', 'landmark', 'gate'], true),
+    selectField(
+      'role',
+      [
+        'capital',
+        'capital_centre',
+        'major_city',
+        'town',
+        'border_town',
+        'village',
+        'landmark',
+        'gate',
+        'island',
+        'island_group',
+        'tribal_capital'
+      ],
+      true
+    ),
     textField('domain'),
     textField('sourceMap'),
     numberField('webId')
@@ -549,6 +565,17 @@ function checkboxField(name: string): Field {
     type: 'checkbox',
     defaultValue: false
   };
+}
+
+function codeField(name: string, required = false, language = 'typescript'): Field {
+  return {
+    name,
+    type: 'code',
+    admin: {
+      language
+    },
+    required
+  } as Field;
 }
 
 function selectField(

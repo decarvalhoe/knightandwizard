@@ -3,6 +3,7 @@
 ## Contenu
 
 ### `parse.py`
+
 Parser legacy hérité de la phase d'extraction des sources web/papier. Utilisé pour générer les `.md` extraits de `data/legacy/`.
 
 **Statut** : 🟡 historique, peut nécessiter mise à jour.
@@ -10,6 +11,7 @@ Parser legacy hérité de la phase d'extraction des sources web/papier. Utilisé
 ## Scripts par app
 
 Les scripts spécifiques à une app sont dans son propre dossier `tools/`. Exemple :
+
 - `apps/interactive-map/tools/yaml_to_geojson.py` — génère les GeoJSON depuis les YAML
 
 ## Conventions

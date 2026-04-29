@@ -1064,7 +1064,18 @@ export interface MapCity {
   name: string;
   parentRegion?: (number | null) | WorldMapRegion;
   nation?: (number | null) | Nation;
-  role: 'capital' | 'major_city' | 'town' | 'village' | 'landmark' | 'gate';
+  role:
+    | 'capital'
+    | 'capital_centre'
+    | 'major_city'
+    | 'town'
+    | 'border_town'
+    | 'village'
+    | 'landmark'
+    | 'gate'
+    | 'island'
+    | 'island_group'
+    | 'tribal_capital';
   domain?: string | null;
   sourceMap?: string | null;
   webId?: number | null;
