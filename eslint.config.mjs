@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import nextPlugin from '@next/eslint-plugin-next';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
@@ -32,9 +33,30 @@ export default tseslint.config(
     }
   },
   {
-    files: ['**/*.ts'],
+    files: ['apps/{cms,game}/**/*.{js,mjs,ts,tsx}'],
+    plugins: {
+      '@next/next': nextPlugin
+    },
+    settings: {
+      next: {
+        rootDir: ['apps/cms/', 'apps/game/']
+      }
+    },
+    rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs['core-web-vitals'].rules
+    }
+  },
+  {
+    files: ['**/*.{ts,tsx}'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'error'
+    }
+  },
+  {
+    files: ['apps/*/next-env.d.ts'],
+    rules: {
+      '@typescript-eslint/triple-slash-reference': 'off'
     }
   },
   {
