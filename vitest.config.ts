@@ -7,6 +7,7 @@ export default defineConfig({
       'packages/**/*.test.ts',
       'apps/server/src/**/*.test.ts',
       'apps/cms/src/**/*.test.ts',
+      'apps/game/src/**/*.test.ts',
       'tools/**/*.test.ts'
     ],
     coverage: {
