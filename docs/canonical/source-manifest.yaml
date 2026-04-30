@@ -7931,6 +7931,15 @@ sources:
     domains: ["D12-world"]
     contains: ["cities"]
     notes: "Product YAML catalog."
+  - id: "data-catalogs-classes"
+    path: "data/catalogs/classes.yaml"
+    sha256: "ca0f8b071238de3af184c2a13d300ff260482756bc661d844db16b1b9d0ed0d3"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["catalogs"]
+    contains: ["catalog_entries"]
+    notes: "Product YAML catalog."
   - id: "data-catalogs-competences"
     path: "data/catalogs/competences.yaml"
     sha256: "07b5cb838a6f93548cb02cc4e611498cb07397630a580f8c3fb16ad588424058"
@@ -7975,6 +7984,15 @@ sources:
     status: active
     domains: ["D12-organisations"]
     contains: ["organisations"]
+    notes: "Product YAML catalog."
+  - id: "data-catalogs-orientations"
+    path: "data/catalogs/orientations.yaml"
+    sha256: "2fface6be9852d23627263c7c39ffb212bd30cff6aca3ecdae19c58acf745a44"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["catalogs"]
+    contains: ["catalog_entries"]
     notes: "Product YAML catalog."
   - id: "data-catalogs-potions"
     path: "data/catalogs/potions.yaml"

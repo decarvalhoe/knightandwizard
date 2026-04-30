@@ -49,7 +49,8 @@
     "canonical:write": "tsx tools/canonical.ts --write",
     "canonical:check": "tsx tools/canonical.ts",
     "canonical:check:strict": "tsx tools/canonical.ts --strict",
-    "catalogs:build:competences": "tsx tools/build-skills-catalog.ts"
+    "catalogs:build:competences": "tsx tools/build-skills-catalog.ts",
+    "catalogs:build:orientations-classes": "tsx tools/build-orientations-classes-catalog.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

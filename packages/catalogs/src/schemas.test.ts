@@ -17,7 +17,9 @@ const expectedCollections = [
   ['nations.yaml', 'regions', 29],
   ['organisations.yaml', 'factions', 7],
   ['religions.yaml', 'religions', 15],
-  ['competences.yaml', 'skills', 368]
+  ['competences.yaml', 'skills', 368],
+  ['orientations.yaml', 'orientations', 12],
+  ['classes.yaml', 'classes', 90]
 ] as const;
 
 describe('catalog Zod schemas', () => {
@@ -79,6 +81,74 @@ describe('catalog Zod schemas', () => {
     expect(tirGorge).toBeDefined();
     expect(tirGorge?.parent_id).toBe('arc-long');
     expect(tirGorge?.family).toBe('combat');
+  });
+
+  it('rejects demo orientation and class IDs in the canonical catalogs', async () => {
+    const orientations = await loadValidatedCatalog('orientations.yaml');
+    const classes = await loadValidatedCatalog('classes.yaml');
+    const orientationIds = new Set(orientations.orientations.map((o) => o.id));
+    const classIds = new Set(classes.classes.map((c) => c.id));
+
+    for (const demoId of ['fighter', 'magician-en', 'artisan-en']) {
+      expect(orientationIds.has(demoId)).toBe(false);
+    }
+    for (const demoId of ['knight', 'mage-arms', 'lore-mage', 'blacksmith']) {
+      expect(classIds.has(demoId)).toBe(false);
+    }
+  });
+
+  it('flags only the magician orientation as magical', async () => {
+    const catalog = await loadValidatedCatalog('orientations.yaml');
+    const magical = catalog.orientations.filter((o) => o.is_magical);
+
+    expect(magical.map((o) => o.id)).toEqual(['magicien']);
+  });
+
+  it('links every class to a known orientation and resolves primary skills', async () => {
+    const orientations = await loadValidatedCatalog('orientations.yaml');
+    const classes = await loadValidatedCatalog('classes.yaml');
+    const skills = await loadValidatedCatalog('competences.yaml');
+    const orientationIds = new Set(orientations.orientations.map((o) => o.id));
+    const skillIds = new Set(skills.skills.map((s) => s.id));
+
+    for (const klass of classes.classes) {
+      expect(orientationIds.has(klass.orientation_id)).toBe(true);
+
+      if (klass.primary_skill_choice === 'magician_no_primary') {
+        expect(klass.primary_skill_id).toBeNull();
+        expect(klass.orientation_id).toBe('magicien');
+      } else if (klass.primary_skill_choice === 'fixed') {
+        expect(klass.primary_skill_id).not.toBeNull();
+        expect(skillIds.has(klass.primary_skill_id!)).toBe(true);
+      }
+    }
+  });
+
+  it('exposes the canonical fighter and magician class spreads', async () => {
+    const classes = await loadValidatedCatalog('classes.yaml');
+    const fighters = classes.classes.filter((c) => c.orientation_id === 'guerrier');
+    const magicians = classes.classes.filter((c) => c.orientation_id === 'magicien');
+
+    expect(fighters.length).toBeGreaterThanOrEqual(15);
+    expect(magicians).toHaveLength(12);
+    expect(fighters.map((c) => c.id)).toContain('garde');
+    expect(fighters.map((c) => c.id)).toContain('samourai');
+    expect(magicians.map((c) => c.id)).toEqual(
+      expect.arrayContaining([
+        'abjurateur',
+        'alterateur',
+        'chaman',
+        'clerc',
+        'devin',
+        'druide',
+        'elementaliste',
+        'enchanteur',
+        'illusionniste',
+        'invocateur',
+        'necromancien',
+        'sorcier'
+      ])
+    );
   });
 
   it('reports the file and data path when validation fails', () => {
