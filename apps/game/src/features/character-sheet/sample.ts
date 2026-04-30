@@ -94,8 +94,8 @@ export const sampleCharacter: Character = createPlayerCharacter({
     { id: 'arcanologie-des-rituels', parentId: 'arcanologie', points: 2 }
   ],
   spells: [
-    { id: 'ward', points: 1 },
-    { id: 'spark', points: 1 }
+    { id: 'bouclier', points: 1 },
+    { id: 'boule-de-feu', points: 1 }
   ]
 });
 
@@ -126,8 +126,8 @@ export const sampleInventory: InventoryItem[] = [
 ];
 
 export const sampleSpells: SpellEntry[] = [
-  { active: true, id: 'ward', name: 'Garde mystique', points: 1 },
-  { active: false, id: 'spark', name: 'Étincelle', points: 1 }
+  { active: true, id: 'bouclier', name: 'Garde mystique', points: 1 },
+  { active: false, id: 'boule-de-feu', name: 'Étincelle', points: 1 }
 ];
 
 export const attributeOrder = ATTRIBUTE_KEYS;

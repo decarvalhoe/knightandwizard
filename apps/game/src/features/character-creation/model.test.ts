@@ -62,10 +62,10 @@ describe('character creation wizard model', () => {
             2,
             'arcanologie'
           ),
-          'spark',
+          'boule-de-feu',
           2
         ),
-        'ward',
+        'bouclier',
         1
       )
     );
@@ -113,8 +113,8 @@ describe('character creation wizard model', () => {
         quote: 'Le mot engage.'
       },
       spells: [
-        { id: 'spark', points: 2 },
-        { id: 'ward', points: 1 }
+        { id: 'boule-de-feu', points: 2 },
+        { id: 'bouclier', points: 1 }
       ]
     });
   });
@@ -177,10 +177,10 @@ function completedMageDraft(): CharacterCreationDraft {
             2,
             'arcanologie'
           ),
-          'spark',
+          'boule-de-feu',
           2
         ),
-        'ward',
+        'bouclier',
         1
       )
     ),
@@ -313,8 +313,8 @@ function catalog(): CharacterCreationCatalog {
       { id: 'epee-batarde', label: 'Épée bâtarde' }
     ],
     spells: [
-      { id: 'spark', label: 'Etincelle' },
-      { id: 'ward', label: 'Garde' }
+      { id: 'boule-de-feu', label: 'Etincelle' },
+      { id: 'bouclier', label: 'Garde' }
     ]
   };
 }

@@ -182,9 +182,9 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
     { id: 'commandement', label: 'Commandement' }
   ],
   spells: [
-    { id: 'spark', label: 'Etincelle' },
-    { id: 'ward', label: 'Garde mystique' },
-    { id: 'veil', label: 'Voile' },
-    { id: 'mend', label: 'Reparation mineure' }
+    { id: 'boule-de-feu', label: 'Etincelle' },
+    { id: 'bouclier', label: 'Garde mystique' },
+    { id: 'invisibilite', label: 'Voile' },
+    { id: 'guerison-de-la-peau', label: 'Reparation mineure' }
   ]
 };

@@ -138,29 +138,29 @@ describe('skill progression', () => {
 describe('spell progression', () => {
   it('learns a new spell for 10 XP when the magician satisfies level and narrative gates', () => {
     const character = gainXP(magician(), 12);
-    const learned = learnSpell(character, 'light', {
+    const learned = learnSpell(character, 'lumiere', {
       hasNarrativeAccess: true,
       minimumLevel: 1
     });
 
     expect(learned.progression.experiencePoints).toBe(2);
-    expect(learned.spells).toContainEqual({ id: 'light', points: 1 });
+    expect(learned.spells).toContainEqual({ id: 'lumiere', points: 1 });
   });
 
   it('improves an existing spell for current points times 10 XP', () => {
-    const character = gainXP(magician([{ id: 'firebolt', points: 2 }]), 25);
-    const learned = learnSpell(character, 'firebolt', { hasNarrativeAccess: true });
+    const character = gainXP(magician([{ id: 'boule-de-feu', points: 2 }]), 25);
+    const learned = learnSpell(character, 'boule-de-feu', { hasNarrativeAccess: true });
 
     expect(learned.progression.experiencePoints).toBe(5);
-    expect(learned.spells.find((spell) => spell.id === 'firebolt')?.points).toBe(3);
+    expect(learned.spells.find((spell) => spell.id === 'boule-de-feu')?.points).toBe(3);
   });
 
   it('rejects spell learning for non-magicians or unmet spell level requirements', () => {
-    expect(() => learnSpell(gainXP(fighter(), 20), 'light', { hasNarrativeAccess: true })).toThrow(
-      ProgressionError
-    );
     expect(() =>
-      learnSpell(gainXP(magician(), 20), 'light', {
+      learnSpell(gainXP(fighter(), 20), 'lumiere', { hasNarrativeAccess: true })
+    ).toThrow(ProgressionError);
+    expect(() =>
+      learnSpell(gainXP(magician(), 20), 'lumiere', {
         hasNarrativeAccess: true,
         minimumLevel: 2
       })
@@ -191,7 +191,7 @@ function fighter(): Character {
   });
 }
 
-function magician(spells = [{ id: 'firebolt', points: 2 }]): Character {
+function magician(spells = [{ id: 'boule-de-feu', points: 2 }]): Character {
   return createPlayerCharacter({
     id: 'mage',
     name: 'Mirelda',
