@@ -305,6 +305,26 @@ export const LegacyCharactersCatalogSchema = CatalogBaseSchema.extend({
   characters: z.array(LegacyCharacterSchema)
 });
 
+export const AtoutScopeSchema = z.enum(['classe', 'neutre', 'orientation', 'race']);
+export const AtoutActivationSchema = z.enum(['permanent', 'ephemere']);
+
+export const AtoutSchema = z
+  .object({
+    id: NonEmptyStringSchema,
+    name: NonEmptyStringSchema,
+    effect: z.string(),
+    value: z.number().int(),
+    activation: AtoutActivationSchema,
+    scope: AtoutScopeSchema,
+    source_refs: z.array(SourceRefSchema).optional(),
+    metadata: EntryMetadataSchema.optional()
+  })
+  .passthrough();
+
+export const AtoutsCatalogSchema = CatalogBaseSchema.extend({
+  atouts: z.array(AtoutSchema)
+});
+
 export type Weapon = z.infer<typeof WeaponSchema>;
 export type WeaponsCatalog = z.infer<typeof WeaponsCatalogSchema>;
 export type BestiaryEntry = z.infer<typeof BestiaryEntrySchema>;
@@ -334,6 +354,10 @@ export type SpellsCatalog = z.infer<typeof SpellsCatalogSchema>;
 export type LegacyCharacterStatus = z.infer<typeof LegacyCharacterStatusSchema>;
 export type LegacyCharacter = z.infer<typeof LegacyCharacterSchema>;
 export type LegacyCharactersCatalog = z.infer<typeof LegacyCharactersCatalogSchema>;
+export type AtoutScope = z.infer<typeof AtoutScopeSchema>;
+export type AtoutActivation = z.infer<typeof AtoutActivationSchema>;
+export type Atout = z.infer<typeof AtoutSchema>;
+export type AtoutsCatalog = z.infer<typeof AtoutsCatalogSchema>;
 
 export const PRIORITY_CATALOG_NAMES = [
   'armes.yaml',
@@ -348,7 +372,8 @@ export const PRIORITY_CATALOG_NAMES = [
   'classes.yaml',
   'magic-schools.yaml',
   'spells.yaml',
-  'legacy-characters.yaml'
+  'legacy-characters.yaml',
+  'atouts.yaml'
 ] as const;
 
 export type PriorityCatalogName = (typeof PRIORITY_CATALOG_NAMES)[number];
@@ -367,6 +392,7 @@ export type PriorityCatalogData = {
   'magic-schools.yaml': MagicSchoolsCatalog;
   'spells.yaml': SpellsCatalog;
   'legacy-characters.yaml': LegacyCharactersCatalog;
+  'atouts.yaml': AtoutsCatalog;
 };
 
 export type PriorityCatalogs = {
@@ -386,7 +412,8 @@ export const PriorityCatalogSchemas = {
   'classes.yaml': ClassesCatalogSchema,
   'magic-schools.yaml': MagicSchoolsCatalogSchema,
   'spells.yaml': SpellsCatalogSchema,
-  'legacy-characters.yaml': LegacyCharactersCatalogSchema
+  'legacy-characters.yaml': LegacyCharactersCatalogSchema,
+  'atouts.yaml': AtoutsCatalogSchema
 } satisfies Record<PriorityCatalogName, z.ZodType>;
 
 export class CatalogValidationError extends Error {

@@ -22,7 +22,8 @@ const expectedCollections = [
   ['classes.yaml', 'classes', 90],
   ['magic-schools.yaml', 'schools', 11],
   ['spells.yaml', 'spells', 324],
-  ['legacy-characters.yaml', 'characters', 96]
+  ['legacy-characters.yaml', 'characters', 96],
+  ['atouts.yaml', 'atouts', 416]
 ] as const;
 
 describe('catalog Zod schemas', () => {
@@ -254,6 +255,35 @@ describe('catalog Zod schemas', () => {
       );
       expect(character.source_refs[0].sha256).toMatch(/^[0-9a-f]{64}$/);
     }
+  });
+
+  it('exposes atouts catalog with permanent/ephemere activation and scope partition', async () => {
+    const catalog = await loadValidatedCatalog('atouts.yaml');
+    const totals = {
+      permanent: 0,
+      ephemere: 0,
+      classe: 0,
+      neutre: 0,
+      orientation: 0,
+      handicap: 0
+    };
+
+    for (const atout of catalog.atouts) {
+      totals[atout.activation] += 1;
+      totals[atout.scope] += 1;
+      if (atout.value < 0) totals.handicap += 1;
+    }
+
+    expect(totals.permanent + totals.ephemere).toBe(416);
+    expect(totals.classe).toBe(75);
+    expect(totals.neutre).toBe(328);
+    expect(totals.orientation).toBe(13);
+    expect(totals.handicap).toBeGreaterThan(0);
+
+    const ids = new Set(catalog.atouts.map((a) => a.id));
+    expect(ids.has('ambidextrie')).toBe(true);
+    expect(ids.has('anosmie')).toBe(true);
+    expect(ids.has('demo-atout')).toBe(false);
   });
 
   it('reports the file and data path when validation fails', () => {

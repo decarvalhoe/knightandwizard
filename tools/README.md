@@ -52,6 +52,16 @@ Commande :
 pnpm catalogs:build:magic
 ```
 
+### `build-atouts-catalog.ts`
+
+Génère `data/catalogs/atouts.yaml` à partir de `data/legacy/web-scraped/documents/atouts/index.md`. Extrait 416 atouts/handicaps avec activation (`permanent`/`ephemere`), scope (`classe`/`neutre`/`orientation`), valeur (négative pour les handicaps), effet et `source_refs`. Les atouts du même nom dans plusieurs scopes reçoivent un suffixe `-<scope>-<n>`.
+
+Commande :
+
+```bash
+pnpm catalogs:build:atouts
+```
+
 ### `build-legacy-characters-catalog.ts`
 
 Inventorie les 96 fiches legacy `data/legacy/web-scraped/personnages/fiches/character-*.md` en `data/catalogs/legacy-characters.yaml`. Chaque entrée porte `id`, `legacy_id`, `name` extrait de la fiche, `status: raw_reference_only`, et `source_refs` avec hash de la fiche source. Aucune correction silencieuse des données — la promotion en `covered` suppose une vérification manuelle des stats.

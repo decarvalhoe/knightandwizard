@@ -7904,6 +7904,15 @@ sources:
     domains: ["D4-assets"]
     contains: ["assets", "handicaps"]
     notes: "Product catalog table."
+  - id: "data-catalogs-atouts"
+    path: "data/catalogs/atouts.yaml"
+    sha256: "4b88861f7ab2177e411097976074e0321805b7e20485ea14aef4f9e2d7b3a66c"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["D4-assets"]
+    contains: ["assets", "handicaps"]
+    notes: "Product YAML catalog."
   - id: "data-catalogs-bestiaire"
     path: "data/catalogs/bestiaire.yaml"
     sha256: "0fd177814a8cba18e28ff59df5bd40b2d44dca343545088501b415dbffcdd763"

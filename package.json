@@ -53,7 +53,8 @@
     "catalogs:build:orientations-classes": "tsx tools/build-orientations-classes-catalog.ts",
     "catalogs:enrich:bestiaire": "tsx tools/enrich-bestiaire-source-refs.ts",
     "catalogs:build:magic": "tsx tools/build-spells-catalog.ts",
-    "catalogs:build:legacy-characters": "tsx tools/build-legacy-characters-catalog.ts"
+    "catalogs:build:legacy-characters": "tsx tools/build-legacy-characters-catalog.ts",
+    "catalogs:build:atouts": "tsx tools/build-atouts-catalog.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
