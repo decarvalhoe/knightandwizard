@@ -21,7 +21,8 @@ describe('game master Mastra runtime', () => {
       'getCharacterStatus',
       'advanceCombatTimeline',
       'lookupRule',
-      'lookupBestiary'
+      'lookupBestiary',
+      'decideNpcAction'
     ]);
   });
 

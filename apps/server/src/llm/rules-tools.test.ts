@@ -5,6 +5,7 @@ import {
   createGameMasterRulesTools,
   executeAdvanceCombatTimelineTool,
   executeApplyDamageTool,
+  executeDecideNpcActionTool,
   executeGetCharacterStatusTool,
   executeLookupBestiaryTool,
   executeLookupRuleTool,
@@ -143,6 +144,27 @@ describe('game master rules-core tools', () => {
       creature: {
         id: 'humain',
         name: 'Humain, -e'
+      },
+      status: 'ok'
+    });
+
+    const npcDecision = await executeDecideNpcActionTool({
+      combatState: state,
+      enemyIds: ['hero'],
+      npcId: 'bandit',
+      profile: {
+        archetype: 'aggressive',
+        controller: 'auto'
+      }
+    });
+
+    expect(npcDecision).toMatchObject({
+      decision: {
+        action: {
+          targetId: 'hero',
+          type: 'attack'
+        },
+        controller: 'auto'
       },
       status: 'ok'
     });

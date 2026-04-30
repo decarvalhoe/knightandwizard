@@ -2,12 +2,14 @@ import { createTool, type ToolAction } from '@mastra/core/tools';
 import { loadValidatedCatalog, type BestiaryEntry } from '@knightandwizard/catalogs';
 import {
   applyDamage,
+  decideNpcAction,
   resolveNextAction,
   rollDice,
   type AttackAction,
   type Combatant,
   type CombatState,
   type DiceRollResult,
+  type NpcActionDecision,
   type RandomInteger
 } from '@knightandwizard/rules-core';
 import { z } from 'zod';
@@ -20,7 +22,8 @@ export const GAME_MASTER_RULE_TOOL_IDS = [
   'getCharacterStatus',
   'advanceCombatTimeline',
   'lookupRule',
-  'lookupBestiary'
+  'lookupBestiary',
+  'decideNpcAction'
 ] as const;
 
 export type GameMasterRuleToolId = (typeof GAME_MASTER_RULE_TOOL_IDS)[number];
@@ -79,6 +82,11 @@ export interface LookupRuleToolResult {
 
 export interface LookupBestiaryToolResult {
   creature: BestiaryEntry;
+  status: 'ok';
+}
+
+export interface DecideNpcActionToolResult {
+  decision: NpcActionDecision;
   status: 'ok';
 }
 
@@ -189,6 +197,40 @@ const LookupBestiaryInputSchema = z.object({
   name: z.string().min(1)
 });
 
+const NpcControlProfileSchema = z
+  .object({
+    archetype: z.enum([
+      'aggressive',
+      'defensive',
+      'coward',
+      'cautious',
+      'brute',
+      'skirmisher',
+      'support'
+    ]),
+    assignedTo: z.string().min(1).optional(),
+    controller: z.enum(['player', 'human_gm', 'llm', 'auto']),
+    npcId: z.string().min(1).optional(),
+    personality: z
+      .object({
+        fears: z.array(z.string()).optional(),
+        motivations: z.array(z.string()).optional(),
+        riskTolerance: z.enum(['low', 'medium', 'high']).optional(),
+        speechStyle: z.string().optional(),
+        tacticalLevel: z.enum(['low', 'medium', 'high']).optional(),
+        values: z.array(z.string()).optional()
+      })
+      .optional()
+  })
+  .passthrough();
+
+const DecideNpcActionInputSchema = z.object({
+  combatState: CombatStateSchema,
+  enemyIds: z.array(z.string().min(1)),
+  npcId: z.string().min(1),
+  profile: NpcControlProfileSchema
+});
+
 export function createGameMasterRulesTools(
   options: GameMasterRuleToolOptions = {}
 ): GameMasterRuleTools {
@@ -244,6 +286,13 @@ export function createGameMasterRulesTools(
       execute: async (inputData) => executeLookupBestiaryTool(inputData),
       id: 'lookupBestiary',
       inputSchema: LookupBestiaryInputSchema
+    }),
+    decideNpcAction: createTool({
+      description:
+        'Decide le controle PNJ selon D11/D13: auto deterministe, delegation LLM contextuelle, ou file de decision humaine.',
+      execute: async (inputData) => executeDecideNpcActionTool(inputData),
+      id: 'decideNpcAction',
+      inputSchema: DecideNpcActionInputSchema
     })
   } as unknown as GameMasterRuleTools;
 }
@@ -370,6 +419,19 @@ export async function executeLookupBestiaryTool(
 
     return {
       creature,
+      status: 'ok'
+    };
+  });
+}
+
+export async function executeDecideNpcActionTool(
+  input: unknown
+): Promise<RuleToolResult<DecideNpcActionToolResult>> {
+  return safeRuleToolExecution(() => {
+    const normalizedInput = DecideNpcActionInputSchema.parse(input);
+
+    return {
+      decision: decideNpcAction(normalizedInput),
       status: 'ok'
     };
   });
