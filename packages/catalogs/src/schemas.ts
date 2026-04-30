@@ -190,6 +190,30 @@ export const ReligionsCatalogSchema = CatalogBaseSchema.extend({
   religions: z.array(ReligionSchema)
 });
 
+export const SourceRefSchema = z
+  .object({
+    path: NonEmptyStringSchema,
+    sha256: NonEmptyStringSchema,
+    ref: NonEmptyStringSchema
+  })
+  .passthrough();
+
+export const SkillSchema = z
+  .object({
+    id: NonEmptyStringSchema,
+    name: NonEmptyStringSchema,
+    family: NonEmptyStringSchema,
+    family_name: NonEmptyStringSchema.optional(),
+    parent_id: NullableStringSchema.optional(),
+    source_refs: z.array(SourceRefSchema).optional(),
+    metadata: EntryMetadataSchema.optional()
+  })
+  .passthrough();
+
+export const SkillsCatalogSchema = CatalogBaseSchema.extend({
+  skills: z.array(SkillSchema)
+});
+
 export type Weapon = z.infer<typeof WeaponSchema>;
 export type WeaponsCatalog = z.infer<typeof WeaponsCatalogSchema>;
 export type BestiaryEntry = z.infer<typeof BestiaryEntrySchema>;
@@ -204,6 +228,9 @@ export type Organisation = z.infer<typeof OrganisationSchema>;
 export type OrganisationsCatalog = z.infer<typeof OrganisationsCatalogSchema>;
 export type Religion = z.infer<typeof ReligionSchema>;
 export type ReligionsCatalog = z.infer<typeof ReligionsCatalogSchema>;
+export type SourceRef = z.infer<typeof SourceRefSchema>;
+export type Skill = z.infer<typeof SkillSchema>;
+export type SkillsCatalog = z.infer<typeof SkillsCatalogSchema>;
 
 export const PRIORITY_CATALOG_NAMES = [
   'armes.yaml',
@@ -212,7 +239,8 @@ export const PRIORITY_CATALOG_NAMES = [
   'potions.yaml',
   'nations.yaml',
   'organisations.yaml',
-  'religions.yaml'
+  'religions.yaml',
+  'competences.yaml'
 ] as const;
 
 export type PriorityCatalogName = (typeof PRIORITY_CATALOG_NAMES)[number];
@@ -225,6 +253,7 @@ export type PriorityCatalogData = {
   'nations.yaml': NationsCatalog;
   'organisations.yaml': OrganisationsCatalog;
   'religions.yaml': ReligionsCatalog;
+  'competences.yaml': SkillsCatalog;
 };
 
 export type PriorityCatalogs = {
@@ -238,7 +267,8 @@ export const PriorityCatalogSchemas = {
   'potions.yaml': PotionsCatalogSchema,
   'nations.yaml': NationsCatalogSchema,
   'organisations.yaml': OrganisationsCatalogSchema,
-  'religions.yaml': ReligionsCatalogSchema
+  'religions.yaml': ReligionsCatalogSchema,
+  'competences.yaml': SkillsCatalogSchema
 } satisfies Record<PriorityCatalogName, z.ZodType>;
 
 export class CatalogValidationError extends Error {

@@ -48,7 +48,8 @@
     "test:e2e:ui": "playwright test --ui",
     "canonical:write": "tsx tools/canonical.ts --write",
     "canonical:check": "tsx tools/canonical.ts",
-    "canonical:check:strict": "tsx tools/canonical.ts --strict"
+    "canonical:check:strict": "tsx tools/canonical.ts --strict",
+    "catalogs:build:competences": "tsx tools/build-skills-catalog.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

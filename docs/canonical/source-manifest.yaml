@@ -7931,6 +7931,15 @@ sources:
     domains: ["D12-world"]
     contains: ["cities"]
     notes: "Product YAML catalog."
+  - id: "data-catalogs-competences"
+    path: "data/catalogs/competences.yaml"
+    sha256: "07b5cb838a6f93548cb02cc4e611498cb07397630a580f8c3fb16ad588424058"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["catalogs"]
+    contains: ["catalog_entries"]
+    notes: "Product YAML catalog."
   - id: "data-catalogs-images"
     path: "data/catalogs/images.yaml"
     sha256: "437b1afb02ff1ed67761535e7bb51b3dd4e00f94c2ff3acad690105bc3a255cf"
