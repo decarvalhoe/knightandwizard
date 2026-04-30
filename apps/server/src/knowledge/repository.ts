@@ -12,6 +12,12 @@ export interface EmbeddingProvider {
   embed(text: string): Promise<number[]>;
 }
 
+export interface OllamaEmbeddingProviderOptions {
+  dimensions?: number;
+  endpoint?: string;
+  model?: string;
+}
+
 export interface SearchResult {
   id: string;
   sourcePath: string;
@@ -21,16 +27,20 @@ export interface SearchResult {
   score: number;
 }
 
+export const DEFAULT_EMBEDDING_DIMENSIONS = 1536;
+export const DEFAULT_OLLAMA_EMBEDDING_ENDPOINT = 'http://localhost:11434/api/embed';
+export const DEFAULT_OLLAMA_EMBEDDING_MODEL = 'nomic-embed-text';
+
 export function createKnowledgeChunk(input: Omit<KnowledgeChunk, 'contentHash'>): KnowledgeChunk {
   return createChunk(input);
 }
 
-export class DeterministicTestEmbeddingProvider implements EmbeddingProvider {
-  readonly dimensions = 1536;
+export class DeterministicEmbeddingProvider implements EmbeddingProvider {
+  readonly dimensions = DEFAULT_EMBEDDING_DIMENSIONS;
 
   async embed(text: string): Promise<number[]> {
     const vector = new Array<number>(this.dimensions).fill(0);
-    const tokens = text.toLowerCase().match(/[a-z0-9]+/g) ?? [];
+    const tokens = tokenize(text);
 
     for (const token of tokens) {
       const hash = createHash('sha256').update(token).digest();
@@ -40,6 +50,63 @@ export class DeterministicTestEmbeddingProvider implements EmbeddingProvider {
 
     return normalize(vector);
   }
+}
+
+export class DeterministicTestEmbeddingProvider extends DeterministicEmbeddingProvider {}
+
+export class OllamaEmbeddingProvider implements EmbeddingProvider {
+  readonly dimensions: number;
+  private readonly endpoint: string;
+  private readonly model: string;
+
+  constructor(options: OllamaEmbeddingProviderOptions = {}) {
+    this.dimensions = options.dimensions ?? DEFAULT_EMBEDDING_DIMENSIONS;
+    this.endpoint =
+      options.endpoint ?? process.env.OLLAMA_EMBEDDING_URL ?? DEFAULT_OLLAMA_EMBEDDING_ENDPOINT;
+    this.model =
+      options.model ?? process.env.OLLAMA_EMBEDDING_MODEL ?? DEFAULT_OLLAMA_EMBEDDING_MODEL;
+  }
+
+  async embed(text: string): Promise<number[]> {
+    const response = await fetch(this.endpoint, {
+      body: JSON.stringify({
+        input: text,
+        model: this.model
+      }),
+      headers: {
+        'content-type': 'application/json'
+      },
+      method: 'POST'
+    });
+
+    if (!response.ok) {
+      throw new Error(`Ollama embedding request failed: ${response.status} ${response.statusText}`);
+    }
+
+    const payload = (await response.json()) as {
+      embedding?: unknown;
+      embeddings?: unknown;
+    };
+    const embedding = extractEmbedding(payload);
+
+    if (embedding.length !== this.dimensions) {
+      throw new Error(
+        `Ollama embedding dimension mismatch: expected ${this.dimensions}, received ${embedding.length}`
+      );
+    }
+
+    return normalize(embedding);
+  }
+}
+
+export function createDefaultEmbeddingProvider(): EmbeddingProvider {
+  const provider = process.env.KNOWLEDGE_EMBEDDING_PROVIDER ?? 'deterministic';
+
+  if (provider === 'ollama') {
+    return new OllamaEmbeddingProvider();
+  }
+
+  return new DeterministicEmbeddingProvider();
 }
 
 export async function storeKnowledgeChunks(
@@ -161,6 +228,42 @@ function normalize(vector: number[]): number[] {
   }
 
   return vector.map((value) => value / magnitude);
+}
+
+function tokenize(text: string): string[] {
+  return (
+    text
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .match(/[a-z0-9]+/g) ?? []
+  ).map((token) => normalizeToken(token));
+}
+
+function normalizeToken(token: string): string {
+  if (token === 'dice') {
+    return 'des';
+  }
+
+  if (token === 'roll') {
+    return 'jet';
+  }
+
+  if (token.startsWith('difficil')) {
+    return 'difficulte';
+  }
+
+  return token;
+}
+
+function extractEmbedding(payload: { embedding?: unknown; embeddings?: unknown }): number[] {
+  const candidate = Array.isArray(payload.embeddings) ? payload.embeddings[0] : payload.embedding;
+
+  if (!Array.isArray(candidate) || !candidate.every((value) => typeof value === 'number')) {
+    throw new Error('Ollama embedding response did not contain a numeric embedding');
+  }
+
+  return candidate;
 }
 
 function toVectorLiteral(vector: number[]): string {

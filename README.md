@@ -79,8 +79,9 @@ curl -sf http://localhost:3002/ready
 | `pnpm db:migrate`        | Applique les migrations DB applicatives                                         |
 | `pnpm db:seed`           | Injecte des données de développement déterministes                              |
 | `pnpm knowledge:dry-run` | Découpe règles/catalogues offline, sans appel à un provider d'embeddings        |
+| `pnpm knowledge:index`   | Indexe règles, lore et catalogues dans PostgreSQL/pgvector                      |
 
-Sortie actuelle de `pnpm knowledge:dry-run` : `1376` chunks, dont `939` chunks de règles et `437` chunks de catalogues.
+Sortie actuelle de `pnpm knowledge:index:dry-run` : `1418` chunks, dont `939` chunks de règles, `437` chunks de catalogues et `42` chunks de lore fondation.
 
 ## Architecture
 
@@ -142,9 +143,11 @@ La fondation RAG est volontairement offline-first pour l'instant :
 - les catalogues YAML sont découpés de façon déterministe par metadata et entrées ;
 - chaque chunk contient source path, source kind, titre, hash stable et texte ;
 - les tests utilisent un provider d'embeddings déterministe, pas une API externe ;
-- la recherche pgvector est couverte par tests d'intégration.
+- `tools/index-knowledge-base.ts` indexe la base dans PostgreSQL/pgvector ;
+- `searchRules(query)` combine recherche vectorielle et reranking lexical léger ;
+- l'agent MJ Mastra injecte automatiquement le contexte retrouvé et cite les sources dans sa réponse déterministe de dev.
 
-Le provider d'embeddings réel et l'intégration Mastra relèvent de la Phase 4.
+Le provider par défaut reste déterministe pour le devlab et la CI. `KNOWLEDGE_EMBEDDING_PROVIDER=ollama` active le provider Ollama local, à condition d'utiliser un modèle compatible `vector(1536)`.
 
 ## Roadmap
 

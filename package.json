@@ -41,7 +41,9 @@
     "dev:server": "pnpm --filter @knightandwizard/server dev",
     "devlab:reset": "bash scripts/devlab-reset.sh",
     "db:seed": "pnpm --filter @knightandwizard/server db:seed",
-    "knowledge:dry-run": "pnpm --filter @knightandwizard/server knowledge:dry-run"
+    "knowledge:dry-run": "tsx tools/index-knowledge-base.ts --dry-run",
+    "knowledge:index": "tsx tools/index-knowledge-base.ts",
+    "knowledge:index:dry-run": "tsx tools/index-knowledge-base.ts --dry-run"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

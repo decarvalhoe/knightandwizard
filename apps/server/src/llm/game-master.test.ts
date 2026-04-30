@@ -82,6 +82,45 @@ describe('game master Mastra runtime', () => {
       ]
     });
   });
+
+  it('injects retrieved rules context and cites it in the deterministic narration', async () => {
+    const result = await describeSceneWithGameMaster(
+      {
+        sceneDescription: 'Comment resoudre un jet difficile pour crocheter une serrure ?',
+        sessionId: 'session-rag'
+      },
+      {
+        knowledgeRetriever: {
+          searchRules: async () => [
+            {
+              citation: 'docs/rules/01-resolution.md > Jets difficiles',
+              heading: 'Jets difficiles',
+              id: 'chunk-resolution',
+              rank: 1,
+              score: 0.92,
+              sourceKind: 'rule_markdown',
+              sourcePath: 'docs/rules/01-resolution.md',
+              text: 'Un jet difficile fixe un seuil, lance une reserve de D10 et compte les succes.'
+            }
+          ]
+        }
+      }
+    );
+
+    expect(result.knowledge).toMatchObject({
+      citations: [
+        {
+          citation: 'docs/rules/01-resolution.md > Jets difficiles',
+          score: 0.92
+        }
+      ],
+      query: 'Comment resoudre un jet difficile pour crocheter une serrure ?'
+    });
+    expect(result.knowledge.context).toContain('[1] docs/rules/01-resolution.md > Jets difficiles');
+    expect(result.narration).toContain(
+      'Sources RAG: [1] docs/rules/01-resolution.md > Jets difficiles'
+    );
+  });
 });
 
 function scriptedRolls(values: number[]) {
