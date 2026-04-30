@@ -14,7 +14,15 @@ describe('game master Mastra runtime', () => {
     expect(runtime.agent.name).toBe('K&W Game Master');
     expect(runtime.mastra.getAgent('gameMaster')).toBe(runtime.agent);
     expect(await runtime.agent.getInstructions()).toContain('Le LLM ne calcule jamais');
-    expect(Object.keys(await runtime.agent.listTools())).toEqual(['rollDice']);
+    expect(Object.keys(await runtime.agent.listTools())).toEqual([
+      'rollDice',
+      'applyDamage',
+      'resolveAttack',
+      'getCharacterStatus',
+      'advanceCombatTimeline',
+      'lookupRule',
+      'lookupBestiary'
+    ]);
   });
 
   it('executes rollDice through the rules-core tool contract', async () => {

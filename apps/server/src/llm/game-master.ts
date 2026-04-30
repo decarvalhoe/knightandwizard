@@ -1,8 +1,20 @@
 import { Agent } from '@mastra/core/agent';
 import { Mastra } from '@mastra/core/mastra';
-import { createTool, type ToolAction } from '@mastra/core/tools';
-import { rollDice, type DiceRollResult, type RandomInteger } from '@knightandwizard/rules-core';
+import { type RandomInteger } from '@knightandwizard/rules-core';
 import { buildRuleContext, searchRules, type RuleSearchResult } from '../knowledge/rules.js';
+import {
+  createGameMasterRulesTools,
+  type GameMasterRuleTools,
+  type RollDiceToolInput,
+  type RollDiceToolResult
+} from './rules-tools.js';
+
+export {
+  executeRollDiceTool,
+  validateRollDiceShape,
+  type RollDiceToolInput,
+  type RollDiceToolResult
+} from './rules-tools.js';
 
 export const DEFAULT_GAME_MASTER_MODEL = 'ollama/qwen2.5:7b';
 
@@ -14,18 +26,6 @@ export const GAME_MASTER_INSTRUCTIONS = [
   'Tu peux narrer, reformuler, demander une validation MJ humain et garder le contexte de session.',
   'Toute ambiguite de regle importante doit etre escaladee au MJ humain.'
 ].join('\n');
-
-export interface RollDiceToolInput {
-  difficulty: number;
-  pool: number;
-  reason?: string;
-}
-
-export interface RollDiceToolResult extends DiceRollResult {
-  difficulty: number;
-  pool: number;
-  reason?: string;
-}
 
 export interface GameMasterToolCall {
   input: RollDiceToolInput;
@@ -52,9 +52,7 @@ export interface GameMasterRuntime {
   agent: Agent;
   mastra: Mastra;
   model: string;
-  tools: {
-    rollDice: ToolAction<unknown, unknown>;
-  };
+  tools: GameMasterRuleTools;
 }
 
 export interface GameMasterRuntimeOptions {
@@ -111,16 +109,14 @@ const defaultKnowledgeRetriever: KnowledgeRetriever = {
 
 export function createGameMasterRuntime(options: GameMasterRuntimeOptions = {}): GameMasterRuntime {
   const model = options.model ?? getGameMasterModel();
-  const rollDiceTool = createRollDiceTool({ randomInteger: options.randomInteger });
+  const tools = createGameMasterRulesTools({ randomInteger: options.randomInteger });
   const agent = new Agent({
     description: 'Assistant MJ K&W avec tool calling vers rules-core.',
     id: 'kw-game-master',
     instructions: GAME_MASTER_INSTRUCTIONS,
     model,
     name: 'K&W Game Master',
-    tools: {
-      rollDice: rollDiceTool
-    }
+    tools
   });
   const mastra = new Mastra({
     agents: {
@@ -133,9 +129,7 @@ export function createGameMasterRuntime(options: GameMasterRuntimeOptions = {}):
     agent,
     mastra,
     model,
-    tools: {
-      rollDice: rollDiceTool
-    }
+    tools
   };
 }
 
@@ -168,23 +162,6 @@ export function createWorkingMemory(): WorkingMemory {
     getSession(sessionId) {
       return sessions.get(sessionId);
     }
-  };
-}
-
-export async function executeRollDiceTool(
-  input: unknown,
-  options: Pick<GameMasterRuntimeOptions, 'randomInteger'> = {}
-): Promise<RollDiceToolResult> {
-  const normalizedInput = parseRollDiceInput(input);
-  const result = rollDice(normalizedInput.pool, normalizedInput.difficulty, {
-    randomInteger: options.randomInteger
-  });
-
-  return {
-    ...result,
-    difficulty: normalizedInput.difficulty,
-    pool: normalizedInput.pool,
-    reason: normalizedInput.reason
   };
 }
 
@@ -238,15 +215,6 @@ export async function describeSceneWithGameMaster(
     provider: 'deterministic-dev',
     toolCalls
   };
-}
-
-function createRollDiceTool(options: Pick<GameMasterRuntimeOptions, 'randomInteger'>) {
-  return createTool({
-    description:
-      'Resout un jet D10 K&W avec le rules-core. Utilise cet outil pour tout jet de des.',
-    execute: async (inputData) => executeRollDiceTool(inputData, options),
-    id: 'rollDice'
-  });
 }
 
 function getGameMasterModel(): string {
@@ -313,44 +281,4 @@ async function retrieveKnowledgeContext(
       query
     };
   }
-}
-
-function parseRollDiceInput(input: unknown): RollDiceToolInput {
-  if (!isRecord(input)) {
-    throw new Error('rollDice input must be an object');
-  }
-
-  const errors = validateRollDiceShape(input);
-
-  if (errors.length > 0) {
-    throw new Error(errors.join('; '));
-  }
-
-  return {
-    difficulty: input.difficulty as number,
-    pool: input.pool as number,
-    reason: typeof input.reason === 'string' ? input.reason : undefined
-  };
-}
-
-export function validateRollDiceShape(input: Record<string, unknown>): string[] {
-  const errors: string[] = [];
-
-  if (!Number.isInteger(input.pool) || (input.pool as number) <= 0) {
-    errors.push('roll.pool must be a positive integer');
-  }
-
-  if (!Number.isInteger(input.difficulty) || (input.difficulty as number) <= 0) {
-    errors.push('roll.difficulty must be a positive integer');
-  }
-
-  if (input.reason !== undefined && typeof input.reason !== 'string') {
-    errors.push('roll.reason must be a string');
-  }
-
-  return errors;
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
