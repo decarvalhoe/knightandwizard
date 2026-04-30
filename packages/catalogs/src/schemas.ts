@@ -247,6 +247,42 @@ export const ClassesCatalogSchema = CatalogBaseSchema.extend({
   classes: z.array(ClassSchema)
 });
 
+export const MagicSchoolSchema = z
+  .object({
+    id: NonEmptyStringSchema,
+    name: NonEmptyStringSchema,
+    source_label: NonEmptyStringSchema.optional(),
+    color: NonEmptyStringSchema,
+    specialist_class_id: NonEmptyStringSchema,
+    domain: NonEmptyStringSchema,
+    source_refs: z.array(SourceRefSchema).optional(),
+    metadata: EntryMetadataSchema.optional()
+  })
+  .passthrough();
+
+export const MagicSchoolsCatalogSchema = CatalogBaseSchema.extend({
+  schools: z.array(MagicSchoolSchema)
+});
+
+export const SpellSchema = z
+  .object({
+    id: NonEmptyStringSchema,
+    name: NonEmptyStringSchema,
+    school_id: NonEmptyStringSchema,
+    energy: z.number().int(),
+    incantation_time: z.number().int(),
+    difficulty: z.number().int(),
+    effect: z.string(),
+    value: z.number().int(),
+    source_refs: z.array(SourceRefSchema).optional(),
+    metadata: EntryMetadataSchema.optional()
+  })
+  .passthrough();
+
+export const SpellsCatalogSchema = CatalogBaseSchema.extend({
+  spells: z.array(SpellSchema)
+});
+
 export type Weapon = z.infer<typeof WeaponSchema>;
 export type WeaponsCatalog = z.infer<typeof WeaponsCatalogSchema>;
 export type BestiaryEntry = z.infer<typeof BestiaryEntrySchema>;
@@ -269,6 +305,10 @@ export type OrientationsCatalog = z.infer<typeof OrientationsCatalogSchema>;
 export type PrimarySkillChoice = z.infer<typeof PrimarySkillChoiceSchema>;
 export type ClassEntry = z.infer<typeof ClassSchema>;
 export type ClassesCatalog = z.infer<typeof ClassesCatalogSchema>;
+export type MagicSchool = z.infer<typeof MagicSchoolSchema>;
+export type MagicSchoolsCatalog = z.infer<typeof MagicSchoolsCatalogSchema>;
+export type Spell = z.infer<typeof SpellSchema>;
+export type SpellsCatalog = z.infer<typeof SpellsCatalogSchema>;
 
 export const PRIORITY_CATALOG_NAMES = [
   'armes.yaml',
@@ -280,7 +320,9 @@ export const PRIORITY_CATALOG_NAMES = [
   'religions.yaml',
   'competences.yaml',
   'orientations.yaml',
-  'classes.yaml'
+  'classes.yaml',
+  'magic-schools.yaml',
+  'spells.yaml'
 ] as const;
 
 export type PriorityCatalogName = (typeof PRIORITY_CATALOG_NAMES)[number];
@@ -296,6 +338,8 @@ export type PriorityCatalogData = {
   'competences.yaml': SkillsCatalog;
   'orientations.yaml': OrientationsCatalog;
   'classes.yaml': ClassesCatalog;
+  'magic-schools.yaml': MagicSchoolsCatalog;
+  'spells.yaml': SpellsCatalog;
 };
 
 export type PriorityCatalogs = {
@@ -312,7 +356,9 @@ export const PriorityCatalogSchemas = {
   'religions.yaml': ReligionsCatalogSchema,
   'competences.yaml': SkillsCatalogSchema,
   'orientations.yaml': OrientationsCatalogSchema,
-  'classes.yaml': ClassesCatalogSchema
+  'classes.yaml': ClassesCatalogSchema,
+  'magic-schools.yaml': MagicSchoolsCatalogSchema,
+  'spells.yaml': SpellsCatalogSchema
 } satisfies Record<PriorityCatalogName, z.ZodType>;
 
 export class CatalogValidationError extends Error {

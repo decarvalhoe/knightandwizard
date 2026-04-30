@@ -19,7 +19,9 @@ const expectedCollections = [
   ['religions.yaml', 'religions', 15],
   ['competences.yaml', 'skills', 368],
   ['orientations.yaml', 'orientations', 12],
-  ['classes.yaml', 'classes', 90]
+  ['classes.yaml', 'classes', 90],
+  ['magic-schools.yaml', 'schools', 11],
+  ['spells.yaml', 'spells', 324]
 ] as const;
 
 describe('catalog Zod schemas', () => {
@@ -188,6 +190,53 @@ describe('catalog Zod schemas', () => {
         'sorcier'
       ])
     );
+  });
+
+  it('rejects demo spell IDs spark/ward/veil/mend in the canonical grimoire', async () => {
+    const catalog = await loadValidatedCatalog('spells.yaml');
+    const ids = new Set(catalog.spells.map((s) => s.id));
+
+    for (const demoId of ['spark', 'ward', 'veil', 'mend']) {
+      expect(ids.has(demoId)).toBe(false);
+    }
+  });
+
+  it('links every spell to one of the 11 canonical magic schools', async () => {
+    const schools = await loadValidatedCatalog('magic-schools.yaml');
+    const spells = await loadValidatedCatalog('spells.yaml');
+    const schoolIds = new Set(schools.schools.map((s) => s.id));
+
+    expect(schoolIds).toEqual(
+      new Set([
+        'abjuration',
+        'alteration',
+        'magie-blanche',
+        'divination',
+        'enchantement',
+        'elementaire',
+        'illusion',
+        'invocation',
+        'magie-naturelle',
+        'magie-noire',
+        'necromancie'
+      ])
+    );
+
+    for (const spell of spells.spells) {
+      expect(schoolIds.has(spell.school_id)).toBe(true);
+      expect(spell.energy).toBeGreaterThan(0);
+      expect(spell.difficulty).toBeGreaterThan(0);
+    }
+  });
+
+  it('exposes the canonical specialist class for each magic school', async () => {
+    const catalog = await loadValidatedCatalog('magic-schools.yaml');
+    const classes = await loadValidatedCatalog('classes.yaml');
+    const classIds = new Set(classes.classes.map((c) => c.id));
+
+    for (const school of catalog.schools) {
+      expect(classIds.has(school.specialist_class_id)).toBe(true);
+    }
   });
 
   it('reports the file and data path when validation fails', () => {

@@ -42,6 +42,16 @@ Commande :
 pnpm catalogs:build:orientations-classes
 ```
 
+### `build-spells-catalog.ts`
+
+Génère `data/catalogs/magic-schools.yaml` (11 écoles canoniques) et `data/catalogs/spells.yaml` (~324 sorts) depuis le Grand Grimoire web `data/legacy/web-scraped/documents/grimoire/index.md`. Détecte les écoles via leurs labels courts dans la source (`Blanche`, `Noire`, `Naturelle`, `Divinatoire`...) et normalise vers les IDs canoniques (`magie-blanche`, `magie-noire`, `magie-naturelle`, `divination`). Chaque sort porte school_id, energy, incantation_time, difficulty, effect, value et source_refs.
+
+Commande :
+
+```bash
+pnpm catalogs:build:magic
+```
+
 ### `enrich-bestiaire-source-refs.ts`
 
 Enrichit `data/catalogs/bestiaire.yaml` (catalogue races + créatures) en injectant un bloc `source_refs` par entrée, sans casser la structure manuelle (commentaires, sections « === HUMAINS ET PROCHES === », etc.). Référence à la fois la source web canonique et la source paper, sauf pour Zombie (web-only). Idempotent : détecte les entrées déjà enrichies.

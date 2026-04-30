@@ -7967,6 +7967,15 @@ sources:
     domains: ["lore"]
     contains: ["catalog_entries"]
     notes: "Product YAML catalog."
+  - id: "data-catalogs-magic-schools"
+    path: "data/catalogs/magic-schools.yaml"
+    sha256: "05286d621d627b28ca8ed509844cd07f982826b321b2f8b847b354bd7d74c7c6"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["catalogs"]
+    contains: ["catalog_entries"]
+    notes: "Product YAML catalog."
   - id: "data-catalogs-nations"
     path: "data/catalogs/nations.yaml"
     sha256: "109acda64d34be1fb40506ea7e12a125871672af1cc9b3420818d1070b500808"
@@ -8029,6 +8038,15 @@ sources:
     status: active
     domains: ["D12-religions"]
     contains: ["religions", "deities"]
+    notes: "Product YAML catalog."
+  - id: "data-catalogs-spells"
+    path: "data/catalogs/spells.yaml"
+    sha256: "7ee80f69170c015e80616adf56aeac6ce10a5fcc2165e1fdd9c368955dfbba7c"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["catalogs"]
+    contains: ["catalog_entries"]
     notes: "Product YAML catalog."
   - id: "data-catalogs-vectorisation-cartes"
     path: "data/catalogs/vectorisation-cartes.md"
