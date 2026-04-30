@@ -125,49 +125,13 @@ describe('character sheet model', () => {
   });
 
   it('returns a forced failure with no D100 severity when the effective attribute is 0', () => {
-    const character = createPlayerCharacter({
-      attributes: {
-        aestheticism: 1,
-        charisma: 2,
-        dexterity: 3,
-        empathy: 2,
-        intelligence: 2,
-        perception: 0,
-        reflexes: 2,
-        stamina: 3,
-        strength: 5
-      },
-      classProfile: {
-        id: 'knight',
-        name: 'Chevalier',
-        orientationId: 'fighter',
-        primarySkillIds: ['long-blades']
-      },
-      id: 'pc-blind',
-      name: 'PJ aveugle',
-      orientation: { id: 'fighter', name: 'Guerrier' },
-      race: {
-        attributeMax: Object.fromEntries(
-          ATTRIBUTE_KEYS.map((key) => [key, 6])
-        ) as CharacterAttributes,
-        category: 20,
-        id: 'human',
-        name: 'Humain',
-        speedFactor: 8,
-        vitality: 24,
-        willFactor: 10
-      },
-      skills: [
-        { id: 'long-blades', isMain: true, points: 4 },
-        { id: 'shield', points: 4 },
-        { id: 'command', points: 4 },
-        { id: 'endurance', points: 4 },
-        { id: 'lore', points: 4 }
-      ],
-      spells: []
-    });
+    const base = sampleCharacter();
+    const character: Character = {
+      ...base,
+      modifiers: [...base.modifiers, { id: 'curse', target: 'aestheticism', value: -1 }]
+    };
 
-    const result = rollAttributeCheck(character, 'perception', 7, () => {
+    const result = rollAttributeCheck(character, 'aestheticism', 7, () => {
       throw new Error('randomInteger should not be called for a forced failure');
     });
 
