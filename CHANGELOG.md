@@ -15,6 +15,30 @@ Versionnement : [SemVer](https://semver.org/lang/fr/).
 
 ---
 
+## [0.2.0] — 2026-04-30
+
+Release de fondation applicative et devlab local. Cette version promeut le socle technique Phase 3/4 sur `main` : moteur de règles TypeScript, app joueur/MJ, backend persistant, RAG et agent MJ déterministe outillé.
+
+### Ajouté
+
+- Monorepo TypeScript/Turborepo avec validation CI complète.
+- Devlab local Docker : PostgreSQL + pgvector + Adminer, migrations applicatives et contrôles de santé.
+- `packages/rules-core` : dés D10, modèle personnage, progression, combat DT, sessions, contrôle PNJ Auto/LLM/Humain.
+- `apps/game` : dashboard, fiche personnage interactive, wizard de création, tracker combat DT, gestionnaire de session.
+- `apps/server` : API health/ready, brouillons personnage, sessions, décisions MJ, rollback, agent MJ Mastra.
+- Base de connaissance RAG : indexation règles/catalogues/lore, recherche et citations utilisables par le MJ.
+- Mémoire épisodique persistante de l'agent MJ.
+- Payload CMS : collections catalogues et scripts d'import/validation.
+- Suite E2E Playwright couvrant les parcours joueur/MJ, API, RAG, tool calling et mémoire.
+
+### Corrigé
+
+- Conversion magicien : 10 points de compétence peuvent acheter 1 point de sort supplémentaire.
+- Validation du wizard personnage : le message de brouillon validé n'est plus effacé immédiatement.
+- Décompte fiche personnage : progression de niveau affichée séparément des points de création.
+
+---
+
 ## [0.1.0] — 2026-04-25
 
 Première version structurée du monorepo. Phase 1 (canonisation des règles) et Phase 2A (imports catalogues) terminées. Phase 2B (carte interactive) en cours.
@@ -104,5 +128,6 @@ Total : ~700 entrées canoniques.
 
 ---
 
-[Unreleased]: https://github.com/decarvalhoe/knightandwizard/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/decarvalhoe/knightandwizard/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/decarvalhoe/knightandwizard/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/decarvalhoe/knightandwizard/releases/tag/v0.1.0
