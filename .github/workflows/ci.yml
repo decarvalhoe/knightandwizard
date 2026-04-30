@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - dev
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Configure environment
+        run: cp .env.example .env
+
+      - name: Start devlab
+        run: pnpm devlab:up
+
+      - name: Run database migrations
+        run: pnpm db:migrate
+
+      - name: Validate repository
+        run: pnpm validate
+
+      - name: Show devlab logs on failure
+        if: failure()
+        run: docker compose logs --no-color
+
+      - name: Stop devlab
+        if: always()
+        run: docker compose down --volumes --remove-orphans

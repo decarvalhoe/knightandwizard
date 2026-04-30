@@ -16,7 +16,10 @@ export function initMap(elementId) {
 
   // Bornes arbitraires K&W : [[lat=0, lng=0], [lat=100, lng=143]]
   // Le ratio 100/143 correspond approximativement au ratio 590x420 de terres-oubliees.jpg
-  const bounds = [[0, 0], [100, 143]];
+  const bounds = [
+    [0, 0],
+    [100, 143]
+  ];
 
   // Fond parchemin (carte mondiale K&W)
   L.imageOverlay('/maps/terres-oubliees.jpg', bounds, {
@@ -25,7 +28,10 @@ export function initMap(elementId) {
   }).addTo(map);
 
   map.fitBounds(bounds);
-  map.setMaxBounds([[-20, -20], [120, 163]]);
+  map.setMaxBounds([
+    [-20, -20],
+    [120, 163]
+  ]);
 
   // Layers groups (vides au départ)
   const layers = {

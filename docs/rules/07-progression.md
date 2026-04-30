@@ -356,15 +356,19 @@ new_value = max(1, new_race.base − delta)   (clamp min 1, R-2.13 / R-2.15)
 
 ### R-7.18 — Q-D3.5-c-iii : niveau actuel après changement de catégorie
 
-Si la nouvelle race a une catégorie différente, le seuil par niveau change. Conséquence :
+Si la nouvelle race a une catégorie différente, le seuil par niveau change. Le niveau est **inflexiblement lié à la catégorie de la race jouée**.
 
-**Décision (à valider Q-D7.X)** :
-- `levelPoints` reste inchangé (compétences et sorts inchangés)
-- `level` est **recalculé** = `floor(levelPoints / new_race.category)`
-- Si le niveau **descend** (ex: humain N5 cat 20 = 100 lp → loup-garou cat 45 = 100 lp / 45 = N2) : les atouts de niveau acquis au-dessus du nouveau niveau sont **conservés** (pas de perte) mais le perso ne peut pas en gagner de nouveaux avant d'atteindre niveau supérieur
-- Si le niveau **monte** : passage de niveau immédiat, débloque des atouts non choisis
+**Décision auteur (2026-04-27)** :
+- La table compétences/spécialisations ne change pas.
+- Les sorts connus ne changent pas.
+- L'orientation et la classe ne changent pas : on accepte donc des cas comme un clerc mort-vivant.
+- `levelPoints` reste calculé à partir des acquis du personnage.
+- `level` est **recalculé** = `floor(levelPoints / new_race.category)`.
+- Tous les atouts de niveau déjà acquis sont perdus lors de la transformation.
+- Le personnage est ensuite **rebuild** avec le nouveau niveau calculé, selon les règles standard de choix d'atouts de niveau.
+- Les nouveaux atouts raciaux et atouts de niveau de race deviennent disponibles si la nouvelle race les ouvre.
 
-**À valider** par l'auteur (3 sous-questions ouvertes ci-dessous).
+**Exemple** : un humain N5 (`catégorie 20`, `100 levelPoints`) devient Loup-garou (`catégorie 45`). Son niveau devient `floor(100 / 45) = 2`. Il perd les atouts de niveau acquis comme humain et reconstruit ses choix d'atouts comme personnage de niveau 2 avec la nouvelle race/catégorie.
 
 ---
 
@@ -460,19 +464,11 @@ Cohérent avec le méta-principe acté 2026-04-25 (règles vivantes), quand une 
 
 ### ~~Q-D7.2~~ — Recalcul bases dérivées ✅ **Tranché (2026-04-25)** : Option (d) **nouvelle base + delta acquis** (formules dans R-7.17). Ascending = base+delta ; Descending = base-delta avec clamp à 1. Vitalité courante conservée proportionnellement.
 
-### ⏸️ Q-D7.3 — Niveau après changement de catégorie **EN STANDBY (2026-04-25)**
+### ~~Q-D7.3~~ — Niveau après changement de catégorie ✅ **Tranché (2026-04-27)** : recalcul strict sur la nouvelle catégorie.
 
-L'auteur a explicitement **mis en suspens** cette question : *« pas statuer actuellement, garde en suspens, c'est un sujet casse-tête ».*
+**Règle** : le niveau est recalculé à partir des `levelPoints` et de la catégorie de la nouvelle race.
 
-**À reprendre** lors de la phase 2 (specs) ou quand le contexte sera plus clair. R-7.18 reste une **proposition non validée**.
-
-**Options à reconsidérer** :
-- (a) Recalcul intégral (level peut descendre ou monter selon nouvelle catégorie)
-- (b) Niveau gelé (le perso garde son niveau d'origine)
-- (c) Niveau gelé vers le haut, peut monter
-- (d) Paramétrable par campagne (admin choisit la politique)
-
-**Question subsidiaire reportée** : si le niveau monte après transformation, débloquage automatique des atouts ou événement déclencheur narratif ?
+La classe, les compétences/spécialisations et les sorts ne changent pas. Les atouts de niveau déjà acquis sont perdus puis reconstruits selon le nouveau niveau calculé et les atouts accessibles à la nouvelle race.
 
 ### ~~Q-D7.4~~ — Résurrection et XP ✅ **Tranché (2026-04-25)** : Option (b) **Résurrection annule la perte**.
 
@@ -514,7 +510,7 @@ L'auteur a explicitement **mis en suspens** cette question : *« pas statuer act
 
 1. **Disponibilité des mentors / ouvrages** (R-5.6-bis) : pour acheter un point dans une compétence à un haut niveau, il faut un **mentor capable** (donc lui-même de très haut niveau dans cette compétence) ou un **ouvrage de référence** correspondant. Plus on monte, plus ces ressources se raréfient narrativement (qui peut enseigner Magie Blanche niveau 14 ?).
 
-2. **Temps d'apprentissage** : le perso doit **travailler la compétence** pendant un temps proportionnel au niveau cible (cf. R-5.6-bis, Q-D5.2-b en standby pour la formule exacte). Plus le niveau est élevé, plus le temps requis explose. Un personnage à N50 aurait passé sa vie à étudier.
+2. **Temps d'apprentissage** : le perso doit **travailler la compétence** pendant un temps proportionnel au niveau cible (cf. R-5.6-bis et R-5.6-ter : `coût_XP × 3 jours`, réduit par les jets/atouts). Plus le niveau est élevé, plus le temps requis explose. Un personnage à N50 aurait passé sa vie à étudier.
 
 3. **Coût XP exponentiel** : `NA × 3` pour les compétences signifie que monter de NA=14 à 15 coûte 45 XP, de 19 à 20 = 60 XP, etc. À l'échelle d'une session qui rapporte 1-8 XP, atteindre N15 dans une compétence = des dizaines à centaines de sessions.
 
@@ -524,16 +520,28 @@ L'auteur a explicitement **mis en suspens** cette question : *« pas statuer act
 
 **Pour la spec digitale** : pas de cap codé en dur, mais l'UI peut **mettre en garde** quand un joueur tente une dépense XP irréaliste sans mentor / temps disponible (cohérent avec mode tutoriel R-6.5).
 
-### ⏸️ Q-D7.7 — XP transférable aux personnages secondaires **EN STANDBY (2026-04-25)**
+### 🟡 Q-D7.7 — XP transférable aux personnages secondaires **Base retrouvée / distinctions corrigées (2026-04-27)**
 
-L'auteur signale que **ces règles ont drastiquement changé** par rapport au texte legacy actuellement disponible :
+Règle écrite minimale retrouvée dans les règles legacy :
 
-- Pour les **familiers** : référencées dans une partie des règles que l'auteur n'a pas sous la main pour le moment (cohérent avec D6 Q-D6.6 qui mentionnait que les règles complètes du familier ne sont pas immédiatement accessibles).
-- Pour les **montures** et **compagnons** : font l'objet de **mécaniques propres** distinctes du familier, qui doivent aussi être revues.
+- Les "personnages secondaires" peuvent évoluer avec l'expérience que le personnage primaire leur cède.
+- Exemple explicite : un cavalier peut donner une partie de son XP à son cheval pour augmenter sa vitesse de course.
+- Si le personnage secondaire possède une classe, il passe aussi les niveaux.
 
-**Action** : laisser en suspens jusqu'à ce que l'auteur fournisse les règles à jour.
+**Correction de spec** :
+- Les **compagnons / montures non magiques** sont des personnages ou créatures autonomes à part entière, que leur propriétaire PJ ou PNJ peut faire évoluer en partageant sa propre XP.
+- Les **familiers magiques** ne doivent plus être traités par cette règle générale : ils utilisent D8 R-8.13 (`niveau du magicien × 100`, renaissance, atouts comme pseudo-raciaux).
+- Les occurrences legacy qui incluent les familiers dans les personnages secondaires sont conservées comme contexte historique mais ne servent pas de modèle mécanique principal.
 
-**À reprendre** dans un domaine dédié (probablement D8 Magie pour familiers + D11 PNJ pour compagnons/montures, ou un nouveau domaine "Personnages Secondaires").
+**Décisions complémentaires (2026-04-27)** :
+- Il n'y a **pas de limite de transfert XP** autre que la réserve d'XP libre du propriétaire.
+- Les XP cédés au compagnon/monture sont dépensés **au détriment de l'évolution du propriétaire**.
+- Le compagnon/monture est contrôlé comme un autre personnage, avec ses propres statistiques.
+- Sa mort est définitive comme pour n'importe quel personnage, sauf effet de résurrection applicable.
+- Son passage de niveau suit les règles normales de personnage selon sa race/catégorie/classe éventuelle.
+- Le loot suit les règles établies pour un personnage indépendant ; les accords de partage éventuels relèvent du lien social/contrat (D13 R-13.10).
+
+**Reste à préciser** : procédure d'acquisition/recrutement des compagnons/montures. Voir D13 R-13.10 pour les compagnons persistants.
 
 ### ~~Q-D7.8~~ — Atouts de niveau rétroactifs ✅ **Tranché (2026-04-25)** : **Totalement rétroactifs**, avec pénalisations naturelles.
 
@@ -614,14 +622,14 @@ L'auteur signale que **ces règles ont drastiquement changé** par rapport au te
 
 - [x] ~~Q-D7.1 : grandfathering aptitudes après transformation~~ → capping immédiat, points perdus
 - [x] ~~Q-D7.2 : recalcul bases dérivées~~ → nouvelle base + delta acquis (formules R-7.17), vitalité courante % proportionnel
-- [ ] ⏸️ **Q-D7.3 : niveau après changement de catégorie** → en standby (sujet casse-tête)
+- [x] ~~Q-D7.3 : niveau après changement de catégorie~~ → recalcul strict par nouvelle catégorie + perte/rebuild des atouts de niveau
 - [x] ~~Q-D7.4 : résurrection et XP~~ → résurrection annule la perte (option b)
 - [x] ~~Q-D7.4-a : machine d'état mort/mourant~~ → R-7.20/21 (états VIVANT → KO → MOURANT → MORT RÉCENTE → MORT CONFIRMÉE → MORT DÉFINITIVE) avec table régressive de méthodes de résurrection
 - [x] ~~Q-D7.5 : timing de dépense XP~~ → hybride par mode (sans expert), événements narratifs déclencheurs en temps réel
 - [x] ~~Q-D7.6 : cap de niveau~~ → pas de cap mécanique, limites naturelles (mentors, temps, XP exponentiel)
-- [ ] ⏸️ **Q-D7.7 : XP aux secondaires** → en standby (règles changeantes, pas accessibles à l'auteur actuellement)
+- [x] 🟡 **Q-D7.7 : XP aux secondaires** → base retrouvée : compagnons/montures par XP cédé ; familiers séparés via D8 R-8.13
 - [x] ~~Q-D7.8 : atouts de niveau rétroactifs~~ → totalement rétroactifs avec pénalisation naturelle (effets par passage de niveau ne se déclenchent que pour passages futurs)
 - [x] ~~Q-D7.9 : LLM et distribution XP~~ → hybride (c) avec décomposition + temps effectif + pas d'XP par monstre
 - [x] ~~Q-D7.10 : XP rétroactif sur changement de règles~~ → rétroactif à l'avantage des joueurs, exception tabletop hors plateforme
 
-**D7 complet** ✅ (8/10 tranchées + 2 en standby). Une fois validé → **D8 Magie** (11 écoles, sorts, énergie, TI, familiers).
+**D7 complet** ✅ (10/10 tranchées). Une fois validé → **D8 Magie** (11 écoles, sorts, énergie, TI, familiers).

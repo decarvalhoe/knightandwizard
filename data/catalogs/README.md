@@ -13,7 +13,7 @@ Ce dossier contient les imports effectifs des catalogues legacy, structurés sel
 
 | Catalogue | Fichier | Source | Entrées | Statut |
 |---|---|---|---:|---|
-| Armes | `armes.yaml` + `armes-ambiguites.md` | `regles-papier/extracted/listes/armes.md` | 102 | ✅ import auto |
+| Armes | `armes.yaml` + `armes-ambiguites.md` | `regles-papier/extracted/listes/armes.md` | 107 | ✅ import auto |
 | Protections | `protections.yaml` | `regles-papier/extracted/listes/protections.md` | 49 + 11 boucliers | ✅ import auto |
 | Potions | `potions.yaml` | `regles-papier/extracted/listes/rituels-et-potions.md` + `documents/potions/index.md` | 5 | ✅ import auto |
 | Champignons | `champignons.yaml` | `regles-papier/extracted/infos/champignons-toxiques.md` | 8 syndromes (~14 espèces) | ✅ import auto |
@@ -25,13 +25,14 @@ Ce dossier contient les imports effectifs des catalogues legacy, structurés sel
 | **Images visuelles** | `images.yaml` | `site/download/map/`, `site/img/flags/`, `site/img/maps/` | 1 carte mondiale + 15 cartes régionales + 10 blasons + 3 web assets | ✅ import auto |
 | **Villes des cartes régionales** | `cities-from-maps.yaml` | 15 cartes JPG `site/download/map/*.jpg` | ~280 villes + 10 portes fortifiées + 3 régions nouvelles + zones | ✅ extraction visuelle |
 | **Vectorisation cartes** | `vectorisation-cartes.md` | recherche 2026 outils interactifs | 6 options évaluées + workflow recommandé QGIS+Leaflet | ✅ guide d'implémentation |
+| **Valeurs d'atouts** | `atouts-values.csv` | `documents/atouts/index.md` | 416 atouts/handicaps | ✅ import auto, coûts familiers |
 | Lore narratif | `lore-index.yaml` | `regles-papier/extracted/histoires/*.md` | 6 entrées (préservées) | ✅ référencement |
 
-**Total : ~690 entrées canoniques importées dans 12 catalogues** (+ 29 fichiers images référencés).
+**Total : ~1100 entrées canoniques importées dans 13 catalogues** (+ 29 fichiers images référencés). Les valeurs d'atouts servent aussi de règle `valeur / 10` pour la création des familiers.
 
 ## Backlogs résolus par cet import
 
-- ✅ Q-D10.14 : Catalogue d'armes complet (102 entrées + 12 ambiguïtés validées)
+- ✅ Q-D10.14 : Catalogue d'armes complet (107 entrées + 12 ambiguïtés validées)
 - ✅ Q-D10.15 : Catalogue de protections (49 + 11 boucliers)
 - ✅ Q-D10.16 : Catalogue de potions (5 entrées de base, extensible)
 - ✅ Q-D10.17 : Catalogue de champignons (8 syndromes)
@@ -65,6 +66,7 @@ Points d'attention :
   - **Terres Sauvages** (sud-est) — mentionné comme habitat dans bestiaire mais pas comme entrée nations
   - **Terres Sans Noms** visible sur carte cortega.jpg (zone tampon liée à organisation Sans Noms ?)
 - **Cortega** : 16 villes visibles sur la carte régionale (Senec, Mellec, Précy, Ozora, Teglas, Gampey, Gara, Gan, Letak, Cetara, Udvan, Padan, Selice, Massa, Pilis + Cortega capitale). Les 14 autres cartes régionales contiennent probablement aussi de nombreuses villes non-extraites.
+- **Atouts familiers** : `atouts-values.csv` est la table générale d'atouts extraite du web et sert de règle de coût des atouts/handicaps de familier (`valeur / 10`).
 
 ## Format
 
@@ -75,3 +77,17 @@ Tous les catalogues sont en YAML (lisible humain + parseable). Chaque entrée po
 - `metadata.source` : `paper` | `web` | `custom`
 - `metadata.inferred` : si `true`, valeurs inférées par le moteur, à valider par admin
 - `metadata.version` : versionning
+
+## Validation Zod
+
+Les catalogues prioritaires (`armes`, `bestiaire`, `protections`, `potions`, `nations`,
+`organisations`, `religions`) sont validés par `@knightandwizard/catalogs`.
+
+API disponible :
+- `loadValidatedCatalog('armes.yaml')` : charge un YAML et applique son schéma Zod.
+- `loadValidatedCatalogs()` : charge tous les catalogues prioritaires.
+- `validateCatalogData(...)` : valide un objet déjà chargé et retourne une erreur contenant le fichier
+  et le chemin de donnée fautif.
+
+Les types inférés (`Weapon`, `BestiaryEntry`, `Protection`, `Potion`, `Nation`, `Organisation`,
+`Religion`, etc.) sont exportés depuis le package pour `apps/server`, `apps/cms` et `apps/game`.

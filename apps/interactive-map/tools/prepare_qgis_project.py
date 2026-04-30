@@ -6,6 +6,7 @@ Prépare le projet QGIS pour la digitalisation des cartes K&W :
 - Génère les couches GeoPackage vides (regions, cities, routes)
 - Convertit les YAML en CSV (importable dans QGIS comme couche délimitée)
 - Crée la structure du dossier qgis/
+- Charge le GeoTIFF géoréférencé si qgis_pipeline.py l'a déjà généré
 
 Usage : python apps/interactive-map/tools/prepare_qgis_project.py
 """
@@ -34,11 +35,12 @@ LAYERS_DIR = QGIS_DIR / 'layers'
 CSV_DIR = QGIS_DIR / 'csv-imports'
 CATALOGS = ROOT / 'data' / 'catalogs'
 MAPS_DIR = ROOT / 'apps' / 'interactive-map' / 'public' / 'maps'
+RASTERS_DIR = QGIS_DIR / 'rasters'
 
 
 def ensure_dirs():
     """Crée les dossiers nécessaires."""
-    for d in [QGIS_DIR, LAYERS_DIR, CSV_DIR]:
+    for d in [QGIS_DIR, LAYERS_DIR, CSV_DIR, RASTERS_DIR]:
         d.mkdir(parents=True, exist_ok=True)
 
 
@@ -76,40 +78,107 @@ def export_nations_csv():
     print(f"  ✓ {out.relative_to(ROOT)} ({sum(1 for _ in open(out, encoding='utf-8'))-1} entries)")
 
 
+def _load_region_centroids():
+    """Charge les centroïdes par region_id depuis le placeholder regions.geojson.
+
+    Permet d'attacher des coordonnées lon/lat approximatives aux villes
+    pour qu'elles soient importables comme couche points QGIS instantanément.
+    """
+    import json
+    geojson = ROOT / 'apps' / 'interactive-map' / 'public' / 'data' / 'geojson' / 'regions.geojson'
+    if not geojson.exists():
+        return {}
+    try:
+        with open(geojson, encoding='utf-8') as f:
+            data = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+    centroids = {}
+    for feat in data.get('features', []):
+        rid = (feat.get('properties') or {}).get('id')
+        geom = feat.get('geometry') or {}
+        if not rid or geom.get('type') not in ('Polygon', 'MultiPolygon'):
+            continue
+        # Centroide bbox simple (suffisant pour placeholder)
+        if geom['type'] == 'Polygon':
+            ring = geom['coordinates'][0]
+        else:
+            ring = geom['coordinates'][0][0]
+        xs = [pt[0] for pt in ring]
+        ys = [pt[1] for pt in ring]
+        centroids[rid] = ((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2)
+    return centroids
+
+
+def _city_offset(role: str, idx: int):
+    """Petit offset déterministe par role pour étaler les villes autour du centre."""
+    import math
+    # Rayon par rôle (distance au centroïde de la région, en degrés CRS K&W)
+    radius_by_role = {
+        'capital': 0.0,
+        'capital_centre': 0.0,
+        'major_city': 1.5,
+        'tribal_capital': 1.5,
+        'border_town': 2.0,
+        'town': 2.5,
+        'gate': 3.0,
+        'village': 3.5,
+    }
+    r = radius_by_role.get(role, 2.5)
+    if r == 0:
+        return (0.0, 0.0)
+    # Disposition spirale pour ne pas superposer
+    angle = (idx * 137.5) * math.pi / 180  # angle d'or pour distribution uniforme
+    return (r * math.cos(angle), r * math.sin(angle))
+
+
 def export_cities_csv():
-    """Exporte les villes en CSV."""
+    """Exporte les villes en CSV avec lon/lat approximatifs.
+
+    Le CSV peut être importé directement comme couche points dans QGIS via
+    Couche → Ajouter une couche → Couche de texte délimité (X=lon, Y=lat).
+    Chaque ville apparaît au centre approximatif de sa région ; il suffit de
+    la draguer à sa vraie position.
+    """
     cities_data = load_yaml(CATALOGS / 'cities-from-maps.yaml')
     out = CSV_DIR / 'cities.csv'
+    centroids = _load_region_centroids()
 
     rows = []
+    region_idx_counter = {}  # parent_region → compteur pour offset déterministe
+
+    def add_city(city, parent, default_role):
+        idx = region_idx_counter.get(parent, 0)
+        region_idx_counter[parent] = idx + 1
+        row = _flatten_city(city, parent, default_role)
+        # row = [id, name, parent_region, role, notes]
+        cx, cy = centroids.get(parent, (0.0, 0.0))
+        ox, oy = _city_offset(row[3], idx)
+        lon, lat = round(cx + ox, 4), round(cy + oy, 4)
+        rows.append(row + [lon, lat])
+
     for key, section in cities_data.items():
         if not isinstance(section, dict) or 'parent_region' not in section:
             continue
         parent = section['parent_region']
 
-        # Capitales
         for cap in section.get('capital', []) or []:
-            rows.append(_flatten_city(cap, parent, 'capital'))
-
-        # Major / cities
+            add_city(cap, parent, 'capital')
         for c in (section.get('major_cities', []) or section.get('cities', []) or []):
-            rows.append(_flatten_city(c, parent))
-
-        # Villages
+            add_city(c, parent, 'town')
         for v in (section.get('villages', []) or []):
-            rows.append(_flatten_city(v, parent, 'village'))
-
-        # Portes (Azrak)
+            add_city(v, parent, 'village')
         for g in (section.get('fortified_gates', []) or []):
-            rows.append(_flatten_city(g, parent, 'gate'))
+            add_city(g, parent, 'gate')
 
     with open(out, 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-        writer.writerow(['id', 'name', 'parent_region', 'role', 'notes'])
+        writer.writerow(['id', 'name', 'parent_region', 'role', 'notes', 'lon', 'lat'])
         for row in rows:
             writer.writerow(row)
 
-    print(f"  ✓ {out.relative_to(ROOT)} ({len(rows)} entries)")
+    print(f"  ✓ {out.relative_to(ROOT)} ({len(rows)} entries) — colonnes lon/lat ajoutées")
 
 
 def _flatten_city(city, parent_region, default_role='town'):
@@ -131,8 +200,18 @@ def create_qgz_project():
     qgs_path = QGIS_DIR / 'kw-world.qgs'
     qgz_path = QGIS_DIR / 'kw-world.qgz'
 
-    # Liste les rasters disponibles
-    raster_files = sorted(MAPS_DIR.glob('*.jpg'))
+    # Liste les rasters disponibles. Le GeoTIFF géoréférencé est préféré pour
+    # la carte mondiale ; les JPG régionaux restent des références non calées.
+    world_tif = RASTERS_DIR / 'terres-oubliees.tif'
+    raster_files = []
+    if world_tif.exists():
+        raster_files.append(world_tif)
+    else:
+        world_jpg = MAPS_DIR / 'terres-oubliees.jpg'
+        if world_jpg.exists():
+            raster_files.append(world_jpg)
+    raster_files.extend(sorted(p for p in MAPS_DIR.glob('*.jpg') if p.name != 'terres-oubliees.jpg'))
+
     print(f"\n→ Création du projet QGIS")
     print(f"  Cartes raster disponibles : {len(raster_files)}")
     for r in raster_files[:5]:
@@ -262,6 +341,12 @@ def create_empty_geopackages():
     Si non disponible, le user devra créer les couches manuellement dans QGIS
     (cf. README.md étape 3).
     """
+    expected = [LAYERS_DIR / name for name in ('regions.gpkg', 'cities.gpkg', 'routes.gpkg')]
+    if all(path.exists() for path in expected):
+        for path in expected:
+            print(f"  · {path.name} existe déjà, skip")
+        return True
+
     try:
         from osgeo import ogr, osr
     except ImportError:
@@ -345,6 +430,7 @@ def main():
     print(f"  ✓ {QGIS_DIR.relative_to(ROOT)}")
     print(f"  ✓ {LAYERS_DIR.relative_to(ROOT)}")
     print(f"  ✓ {CSV_DIR.relative_to(ROOT)}")
+    print(f"  ✓ {RASTERS_DIR.relative_to(ROOT)}")
 
     print("\n→ Export CSV des catalogues (importables QGIS)...")
     export_nations_csv()
@@ -357,6 +443,7 @@ def main():
 
     print("\n--- DONE ---")
     print(f"\n→ Ouvrir le projet : {QGIS_DIR / 'kw-world.qgz'}")
+    print("→ Projet GUI propre : python apps/interactive-map/tools/qgis_pipeline.py --project")
     print(f"→ Documentation : {QGIS_DIR / 'README.md'}")
 
     if not gdal_ok:

@@ -407,12 +407,16 @@ companion:
     - on_master_death
     - on_voluntary_choice
   evolution:
+    - xp_transfer_limit: none              # limité seulement par l'XP libre du propriétaire
+    - xp_transfer_cost_owner: true         # l'XP cédée n'est plus disponible pour l'évolution du propriétaire
+    - level_up: standard_character_rules   # catégorie/race/classe propres au compagnon
+    - death: standard_character_death      # mort définitive sauf résurrection applicable
     - bond_strength_increases_with: [shared_combat, fulfilled_obligations, gifts]
     - bond_strength_decreases_with: [neglect, abuse, betrayal]
     - loyalty_test_at_critical_moments: bool
 ```
 
-**Différence avec familier (R-11.22)** : le compagnon est un PNJ pleinement autonome (souvent humanoïde), peut partir, négocier, contester. Le familier est une créature liée magiquement au magicien, contrôlable plus directement.
+**Différence avec familier (R-11.22)** : le compagnon est un PNJ pleinement autonome (souvent humanoïde), peut partir, négocier, contester, mourir comme un personnage indépendant et progresser par XP cédée sans limite fixe. Le familier est une créature liée magiquement au magicien, contrôlable plus directement et construite avec le budget D8 R-8.13.
 
 **Statut** : 🟢 acté
 
@@ -605,6 +609,16 @@ Ce pattern apparaît dans :
 
 **Contexte** : R-13.1 → R-13.7 actent le modèle conceptuel. Le **design technique** (modules, API, événements, queues) reste à concevoir en Phase 2.
 
+**Clarifications attendues avant décision technique** :
+- Frontière exacte entre moteur auto strict, assistant LLM, MJ humain et joueur.
+- Hiérarchie d'autorité quand deux arbitres proposent des décisions concurrentes.
+- File d'événements : ordre, priorité, rollback, pause, reprise, async.
+- Modèle de persistance : état canonique, logs d'audit, brouillons, snapshots, export/import.
+- API et contrats : actions joueur, décisions MJ, propositions LLM, résolutions auto.
+- Limites LLM : ce qu'il peut suggérer, ce qu'il ne peut jamais modifier sans validation.
+- Stratégie de conflit : désaccord règle vivante / règle canonique / arbitrage humain.
+- Tests attendus : simulations déterministes, rejouabilité d'un tour, cas limites multi-joueurs.
+
 ### Q-D13.17 — 🟡 Format d'export/import des sessions (sauvegardes, partage)
 
 **Contexte** : R-13.8 traite la mémoire ; mais le format de **sérialisation pour export/import** (sauvegarde, partage de campagne entre tables, fork de campagne) n'est pas tranché.
@@ -647,10 +661,10 @@ L'auteur a indiqué « pareil » → batch validé. Les 15 règles structurantes
 | D2 Attributs | 20+ | — |
 | D3 Races | 8+ | — |
 | D4 Orientations/Classes/Atouts | 9+ | — |
-| D5 Compétences | 7+ | 2 standby |
+| D5 Compétences | 7+ | — |
 | D6 Création perso | 11+ | — |
-| D7 Progression | 22+ | 2 standby |
-| D8 Magie | 20+ | 1 standby (familier) |
+| D7 Progression | 22+ | — |
+| D8 Magie | 20+ | restrictions fines d'atouts familiers |
 | D9 Combat | 44 | 19 (Q-D9.33→53) |
 | D10 Équipement | 12 | 15 (Q-D10.14→28) |
 | D11 Contrôle PNJ | 8 | 10 (Q-D11.10→20) |

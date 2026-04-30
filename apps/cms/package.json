@@ -1,0 +1,30 @@
+{
+  "name": "@knightandwizard/cms",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "payload generate:types && next build",
+    "generate:importmap": "payload generate:importmap",
+    "generate:types": "payload generate:types",
+    "lint": "eslint .",
+    "payload": "payload",
+    "typecheck": "tsc --noEmit --project tsconfig.json"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "3.84.1",
+    "@payloadcms/next": "3.84.1",
+    "@payloadcms/richtext-lexical": "3.84.1",
+    "graphql": "^16.13.2",
+    "next": "16.2.4",
+    "payload": "3.84.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3"
+  }
+}

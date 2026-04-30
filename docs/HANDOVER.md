@@ -8,6 +8,10 @@
 
 **Phase actuelle** : Phase 1 — extraction règle-par-règle des règles legacy en docs canoniques `rules/0X-domaine.md`.
 
+**Périmètre produit K&W** : ce dépôt porte le corpus source, l'assistant MJ/Joueur tabletop-first, les règles vivantes, le moteur multi-arbitre et l'architecture LLM. Voir [product/](product/).
+
+**Séparation K&W-game** : `knightandwizard-game` est un projet et un dépôt séparés, avec des décisions produit distinctes (CRPG tactique coop). Les docs K&W-game ne remplacent pas les décisions K&W.
+
 **Méthodologie validée** :
 - 13 domaines numérotés D1 à D13 (révisé : à l'origine 12, ajout D13 pour rôles & passation MJ↔PJ)
 - Format de fiche par règle : énoncé legacy → statut (🟢🟡🔴) → cas couverts/ambigus → précisions → transposition par moteur×arbitre×rythme → questions ouvertes
@@ -23,10 +27,10 @@
 | D2 | Attributs (9 aptitudes + dérivées) | ✅ Complet (9/9 + 7 sous-questions) | [rules/02-attributs.md](rules/02-attributs.md) |
 | D3 | Races (33 races) | ✅ Complet (8/8 questions) | [rules/03-races.md](rules/03-races.md) |
 | D4 | Orientations (13) + Classes + Atouts | ✅ Complet (9/9 questions) | [rules/04-classes.md](rules/04-classes.md) |
-| D5 | Compétences & Spécialisations | ✅ Complet (7/7, dont 2 en standby) | [rules/05-competences.md](rules/05-competences.md) |
+| D5 | Compétences & Spécialisations | ✅ Complet (7/7, apprentissage fixé) | [rules/05-competences.md](rules/05-competences.md) |
 | D6 | Création de personnage | ✅ Complet (9/9 + 2 nouvelles règles R-6.14/15) | [rules/06-creation-perso.md](rules/06-creation-perso.md) |
-| D7 | Progression / XP / niveaux | ✅ Complet (8/10 + 2 standby + R-7.20/21 machine d'état mort) | [rules/07-progression.md](rules/07-progression.md) |
-| D8 | Magie (11 écoles, sorts, énergie, TI, familiers) | ✅ Complet (9/10 + 1 standby + R-8.19 jet aptitude brute + R-8.20 système de temps double) | [rules/08-magie.md](rules/08-magie.md) |
+| D7 | Progression / XP / niveaux | ✅ Complet (10/10 + R-7.20/21 machine d'état mort) | [rules/07-progression.md](rules/07-progression.md) |
+| D8 | Magie (11 écoles, sorts, énergie, TI, familiers) | ✅ Complet (10/10, familier complet, R-8.19 jet aptitude brute + R-8.20 système de temps double) | [rules/08-magie.md](rules/08-magie.md) |
 | D9 | Combat (DT, actions, initiative, dégâts, armures) | ✅ Complet (32/32 questions tranchées + 21 entrées backlog Q-D9.33→53) | [rules/09-combat.md](rules/09-combat.md) |
 | D10 | Équipement (armes, armures, potions, crafting, monnaie) | ✅ Complet (13/13 questions architecturales + 15 entrées backlog Q-D10.14→28 imports/extensions) | [rules/10-equipement.md](rules/10-equipement.md) |
 | D11 | Contrôle PNJ (joueur/MJ humain/LLM/auto) | ✅ Complet (9/9 questions architecturales + 11 entrées backlog Q-D11.10→20 / clôt 2 backlogs D9 : Q-D9.39, Q-D9.47) | [rules/11-controle-pnj.md](rules/11-controle-pnj.md) |
@@ -96,7 +100,7 @@
 - **R-11.19 — Hostilité dynamique** : item-type `social_action` (charm/intimidation/persuasion/bribery/seduction/deception/reassurance/provocation), cumul attitude_modifiers, atouts dédiés.
 - **R-11.20 — Foules / masses** : item-type `crowd` agrégé, 3 modes par scène (individual/aggregated/hybrid_threshold), morale + cohésion + débandade. **Clôt Q-D9.39**.
 - **R-11.21 — Animaux non-sentients** : compétence Dressage + bond_strength (0-10) + catalogue d'ordres standards par difficulté + atouts dédiés (Empathie animale, Communion sauvage).
-- **R-11.22 — Familiers** : couches débloquées par atouts du lexique (`Familier` base, `Sens du familier` sensory_link, `Main du magicien` remote_spell_casting, `Passage au familier` possession_transfer, `Rappel du familier` summon_dismiss, `Familier supplémentaire` multiplicity). Initiative distincte. Mort → drain selon couches actives. Statut `extended_rules_pending` (D8 Q-D8.6 standby). **Clôt Q-D9.47**.
+- **R-11.22 — Familiers** : fiche dédiée D8 R-8.13, budget total `niveau × 100`, cap `niveau × 5`, atouts comme pseudo-raciaux, coût `valeur / 10` via table générale des atouts, couches débloquées par atouts (`Sens du familier`, `Main du magicien`, `Passage au familier`, `Rappel du familier`, etc.). Mort → points de fiche perdus jusqu'à renaissance, pas de drain canonique. **Clôt Q-D9.47**.
 
 **Backlog D11 (Q-D11.10 → Q-D11.20)** : 11 sujets identifiés mais non tranchés. Inclut : import effectif du bestiaire, cohérence D3↔Bestiaire, atouts manquants à proposer, architecture technique mémoire LLM, catalogue d'archétypes détaillé, triggers de bascule précis, PNJ d'interaction sociale (marchands/artisans/autorité/informateurs), créatures magiques sous-types, compagnons persistants, réputation par faction, **Q-D9.38 monstres multi-attaques par DT**.
 
@@ -158,10 +162,10 @@
 | D2 Attributs | 20+ | — | ✅ |
 | D3 Races | 8+ | — | ✅ |
 | D4 Orientations/Classes/Atouts | 9+ | — | ✅ |
-| D5 Compétences | 7+ | 2 standby | ✅ |
+| D5 Compétences | 7+ | — | ✅ |
 | D6 Création perso | 11+ | — | ✅ |
-| D7 Progression | 22+ | 2 standby | ✅ |
-| D8 Magie | 20+ | 1 standby (familier D8 Q-D8.6) | ✅ |
+| D7 Progression | 22+ | — | ✅ |
+| D8 Magie | 20+ | restrictions fines d'atouts familiers | ✅ |
 | D9 Combat | 44 | 19 (Q-D9.33→53, dont Q-D9.39, Q-D9.47, Q-D9.51 clôturés ailleurs) | ✅ |
 | D10 Équipement | 12 | 15 (Q-D10.14→28) | ✅ |
 | D11 Contrôle PNJ | 8 | 9 (Q-D11.10→20, dont Q-D11.13, Q-D11.15, Q-D11.18, Q-D11.19 clôturés) | ✅ |
@@ -172,7 +176,7 @@
 **Ce qui suit (Phase 2 ou ultérieur)** :
 1. **Imports effectifs** des catalogues legacy (armes, protections, potions, bestiaire, nations, religions, mythes).
 2. **Backlogs D9-D13** à dépiler selon priorité (combat aquatique, items magiques détaillés, IA tactique avancée, banques narratives, intégrations VTT, etc.).
-3. **Standby D5/D7/D8** : règles d'apprentissage (Q-D5.2-b/c), Q-D3.5-c-iii (validation finale), familier complet (D8 Q-D8.6).
+3. **Points fins non bloquants D5/D7/D8** : répétabilité/restrictions automatiques de certains atouts familiers ; le reste des anciennes questions P0 est tranché.
 4. **Implémentation digitale** : moteur multi-arbitre, schéma DB, prompts LLM, IA tactique, UI.
 
 ## Phase 2 — Suggestions de démarrage
@@ -180,7 +184,7 @@
 **Position** : Phase 1 complète. Choix de continuation possibles :
 
 ### A) Imports effectifs des catalogues legacy ✅ **TERMINÉ (2026-04-25)**
-- ✅ Armes (102 entrées) — `catalogs/armes.yaml` + `armes-ambiguites.md` (12 ambiguïtés documentées)
+- ✅ Armes (107 entrées) — `catalogs/armes.yaml` + `armes-ambiguites.md` (12 ambiguïtés documentées)
 - ✅ Protections (49 + 11 boucliers) — `catalogs/protections.yaml`
 - ✅ Potions (5 entrées) — `catalogs/potions.yaml`
 - ✅ Champignons (8 syndromes) — `catalogs/champignons.yaml`
@@ -194,7 +198,7 @@
 - ✅ **Images visuelles** — `catalogs/images.yaml` (1 carte mondiale + 15 cartes régionales + 10 blasons + 3 web assets, 29 fichiers référencés)
 - ✅ **Villes extraites des 15 cartes régionales** — `catalogs/cities-from-maps.yaml` (~280 villes + 10 portes fortifiées Azrak + 3 nouvelles régions Stazyliss/Treadur/Chez Nous + zones géographiques)
 
-**Total : ~690 entrées canoniques importées en 12 catalogues YAML + 29 fichiers images référencés.** Backlogs Q-D10.14/15/16/17, Q-D11.10, Q-D12.14/15/16 clôturés.
+**Total : ~1100 entrées canoniques importées en 13 catalogues YAML/CSV + 29 fichiers images référencés** après ajout de `atouts-values.csv` (416 atouts/handicaps, coûts familiers). Backlogs Q-D10.14/15/16/17, Q-D11.10, Q-D12.14/15/16 clôturés.
 
 **Corrections post-validation auteur (2026-04-25)** :
 - Difficulté `95` ≡ difficulté `10` (notation étendue D1 R-1.X : « 9 ET 5 minimum sur 2 dés »). Appliqué aux 4 armes (Faux, Goupillon, Fléau de guerre × 2) et 1 potion (Calme Loup-Garou).
@@ -227,17 +231,22 @@
 - Prompts LLM système (par mode session R-13.2)
 - Engine combat (DT timeline R-9.22 + IA tactique R-11.17)
 - UI multi-mode (arcade/standard/realistic R-9.26 et al.)
+- Avant décision : clarifier frontière auto/LLM/MJ/PJ, file d'événements, autorité, rollback, audit, persistance, tests déterministes.
 
 ### C) Approfondissement backlogs (priorité au choix)
-- **D9 Combat** : combat aquatique, acrobatique, magique-vs-magique, créatures multi-attaques, sièges, etc.
+- **D9 Combat** : combat aquatique, acrobatique, obscurité, aérien, magique-vs-magique, créatures multi-attaques, sièges, etc. À traiter par micro-cas précis plutôt que par thèmes trop larges.
 - **D10 Équipement** : marchands, banques narratives, items contextuels, drogues
 - **D11 Contrôle PNJ** : créatures magiques sous-types, PNJ sociaux, monstres multi-attaques
 - **D12 Géo/Social/Éco** : carte 3D, rencontres aléatoires, économie dynamique, génération procédurale
+- **D8 Magie** : audit sort-par-sort multi-axes ; `direct_magic` reste nécessaire mais insuffisant pour modéliser toute la complexité magique.
 
-### D) Validation des règles standby
-- D5 Q-D5.2-b/c : système d'apprentissage (formule jours)
-- D7 Q-D7.X : R-7.18 Q-D3.5-c-iii niveau après transformation (à valider)
-- D8 Q-D8.6 : règles complètes du familier (auteur a indiqué qu'elles sont plus riches)
+### D) Points de précision règles
+- D8 : répétabilité exacte et restrictions automatiques de certains atouts familiers (`Familier supplémentaire`, `Familier vigoureux`, atouts absurdes selon forme).
+- D9/D10/D11 : approfondissements combat, magie, équipement et PNJ listés en backlogs.
+
+### E) Recherches spécifiques à produire avant décision
+- **CMS/règles vivantes** : comparer options concrètes (catalogues versionnés en DB, interface admin/MJ, migrations de personnages, audit, rollback, permissions).
+- **Économie/monde** : proposer modèles possibles avant arbitrage (prix régionaux simples, marchés dynamiques, disponibilité par région, événements économiques, marchands itinérants, banques narratives).
 
 ## ANCIENNE — D8 résumé (pour archive)
 
@@ -269,7 +278,7 @@
 - Coûts XP : NA × 5 attributs, NA × 20 au-delà limite, NA × 3 compétences/spés, NA × 10 sorts, 10 vitalité flat, 3 énergie flat, NA × 10 atout classe éphémère, (NB-NA+1) × 25 facteurs
 - XP attribué par session : 1-8 pts + 1 pt quête (présence, concentration, parole, psychologie, objectif, interprétation, quête)
 - Mort = perte XP, points de quête à part
-- **Trou** : durée d'apprentissage en jours (Q-D5.2-b standby)
+- **Durée d'apprentissage fixée** : `coût_XP × 3` avant jets/atouts ; les réussites d'apprentissage et d'enseignement se soustraient aux jours (Q-D5.2-b/c)
 - Génération PNJ aléatoire via `setRandom*` (séparée du flow PJ guidé via XP)
 
 **Sujets à couvrir en D7** :
@@ -279,7 +288,7 @@
 - Pool d'atouts au passage de niveau (R-3.4 / R-4.7)
 - Atouts éphémères cumul (déjà couvert)
 - Distribution random PNJ par niveau
-- Q-D3.5-c-i/ii/iii (transformation de race en cours de jeu) à creuser
+- Q-D3.5-c-i/ii/iii (transformation de race en cours de jeu) tranchées en D7
 - Migration des persos sur changement de règles (cf. méta-principe rules-living)
 - Fenêtre temporelle d'application des XP (entre sessions ? sur demande ?)
 
@@ -292,7 +301,7 @@
 - ~~Q-D6.3-a~~ : Drafts multiples — illimité (expiration auto fait le ménage)
 - ~~Q-D6.4~~ : Templates étendus + générateur PNJ cohérent par niveau (toutes combinaisons, lot, contexte narratif)
 - ~~Q-D6.5~~ : Avertissements de cohérence — 2 couches (mode arbitre × mode UX)
-- ~~Q-D6.6~~ : Familiers (standby règles plus profondes) + Compagnons/montures (pas à création)
+- ~~Q-D6.6~~ : Familiers D8 R-8.13 (coût des atouts = table générale `valeur / 10`) + Compagnons/montures non magiques (pas à création, évolution par XP partagé)
 - ~~Q-D6.7~~ : Multi-PJ — 1 PJ par campagne, multi-campagne pour 1 PJ, rôles MJ/joueur non-exclusifs
 - ~~Q-D6.8~~ : Divinité — opt-in mécanique, extensibilité religieuse (autres religions futures)
 - ~~Q-D6.9~~ : Création N > 1 hybride par mode + restrictions XP cohérent
@@ -363,7 +372,7 @@ Quand une question concerne un comportement digital, l'auteur a tendance à choi
 - MJ auto = strict canonique
 
 ### Système d'apprentissage (R-5.6-bis)
-5 dimensions : accès au savoir / temps en jours / jet d'apprentissage / jet d'enseignement / coût XP. **Trou** : la formule des "jours de base" n'existe nulle part dans les sources. **Mise en standby** (Q-D5.2-b et Q-D5.2-c).
+5 dimensions : accès au savoir / temps en jours / jet d'apprentissage / jet d'enseignement / coût XP. **Règle fixée** : `jours_base = coût_XP × 3`, puis soustraction des réussites d'apprentissage/enseignement (Q-D5.2-b et Q-D5.2-c).
 
 ### Polyvalence (atout pivot)
 Casse la barrière d'orientation (mais pas de classe). Permet à un Guerrier d'acquérir des atouts d'autres orientations jusqu'au niveau Polyvalence + 1.
@@ -376,12 +385,12 @@ Atout racial N2 qui donne 40 énergyMax + 1 sort de magie noire à un perso non-
 | Question | Domaine | Sujet |
 |---|---|---|
 | Q-D3.2-b | D3 → D4/D8 | Mécanique du jet d'évitement de Rage lunaire (confinement) |
-| Q-D3.5-c-i | D3 → D7 | Aptitudes au-dessus de la nouvelle limite raciale après transformation : capping ou grandfathering ? |
-| Q-D3.5-c-ii | D3 → D7 | Bases dérivées (vitalityMax, FV, FVol) recalculées ou conservées après transformation ? |
-| Q-D3.5-c-iii | D3 → D7 | Niveau actuel change-t-il après changement de catégorie (transformation) ? |
-| Q-D3.7-a | D3 → D4 | Lycanthropie volontaire pré-N9 (Transformation hybride) — texte ambigu |
-| Q-D5.2-b | D5 | Formule de durée d'apprentissage en jours — **trou complet, à concevoir** |
-| Q-D5.2-c | D5 | Couplage élève/mentor (réussites cumulées ? seuil ?) — dépend de Q-D5.2-b |
+| Q-D3.5-c-i | D3 → D7 | ✅ Capping immédiat des aptitudes au-dessus de la nouvelle limite raciale |
+| Q-D3.5-c-ii | D3 → D7 | ✅ Bases dérivées recalculées par nouvelle base + delta acquis |
+| Q-D3.5-c-iii | D3 → D7 | ✅ Niveau recalculé sur nouvelle catégorie, perte/rebuild des atouts de niveau |
+| Q-D3.7-a | D3 → D4 | ✅ Forme de base lycan : humain recommandé PJ, loup possible PNJ |
+| Q-D5.2-b | D5 | ✅ Formule de durée d'apprentissage en jours : `coût_XP × 3 jours` |
+| Q-D5.2-c | D5 | ✅ Couplage élève/mentor : soustraction des réussites d'apprentissage/enseignement |
 | Promotion communautaire (Q-D5.1-a) | D5 | Seuils N/M pour valider une compétence custom au catalogue |
 
 ## Découvertes notables (souvent corrections de ma compréhension initiale)
@@ -393,7 +402,7 @@ Atout racial N2 qui donne 40 énergyMax + 1 sort de magie noire à un perso non-
 5. **Familier = atout d'orientation Magicien permanent**, pas éphémère (exception)
 6. **Repos du guerrier** divise par 2 le temps de repos requis (cumulable : 4h → 2h → 1h…)
 7. **Vampire Art occulte** = pivot pour le modèle d'exception extensible
-8. **Système d'apprentissage à 5 dimensions** non-documenté explicitement, déduit des atouts qui le modifient
+8. **Système d'apprentissage à 5 dimensions** déduit des atouts qui le modifient, puis fixé par arbitrage auteur
 9. **Catalogue des compétences éditable comme un CMS** (admin/MJ peuvent restructurer dynamiquement)
 10. **Zombie présent dans web mais pas paper** — 33 races (web canonique)
 
@@ -403,7 +412,7 @@ Atout racial N2 qui donne 40 énergyMax + 1 sort de magie noire à un perso non-
 1. Lire ce document `_HANDOVER.md` en premier (Phase 1 close, état Phase 2)
 2. Lire `MEMORY.md` (`~/.claude/projects/C--Dev-knightandwizard/memory/MEMORY.md`)
 3. Lire `sources.md` à la racine
-4. Choisir une continuation dans **Phase 2 — Suggestions de démarrage** ci-dessus (A imports / B implémentation / C backlogs / D standby)
+4. Choisir une continuation dans **Phase 2 — Suggestions de démarrage** ci-dessus (A imports / B implémentation / C backlogs / D points de précision)
 5. **Tous les backlogs ouverts à dépiler** :
    - **D9** : 19 entrées Q-D9.33 → Q-D9.53 (3 clôturés en D11/D10)
    - **D10** : 15 entrées Q-D10.14 → Q-D10.28

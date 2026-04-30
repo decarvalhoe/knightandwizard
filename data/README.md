@@ -15,33 +15,37 @@ data/
 
 12 catalogues YAML structurés selon les méta-modèles Phase 1 (R-9.30, R-10.20, R-11.3, R-12.X) :
 
-| Catalogue | Entrées | Couvre |
-|---|---:|---|
-| [armes.yaml](catalogs/armes.yaml) | 102 | Toutes les armes (mêlée, distance, jet, naturelles, munitions) |
-| [protections.yaml](catalogs/protections.yaml) | 60 | 7 catégories d'armures + 11 boucliers + multiplicateurs raciaux |
-| [potions.yaml](catalogs/potions.yaml) | 5 | 3 web + 2 paper, schéma `creation_procedure` |
-| [champignons.yaml](catalogs/champignons.yaml) | 8 | 14 espèces regroupées par syndrome toxicologique |
-| [bestiaire.yaml](catalogs/bestiaire.yaml) | 30 | Tous les races + créatures K&W |
-| [nations.yaml](catalogs/nations.yaml) | 29 | 18 paper + 11 ajouts via cartes |
-| [religions.yaml](catalogs/religions.yaml) | 70+ | 9 religions, 70+ divinités |
-| [organisations.yaml](catalogs/organisations.yaml) | 7 | Maisons divinatoires + Sans Noms |
-| [world-map.yaml](catalogs/world-map.yaml) | — | Carte mondiale + liens régionaux |
-| [cities-from-maps.yaml](catalogs/cities-from-maps.yaml) | ~280 | Villes extraites des 15 cartes |
-| [images.yaml](catalogs/images.yaml) | 29 | Inventaire des fichiers visuels |
-| [lore-index.yaml](catalogs/lore-index.yaml) | 6 | Lore narratif référencé |
+| Catalogue                                               | Entrées | Couvre                                                          |
+| ------------------------------------------------------- | ------: | --------------------------------------------------------------- |
+| [armes.yaml](catalogs/armes.yaml)                       |     102 | Toutes les armes (mêlée, distance, jet, naturelles, munitions)  |
+| [protections.yaml](catalogs/protections.yaml)           |      60 | 7 catégories d'armures + 11 boucliers + multiplicateurs raciaux |
+| [potions.yaml](catalogs/potions.yaml)                   |       5 | 3 web + 2 paper, schéma `creation_procedure`                    |
+| [champignons.yaml](catalogs/champignons.yaml)           |       8 | 14 espèces regroupées par syndrome toxicologique                |
+| [bestiaire.yaml](catalogs/bestiaire.yaml)               |      30 | Tous les races + créatures K&W                                  |
+| [nations.yaml](catalogs/nations.yaml)                   |      29 | 18 paper + 11 ajouts via cartes                                 |
+| [religions.yaml](catalogs/religions.yaml)               |     70+ | 9 religions, 70+ divinités                                      |
+| [organisations.yaml](catalogs/organisations.yaml)       |       7 | Maisons divinatoires + Sans Noms                                |
+| [world-map.yaml](catalogs/world-map.yaml)               |       — | Carte mondiale + liens régionaux                                |
+| [cities-from-maps.yaml](catalogs/cities-from-maps.yaml) |    ~280 | Villes extraites des 15 cartes                                  |
+| [images.yaml](catalogs/images.yaml)                     |      29 | Inventaire des fichiers visuels                                 |
+| [lore-index.yaml](catalogs/lore-index.yaml)             |       6 | Lore narratif référencé                                         |
 
 Voir [`catalogs/README.md`](catalogs/README.md) pour le détail complet.
 
 ## `legacy/` — Sources brutes
 
 ### `legacy/paper/`
+
 Règles papier originales scannées et extraites :
+
 - PDFs originaux
 - Markdown extraits
 - Plans (Manoir Rossellini — hors canon, propriété de PJ)
 
 ### `legacy/web-scraped/`
+
 Site web KW.ch scrapé (référence uniquement) :
+
 - `documents/` — pages réglementaires web
 - `monde/` — cartes et lieux web
 - `personnages/` — fiches PJ user-generated (hors canon)

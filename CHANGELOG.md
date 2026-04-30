@@ -8,9 +8,34 @@ Versionnement : [SemVer](https://semver.org/lang/fr/).
 ## [Unreleased]
 
 ### À venir
+
 - Phase 2B itération 2 : digitalisation QGIS effective des frontières
 - Phase 2B itération 3 : recherche full-text dans les popups
 - Phase 2C : moteur de jeu multi-arbitre (player / human_gm / llm / auto)
+
+---
+
+## [0.2.0] — 2026-04-30
+
+Release de fondation applicative et devlab local. Cette version promeut le socle technique Phase 3/4 sur `main` : moteur de règles TypeScript, app joueur/MJ, backend persistant, RAG et agent MJ déterministe outillé.
+
+### Ajouté
+
+- Monorepo TypeScript/Turborepo avec validation CI complète.
+- Devlab local Docker : PostgreSQL + pgvector + Adminer, migrations applicatives et contrôles de santé.
+- `packages/rules-core` : dés D10, modèle personnage, progression, combat DT, sessions, contrôle PNJ Auto/LLM/Humain.
+- `apps/game` : dashboard, fiche personnage interactive, wizard de création, tracker combat DT, gestionnaire de session.
+- `apps/server` : API health/ready, brouillons personnage, sessions, décisions MJ, rollback, agent MJ Mastra.
+- Base de connaissance RAG : indexation règles/catalogues/lore, recherche et citations utilisables par le MJ.
+- Mémoire épisodique persistante de l'agent MJ.
+- Payload CMS : collections catalogues et scripts d'import/validation.
+- Suite E2E Playwright couvrant les parcours joueur/MJ, API, RAG, tool calling et mémoire.
+
+### Corrigé
+
+- Conversion magicien : 10 points de compétence peuvent acheter 1 point de sort supplémentaire.
+- Validation du wizard personnage : le message de brouillon validé n'est plus effacé immédiatement.
+- Décompte fiche personnage : progression de niveau affichée séparément des points de création.
 
 ---
 
@@ -21,6 +46,7 @@ Première version structurée du monorepo. Phase 1 (canonisation des règles) et
 ### Ajouté
 
 #### Phase 1 — 13 domaines de règles canoniques
+
 - D1 — Résolution (dés, difficulté, succès, critiques)
 - D2 — Attributs (9 aptitudes + dérivées)
 - D3 — Races (33 races jouables)
@@ -38,6 +64,7 @@ Première version structurée du monorepo. Phase 1 (canonisation des règles) et
 Total : ~230 règles canoniques (R-X.Y), ~70 entrées backlog (Q-X.Y).
 
 #### Phase 2A — 12 catalogues YAML structurés
+
 - `armes.yaml` — 102 armes (mêlée, distance, jet, naturelles, munitions)
 - `protections.yaml` — 49 armures + 11 boucliers + multiplicateurs raciaux
 - `potions.yaml` — 5 potions (3 web + 2 paper)
@@ -54,6 +81,7 @@ Total : ~230 règles canoniques (R-X.Y), ~70 entrées backlog (Q-X.Y).
 Total : ~700 entrées canoniques.
 
 #### Phase 2B — Carte interactive (en cours)
+
 - `apps/interactive-map/` — frontend Vite + Leaflet
 - Stack : Vite 7, Leaflet 1.9, js-yaml 4
 - Script Python `yaml_to_geojson.py` — convertit les YAML en GeoJSON
@@ -61,12 +89,14 @@ Total : ~700 entrées canoniques.
 - UI : recherche, popups, layers, panel info, parchment style
 
 #### Méta-principes
+
 - **Règles vivantes** : tout est versionnable, modifiable, migrable
 - **Pattern mode arbitre** : 4 contrôleurs canoniques avec hiérarchie de fallback
 - **Architecture 3 couches** : ruleset / arbiter / pacing
 - **Méta-modèle item-type-classes** (R-9.30) : extensible par admin/MJ
 
 #### Outils
+
 - Monorepo npm workspaces
 - `.gitignore` complet (Node + Python + QGIS + build outputs)
 - `tools/parse.py` — parser legacy paramétrique (`KW_BASE_URL` env var)
@@ -98,5 +128,6 @@ Total : ~700 entrées canoniques.
 
 ---
 
-[Unreleased]: https://github.com/decarvalhoe/knightandwizard/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/decarvalhoe/knightandwizard/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/decarvalhoe/knightandwizard/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/decarvalhoe/knightandwizard/releases/tag/v0.1.0

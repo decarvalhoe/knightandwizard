@@ -6,14 +6,14 @@ export function setupSearch(data, onSelect) {
 
   // Index combiné
   const index = [
-    ...data.regions.features.map(f => ({
+    ...data.regions.features.map((f) => ({
       type: 'region',
       label: f.properties.name,
       role: f.properties.category || 'nation',
       feature: f,
       data
     })),
-    ...data.cities.features.map(f => ({
+    ...data.cities.features.map((f) => ({
       type: 'city',
       label: f.properties.name,
       role: f.properties.role || 'town',
@@ -31,9 +31,7 @@ export function setupSearch(data, onSelect) {
       return;
     }
 
-    const matches = index
-      .filter(item => item.label.toLowerCase().includes(q))
-      .slice(0, 12);
+    const matches = index.filter((item) => item.label.toLowerCase().includes(q)).slice(0, 12);
 
     if (matches.length === 0) {
       results.innerHTML = '<li style="font-style:italic; color:#888;">Aucun résultat</li>';
@@ -41,12 +39,16 @@ export function setupSearch(data, onSelect) {
       return;
     }
 
-    results.innerHTML = matches.map((m, i) => `
+    results.innerHTML = matches
+      .map(
+        (m, i) => `
       <li data-idx="${i}">
         ${m.label}
         <span class="role-label">${m.type === 'region' ? '⛰' : '🏘'} ${m.role}${m.sublabel ? ` · ${m.sublabel}` : ''}</span>
       </li>
-    `).join('');
+    `
+      )
+      .join('');
 
     results.querySelectorAll('li').forEach((li, i) => {
       li.addEventListener('click', () => {
@@ -61,7 +63,7 @@ export function setupSearch(data, onSelect) {
   });
 
   // Cliquer ailleurs ferme le menu
-  document.addEventListener('click', e => {
+  document.addEventListener('click', (e) => {
     if (!input.contains(e.target) && !results.contains(e.target)) {
       results.classList.remove('visible');
     }

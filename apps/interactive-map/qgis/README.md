@@ -2,6 +2,54 @@
 
 Ce dossier contient le projet QGIS pour la **digitalisation des cartes** (Phase 2B itération 2).
 
+## Workflow efficace
+
+Le workflow robuste est volontairement hybride : QGIS pour les gestes cartographiques, scripts pour tout le reste.
+
+```powershell
+# 1. Préparer/mettre à jour projet, CSV (avec lon/lat) et couches
+python apps/interactive-map/tools/prepare_qgis_project.py
+
+# 2. Géoréférencer la carte mondiale en GeoTIFF
+python apps/interactive-map/tools/qgis_pipeline.py --georef
+
+# 3. Construire le projet QGIS GUI propre : vrais layers, styles, snapping
+python apps/interactive-map/tools/qgis_pipeline.py --project
+
+# 4. Ouvrir/recharger QGIS et digitaliser
+& "C:\Program Files\QGIS 3.44.9\bin\qgis-ltr.bat" apps/interactive-map/qgis/kw-world.qgz
+
+# 5. Pendant QGIS : auto-export live (re-exporte+valide à chaque Ctrl+S)
+python apps/interactive-map/tools/qgis_pipeline.py --watch
+
+# 5bis. Voir un snapshot ponctuel de la progression
+python apps/interactive-map/tools/qgis_pipeline.py --status
+
+# 6. Après sauvegarde QGIS, exporter vers le frontend (si pas en --watch)
+python apps/interactive-map/tools/qgis_pipeline.py --export
+python apps/interactive-map/tools/validate_geojson.py
+
+# 7. Aperçu live frontend pendant la digitalisation
+cd apps/interactive-map ; npm run dev
+# → http://localhost:5173
+```
+
+Si QGIS est déjà ouvert pendant l'étape `--project`, recharger `kw-world.qgz` dans QGIS pour récupérer les styles, les vraies couches vectorielles et le snapping.
+
+À faire manuellement dans QGIS :
+- tracer les frontières dans `qgis/layers/regions.gpkg`
+- placer les villes dans `qgis/layers/cities.gpkg` (ou ajuster celles importées depuis `cities.csv`)
+
+Automatisé par scripts :
+- génération du projet/couches/CSV (le CSV inclut désormais `lon`/`lat` → import direct comme couche de points)
+- géoréférencement `terres-oubliees.jpg` → `qgis/rasters/terres-oubliees.tif`
+- reconstruction du projet QGIS GUI via PyQGIS (`qgis_pipeline.py --project`)
+- statut de progression QGIS/GeoJSON via `qgis_pipeline.py --status`
+- **mode live** `qgis_pipeline.py --watch` : surveille les `.gpkg`, re-exporte et revalide automatiquement à chaque sauvegarde QGIS
+- export GeoPackage → GeoJSON
+- validation avant affichage frontend
+- aperçu live frontend Vite/Leaflet pendant la digitalisation (`npm run dev` → http://localhost:5173)
+
 ## Prérequis
 
 ### QGIS 3.44 LTR (recommandé)
@@ -20,13 +68,13 @@ choco install qgis-ltr
 
 Installation macOS / Linux : voir [qgis.org/download/](https://qgis.org/download/).
 
-### Plugins QGIS recommandés
+### Plugins QGIS optionnels
 
 Une fois QGIS lancé, installer via *Extensions → Installer/Gérer les extensions* :
 
 - **qgis2web** — export auto vers Leaflet (alternative à notre frontend custom)
 - **MMQGIS** — opérations vectorielles avancées
-- **Freehand Raster Georeferencer** — georéférencement rapide des cartes fantasy
+- **Freehand Raster Georeferencer** — utile pour les cartes régionales, pas nécessaire pour la carte mondiale car `qgis_pipeline.py --georef` la cale automatiquement
 
 ## Structure du projet QGIS
 
@@ -53,17 +101,15 @@ qgis/
 
 ### Étape 2 — Charger la carte mondiale comme référence raster
 
-1. Menu **Couche → Ajouter une couche → Ajouter une couche raster**.
-2. Sélectionner `apps/interactive-map/public/maps/terres-oubliees.jpg`.
-3. **Géoréférencer** : menu **Raster → Géoréférenceur** :
-   - Ouvrir le raster.
-   - Ajouter ≥ 4 points de contrôle (GCP) :
-     - Coin haut-gauche : `(0, 100)` lat=100, lng=0
-     - Coin haut-droit : `(143, 100)` lat=100, lng=143
-     - Coin bas-gauche : `(0, 0)`
-     - Coin bas-droit : `(143, 0)`
-   - Type de transformation : **Polynomiale 2** (préserve la géométrie).
-   - Valider.
+Pour la carte mondiale, préférer le script :
+
+```powershell
+python apps/interactive-map/tools/qgis_pipeline.py --georef
+```
+
+Il produit `apps/interactive-map/qgis/rasters/terres-oubliees.tif` calé sur les bornes K&W `(0,0)` → `(143,100)` en `EPSG:4326`.
+
+Si le GeoTIFF existe, `prepare_qgis_project.py` l'ajoute au projet QGIS à la place du JPG non géoréférencé.
 
 ### Étape 3 — Créer les couches vectorielles
 
@@ -107,24 +153,57 @@ qgis/
 
 ### Étape 5 — Placer les villes
 
-1. Sélectionner la couche `cities`.
+#### Option A — Import en lot depuis le CSV pré-rempli (rapide)
+
+`prepare_qgis_project.py` génère `apps/interactive-map/qgis/csv-imports/cities.csv` avec déjà
+`id, name, parent_region, role, notes, lon, lat` — les coordonnées sont calculées à partir
+des centroïdes des nations + un petit décalage déterministe par rôle (capitales centrées,
+villes périphériques en spirale d'angle d'or).
+
+Dans QGIS :
+
+1. **Couche → Ajouter une couche → Ajouter une couche de texte délimité**.
+2. Fichier : `apps/interactive-map/qgis/csv-imports/cities.csv`.
+3. Format : CSV, séparateur `,`, premier enregistrement = noms de champs.
+4. Géométrie : `Coordonnées de point`, X = `lon`, Y = `lat`, CRS `EPSG:4326`.
+5. Ajouter — toutes les ~315 villes apparaissent immédiatement.
+6. Clic droit sur la couche → **Exporter → Sauvegarder les entités sous…**
+   → format `GeoPackage`, fichier `qgis/layers/cities.gpkg`, nom de couche `cities`,
+   remplacer la couche existante. C'est cette couche qu'on édite ensuite (les villes
+   ont une position approximative qu'on affine en cliquant sur la carte).
+
+#### Option B — Saisie manuelle (précision maximum dès le départ)
+
+1. Sélectionner la couche `cities` (vide).
 2. Mode édition + **Ajouter une entité point**.
-3. Cliquer sur la position de chaque ville visible sur la carte.
+3. Cliquer sur la position de chaque ville visible sur la carte raster.
 4. Remplir les champs.
-5. Importer en lot depuis `data/catalogs/cities-from-maps.yaml` :
-   - Outil **Couche → Ajouter depuis un fichier de texte délimité** si on convertit le YAML en CSV (cf. script `tools/yaml_to_csv.py` à venir).
 
 ### Étape 6 — Exporter en GeoJSON
 
-Pour chaque couche :
+#### Option A — Export ponctuel après sauvegarde
 
-1. Clic droit sur la couche → **Exporter → Sauvegarder les entités sous...**
-2. Format : **GeoJSON**.
-3. Nom du fichier :
-   - `regions` → `apps/interactive-map/public/data/geojson/regions.geojson`
-   - `cities` → `apps/interactive-map/public/data/geojson/cities.geojson`
-4. CRS : `EPSG:4326`.
-5. Valider — écrase les fichiers placeholder.
+```powershell
+python apps/interactive-map/tools/qgis_pipeline.py --export
+python apps/interactive-map/tools/validate_geojson.py
+```
+
+#### Option B — Mode `--watch` (live, recommandé pendant la digitalisation)
+
+Lancer dans un terminal séparé en parallèle de QGIS :
+
+```powershell
+python apps/interactive-map/tools/qgis_pipeline.py --watch
+```
+
+Le script surveille les `.gpkg` (toutes les 2 s) et déclenche `--export` + validation
+automatiquement à chaque `Ctrl+S` dans QGIS. Combiné au serveur Vite (`npm run dev`),
+on voit les nouvelles frontières/villes apparaître dans le navigateur en quelques
+secondes après chaque sauvegarde.
+
+`Ctrl+C` pour arrêter le mode watch.
+
+Les couches vides sont ignorées et les placeholders existants sont conservés.
 
 ### Étape 7 — Vérifier dans le frontend
 
@@ -135,6 +214,8 @@ npm run dev
 ```
 
 Les nouvelles frontières et villes vraies apparaissent dans la carte interactive.
+Avec `qgis_pipeline.py --watch` actif, le rafraîchissement est automatique : il
+suffit de recharger l'onglet après chaque sauvegarde QGIS.
 
 ## Cartes régionales (15 nations)
 

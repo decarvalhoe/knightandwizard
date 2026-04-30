@@ -8,7 +8,6 @@ import { initMap } from './map.js';
 import { loadData } from './data.js';
 import { setupSearch } from './search.js';
 import { setupLayerControls } from './layers.js';
-import { renderInfoPanel } from './info-panel.js';
 
 async function bootstrap() {
   console.log('K&W — bootstrap interactive map');
@@ -21,11 +20,11 @@ async function bootstrap() {
 
   // 3. Affiche les régions (polygones)
   layers.regions.addTo(map);
-  data.regions.features.forEach(feature => addRegionToLayer(feature, layers.regions, data));
+  data.regions.features.forEach((feature) => addRegionToLayer(feature, layers.regions, data));
 
   // 4. Affiche les villes (points)
   layers.cities.addTo(map);
-  data.cities.features.forEach(feature => addCityToLayer(feature, layers.cities, data));
+  data.cities.features.forEach((feature) => addCityToLayer(feature, layers.cities, data));
 
   // 5. Compteurs UI
   document.getElementById('count-regions').textContent = data.regions.features.length;
@@ -42,7 +41,9 @@ async function bootstrap() {
     document.getElementById('info-panel').classList.add('hidden');
   });
 
-  console.log(`Loaded ${data.regions.features.length} regions, ${data.cities.features.length} cities`);
+  console.log(
+    `Loaded ${data.regions.features.length} regions, ${data.cities.features.length} cities`
+  );
 }
 
 function addRegionToLayer(feature, layer, data) {
@@ -59,7 +60,11 @@ function addRegionToLayer(feature, layer, data) {
     showRegionInfo(feature, data);
   });
 
-  polygon.bindTooltip(feature.properties.name, { className: 'region-label', sticky: true, direction: 'center' });
+  polygon.bindTooltip(feature.properties.name, {
+    className: 'region-label',
+    sticky: true,
+    direction: 'center'
+  });
   polygon.addTo(layer);
 }
 
@@ -110,14 +115,22 @@ function showRegionInfo(feature, data) {
       ${region.population?.total ? `<dt>Population</dt><dd>${region.population.total.toLocaleString()}</dd>` : ''}
       ${region.surface_km2 ? `<dt>Surface</dt><dd>${region.surface_km2.toLocaleString()} km²</dd>` : ''}
     </dl>
-    ${region.notable_features?.length ? `
+    ${
+      region.notable_features?.length
+        ? `
       <h3>À noter</h3>
-      <ul>${region.notable_features.map(f => `<li>${f}</li>`).join('')}</ul>
-    ` : ''}
-    ${props.regional_map ? `
+      <ul>${region.notable_features.map((f) => `<li>${f}</li>`).join('')}</ul>
+    `
+        : ''
+    }
+    ${
+      props.regional_map
+        ? `
       <h3>Carte régionale</h3>
       <a href="${props.regional_map}" target="_blank"><img src="${props.regional_map}" alt="Carte ${props.name}" style="width:100%; border:1px solid var(--ink);"></a>
-    ` : ''}
+    `
+        : ''
+    }
   `;
 
   panel.classList.remove('hidden');
@@ -153,7 +166,7 @@ function focusOnTarget(map, target) {
   }
 }
 
-bootstrap().catch(err => {
+bootstrap().catch((err) => {
   console.error('Bootstrap failed:', err);
   document.getElementById('map').innerHTML = `
     <div style="padding:2rem; color:#e8d8b0; text-align:center;">
