@@ -85,6 +85,44 @@ describe('session manager model', () => {
     expect(rollback.events.map((event) => event.type)).toEqual(['narration', 'rollback_requested']);
   });
 
+  it('surfaces critical state and D100 severity in dice_roll event labels', () => {
+    const state = createSessionManagerState({
+      events: [
+        {
+          actorId: 'aveline',
+          createdAt: '2026-04-30T10:30:00.000Z',
+          id: 'event-crit-fail',
+          payload: {
+            difficulty: 7,
+            isCriticalFailure: true,
+            criticalFailureSeverity: 73,
+            successes: 0
+          },
+          sequence: 1,
+          type: 'dice_roll'
+        },
+        {
+          actorId: 'aveline',
+          createdAt: '2026-04-30T10:31:00.000Z',
+          id: 'event-crit-success',
+          payload: { difficulty: 7, isCriticalSuccess: true, successes: 4 },
+          sequence: 2,
+          type: 'dice_roll'
+        }
+      ]
+    });
+    const view = buildSessionManagerView(state);
+
+    expect(view.recentEvents.map((event) => event.label)).toEqual([
+      'Aveline · Jet de des',
+      'Aveline · Jet de des'
+    ]);
+    expect(view.recentEvents.map((event) => event.detail)).toEqual([
+      '4 succes · reussite critique',
+      '0 succes · echec critique D100 73'
+    ]);
+  });
+
   it('queues and resolves the next GM decision', () => {
     const state = createSessionManagerState();
     const queued = submitGmDecisionRequest(state, 'Valider le discours du PNJ', {

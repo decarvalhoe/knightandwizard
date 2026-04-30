@@ -85,8 +85,19 @@ describe('D10 resolution', () => {
     expect(result.isCriticalFailure).toBe(false);
   });
 
+  it('treats a pool of 0 as a forced failure with no D100 severity', () => {
+    const result = rollDice(0, 7, { randomInteger: scriptedRolls([]) });
+
+    expect(result.rolls).toEqual([]);
+    expect(result.successes).toBe(0);
+    expect(result.isCriticalSuccess).toBe(false);
+    expect(result.isCriticalFailure).toBe(false);
+    expect(result.total).toBe(0);
+    expect(result.criticalFailureSeverity).toBeUndefined();
+  });
+
   it('validates the dice pool and difficulty inputs', () => {
-    expect(() => rollDice(0, 7)).toThrow('pool must be a positive integer');
+    expect(() => rollDice(-1, 7)).toThrow('pool must be a non-negative integer');
     expect(() => rollDice(2, 0)).toThrow('difficulty must be a positive integer');
   });
 

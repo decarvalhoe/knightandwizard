@@ -267,7 +267,20 @@ function eventDetail(event: SessionEvent): string {
   }
 
   if (typeof event.payload.successes === 'number') {
-    return `${event.payload.successes} succes`;
+    const parts = [`${event.payload.successes} succes`];
+
+    if (event.payload.isCriticalSuccess === true) {
+      parts.push('reussite critique');
+    }
+
+    if (event.payload.isCriticalFailure === true) {
+      const severity = event.payload.criticalFailureSeverity;
+      parts.push(
+        typeof severity === 'number' ? `echec critique D100 ${severity}` : 'echec critique'
+      );
+    }
+
+    return parts.join(' · ');
   }
 
   return 'Entree canonique';

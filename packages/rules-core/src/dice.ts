@@ -26,15 +26,26 @@ interface InitialDie {
  * - initial 10s count as successes and explode;
  * - initial 1s cancel successes from highest value downward, including a canceled 10's cascade;
  * - 1s rolled during explosions are ignored;
- * - high difficulties use the D1 floor formula: 9 + last digit, then extra 9+ as extra successes.
+ * - high difficulties use the D1 floor formula: 9 + last digit, then extra 9+ as extra successes;
+ * - a pool of 0 is a forced failure: zero successes, no critical-failure D100.
  */
 export function rollDice(
   pool: number,
   difficulty: number,
   options: RollDiceOptions = {}
 ): DiceRollResult {
-  assertPositiveInteger('pool', pool);
+  assertNonNegativeInteger('pool', pool);
   assertPositiveInteger('difficulty', difficulty);
+
+  if (pool === 0) {
+    return {
+      rolls: [],
+      successes: 0,
+      isCriticalSuccess: false,
+      isCriticalFailure: false,
+      total: 0
+    };
+  }
 
   const randomInteger = options.randomInteger ?? defaultRandomInteger;
   const initialDice = rollInitialDice(pool, randomInteger);
@@ -275,5 +286,11 @@ function defaultRandomInteger(sides: number): number {
 function assertPositiveInteger(name: string, value: number): void {
   if (!Number.isInteger(value) || value < 1) {
     throw new Error(`${name} must be a positive integer`);
+  }
+}
+
+function assertNonNegativeInteger(name: string, value: number): void {
+  if (!Number.isInteger(value) || value < 0) {
+    throw new Error(`${name} must be a non-negative integer`);
   }
 }

@@ -131,13 +131,41 @@ export function CharacterSheet({
                 </p>
               </div>
               {lastRoll && (
-                <div className="rounded-md bg-forest px-3 py-2 text-right text-paper">
+                <div
+                  className="rounded-md bg-forest px-3 py-2 text-right text-paper"
+                  data-testid="last-roll"
+                >
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-paper/70">
                     Dernier jet
                   </p>
                   <p className="font-mono text-sm">
-                    {attributeLabels[lastRoll.attribute]} · {lastRoll.successes} succès
+                    {attributeLabels[lastRoll.attribute]} · {lastRoll.pool}D · DT{' '}
+                    {lastRoll.difficulty} · {lastRoll.successes} succès
                   </p>
+                  {lastRoll.pool === 0 && (
+                    <p
+                      className="font-mono text-xs uppercase tracking-[0.14em] text-paper/85"
+                      data-testid="last-roll-forced-failure"
+                    >
+                      Échec automatique (attribut 0)
+                    </p>
+                  )}
+                  {lastRoll.isCriticalSuccess && (
+                    <p
+                      className="font-mono text-xs uppercase tracking-[0.14em] text-paper/85"
+                      data-testid="last-roll-critical-success"
+                    >
+                      Réussite critique
+                    </p>
+                  )}
+                  {lastRoll.isCriticalFailure && (
+                    <p
+                      className="font-mono text-xs uppercase tracking-[0.14em] text-paper/85"
+                      data-testid="last-roll-critical-failure"
+                    >
+                      Échec critique · D100 = {lastRoll.criticalFailureSeverity}
+                    </p>
+                  )}
                 </div>
               )}
             </div>
