@@ -7,11 +7,25 @@ Versionnement : [SemVer](https://semver.org/lang/fr/).
 
 ## [Unreleased]
 
-### À venir
+Le projet bascule en mode **canonical-first**. La trajectoire technique des phases 3 et 4 est livrée ; les jalons suivants pilotent la conformité canonique de bout en bout. La feuille de route détaillée vit dans `docs/plan/ROADMAP.md` et `docs/plan/ISSUE-LIST.md`.
 
-- Phase 2B itération 2 : digitalisation QGIS effective des frontières
-- Phase 2B itération 3 : recherche full-text dans les popups
-- Phase 2C : moteur de jeu multi-arbitre (player / human_gm / llm / auto)
+### Ajouté
+
+- Outil `tools/canonical.ts` : registre des sources, atomisation en matrice canonique, rapport de couverture et gates `pnpm canonical:write`/`canonical:check`/`canonical:check:strict`.
+- `pnpm canonical:check` ajouté à `pnpm validate`.
+- Artefacts canoniques générés : `docs/canonical/source-manifest.yaml` (1467 sources), `docs/canonical/canonical-matrix.yaml` (3452 unités), `docs/canonical/coverage-report.md`.
+- Indexation RAG pilotée par `source-manifest.yaml` : chaque chunk porte des metadata de traçabilité (path, hash source, type, priorité, domaine, IDs liés, hash de chunk, date d'ingestion). Migration Drizzle `0004_knowledge_metadata.sql`.
+- `docs/plan/ISSUE-LIST.md` : registre opérationnel des 27 tickets ouverts P0→P4 avec dépendances et critères d'acceptation.
+- `CLAUDE.md` : instructions Claude Code, skills K&W requis, invariants critiques (sample.ts interdit, attribut 0, conversion magicien, etc.).
+
+### À venir (v0.3.1 — Canonical Product Truth)
+
+- Construire les catalogues canoniques sourcés : races, orientations/classes, compétences/spécialisations, atouts/handicaps, écoles de magie/sorts, personnages legacy comme références lore.
+- Formaliser schémas Zod et loaders catalogues canoniques.
+- Importer les catalogues canoniques en read-models PostgreSQL et les exposer via API.
+- Supprimer les 5 imports `sample.ts` produit restants (`apps/game/src/...`).
+- Auditer la résolution des dés, l'affichage critique D100 et le moteur de création personnage.
+- Ajouter le gate `canonical:check:strict` au pipeline de release CI.
 
 ---
 

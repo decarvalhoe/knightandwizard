@@ -21,11 +21,14 @@ Ce dépôt n'est **pas** le produit CRPG tactique coop. Le projet **K&W-game** v
 - Environnement de travail de référence : WSL Ubuntu, chemin `/home/decarvalhoe/repos/knightandwizard`.
 - Phase 1 : règles canoniques terminées (`docs/rules/01-*.md` à `13-*.md`).
 - Phase 2A : catalogues importés et stabilisés, environ 1100 entrées en 13 catalogues YAML/CSV.
-- Phase 2B : carte interactive existante, pipeline QGIS en cours.
-- Phase 3A : fondations techniques à finaliser (`pnpm`, packages TypeScript, validation, CI).
+- Phase 2B : carte interactive existante, pipeline QGIS effectif.
+- Phases 3A/3B/3C/3D et 4 : livrées en v0.2.0 (monorepo, rules-core, Payload CMS, app joueur/MJ Next.js, agent MJ Mastra avec RAG, mémoire épisodique, mode contrôle PNJ).
+- v0.3.x en cours : virage **canonical-first**. La conformité de bout en bout devient un gate produit strict.
 - Devlab local : Docker Compose avec PostgreSQL + pgvector et Adminer.
 
-Les dossiers cibles `packages/rules-core`, `packages/catalogs`, `apps/server`, `apps/game` et `apps/cms` sont des objectifs Phase 3A/3C/3D. Ne pas supposer qu'ils existent avant de les créer.
+Les packages `packages/rules-core`, `packages/catalogs` et apps `apps/server`, `apps/game`, `apps/cms`, `apps/interactive-map` existent et sont opérationnels. Ne pas les rebâtir, les enrichir.
+
+Direction produit : K&W est tabletop-first et canonical-first. Chaque comportement produit doit tracer `source -> rule/object -> YAML -> Zod -> DB -> vector store -> rules-core -> API -> UI -> tests`. Les artefacts canoniques (`docs/canonical/source-manifest.yaml`, `canonical-matrix.yaml`, `coverage-report.md`) sont générés par `pnpm canonical:write`, jamais édités à la main.
 
 ## 3. Règles Git
 
@@ -73,9 +76,15 @@ Le projet doit rester modulaire : la règle déterministe vit dans `rules-core`;
 
 Avant de modifier une règle, un catalogue ou une mécanique, lire les documents pertinents :
 
+- `CLAUDE.md` : invariants critiques, skills K&W requis, direction produit.
 - `docs/HANDOVER.md` : état global et décisions structurantes.
 - `docs/product/` : direction active K&W tabletop-first, assistant MJ/Joueur, LLM.
-- `docs/plan/ROADMAP.md` et `docs/plan/ADR-001-architecture-cible.md` : cible Phase 3+.
+- `docs/plan/ROADMAP.md` : roadmap canonical-first (v0.3.1 → v1.0.0).
+- `docs/plan/ISSUE-LIST.md` : registre opérationnel des tickets P0→P4 avec dépendances et critères d'acceptation.
+- `docs/plan/ADR-001-architecture-cible.md` : cible d'architecture.
+- `docs/canonical/source-manifest.yaml` : registre des sources canoniques scannées et statutées.
+- `docs/canonical/canonical-matrix.yaml` : matrice atomisée source → implémentation par unité.
+- `docs/canonical/coverage-report.md` : couverture courante, gaps et imports `sample.ts` bloquants.
 - `docs/rules/*.md` : règles canoniques.
 - `data/catalogs/README.md` : structure et statut des catalogues.
 - `apps/interactive-map/qgis/README.md` : workflow QGIS si la carte est concernée.
@@ -87,12 +96,22 @@ Ne consulter `docs/game/` que pour comprendre la séparation avec `knightandwiza
 Depuis `/home/decarvalhoe/repos/knightandwizard` :
 
 ```bash
+pnpm canonical:check          # gate canonique (inclus dans validate)
 pnpm test
 pnpm typecheck
 pnpm build:map
 pnpm validate:geojson
 pnpm devlab:test
+pnpm validate                 # gate complète avant push
 ```
+
+Quand des sources, catalogues ou statuts canoniques bougent :
+
+```bash
+pnpm canonical:write          # régénère docs/canonical/* — ne jamais éditer à la main
+```
+
+`pnpm canonical:check:strict` est intentionnellement rouge tant que les imports `sample.ts` produit n'ont pas été retirés (issue P0-12). C'est la cible de conformité, pas du bruit.
 
 Pour le devlab :
 

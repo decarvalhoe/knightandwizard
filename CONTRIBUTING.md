@@ -33,15 +33,18 @@ Services :
 Commandes utiles :
 
 ```bash
-pnpm devlab:ps      # État des conteneurs
-pnpm devlab:test    # PostgreSQL, pgvector et schéma migré
-pnpm devlab:reset   # Destructif : supprime les conteneurs et le volume PostgreSQL local
-pnpm db:migrate     # Applique les migrations DB
-pnpm db:seed        # Injecte les seeds de développement déterministes
-pnpm lint           # ESLint sur le code actif
-pnpm format:check   # Vérifie le format Prettier
-pnpm format         # Applique Prettier sur les fichiers actifs
-pnpm validate       # Gate locale complète
+pnpm devlab:ps               # État des conteneurs
+pnpm devlab:test             # PostgreSQL, pgvector et schéma migré
+pnpm devlab:reset            # Destructif : supprime les conteneurs et le volume PostgreSQL local
+pnpm db:migrate              # Applique les migrations DB
+pnpm db:seed                 # Injecte les seeds de développement déterministes
+pnpm lint                    # ESLint sur le code actif
+pnpm format:check            # Vérifie le format Prettier
+pnpm format                  # Applique Prettier sur les fichiers actifs
+pnpm canonical:write         # Régénère les artefacts canoniques (source-manifest, matrix, coverage)
+pnpm canonical:check         # Vérifie que les artefacts canoniques sont à jour
+pnpm canonical:check:strict  # Gate release : exige zéro import sample.ts produit et zéro unité partial
+pnpm validate                # Gate locale complète (inclut canonical:check)
 ```
 
 ## Workflow Git
@@ -56,13 +59,14 @@ pnpm validate       # Gate locale complète
 
 - `packages/rules-core` : moteur de règles pur TypeScript. Aucune dépendance UI, DB, réseau ou LLM.
 - `packages/catalogs` : loaders, schémas et types partagés pour les catalogues YAML/CSV.
-- `apps/server` : API backend, migrations, persistence, future orchestration LLM.
-- `apps/interactive-map` : carte Leaflet existante.
-- `apps/game` : future application joueur/MJ.
-- `apps/cms` : futur Payload CMS des règles vivantes.
+- `apps/server` : API backend Fastify, migrations Drizzle, agent MJ Mastra, knowledge base RAG.
+- `apps/game` : application joueur/MJ Next.js (fiche, wizard de création, combat tracker, session manager).
+- `apps/cms` : Payload CMS pour les règles vivantes et l'édition catalogues.
+- `apps/interactive-map` : carte Leaflet existante et pipeline QGIS.
 - `data/catalogs` : catalogues canoniques importés.
 - `docs/rules` : règles canoniques D1 à D13.
-- `docs/plan` : ADR, roadmap et plans d'exécution.
+- `docs/canonical` : artefacts canoniques générés (`source-manifest.yaml`, `canonical-matrix.yaml`, `coverage-report.md`). **Ne jamais éditer à la main**, toujours régénérer via `pnpm canonical:write`.
+- `docs/plan` : ADR, roadmap canonical-first et `ISSUE-LIST.md` (source opérationnelle des tickets).
 
 Turborepo orchestre les tâches workspace (`build`, `typecheck`, `lint`, `test`) quand elles existent dans les packages. pnpm reste le gestionnaire de paquets et l'interface de commande principale.
 
@@ -122,6 +126,7 @@ pnpm validate
 
 Elle couvre actuellement :
 
+- vérification des artefacts canoniques (`canonical:check`)
 - lint ESLint
 - vérification Prettier
 - typecheck TypeScript
@@ -129,8 +134,13 @@ Elle couvre actuellement :
 - validation GeoJSON
 - build de la carte interactive
 - check devlab PostgreSQL + pgvector + schéma migré
+- suite E2E Playwright
 
 Si cette commande échoue, la PR ou le push n'est pas prêt.
+
+### Gate release strict
+
+`pnpm canonical:check:strict` est intentionnellement **rouge** tant que les imports `sample.ts` produit n'ont pas été retirés (voir issue P0-12 / #46). Ce n'est pas du bruit : c'est la cible de conformité produit. Cette gate doit passer avant toute promotion `main`.
 
 ## Code of conduct
 
