@@ -33,19 +33,19 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
     {
       id: 'adaptable',
       label: 'Adaptabilite',
-      raceIds: ['human'],
+      raceIds: ['humain'],
       source: 'race'
     },
     {
       id: 'sharp-senses',
       label: 'Sens affutes',
-      raceIds: ['elf'],
+      raceIds: ['haut_elfe'],
       source: 'race'
     },
     {
       id: 'stone-blood',
       label: 'Sang de pierre',
-      raceIds: ['dwarf'],
+      raceIds: ['nain'],
       source: 'race'
     },
     {
@@ -145,7 +145,7 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
     {
       attributeMax: humanMax,
       category: 20,
-      id: 'human',
+      id: 'humain',
       name: 'Humain',
       speedFactor: 8,
       vitality: 24,
@@ -154,7 +154,7 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
     {
       attributeMax: elfMax,
       category: 18,
-      id: 'elf',
+      id: 'haut_elfe',
       name: 'Elfe',
       speedFactor: 7,
       vitality: 20,
@@ -163,7 +163,7 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
     {
       attributeMax: dwarfMax,
       category: 22,
-      id: 'dwarf',
+      id: 'nain',
       name: 'Nain',
       speedFactor: 9,
       vitality: 28,

@@ -433,7 +433,7 @@ describe('character derived state', () => {
 
 function humanRace() {
   return {
-    id: 'human',
+    id: 'humain',
     name: 'Human',
     category: 20,
     vitality: 24,

@@ -216,7 +216,7 @@ function magician(spells = [{ id: 'firebolt', points: 2 }]): Character {
 
 function humanRace(): RaceProfile {
   return {
-    id: 'human',
+    id: 'humain',
     name: 'Human',
     category: 20,
     vitality: 24,

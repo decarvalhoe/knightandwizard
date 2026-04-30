@@ -78,7 +78,7 @@ export const sampleCharacter: Character = createPlayerCharacter({
   race: {
     attributeMax: Object.fromEntries(ATTRIBUTE_KEYS.map((key) => [key, 6])) as CharacterAttributes,
     category: 20,
-    id: 'human',
+    id: 'humain',
     name: 'Humain',
     speedFactor: 8,
     vitality: 24,

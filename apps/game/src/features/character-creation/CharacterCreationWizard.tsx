@@ -46,7 +46,7 @@ const draftTemplate = createCreationDraft(characterCreationCatalog, {
   equipmentIds: ['travel-kit'],
   id: 'draft-local',
   orientationId: 'guerrier',
-  raceId: 'human'
+  raceId: 'humain'
 });
 
 const syncIdle: DraftSyncResult = {

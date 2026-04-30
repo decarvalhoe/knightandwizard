@@ -79,7 +79,7 @@ describe('character sheet model', () => {
             ATTRIBUTE_KEYS.map((key) => [key, 6])
           ) as CharacterAttributes,
           category: 20,
-          id: 'human',
+          id: 'humain',
           name: 'Humain',
           speedFactor: 8,
           vitality: 24,
@@ -239,7 +239,7 @@ function sampleCharacter(): Character {
         ATTRIBUTE_KEYS.map((key) => [key, 6])
       ) as CharacterAttributes,
       category: 20,
-      id: 'human',
+      id: 'humain',
       name: 'Humain',
       speedFactor: 8,
       vitality: 24,
@@ -272,7 +272,7 @@ function sampleMagicianCharacter(): Character {
         ATTRIBUTE_KEYS.map((key) => [key, 6])
       ) as CharacterAttributes,
       category: 20,
-      id: 'human',
+      id: 'humain',
       name: 'Humain',
       speedFactor: 8,
       vitality: 24,

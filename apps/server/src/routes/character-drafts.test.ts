@@ -18,7 +18,7 @@ describe('character draft routes', () => {
       payload: {
         classId: 'enchanteur',
         name: 'Aveline',
-        raceId: 'human'
+        raceId: 'humain'
       }
     };
 

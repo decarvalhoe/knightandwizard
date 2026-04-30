@@ -21,7 +21,7 @@ describe('character creation wizard model', () => {
     const draft = createCreationDraft(catalog(), {
       classId: 'enchanteur',
       orientationId: 'magicien',
-      raceId: 'human'
+      raceId: 'humain'
     });
     const view = buildCreationView(draft, catalog());
 
@@ -48,7 +48,7 @@ describe('character creation wizard model', () => {
                   createCreationDraft(catalog(), {
                     classId: 'enchanteur',
                     orientationId: 'magicien',
-                    raceId: 'human'
+                    raceId: 'humain'
                   }),
                   1
                 ),
@@ -134,7 +134,7 @@ describe('character creation wizard model', () => {
       payload: expect.objectContaining({
         classId: 'enchanteur',
         name: 'Aveline',
-        raceId: 'human'
+        raceId: 'humain'
       }),
       updatedAt: expect.any(String)
     });
@@ -144,7 +144,7 @@ describe('character creation wizard model', () => {
       currentStep: 'skills',
       id: 'draft-aveline',
       name: 'Aveline',
-      raceId: 'human'
+      raceId: 'humain'
     });
   });
 });
@@ -163,7 +163,7 @@ function completedMageDraft(): CharacterCreationDraft {
                     id: 'draft-aveline',
                     name: 'Aveline',
                     orientationId: 'magicien',
-                    raceId: 'human'
+                    raceId: 'humain'
                   }),
                   1
                 ),
@@ -222,13 +222,13 @@ function catalog(): CharacterCreationCatalog {
       {
         id: 'human-adaptability',
         label: 'Adaptabilite humaine',
-        raceIds: ['human'],
+        raceIds: ['humain'],
         source: 'race'
       },
       {
         id: 'elven-grace',
         label: 'Grace elfique',
-        raceIds: ['elf'],
+        raceIds: ['haut_elfe'],
         source: 'race'
       },
       {
@@ -290,7 +290,7 @@ function catalog(): CharacterCreationCatalog {
       {
         attributeMax: humanMax,
         category: 20,
-        id: 'human',
+        id: 'humain',
         name: 'Humain',
         speedFactor: 8,
         vitality: 24,
@@ -299,7 +299,7 @@ function catalog(): CharacterCreationCatalog {
       {
         attributeMax: humanMax,
         category: 18,
-        id: 'elf',
+        id: 'haut_elfe',
         name: 'Elfe',
         speedFactor: 7,
         vitality: 20,
