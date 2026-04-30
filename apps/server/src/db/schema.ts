@@ -30,6 +30,7 @@ const updatedNow = () => timestamp('updated_at', { withTimezone: true }).notNull
 
 export const REQUIRED_APP_TABLES = [
   'catalog_documents',
+  'character_drafts',
   'game_sessions',
   'session_events',
   'audit_events',
@@ -52,6 +53,25 @@ export const catalogDocuments = pgTable(
   (table) => ({
     sourcePathIdx: uniqueIndex('catalog_documents_source_path_idx').on(table.sourcePath),
     catalogNameIdx: index('catalog_documents_catalog_name_idx').on(table.catalogName)
+  })
+);
+
+export const characterDrafts = pgTable(
+  'character_drafts',
+  {
+    id: text('id').primaryKey(),
+    userId: text('user_id').notNull().default('local-dev'),
+    currentStep: text('current_step').notNull(),
+    payload: jsonb('payload')
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default(sql`'{}'::jsonb`),
+    createdAt: now(),
+    updatedAt: updatedNow()
+  },
+  (table) => ({
+    updatedAtIdx: index('character_drafts_updated_at_idx').on(table.updatedAt),
+    userIdIdx: index('character_drafts_user_id_idx').on(table.userId)
   })
 );
 
