@@ -54,5 +54,9 @@ describe('knowledge repository', () => {
       heading: 'Dice difficulty'
     });
     expect(results[0]?.score).toBeGreaterThan(results[1]?.score ?? 0);
+    expect(results[0]?.metadata).toMatchObject({
+      chunk_hash: expect.stringMatching(/^[a-f0-9]{64}$/),
+      source_path: 'test/rules/dice.md'
+    });
   });
 });

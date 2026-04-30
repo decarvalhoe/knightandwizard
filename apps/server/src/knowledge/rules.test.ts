@@ -58,6 +58,10 @@ describe('rules RAG search', () => {
       sourcePath: 'test-rag/docs/rules/01-resolution.md'
     });
     expect(results[0]?.score).toBeGreaterThan(results[1]?.score ?? 0);
+    expect(results[0]?.metadata).toMatchObject({
+      chunk_hash: expect.stringMatching(/^[a-f0-9]{64}$/),
+      source_path: 'test-rag/docs/rules/01-resolution.md'
+    });
 
     const context = buildRuleContext(results.slice(0, 1));
     expect(context).toContain('[1] test-rag/docs/rules/01-resolution.md > Jets difficiles');

@@ -208,13 +208,18 @@ export const knowledgeDocuments = pgTable(
     sourceKind: text('source_kind').notNull(),
     title: text('title').notNull(),
     contentHash: varchar('content_hash', { length: 64 }).notNull(),
+    metadata: jsonb('metadata')
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default(sql`'{}'::jsonb`),
     importedAt: timestamp('imported_at', { withTimezone: true }).notNull().defaultNow(),
     createdAt: now(),
     updatedAt: updatedNow()
   },
   (table) => ({
     sourcePathIdx: uniqueIndex('knowledge_documents_source_path_idx').on(table.sourcePath),
-    sourceKindIdx: index('knowledge_documents_source_kind_idx').on(table.sourceKind)
+    sourceKindIdx: index('knowledge_documents_source_kind_idx').on(table.sourceKind),
+    metadataIdx: index('knowledge_documents_metadata_idx').using('gin', table.metadata)
   })
 );
 
@@ -231,6 +236,10 @@ export const knowledgeChunks = pgTable(
     heading: text('heading').notNull(),
     contentHash: varchar('content_hash', { length: 64 }).notNull(),
     text: text('text').notNull(),
+    metadata: jsonb('metadata')
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default(sql`'{}'::jsonb`),
     embedding: vector('embedding'),
     createdAt: now(),
     updatedAt: updatedNow()
@@ -241,6 +250,7 @@ export const knowledgeChunks = pgTable(
       table.chunkIndex
     ),
     sourcePathIdx: index('knowledge_chunks_source_path_idx').on(table.sourcePath),
-    sourceKindIdx: index('knowledge_chunks_source_kind_idx').on(table.sourceKind)
+    sourceKindIdx: index('knowledge_chunks_source_kind_idx').on(table.sourceKind),
+    metadataIdx: index('knowledge_chunks_metadata_idx').using('gin', table.metadata)
   })
 );

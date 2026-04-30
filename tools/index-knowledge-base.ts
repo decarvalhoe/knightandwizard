@@ -1,13 +1,16 @@
-import { readdir, readFile, stat } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
+import { readFile } from 'node:fs/promises';
+import { extname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { createSqlClient, type SqlClient } from '../apps/server/src/db/client.js';
 import { runMigrations } from '../apps/server/src/db/migrate.js';
 import {
   chunkMarkdownDocument,
+  chunkTextDocument,
   chunkYamlCatalog,
+  createSourceReferenceChunk,
   type KnowledgeChunk,
+  type KnowledgeChunkMetadata,
   type KnowledgeSourceKind
 } from '../apps/server/src/knowledge/chunker.js';
 import {
@@ -15,10 +18,24 @@ import {
   storeKnowledgeChunks,
   type EmbeddingProvider
 } from '../apps/server/src/knowledge/repository.js';
+import {
+  buildSourceManifest,
+  isReadableTextSource,
+  loadSourceManifest,
+  type SourceEntry,
+  type SourceStatus,
+  type SourceType
+} from './canonical.js';
 
 export interface KnowledgeIndexSource {
+  contains: string[];
+  domains: string[];
+  priority: number;
+  sourceHash: string;
   sourceKind: KnowledgeSourceKind;
   sourcePath: string;
+  sourceStatus: SourceStatus;
+  sourceType: SourceType;
 }
 
 export interface KnowledgeIndexPlan {
@@ -45,34 +62,78 @@ export interface IndexKnowledgeBaseOptions extends BuildKnowledgeIndexPlanOption
 }
 
 const repoRoot = resolve(fileURLToPath(new URL('..', import.meta.url)));
+const markdownExtensions = new Set(['.md', '.markdown']);
+const knowledgeSourceKinds: KnowledgeSourceKind[] = [
+  'catalog_table',
+  'catalog_yaml',
+  'generated_doc',
+  'legacy_paper_extract',
+  'legacy_php',
+  'legacy_web_html',
+  'lore_markdown',
+  'other',
+  'raw_source',
+  'rule_markdown',
+  'third_party'
+];
 
 export async function buildKnowledgeIndexPlan(
   options: BuildKnowledgeIndexPlanOptions = {}
 ): Promise<KnowledgeIndexPlan> {
   const root = options.repoRoot ?? repoRoot;
-  const sources: KnowledgeIndexSource[] = [
-    ...(await markdownSources(root, 'docs/rules', 'rule_markdown')),
-    ...(await optionalMarkdownSource(
-      root,
-      'docs/game/knightandwizard-game-foundation.md',
-      'lore_markdown'
-    )),
-    ...(await yamlSources(root, 'data/catalogs'))
-  ];
+  const manifest = await readManifest(root);
+  const sources = manifest.sources
+    .filter(shouldIndexSource)
+    .sort((left, right) => left.path.localeCompare(right.path))
+    .map(toKnowledgeIndexSource);
   const chunks: KnowledgeChunk[] = [];
 
   for (const source of sources) {
-    const text = await readFile(join(root, source.sourcePath), 'utf8');
+    const metadata = sourceMetadata(source);
 
-    if (source.sourceKind === 'catalog_yaml') {
-      chunks.push(...chunkYamlCatalog({ sourcePath: source.sourcePath, text }));
+    if (!isReadableTextSource(source.sourcePath)) {
+      chunks.push(
+        createSourceReferenceChunk({
+          sourceHash: source.sourceHash,
+          sourceKind: source.sourceKind,
+          sourcePath: source.sourcePath,
+          metadata
+        })
+      );
+      continue;
+    }
+
+    const text = await readFile(join(root, source.sourcePath), 'utf8');
+    const extension = extname(source.sourcePath).toLowerCase();
+
+    if (source.sourceType === 'catalog_yaml') {
+      chunks.push(
+        ...chunkYamlCatalog({
+          sourcePath: source.sourcePath,
+          metadata,
+          text
+        })
+      );
+      continue;
+    }
+
+    if (markdownExtensions.has(extension)) {
+      chunks.push(
+        ...chunkMarkdownDocument({
+          sourceKind: source.sourceKind,
+          sourcePath: source.sourcePath,
+          metadata,
+          text
+        })
+      );
       continue;
     }
 
     chunks.push(
-      ...chunkMarkdownDocument({
+      ...chunkTextDocument({
         sourceKind: source.sourceKind,
         sourcePath: source.sourcePath,
+        metadata,
         text
       })
     );
@@ -87,18 +148,16 @@ export async function buildKnowledgeIndexPlan(
 export function summarizeKnowledgeIndexPlan(
   plan: KnowledgeIndexPlan
 ): Record<KnowledgeSourceKind, number> {
-  return plan.chunks.reduce<Record<KnowledgeSourceKind, number>>(
-    (summary, chunk) => ({
-      ...summary,
-      [chunk.sourceKind]: (summary[chunk.sourceKind] ?? 0) + 1
-    }),
-    {
-      catalog_yaml: 0,
-      lore_markdown: 0,
-      other: 0,
-      rule_markdown: 0
-    }
-  );
+  const summary = Object.fromEntries(knowledgeSourceKinds.map((kind) => [kind, 0])) as Record<
+    KnowledgeSourceKind,
+    number
+  >;
+
+  for (const chunk of plan.chunks) {
+    summary[chunk.sourceKind] = (summary[chunk.sourceKind] ?? 0) + 1;
+  }
+
+  return summary;
 }
 
 export async function indexKnowledgeBase(
@@ -160,45 +219,60 @@ async function main(): Promise<void> {
   }
 }
 
-async function markdownSources(
-  root: string,
-  directory: string,
-  sourceKind: KnowledgeSourceKind
-): Promise<KnowledgeIndexSource[]> {
-  const fileNames = await readdir(join(root, directory));
-
-  return fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
-    .sort()
-    .map((fileName) => ({
-      sourceKind,
-      sourcePath: `${directory}/${fileName}`
-    }));
-}
-
-async function optionalMarkdownSource(
-  root: string,
-  sourcePath: string,
-  sourceKind: KnowledgeSourceKind
-): Promise<KnowledgeIndexSource[]> {
+async function readManifest(root: string) {
   try {
-    const result = await stat(join(root, sourcePath));
-    return result.isFile() ? [{ sourceKind, sourcePath }] : [];
+    return await loadSourceManifest({ repoRoot: root });
   } catch {
-    return [];
+    return buildSourceManifest({ repoRoot: root });
   }
 }
 
-async function yamlSources(root: string, directory: string): Promise<KnowledgeIndexSource[]> {
-  const fileNames = await readdir(join(root, directory));
+function shouldIndexSource(source: SourceEntry): boolean {
+  return source.status === 'active' || source.status === 'raw_reference_only';
+}
 
-  return fileNames
-    .filter((fileName) => fileName.endsWith('.yaml'))
-    .sort()
-    .map((fileName) => ({
-      sourceKind: 'catalog_yaml',
-      sourcePath: `${directory}/${fileName}`
-    }));
+function toKnowledgeIndexSource(source: SourceEntry): KnowledgeIndexSource {
+  return {
+    contains: source.contains,
+    domains: source.domains,
+    priority: source.priority,
+    sourceHash: source.sha256,
+    sourceKind: sourceKindFor(source),
+    sourcePath: source.path,
+    sourceStatus: source.status,
+    sourceType: source.source_type
+  };
+}
+
+function sourceKindFor(source: SourceEntry): KnowledgeSourceKind {
+  if (source.source_type === 'canonical_rule') {
+    return 'rule_markdown';
+  }
+
+  if (source.source_type === 'catalog_yaml') {
+    return 'catalog_yaml';
+  }
+
+  if (source.path === 'docs/game/knightandwizard-game-foundation.md') {
+    return 'lore_markdown';
+  }
+
+  return source.source_type;
+}
+
+function sourceMetadata(source: KnowledgeIndexSource): Partial<KnowledgeChunkMetadata> {
+  return {
+    catalog_ids: [],
+    contains: source.contains,
+    domain: source.domains[0] ?? 'unclassified',
+    domains: source.domains,
+    priority: source.priority,
+    source_hash: source.sourceHash,
+    source_path: source.sourcePath,
+    source_status: source.sourceStatus,
+    source_type: source.sourceType,
+    unit_ids: []
+  };
 }
 
 const isEntrypoint =

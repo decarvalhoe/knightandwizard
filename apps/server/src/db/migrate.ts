@@ -19,34 +19,40 @@ export async function runMigrations(): Promise<void> {
       )
     `;
 
-    const migrationFiles = (await readdir(migrationsDir))
-      .filter((fileName) => fileName.endsWith('.sql'))
-      .sort();
+    await sql`SELECT pg_advisory_lock(hashtext('kw_migrations'))`;
 
-    for (const fileName of migrationFiles) {
-      const content = await readFile(join(migrationsDir, fileName), 'utf8');
-      const checksum = createHash('sha256').update(content).digest('hex');
-      const existing = await sql<{ checksum: string }[]>`
-        SELECT checksum FROM kw_migrations WHERE id = ${fileName}
-      `;
+    try {
+      const migrationFiles = (await readdir(migrationsDir))
+        .filter((fileName) => fileName.endsWith('.sql'))
+        .sort();
 
-      if (existing.length > 0) {
-        if (existing[0]?.checksum !== checksum) {
-          throw new Error(`Migration ${fileName} checksum mismatch`);
+      for (const fileName of migrationFiles) {
+        const content = await readFile(join(migrationsDir, fileName), 'utf8');
+        const checksum = createHash('sha256').update(content).digest('hex');
+        const existing = await sql<{ checksum: string }[]>`
+          SELECT checksum FROM kw_migrations WHERE id = ${fileName}
+        `;
+
+        if (existing.length > 0) {
+          if (existing[0]?.checksum !== checksum) {
+            throw new Error(`Migration ${fileName} checksum mismatch`);
+          }
+
+          continue;
         }
 
-        continue;
+        await sql.begin(async (tx) => {
+          await tx.unsafe(content);
+          await tx`
+            INSERT INTO kw_migrations (id, checksum)
+            VALUES (${fileName}, ${checksum})
+          `;
+        });
+
+        console.log(`applied migration ${fileName}`);
       }
-
-      await sql.begin(async (tx) => {
-        await tx.unsafe(content);
-        await tx`
-          INSERT INTO kw_migrations (id, checksum)
-          VALUES (${fileName}, ${checksum})
-        `;
-      });
-
-      console.log(`applied migration ${fileName}`);
+    } finally {
+      await sql`SELECT pg_advisory_unlock(hashtext('kw_migrations'))`;
     }
   } finally {
     await sql.end({ timeout: 5 });

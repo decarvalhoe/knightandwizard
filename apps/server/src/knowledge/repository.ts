@@ -1,8 +1,10 @@
 import { createHash } from 'node:crypto';
+import type postgres from 'postgres';
 import type { SqlClient } from '../db/client.js';
 import {
   createChunk,
   type KnowledgeChunk,
+  type KnowledgeChunkMetadata,
   type KnowledgeSourceKind,
   stableHash
 } from './chunker.js';
@@ -24,6 +26,7 @@ export interface SearchResult {
   sourceKind: KnowledgeSourceKind;
   heading: string;
   text: string;
+  metadata: KnowledgeChunkMetadata;
   score: number;
 }
 
@@ -31,7 +34,11 @@ export const DEFAULT_EMBEDDING_DIMENSIONS = 1536;
 export const DEFAULT_OLLAMA_EMBEDDING_ENDPOINT = 'http://localhost:11434/api/embed';
 export const DEFAULT_OLLAMA_EMBEDDING_MODEL = 'nomic-embed-text';
 
-export function createKnowledgeChunk(input: Omit<KnowledgeChunk, 'contentHash'>): KnowledgeChunk {
+export function createKnowledgeChunk(
+  input: Omit<KnowledgeChunk, 'contentHash' | 'metadata'> & {
+    metadata?: Partial<KnowledgeChunkMetadata>;
+  }
+): KnowledgeChunk {
   return createChunk(input);
 }
 
@@ -124,13 +131,22 @@ export async function storeKnowledgeChunks(
     }
 
     const documentHash = stableHash(sourceChunks.map((chunk) => chunk.contentHash).join('\n'));
+    const ingestedAt = new Date().toISOString();
+    const documentMetadata = buildDocumentMetadata(sourceChunks, ingestedAt);
     const documentRows = await sql<{ id: string }[]>`
-      INSERT INTO knowledge_documents (source_path, source_kind, title, content_hash)
-      VALUES (${firstChunk.sourcePath}, ${firstChunk.sourceKind}, ${firstChunk.heading}, ${documentHash})
+      INSERT INTO knowledge_documents (source_path, source_kind, title, content_hash, metadata)
+      VALUES (
+        ${firstChunk.sourcePath},
+        ${firstChunk.sourceKind},
+        ${firstChunk.heading},
+        ${documentHash},
+        ${sql.json(documentMetadata as postgres.JSONValue)}::jsonb
+      )
       ON CONFLICT (source_path) DO UPDATE SET
         source_kind = EXCLUDED.source_kind,
         title = EXCLUDED.title,
         content_hash = EXCLUDED.content_hash,
+        metadata = EXCLUDED.metadata,
         imported_at = now(),
         updated_at = now()
       RETURNING id
@@ -156,6 +172,7 @@ export async function storeKnowledgeChunks(
           heading,
           content_hash,
           text,
+          metadata,
           embedding
         ) VALUES (
           ${documentId},
@@ -165,6 +182,7 @@ export async function storeKnowledgeChunks(
           ${chunk.heading},
           ${chunk.contentHash},
           ${chunk.text},
+          ${sql.json(buildStoredChunkMetadata(chunk, ingestedAt) as postgres.JSONValue)}::jsonb,
           ${vector}::vector
         )
       `;
@@ -186,6 +204,7 @@ export async function searchKnowledgeChunks(
       source_kind AS "sourceKind",
       heading,
       text,
+      metadata,
       embedding <=> ${vector}::vector AS distance,
       1 - (embedding <=> ${vector}::vector) AS score
     FROM knowledge_chunks
@@ -200,8 +219,35 @@ export async function searchKnowledgeChunks(
     sourceKind: row.sourceKind,
     heading: row.heading,
     text: row.text,
+    metadata: row.metadata,
     score: Number(row.score)
   }));
+}
+
+function buildDocumentMetadata(
+  chunks: KnowledgeChunk[],
+  ingestedAt: string
+): Record<string, unknown> {
+  const firstChunk = chunks[0];
+
+  return {
+    ...(firstChunk?.metadata ?? {}),
+    chunk_count: chunks.length,
+    chunk_hashes: chunks.map((chunk) => chunk.contentHash),
+    ingested_at: ingestedAt
+  };
+}
+
+function buildStoredChunkMetadata(
+  chunk: KnowledgeChunk,
+  ingestedAt: string
+): KnowledgeChunkMetadata {
+  return {
+    ...chunk.metadata,
+    chunk_hash: chunk.contentHash,
+    chunk_index: chunk.chunkIndex,
+    ingested_at: ingestedAt
+  };
 }
 
 function groupChunksBySource(chunks: KnowledgeChunk[]): Map<string, KnowledgeChunk[]> {

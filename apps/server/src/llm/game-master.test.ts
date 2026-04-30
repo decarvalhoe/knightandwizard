@@ -110,6 +110,21 @@ describe('game master Mastra runtime', () => {
               score: 0.92,
               sourceKind: 'rule_markdown',
               sourcePath: 'docs/rules/01-resolution.md',
+              metadata: {
+                catalog_ids: [],
+                chunk_hash: 'a'.repeat(64),
+                chunk_index: 0,
+                contains: [],
+                domain: 'D1-resolution',
+                domains: ['D1-resolution'],
+                ingested_at: 'test',
+                priority: 100,
+                source_hash: 'b'.repeat(64),
+                source_path: 'docs/rules/01-resolution.md',
+                source_status: 'active',
+                source_type: 'canonical_rule',
+                unit_ids: []
+              },
               text: 'Un jet difficile fixe un seuil, lance une reserve de D10 et compte les succes.'
             }
           ]
