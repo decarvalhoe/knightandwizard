@@ -34,6 +34,7 @@ export const REQUIRED_APP_TABLES = [
   'game_sessions',
   'session_events',
   'session_decisions',
+  'gm_memories',
   'audit_events',
   'knowledge_documents',
   'knowledge_chunks'
@@ -149,6 +150,32 @@ export const sessionDecisions = pgTable(
       table.status
     ),
     priorityIdx: index('session_decisions_priority_idx').on(table.priority)
+  })
+);
+
+export const gmMemories = pgTable(
+  'gm_memories',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    sessionKey: text('session_key').notNull(),
+    memoryKind: text('memory_kind').notNull(),
+    subject: text('subject').notNull(),
+    summary: text('summary').notNull(),
+    importance: integer('importance').notNull().default(1),
+    source: text('source').notNull().default('game-master'),
+    payload: jsonb('payload')
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default(sql`'{}'::jsonb`),
+    occurredAt: timestamp('occurred_at', { withTimezone: true }).notNull().defaultNow(),
+    createdAt: now(),
+    updatedAt: updatedNow()
+  },
+  (table) => ({
+    sessionKeyIdx: index('gm_memories_session_key_idx').on(table.sessionKey),
+    kindIdx: index('gm_memories_kind_idx').on(table.memoryKind),
+    importanceIdx: index('gm_memories_importance_idx').on(table.importance),
+    occurredAtIdx: index('gm_memories_occurred_at_idx').on(table.occurredAt)
   })
 );
 

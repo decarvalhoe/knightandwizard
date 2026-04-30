@@ -16,6 +16,8 @@ REQUIRED_TABLES=(
   catalog_documents
   game_sessions
   session_events
+  session_decisions
+  gm_memories
   audit_events
   knowledge_documents
   knowledge_chunks

@@ -3,6 +3,12 @@ import { Mastra } from '@mastra/core/mastra';
 import { type RandomInteger } from '@knightandwizard/rules-core';
 import { buildRuleContext, searchRules, type RuleSearchResult } from '../knowledge/rules.js';
 import {
+  buildEpisodicMemoryContext,
+  createDatabaseEpisodicMemoryStore,
+  type EpisodicMemoryStore,
+  type GmMemoryEntry
+} from './episodic-memory.js';
+import {
   createGameMasterRulesTools,
   type GameMasterRuleTools,
   type RollDiceToolInput,
@@ -40,6 +46,7 @@ export interface GameMasterSceneInput {
 }
 
 export interface GameMasterSceneResponse {
+  episodicMemory: GameMasterEpisodicMemoryContext;
   knowledge: GameMasterKnowledgeContext;
   memory: WorkingMemorySession;
   model: string;
@@ -61,6 +68,7 @@ export interface GameMasterRuntimeOptions {
 }
 
 export interface GameMasterSceneOptions extends GameMasterRuntimeOptions {
+  episodicMemoryStore?: EpisodicMemoryStore;
   knowledgeLimit?: number;
   knowledgeRetriever?: KnowledgeRetriever;
   memory?: WorkingMemory;
@@ -81,6 +89,13 @@ export interface GameMasterKnowledgeContext {
   citations: GameMasterKnowledgeCitation[];
   context: string;
   error?: string;
+  query: string;
+}
+
+export interface GameMasterEpisodicMemoryContext {
+  context: string;
+  error?: string;
+  memories: GmMemoryEntry[];
   query: string;
 }
 
@@ -106,6 +121,7 @@ const defaultWorkingMemory = createWorkingMemory();
 const defaultKnowledgeRetriever: KnowledgeRetriever = {
   searchRules: (query, limit) => searchRules(query, { limit })
 };
+let defaultEpisodicMemoryStore: EpisodicMemoryStore | undefined;
 
 export function createGameMasterRuntime(options: GameMasterRuntimeOptions = {}): GameMasterRuntime {
   const model = options.model ?? getGameMasterModel();
@@ -176,6 +192,7 @@ export async function describeSceneWithGameMaster(
   });
   const sceneDescription = input.sceneDescription.trim();
   const knowledge = await retrieveKnowledgeContext(input, options);
+  const episodicMemory = await retrieveEpisodicMemoryContext(input, options);
 
   memory.appendTurn(input.sessionId, {
     content: sceneDescription,
@@ -200,14 +217,22 @@ export async function describeSceneWithGameMaster(
     });
   }
 
-  const narration = buildDeterministicNarration(sceneDescription, toolCalls, knowledge);
+  const narration = buildDeterministicNarration(
+    sceneDescription,
+    toolCalls,
+    knowledge,
+    episodicMemory
+  );
   const session = memory.appendTurn(input.sessionId, {
     content: narration,
     role: 'assistant',
     toolCalls
   });
 
+  await recordSceneMemory(input, narration, toolCalls, knowledge, options);
+
   return {
+    episodicMemory,
     knowledge,
     memory: session,
     model: runtime.model,
@@ -224,7 +249,8 @@ function getGameMasterModel(): string {
 function buildDeterministicNarration(
   sceneDescription: string,
   toolCalls: GameMasterToolCall[],
-  knowledge: GameMasterKnowledgeContext
+  knowledge: GameMasterKnowledgeContext,
+  episodicMemory: GameMasterEpisodicMemoryContext
 ): string {
   const sceneText = `La scene est posee: ${sceneDescription}`;
   const sourcesText =
@@ -233,9 +259,15 @@ function buildDeterministicNarration(
           .map((citation, index) => `[${index + 1}] ${citation.citation}`)
           .join('; ')}.`
       : '';
+  const memoryText =
+    episodicMemory.memories.length > 0
+      ? ` Memoire: ${episodicMemory.memories
+          .map((memory, index) => `[M${index + 1}] ${memory.subject}`)
+          .join('; ')}.`
+      : '';
 
   if (toolCalls.length === 0) {
-    return `${sceneText}${sourcesText} Le MJ decrit les details visibles et attend la prochaine intention.`;
+    return `${sceneText}${sourcesText}${memoryText} Le MJ decrit les details visibles et attend la prochaine intention.`;
   }
 
   const rollFragments = toolCalls.map(({ input, output }) => {
@@ -249,7 +281,7 @@ function buildDeterministicNarration(
     return `Jet D10 difficulte ${input.difficulty}${reason}: ${output.successes} succes [${output.rolls.join(', ')}].${critical}`;
   });
 
-  return `${sceneText}${sourcesText} ${rollFragments.join(' ')} Le resultat mecanique est integre a la narration sans recalcul par le LLM.`;
+  return `${sceneText}${sourcesText}${memoryText} ${rollFragments.join(' ')} Le resultat mecanique est integre a la narration sans recalcul par le LLM.`;
 }
 
 async function retrieveKnowledgeContext(
@@ -281,4 +313,75 @@ async function retrieveKnowledgeContext(
       query
     };
   }
+}
+
+async function retrieveEpisodicMemoryContext(
+  input: GameMasterSceneInput,
+  options: GameMasterSceneOptions
+): Promise<GameMasterEpisodicMemoryContext> {
+  const query = [input.sceneDescription.trim(), input.roll?.reason].filter(Boolean).join('\n');
+
+  try {
+    const memories = await getEpisodicMemoryStore(options).recall({
+      limit: 5,
+      query,
+      sessionKey: input.sessionId
+    });
+
+    return {
+      context: buildEpisodicMemoryContext(memories),
+      memories,
+      query
+    };
+  } catch (error) {
+    return {
+      context: '',
+      error: error instanceof Error ? error.message : 'Unknown episodic memory retrieval error',
+      memories: [],
+      query
+    };
+  }
+}
+
+async function recordSceneMemory(
+  input: GameMasterSceneInput,
+  narration: string,
+  toolCalls: GameMasterToolCall[],
+  knowledge: GameMasterKnowledgeContext,
+  options: GameMasterSceneOptions
+): Promise<void> {
+  try {
+    await getEpisodicMemoryStore(options).record({
+      importance: toolCalls.length > 0 ? 3 : 2,
+      kind: 'scene_event',
+      payload: {
+        knowledgeCitations: knowledge.citations,
+        toolCalls
+      },
+      sessionKey: input.sessionId,
+      subject: summarizeMemorySubject(input.sceneDescription),
+      summary: `Scene: ${input.sceneDescription.trim()} Narration: ${narration}`
+    });
+  } catch {
+    // Persistence must never block the deterministic rules response.
+  }
+}
+
+function getEpisodicMemoryStore(options: GameMasterSceneOptions): EpisodicMemoryStore {
+  if (options.episodicMemoryStore !== undefined) {
+    return options.episodicMemoryStore;
+  }
+
+  defaultEpisodicMemoryStore ??= createDatabaseEpisodicMemoryStore();
+  return defaultEpisodicMemoryStore;
+}
+
+function summarizeMemorySubject(sceneDescription: string): string {
+  const normalized = sceneDescription.replace(/\s+/g, ' ').trim();
+
+  if (normalized.length <= 80) {
+    return normalized;
+  }
+
+  return `${normalized.slice(0, 79).trim()}…`;
 }

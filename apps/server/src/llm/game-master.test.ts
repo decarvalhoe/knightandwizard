@@ -92,6 +92,7 @@ describe('game master Mastra runtime', () => {
   });
 
   it('injects retrieved rules context and cites it in the deterministic narration', async () => {
+    const recorded: unknown[] = [];
     const result = await describeSceneWithGameMaster(
       {
         sceneDescription: 'Comment resoudre un jet difficile pour crocheter une serrure ?',
@@ -111,6 +112,26 @@ describe('game master Mastra runtime', () => {
               text: 'Un jet difficile fixe un seuil, lance une reserve de D10 et compte les succes.'
             }
           ]
+        },
+        episodicMemoryStore: {
+          recall: async () => [
+            {
+              id: 'memory-sergent-malo',
+              importance: 4,
+              kind: 'npc_encounter',
+              occurredAt: '2026-04-29T20:00:00.000Z',
+              payload: {},
+              score: 2.5,
+              sessionKey: 'session-rag',
+              source: 'test',
+              subject: 'Sergent Malo',
+              summary: 'Le Sergent Malo a deja aide le groupe devant la porte nord.'
+            }
+          ],
+          record: async (memory) => {
+            recorded.push(memory);
+            return undefined;
+          }
         }
       }
     );
@@ -128,6 +149,14 @@ describe('game master Mastra runtime', () => {
     expect(result.narration).toContain(
       'Sources RAG: [1] docs/rules/01-resolution.md > Jets difficiles'
     );
+    expect(result.episodicMemory.context).toContain('[M1] Sergent Malo');
+    expect(result.narration).toContain('Memoire: [M1] Sergent Malo');
+    expect(recorded).toEqual([
+      expect.objectContaining({
+        kind: 'scene_event',
+        sessionKey: 'session-rag'
+      })
+    ]);
   });
 });
 

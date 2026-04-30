@@ -131,6 +131,8 @@ Tables applicatives initiales :
 - `catalog_documents`
 - `game_sessions`
 - `session_events`
+- `session_decisions`
+- `gm_memories`
 - `audit_events`
 - `knowledge_documents`
 - `knowledge_chunks` avec embeddings `vector(1536)`
