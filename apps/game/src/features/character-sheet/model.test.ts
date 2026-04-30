@@ -46,6 +46,71 @@ describe('character sheet model', () => {
     ).toEqual(['identity', 'full-audit', 'gm-notes', 'gm-controls']);
   });
 
+  it('exposes level-point progression separately from creation skill distribution', () => {
+    const view = buildCharacterSheetView({
+      character: sampleMagicianCharacter(),
+      inventory: sampleInventory(),
+      mode: 'complete',
+      spells: sampleSpells()
+    });
+
+    expect(view.levelProgression).toEqual({
+      level: 1,
+      levelPoints: 24,
+      levelUpAt: 40,
+      primarySkillIds: []
+    });
+  });
+
+  it('summarizes magician creation budgets with converted skill points for extra spells', () => {
+    const view = buildCharacterSheetView({
+      character: createPlayerCharacter({
+        attributes: sampleAttributes(),
+        classProfile: {
+          id: 'wizard',
+          name: 'Mage',
+          orientationId: 'magician'
+        },
+        id: 'pc-converted-mage',
+        name: 'Elaria',
+        orientation: { id: 'magician', isMagical: true, name: 'Magicien' },
+        race: {
+          attributeMax: Object.fromEntries(
+            ATTRIBUTE_KEYS.map((key) => [key, 6])
+          ) as CharacterAttributes,
+          category: 20,
+          id: 'human',
+          name: 'Humain',
+          speedFactor: 8,
+          vitality: 24,
+          willFactor: 10
+        },
+        skills: [
+          { id: 'arcana', points: 4 },
+          { id: 'lore', points: 4 },
+          { id: 'rituals', points: 2 }
+        ],
+        spells: [
+          { id: 'ward', points: 2 },
+          { id: 'spark', points: 1 }
+        ]
+      }),
+      inventory: sampleInventory(),
+      mode: 'complete',
+      spells: sampleSpells()
+    });
+
+    expect(view.creationBudget).toEqual({
+      convertedSkillPoints: 10,
+      extraSpellPoints: 1,
+      freeSpellPoints: 2,
+      skillPointLimit: 10,
+      skillPointsSpent: 10,
+      spellPoints: 3
+    });
+    expect(view.levelProgression.levelPoints).toBe(16);
+  });
+
   it('rolls an attribute check from effective attributes and rules-core dice', () => {
     const character = sampleCharacter();
     const rolls = [10, 8, 1, 9, 6];

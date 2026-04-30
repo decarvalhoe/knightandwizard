@@ -207,13 +207,19 @@ export function validateAttributeDistribution(
 
 export function validateSkillDistribution(
   skills: CharacterSkill[],
-  raceCategory: number
+  raceCategory: number,
+  extraSpellPoints = 0
 ): CharacterValidationResult {
   const errors: string[] = [];
   const total = sumPoints(skills);
+  const requiredSkillPoints = raceCategory - extraSpellPoints * 10;
 
-  if (total !== raceCategory) {
-    errors.push(`skill points must total ${raceCategory} at creation`);
+  if (requiredSkillPoints < 0) {
+    errors.push(`extra spell points cannot consume more than ${raceCategory} skill points`);
+  }
+
+  if (requiredSkillPoints >= 0 && total !== requiredSkillPoints) {
+    errors.push(`skill points must total ${requiredSkillPoints} at creation`);
   }
 
   for (const skill of skills) {
@@ -225,17 +231,23 @@ export function validateSkillDistribution(
 
 export function validateSpellDistribution(
   spells: CharacterSpell[],
-  isMagician: boolean
+  isMagician: boolean,
+  extraSpellPoints = 0
 ): CharacterValidationResult {
   const errors: string[] = [];
   const total = sumPoints(spells);
+  const requiredSpellPoints = isMagician ? 2 + extraSpellPoints : 0;
 
   if (!isMagician && total > 0) {
     errors.push('non-magician characters cannot receive spell points at creation');
   }
 
-  if (isMagician && total !== 2) {
-    errors.push('magician spell points must total 2 at creation');
+  if (isMagician && total < 2) {
+    errors.push('magician spell points must be at least 2 at creation');
+  }
+
+  if (isMagician && total >= 2 && total !== requiredSpellPoints) {
+    errors.push(`magician spell points must total ${requiredSpellPoints} at creation`);
   }
 
   for (const spell of spells) {
@@ -247,10 +259,13 @@ export function validateSpellDistribution(
 
 export function createPlayerCharacter(input: CreatePlayerCharacterInput): PlayerCharacter {
   const spells = input.spells ?? [];
+  const magician = isMagician(input.orientation);
+  const spellTotal = sumPoints(spells);
+  const extraSpellPoints = magician ? Math.max(0, spellTotal - 2) : 0;
   const validationResults = [
     validateAttributeDistribution(input.attributes, input.race),
-    validateSkillDistribution(input.skills, input.race.category),
-    validateSpellDistribution(spells, isMagician(input.orientation))
+    validateSkillDistribution(input.skills, input.race.category, extraSpellPoints),
+    validateSpellDistribution(spells, magician, extraSpellPoints)
   ];
   const errors = validationResults.flatMap((result) => result.errors);
   const warnings = validationResults.flatMap((result) => result.warnings);

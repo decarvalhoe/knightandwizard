@@ -3,11 +3,7 @@
 import { BookOpen, Dices, Minus, PackagePlus, Shield, Sparkles, UserCog } from 'lucide-react';
 import { useMemo, useState, type ReactNode } from 'react';
 
-import {
-  calculateLevelProgression,
-  type AttributeKey,
-  type Character
-} from '@knightandwizard/rules-core';
+import { type AttributeKey, type Character } from '@knightandwizard/rules-core';
 
 import {
   addInventoryItem,
@@ -63,12 +59,10 @@ export function CharacterSheet({
     () => buildCharacterSheetView({ character, inventory, mode, spells }),
     [character, inventory, mode, spells]
   );
-  const level = calculateLevelProgression(character);
   const attributeTotal = attributeOrder.reduce(
     (total, key) => total + character.attributes[key],
     0
   );
-  const skillTotal = character.skills.reduce((total, skill) => total + skill.points, 0);
   const skills = skillTreeRows(character.skills, skillCatalog);
   const trainedSkillCount = skills.filter((skill) => !skill.isImplicitZero).length;
 
@@ -179,7 +173,10 @@ export function CharacterSheet({
               <div>
                 <h2 className="text-xl font-semibold text-ink">Compétences</h2>
                 <p className="text-sm text-ink/58">
-                  Points {skillTotal}/{character.race.category}
+                  Points {view.creationBudget.skillPointsSpent}/
+                  {view.creationBudget.skillPointLimit}
+                  {view.creationBudget.convertedSkillPoints > 0 &&
+                    ` · ${view.creationBudget.convertedSkillPoints} convertis en sorts`}
                 </p>
                 <p className="mt-1 text-sm text-ink/58">
                   Catalogue implicite : {skills.length} entrées, {trainedSkillCount} notées sur la
@@ -193,7 +190,9 @@ export function CharacterSheet({
                 )}
               </div>
               <span className="rounded-md bg-gold px-3 py-2 text-sm font-semibold text-ink">
-                Niveau {level.level ?? 'NA'}
+                Niveau {view.levelProgression.level ?? 'NA'} ·{' '}
+                {view.levelProgression.levelPoints ?? 'NA'} /{' '}
+                {view.levelProgression.levelUpAt ?? 'NA'} points
               </span>
             </div>
             <div className="mt-4 grid gap-3">
@@ -344,6 +343,13 @@ export function CharacterSheet({
             <Metric label="Points" value={view.spellSummary.pointsCommitted} />
             <Metric label="Énergie" value={view.spellSummary.energyAvailable} />
           </div>
+          {character.orientation.isMagical && (
+            <p className="rounded-md bg-vellum/70 p-3 text-sm leading-6 text-ink/72">
+              Création : {view.creationBudget.spellPoints} points de sort ={' '}
+              {view.creationBudget.freeSpellPoints} gratuits +{' '}
+              {view.creationBudget.extraSpellPoints} achetés.
+            </p>
+          )}
           {spells.map((spell) => (
             <div className="rounded-md bg-paper p-3" key={spell.id}>
               <div className="flex items-center justify-between gap-3">

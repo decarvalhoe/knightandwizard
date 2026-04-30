@@ -77,21 +77,42 @@ describe('character creation validation', () => {
   });
 
   it('validates magician spell creation points separately from skills', () => {
-    expect(validateSpellDistribution([{ id: 'firebolt', points: 2 }], true)).toMatchObject({
+    expect(validateSpellDistribution([{ id: 'firebolt', points: 2 }], true, 0)).toMatchObject({
       valid: true,
       errors: [],
       total: 2
     });
 
-    expect(validateSpellDistribution([{ id: 'firebolt', points: 2 }], false)).toMatchObject({
+    expect(validateSpellDistribution([{ id: 'firebolt', points: 2 }], false, 0)).toMatchObject({
       valid: false,
       errors: ['non-magician characters cannot receive spell points at creation']
     });
 
-    expect(validateSpellDistribution([], true)).toMatchObject({
+    expect(validateSpellDistribution([], true, 0)).toMatchObject({
       valid: false,
-      errors: ['magician spell points must total 2 at creation'],
+      errors: ['magician spell points must be at least 2 at creation'],
       total: 0
+    });
+
+    expect(validateSpellDistribution([{ id: 'firebolt', points: 1 }], true, 1)).toMatchObject({
+      valid: false,
+      errors: ['magician spell points must be at least 2 at creation'],
+      total: 1
+    });
+
+    expect(
+      validateSpellDistribution(
+        [
+          { id: 'firebolt', points: 2 },
+          { id: 'ward', points: 1 }
+        ],
+        true,
+        1
+      )
+    ).toMatchObject({
+      valid: true,
+      errors: [],
+      total: 3
     });
   });
 
@@ -303,6 +324,52 @@ describe('character derived state', () => {
       levelUpAt: 40,
       primarySkillIds: []
     });
+  });
+
+  it('allows magicians to convert creation skill points into additional spell points', () => {
+    const oneExtraSpell = createPlayerCharacter({
+      id: 'pc-mage-extra-spell',
+      name: 'Mirelda',
+      race: humanRace(),
+      orientation: { id: 'magician', name: 'Magicien', isMagical: true },
+      classProfile: {
+        id: 'wizard',
+        name: 'Mage',
+        orientationId: 'magician'
+      },
+      attributes: validAttributes(),
+      skills: [
+        { id: 'arcana', points: 4 },
+        { id: 'lore', points: 4 },
+        { id: 'rituals', points: 2 }
+      ],
+      spells: [
+        { id: 'firebolt', points: 2 },
+        { id: 'ward', points: 1 }
+      ]
+    });
+    const allInSpells = createPlayerCharacter({
+      id: 'pc-mage-four-spells',
+      name: 'Elaria',
+      race: humanRace(),
+      orientation: { id: 'magician', name: 'Magicien', isMagical: true },
+      classProfile: {
+        id: 'wizard',
+        name: 'Mage',
+        orientationId: 'magician'
+      },
+      attributes: validAttributes(),
+      skills: [],
+      spells: [
+        { id: 'firebolt', points: 1 },
+        { id: 'ward', points: 1 },
+        { id: 'spark', points: 1 },
+        { id: 'veil', points: 1 }
+      ]
+    });
+
+    expect(calculateLevelProgression(oneExtraSpell).levelPoints).toBe(16);
+    expect(calculateLevelProgression(allInSpells).levelPoints).toBe(8);
   });
 
   it('keeps familiars outside normal level progression like the legacy PHP', () => {

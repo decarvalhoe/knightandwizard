@@ -1,5 +1,6 @@
 import {
   ATTRIBUTE_KEYS,
+  calculateLevelProgression,
   calculateEffectiveAttributes,
   rollDice,
   type AttributeKey,
@@ -7,6 +8,7 @@ import {
   type CharacterAttributes,
   type CharacterSkill,
   type DiceRollResult,
+  type LevelProgression,
   type RandomInteger
 } from '@knightandwizard/rules-core';
 
@@ -58,10 +60,21 @@ export interface CharacterSheetSection {
   label: string;
 }
 
+export interface CreationBudgetSummary {
+  convertedSkillPoints: number;
+  extraSpellPoints: number;
+  freeSpellPoints: number;
+  skillPointLimit: number;
+  skillPointsSpent: number;
+  spellPoints: number;
+}
+
 export interface CharacterSheetView {
   attributes: CharacterAttributes;
   carriedWeightKg: number;
+  creationBudget: CreationBudgetSummary;
   equippedWeapons: InventoryItem[];
+  levelProgression: LevelProgression;
   mode: CharacterSheetMode;
   sections: CharacterSheetSection[];
   spellSummary: SpellSlotSummary;
@@ -130,7 +143,9 @@ export function buildCharacterSheetView(input: {
   return {
     attributes: calculateEffectiveAttributes(input.character),
     carriedWeightKg: totalInventoryWeight(input.inventory),
+    creationBudget: summarizeCreationBudget(input.character),
     equippedWeapons: input.inventory.filter((item) => item.category === 'weapon' && item.equipped),
+    levelProgression: calculateLevelProgression(input.character),
     mode: input.mode,
     sections: sectionsByMode[input.mode].map((id) => ({ id, label: sectionLabels[id] })),
     spellSummary: summarizeSpellSlots(input.character, input.spells)
@@ -195,6 +210,23 @@ export function summarizeSpellSlots(character: Character, spells: SpellEntry[]):
   };
 }
 
+export function summarizeCreationBudget(character: Character): CreationBudgetSummary {
+  const skillPointsSpent = sumEntryPoints(character.skills);
+  const spellPoints = sumEntryPoints(character.spells);
+  const freeSpellPoints = isMagicianCharacter(character) ? 2 : 0;
+  const extraSpellPoints = Math.max(0, spellPoints - freeSpellPoints);
+  const convertedSkillPoints = extraSpellPoints * 10;
+
+  return {
+    convertedSkillPoints,
+    extraSpellPoints,
+    freeSpellPoints,
+    skillPointLimit: character.race.category - convertedSkillPoints,
+    skillPointsSpent,
+    spellPoints
+  };
+}
+
 export function skillPoints(skills: CharacterSkill[], skillId: string): number {
   return skills.find((skill) => skill.id === skillId)?.points ?? 0;
 }
@@ -251,6 +283,14 @@ function normalizeInventoryItem(item: InventoryItem): InventoryItem {
 
 function roundToTenth(value: number): number {
   return Math.round(value * 10) / 10;
+}
+
+function sumEntryPoints(entries: Array<{ points: number }>): number {
+  return entries.reduce((total, entry) => total + entry.points, 0);
+}
+
+function isMagicianCharacter(character: Character): boolean {
+  return character.orientation.isMagical === true || character.orientation.id === 'magician';
 }
 
 function mergeSkillCatalogWithCharacterSkills(
