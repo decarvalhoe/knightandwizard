@@ -14,7 +14,7 @@ describe('catalog import plan', () => {
     const summary = summarizePlan(plan);
 
     expect(summary.weapons).toBe(107);
-    expect(summary.bestiary).toBe(30);
+    expect(summary.bestiary).toBe(31);
     expect(summary.protections).toBe(71);
     expect(summary.potions).toBe(5);
     expect(summary.nations).toBe(29);

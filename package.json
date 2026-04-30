@@ -50,7 +50,8 @@
     "canonical:check": "tsx tools/canonical.ts",
     "canonical:check:strict": "tsx tools/canonical.ts --strict",
     "catalogs:build:competences": "tsx tools/build-skills-catalog.ts",
-    "catalogs:build:orientations-classes": "tsx tools/build-orientations-classes-catalog.ts"
+    "catalogs:build:orientations-classes": "tsx tools/build-orientations-classes-catalog.ts",
+    "catalogs:enrich:bestiaire": "tsx tools/enrich-bestiaire-source-refs.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

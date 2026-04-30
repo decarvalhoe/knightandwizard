@@ -5,9 +5,18 @@
 
 version: 1
 metadata:
-  source: paper
+  source: web
   imported_at: "2026-04-25"
-  total_entries: 30
+  updated_at: "2026-04-30"
+  total_entries: 31
+  total_playable_races: 25
+  source_files:
+    - path: data/legacy/web-scraped/documents/bestiaire/index.md
+      sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+      kind: web
+    - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+      sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+      kind: paper
 
 # Schéma minimal (cf. R-11.3) :
 #   id, name, category, size_m, life_expectancy
@@ -50,6 +59,13 @@ creatures:
     social_structure: civilized
     playable: true
     lore: "Race-pivot polyvalente. Capable du meilleur comme du pire."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:humain"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:humain"
     metadata: { source: paper, version: 1 }
 
   - id: demi_elfe
@@ -78,6 +94,13 @@ creatures:
     social_structure: civilized
     playable: true
     lore: "Issu d'une union humain × elfe. Mentalité variable selon enfance."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:demi_elfe"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:demi_elfe"
     metadata: { source: paper, version: 1 }
 
   # === ELFES ===
@@ -112,6 +135,13 @@ creatures:
     social_structure: civilized
     playable: true
     lore: "Cités blanches utopiques, sagesse, calme."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:haut_elfe"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:haut_elfe"
     metadata: { source: paper, version: 1 }
 
   - id: elfe_des_bois
@@ -144,6 +174,13 @@ creatures:
     social_structure: civilized
     playable: true
     lore: "Philosophie de l'équilibre, archers réputés."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:elfe_des_bois"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:elfe_des_bois"
     metadata: { source: paper, version: 1 }
 
   - id: elfe_sombre
@@ -176,6 +213,13 @@ creatures:
     social_structure: civilized
     playable: true
     lore: "Sans larmes, sans sentiments envers les étrangers. Présage funeste."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:elfe_sombre"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:elfe_sombre"
     metadata: { source: paper, version: 1 }
 
   - id: elfe_de_nacre
@@ -210,6 +254,13 @@ creatures:
     playable: true
     lore: "Le plus cruel des peuples. Drogues, piercings, prisonniers."
     notes_kw_invention: true
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:elfe_de_nacre"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:elfe_de_nacre"
     metadata: { source: paper, version: 1 }
 
   # === PETITES RACES ===
@@ -246,6 +297,13 @@ creatures:
     social_structure: civilized
     playable: true
     lore: "Entêtés, déterminés. Meilleurs artisans (architecture, joaillerie, forge, brasseurs de bières)."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:nain"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:nain"
     metadata: { source: paper, version: 1 }
 
   - id: hobbit
@@ -277,6 +335,13 @@ creatures:
     social_structure: civilized
     playable: true
     lore: "Paisibles paysans. Tabac, agriculture. Déplacement silencieux."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:hobbit"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:hobbit"
     metadata: { source: paper, version: 1 }
 
   - id: gnome
@@ -307,6 +372,13 @@ creatures:
     social_structure: civilized
     playable: true
     lore: "Mystérieux, joyeux. Plus grands illusionnistes."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:gnome"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:gnome"
     metadata: { source: paper, version: 1 }
 
   - id: gobelin
@@ -337,6 +409,13 @@ creatures:
     social_structure: tribal
     playable: true
     lore: "Sale, vert, sournois. Pillent en nombre. Nocturne."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:gobelin"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:gobelin"
     metadata: { source: paper, version: 1 }
 
   # === RACES MASSIVES ===
@@ -369,6 +448,13 @@ creatures:
     social_structure: tribal
     playable: true
     lore: "Brutalité, violence, pillage. Soldats parfaits sous bon chef."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:orc"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:orc"
     metadata: { source: paper, version: 1 }
 
   - id: ogre
@@ -399,6 +485,13 @@ creatures:
     social_structure: tribal
     playable: true
     lore: "Énormes créatures grasses. Carnivores, friands de chair humaine, surtout enfants."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:ogre"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:ogre"
     metadata: { source: paper, version: 1 }
 
   - id: troll
@@ -431,6 +524,13 @@ creatures:
     social_structure: solitary
     playable: true
     lore: "Force brute. Régénération, mais pétrifié à l'aube."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:troll"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:troll"
     metadata: { source: paper, version: 1 }
 
   # === CRÉATURES MYTHOLOGIQUES ===
@@ -463,6 +563,13 @@ creatures:
     social_structure: tribal
     playable: true
     lore: "Forces de la nature. Esprits violents, attirance pour le bon vin."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:centaure"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:centaure"
     metadata: { source: paper, version: 1 }
 
   - id: dryade
@@ -491,6 +598,13 @@ creatures:
     social_structure: solitary
     playable: true
     lore: "Nymphes des arbres. Toujours féminines. Transformation en arbre possible."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:dryade"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:dryade"
     metadata: { source: paper, version: 1 }
 
   - id: ondine
@@ -519,6 +633,13 @@ creatures:
     social_structure: solitary
     playable: true
     lore: "Nymphes des eaux. Charme surnaturel. Acquièrent une âme par mariage."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:ondine"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:ondine"
     metadata: { source: paper, version: 1 }
 
   # === FÉLIDÉS ===
@@ -551,6 +672,13 @@ creatures:
     playable: true
     lore: "Le plus petit des félidés. Mélange humain × petit félin (chat, lynx, ocelot)."
     notes_kw_invention: true
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:chigr"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:chigr"
     metadata: { source: paper, version: 1 }
 
   - id: khochigr
@@ -581,6 +709,13 @@ creatures:
     playable: true
     lore: "Mélange équilibré humain × félin moyen (léopard, panthère, puma, jaguar, guépard)."
     notes_kw_invention: true
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:khochigr"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:khochigr"
     metadata: { source: paper, version: 1 }
 
   - id: khogr
@@ -611,6 +746,13 @@ creatures:
     playable: true
     lore: "Plus grand des félidés (lion, tigre). Force de la nature, prédateur."
     notes_kw_invention: true
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:khogr"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:khogr"
     metadata: { source: paper, version: 1 }
 
   # === HOMMES-X (anthropomorphes) ===
@@ -644,6 +786,13 @@ creatures:
     playable: true
     lore: "Hommes-loup / Hommes-chien. Endurance et flaire. Sous-espèce : Gnolls (mélange humain + hyène)."
     sub_species: ["gnolls"]
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:canidae"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:canidae"
     metadata: { source: paper, version: 1 }
 
   - id: homme_lezard
@@ -676,6 +825,13 @@ creatures:
     playable: true
     lore: "Imperturbables, escarmouches ciblées. Pacifiques, isolationnistes."
     notes_kw_invention: true
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:homme_lezard"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:homme_lezard"
     metadata: { source: paper, version: 1 }
 
   - id: homme_oiseau
@@ -707,6 +863,13 @@ creatures:
     playable: true
     lore: "Pacifique, discret, légendaire."
     notes_kw_invention: true
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:homme_oiseau"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:homme_oiseau"
     metadata: { source: paper, version: 1 }
 
   - id: homme_rat
@@ -738,6 +901,13 @@ creatures:
     playable: true
     lore: "Sociaux, imprévisibles, adaptatifs. Empereur héréditaire par joutes."
     notes_kw_invention: true
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:homme_rat"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:homme_rat"
     metadata: { source: paper, version: 1 }
 
   # === MORT-VIVANTS ===
@@ -768,6 +938,13 @@ creatures:
     social_structure: solitary
     playable: false
     lore: "Âmes errantes avec mission. Possession = 1 par défaut."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:fantome"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:fantome"
     metadata: { source: paper, version: 1 }
 
   - id: squelette
@@ -796,6 +973,13 @@ creatures:
     social_structure: pack
     playable: false
     lore: "Relevés par nécromancie. Sans peur, sans tentation, sans remords."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:squelette"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:squelette"
     metadata: { source: paper, version: 1 }
 
   - id: vampire
@@ -825,6 +1009,13 @@ creatures:
     social_structure: solitary
     playable: true  # via transformation D3 Q-D3.5
     lore: "Humains qui ont embrassé la mort. Beauté ténébreuse, canines, peau froide."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:vampire"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:vampire"
     metadata: { source: paper, version: 1 }
 
   - id: loup_garou
@@ -854,6 +1045,13 @@ creatures:
     social_structure: pack  # parmi les loups
     playable: true  # via Morsure lupine D3 Q-D3.5
     lore: "Vit parmi les hommes, transformation pleine lune. Société secrète parmi les meutes de loups."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:loup_garou"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:loup_garou"
     metadata: { source: paper, version: 1 }
 
   # === ANIMAUX ===
@@ -883,6 +1081,13 @@ creatures:
     social_structure: pack  # troupeau
     playable: false
     lore: "Plus belle conquête de l'homme. Transport, symbole de richesse."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:cheval"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:cheval"
     metadata: { source: paper, version: 1, default_mount: true }
 
   - id: chat
@@ -910,6 +1115,13 @@ creatures:
     social_structure: solitary
     playable: false
     lore: "Lien occulte. Familier de sorcière par excellence. Neuf vies."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:chat"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:chat"
     metadata: { source: paper, version: 1, common_familiar: true }
 
   - id: loup
@@ -938,4 +1150,44 @@ creatures:
     social_structure: pack  # 3-15 individus
     playable: false
     lore: "Prédateur des forêts. En meute (3-15). Origine du mythe loup-garou."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:loup"
+      - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
+        sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
+        ref: "entry:loup"
     metadata: { source: paper, version: 1 }
+
+  # === MORTS-VIVANTS (web only) ===
+
+  - id: zombie
+    name: "Zombie"
+    category: undead
+    size_m: 1.75
+    life_expectancy: 0
+    xp_category: 18
+    vitality_base: 20
+    speed_factor_base: 12
+    will_factor_base: 1
+    attribute_max:
+      strength: 5
+      dexterity: 3
+      stamina: 6
+      aestheticism: 1
+      charisma: 1
+      empathy: 1
+      intelligence: 1
+      reflexes: 2
+      perception: 2
+    innate_atouts: []
+    intelligence_level: minimal
+    language_capable: false
+    social_structure: horde
+    playable: false
+    lore: "Cadavre animé par nécromancie. Présent web-canonique uniquement (absent du paper)."
+    source_refs:
+      - path: data/legacy/web-scraped/documents/bestiaire/index.md
+        sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
+        ref: "entry:zombie"
+    metadata: { source: web, version: 1, web_only: true }

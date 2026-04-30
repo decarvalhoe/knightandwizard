@@ -10,7 +10,7 @@ import {
 
 const expectedCollections = [
   ['armes.yaml', 'weapons', 107],
-  ['bestiaire.yaml', 'creatures', 30],
+  ['bestiaire.yaml', 'creatures', 31],
   ['protections.yaml', 'armor_pieces', 59],
   ['protections.yaml', 'shields', 12],
   ['potions.yaml', 'potions', 5],
@@ -120,6 +120,45 @@ describe('catalog Zod schemas', () => {
       } else if (klass.primary_skill_choice === 'fixed') {
         expect(klass.primary_skill_id).not.toBeNull();
         expect(skillIds.has(klass.primary_skill_id!)).toBe(true);
+      }
+    }
+  });
+
+  it('rejects demo race IDs and exposes the 26 canonical playable races', async () => {
+    const catalog = await loadValidatedCatalog('bestiaire.yaml');
+    const ids = new Set(catalog.creatures.map((c) => c.id));
+    const playable = catalog.creatures.filter((c) => c.playable);
+
+    for (const demoId of ['human', 'elf', 'dwarf']) {
+      expect(ids.has(demoId)).toBe(false);
+    }
+
+    expect(playable).toHaveLength(25);
+    expect(ids.has('humain')).toBe(true);
+    expect(ids.has('haut_elfe')).toBe(true);
+    expect(ids.has('nain')).toBe(true);
+    expect(ids.has('zombie')).toBe(true);
+  });
+
+  it('preserves canonical source files at the bestiaire catalog level', async () => {
+    const catalog = await loadValidatedCatalog('bestiaire.yaml');
+    const sourceFiles = (catalog.metadata as { source_files?: Array<{ path: string }> })
+      .source_files;
+
+    expect(sourceFiles).toBeDefined();
+    expect(sourceFiles?.map((s) => s.path)).toEqual(
+      expect.arrayContaining([
+        'data/legacy/web-scraped/documents/bestiaire/index.md',
+        'data/legacy/paper/regles-papier/extracted/listes/bestiaire.md'
+      ])
+    );
+
+    for (const creature of catalog.creatures) {
+      if (creature.source_refs) {
+        for (const ref of creature.source_refs) {
+          expect(ref.path).toMatch(/data\/legacy\//);
+          expect(ref.sha256).toMatch(/^[0-9a-f]{64}$/);
+        }
       }
     }
   });

@@ -72,6 +72,7 @@ export const BestiaryEntrySchema = z
     attribute_max: z.object({}).passthrough(),
     language_capable: z.boolean(),
     playable: z.boolean(),
+    source_refs: z.array(z.lazy(() => SourceRefSchema)).optional(),
     metadata: EntryMetadataSchema.optional()
   })
   .passthrough();

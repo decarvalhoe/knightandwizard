@@ -42,6 +42,16 @@ Commande :
 pnpm catalogs:build:orientations-classes
 ```
 
+### `enrich-bestiaire-source-refs.ts`
+
+Enrichit `data/catalogs/bestiaire.yaml` (catalogue races + créatures) en injectant un bloc `source_refs` par entrée, sans casser la structure manuelle (commentaires, sections « === HUMAINS ET PROCHES === », etc.). Référence à la fois la source web canonique et la source paper, sauf pour Zombie (web-only). Idempotent : détecte les entrées déjà enrichies.
+
+Commande :
+
+```bash
+pnpm catalogs:enrich:bestiaire
+```
+
 ### `index-knowledge-base.ts`
 
 Construit l'index RAG depuis `docs/canonical/source-manifest.yaml`, pas depuis une liste codée en dur. Les sources `active` et `raw_reference_only` produisent au moins un chunk avec metadata de traçabilité : chemin source, hash source, type, priorité, domaine, IDs liés, hash de chunk et date d'ingestion.

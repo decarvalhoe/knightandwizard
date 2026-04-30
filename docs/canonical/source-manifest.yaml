@@ -7906,7 +7906,7 @@ sources:
     notes: "Product catalog table."
   - id: "data-catalogs-bestiaire"
     path: "data/catalogs/bestiaire.yaml"
-    sha256: "28e152071e42d52f93ec6b20e74fae1dd458b53b19f9c556509d007b05cd89ff"
+    sha256: "0fd177814a8cba18e28ff59df5bd40b2d44dca343545088501b415dbffcdd763"
     source_type: catalog_yaml
     priority: 90
     status: active
