@@ -275,7 +275,7 @@ function isMagician(character: Character): boolean {
   return (
     character.orientation.isMagical === true ||
     character.orientation.id === '1' ||
-    character.orientation.id === 'magician'
+    character.orientation.id === 'magicien'
   );
 }
 

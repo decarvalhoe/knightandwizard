@@ -59,9 +59,9 @@ export const sampleCharacter: Character = createPlayerCharacter({
     strength: 3
   },
   classProfile: {
-    id: 'mage-arms',
+    id: 'enchanteur',
     name: "Mage d'armes",
-    orientationId: 'magician',
+    orientationId: 'magicien',
     primarySkillIds: []
   },
   id: 'pc-aveline',
@@ -74,7 +74,7 @@ export const sampleCharacter: Character = createPlayerCharacter({
   },
   modifiers: [{ id: 'disciplined-training', target: 'strength', value: 1 }],
   name: 'Aveline de Brumeval',
-  orientation: { id: 'magician', isMagical: true, name: 'Magicien' },
+  orientation: { id: 'magicien', isMagical: true, name: 'Magicien' },
   race: {
     attributeMax: Object.fromEntries(ATTRIBUTE_KEYS.map((key) => [key, 6])) as CharacterAttributes,
     category: 20,

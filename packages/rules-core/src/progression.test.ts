@@ -170,14 +170,14 @@ describe('spell progression', () => {
 
 function fighter(): Character {
   return createPlayerCharacter({
-    id: 'fighter',
+    id: 'guerrier',
     name: 'Jehan',
     race: humanRace(),
-    orientation: { id: 'fighter', name: 'Guerrier' },
+    orientation: { id: 'guerrier', name: 'Guerrier' },
     classProfile: {
-      id: 'guardian',
+      id: 'garde',
       name: 'Garde',
-      orientationId: 'fighter',
+      orientationId: 'guerrier',
       primarySkillIds: ['epee']
     },
     attributes: validAttributes(),
@@ -196,11 +196,11 @@ function magician(spells = [{ id: 'firebolt', points: 2 }]): Character {
     id: 'mage',
     name: 'Mirelda',
     race: humanRace(),
-    orientation: { id: 'magician', name: 'Magicien', isMagical: true },
+    orientation: { id: 'magicien', name: 'Magicien', isMagical: true },
     classProfile: {
-      id: 'wizard',
+      id: 'sorcier',
       name: 'Mage',
-      orientationId: 'magician'
+      orientationId: 'magicien'
     },
     attributes: validAttributes(),
     skills: [

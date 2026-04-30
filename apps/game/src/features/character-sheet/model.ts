@@ -290,7 +290,7 @@ function sumEntryPoints(entries: Array<{ points: number }>): number {
 }
 
 function isMagicianCharacter(character: Character): boolean {
-  return character.orientation.isMagical === true || character.orientation.id === 'magician';
+  return character.orientation.isMagical === true || character.orientation.id === 'magicien';
 }
 
 function mergeSkillCatalogWithCharacterSkills(

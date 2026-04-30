@@ -51,13 +51,13 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
     {
       id: 'martial-drill',
       label: 'Discipline martiale',
-      orientationIds: ['fighter'],
+      orientationIds: ['guerrier'],
       source: 'orientation'
     },
     {
       id: 'arcane-spark',
       label: 'Etincelle arcanique',
-      orientationIds: ['magician'],
+      orientationIds: ['magicien'],
       source: 'orientation'
     },
     {
@@ -67,7 +67,7 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
       source: 'orientation'
     },
     {
-      classIds: ['knight'],
+      classIds: ['garde'],
       id: 'shield-line',
       label: 'Ligne de bouclier',
       source: 'class'
@@ -79,19 +79,19 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
       source: 'class'
     },
     {
-      classIds: ['mage-arms'],
+      classIds: ['enchanteur'],
       id: 'weapon-bond',
       label: 'Lien de lame',
       source: 'class'
     },
     {
-      classIds: ['mage-arms', 'lore-mage'],
+      classIds: ['enchanteur', 'devin'],
       id: 'spell-focus',
       label: 'Focaliseur',
       source: 'class'
     },
     {
-      classIds: ['blacksmith'],
+      classIds: ['forgeron'],
       id: 'forge-hand',
       label: 'Main de forge',
       source: 'class'
@@ -99,31 +99,31 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
   ],
   classes: [
     {
-      id: 'knight',
+      id: 'garde',
       name: 'Chevalier',
-      orientationId: 'fighter',
+      orientationId: 'guerrier',
       primarySkillIds: ['epee-batarde']
     },
     {
       id: 'ranger',
       name: 'Rodeur',
-      orientationId: 'fighter',
+      orientationId: 'guerrier',
       primarySkillIds: ['chasse']
     },
     {
-      id: 'mage-arms',
+      id: 'enchanteur',
       name: "Mage d'armes",
-      orientationId: 'magician',
+      orientationId: 'magicien',
       primarySkillIds: []
     },
     {
-      id: 'lore-mage',
+      id: 'devin',
       name: 'Mage erudit',
-      orientationId: 'magician',
+      orientationId: 'magicien',
       primarySkillIds: []
     },
     {
-      id: 'blacksmith',
+      id: 'forgeron',
       name: 'Forgeron',
       orientationId: 'artisan',
       primarySkillIds: ['forge']
@@ -137,8 +137,8 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
     { id: 'tool-roll', name: "Rouleau d'outils" }
   ],
   orientations: [
-    { id: 'fighter', isMagical: false, name: 'Guerrier' },
-    { id: 'magician', isMagical: true, name: 'Magicien' },
+    { id: 'guerrier', isMagical: false, name: 'Guerrier' },
+    { id: 'magicien', isMagical: true, name: 'Magicien' },
     { id: 'artisan', isMagical: false, name: 'Artisan' }
   ],
   races: [

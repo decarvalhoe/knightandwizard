@@ -436,7 +436,7 @@ function sumPoints(entries: Array<{ points: number }>): number {
 }
 
 function isMagician(orientation: CharacterOrientationProfile): boolean {
-  return orientation.isMagical === true || orientation.id === '1' || orientation.id === 'magician';
+  return orientation.isMagical === true || orientation.id === '1' || orientation.id === 'magicien';
 }
 
 function isFamiliar(race: RaceProfile): boolean {

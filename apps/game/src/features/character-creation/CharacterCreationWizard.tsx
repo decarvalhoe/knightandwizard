@@ -42,10 +42,10 @@ import {
 import { attributeLabels, characterCreationCatalog } from './sample';
 
 const draftTemplate = createCreationDraft(characterCreationCatalog, {
-  classId: 'knight',
+  classId: 'garde',
   equipmentIds: ['travel-kit'],
   id: 'draft-local',
-  orientationId: 'fighter',
+  orientationId: 'guerrier',
   raceId: 'human'
 });
 
@@ -67,7 +67,7 @@ export function CharacterCreationWizard() {
   );
   const currentValidation = view.stepValidations[draft.currentStep];
   const isMagician =
-    view.selectedOrientation?.isMagical === true || draft.orientationId === 'magician';
+    view.selectedOrientation?.isMagical === true || draft.orientationId === 'magicien';
   const extraSpellMax = Math.max(0, Math.floor((view.selectedRace?.category ?? 0) / 10));
 
   useEffect(() => {
@@ -109,7 +109,7 @@ export function CharacterCreationWizard() {
     const nextOrientation = characterCreationCatalog.orientations.find(
       (orientation) => orientation.id === orientationId
     );
-    const nextIsMagician = nextOrientation?.isMagical === true || orientationId === 'magician';
+    const nextIsMagician = nextOrientation?.isMagical === true || orientationId === 'magicien';
 
     updateDraft({
       classId: nextClassId,

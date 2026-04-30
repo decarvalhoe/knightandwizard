@@ -515,7 +515,7 @@ function requireSelection<T>(selection: T | undefined, name: string): T {
 }
 
 function isMagician(orientation: CharacterOrientationProfile | undefined): boolean {
-  return orientation?.isMagical === true || orientation?.id === 'magician';
+  return orientation?.isMagical === true || orientation?.id === 'magicien';
 }
 
 function setPointEntry<TEntry extends { id: string; points: number }>(

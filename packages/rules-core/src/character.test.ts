@@ -118,11 +118,11 @@ describe('character creation validation', () => {
       id: 'pc-fighter',
       name: 'Jehan',
       race: humanRace(),
-      orientation: { id: 'fighter', name: 'Guerrier' },
+      orientation: { id: 'guerrier', name: 'Guerrier' },
       classProfile: {
-        id: 'guardian',
+        id: 'garde',
         name: 'Garde',
-        orientationId: 'fighter',
+        orientationId: 'guerrier',
         primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
@@ -134,11 +134,11 @@ describe('character creation validation', () => {
       id: 'pc-mage',
       name: 'Mirelda',
       race: humanRace(),
-      orientation: { id: 'magician', name: 'Magicien', isMagical: true },
+      orientation: { id: 'magicien', name: 'Magicien', isMagical: true },
       classProfile: {
-        id: 'wizard',
+        id: 'sorcier',
         name: 'Mage',
-        orientationId: 'magician'
+        orientationId: 'magicien'
       },
       attributes: validAttributes(),
       skills: validSkills(),
@@ -160,11 +160,11 @@ describe('character creation validation', () => {
         id: 'pc-invalid',
         name: 'Broken',
         race: humanRace(),
-        orientation: { id: 'fighter', name: 'Guerrier' },
+        orientation: { id: 'guerrier', name: 'Guerrier' },
         classProfile: {
-          id: 'guardian',
+          id: 'garde',
           name: 'Garde',
-          orientationId: 'fighter',
+          orientationId: 'guerrier',
           primarySkillIds: ['epee']
         },
         attributes: {
@@ -184,11 +184,11 @@ describe('non-player character templates', () => {
       name: 'Garde humain',
       templateId: 'human-guard',
       race: humanRace(),
-      orientation: { id: 'fighter', name: 'Guerrier' },
+      orientation: { id: 'guerrier', name: 'Guerrier' },
       classProfile: {
-        id: 'guardian',
+        id: 'garde',
         name: 'Garde',
-        orientationId: 'fighter',
+        orientationId: 'guerrier',
         primarySkillIds: ['epee']
       },
       attributes: {
@@ -222,11 +222,11 @@ describe('character derived state', () => {
       id: 'pc-effective',
       name: 'Jehan',
       race: humanRace(),
-      orientation: { id: 'fighter', name: 'Guerrier' },
+      orientation: { id: 'guerrier', name: 'Guerrier' },
       classProfile: {
-        id: 'guardian',
+        id: 'garde',
         name: 'Garde',
-        orientationId: 'fighter',
+        orientationId: 'guerrier',
         primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
@@ -248,11 +248,11 @@ describe('character derived state', () => {
       id: 'pc-level',
       name: 'Jehan',
       race: humanRace(),
-      orientation: { id: 'fighter', name: 'Guerrier' },
+      orientation: { id: 'guerrier', name: 'Guerrier' },
       classProfile: {
-        id: 'guardian',
+        id: 'garde',
         name: 'Garde',
-        orientationId: 'fighter',
+        orientationId: 'guerrier',
         primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
@@ -279,11 +279,11 @@ describe('character derived state', () => {
       id: 'pc-cycle',
       name: 'Jehan',
       race: humanRace(),
-      orientation: { id: 'fighter', name: 'Guerrier' },
+      orientation: { id: 'guerrier', name: 'Guerrier' },
       classProfile: {
-        id: 'guardian',
+        id: 'garde',
         name: 'Garde',
-        orientationId: 'fighter',
+        orientationId: 'guerrier',
         primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
@@ -304,11 +304,11 @@ describe('character derived state', () => {
       id: 'pc-mage-level',
       name: 'Mirelda',
       race: humanRace(),
-      orientation: { id: 'magician', name: 'Magicien', isMagical: true },
+      orientation: { id: 'magicien', name: 'Magicien', isMagical: true },
       classProfile: {
-        id: 'wizard',
+        id: 'sorcier',
         name: 'Mage',
-        orientationId: 'magician'
+        orientationId: 'magicien'
       },
       attributes: validAttributes(),
       skills: validSkills(),
@@ -328,11 +328,11 @@ describe('character derived state', () => {
       id: 'pc-mage-extra-spell',
       name: 'Mirelda',
       race: humanRace(),
-      orientation: { id: 'magician', name: 'Magicien', isMagical: true },
+      orientation: { id: 'magicien', name: 'Magicien', isMagical: true },
       classProfile: {
-        id: 'wizard',
+        id: 'sorcier',
         name: 'Mage',
-        orientationId: 'magician'
+        orientationId: 'magicien'
       },
       attributes: validAttributes(),
       skills: [
@@ -349,11 +349,11 @@ describe('character derived state', () => {
       id: 'pc-mage-four-spells',
       name: 'Elaria',
       race: humanRace(),
-      orientation: { id: 'magician', name: 'Magicien', isMagical: true },
+      orientation: { id: 'magicien', name: 'Magicien', isMagical: true },
       classProfile: {
-        id: 'wizard',
+        id: 'sorcier',
         name: 'Mage',
-        orientationId: 'magician'
+        orientationId: 'magicien'
       },
       attributes: validAttributes(),
       skills: [],
@@ -378,11 +378,11 @@ describe('character derived state', () => {
         id: '32',
         name: 'Familier'
       },
-      orientation: { id: 'fighter', name: 'Guerrier' },
+      orientation: { id: 'guerrier', name: 'Guerrier' },
       classProfile: {
-        id: 'guardian',
+        id: 'garde',
         name: 'Garde',
-        orientationId: 'fighter',
+        orientationId: 'guerrier',
         primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
@@ -402,11 +402,11 @@ describe('character derived state', () => {
       id: 'pc-combat',
       name: 'Jehan',
       race: humanRace(),
-      orientation: { id: 'fighter', name: 'Guerrier' },
+      orientation: { id: 'guerrier', name: 'Guerrier' },
       classProfile: {
-        id: 'guardian',
+        id: 'garde',
         name: 'Garde',
-        orientationId: 'fighter',
+        orientationId: 'guerrier',
         primarySkillIds: ['epee']
       },
       attributes: validAttributes(),

@@ -19,15 +19,15 @@ import {
 describe('character creation wizard model', () => {
   it('filters class choices and automatic assets from the selected race/orientation/class', () => {
     const draft = createCreationDraft(catalog(), {
-      classId: 'mage-arms',
-      orientationId: 'magician',
+      classId: 'enchanteur',
+      orientationId: 'magicien',
       raceId: 'human'
     });
     const view = buildCreationView(draft, catalog());
 
     expect(view.availableClasses.map((classProfile) => classProfile.id)).toEqual([
-      'mage-arms',
-      'lore-mage'
+      'enchanteur',
+      'devin'
     ]);
     expect(view.grantedAssets.map((asset) => asset.id)).toEqual([
       'human-adaptability',
@@ -46,8 +46,8 @@ describe('character creation wizard model', () => {
               setSkillPoints(
                 setExtraSpellPoints(
                   createCreationDraft(catalog(), {
-                    classId: 'mage-arms',
-                    orientationId: 'magician',
+                    classId: 'enchanteur',
+                    orientationId: 'magicien',
                     raceId: 'human'
                   }),
                   1
@@ -132,7 +132,7 @@ describe('character creation wizard model', () => {
       currentStep: 'skills',
       id: 'draft-aveline',
       payload: expect.objectContaining({
-        classId: 'mage-arms',
+        classId: 'enchanteur',
         name: 'Aveline',
         raceId: 'human'
       }),
@@ -140,7 +140,7 @@ describe('character creation wizard model', () => {
     });
     expect(JSON.stringify(snapshot)).not.toContain('attributeMax');
     expect(restored).toMatchObject({
-      classId: 'mage-arms',
+      classId: 'enchanteur',
       currentStep: 'skills',
       id: 'draft-aveline',
       name: 'Aveline',
@@ -159,10 +159,10 @@ function completedMageDraft(): CharacterCreationDraft {
               setSkillPoints(
                 setExtraSpellPoints(
                   createCreationDraft(catalog(), {
-                    classId: 'mage-arms',
+                    classId: 'enchanteur',
                     id: 'draft-aveline',
                     name: 'Aveline',
-                    orientationId: 'magician',
+                    orientationId: 'magicien',
                     raceId: 'human'
                   }),
                   1
@@ -234,23 +234,23 @@ function catalog(): CharacterCreationCatalog {
       {
         id: 'arcane-spark',
         label: 'Etincelle arcanique',
-        orientationIds: ['magician'],
+        orientationIds: ['magicien'],
         source: 'orientation'
       },
       {
-        classIds: ['mage-arms'],
+        classIds: ['enchanteur'],
         id: 'weapon-bond',
         label: 'Lien de lame',
         source: 'class'
       },
       {
-        classIds: ['mage-arms'],
+        classIds: ['enchanteur'],
         id: 'spell-focus',
         label: 'Focaliseur',
         source: 'class'
       },
       {
-        classIds: ['guardian'],
+        classIds: ['garde'],
         id: 'shield-line',
         label: 'Ligne de bouclier',
         source: 'class'
@@ -258,21 +258,21 @@ function catalog(): CharacterCreationCatalog {
     ],
     classes: [
       {
-        id: 'guardian',
+        id: 'garde',
         name: 'Garde',
-        orientationId: 'fighter',
+        orientationId: 'guerrier',
         primarySkillIds: ['epee-batarde']
       },
       {
-        id: 'mage-arms',
+        id: 'enchanteur',
         name: "Mage d'armes",
-        orientationId: 'magician',
+        orientationId: 'magicien',
         primarySkillIds: []
       },
       {
-        id: 'lore-mage',
+        id: 'devin',
         name: 'Mage erudit',
-        orientationId: 'magician',
+        orientationId: 'magicien',
         primarySkillIds: []
       }
     ],
@@ -283,8 +283,8 @@ function catalog(): CharacterCreationCatalog {
       }
     ],
     orientations: [
-      { id: 'fighter', isMagical: false, name: 'Guerrier' },
-      { id: 'magician', isMagical: true, name: 'Magicien' }
+      { id: 'guerrier', isMagical: false, name: 'Guerrier' },
+      { id: 'magicien', isMagical: true, name: 'Magicien' }
     ],
     races: [
       {

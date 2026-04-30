@@ -16,7 +16,7 @@ describe('character draft routes', () => {
     const draft = {
       currentStep: 'skills',
       payload: {
-        classId: 'mage-arms',
+        classId: 'enchanteur',
         name: 'Aveline',
         raceId: 'human'
       }

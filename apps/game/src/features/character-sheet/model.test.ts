@@ -67,13 +67,13 @@ describe('character sheet model', () => {
       character: createPlayerCharacter({
         attributes: sampleAttributes(),
         classProfile: {
-          id: 'wizard',
+          id: 'sorcier',
           name: 'Mage',
-          orientationId: 'magician'
+          orientationId: 'magicien'
         },
         id: 'pc-converted-mage',
         name: 'Elaria',
-        orientation: { id: 'magician', isMagical: true, name: 'Magicien' },
+        orientation: { id: 'magicien', isMagical: true, name: 'Magicien' },
         race: {
           attributeMax: Object.fromEntries(
             ATTRIBUTE_KEYS.map((key) => [key, 6])
@@ -225,15 +225,15 @@ function sampleCharacter(): Character {
   return createPlayerCharacter({
     attributes: sampleAttributes(),
     classProfile: {
-      id: 'knight',
+      id: 'garde',
       name: 'Chevalier',
-      orientationId: 'fighter',
+      orientationId: 'guerrier',
       primarySkillIds: ['epee-batarde']
     },
     id: 'pc-aveline',
     modifiers: [{ id: 'training', target: 'strength', value: 2 }],
     name: 'Aveline de Brumeval',
-    orientation: { id: 'fighter', name: 'Guerrier' },
+    orientation: { id: 'guerrier', name: 'Guerrier' },
     race: {
       attributeMax: Object.fromEntries(
         ATTRIBUTE_KEYS.map((key) => [key, 6])
@@ -260,13 +260,13 @@ function sampleMagicianCharacter(): Character {
   return createPlayerCharacter({
     attributes: sampleAttributes(),
     classProfile: {
-      id: 'wizard',
+      id: 'sorcier',
       name: 'Mage',
-      orientationId: 'magician'
+      orientationId: 'magicien'
     },
     id: 'pc-mire',
     name: 'Mire de Brumeval',
-    orientation: { id: 'magician', isMagical: true, name: 'Magicien' },
+    orientation: { id: 'magicien', isMagical: true, name: 'Magicien' },
     race: {
       attributeMax: Object.fromEntries(
         ATTRIBUTE_KEYS.map((key) => [key, 6])
