@@ -52,6 +52,16 @@ Commande :
 pnpm catalogs:build:magic
 ```
 
+### `build-legacy-characters-catalog.ts`
+
+Inventorie les 96 fiches legacy `data/legacy/web-scraped/personnages/fiches/character-*.md` en `data/catalogs/legacy-characters.yaml`. Chaque entrée porte `id`, `legacy_id`, `name` extrait de la fiche, `status: raw_reference_only`, et `source_refs` avec hash de la fiche source. Aucune correction silencieuse des données — la promotion en `covered` suppose une vérification manuelle des stats.
+
+Commande :
+
+```bash
+pnpm catalogs:build:legacy-characters
+```
+
 ### `enrich-bestiaire-source-refs.ts`
 
 Enrichit `data/catalogs/bestiaire.yaml` (catalogue races + créatures) en injectant un bloc `source_refs` par entrée, sans casser la structure manuelle (commentaires, sections « === HUMAINS ET PROCHES === », etc.). Référence à la fois la source web canonique et la source paper, sauf pour Zombie (web-only). Idempotent : détecte les entrées déjà enrichies.

@@ -7958,6 +7958,15 @@ sources:
     domains: ["catalogs"]
     contains: ["images", "maps", "flags"]
     notes: "Product YAML catalog."
+  - id: "data-catalogs-legacy-characters"
+    path: "data/catalogs/legacy-characters.yaml"
+    sha256: "03d446dc3a0847fa33294c5a9d7d0fd27f978940c2aca6b6e137c7c5bd992c07"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["catalogs"]
+    contains: ["catalog_entries"]
+    notes: "Product YAML catalog."
   - id: "data-catalogs-lore-index"
     path: "data/catalogs/lore-index.yaml"
     sha256: "b7397f01de4810c91f5b8730ded7b0bc713af11920e0f7ed7897a81bdf85187d"

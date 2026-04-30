@@ -283,6 +283,28 @@ export const SpellsCatalogSchema = CatalogBaseSchema.extend({
   spells: z.array(SpellSchema)
 });
 
+export const LegacyCharacterStatusSchema = z.enum([
+  'raw_reference_only',
+  'covered',
+  'partial',
+  'excluded'
+]);
+
+export const LegacyCharacterSchema = z
+  .object({
+    id: NonEmptyStringSchema,
+    name: NonEmptyStringSchema,
+    legacy_id: z.number().int().positive(),
+    status: LegacyCharacterStatusSchema,
+    source_refs: z.array(SourceRefSchema),
+    metadata: EntryMetadataSchema.optional()
+  })
+  .passthrough();
+
+export const LegacyCharactersCatalogSchema = CatalogBaseSchema.extend({
+  characters: z.array(LegacyCharacterSchema)
+});
+
 export type Weapon = z.infer<typeof WeaponSchema>;
 export type WeaponsCatalog = z.infer<typeof WeaponsCatalogSchema>;
 export type BestiaryEntry = z.infer<typeof BestiaryEntrySchema>;
@@ -309,6 +331,9 @@ export type MagicSchool = z.infer<typeof MagicSchoolSchema>;
 export type MagicSchoolsCatalog = z.infer<typeof MagicSchoolsCatalogSchema>;
 export type Spell = z.infer<typeof SpellSchema>;
 export type SpellsCatalog = z.infer<typeof SpellsCatalogSchema>;
+export type LegacyCharacterStatus = z.infer<typeof LegacyCharacterStatusSchema>;
+export type LegacyCharacter = z.infer<typeof LegacyCharacterSchema>;
+export type LegacyCharactersCatalog = z.infer<typeof LegacyCharactersCatalogSchema>;
 
 export const PRIORITY_CATALOG_NAMES = [
   'armes.yaml',
@@ -322,7 +347,8 @@ export const PRIORITY_CATALOG_NAMES = [
   'orientations.yaml',
   'classes.yaml',
   'magic-schools.yaml',
-  'spells.yaml'
+  'spells.yaml',
+  'legacy-characters.yaml'
 ] as const;
 
 export type PriorityCatalogName = (typeof PRIORITY_CATALOG_NAMES)[number];
@@ -340,6 +366,7 @@ export type PriorityCatalogData = {
   'classes.yaml': ClassesCatalog;
   'magic-schools.yaml': MagicSchoolsCatalog;
   'spells.yaml': SpellsCatalog;
+  'legacy-characters.yaml': LegacyCharactersCatalog;
 };
 
 export type PriorityCatalogs = {
@@ -358,7 +385,8 @@ export const PriorityCatalogSchemas = {
   'orientations.yaml': OrientationsCatalogSchema,
   'classes.yaml': ClassesCatalogSchema,
   'magic-schools.yaml': MagicSchoolsCatalogSchema,
-  'spells.yaml': SpellsCatalogSchema
+  'spells.yaml': SpellsCatalogSchema,
+  'legacy-characters.yaml': LegacyCharactersCatalogSchema
 } satisfies Record<PriorityCatalogName, z.ZodType>;
 
 export class CatalogValidationError extends Error {

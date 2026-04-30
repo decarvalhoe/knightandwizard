@@ -21,7 +21,8 @@ const expectedCollections = [
   ['orientations.yaml', 'orientations', 12],
   ['classes.yaml', 'classes', 90],
   ['magic-schools.yaml', 'schools', 11],
-  ['spells.yaml', 'spells', 324]
+  ['spells.yaml', 'spells', 324],
+  ['legacy-characters.yaml', 'characters', 96]
 ] as const;
 
 describe('catalog Zod schemas', () => {
@@ -236,6 +237,22 @@ describe('catalog Zod schemas', () => {
 
     for (const school of catalog.schools) {
       expect(classIds.has(school.specialist_class_id)).toBe(true);
+    }
+  });
+
+  it('inventories the 96 legacy characters as raw_reference_only with traceable source refs', async () => {
+    const catalog = await loadValidatedCatalog('legacy-characters.yaml');
+
+    expect(catalog.characters).toHaveLength(96);
+    for (const character of catalog.characters) {
+      expect(character.id).toMatch(/^legacy-character-\d+$/);
+      expect(character.legacy_id).toBeGreaterThan(0);
+      expect(character.status).toBe('raw_reference_only');
+      expect(character.source_refs).toHaveLength(1);
+      expect(character.source_refs[0].path).toMatch(
+        /^data\/legacy\/web-scraped\/personnages\/fiches\/character-\d+\.md$/
+      );
+      expect(character.source_refs[0].sha256).toMatch(/^[0-9a-f]{64}$/);
     }
   });
 
