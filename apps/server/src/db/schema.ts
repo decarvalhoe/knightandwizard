@@ -33,6 +33,7 @@ export const REQUIRED_APP_TABLES = [
   'character_drafts',
   'game_sessions',
   'session_events',
+  'session_decisions',
   'audit_events',
   'knowledge_documents',
   'knowledge_chunks'
@@ -118,6 +119,36 @@ export const sessionEvents = pgTable(
       table.sequence
     ),
     eventTypeIdx: index('session_events_event_type_idx').on(table.eventType)
+  })
+);
+
+export const sessionDecisions = pgTable(
+  'session_decisions',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    sessionId: uuid('session_id')
+      .notNull()
+      .references(() => gameSessions.id, { onDelete: 'cascade' }),
+    title: text('title').notNull(),
+    requestedBy: text('requested_by').notNull(),
+    assignedTo: text('assigned_to').notNull().default('human_gm'),
+    priority: text('priority').notNull().default('normal'),
+    status: text('status').notNull().default('pending'),
+    payload: jsonb('payload')
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default(sql`'{}'::jsonb`),
+    resolution: jsonb('resolution').$type<Record<string, unknown> | null>(),
+    createdAt: now(),
+    resolvedAt: timestamp('resolved_at', { withTimezone: true }),
+    updatedAt: updatedNow()
+  },
+  (table) => ({
+    sessionStatusIdx: index('session_decisions_session_status_idx').on(
+      table.sessionId,
+      table.status
+    ),
+    priorityIdx: index('session_decisions_priority_idx').on(table.priority)
   })
 );
 

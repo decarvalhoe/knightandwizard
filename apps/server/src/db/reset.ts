@@ -3,6 +3,7 @@ import { pathToFileURL } from 'node:url';
 import { createSqlClient } from './client.js';
 
 const TABLES_TO_DROP = [
+  'session_decisions',
   'session_events',
   'audit_events',
   'knowledge_chunks',

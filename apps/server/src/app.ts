@@ -2,6 +2,7 @@ import Fastify, { type FastifyServerOptions, type FastifyInstance } from 'fastif
 import { registerCharacterDraftRoutes } from './routes/character-drafts.js';
 import { registerHealthRoute } from './routes/health.js';
 import { registerReadyRoute } from './routes/ready.js';
+import { registerSessionRoutes } from './routes/sessions.js';
 
 export function buildApp(options: FastifyServerOptions = {}): FastifyInstance {
   const app = Fastify(options);
@@ -17,6 +18,7 @@ export function buildApp(options: FastifyServerOptions = {}): FastifyInstance {
   app.register(registerCharacterDraftRoutes);
   app.register(registerHealthRoute);
   app.register(registerReadyRoute);
+  app.register(registerSessionRoutes);
 
   return app;
 }
