@@ -144,8 +144,13 @@ export function CharacterCreationWizard() {
       return;
     }
 
-    setSubmittedCharacter(previewCharacter(draft, characterCreationCatalog));
-    updateDraft({ currentStep: 'review' });
+    const character = previewCharacter(draft, characterCreationCatalog);
+
+    setDraft((current) => ({
+      ...current,
+      currentStep: 'review'
+    }));
+    setSubmittedCharacter(character);
   }
 
   return (

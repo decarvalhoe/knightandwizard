@@ -78,6 +78,8 @@ apps/interactive-map/data/raw/*.yaml
 # === Local agent/browser tooling ===
 .playwright-mcp/
 .superpowers/
+playwright-report/
+test-results/
 kwg-*.png
 
 # === PHP legacy site uploads ===
