@@ -86,9 +86,9 @@ describe('character sheet model', () => {
           willFactor: 10
         },
         skills: [
-          { id: 'arcana', points: 4 },
-          { id: 'lore', points: 4 },
-          { id: 'rituals', points: 2 }
+          { id: 'arcanologie', points: 4 },
+          { id: 'histoire', points: 4 },
+          { id: 'arcanologie-des-rituels', parentId: 'arcanologie', points: 2 }
         ],
         spells: [
           { id: 'ward', points: 2 },
@@ -166,49 +166,49 @@ describe('character sheet model', () => {
 
   it('keeps recursive skill specializations nested while marking implicit zero parents', () => {
     const rows = skillTreeRows([
-      { id: 'long-blades', isMain: true, points: 4 },
-      { id: 'riposte', parentId: 'long-blades', points: 3 },
-      { id: 'counter-riposte', parentId: 'riposte', points: 2 },
-      { id: 'cortegan-cuisine', parentId: 'unknown-parent', points: 1 },
-      { id: 'command', points: 4 }
+      { id: 'parent-skill', isMain: true, points: 4 },
+      { id: 'child-spec', parentId: 'parent-skill', points: 3 },
+      { id: 'grandchild-spec', parentId: 'child-spec', points: 2 },
+      { id: 'orphan-spec', parentId: 'unknown-parent', points: 1 },
+      { id: 'sibling-root', points: 4 }
     ]);
 
     expect(
       rows.map((row) => [row.id, row.depth, row.isInheritedPrimary, row.implicitParentId])
     ).toEqual([
-      ['long-blades', 0, false, undefined],
-      ['riposte', 1, true, undefined],
-      ['counter-riposte', 2, true, undefined],
-      ['cortegan-cuisine', 0, false, 'unknown-parent'],
-      ['command', 0, false, undefined]
+      ['parent-skill', 0, false, undefined],
+      ['child-spec', 1, true, undefined],
+      ['grandchild-spec', 2, true, undefined],
+      ['orphan-spec', 0, false, 'unknown-parent'],
+      ['sibling-root', 0, false, undefined]
     ]);
   });
 
   it('treats every unlisted skill or specialization as an implicit zero score', () => {
     const character = sampleCharacter();
 
-    expect(skillPoints(character.skills, 'long-blades')).toBe(4);
+    expect(skillPoints(character.skills, 'epee-batarde')).toBe(4);
     expect(skillPoints(character.skills, 'unlisted-specialization')).toBe(0);
   });
 
   it('overlays character points on a full implicit-zero skill catalog', () => {
     const rows = skillTreeRows(
-      [{ id: 'cortegan-cuisine', parentId: 'cuisine', points: 2 }],
+      [{ id: 'cuisine-corteganne', parentId: 'cuisine', points: 2 }],
       [
-        { id: 'long-blades', label: 'Armes longues' },
+        { id: 'epee-batarde', label: 'Épée bâtarde' },
         { id: 'cuisine', label: 'Cuisine' },
-        { id: 'cortegan-cuisine', label: 'Cuisine corteganne', parentId: 'cuisine' },
-        { id: 'court-cuisine', label: 'Cuisine de cour', parentId: 'cuisine' }
+        { id: 'cuisine-corteganne', label: 'Cuisine corteganne', parentId: 'cuisine' },
+        { id: 'cuisine-alterienne', label: 'Cuisine altérienne', parentId: 'cuisine' }
       ]
     );
 
     expect(
       rows.map((row) => [row.id, row.points, row.depth, row.isImplicitZero, row.label])
     ).toEqual([
-      ['long-blades', 0, 0, true, 'Armes longues'],
+      ['epee-batarde', 0, 0, true, 'Épée bâtarde'],
       ['cuisine', 0, 0, true, 'Cuisine'],
-      ['cortegan-cuisine', 2, 1, false, 'Cuisine corteganne'],
-      ['court-cuisine', 0, 1, true, 'Cuisine de cour']
+      ['cuisine-corteganne', 2, 1, false, 'Cuisine corteganne'],
+      ['cuisine-alterienne', 0, 1, true, 'Cuisine altérienne']
     ]);
   });
 
@@ -228,7 +228,7 @@ function sampleCharacter(): Character {
       id: 'knight',
       name: 'Chevalier',
       orientationId: 'fighter',
-      primarySkillIds: ['long-blades']
+      primarySkillIds: ['epee-batarde']
     },
     id: 'pc-aveline',
     modifiers: [{ id: 'training', target: 'strength', value: 2 }],
@@ -246,11 +246,11 @@ function sampleCharacter(): Character {
       willFactor: 10
     },
     skills: [
-      { id: 'long-blades', isMain: true, points: 4 },
-      { id: 'shield', points: 4 },
-      { id: 'command', points: 4 },
-      { id: 'endurance', points: 4 },
-      { id: 'lore', points: 4 }
+      { id: 'epee-batarde', isMain: true, points: 4 },
+      { id: 'bouclier', points: 4 },
+      { id: 'commandement', points: 4 },
+      { id: 'stoicisme', points: 4 },
+      { id: 'histoire', points: 4 }
     ],
     spells: []
   });
@@ -279,11 +279,11 @@ function sampleMagicianCharacter(): Character {
       willFactor: 10
     },
     skills: [
-      { id: 'arcana', isMain: true, points: 4 },
-      { id: 'rituals', points: 4 },
-      { id: 'lore', points: 4 },
-      { id: 'medicine', points: 4 },
-      { id: 'diplomacy', points: 4 }
+      { id: 'arcanologie', isMain: true, points: 4 },
+      { id: 'arcanologie-des-rituels', parentId: 'arcanologie', points: 4 },
+      { id: 'histoire', points: 4 },
+      { id: 'medecine', points: 4 },
+      { id: 'diplomatie', points: 4 }
     ],
     spells: [
       { id: 'ward', points: 1 },

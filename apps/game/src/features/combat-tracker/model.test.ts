@@ -133,7 +133,7 @@ function template(overrides: Partial<CombatantTemplate> = {}): CombatantTemplate
     name: 'Combatant',
     nextActionAt: 0,
     reflexes: 3,
-    skills: { 'long-blades': 3 },
+    skills: { 'epee-batarde': 3 },
     speedFactor: 6,
     statuses: [],
     vitality: { current: 12, max: 12 },

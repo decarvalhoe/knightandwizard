@@ -102,13 +102,13 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
       id: 'knight',
       name: 'Chevalier',
       orientationId: 'fighter',
-      primarySkillIds: ['long-blades']
+      primarySkillIds: ['epee-batarde']
     },
     {
       id: 'ranger',
       name: 'Rodeur',
       orientationId: 'fighter',
-      primarySkillIds: ['survival']
+      primarySkillIds: ['chasse']
     },
     {
       id: 'mage-arms',
@@ -126,7 +126,7 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
       id: 'blacksmith',
       name: 'Forgeron',
       orientationId: 'artisan',
-      primarySkillIds: ['craft']
+      primarySkillIds: ['forge']
     }
   ],
   equipment: [
@@ -171,16 +171,15 @@ export const characterCreationCatalog: CharacterCreationCatalog = {
     }
   ],
   skills: [
-    { id: 'arcana', label: 'Art occulte' },
-    { id: 'rituals', label: 'Rituels', parentId: 'arcana' },
-    { id: 'alchemy', label: 'Alchimie', parentId: 'arcana' },
-    { id: 'long-blades', label: 'Armes longues' },
-    { id: 'riposte', label: 'Riposte', parentId: 'long-blades' },
-    { id: 'survival', label: 'Survie' },
-    { id: 'tracking', label: 'Pistage', parentId: 'survival' },
-    { id: 'craft', label: 'Artisanat' },
-    { id: 'forge', label: 'Forge', parentId: 'craft' },
-    { id: 'command', label: 'Commandement' }
+    { id: 'arcanologie', label: 'Arcanologie' },
+    { id: 'arcanologie-des-rituels', label: 'Arcanologie des rituels', parentId: 'arcanologie' },
+    { id: 'alchimie', label: 'Alchimie' },
+    { id: 'epee-batarde', label: 'Épée bâtarde' },
+    { id: 'frappe-a-la-tete', label: 'Frappe à la tête', parentId: 'epee-batarde' },
+    { id: 'chasse', label: 'Chasse' },
+    { id: 'traque', label: 'Traque', parentId: 'chasse' },
+    { id: 'forge', label: 'Forge' },
+    { id: 'commandement', label: 'Commandement' }
   ],
   spells: [
     { id: 'spark', label: 'Etincelle' },

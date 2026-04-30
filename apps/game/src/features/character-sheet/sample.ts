@@ -21,33 +21,29 @@ export const attributeLabels: Record<AttributeKey, string> = {
 };
 
 export const skillLabels: Record<string, string> = {
-  arcana: 'Art occulte',
-  alchemy: 'Alchimie',
-  command: 'Commandement',
-  'counter-riposte': 'Contre-riposte',
+  alchimie: 'Alchimie',
+  arcanologie: 'Arcanologie',
+  'arcanologie-des-rituels': 'Arcanologie des rituels',
+  commandement: 'Commandement',
   cuisine: 'Cuisine',
-  'cortegan-cuisine': 'Cuisine corteganne',
-  'court-cuisine': 'Cuisine de cour',
-  diplomacy: 'Diplomatie',
-  endurance: 'Endurance',
-  'long-blades': 'Armes longues',
-  riposte: 'Riposte',
-  rituals: 'Rituels'
+  'cuisine-corteganne': 'Cuisine corteganne',
+  diplomatie: 'Diplomatie',
+  'epee-batarde': 'Épée bâtarde',
+  'frappe-a-la-tete': 'Frappe à la tête',
+  stoicisme: 'Stoïcisme'
 };
 
 export const skillCatalog: SkillCatalogEntry[] = [
-  { id: 'arcana', label: 'Art occulte' },
-  { id: 'rituals', label: 'Rituels', parentId: 'arcana' },
-  { id: 'alchemy', label: 'Alchimie' },
-  { id: 'long-blades', label: 'Armes longues' },
-  { id: 'riposte', label: 'Riposte', parentId: 'long-blades' },
-  { id: 'counter-riposte', label: 'Contre-riposte', parentId: 'riposte' },
-  { id: 'endurance', label: 'Endurance' },
-  { id: 'command', label: 'Commandement' },
-  { id: 'diplomacy', label: 'Diplomatie' },
+  { id: 'arcanologie', label: 'Arcanologie' },
+  { id: 'arcanologie-des-rituels', label: 'Arcanologie des rituels', parentId: 'arcanologie' },
+  { id: 'alchimie', label: 'Alchimie' },
+  { id: 'epee-batarde', label: 'Épée bâtarde' },
+  { id: 'frappe-a-la-tete', label: 'Frappe à la tête', parentId: 'epee-batarde' },
+  { id: 'stoicisme', label: 'Stoïcisme' },
+  { id: 'commandement', label: 'Commandement' },
+  { id: 'diplomatie', label: 'Diplomatie' },
   { id: 'cuisine', label: 'Cuisine' },
-  { id: 'cortegan-cuisine', label: 'Cuisine corteganne', parentId: 'cuisine' },
-  { id: 'court-cuisine', label: 'Cuisine de cour', parentId: 'cuisine' }
+  { id: 'cuisine-corteganne', label: 'Cuisine corteganne', parentId: 'cuisine' }
 ];
 
 export const sampleCharacter: Character = createPlayerCharacter({
@@ -89,14 +85,13 @@ export const sampleCharacter: Character = createPlayerCharacter({
     willFactor: 10
   },
   skills: [
-    { id: 'arcana', points: 4 },
-    { id: 'long-blades', points: 4 },
-    { id: 'riposte', parentId: 'long-blades', points: 2 },
-    { id: 'counter-riposte', parentId: 'riposte', points: 1 },
-    { id: 'endurance', points: 1 },
-    { id: 'command', points: 4 },
-    { id: 'cortegan-cuisine', parentId: 'cuisine', points: 2 },
-    { id: 'rituals', parentId: 'arcana', points: 2 }
+    { id: 'arcanologie', points: 4 },
+    { id: 'epee-batarde', points: 4 },
+    { id: 'frappe-a-la-tete', parentId: 'epee-batarde', points: 2 },
+    { id: 'stoicisme', points: 2 },
+    { id: 'commandement', points: 4 },
+    { id: 'cuisine-corteganne', parentId: 'cuisine', points: 2 },
+    { id: 'arcanologie-des-rituels', parentId: 'arcanologie', points: 2 }
   ],
   spells: [
     { id: 'ward', points: 1 },

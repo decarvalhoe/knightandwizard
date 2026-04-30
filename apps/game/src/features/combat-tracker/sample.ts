@@ -15,7 +15,7 @@ export const combatantTemplates: CombatantTemplate[] = [
       type: 'attack'
     },
     reflexes: 4,
-    skills: { 'long-blades': 3, shield: 2 },
+    skills: { 'epee-batarde': 3, bouclier: 2 },
     speedFactor: 5,
     statuses: [],
     vitality: { current: 24, max: 24 }
@@ -26,7 +26,7 @@ export const combatantTemplates: CombatantTemplate[] = [
     name: 'Brigand',
     nextActionAt: 8,
     reflexes: 3,
-    skills: { axe: 2, dodge: 2 },
+    skills: { hache: 2, esquive: 2 },
     speedFactor: 7,
     statuses: [{ id: 'bleeding', durationDT: 10 }],
     vitality: { current: 13, max: 18 }

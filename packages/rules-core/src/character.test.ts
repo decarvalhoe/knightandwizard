@@ -51,13 +51,10 @@ describe('character creation validation', () => {
     });
 
     expect(
-      validateSkillDistribution([{ id: 'sword', points: 5 }], humanRace().category)
+      validateSkillDistribution([{ id: 'epee', points: 5 }], humanRace().category)
     ).toMatchObject({
       valid: false,
-      errors: [
-        'skill points must total 20 at creation',
-        'sword cannot exceed 4 points at creation'
-      ],
+      errors: ['skill points must total 20 at creation', 'epee cannot exceed 4 points at creation'],
       total: 5
     });
 
@@ -126,7 +123,7 @@ describe('character creation validation', () => {
         id: 'guardian',
         name: 'Garde',
         orientationId: 'fighter',
-        primarySkillIds: ['sword']
+        primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
       skills: validSkills(),
@@ -168,7 +165,7 @@ describe('character creation validation', () => {
           id: 'guardian',
           name: 'Garde',
           orientationId: 'fighter',
-          primarySkillIds: ['sword']
+          primarySkillIds: ['epee']
         },
         attributes: {
           ...validAttributes(),
@@ -192,7 +189,7 @@ describe('non-player character templates', () => {
         id: 'guardian',
         name: 'Garde',
         orientationId: 'fighter',
-        primarySkillIds: ['sword']
+        primarySkillIds: ['epee']
       },
       attributes: {
         ...validAttributes(),
@@ -203,7 +200,7 @@ describe('non-player character templates', () => {
       energy: { current: 0, max: 0 },
       speedFactor: 7,
       willFactor: 9,
-      skills: [{ id: 'sword', points: 6, isMain: true }],
+      skills: [{ id: 'epee', points: 6, isMain: true }],
       metadata: { generatedFrom: 'Npc.php' }
     });
 
@@ -213,7 +210,7 @@ describe('non-player character templates', () => {
       vitality: { current: 28, max: 28 },
       speedFactor: 7,
       willFactor: 9,
-      skills: [{ id: 'sword', points: 6, isMain: true }],
+      skills: [{ id: 'epee', points: 6, isMain: true }],
       metadata: { generatedFrom: 'Npc.php' }
     });
   });
@@ -230,7 +227,7 @@ describe('character derived state', () => {
         id: 'guardian',
         name: 'Garde',
         orientationId: 'fighter',
-        primarySkillIds: ['sword']
+        primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
       skills: validSkills(),
@@ -256,16 +253,16 @@ describe('character derived state', () => {
         id: 'guardian',
         name: 'Garde',
         orientationId: 'fighter',
-        primarySkillIds: ['sword']
+        primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
       skills: [
-        { id: 'sword', points: 4, isMain: true },
-        { id: 'riposte', points: 3, parentId: 'sword' },
-        { id: 'parry', points: 2, parentId: 'riposte' },
+        { id: 'epee', points: 4, isMain: true },
+        { id: 'frappe-a-la-tete', points: 3, parentId: 'epee' },
+        { id: 'parade', points: 2, parentId: 'frappe-a-la-tete' },
         { id: 'cook', points: 4 },
-        { id: 'survival', points: 4 },
-        { id: 'lore', points: 3 }
+        { id: 'chasse', points: 4 },
+        { id: 'histoire', points: 3 }
       ]
     });
 
@@ -273,7 +270,7 @@ describe('character derived state', () => {
       level: 1,
       levelPoints: 29,
       levelUpAt: 40,
-      primarySkillIds: ['sword']
+      primarySkillIds: ['epee']
     });
   });
 
@@ -287,15 +284,15 @@ describe('character derived state', () => {
         id: 'guardian',
         name: 'Garde',
         orientationId: 'fighter',
-        primarySkillIds: ['sword']
+        primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
       skills: [
-        { id: 'sword', points: 4, isMain: true, parentId: 'parry' },
-        { id: 'parry', points: 4, parentId: 'sword' },
+        { id: 'epee', points: 4, isMain: true, parentId: 'parade' },
+        { id: 'parade', points: 4, parentId: 'epee' },
         { id: 'cook', points: 4 },
-        { id: 'survival', points: 4 },
-        { id: 'lore', points: 4 }
+        { id: 'chasse', points: 4 },
+        { id: 'histoire', points: 4 }
       ]
     });
 
@@ -340,7 +337,7 @@ describe('character derived state', () => {
       attributes: validAttributes(),
       skills: [
         { id: 'arcana', points: 4 },
-        { id: 'lore', points: 4 },
+        { id: 'histoire', points: 4 },
         { id: 'rituals', points: 2 }
       ],
       spells: [
@@ -386,7 +383,7 @@ describe('character derived state', () => {
         id: 'guardian',
         name: 'Garde',
         orientationId: 'fighter',
-        primarySkillIds: ['sword']
+        primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
       skills: validSkills()
@@ -410,7 +407,7 @@ describe('character derived state', () => {
         id: 'guardian',
         name: 'Garde',
         orientationId: 'fighter',
-        primarySkillIds: ['sword']
+        primarySkillIds: ['epee']
       },
       attributes: validAttributes(),
       skills: validSkills()
@@ -428,7 +425,7 @@ describe('character derived state', () => {
         stamina: 3
       },
       skills: {
-        sword: 4
+        epee: 4
       }
     });
   });
@@ -462,10 +459,10 @@ function validAttributes() {
 
 function validSkills() {
   return [
-    { id: 'sword', points: 4, isMain: true },
-    { id: 'athletics', points: 4 },
-    { id: 'survival', points: 4 },
-    { id: 'lore', points: 4 },
-    { id: 'medicine', points: 4 }
+    { id: 'epee', points: 4, isMain: true },
+    { id: 'course', points: 4 },
+    { id: 'chasse', points: 4 },
+    { id: 'histoire', points: 4 },
+    { id: 'medecine', points: 4 }
   ];
 }

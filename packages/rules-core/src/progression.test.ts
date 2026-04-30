@@ -111,26 +111,26 @@ describe('learning costs and duration', () => {
 describe('skill progression', () => {
   it('learns a new skill for 3 XP and adds the first point', () => {
     const character = gainXP(fighter(), 10);
-    const learned = learnSkill(character, 'medicine', { hasNarrativeAccess: true });
+    const learned = learnSkill(character, 'medecine', { hasNarrativeAccess: true });
 
     expect(learned.progression.experiencePoints).toBe(7);
-    expect(learned.skills).toContainEqual({ id: 'medicine', points: 1 });
+    expect(learned.skills).toContainEqual({ id: 'medecine', points: 1 });
   });
 
   it('improves an existing skill for current points times 3 XP', () => {
     const character = gainXP(fighter(), 20);
-    const learned = learnSkill(character, 'sword', { hasNarrativeAccess: true });
+    const learned = learnSkill(character, 'epee', { hasNarrativeAccess: true });
 
     expect(learned.progression.experiencePoints).toBe(8);
-    expect(learned.skills.find((skill) => skill.id === 'sword')?.points).toBe(5);
+    expect(learned.skills.find((skill) => skill.id === 'epee')?.points).toBe(5);
   });
 
   it('requires enough XP and narrative access to learn a skill', () => {
-    expect(() => learnSkill(fighter(), 'medicine', { hasNarrativeAccess: true })).toThrow(
+    expect(() => learnSkill(fighter(), 'medecine', { hasNarrativeAccess: true })).toThrow(
       ProgressionError
     );
     expect(() =>
-      learnSkill(gainXP(fighter(), 10), 'medicine', { hasNarrativeAccess: false })
+      learnSkill(gainXP(fighter(), 10), 'medecine', { hasNarrativeAccess: false })
     ).toThrow(ProgressionError);
   });
 });
@@ -178,15 +178,15 @@ function fighter(): Character {
       id: 'guardian',
       name: 'Garde',
       orientationId: 'fighter',
-      primarySkillIds: ['sword']
+      primarySkillIds: ['epee']
     },
     attributes: validAttributes(),
     skills: [
-      { id: 'sword', points: 4, isMain: true },
-      { id: 'athletics', points: 4 },
-      { id: 'survival', points: 4 },
-      { id: 'lore', points: 4 },
-      { id: 'craft', points: 4 }
+      { id: 'epee', points: 4, isMain: true },
+      { id: 'course', points: 4 },
+      { id: 'chasse', points: 4 },
+      { id: 'histoire', points: 4 },
+      { id: 'forge', points: 4 }
     ]
   });
 }
@@ -204,11 +204,11 @@ function magician(spells = [{ id: 'firebolt', points: 2 }]): Character {
     },
     attributes: validAttributes(),
     skills: [
-      { id: 'arcana', points: 4 },
-      { id: 'lore', points: 4 },
-      { id: 'survival', points: 4 },
-      { id: 'craft', points: 4 },
-      { id: 'medicine', points: 4 }
+      { id: 'arcanologie', points: 4 },
+      { id: 'histoire', points: 4 },
+      { id: 'chasse', points: 4 },
+      { id: 'forge', points: 4 },
+      { id: 'medecine', points: 4 }
     ],
     spells
   });

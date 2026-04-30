@@ -52,15 +52,15 @@ describe('character creation wizard model', () => {
                   }),
                   1
                 ),
-                'arcana',
+                'arcanologie',
                 4
               ),
-              'lore',
+              'histoire',
               4
             ),
-            'rituals',
+            'arcanologie-des-rituels',
             2,
-            'arcana'
+            'arcanologie'
           ),
           'spark',
           2
@@ -85,7 +85,7 @@ describe('character creation wizard model', () => {
     expect(view.stepValidations.skills.valid).toBe(true);
     expect(view.stepValidations.spells.valid).toBe(true);
 
-    const overSpent = setSkillPoints(draft, 'rituals', 3, 'arcana');
+    const overSpent = setSkillPoints(draft, 'arcanologie-des-rituels', 3, 'arcanologie');
     const overSpentView = buildCreationView(overSpent, catalog());
 
     expect(overSpentView.stepValidations.skills.valid).toBe(false);
@@ -167,15 +167,15 @@ function completedMageDraft(): CharacterCreationDraft {
                   }),
                   1
                 ),
-                'arcana',
+                'arcanologie',
                 4
               ),
-              'lore',
+              'histoire',
               4
             ),
-            'rituals',
+            'arcanologie-des-rituels',
             2,
-            'arcana'
+            'arcanologie'
           ),
           'spark',
           2
@@ -261,7 +261,7 @@ function catalog(): CharacterCreationCatalog {
         id: 'guardian',
         name: 'Garde',
         orientationId: 'fighter',
-        primarySkillIds: ['long-blades']
+        primarySkillIds: ['epee-batarde']
       },
       {
         id: 'mage-arms',
@@ -307,10 +307,10 @@ function catalog(): CharacterCreationCatalog {
       }
     ],
     skills: [
-      { id: 'arcana', label: 'Art occulte' },
-      { id: 'rituals', label: 'Rituels', parentId: 'arcana' },
-      { id: 'lore', label: 'Erudition' },
-      { id: 'long-blades', label: 'Armes longues' }
+      { id: 'arcanologie', label: 'Arcanologie' },
+      { id: 'arcanologie-des-rituels', label: 'Arcanologie des rituels', parentId: 'arcanologie' },
+      { id: 'histoire', label: 'Histoire' },
+      { id: 'epee-batarde', label: 'Épée bâtarde' }
     ],
     spells: [
       { id: 'spark', label: 'Etincelle' },
