@@ -34,7 +34,7 @@
     "test:unit": "vitest run packages",
     "typecheck": "turbo run typecheck",
     "build": "turbo run build",
-    "validate": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm test && pnpm validate:geojson && pnpm build:map && pnpm devlab:test && pnpm test:e2e",
+    "validate": "pnpm canonical:check && pnpm lint && pnpm format:check && pnpm typecheck && pnpm test && pnpm validate:geojson && pnpm build:map && pnpm devlab:test && pnpm test:e2e",
     "db:generate": "pnpm --filter @knightandwizard/server db:generate",
     "db:migrate": "pnpm --filter @knightandwizard/server db:migrate",
     "db:reset": "pnpm --filter @knightandwizard/server db:reset",
@@ -45,7 +45,10 @@
     "knowledge:index": "tsx tools/index-knowledge-base.ts",
     "knowledge:index:dry-run": "tsx tools/index-knowledge-base.ts --dry-run",
     "test:e2e": "pnpm db:migrate && pnpm knowledge:index && playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "canonical:write": "tsx tools/canonical.ts --write",
+    "canonical:check": "tsx tools/canonical.ts",
+    "canonical:check:strict": "tsx tools/canonical.ts --strict"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
