@@ -121,7 +121,7 @@ describe('canonical compliance artifacts', () => {
     expect(summary.manifestSources).toBeGreaterThan(1000);
     expect(summary.matrixUnits).toBeGreaterThan(summary.manifestSources);
     expect(summary.unitsByType.legacy_character).toBeGreaterThan(0);
-    expect(summary.productSampleImports.length).toBeGreaterThan(0);
+    expect(summary.productSampleImports).toHaveLength(0);
   });
 });
 

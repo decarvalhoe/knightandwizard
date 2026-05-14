@@ -16,19 +16,19 @@ import {
 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 
-import type { Character } from '@knightandwizard/rules-core';
+import type { Character, CharacterAttributes } from '@knightandwizard/rules-core';
 
 import {
   ATTRIBUTE_CREATION_ORDER,
   CREATION_STEPS,
   buildCreationView,
-  createCreationDraft,
   previewCharacter,
   setAttributePoints,
   setExtraSpellPoints,
   setSkillPoints,
   setSpellPoints,
   type CharacterCreationAsset,
+  type CharacterCreationCatalog,
   type CharacterCreationDraft,
   type CharacterCreationStepId,
   type StepValidation
@@ -39,28 +39,29 @@ import {
   syncDraftToApi,
   type DraftSyncResult
 } from './persistence';
-import { attributeLabels, characterCreationCatalog } from './sample';
-
-const draftTemplate = createCreationDraft(characterCreationCatalog, {
-  classId: 'garde',
-  equipmentIds: ['travel-kit'],
-  id: 'draft-local',
-  orientationId: 'guerrier',
-  raceId: 'humain'
-});
+import { createDefaultCreationDraft } from './read-models';
 
 const syncIdle: DraftSyncResult = {
   detail: 'En attente',
   state: 'idle'
 };
 
-export function CharacterCreationWizard() {
+interface CharacterCreationWizardProps {
+  attributeLabels: Record<keyof CharacterAttributes, string>;
+  catalog: CharacterCreationCatalog;
+}
+
+export function CharacterCreationWizard({
+  attributeLabels,
+  catalog
+}: Readonly<CharacterCreationWizardProps>) {
+  const draftTemplate = useMemo(() => createDefaultCreationDraft(catalog), [catalog]);
   const [draft, setDraft] = useState<CharacterCreationDraft>(draftTemplate);
   const [apiSync, setApiSync] = useState<DraftSyncResult>(syncIdle);
   const [localSync, setLocalSync] = useState<DraftSyncResult>(syncIdle);
   const [loaded, setLoaded] = useState(false);
   const [submittedCharacter, setSubmittedCharacter] = useState<Character | null>(null);
-  const view = useMemo(() => buildCreationView(draft, characterCreationCatalog), [draft]);
+  const view = useMemo(() => buildCreationView(draft, catalog), [catalog, draft]);
   const currentStepIndex = Math.max(
     0,
     CREATION_STEPS.findIndex((step) => step.id === draft.currentStep)
@@ -103,10 +104,9 @@ export function CharacterCreationWizard() {
 
   function selectOrientation(orientationId: string) {
     const nextClassId =
-      characterCreationCatalog.classes.find(
-        (classProfile) => classProfile.orientationId === orientationId
-      )?.id ?? draft.classId;
-    const nextOrientation = characterCreationCatalog.orientations.find(
+      catalog.classes.find((classProfile) => classProfile.orientationId === orientationId)?.id ??
+      draft.classId;
+    const nextOrientation = catalog.orientations.find(
       (orientation) => orientation.id === orientationId
     );
     const nextIsMagician = nextOrientation?.isMagical === true || orientationId === 'magicien';
@@ -144,7 +144,7 @@ export function CharacterCreationWizard() {
       return;
     }
 
-    const character = previewCharacter(draft, characterCreationCatalog);
+    const character = previewCharacter(draft, catalog);
 
     setDraft((current) => ({
       ...current,
@@ -248,13 +248,19 @@ export function CharacterCreationWizard() {
 
           <div className="mt-5">
             {draft.currentStep === 'identity' && (
-              <IdentityStep draft={draft} updateDraft={updateDraft} />
+              <IdentityStep catalog={catalog} draft={draft} updateDraft={updateDraft} />
             )}
             {draft.currentStep === 'attributes' && (
-              <AttributesStep draft={draft} updateDraft={updateDraft} view={view} />
+              <AttributesStep
+                attributeLabels={attributeLabels}
+                draft={draft}
+                updateDraft={updateDraft}
+                view={view}
+              />
             )}
             {draft.currentStep === 'path' && (
               <PathStep
+                catalog={catalog}
                 draft={draft}
                 selectOrientation={selectOrientation}
                 updateDraft={updateDraft}
@@ -263,6 +269,7 @@ export function CharacterCreationWizard() {
             )}
             {draft.currentStep === 'spells' && (
               <SpellsStep
+                catalog={catalog}
                 draft={draft}
                 extraSpellMax={extraSpellMax}
                 isMagician={isMagician}
@@ -272,11 +279,11 @@ export function CharacterCreationWizard() {
               />
             )}
             {draft.currentStep === 'skills' && (
-              <SkillsStep draft={draft} setDraft={setDraft} view={view} />
+              <SkillsStep catalog={catalog} draft={draft} setDraft={setDraft} view={view} />
             )}
             {draft.currentStep === 'assets' && <AssetsStep assets={view.grantedAssets} />}
             {draft.currentStep === 'equipment' && (
-              <EquipmentStep draft={draft} updateDraft={updateDraft} />
+              <EquipmentStep catalog={catalog} draft={draft} updateDraft={updateDraft} />
             )}
             {draft.currentStep === 'story' && <StoryStep draft={draft} updateDraft={updateDraft} />}
             {draft.currentStep === 'review' && (
@@ -291,7 +298,12 @@ export function CharacterCreationWizard() {
         </section>
 
         <aside className="grid content-start gap-4">
-          <PreviewPanel draft={draft} submittedCharacter={submittedCharacter} view={view} />
+          <PreviewPanel
+            catalog={catalog}
+            draft={draft}
+            submittedCharacter={submittedCharacter}
+            view={view}
+          />
           <BudgetPanel draft={draft} view={view} />
         </aside>
       </div>
@@ -300,9 +312,11 @@ export function CharacterCreationWizard() {
 }
 
 function IdentityStep({
+  catalog,
   draft,
   updateDraft
 }: Readonly<{
+  catalog: CharacterCreationCatalog;
   draft: CharacterCreationDraft;
   updateDraft: (patch: Partial<CharacterCreationDraft>) => void;
 }>) {
@@ -329,7 +343,7 @@ function IdentityStep({
         </select>
       </label>
       <ChoiceGrid
-        items={characterCreationCatalog.races.map((race) => ({
+        items={catalog.races.map((race) => ({
           detail: `${race.category} points · VIT ${race.vitality} · FV ${race.speedFactor}`,
           id: race.id,
           label: race.name
@@ -342,10 +356,12 @@ function IdentityStep({
 }
 
 function AttributesStep({
+  attributeLabels,
   draft,
   updateDraft,
   view
 }: Readonly<{
+  attributeLabels: Record<keyof CharacterAttributes, string>;
   draft: CharacterCreationDraft;
   updateDraft: (patch: Partial<CharacterCreationDraft>) => void;
   view: ReturnType<typeof buildCreationView>;
@@ -382,11 +398,13 @@ function AttributesStep({
 }
 
 function PathStep({
+  catalog,
   draft,
   selectOrientation,
   updateDraft,
   view
 }: Readonly<{
+  catalog: CharacterCreationCatalog;
   draft: CharacterCreationDraft;
   selectOrientation: (orientationId: string) => void;
   updateDraft: (patch: Partial<CharacterCreationDraft>) => void;
@@ -395,7 +413,7 @@ function PathStep({
   return (
     <div className="grid gap-5">
       <ChoiceGrid
-        items={characterCreationCatalog.orientations.map((orientation) => ({
+        items={catalog.orientations.map((orientation) => ({
           detail: orientation.isMagical ? 'Magie engagee' : 'Voie non magique',
           id: orientation.id,
           label: orientation.name
@@ -420,6 +438,7 @@ function PathStep({
 }
 
 function SpellsStep({
+  catalog,
   draft,
   extraSpellMax,
   isMagician,
@@ -427,6 +446,7 @@ function SpellsStep({
   updateDraft,
   view
 }: Readonly<{
+  catalog: CharacterCreationCatalog;
   draft: CharacterCreationDraft;
   extraSpellMax: number;
   isMagician: boolean;
@@ -459,7 +479,7 @@ function SpellsStep({
         value={draft.extraSpellPoints}
       />
       <div className="grid gap-3 sm:grid-cols-2">
-        {characterCreationCatalog.spells.map((spell) => (
+        {catalog.spells.map((spell) => (
           <NumberStepper
             key={spell.id}
             label={spell.label}
@@ -474,10 +494,12 @@ function SpellsStep({
 }
 
 function SkillsStep({
+  catalog,
   draft,
   setDraft,
   view
 }: Readonly<{
+  catalog: CharacterCreationCatalog;
   draft: CharacterCreationDraft;
   setDraft: (updater: (current: CharacterCreationDraft) => CharacterCreationDraft) => void;
   view: ReturnType<typeof buildCreationView>;
@@ -491,7 +513,7 @@ function SkillsStep({
         ]}
       />
       <div className="grid gap-3 sm:grid-cols-2">
-        {characterCreationCatalog.skills.map((skill) => (
+        {catalog.skills.map((skill) => (
           <NumberStepper
             key={skill.id}
             label={skill.label}
@@ -523,15 +545,17 @@ function AssetsStep({ assets }: Readonly<{ assets: CharacterCreationAsset[] }>) 
 }
 
 function EquipmentStep({
+  catalog,
   draft,
   updateDraft
 }: Readonly<{
+  catalog: CharacterCreationCatalog;
   draft: CharacterCreationDraft;
   updateDraft: (patch: Partial<CharacterCreationDraft>) => void;
 }>) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
-      {characterCreationCatalog.equipment.map((item) => {
+      {catalog.equipment.map((item) => {
         const selected = draft.equipmentIds.includes(item.id);
 
         return (
@@ -647,10 +671,12 @@ function ReviewStep({
 }
 
 function PreviewPanel({
+  catalog,
   draft,
   submittedCharacter,
   view
 }: Readonly<{
+  catalog: CharacterCreationCatalog;
   draft: CharacterCreationDraft;
   submittedCharacter: Character | null;
   view: ReturnType<typeof buildCreationView>;
@@ -658,7 +684,7 @@ function PreviewPanel({
   let preview: Character | null = submittedCharacter;
 
   if (!preview && view.canSubmit) {
-    preview = previewCharacter(draft, characterCreationCatalog);
+    preview = previewCharacter(draft, catalog);
   }
 
   return (

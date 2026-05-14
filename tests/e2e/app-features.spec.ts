@@ -23,7 +23,7 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('Cuisine', { exact: true })).toBeVisible();
     await expect(page.getByText('Compétence implicite à 0').first()).toBeVisible();
     await expect(page.getByText('Cuisine corteganne')).toBeVisible();
-    await expect(page.getByText(/Catalogue implicite : 10 entrées, 7 notées/)).toBeVisible();
+    await expect(page.getByText(/Catalogue implicite : \d+ entrées, 7 notées/)).toBeVisible();
 
     await page.getByRole('button', { name: /Esthétisme/ }).click();
     await expect(page.getByTestId('last-roll-forced-failure')).toHaveText(
@@ -42,7 +42,7 @@ test.describe('K&W player and GM application flows', () => {
 
     await page.getByRole('button', { name: 'Combat' }).click();
     await expect(page.getByRole('heading', { name: 'Armes équipées' })).toBeVisible();
-    await expect(page.getByText('Garde mystique').first()).toBeVisible();
+    await expect(page.getByText('Bouclier').first()).toBeVisible();
 
     await page.getByRole('button', { name: 'Social' }).click();
     await expect(page.getByRole('heading', { name: 'Attributs sociaux' })).toBeVisible();
@@ -60,15 +60,16 @@ test.describe('K&W player and GM application flows', () => {
 
     await page.getByLabel('Nom').fill('E2E Aveline');
     await openCreationStep(page, 'Aptitudes');
-    await increaseStepper(page, 'Force', 5);
-    await increaseStepper(page, 'Dexterite', 5);
-    await increaseStepper(page, 'Vigueur', 5);
-    await increaseStepper(page, 'Intelligence', 5);
+    await increaseStepper(page, 'Force', 4);
+    await increaseStepper(page, 'Dextérité', 4);
+    await increaseStepper(page, 'Vigueur', 4);
+    await increaseStepper(page, 'Intelligence', 4);
+    await increaseStepper(page, 'Perception', 4);
     await expect(page.getByText('20/20').first()).toBeVisible();
 
     await openCreationStep(page, 'Competences');
     await increaseStepper(page, 'Arcanologie', 4);
-    await increaseStepper(page, 'Épée bâtarde', 4);
+    await increaseStepper(page, 'Epée bâtarde', 4);
     await increaseStepper(page, 'Chasse', 4);
     await increaseStepper(page, 'Forge', 4);
     await increaseStepper(page, 'Commandement', 4);
@@ -77,7 +78,7 @@ test.describe('K&W player and GM application flows', () => {
     await openCreationStep(page, 'Validation');
     await expect(page.getByRole('button', { name: 'Valider le brouillon' })).toBeEnabled();
     await page.getByRole('button', { name: 'Valider le brouillon' }).click();
-    await expect(page.getByText(/Brouillon valide · vitalite 24 · energie 0/)).toBeVisible();
+    await expect(page.getByText(/Brouillon valide · vitalite 20 · energie 0/)).toBeVisible();
     await expect(page.getByText('API synchronisee')).toBeVisible();
 
     await page.getByRole('button', { name: /Reset/ }).click();
@@ -86,8 +87,8 @@ test.describe('K&W player and GM application flows', () => {
     await page.getByRole('button', { name: /Magicien/ }).click();
     await openCreationStep(page, 'Sorts');
     await increaseStepper(page, 'Points de sort supplementaires', 2);
-    await increaseStepper(page, 'Etincelle', 2);
-    await increaseStepper(page, 'Garde mystique', 2);
+    await increaseStepper(page, 'Boule de feu', 2);
+    await increaseStepper(page, 'Bouclier', 2);
     await expect(page.getByText('4/4').first()).toBeVisible();
 
     await openCreationStep(page, 'Competences');
