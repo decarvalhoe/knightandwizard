@@ -57,10 +57,20 @@ describe('canonical compliance artifacts', () => {
       const matrix = await buildCanonicalMatrix(manifest, { repoRoot: fixture });
       const unitIds = matrix.units.map((unit) => unit.unit_id);
 
+      const creature = matrix.units.find((unit) => unit.unit_id === 'creature:humain');
+
       expect(unitIds).toContain('R-1.17');
       expect(unitIds).toContain('creature:humain');
       expect(unitIds).toContain('asset:anti-limites-physiques');
       expect(unitIds).toContain('legacy_character:87');
+      expect(creature?.api).toMatchObject({
+        evidence: expect.stringContaining('GET /catalogs'),
+        status: 'covered'
+      });
+      expect(creature?.tests).toMatchObject({
+        evidence: expect.stringContaining('apps/server/src/routes/catalogs.test.ts'),
+        status: 'covered'
+      });
       expect(renderCanonicalMatrix(matrix)).toContain('vector_store:');
     } finally {
       await rm(fixture, { force: true, recursive: true });

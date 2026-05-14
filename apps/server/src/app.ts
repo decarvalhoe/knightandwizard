@@ -1,4 +1,5 @@
 import Fastify, { type FastifyServerOptions, type FastifyInstance } from 'fastify';
+import { registerCatalogRoutes } from './routes/catalogs.js';
 import { registerCharacterDraftRoutes } from './routes/character-drafts.js';
 import { registerGameMasterRoutes } from './routes/game-master.js';
 import { registerHealthRoute } from './routes/health.js';
@@ -16,6 +17,7 @@ export function buildApp(options: FastifyServerOptions = {}): FastifyInstance {
     reply.header('access-control-allow-headers', 'content-type,authorization');
   });
 
+  app.register(registerCatalogRoutes);
   app.register(registerCharacterDraftRoutes);
   app.register(registerGameMasterRoutes);
   app.register(registerHealthRoute);

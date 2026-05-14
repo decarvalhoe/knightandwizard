@@ -117,6 +117,7 @@ const relationalReadModelCatalogPaths = new Set([
   'data/catalogs/legacy-characters.yaml',
   'data/catalogs/atouts.yaml'
 ]);
+const apiReadModelCatalogPaths = relationalReadModelCatalogPaths;
 const ignoredDirectoryNames = new Set(['.git', '.next', '.turbo', 'dist', 'node_modules']);
 const textExtensions = new Set([
   '.css',
@@ -506,6 +507,16 @@ function collectCatalogUnits(
         unit.relational_db = link(
           'covered',
           'apps/server/src/catalogs/read-models.ts imports validated catalog documents into catalog_documents with source hash, status and source_refs; apps/server/src/catalogs/read-models.test.ts verifies the PostgreSQL read model.'
+        );
+      }
+      if (apiReadModelCatalogPaths.has(source.path)) {
+        unit.api = link(
+          'covered',
+          'apps/server/src/routes/catalogs.ts exposes canonical catalog read models through GET /catalogs and GET /catalogs/:catalogName with stable JSON errors.'
+        );
+        unit.tests = link(
+          'covered',
+          'apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors.'
         );
       }
       units.push(unit);
