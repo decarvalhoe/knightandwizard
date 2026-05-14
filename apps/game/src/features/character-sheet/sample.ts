@@ -48,8 +48,8 @@ export const skillCatalog: SkillCatalogEntry[] = [
 
 export const sampleCharacter: Character = createPlayerCharacter({
   attributes: {
-    aestheticism: 1,
-    charisma: 2,
+    aestheticism: 0,
+    charisma: 3,
     dexterity: 3,
     empathy: 2,
     intelligence: 2,

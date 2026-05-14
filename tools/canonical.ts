@@ -579,7 +579,7 @@ function buildUnit(
 ): CanonicalMatrixUnit {
   const isSourceDocument = unitType === 'source_document';
   const downstreamStatus: UnitStatus = isSourceDocument ? 'not_applicable' : 'partial';
-  return {
+  const unit: CanonicalMatrixUnit = {
     api: link(
       downstreamStatus,
       downstreamStatus === 'partial' ? 'Downstream API evidence pending.' : 'Source document only.'
@@ -625,6 +625,55 @@ function buildUnit(
     yaml: link('not_applicable', 'No YAML projection required at source-document layer.'),
     zod_schema: link('not_applicable', 'No Zod schema required.')
   };
+
+  return applyRuleImplementationEvidence(source, unit);
+}
+
+function applyRuleImplementationEvidence(
+  source: SourceEntry,
+  unit: CanonicalMatrixUnit
+): CanonicalMatrixUnit {
+  if (source.path !== 'docs/rules/01-resolution.md') {
+    return unit;
+  }
+
+  if (unit.unit_id === 'R-1.6') {
+    return {
+      ...unit,
+      rules_core: link(
+        'covered',
+        'packages/rules-core/src/dice.ts returns 0 successes and no D100 for pool 0; apps/game/src/features/character-sheet/model.ts maps effective attribute 0 to pool 0.'
+      ),
+      tests: link(
+        'covered',
+        'packages/rules-core/src/dice.test.ts, apps/game/src/features/character-sheet/model.test.ts, and tests/e2e/app-features.spec.ts cover forced failure with no critical D100.'
+      ),
+      ui: link(
+        'covered',
+        'apps/game/src/features/character-sheet/CharacterSheet.tsx renders the attribute-0 forced-failure state; tests/e2e/app-features.spec.ts verifies it.'
+      )
+    };
+  }
+
+  if (unit.unit_id === 'R-1.17') {
+    return {
+      ...unit,
+      rules_core: link(
+        'covered',
+        'packages/rules-core/src/dice.ts marks critical failures when excess initial 1s remain and rolls one D100 severity.'
+      ),
+      tests: link(
+        'covered',
+        'packages/rules-core/src/dice.test.ts, apps/game/src/features/character-sheet/model.test.ts, apps/game/src/features/session-manager/model.test.ts, apps/server/src/llm/game-master.test.ts, and tests/e2e/app-features.spec.ts cover critical-failure severity display.'
+      ),
+      ui: link(
+        'covered',
+        'apps/game/src/features/character-sheet/CharacterSheet.tsx and apps/game/src/features/session-manager/SessionManager.tsx surface critical state and D100 severity.'
+      )
+    };
+  }
+
+  return unit;
 }
 
 function link(status: UnitStatus, evidence: string): MatrixLink {

@@ -92,6 +92,30 @@ describe('game master Mastra runtime', () => {
     });
   });
 
+  it('includes D100 severity in deterministic critical failure narration', async () => {
+    const result = await describeSceneWithGameMaster(
+      {
+        sceneDescription: 'Aveline tente une acrobatie dangereuse.',
+        roll: {
+          difficulty: 7,
+          pool: 2,
+          reason: 'Acrobatie sur corniche'
+        },
+        sessionId: 'session-critical-failure'
+      },
+      {
+        randomInteger: scriptedRolls([2, 1, 73])
+      }
+    );
+
+    expect(result.toolCalls[0]?.output).toMatchObject({
+      criticalFailureSeverity: 73,
+      isCriticalFailure: true,
+      successes: 0
+    });
+    expect(result.narration).toContain('Echec critique D100 73.');
+  });
+
   it('injects retrieved rules context and cites it in the deterministic narration', async () => {
     const recorded: unknown[] = [];
     const result = await describeSceneWithGameMaster(

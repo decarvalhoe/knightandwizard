@@ -7,6 +7,7 @@ import { type AttributeKey, type Character } from '@knightandwizard/rules-core';
 
 import {
   addInventoryItem,
+  attributeRollOutcomeLabels,
   buildCharacterSheetView,
   removeInventoryItem,
   rollAttributeCheck,
@@ -142,30 +143,15 @@ export function CharacterSheet({
                     {attributeLabels[lastRoll.attribute]} · {lastRoll.pool}D · DT{' '}
                     {lastRoll.difficulty} · {lastRoll.successes} succès
                   </p>
-                  {lastRoll.pool === 0 && (
+                  {attributeRollOutcomeLabels(lastRoll).map((label) => (
                     <p
                       className="font-mono text-xs uppercase tracking-[0.14em] text-paper/85"
-                      data-testid="last-roll-forced-failure"
+                      data-testid={label.testId}
+                      key={label.id}
                     >
-                      Échec automatique (attribut 0)
+                      {label.label}
                     </p>
-                  )}
-                  {lastRoll.isCriticalSuccess && (
-                    <p
-                      className="font-mono text-xs uppercase tracking-[0.14em] text-paper/85"
-                      data-testid="last-roll-critical-success"
-                    >
-                      Réussite critique
-                    </p>
-                  )}
-                  {lastRoll.isCriticalFailure && (
-                    <p
-                      className="font-mono text-xs uppercase tracking-[0.14em] text-paper/85"
-                      data-testid="last-roll-critical-failure"
-                    >
-                      Échec critique · D100 = {lastRoll.criticalFailureSeverity}
-                    </p>
-                  )}
+                  ))}
                 </div>
               )}
             </div>

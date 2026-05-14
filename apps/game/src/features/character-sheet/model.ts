@@ -92,6 +92,12 @@ export interface AttributeRollResult extends DiceRollResult {
   pool: number;
 }
 
+export interface AttributeRollOutcomeLabel {
+  id: 'critical-failure' | 'critical-success' | 'forced-failure';
+  label: string;
+  testId: string;
+}
+
 export interface SkillTreeRow extends CharacterSkill {
   depth: number;
   implicitParentId?: string;
@@ -168,6 +174,40 @@ export function rollAttributeCheck(
     difficulty,
     pool
   };
+}
+
+export function attributeRollOutcomeLabels(
+  result: AttributeRollResult
+): AttributeRollOutcomeLabel[] {
+  const labels: AttributeRollOutcomeLabel[] = [];
+
+  if (result.pool === 0) {
+    labels.push({
+      id: 'forced-failure',
+      label: 'Échec automatique (attribut 0)',
+      testId: 'last-roll-forced-failure'
+    });
+  }
+
+  if (result.isCriticalSuccess) {
+    labels.push({
+      id: 'critical-success',
+      label: 'Réussite critique',
+      testId: 'last-roll-critical-success'
+    });
+  }
+
+  if (result.isCriticalFailure) {
+    const severity = result.criticalFailureSeverity;
+    labels.push({
+      id: 'critical-failure',
+      label:
+        typeof severity === 'number' ? `Échec critique · D100 = ${severity}` : 'Échec critique',
+      testId: 'last-roll-critical-failure'
+    });
+  }
+
+  return labels;
 }
 
 export function addInventoryItem(inventory: InventoryItem[], item: InventoryItem): InventoryItem[] {
