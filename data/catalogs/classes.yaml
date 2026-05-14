@@ -13,6 +13,7 @@ metadata:
 classes:
   - id: bijoutier
     name: Bijoutier
+    status: active
     orientation_id: artisan
     primary_skill_id: bijouterie
     primary_skill_choice: fixed
@@ -22,6 +23,7 @@ classes:
         ref: line:9
   - id: charpentier
     name: Charpentier
+    status: active
     orientation_id: artisan
     primary_skill_id: charpenterie
     primary_skill_choice: fixed
@@ -31,6 +33,7 @@ classes:
         ref: line:10
   - id: couturier
     name: Couturier
+    status: active
     orientation_id: artisan
     primary_skill_id: couture
     primary_skill_choice: fixed
@@ -40,6 +43,7 @@ classes:
         ref: line:11
   - id: facteur-d-arc
     name: Facteur d’arc
+    status: active
     orientation_id: artisan
     primary_skill_id: facture-d-arc
     primary_skill_choice: fixed
@@ -49,6 +53,7 @@ classes:
         ref: line:12
   - id: forgeron
     name: Forgeron
+    status: active
     orientation_id: artisan
     primary_skill_id: forge
     primary_skill_choice: fixed
@@ -58,6 +63,7 @@ classes:
         ref: line:13
   - id: menuisier
     name: Menuisier
+    status: active
     orientation_id: artisan
     primary_skill_id: menuiserie
     primary_skill_choice: fixed
@@ -67,6 +73,7 @@ classes:
         ref: line:14
   - id: parfumeur
     name: Parfumeur
+    status: active
     orientation_id: artisan
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -76,6 +83,7 @@ classes:
         ref: line:15
   - id: potier
     name: Potier
+    status: active
     orientation_id: artisan
     primary_skill_id: poterie
     primary_skill_choice: fixed
@@ -85,6 +93,7 @@ classes:
         ref: line:16
   - id: tanneur
     name: Tanneur
+    status: active
     orientation_id: artisan
     primary_skill_id: tannage
     primary_skill_choice: fixed
@@ -94,6 +103,7 @@ classes:
         ref: line:17
   - id: tonnelier
     name: Tonnelier
+    status: active
     orientation_id: artisan
     primary_skill_id: facture-de-tonneau
     primary_skill_choice: fixed
@@ -103,6 +113,7 @@ classes:
         ref: line:18
   - id: vannier
     name: Vannier
+    status: active
     orientation_id: artisan
     primary_skill_id: vannerie
     primary_skill_choice: fixed
@@ -112,6 +123,7 @@ classes:
         ref: line:19
   - id: barde
     name: Barde
+    status: active
     orientation_id: artiste
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -121,6 +133,7 @@ classes:
         ref: line:21
   - id: chanteur
     name: Chanteur
+    status: active
     orientation_id: artiste
     primary_skill_id: chant
     primary_skill_choice: fixed
@@ -130,6 +143,7 @@ classes:
         ref: line:22
   - id: comedien
     name: Comédien
+    status: active
     orientation_id: artiste
     primary_skill_id: comedie
     primary_skill_choice: fixed
@@ -139,6 +153,7 @@ classes:
         ref: line:23
   - id: conteur
     name: Conteur
+    status: active
     orientation_id: artiste
     primary_skill_id: conte
     primary_skill_choice: fixed
@@ -148,6 +163,7 @@ classes:
         ref: line:24
   - id: danseur
     name: Danseur
+    status: active
     orientation_id: artiste
     primary_skill_id: danse
     primary_skill_choice: fixed
@@ -157,6 +173,7 @@ classes:
         ref: line:25
   - id: dessinateur
     name: Dessinateur
+    status: active
     orientation_id: artiste
     primary_skill_id: dessin
     primary_skill_choice: fixed
@@ -166,6 +183,7 @@ classes:
         ref: line:26
   - id: ecrivain
     name: Écrivain
+    status: active
     orientation_id: artiste
     primary_skill_id: redaction
     primary_skill_choice: fixed
@@ -175,6 +193,7 @@ classes:
         ref: line:27
   - id: peintre
     name: Peintre
+    status: active
     orientation_id: artiste
     primary_skill_id: peinture
     primary_skill_choice: fixed
@@ -184,6 +203,7 @@ classes:
         ref: line:28
   - id: prestidigitateur
     name: Prestidigitateur
+    status: active
     orientation_id: artiste
     primary_skill_id: prestidigitation
     primary_skill_choice: fixed
@@ -193,6 +213,7 @@ classes:
         ref: line:29
   - id: aubergiste
     name: Aubergiste
+    status: active
     orientation_id: commercant
     primary_skill_id: hotellerie
     primary_skill_choice: fixed
@@ -202,6 +223,7 @@ classes:
         ref: line:31
   - id: chasseur
     name: Chasseur
+    status: active
     orientation_id: commercant
     primary_skill_id: chasse
     primary_skill_choice: fixed
@@ -211,6 +233,7 @@ classes:
         ref: line:32
   - id: marchand
     name: Marchand
+    status: active
     orientation_id: commercant
     primary_skill_id: marchandage
     primary_skill_choice: fixed
@@ -220,6 +243,7 @@ classes:
         ref: line:33
   - id: pecheur
     name: Pêcheur
+    status: active
     orientation_id: commercant
     primary_skill_id: peche
     primary_skill_choice: fixed
@@ -229,6 +253,7 @@ classes:
         ref: line:34
   - id: prostitue
     name: Prostitué
+    status: active
     orientation_id: commercant
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -238,6 +263,7 @@ classes:
         ref: line:35
   - id: tavernier
     name: Tavernier
+    status: active
     orientation_id: commercant
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -247,6 +273,7 @@ classes:
         ref: line:36
   - id: chasseur-dommestique
     name: Chasseur
+    status: active
     orientation_id: dommestique
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -256,6 +283,7 @@ classes:
         ref: line:38
   - id: cuisinier
     name: Cuisinier
+    status: active
     orientation_id: dommestique
     primary_skill_id: cuisine
     primary_skill_choice: fixed
@@ -265,6 +293,7 @@ classes:
         ref: line:39
   - id: jardinier
     name: Jardinier
+    status: active
     orientation_id: dommestique
     primary_skill_id: jardinage
     primary_skill_choice: fixed
@@ -274,6 +303,7 @@ classes:
         ref: line:40
   - id: serf
     name: Serf
+    status: active
     orientation_id: dommestique
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -283,6 +313,7 @@ classes:
         ref: line:41
   - id: soubrette
     name: Soubrette
+    status: active
     orientation_id: dommestique
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -292,6 +323,7 @@ classes:
         ref: line:42
   - id: arbaletrier
     name: Arbalétrier
+    status: active
     orientation_id: guerrier
     primary_skill_id: arbalete
     primary_skill_choice: fixed
@@ -301,6 +333,7 @@ classes:
         ref: line:44
   - id: archer
     name: Archer
+    status: active
     orientation_id: guerrier
     primary_skill_id: archerie
     primary_skill_choice: fixed
@@ -310,6 +343,7 @@ classes:
         ref: line:45
   - id: barbare
     name: Barbare
+    status: active
     orientation_id: guerrier
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -319,6 +353,7 @@ classes:
         ref: line:46
   - id: berzerker
     name: Berzerker
+    status: active
     orientation_id: guerrier
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -328,6 +363,7 @@ classes:
         ref: line:47
   - id: cavalier
     name: Cavalier
+    status: active
     orientation_id: guerrier
     primary_skill_id: equitation
     primary_skill_choice: fixed
@@ -337,6 +373,7 @@ classes:
         ref: line:48
   - id: chasseur-de-magicien
     name: Chasseur de magicien
+    status: active
     orientation_id: guerrier
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -346,6 +383,7 @@ classes:
         ref: line:49
   - id: duelliste
     name: Duelliste
+    status: active
     orientation_id: guerrier
     primary_skill_id: epee-a-une-main
     primary_skill_choice: fixed
@@ -355,6 +393,7 @@ classes:
         ref: line:50
   - id: fantassin
     name: Fantassin
+    status: active
     orientation_id: guerrier
     primary_skill_id: lance
     primary_skill_choice: fixed
@@ -364,6 +403,7 @@ classes:
         ref: line:51
   - id: fantassin-leger
     name: Fantassin léger
+    status: active
     orientation_id: guerrier
     primary_skill_id: lance
     primary_skill_choice: fixed
@@ -373,6 +413,7 @@ classes:
         ref: line:52
   - id: fantassin-lourd
     name: Fantassin lourd
+    status: active
     orientation_id: guerrier
     primary_skill_id: hallebarde
     primary_skill_choice: fixed
@@ -382,6 +423,7 @@ classes:
         ref: line:53
   - id: garde
     name: Garde
+    status: active
     orientation_id: guerrier
     primary_skill_id: epee-a-une-main
     primary_skill_choice: fixed
@@ -391,6 +433,7 @@ classes:
         ref: line:54
   - id: garde-du-corps
     name: Garde du corps
+    status: active
     orientation_id: guerrier
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -400,6 +443,7 @@ classes:
         ref: line:55
   - id: justicier
     name: Justicier
+    status: active
     orientation_id: guerrier
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -409,6 +453,7 @@ classes:
         ref: line:56
   - id: mercenaires
     name: Mercenaires
+    status: active
     orientation_id: guerrier
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -418,6 +463,7 @@ classes:
         ref: line:57
   - id: samourai
     name: Samouraï
+    status: active
     orientation_id: guerrier
     primary_skill_id: katana
     primary_skill_choice: fixed
@@ -427,6 +473,7 @@ classes:
         ref: line:58
   - id: tueur-de-monstres
     name: Tueur de monstres
+    status: active
     orientation_id: guerrier
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -436,6 +483,7 @@ classes:
         ref: line:59
   - id: assassin
     name: Assassin
+    status: active
     orientation_id: hors-la-loi
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -445,6 +493,7 @@ classes:
         ref: line:61
   - id: braconnier
     name: Braconnier
+    status: active
     orientation_id: hors-la-loi
     primary_skill_id: chasse
     primary_skill_choice: fixed
@@ -454,6 +503,7 @@ classes:
         ref: line:62
   - id: escroc
     name: Escroc
+    status: active
     orientation_id: hors-la-loi
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -463,6 +513,7 @@ classes:
         ref: line:63
   - id: espion
     name: Espion
+    status: active
     orientation_id: hors-la-loi
     primary_skill_id: furtivite
     primary_skill_choice: fixed
@@ -472,6 +523,7 @@ classes:
         ref: line:64
   - id: ninja
     name: Ninja
+    status: active
     orientation_id: hors-la-loi
     primary_skill_id: furtivite
     primary_skill_choice: fixed
@@ -481,6 +533,7 @@ classes:
         ref: line:65
   - id: voleur
     name: Voleur
+    status: active
     orientation_id: hors-la-loi
     primary_skill_id: vol-a-la-tire
     primary_skill_choice: fixed
@@ -490,6 +543,7 @@ classes:
         ref: line:66
   - id: voleur-a-la-tire
     name: Voleur à la tire
+    status: active
     orientation_id: hors-la-loi
     primary_skill_id: vol-a-la-tire
     primary_skill_choice: fixed
@@ -499,6 +553,7 @@ classes:
         ref: line:67
   - id: alchimiste
     name: Alchimiste
+    status: active
     orientation_id: intellectuel
     primary_skill_id: alchimie
     primary_skill_choice: fixed
@@ -508,6 +563,7 @@ classes:
         ref: line:69
   - id: herboriste
     name: Herboriste
+    status: active
     orientation_id: intellectuel
     primary_skill_id: herbologie
     primary_skill_choice: fixed
@@ -517,6 +573,7 @@ classes:
         ref: line:70
   - id: joueur-de-poker
     name: Joueur de poker
+    status: active
     orientation_id: intellectuel
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -526,6 +583,7 @@ classes:
         ref: line:71
   - id: medecin
     name: Médecin
+    status: active
     orientation_id: intellectuel
     primary_skill_id: medecine
     primary_skill_choice: fixed
@@ -535,6 +593,7 @@ classes:
         ref: line:72
   - id: philosophe
     name: Philosophe
+    status: active
     orientation_id: intellectuel
     primary_skill_id: philosophie
     primary_skill_choice: fixed
@@ -544,6 +603,7 @@ classes:
         ref: line:73
   - id: politicien
     name: Politicien
+    status: active
     orientation_id: intellectuel
     primary_skill_id: politique
     primary_skill_choice: fixed
@@ -553,6 +613,7 @@ classes:
         ref: line:74
   - id: precepteur
     name: Précepteur
+    status: active
     orientation_id: intellectuel
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -562,6 +623,7 @@ classes:
         ref: line:75
   - id: scribe
     name: Scribe
+    status: active
     orientation_id: intellectuel
     primary_skill_id: redaction
     primary_skill_choice: fixed
@@ -571,6 +633,7 @@ classes:
         ref: line:76
   - id: abjurateur
     name: Abjurateur
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -580,6 +643,7 @@ classes:
         ref: line:78
   - id: alterateur
     name: Altérateur
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -589,6 +653,7 @@ classes:
         ref: line:79
   - id: chaman
     name: Chaman
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -598,6 +663,7 @@ classes:
         ref: line:80
   - id: clerc
     name: Clerc
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -607,6 +673,7 @@ classes:
         ref: line:81
   - id: devin
     name: Devin
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -616,6 +683,7 @@ classes:
         ref: line:82
   - id: druide
     name: Druide
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -625,6 +693,7 @@ classes:
         ref: line:83
   - id: elementaliste
     name: Elémentaliste
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -634,6 +703,7 @@ classes:
         ref: line:84
   - id: enchanteur
     name: Enchanteur
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -643,6 +713,7 @@ classes:
         ref: line:85
   - id: illusionniste
     name: Illusionniste
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -652,6 +723,7 @@ classes:
         ref: line:86
   - id: invocateur
     name: Invocateur
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -661,6 +733,7 @@ classes:
         ref: line:87
   - id: necromancien
     name: Nécromancien
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -670,6 +743,7 @@ classes:
         ref: line:88
   - id: sorcier
     name: Sorcier
+    status: active
     orientation_id: magicien
     primary_skill_id: null
     primary_skill_choice: magician_no_primary
@@ -679,6 +753,7 @@ classes:
         ref: line:89
   - id: bucheron
     name: Bûcheron
+    status: active
     orientation_id: ouvrier
     primary_skill_id: bucheronnage
     primary_skill_choice: fixed
@@ -688,6 +763,7 @@ classes:
         ref: line:91
   - id: agriculteur
     name: Agriculteur
+    status: active
     orientation_id: paysan
     primary_skill_id: agriculture
     primary_skill_choice: fixed
@@ -697,6 +773,7 @@ classes:
         ref: line:93
   - id: apiculteur
     name: Apiculteur
+    status: active
     orientation_id: paysan
     primary_skill_id: apiculture
     primary_skill_choice: fixed
@@ -706,6 +783,7 @@ classes:
         ref: line:94
   - id: berger
     name: Berger
+    status: active
     orientation_id: paysan
     primary_skill_id: elevage-de-moutons
     primary_skill_choice: fixed
@@ -715,6 +793,7 @@ classes:
         ref: line:95
   - id: chevrier
     name: Chevrier
+    status: active
     orientation_id: paysan
     primary_skill_id: elevage-de-chevres
     primary_skill_choice: fixed
@@ -724,6 +803,7 @@ classes:
         ref: line:96
   - id: eleveur-de-bovides
     name: Eleveur de bovidés
+    status: active
     orientation_id: paysan
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -733,6 +813,7 @@ classes:
         ref: line:97
   - id: eleveur-de-volailles
     name: Eleveur de volailles
+    status: active
     orientation_id: paysan
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -742,6 +823,7 @@ classes:
         ref: line:98
   - id: porcher
     name: Porcher
+    status: active
     orientation_id: paysan
     primary_skill_id: elevage-de-porcs
     primary_skill_choice: fixed
@@ -751,6 +833,7 @@ classes:
         ref: line:99
   - id: exorciste
     name: Exorciste
+    status: active
     orientation_id: religieux
     primary_skill_id: exorcisme
     primary_skill_choice: fixed
@@ -760,6 +843,7 @@ classes:
         ref: line:101
   - id: inquisiteur
     name: Inquisiteur
+    status: active
     orientation_id: religieux
     primary_skill_id: theologie
     primary_skill_choice: fixed
@@ -769,6 +853,7 @@ classes:
         ref: line:102
   - id: pretre
     name: Prêtre
+    status: active
     orientation_id: religieux
     primary_skill_id: theologie
     primary_skill_choice: fixed
@@ -778,6 +863,7 @@ classes:
         ref: line:103
   - id: eclaireur
     name: Eclaireur
+    status: active
     orientation_id: voyageur
     primary_skill_id: observation-du-terrain
     primary_skill_choice: fixed
@@ -787,6 +873,7 @@ classes:
         ref: line:105
   - id: navigateur
     name: Navigateur
+    status: active
     orientation_id: voyageur
     primary_skill_id: navigation
     primary_skill_choice: fixed
@@ -796,6 +883,7 @@ classes:
         ref: line:106
   - id: pirate
     name: Pirate
+    status: active
     orientation_id: voyageur
     primary_skill_id: null
     primary_skill_choice: player_choice
@@ -805,6 +893,7 @@ classes:
         ref: line:107
   - id: ranger
     name: Ranger
+    status: active
     orientation_id: voyageur
     primary_skill_id: chasse
     primary_skill_choice: fixed
@@ -814,6 +903,7 @@ classes:
         ref: line:108
   - id: rodeur
     name: Rôdeur
+    status: active
     orientation_id: voyageur
     primary_skill_id: chasse
     primary_skill_choice: fixed

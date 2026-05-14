@@ -12,6 +12,7 @@ metadata:
 spells:
   - id: annihilation
     name: Annihilation
+    status: active
     school_id: abjuration
     energy: 169
     incantation_time: 118
@@ -24,6 +25,7 @@ spells:
         ref: entry:annihilation
   - id: augmentation-energetique
     name: Augmentation énergétique
+    status: active
     school_id: abjuration
     energy: 6
     incantation_time: 4
@@ -36,6 +38,7 @@ spells:
         ref: entry:augmentation-energetique
   - id: barriere-psychique
     name: Barrière psychique
+    status: active
     school_id: abjuration
     energy: 6
     incantation_time: 4
@@ -48,6 +51,7 @@ spells:
         ref: entry:barriere-psychique
   - id: barriere-psychique-de-masse
     name: Barrière psychique de masse
+    status: active
     school_id: abjuration
     energy: 7
     incantation_time: 5
@@ -60,6 +64,7 @@ spells:
         ref: entry:barriere-psychique-de-masse
   - id: boomerang
     name: Boomerang
+    status: active
     school_id: abjuration
     energy: 7
     incantation_time: 5
@@ -72,6 +77,7 @@ spells:
         ref: entry:boomerang
   - id: captage-d-energie
     name: Captage d'énergie
+    status: active
     school_id: abjuration
     energy: 7
     incantation_time: 5
@@ -84,6 +90,7 @@ spells:
         ref: entry:captage-d-energie
   - id: complexite-magique
     name: Complexité magique
+    status: active
     school_id: abjuration
     energy: 7
     incantation_time: 5
@@ -96,6 +103,7 @@ spells:
         ref: entry:complexite-magique
   - id: contre-blanc
     name: Contre-blanc
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -108,6 +116,7 @@ spells:
         ref: entry:contre-blanc
   - id: contre-bleu
     name: Contre-bleu
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -120,6 +129,7 @@ spells:
         ref: entry:contre-bleu
   - id: contre-brun
     name: Contre-brun
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -132,6 +142,7 @@ spells:
         ref: entry:contre-brun
   - id: contre-gris
     name: Contre-gris
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -144,6 +155,7 @@ spells:
         ref: entry:contre-gris
   - id: contre-jaune
     name: Contre-jaune
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -156,6 +168,7 @@ spells:
         ref: entry:contre-jaune
   - id: contre-noir
     name: Contre-noir
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -168,6 +181,7 @@ spells:
         ref: entry:contre-noir
   - id: contre-orange
     name: Contre-orange
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -180,6 +194,7 @@ spells:
         ref: entry:contre-orange
   - id: contre-rouge
     name: Contre-rouge
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -192,6 +207,7 @@ spells:
         ref: entry:contre-rouge
   - id: contre-turquoise
     name: Contre-turquoise
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -204,6 +220,7 @@ spells:
         ref: entry:contre-turquoise
   - id: contre-vert
     name: Contre-vert
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -216,6 +233,7 @@ spells:
         ref: entry:contre-vert
   - id: contre-violet
     name: Contre-violet
+    status: active
     school_id: abjuration
     energy: 8
     incantation_time: 5
@@ -228,6 +246,7 @@ spells:
         ref: entry:contre-violet
   - id: deplacement-magique
     name: Déplacement magique
+    status: active
     school_id: abjuration
     energy: 7
     incantation_time: 5
@@ -240,6 +259,7 @@ spells:
         ref: entry:deplacement-magique
   - id: deplacement-magique-de-masse
     name: Déplacement magique de masse
+    status: active
     school_id: abjuration
     energy: 9
     incantation_time: 6
@@ -252,6 +272,7 @@ spells:
         ref: entry:deplacement-magique-de-masse
   - id: detournement-du-lien-du-mort-vivant
     name: Détournement du lien du mort-vivant
+    status: active
     school_id: abjuration
     energy: 11
     incantation_time: 7
@@ -264,6 +285,7 @@ spells:
         ref: entry:detournement-du-lien-du-mort-vivant
   - id: dispersion-du-familier
     name: Dispersion du familier
+    status: active
     school_id: abjuration
     energy: 9
     incantation_time: 6
@@ -276,6 +298,7 @@ spells:
         ref: entry:dispersion-du-familier
   - id: dissipation
     name: Dissipation
+    status: active
     school_id: abjuration
     energy: 11
     incantation_time: 8
@@ -288,6 +311,7 @@ spells:
         ref: entry:dissipation
   - id: interdiction-magique
     name: Interdiction magique
+    status: active
     school_id: abjuration
     energy: 13
     incantation_time: 9
@@ -300,6 +324,7 @@ spells:
         ref: entry:interdiction-magique
   - id: irreductibilite
     name: Irréductibilité
+    status: active
     school_id: abjuration
     energy: 13
     incantation_time: 9
@@ -312,6 +337,7 @@ spells:
         ref: entry:irreductibilite
   - id: irreductibilite-de-masse
     name: Irréductibilité de masse
+    status: active
     school_id: abjuration
     energy: 14
     incantation_time: 10
@@ -324,6 +350,7 @@ spells:
         ref: entry:irreductibilite-de-masse
   - id: perturbation
     name: Perturbation
+    status: active
     school_id: abjuration
     energy: 14
     incantation_time: 10
@@ -336,6 +363,7 @@ spells:
         ref: entry:perturbation
   - id: piegeage-magique
     name: Piégeage magique
+    status: active
     school_id: abjuration
     energy: 16
     incantation_time: 12
@@ -348,6 +376,7 @@ spells:
         ref: entry:piegeage-magique
   - id: ralentissement-magique
     name: Ralentissement magique
+    status: active
     school_id: abjuration
     energy: 19
     incantation_time: 13
@@ -360,6 +389,7 @@ spells:
         ref: entry:ralentissement-magique
   - id: rets-des-ames
     name: Rets des âmes
+    status: active
     school_id: abjuration
     energy: 21
     incantation_time: 14
@@ -372,6 +402,7 @@ spells:
         ref: entry:rets-des-ames
   - id: rets-des-cadavres
     name: Rets des cadavres
+    status: active
     school_id: abjuration
     energy: 24
     incantation_time: 17
@@ -384,6 +415,7 @@ spells:
         ref: entry:rets-des-cadavres
   - id: rupture-de-lien-d-invocation
     name: Rupture de lien d'invocation
+    status: active
     school_id: abjuration
     energy: 10
     incantation_time: 7
@@ -398,6 +430,7 @@ spells:
         ref: entry:rupture-de-lien-d-invocation
   - id: substitution-de-sort
     name: Substitution de sort
+    status: active
     school_id: abjuration
     energy: 25
     incantation_time: 18
@@ -410,6 +443,7 @@ spells:
         ref: entry:substitution-de-sort
   - id: agrandissement
     name: Agrandissement
+    status: active
     school_id: alteration
     energy: 36
     incantation_time: 53
@@ -422,6 +456,7 @@ spells:
         ref: entry:agrandissement
   - id: branchie
     name: Branchie
+    status: active
     school_id: alteration
     energy: 8
     incantation_time: 12
@@ -434,6 +469,7 @@ spells:
         ref: entry:branchie
   - id: branchie-de-masse
     name: Branchie de masse
+    status: active
     school_id: alteration
     energy: 8
     incantation_time: 12
@@ -446,6 +482,7 @@ spells:
         ref: entry:branchie-de-masse
   - id: changement-de-sexe
     name: Changement de sexe
+    status: active
     school_id: alteration
     energy: 12
     incantation_time: 18
@@ -458,6 +495,7 @@ spells:
         ref: entry:changement-de-sexe
   - id: changement-en-corbeau
     name: Changement en corbeau
+    status: active
     school_id: alteration
     energy: 14
     incantation_time: 20
@@ -470,6 +508,7 @@ spells:
         ref: entry:changement-en-corbeau
   - id: changement-en-crapaud
     name: Changement en crapaud
+    status: active
     school_id: alteration
     energy: 12
     incantation_time: 17
@@ -482,6 +521,7 @@ spells:
         ref: entry:changement-en-crapaud
   - id: changement-en-furet
     name: Changement en furet
+    status: active
     school_id: alteration
     energy: 13
     incantation_time: 19
@@ -494,6 +534,7 @@ spells:
         ref: entry:changement-en-furet
   - id: changement-en-humain
     name: Changement en humain
+    status: active
     school_id: alteration
     energy: 28
     incantation_time: 42
@@ -506,6 +547,7 @@ spells:
         ref: entry:changement-en-humain
   - id: changement-en-lapin
     name: Changement en lapin
+    status: active
     school_id: alteration
     energy: 12
     incantation_time: 18
@@ -518,6 +560,7 @@ spells:
         ref: entry:changement-en-lapin
   - id: changer-l-eau-en-vin
     name: Changer l’eau en vin
+    status: active
     school_id: alteration
     energy: 4
     incantation_time: 7
@@ -530,6 +573,7 @@ spells:
         ref: entry:changer-l-eau-en-vin
   - id: chatiment-de-la-matiere
     name: Châtiment de la matière
+    status: active
     school_id: alteration
     energy: 124
     incantation_time: 186
@@ -542,6 +586,7 @@ spells:
         ref: entry:chatiment-de-la-matiere
   - id: corrosion
     name: Corrosion
+    status: active
     school_id: alteration
     energy: 6
     incantation_time: 9
@@ -554,6 +599,7 @@ spells:
         ref: entry:corrosion
   - id: corrosion-de-masse
     name: Corrosion de masse
+    status: active
     school_id: alteration
     energy: 8
     incantation_time: 12
@@ -566,6 +612,7 @@ spells:
         ref: entry:corrosion-de-masse
   - id: creation-d-aile
     name: Création d'aile
+    status: active
     school_id: alteration
     energy: 14
     incantation_time: 21
@@ -578,6 +625,7 @@ spells:
         ref: entry:creation-d-aile
   - id: creation-d-oeil
     name: Création d'oeil
+    status: active
     school_id: alteration
     energy: 11
     incantation_time: 16
@@ -590,6 +638,7 @@ spells:
         ref: entry:creation-d-oeil
   - id: creation-de-bras
     name: Création de bras
+    status: active
     school_id: alteration
     energy: 14
     incantation_time: 21
@@ -602,6 +651,7 @@ spells:
         ref: entry:creation-de-bras
   - id: creation-de-dent
     name: Création de dent
+    status: active
     school_id: alteration
     energy: 4
     incantation_time: 5
@@ -614,6 +664,7 @@ spells:
         ref: entry:creation-de-dent
   - id: creation-de-jambe
     name: Création de jambe
+    status: active
     school_id: alteration
     energy: 14
     incantation_time: 22
@@ -626,6 +677,7 @@ spells:
         ref: entry:creation-de-jambe
   - id: creation-de-kyste
     name: Création de kyste
+    status: active
     school_id: alteration
     energy: 4
     incantation_time: 5
@@ -638,6 +690,7 @@ spells:
         ref: entry:creation-de-kyste
   - id: creation-de-main
     name: Création de main
+    status: active
     school_id: alteration
     energy: 12
     incantation_time: 17
@@ -650,6 +703,7 @@ spells:
         ref: entry:creation-de-main
   - id: creation-de-pied
     name: Création de pied
+    status: active
     school_id: alteration
     energy: 11
     incantation_time: 17
@@ -662,6 +716,7 @@ spells:
         ref: entry:creation-de-pied
   - id: creation-de-queue
     name: Création de queue
+    status: active
     school_id: alteration
     energy: 10
     incantation_time: 15
@@ -674,6 +729,7 @@ spells:
         ref: entry:creation-de-queue
   - id: evaporation
     name: Evaporation
+    status: active
     school_id: alteration
     energy: 4
     incantation_time: 5
@@ -686,6 +742,7 @@ spells:
         ref: entry:evaporation
   - id: gel
     name: Gel
+    status: active
     school_id: alteration
     energy: 5
     incantation_time: 8
@@ -698,6 +755,7 @@ spells:
         ref: entry:gel
   - id: membre-telescopique
     name: Membre téléscopique
+    status: active
     school_id: alteration
     energy: 7
     incantation_time: 10
@@ -710,6 +768,7 @@ spells:
         ref: entry:membre-telescopique
   - id: miniaturisation
     name: Miniaturisation
+    status: active
     school_id: alteration
     energy: 36
     incantation_time: 53
@@ -722,6 +781,7 @@ spells:
         ref: entry:miniaturisation
   - id: petrification
     name: Pétrification
+    status: active
     school_id: alteration
     energy: 62
     incantation_time: 93
@@ -734,6 +794,7 @@ spells:
         ref: entry:petrification
   - id: rendre-forme
     name: Rendre forme
+    status: active
     school_id: alteration
     energy: 5
     incantation_time: 8
@@ -746,6 +807,7 @@ spells:
         ref: entry:rendre-forme
   - id: soudure
     name: Soudure
+    status: active
     school_id: alteration
     energy: 6
     incantation_time: 9
@@ -758,6 +820,7 @@ spells:
         ref: entry:soudure
   - id: barriere-de-holn
     name: Barrière de Höln
+    status: active
     school_id: magie-blanche
     energy: 27
     incantation_time: 30
@@ -770,6 +833,7 @@ spells:
         ref: entry:barriere-de-holn
   - id: benediction
     name: Bénédiction
+    status: active
     school_id: magie-blanche
     energy: 13
     incantation_time: 14
@@ -782,6 +846,7 @@ spells:
         ref: entry:benediction
   - id: benediction-de-masse
     name: Bénédiction de masse
+    status: active
     school_id: magie-blanche
     energy: 18
     incantation_time: 20
@@ -794,6 +859,7 @@ spells:
         ref: entry:benediction-de-masse
   - id: bouclier
     name: Bouclier
+    status: active
     school_id: magie-blanche
     energy: 9
     incantation_time: 9
@@ -806,6 +872,7 @@ spells:
         ref: entry:bouclier
   - id: bouclier-anti-feu
     name: Bouclier anti-feu
+    status: active
     school_id: magie-blanche
     energy: 7
     incantation_time: 8
@@ -818,6 +885,7 @@ spells:
         ref: entry:bouclier-anti-feu
   - id: bouclier-anti-foudre
     name: Bouclier anti-foudre
+    status: active
     school_id: magie-blanche
     energy: 7
     incantation_time: 8
@@ -830,6 +898,7 @@ spells:
         ref: entry:bouclier-anti-foudre
   - id: bouclier-anti-froid
     name: Bouclier anti-froid
+    status: active
     school_id: magie-blanche
     energy: 7
     incantation_time: 8
@@ -842,6 +911,7 @@ spells:
         ref: entry:bouclier-anti-froid
   - id: bouclier-anti-lave
     name: Bouclier anti-lave
+    status: active
     school_id: magie-blanche
     energy: 7
     incantation_time: 8
@@ -854,6 +924,7 @@ spells:
         ref: entry:bouclier-anti-lave
   - id: bouclier-anti-mal
     name: Bouclier anti-mal
+    status: active
     school_id: magie-blanche
     energy: 7
     incantation_time: 8
@@ -866,6 +937,7 @@ spells:
         ref: entry:bouclier-anti-mal
   - id: charisme
     name: Charisme
+    status: active
     school_id: magie-blanche
     energy: 8
     incantation_time: 9
@@ -878,6 +950,7 @@ spells:
         ref: entry:charisme
   - id: charisme-de-masse
     name: Charisme de masse
+    status: active
     school_id: magie-blanche
     energy: 11
     incantation_time: 13
@@ -890,6 +963,7 @@ spells:
         ref: entry:charisme-de-masse
   - id: courage
     name: Courage
+    status: active
     school_id: magie-blanche
     energy: 7
     incantation_time: 7
@@ -902,6 +976,7 @@ spells:
         ref: entry:courage
   - id: deviation
     name: Déviation
+    status: active
     school_id: magie-blanche
     energy: 9
     incantation_time: 10
@@ -914,6 +989,7 @@ spells:
         ref: entry:deviation
   - id: deviation-de-masse
     name: Déviation de masse
+    status: active
     school_id: magie-blanche
     energy: 13
     incantation_time: 14
@@ -926,6 +1002,7 @@ spells:
         ref: entry:deviation-de-masse
   - id: deviation-des-projectiles
     name: Déviation des projectiles
+    status: active
     school_id: magie-blanche
     energy: 8
     incantation_time: 9
@@ -938,6 +1015,7 @@ spells:
         ref: entry:deviation-des-projectiles
   - id: deviation-majeure
     name: Déviation majeure
+    status: active
     school_id: magie-blanche
     energy: 11
     incantation_time: 12
@@ -950,6 +1028,7 @@ spells:
         ref: entry:deviation-majeure
   - id: deviation-mineure
     name: Déviation mineure
+    status: active
     school_id: magie-blanche
     energy: 7
     incantation_time: 7
@@ -962,6 +1041,7 @@ spells:
         ref: entry:deviation-mineure
   - id: dexterite
     name: Dextérité
+    status: active
     school_id: magie-blanche
     energy: 8
     incantation_time: 9
@@ -974,6 +1054,7 @@ spells:
         ref: entry:dexterite
   - id: dexterite-de-masse
     name: Dextérité de masse
+    status: active
     school_id: magie-blanche
     energy: 11
     incantation_time: 13
@@ -986,6 +1067,7 @@ spells:
         ref: entry:dexterite-de-masse
   - id: don-d-energie
     name: Don d’énergie
+    status: active
     school_id: magie-blanche
     energy: 7
     incantation_time: 8
@@ -998,6 +1080,7 @@ spells:
         ref: entry:don-d-energie
   - id: empathie
     name: Empathie
+    status: active
     school_id: magie-blanche
     energy: 8
     incantation_time: 9
@@ -1010,6 +1093,7 @@ spells:
         ref: entry:empathie
   - id: empathie-de-masse
     name: Empathie de masse
+    status: active
     school_id: magie-blanche
     energy: 11
     incantation_time: 13
@@ -1022,6 +1106,7 @@ spells:
         ref: entry:empathie-de-masse
   - id: endurance
     name: Endurance
+    status: active
     school_id: magie-blanche
     energy: 8
     incantation_time: 9
@@ -1034,6 +1119,7 @@ spells:
         ref: entry:endurance
   - id: endurance-de-masse
     name: Endurance de masse
+    status: active
     school_id: magie-blanche
     energy: 11
     incantation_time: 13
@@ -1046,6 +1132,7 @@ spells:
         ref: entry:endurance-de-masse
   - id: esthetique
     name: Esthétique
+    status: active
     school_id: magie-blanche
     energy: 8
     incantation_time: 9
@@ -1058,6 +1145,7 @@ spells:
         ref: entry:esthetique
   - id: esthetique-de-masse
     name: Esthétique de masse
+    status: active
     school_id: magie-blanche
     energy: 11
     incantation_time: 13
@@ -1070,6 +1158,7 @@ spells:
         ref: entry:esthetique-de-masse
   - id: force
     name: Force
+    status: active
     school_id: magie-blanche
     energy: 8
     incantation_time: 9
@@ -1082,6 +1171,7 @@ spells:
         ref: entry:force
   - id: force-de-masse
     name: Force de masse
+    status: active
     school_id: magie-blanche
     energy: 11
     incantation_time: 13
@@ -1094,6 +1184,7 @@ spells:
         ref: entry:force-de-masse
   - id: guerison-absolue
     name: Guérison absolue
+    status: active
     school_id: magie-blanche
     energy: 131
     incantation_time: 145
@@ -1106,6 +1197,7 @@ spells:
         ref: entry:guerison-absolue
   - id: guerison-de-la-chair
     name: Guérison de la chair
+    status: active
     school_id: magie-blanche
     energy: 13
     incantation_time: 15
@@ -1118,6 +1210,7 @@ spells:
         ref: entry:guerison-de-la-chair
   - id: guerison-de-la-peau
     name: Guérison de la peau
+    status: active
     school_id: magie-blanche
     energy: 10
     incantation_time: 10
@@ -1130,6 +1223,7 @@ spells:
         ref: entry:guerison-de-la-peau
   - id: guerison-des-muscles
     name: Guérison des muscles
+    status: active
     school_id: magie-blanche
     energy: 10
     incantation_time: 10
@@ -1142,6 +1236,7 @@ spells:
         ref: entry:guerison-des-muscles
   - id: guerison-des-muscles-mineure
     name: Guérison des muscles mineure
+    status: active
     school_id: magie-blanche
     energy: 7
     incantation_time: 7
@@ -1154,6 +1249,7 @@ spells:
         ref: entry:guerison-des-muscles-mineure
   - id: guerison-des-organes
     name: Guérison des organes
+    status: active
     school_id: magie-blanche
     energy: 13
     incantation_time: 15
@@ -1166,6 +1262,7 @@ spells:
         ref: entry:guerison-des-organes
   - id: guerison-des-os
     name: Guérison des os
+    status: active
     school_id: magie-blanche
     energy: 10
     incantation_time: 10
@@ -1178,6 +1275,7 @@ spells:
         ref: entry:guerison-des-os
   - id: intelligence
     name: Intelligence
+    status: active
     school_id: magie-blanche
     energy: 8
     incantation_time: 9
@@ -1190,6 +1288,7 @@ spells:
         ref: entry:intelligence
   - id: intelligence-de-masse
     name: Intelligence de masse
+    status: active
     school_id: magie-blanche
     energy: 11
     incantation_time: 13
@@ -1202,6 +1301,7 @@ spells:
         ref: entry:intelligence-de-masse
   - id: lumiere
     name: Lumière
+    status: active
     school_id: magie-blanche
     energy: 6
     incantation_time: 7
@@ -1214,6 +1314,7 @@ spells:
         ref: entry:lumiere
   - id: purification-de-l-air
     name: Purification de l'air
+    status: active
     school_id: magie-blanche
     energy: 5
     incantation_time: 6
@@ -1226,6 +1327,7 @@ spells:
         ref: entry:purification-de-l-air
   - id: purification-de-l-eau
     name: Purification de l'eau
+    status: active
     school_id: magie-blanche
     energy: 5
     incantation_time: 6
@@ -1238,6 +1340,7 @@ spells:
         ref: entry:purification-de-l-eau
   - id: rapidite
     name: Rapidité
+    status: active
     school_id: magie-blanche
     energy: 13
     incantation_time: 14
@@ -1250,6 +1353,7 @@ spells:
         ref: entry:rapidite
   - id: rapidite-de-masse
     name: Rapidité de masse
+    status: active
     school_id: magie-blanche
     energy: 19
     incantation_time: 20
@@ -1262,6 +1366,7 @@ spells:
         ref: entry:rapidite-de-masse
   - id: renvoi-du-demon
     name: Renvoi du démon
+    status: active
     school_id: magie-blanche
     energy: 40
     incantation_time: 44
@@ -1274,6 +1379,7 @@ spells:
         ref: entry:renvoi-du-demon
   - id: respiration
     name: Respiration
+    status: active
     school_id: magie-blanche
     energy: 8
     incantation_time: 9
@@ -1286,6 +1392,7 @@ spells:
         ref: entry:respiration
   - id: respiration-de-masse
     name: Respiration de masse
+    status: active
     school_id: magie-blanche
     energy: 11
     incantation_time: 12
@@ -1298,6 +1405,7 @@ spells:
         ref: entry:respiration-de-masse
   - id: resurrection
     name: Résurrection
+    status: active
     school_id: magie-blanche
     energy: 141
     incantation_time: 156
@@ -1310,6 +1418,7 @@ spells:
         ref: entry:resurrection
   - id: connaitre-le-vice
     name: Connaître le vice
+    status: active
     school_id: divination
     energy: 19
     incantation_time: 32
@@ -1322,6 +1431,7 @@ spells:
         ref: entry:connaitre-le-vice
   - id: contact
     name: Contact
+    status: active
     school_id: divination
     energy: 7
     incantation_time: 12
@@ -1334,6 +1444,7 @@ spells:
         ref: entry:contact
   - id: contact-de-morphee
     name: Contact de Morphée
+    status: active
     school_id: divination
     energy: 10
     incantation_time: 7
@@ -1346,6 +1457,7 @@ spells:
         ref: entry:contact-de-morphee
   - id: contact-divin
     name: Contact divin
+    status: active
     school_id: divination
     energy: 113
     incantation_time: 192
@@ -1358,6 +1470,7 @@ spells:
         ref: entry:contact-divin
   - id: contacter-l-au-dela
     name: Contacter l’au-delà
+    status: active
     school_id: divination
     energy: 69
     incantation_time: 117
@@ -1370,6 +1483,7 @@ spells:
         ref: entry:contacter-l-au-dela
   - id: detection-du-danger
     name: Détection du danger
+    status: active
     school_id: divination
     energy: 10
     incantation_time: 17
@@ -1382,6 +1496,7 @@ spells:
         ref: entry:detection-du-danger
   - id: identification
     name: Identification
+    status: active
     school_id: divination
     energy: 7
     incantation_time: 12
@@ -1394,6 +1509,7 @@ spells:
         ref: entry:identification
   - id: localisation
     name: Localisation
+    status: active
     school_id: divination
     energy: 11
     incantation_time: 18
@@ -1406,6 +1522,7 @@ spells:
         ref: entry:localisation
   - id: nouvelle-du-monde
     name: Nouvelle du monde
+    status: active
     school_id: divination
     energy: 11
     incantation_time: 18
@@ -1418,6 +1535,7 @@ spells:
         ref: entry:nouvelle-du-monde
   - id: nouvelle-nationale
     name: Nouvelle nationale
+    status: active
     school_id: divination
     energy: 9
     incantation_time: 16
@@ -1430,6 +1548,7 @@ spells:
         ref: entry:nouvelle-nationale
   - id: nouvelle-regionale
     name: Nouvelle régionale
+    status: active
     school_id: divination
     energy: 8
     incantation_time: 13
@@ -1442,6 +1561,7 @@ spells:
         ref: entry:nouvelle-regionale
   - id: premonition
     name: Prémonition
+    status: active
     school_id: divination
     energy: 34
     incantation_time: 58
@@ -1454,6 +1574,7 @@ spells:
         ref: entry:premonition
   - id: regard-de-puissance
     name: Regard de puissance
+    status: active
     school_id: divination
     energy: 12
     incantation_time: 20
@@ -1466,6 +1587,7 @@ spells:
         ref: entry:regard-de-puissance
   - id: savoir-l-aptitude
     name: Savoir l'aptitude
+    status: active
     school_id: divination
     energy: 5
     incantation_time: 9
@@ -1478,6 +1600,7 @@ spells:
         ref: entry:savoir-l-aptitude
   - id: savoir-l-energie
     name: Savoir l'énergie
+    status: active
     school_id: divination
     energy: 6
     incantation_time: 9
@@ -1490,6 +1613,7 @@ spells:
         ref: entry:savoir-l-energie
   - id: savoir-la-vitalite
     name: Savoir la vitalité
+    status: active
     school_id: divination
     energy: 6
     incantation_time: 10
@@ -1502,6 +1626,7 @@ spells:
         ref: entry:savoir-la-vitalite
   - id: savoir-la-vitesse
     name: Savoir la vitesse
+    status: active
     school_id: divination
     energy: 5
     incantation_time: 9
@@ -1514,6 +1639,7 @@ spells:
         ref: entry:savoir-la-vitesse
   - id: savoir-la-volonte
     name: Savoir la volonté
+    status: active
     school_id: divination
     energy: 5
     incantation_time: 9
@@ -1526,6 +1652,7 @@ spells:
         ref: entry:savoir-la-volonte
   - id: savoir-le-nom
     name: Savoir le nom
+    status: active
     school_id: divination
     energy: 3
     incantation_time: 6
@@ -1538,6 +1665,7 @@ spells:
         ref: entry:savoir-le-nom
   - id: savoir-les-competences
     name: Savoir les compétences
+    status: active
     school_id: divination
     energy: 5
     incantation_time: 8
@@ -1550,6 +1678,7 @@ spells:
         ref: entry:savoir-les-competences
   - id: vision-ante-mortem
     name: Vision ante mortem
+    status: active
     school_id: divination
     energy: 7
     incantation_time: 11
@@ -1562,6 +1691,7 @@ spells:
         ref: entry:vision-ante-mortem
   - id: vision-de-reve
     name: Vision de rêve
+    status: active
     school_id: divination
     energy: 5
     incantation_time: 9
@@ -1574,6 +1704,7 @@ spells:
         ref: entry:vision-de-reve
   - id: appel-de-la-foudre
     name: Appel de la foudre
+    status: active
     school_id: elementaire
     energy: 37
     incantation_time: 30
@@ -1586,6 +1717,7 @@ spells:
         ref: entry:appel-de-la-foudre
   - id: appel-de-la-pluie
     name: Appel de la pluie
+    status: active
     school_id: elementaire
     energy: 10
     incantation_time: 8
@@ -1598,6 +1730,7 @@ spells:
         ref: entry:appel-de-la-pluie
   - id: bouclier-de-foudre
     name: Bouclier de foudre
+    status: active
     school_id: elementaire
     energy: 14
     incantation_time: 11
@@ -1610,6 +1743,7 @@ spells:
         ref: entry:bouclier-de-foudre
   - id: bouclier-d-eau
     name: Bouclier d’eau
+    status: active
     school_id: elementaire
     energy: 10
     incantation_time: 8
@@ -1622,6 +1756,7 @@ spells:
         ref: entry:bouclier-d-eau
   - id: boule-de-feu
     name: Boule de feu
+    status: active
     school_id: elementaire
     energy: 16
     incantation_time: 13
@@ -1634,6 +1769,7 @@ spells:
         ref: entry:boule-de-feu
   - id: boule-de-feu-majeure
     name: Boule de feu majeure
+    status: active
     school_id: elementaire
     energy: 19
     incantation_time: 15
@@ -1646,6 +1782,7 @@ spells:
         ref: entry:boule-de-feu-majeure
   - id: boule-de-foudre
     name: Boule de foudre
+    status: active
     school_id: elementaire
     energy: 16
     incantation_time: 13
@@ -1658,6 +1795,7 @@ spells:
         ref: entry:boule-de-foudre
   - id: boule-de-foudre-majeure
     name: Boule de foudre majeure
+    status: active
     school_id: elementaire
     energy: 19
     incantation_time: 15
@@ -1670,6 +1808,7 @@ spells:
         ref: entry:boule-de-foudre-majeure
   - id: brasier
     name: Brasier
+    status: active
     school_id: elementaire
     energy: 32
     incantation_time: 25
@@ -1682,6 +1821,7 @@ spells:
         ref: entry:brasier
   - id: cercle-de-feu
     name: Cercle de feu
+    status: active
     school_id: elementaire
     energy: 11
     incantation_time: 9
@@ -1694,6 +1834,7 @@ spells:
         ref: entry:cercle-de-feu
   - id: chaine-d-eclairs
     name: Chaîne d’éclairs
+    status: active
     school_id: elementaire
     energy: 35
     incantation_time: 28
@@ -1706,6 +1847,7 @@ spells:
         ref: entry:chaine-d-eclairs
   - id: champs-de-boue
     name: Champs de boue
+    status: active
     school_id: elementaire
     energy: 10
     incantation_time: 8
@@ -1718,6 +1860,7 @@ spells:
         ref: entry:champs-de-boue
   - id: colere-divine
     name: Colère divine
+    status: active
     school_id: elementaire
     energy: 173
     incantation_time: 139
@@ -1730,6 +1873,7 @@ spells:
         ref: entry:colere-divine
   - id: flash
     name: Flash
+    status: active
     school_id: elementaire
     energy: 9
     incantation_time: 8
@@ -1742,6 +1886,7 @@ spells:
         ref: entry:flash
   - id: fleche-de-feu
     name: Flèche de feu
+    status: active
     school_id: elementaire
     energy: 11
     incantation_time: 9
@@ -1754,6 +1899,7 @@ spells:
         ref: entry:fleche-de-feu
   - id: fleche-de-foudre
     name: Flèche de foudre
+    status: active
     school_id: elementaire
     energy: 11
     incantation_time: 9
@@ -1766,6 +1912,7 @@ spells:
         ref: entry:fleche-de-foudre
   - id: foudroiement
     name: Foudroiement
+    status: active
     school_id: elementaire
     energy: 12
     incantation_time: 10
@@ -1778,6 +1925,7 @@ spells:
         ref: entry:foudroiement
   - id: immolation
     name: Immolation
+    status: active
     school_id: elementaire
     energy: 9
     incantation_time: 7
@@ -1790,6 +1938,7 @@ spells:
         ref: entry:immolation
   - id: multi-flamme
     name: Multi-flamme
+    status: active
     school_id: elementaire
     energy: 16
     incantation_time: 13
@@ -1802,6 +1951,7 @@ spells:
         ref: entry:multi-flamme
   - id: mur-de-flammes
     name: Mur de flammes
+    status: active
     school_id: elementaire
     energy: 9
     incantation_time: 7
@@ -1814,6 +1964,7 @@ spells:
         ref: entry:mur-de-flammes
   - id: pilier-de-feu
     name: Pilier de feu
+    status: active
     school_id: elementaire
     energy: 37
     incantation_time: 30
@@ -1826,6 +1977,7 @@ spells:
         ref: entry:pilier-de-feu
   - id: pyramide-de-feu
     name: Pyramide de feu
+    status: active
     school_id: elementaire
     energy: 45
     incantation_time: 36
@@ -1838,6 +1990,7 @@ spells:
         ref: entry:pyramide-de-feu
   - id: rayon-d-eau
     name: Rayon d’eau
+    status: active
     school_id: elementaire
     energy: 12
     incantation_time: 10
@@ -1850,6 +2003,7 @@ spells:
         ref: entry:rayon-d-eau
   - id: raz-de-maree
     name: Raz de marée
+    status: active
     school_id: elementaire
     energy: 112
     incantation_time: 89
@@ -1862,6 +2016,7 @@ spells:
         ref: entry:raz-de-maree
   - id: sables-mouvants
     name: Sables mouvants
+    status: active
     school_id: elementaire
     energy: 16
     incantation_time: 13
@@ -1874,6 +2029,7 @@ spells:
         ref: entry:sables-mouvants
   - id: tornade
     name: Tornade
+    status: active
     school_id: elementaire
     energy: 39
     incantation_time: 31
@@ -1888,6 +2044,7 @@ spells:
         ref: entry:tornade
   - id: tornade-de-feu
     name: Tornade de feu
+    status: active
     school_id: elementaire
     energy: 43
     incantation_time: 34
@@ -1900,6 +2057,7 @@ spells:
         ref: entry:tornade-de-feu
   - id: touche-ardant
     name: Touché ardant
+    status: active
     school_id: elementaire
     energy: 6
     incantation_time: 5
@@ -1912,6 +2070,7 @@ spells:
         ref: entry:touche-ardant
   - id: vague-de-feu
     name: Vague de feu
+    status: active
     school_id: elementaire
     energy: 17
     incantation_time: 14
@@ -1924,6 +2083,7 @@ spells:
         ref: entry:vague-de-feu
   - id: animation-des-armures
     name: Animation des armures
+    status: active
     school_id: enchantement
     energy: 14
     incantation_time: 14
@@ -1936,6 +2096,7 @@ spells:
         ref: entry:animation-des-armures
   - id: arc-en-ciel
     name: Arc-en-ciel
+    status: active
     school_id: enchantement
     energy: 9
     incantation_time: 9
@@ -1948,6 +2109,7 @@ spells:
         ref: entry:arc-en-ciel
   - id: cauchemard
     name: Cauchemard
+    status: active
     school_id: enchantement
     energy: 4
     incantation_time: 4
@@ -1962,6 +2124,7 @@ spells:
         ref: entry:cauchemard
   - id: cauchemard-de-masse
     name: Cauchemard de masse
+    status: active
     school_id: enchantement
     energy: 6
     incantation_time: 6
@@ -1976,6 +2139,7 @@ spells:
         ref: entry:cauchemard-de-masse
   - id: cocon-thermique
     name: Cocon thermique
+    status: active
     school_id: enchantement
     energy: 5
     incantation_time: 5
@@ -1988,6 +2152,7 @@ spells:
         ref: entry:cocon-thermique
   - id: corde
     name: Corde
+    status: active
     school_id: enchantement
     energy: 8
     incantation_time: 8
@@ -2000,6 +2165,7 @@ spells:
         ref: entry:corde
   - id: enchantement-de-livre
     name: Enchantement de livre
+    status: active
     school_id: enchantement
     energy: 4
     incantation_time: 4
@@ -2012,6 +2178,7 @@ spells:
         ref: entry:enchantement-de-livre
   - id: extase
     name: Extase
+    status: active
     school_id: enchantement
     energy: 6
     incantation_time: 6
@@ -2024,6 +2191,7 @@ spells:
         ref: entry:extase
   - id: invisibilite
     name: Invisibilité
+    status: active
     school_id: enchantement
     energy: 10
     incantation_time: 10
@@ -2036,6 +2204,7 @@ spells:
         ref: entry:invisibilite
   - id: legerete
     name: Légèreté
+    status: active
     school_id: enchantement
     energy: 8
     incantation_time: 8
@@ -2048,6 +2217,7 @@ spells:
         ref: entry:legerete
   - id: lourdeur
     name: Lourdeur
+    status: active
     school_id: enchantement
     energy: 8
     incantation_time: 8
@@ -2060,6 +2230,7 @@ spells:
         ref: entry:lourdeur
   - id: marche-sur-l-eau
     name: Marche sur l'eau
+    status: active
     school_id: enchantement
     energy: 6
     incantation_time: 6
@@ -2072,6 +2243,7 @@ spells:
         ref: entry:marche-sur-l-eau
   - id: multilinguisme
     name: Multilinguisme
+    status: active
     school_id: enchantement
     energy: 7
     incantation_time: 7
@@ -2084,6 +2256,7 @@ spells:
         ref: entry:multilinguisme
   - id: nettoyage-magique
     name: Nettoyage magique
+    status: active
     school_id: enchantement
     energy: 4
     incantation_time: 4
@@ -2096,6 +2269,7 @@ spells:
         ref: entry:nettoyage-magique
   - id: parler-aux-oiseaux
     name: Parler aux oiseaux
+    status: active
     school_id: enchantement
     energy: 5
     incantation_time: 5
@@ -2108,6 +2282,7 @@ spells:
         ref: entry:parler-aux-oiseaux
   - id: passe-partout
     name: Passe-partout
+    status: active
     school_id: enchantement
     energy: 8
     incantation_time: 8
@@ -2120,6 +2295,7 @@ spells:
         ref: entry:passe-partout
   - id: porte-de-secours
     name: Porte de secours
+    status: active
     school_id: enchantement
     energy: 14
     incantation_time: 14
@@ -2132,6 +2308,7 @@ spells:
         ref: entry:porte-de-secours
   - id: rire
     name: Rire
+    status: active
     school_id: enchantement
     energy: 7
     incantation_time: 7
@@ -2144,6 +2321,7 @@ spells:
         ref: entry:rire
   - id: rire-de-masse
     name: Rire de masse
+    status: active
     school_id: enchantement
     energy: 10
     incantation_time: 10
@@ -2156,6 +2334,7 @@ spells:
         ref: entry:rire-de-masse
   - id: sommeil
     name: Sommeil
+    status: active
     school_id: enchantement
     energy: 7
     incantation_time: 7
@@ -2168,6 +2347,7 @@ spells:
         ref: entry:sommeil
   - id: vol-de-masse
     name: Vol de masse
+    status: active
     school_id: enchantement
     energy: 32
     incantation_time: 32
@@ -2180,6 +2360,7 @@ spells:
         ref: entry:vol-de-masse
   - id: vol-magique
     name: Vol magique
+    status: active
     school_id: enchantement
     energy: 22
     incantation_time: 22
@@ -2192,6 +2373,7 @@ spells:
         ref: entry:vol-magique
   - id: auto-clonage
     name: Auto clonage
+    status: active
     school_id: illusion
     energy: 9
     incantation_time: 12
@@ -2204,6 +2386,7 @@ spells:
         ref: entry:auto-clonage
   - id: centaure-illusoire
     name: Centaure illusoire
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 13
@@ -2216,6 +2399,7 @@ spells:
         ref: entry:centaure-illusoire
   - id: chat-illusoire
     name: Chat illusoire
+    status: active
     school_id: illusion
     energy: 7
     incantation_time: 10
@@ -2228,6 +2412,7 @@ spells:
         ref: entry:chat-illusoire
   - id: cheval-illusoire
     name: Cheval illusoire
+    status: active
     school_id: illusion
     energy: 7
     incantation_time: 10
@@ -2240,6 +2425,7 @@ spells:
         ref: entry:cheval-illusoire
   - id: chigr-illusoire
     name: Chigr Illusoire
+    status: active
     school_id: illusion
     energy: 9
     incantation_time: 11
@@ -2252,6 +2438,7 @@ spells:
         ref: entry:chigr-illusoire
   - id: clonage
     name: Clonage
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 13
@@ -2264,6 +2451,7 @@ spells:
         ref: entry:clonage
   - id: couteau-illusoire
     name: Couteau illusoire
+    status: active
     school_id: illusion
     energy: 7
     incantation_time: 9
@@ -2276,6 +2464,7 @@ spells:
         ref: entry:couteau-illusoire
   - id: demi-elfe-illusoire
     name: Demi-elfe illusoire
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 12
@@ -2288,6 +2477,7 @@ spells:
         ref: entry:demi-elfe-illusoire
   - id: dryade-illusoire
     name: Dryade illusoire
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 12
@@ -2300,6 +2490,7 @@ spells:
         ref: entry:dryade-illusoire
   - id: elfe-illusoire
     name: Elfe illusoire
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 12
@@ -2312,6 +2503,7 @@ spells:
         ref: entry:elfe-illusoire
   - id: fantome-illusoire
     name: Fantôme illusoire
+    status: active
     school_id: illusion
     energy: 12
     incantation_time: 16
@@ -2324,6 +2516,7 @@ spells:
         ref: entry:fantome-illusoire
   - id: fortune-illusoire
     name: Fortune illusoire
+    status: active
     school_id: illusion
     energy: 6
     incantation_time: 8
@@ -2336,6 +2529,7 @@ spells:
         ref: entry:fortune-illusoire
   - id: gnome-illusoire
     name: Gnome illusoire
+    status: active
     school_id: illusion
     energy: 8
     incantation_time: 11
@@ -2348,6 +2542,7 @@ spells:
         ref: entry:gnome-illusoire
   - id: gobelin-illusoire
     name: Gobelin illusoire
+    status: active
     school_id: illusion
     energy: 7
     incantation_time: 10
@@ -2360,6 +2555,7 @@ spells:
         ref: entry:gobelin-illusoire
   - id: hobbit-illusoire
     name: Hobbit illusoire
+    status: active
     school_id: illusion
     energy: 9
     incantation_time: 11
@@ -2372,6 +2568,7 @@ spells:
         ref: entry:hobbit-illusoire
   - id: homme-lezard-illusoire
     name: Homme lézard illusoire
+    status: active
     school_id: illusion
     energy: 9
     incantation_time: 12
@@ -2384,6 +2581,7 @@ spells:
         ref: entry:homme-lezard-illusoire
   - id: homme-oiseau-illusoire
     name: Homme oiseau illusoire
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 13
@@ -2396,6 +2594,7 @@ spells:
         ref: entry:homme-oiseau-illusoire
   - id: homme-rat-illusoire
     name: Homme rat illusoire
+    status: active
     school_id: illusion
     energy: 9
     incantation_time: 12
@@ -2408,6 +2607,7 @@ spells:
         ref: entry:homme-rat-illusoire
   - id: humain-illusoire
     name: Humain illusoire
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 12
@@ -2420,6 +2620,7 @@ spells:
         ref: entry:humain-illusoire
   - id: khochigr-illusoire
     name: Khochigr illusoire
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 12
@@ -2432,6 +2633,7 @@ spells:
         ref: entry:khochigr-illusoire
   - id: khogr-illusoire
     name: Khogr illusoire
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 13
@@ -2444,6 +2646,7 @@ spells:
         ref: entry:khogr-illusoire
   - id: loup-illusoire
     name: Loup illusoire
+    status: active
     school_id: illusion
     energy: 9
     incantation_time: 11
@@ -2456,6 +2659,7 @@ spells:
         ref: entry:loup-illusoire
   - id: loup-garou-illusoire
     name: Loup-garou illusoire
+    status: active
     school_id: illusion
     energy: 14
     incantation_time: 19
@@ -2468,6 +2672,7 @@ spells:
         ref: entry:loup-garou-illusoire
   - id: mur-illusoire
     name: Mur illusoire
+    status: active
     school_id: illusion
     energy: 8
     incantation_time: 10
@@ -2480,6 +2685,7 @@ spells:
         ref: entry:mur-illusoire
   - id: nain-illusoire
     name: Nain illusoire
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 12
@@ -2492,6 +2698,7 @@ spells:
         ref: entry:nain-illusoire
   - id: ogre-illusoire
     name: Ogre illusoire
+    status: active
     school_id: illusion
     energy: 15
     incantation_time: 20
@@ -2504,6 +2711,7 @@ spells:
         ref: entry:ogre-illusoire
   - id: ondine-illusoire
     name: Ondine illusoire
+    status: active
     school_id: illusion
     energy: 9
     incantation_time: 12
@@ -2516,6 +2724,7 @@ spells:
         ref: entry:ondine-illusoire
   - id: orc-illusoire
     name: Orc illusoire
+    status: active
     school_id: illusion
     energy: 10
     incantation_time: 12
@@ -2528,6 +2737,7 @@ spells:
         ref: entry:orc-illusoire
   - id: squelette-illusoire
     name: Squelette illusoire
+    status: active
     school_id: illusion
     energy: 9
     incantation_time: 11
@@ -2540,6 +2750,7 @@ spells:
         ref: entry:squelette-illusoire
   - id: troll-illusoire
     name: Troll illusoire
+    status: active
     school_id: illusion
     energy: 15
     incantation_time: 19
@@ -2552,6 +2763,7 @@ spells:
         ref: entry:troll-illusoire
   - id: vampire-illusoire
     name: Vampire illusoire
+    status: active
     school_id: illusion
     energy: 12
     incantation_time: 15
@@ -2564,6 +2776,7 @@ spells:
         ref: entry:vampire-illusoire
   - id: vide-sideral
     name: Vide sidéral
+    status: active
     school_id: illusion
     energy: 12
     incantation_time: 16
@@ -2576,6 +2789,7 @@ spells:
         ref: entry:vide-sideral
   - id: invocation-d-elfe
     name: Invocation d'elfe
+    status: active
     school_id: invocation
     energy: 11
     incantation_time: 15
@@ -2588,6 +2802,7 @@ spells:
         ref: entry:invocation-d-elfe
   - id: invocation-d-homme-lezard
     name: Invocation d'homme lézard
+    status: active
     school_id: invocation
     energy: 10
     incantation_time: 14
@@ -2600,6 +2815,7 @@ spells:
         ref: entry:invocation-d-homme-lezard
   - id: invocation-d-homme-oiseau
     name: Invocation d'homme oiseau
+    status: active
     school_id: invocation
     energy: 11
     incantation_time: 16
@@ -2612,6 +2828,7 @@ spells:
         ref: entry:invocation-d-homme-oiseau
   - id: invocation-d-homme-rat
     name: Invocation d'homme rat
+    status: active
     school_id: invocation
     energy: 10
     incantation_time: 14
@@ -2624,6 +2841,7 @@ spells:
         ref: entry:invocation-d-homme-rat
   - id: invocation-d-humain
     name: Invocation d'humain
+    status: active
     school_id: invocation
     energy: 11
     incantation_time: 15
@@ -2636,6 +2854,7 @@ spells:
         ref: entry:invocation-d-humain
   - id: invocation-d-ondine
     name: Invocation d'ondine
+    status: active
     school_id: invocation
     energy: 10
     incantation_time: 15
@@ -2648,6 +2867,7 @@ spells:
         ref: entry:invocation-d-ondine
   - id: invocation-de-centaure
     name: Invocation de centaure
+    status: active
     school_id: invocation
     energy: 11
     incantation_time: 16
@@ -2660,6 +2880,7 @@ spells:
         ref: entry:invocation-de-centaure
   - id: invocation-de-chat
     name: Invocation de chat
+    status: active
     school_id: invocation
     energy: 8
     incantation_time: 12
@@ -2672,6 +2893,7 @@ spells:
         ref: entry:invocation-de-chat
   - id: invocation-de-cheval
     name: Invocation de cheval
+    status: active
     school_id: invocation
     energy: 10
     incantation_time: 13
@@ -2684,6 +2906,7 @@ spells:
         ref: entry:invocation-de-cheval
   - id: invocation-de-chigr
     name: Invocation de chigr
+    status: active
     school_id: invocation
     energy: 10
     incantation_time: 14
@@ -2696,6 +2919,7 @@ spells:
         ref: entry:invocation-de-chigr
   - id: invocation-de-demi-elfe
     name: Invocation de demi elfe
+    status: active
     school_id: invocation
     energy: 11
     incantation_time: 15
@@ -2708,6 +2932,7 @@ spells:
         ref: entry:invocation-de-demi-elfe
   - id: invocation-de-dryade
     name: Invocation de dryade
+    status: active
     school_id: invocation
     energy: 11
     incantation_time: 15
@@ -2720,6 +2945,7 @@ spells:
         ref: entry:invocation-de-dryade
   - id: invocation-de-gnome
     name: Invocation de gnome
+    status: active
     school_id: invocation
     energy: 9
     incantation_time: 13
@@ -2732,6 +2958,7 @@ spells:
         ref: entry:invocation-de-gnome
   - id: invocation-de-gobelin
     name: Invocation de gobelin
+    status: active
     school_id: invocation
     energy: 8
     incantation_time: 12
@@ -2744,6 +2971,7 @@ spells:
         ref: entry:invocation-de-gobelin
   - id: invocation-de-guepe
     name: Invocation de guêpe
+    status: active
     school_id: invocation
     energy: 7
     incantation_time: 10
@@ -2756,6 +2984,7 @@ spells:
         ref: entry:invocation-de-guepe
   - id: invocation-de-hobbit
     name: Invocation de hobbit
+    status: active
     school_id: invocation
     energy: 10
     incantation_time: 13
@@ -2768,6 +2997,7 @@ spells:
         ref: entry:invocation-de-hobbit
   - id: invocation-de-khochigr
     name: Invocation de khochigr
+    status: active
     school_id: invocation
     energy: 11
     incantation_time: 15
@@ -2780,6 +3010,7 @@ spells:
         ref: entry:invocation-de-khochigr
   - id: invocation-de-khogr
     name: Invocation de khogr
+    status: active
     school_id: invocation
     energy: 11
     incantation_time: 16
@@ -2792,6 +3023,7 @@ spells:
         ref: entry:invocation-de-khogr
   - id: invocation-de-loup
     name: Invocation de loup
+    status: active
     school_id: invocation
     energy: 10
     incantation_time: 13
@@ -2804,6 +3036,7 @@ spells:
         ref: entry:invocation-de-loup
   - id: invocation-de-loup-garou
     name: Invocation de loup-garou
+    status: active
     school_id: invocation
     energy: 16
     incantation_time: 22
@@ -2816,6 +3049,7 @@ spells:
         ref: entry:invocation-de-loup-garou
   - id: invocation-de-nain
     name: Invocation de nain
+    status: active
     school_id: invocation
     energy: 11
     incantation_time: 15
@@ -2828,6 +3062,7 @@ spells:
         ref: entry:invocation-de-nain
   - id: invocation-de-squelette
     name: Invocation de squelette
+    status: active
     school_id: invocation
     energy: 10
     incantation_time: 13
@@ -2840,6 +3075,7 @@ spells:
         ref: entry:invocation-de-squelette
   - id: invocation-de-termite
     name: Invocation de termite
+    status: active
     school_id: invocation
     energy: 6
     incantation_time: 8
@@ -2852,6 +3088,7 @@ spells:
         ref: entry:invocation-de-termite
   - id: invocation-de-troll
     name: Invocation de troll
+    status: active
     school_id: invocation
     energy: 17
     incantation_time: 23
@@ -2864,6 +3101,7 @@ spells:
         ref: entry:invocation-de-troll
   - id: invocation-de-vampire
     name: Invocation de vampire
+    status: active
     school_id: invocation
     energy: 13
     incantation_time: 18
@@ -2876,6 +3114,7 @@ spells:
         ref: entry:invocation-de-vampire
   - id: invocation-d-abeilles
     name: Invocation d’abeilles
+    status: active
     school_id: invocation
     energy: 7
     incantation_time: 9
@@ -2888,6 +3127,7 @@ spells:
         ref: entry:invocation-d-abeilles
   - id: invocation-d-ogres
     name: Invocation d’ogres
+    status: active
     school_id: invocation
     energy: 15
     incantation_time: 20
@@ -2900,6 +3140,7 @@ spells:
         ref: entry:invocation-d-ogres
   - id: invocation-d-orc
     name: Invocation d’orc
+    status: active
     school_id: invocation
     energy: 11
     incantation_time: 15
@@ -2912,6 +3153,7 @@ spells:
         ref: entry:invocation-d-orc
   - id: lien-d-invocation
     name: Lien d'invocation
+    status: active
     school_id: invocation
     energy: 7
     incantation_time: 9
@@ -2926,6 +3168,7 @@ spells:
         ref: entry:lien-d-invocation
   - id: revocation
     name: Révocation
+    status: active
     school_id: invocation
     energy: 5
     incantation_time: 7
@@ -2938,6 +3181,7 @@ spells:
         ref: entry:revocation
   - id: appel-des-chats
     name: Appel des chats
+    status: active
     school_id: magie-naturelle
     energy: 6
     incantation_time: 8
@@ -2950,6 +3194,7 @@ spells:
         ref: entry:appel-des-chats
   - id: appel-des-chevaux
     name: Appel des chevaux
+    status: active
     school_id: magie-naturelle
     energy: 7
     incantation_time: 9
@@ -2962,6 +3207,7 @@ spells:
         ref: entry:appel-des-chevaux
   - id: appel-des-colombes
     name: Appel des colombes
+    status: active
     school_id: magie-naturelle
     energy: 6
     incantation_time: 7
@@ -2974,6 +3220,7 @@ spells:
         ref: entry:appel-des-colombes
   - id: appel-des-corbeaux
     name: Appel des corbeaux
+    status: active
     school_id: magie-naturelle
     energy: 6
     incantation_time: 7
@@ -2986,6 +3233,7 @@ spells:
         ref: entry:appel-des-corbeaux
   - id: appel-des-insectes
     name: Appel des insectes
+    status: active
     school_id: magie-naturelle
     energy: 9
     incantation_time: 11
@@ -2998,6 +3246,7 @@ spells:
         ref: entry:appel-des-insectes
   - id: appel-des-loups
     name: Appel des loups
+    status: active
     school_id: magie-naturelle
     energy: 7
     incantation_time: 9
@@ -3010,6 +3259,7 @@ spells:
         ref: entry:appel-des-loups
   - id: appel-des-mammiferes
     name: Appel des mammifères
+    status: active
     school_id: magie-naturelle
     energy: 11
     incantation_time: 13
@@ -3022,6 +3272,7 @@ spells:
         ref: entry:appel-des-mammiferes
   - id: cercle-de-fleur
     name: Cercle de fleur
+    status: active
     school_id: magie-naturelle
     energy: 4
     incantation_time: 5
@@ -3034,6 +3285,7 @@ spells:
         ref: entry:cercle-de-fleur
   - id: croissance
     name: Croissance
+    status: active
     school_id: magie-naturelle
     energy: 8
     incantation_time: 9
@@ -3046,6 +3298,7 @@ spells:
         ref: entry:croissance
   - id: eclosion
     name: Eclosion
+    status: active
     school_id: magie-naturelle
     energy: 4
     incantation_time: 5
@@ -3058,6 +3311,7 @@ spells:
         ref: entry:eclosion
   - id: effacement-des-traces
     name: Effacement des traces
+    status: active
     school_id: magie-naturelle
     energy: 6
     incantation_time: 7
@@ -3070,6 +3324,7 @@ spells:
         ref: entry:effacement-des-traces
   - id: effacement-des-traces-de-masses
     name: Effacement des traces de masses
+    status: active
     school_id: magie-naturelle
     energy: 8
     incantation_time: 10
@@ -3082,6 +3337,7 @@ spells:
         ref: entry:effacement-des-traces-de-masses
   - id: fertilite
     name: Fertilité
+    status: active
     school_id: magie-naturelle
     energy: 7
     incantation_time: 8
@@ -3094,6 +3350,7 @@ spells:
         ref: entry:fertilite
   - id: instinct-de-reproduction
     name: Instinct de reproduction
+    status: active
     school_id: magie-naturelle
     energy: 8
     incantation_time: 9
@@ -3106,6 +3363,7 @@ spells:
         ref: entry:instinct-de-reproduction
   - id: instinct-de-survie
     name: Instinct de survie
+    status: active
     school_id: magie-naturelle
     energy: 8
     incantation_time: 9
@@ -3118,6 +3376,7 @@ spells:
         ref: entry:instinct-de-survie
   - id: marecage
     name: Marécage
+    status: active
     school_id: magie-naturelle
     energy: 6
     incantation_time: 7
@@ -3130,6 +3389,7 @@ spells:
         ref: entry:marecage
   - id: murissement
     name: Mûrissement
+    status: active
     school_id: magie-naturelle
     energy: 5
     incantation_time: 6
@@ -3142,6 +3402,7 @@ spells:
         ref: entry:murissement
   - id: obstacles-vegetaux
     name: Obstacles végétaux
+    status: active
     school_id: magie-naturelle
     energy: 6
     incantation_time: 8
@@ -3154,6 +3415,7 @@ spells:
         ref: entry:obstacles-vegetaux
   - id: reveil-de-la-bete
     name: Réveil de la bête
+    status: active
     school_id: magie-naturelle
     energy: 11
     incantation_time: 13
@@ -3166,6 +3428,7 @@ spells:
         ref: entry:reveil-de-la-bete
   - id: sol-fertile
     name: Sol fertile
+    status: active
     school_id: magie-naturelle
     energy: 6
     incantation_time: 8
@@ -3178,6 +3441,7 @@ spells:
         ref: entry:sol-fertile
   - id: torsion-du-bois
     name: Torsion du bois
+    status: active
     school_id: magie-naturelle
     energy: 8
     incantation_time: 9
@@ -3190,6 +3454,7 @@ spells:
         ref: entry:torsion-du-bois
   - id: appel-des-morts
     name: Appel des morts
+    status: active
     school_id: necromancie
     energy: 14
     incantation_time: 22
@@ -3202,6 +3467,7 @@ spells:
         ref: entry:appel-des-morts
   - id: appel-des-morts-de-masse
     name: Appel des morts de masse
+    status: active
     school_id: necromancie
     energy: 19
     incantation_time: 31
@@ -3214,6 +3480,7 @@ spells:
         ref: entry:appel-des-morts-de-masse
   - id: appel-des-morts-majeur
     name: Appel des morts majeur
+    status: active
     school_id: necromancie
     energy: 17
     incantation_time: 27
@@ -3226,6 +3493,7 @@ spells:
         ref: entry:appel-des-morts-majeur
   - id: armure-d-os
     name: Armure d’os
+    status: active
     school_id: necromancie
     energy: 4
     incantation_time: 7
@@ -3238,6 +3506,7 @@ spells:
         ref: entry:armure-d-os
   - id: cage-d-os
     name: Cage d'os
+    status: active
     school_id: necromancie
     energy: 7
     incantation_time: 11
@@ -3250,6 +3519,7 @@ spells:
         ref: entry:cage-d-os
   - id: changement-spectral
     name: Changement spectral
+    status: active
     school_id: necromancie
     energy: 33
     incantation_time: 52
@@ -3262,6 +3532,7 @@ spells:
         ref: entry:changement-spectral
   - id: corruption-de-l-air
     name: Corruption de l'air
+    status: active
     school_id: necromancie
     energy: 24
     incantation_time: 38
@@ -3274,6 +3545,7 @@ spells:
         ref: entry:corruption-de-l-air
   - id: corruption-de-l-eau
     name: Corruption de l'eau
+    status: active
     school_id: necromancie
     energy: 24
     incantation_time: 38
@@ -3286,6 +3558,7 @@ spells:
         ref: entry:corruption-de-l-eau
   - id: corruption-vegetale
     name: Corruption végétale
+    status: active
     school_id: necromancie
     energy: 4
     incantation_time: 6
@@ -3298,6 +3571,7 @@ spells:
         ref: entry:corruption-vegetale
   - id: crane-hurlant
     name: Crâne hurlant
+    status: active
     school_id: necromancie
     energy: 10
     incantation_time: 16
@@ -3310,6 +3584,7 @@ spells:
         ref: entry:crane-hurlant
   - id: decret-de-non-repos
     name: Décret de non repos
+    status: active
     school_id: necromancie
     energy: 14
     incantation_time: 22
@@ -3322,6 +3597,7 @@ spells:
         ref: entry:decret-de-non-repos
   - id: mort-temporaire
     name: Mort temporaire
+    status: active
     school_id: necromancie
     energy: 22
     incantation_time: 36
@@ -3334,6 +3610,7 @@ spells:
         ref: entry:mort-temporaire
   - id: piege-d-os
     name: Piège d'os
+    status: active
     school_id: necromancie
     energy: 7
     incantation_time: 11
@@ -3346,6 +3623,7 @@ spells:
         ref: entry:piege-d-os
   - id: putrefaction
     name: Putréfaction
+    status: active
     school_id: necromancie
     energy: 9
     incantation_time: 15
@@ -3358,6 +3636,7 @@ spells:
         ref: entry:putrefaction
   - id: raideur-cadaverique
     name: Raideur cadavérique
+    status: active
     school_id: necromancie
     energy: 7
     incantation_time: 11
@@ -3370,6 +3649,7 @@ spells:
         ref: entry:raideur-cadaverique
   - id: reanimation-des-membres
     name: Réanimation des membres
+    status: active
     school_id: necromancie
     energy: 7
     incantation_time: 10
@@ -3382,6 +3662,7 @@ spells:
         ref: entry:reanimation-des-membres
   - id: renvoi
     name: Renvoi
+    status: active
     school_id: necromancie
     energy: 4
     incantation_time: 7
@@ -3394,6 +3675,7 @@ spells:
         ref: entry:renvoi
   - id: renvoie-de-masse
     name: Renvoie de masse
+    status: active
     school_id: necromancie
     energy: 6
     incantation_time: 10
@@ -3406,6 +3688,7 @@ spells:
         ref: entry:renvoie-de-masse
   - id: terre-sterile
     name: Terre stérile
+    status: active
     school_id: necromancie
     energy: 6
     incantation_time: 9
@@ -3418,6 +3701,7 @@ spells:
         ref: entry:terre-sterile
   - id: touche-mortel
     name: Touché mortel
+    status: active
     school_id: necromancie
     energy: 120
     incantation_time: 192
@@ -3430,6 +3714,7 @@ spells:
         ref: entry:touche-mortel
   - id: vieillissement
     name: Vieillissement
+    status: active
     school_id: necromancie
     energy: 7
     incantation_time: 11
@@ -3442,6 +3727,7 @@ spells:
         ref: entry:vieillissement
   - id: affaiblissement
     name: Affaiblissement
+    status: active
     school_id: magie-noire
     energy: 8
     incantation_time: 7
@@ -3454,6 +3740,7 @@ spells:
         ref: entry:affaiblissement
   - id: affaiblissement-de-masse
     name: Affaiblissement de masse
+    status: active
     school_id: magie-noire
     energy: 12
     incantation_time: 10
@@ -3466,6 +3753,7 @@ spells:
         ref: entry:affaiblissement-de-masse
   - id: antipathisme
     name: Antipathisme
+    status: active
     school_id: magie-noire
     energy: 9
     incantation_time: 8
@@ -3478,6 +3766,7 @@ spells:
         ref: entry:antipathisme
   - id: apathie
     name: Apathie
+    status: active
     school_id: magie-noire
     energy: 7
     incantation_time: 6
@@ -3490,6 +3779,7 @@ spells:
         ref: entry:apathie
   - id: arret-du-temps
     name: Arrêt du temps
+    status: active
     school_id: magie-noire
     energy: 47
     incantation_time: 42
@@ -3502,6 +3792,7 @@ spells:
         ref: entry:arret-du-temps
   - id: autodestruction
     name: Autodestruction
+    status: active
     school_id: magie-noire
     energy: 18
     incantation_time: 16
@@ -3516,6 +3807,7 @@ spells:
         ref: entry:autodestruction
   - id: betise
     name: Bêtise
+    status: active
     school_id: magie-noire
     energy: 9
     incantation_time: 8
@@ -3528,6 +3820,7 @@ spells:
         ref: entry:betise
   - id: contagion-du-peche
     name: Contagion du péché
+    status: active
     school_id: magie-noire
     energy: 207
     incantation_time: 186
@@ -3540,6 +3833,7 @@ spells:
         ref: entry:contagion-du-peche
   - id: control-charnel
     name: Control charnel
+    status: active
     school_id: magie-noire
     energy: 15
     incantation_time: 13
@@ -3552,6 +3846,7 @@ spells:
         ref: entry:control-charnel
   - id: controle-mental
     name: Contrôle mental
+    status: active
     school_id: magie-noire
     energy: 19
     incantation_time: 17
@@ -3564,6 +3859,7 @@ spells:
         ref: entry:controle-mental
   - id: douleur
     name: Douleur
+    status: active
     school_id: magie-noire
     energy: 9
     incantation_time: 8
@@ -3576,6 +3872,7 @@ spells:
         ref: entry:douleur
   - id: douleur-a-distance
     name: Douleur à distance
+    status: active
     school_id: magie-noire
     energy: 12
     incantation_time: 11
@@ -3588,6 +3885,7 @@ spells:
         ref: entry:douleur-a-distance
   - id: douleur-de-masse
     name: Douleur de masse
+    status: active
     school_id: magie-noire
     energy: 14
     incantation_time: 13
@@ -3600,6 +3898,7 @@ spells:
         ref: entry:douleur-de-masse
   - id: douleur-majeure
     name: Douleur majeure
+    status: active
     school_id: magie-noire
     energy: 12
     incantation_time: 10
@@ -3612,6 +3911,7 @@ spells:
         ref: entry:douleur-majeure
   - id: douleur-mineure
     name: Douleur mineure
+    status: active
     school_id: magie-noire
     energy: 7
     incantation_time: 6
@@ -3624,6 +3924,7 @@ spells:
         ref: entry:douleur-mineure
   - id: drain-de-jeunesse
     name: Drain de jeunesse
+    status: active
     school_id: magie-noire
     energy: 67
     incantation_time: 60
@@ -3636,6 +3937,7 @@ spells:
         ref: entry:drain-de-jeunesse
   - id: drain-de-sort
     name: Drain de sort
+    status: active
     school_id: magie-noire
     energy: 11
     incantation_time: 9
@@ -3648,6 +3950,7 @@ spells:
         ref: entry:drain-de-sort
   - id: drain-de-sort-majeur
     name: Drain de sort majeur
+    status: active
     school_id: magie-noire
     energy: 13
     incantation_time: 12
@@ -3660,6 +3963,7 @@ spells:
         ref: entry:drain-de-sort-majeur
   - id: drain-de-sort-mineur
     name: Drain de sort mineur
+    status: active
     school_id: magie-noire
     energy: 7
     incantation_time: 7
@@ -3672,6 +3976,7 @@ spells:
         ref: entry:drain-de-sort-mineur
   - id: drain-de-vie
     name: Drain de vie
+    status: active
     school_id: magie-noire
     energy: 11
     incantation_time: 9
@@ -3684,6 +3989,7 @@ spells:
         ref: entry:drain-de-vie
   - id: emprise-corporelle
     name: Emprise corporelle
+    status: active
     school_id: magie-noire
     energy: 18
     incantation_time: 16
@@ -3696,6 +4002,7 @@ spells:
         ref: entry:emprise-corporelle
   - id: faiblesse
     name: Faiblesse
+    status: active
     school_id: magie-noire
     energy: 9
     incantation_time: 8
@@ -3708,6 +4015,7 @@ spells:
         ref: entry:faiblesse
   - id: folie
     name: Folie
+    status: active
     school_id: magie-noire
     energy: 79
     incantation_time: 71
@@ -3720,6 +4028,7 @@ spells:
         ref: entry:folie
   - id: hibernation
     name: Hibernation
+    status: active
     school_id: magie-noire
     energy: 17
     incantation_time: 15
@@ -3732,6 +4041,7 @@ spells:
         ref: entry:hibernation
   - id: horreur
     name: Horreur
+    status: active
     school_id: magie-noire
     energy: 8
     incantation_time: 7
@@ -3744,6 +4054,7 @@ spells:
         ref: entry:horreur
   - id: implosion
     name: Implosion
+    status: active
     school_id: magie-noire
     energy: 45
     incantation_time: 40
@@ -3756,6 +4067,7 @@ spells:
         ref: entry:implosion
   - id: lachete
     name: Lâcheté
+    status: active
     school_id: magie-noire
     energy: 7
     incantation_time: 7
@@ -3768,6 +4080,7 @@ spells:
         ref: entry:lachete
   - id: laideur
     name: Laideur
+    status: active
     school_id: magie-noire
     energy: 9
     incantation_time: 8
@@ -3780,6 +4093,7 @@ spells:
         ref: entry:laideur
   - id: lenteur
     name: Lenteur
+    status: active
     school_id: magie-noire
     energy: 15
     incantation_time: 13
@@ -3792,6 +4106,7 @@ spells:
         ref: entry:lenteur
   - id: lenteur-de-masse
     name: Lenteur de masse
+    status: active
     school_id: magie-noire
     energy: 21
     incantation_time: 18
@@ -3804,6 +4119,7 @@ spells:
         ref: entry:lenteur-de-masse
   - id: malediction
     name: Malédiction
+    status: active
     school_id: magie-noire
     energy: 14
     incantation_time: 13
@@ -3816,6 +4132,7 @@ spells:
         ref: entry:malediction
   - id: oubli
     name: Oubli
+    status: active
     school_id: magie-noire
     energy: 9
     incantation_time: 8
@@ -3828,6 +4145,7 @@ spells:
         ref: entry:oubli
   - id: paralysie
     name: Paralysie
+    status: active
     school_id: magie-noire
     energy: 9
     incantation_time: 8
@@ -3840,6 +4158,7 @@ spells:
         ref: entry:paralysie
   - id: penombre
     name: Pénombre
+    status: active
     school_id: magie-noire
     energy: 7
     incantation_time: 6
@@ -3852,6 +4171,7 @@ spells:
         ref: entry:penombre
   - id: peur
     name: Peur
+    status: active
     school_id: magie-noire
     energy: 8
     incantation_time: 7
@@ -3864,6 +4184,7 @@ spells:
         ref: entry:peur
   - id: pluie-de-sang
     name: Pluie de sang
+    status: active
     school_id: magie-noire
     energy: 9
     incantation_time: 8
@@ -3876,6 +4197,7 @@ spells:
         ref: entry:pluie-de-sang
   - id: resserrement-des-murs
     name: Resserrement des murs
+    status: active
     school_id: magie-noire
     energy: 14
     incantation_time: 12
@@ -3888,6 +4210,7 @@ spells:
         ref: entry:resserrement-des-murs
   - id: vengeance
     name: Vengeance
+    status: active
     school_id: magie-noire
     energy: 9
     incantation_time: 8
@@ -3900,6 +4223,7 @@ spells:
         ref: entry:vengeance
   - id: vengeance-en-masse
     name: Vengeance en masse
+    status: active
     school_id: magie-noire
     energy: 13
     incantation_time: 11

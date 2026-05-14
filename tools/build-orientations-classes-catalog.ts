@@ -89,6 +89,7 @@ const PRIMARY_SKILL_BY_CLASS: Record<string, string> = {
 interface OrientationEntry {
   id: string;
   name: string;
+  status: 'active';
   is_magical: boolean;
   source_refs: Array<{ path: string; sha256: string; ref: string }>;
 }
@@ -96,6 +97,7 @@ interface OrientationEntry {
 interface ClassEntry {
   id: string;
   name: string;
+  status: 'active';
   orientation_id: string;
   primary_skill_id: string | null;
   primary_skill_choice: 'fixed' | 'player_choice' | 'magician_no_primary';
@@ -139,6 +141,7 @@ function parse(): {
       const orientation: OrientationEntry = {
         id,
         name: trimmed,
+        status: 'active',
         is_magical: id === 'magicien',
         source_refs: [{ path: RELATIVE_SOURCE, sha256: sourceHash, ref: `line:${i + 1}` }]
       };
@@ -170,6 +173,7 @@ function parse(): {
     classes.push({
       id,
       name: trimmed,
+      status: 'active',
       orientation_id: currentOrientation.id,
       primary_skill_id: primarySkillId,
       primary_skill_choice: primarySkillChoice,

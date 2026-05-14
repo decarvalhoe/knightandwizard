@@ -114,6 +114,7 @@ const SOURCE_LABEL_TO_SCHOOL = new Map(SCHOOLS.map((s) => [s.source_label, s]));
 interface SpellEntry {
   id: string;
   name: string;
+  status: 'active';
   school_id: string;
   energy: number;
   incantation_time: number;
@@ -174,6 +175,7 @@ function parse(): { spells: SpellEntry[]; sourceHash: string } {
     spells.push({
       id,
       name: nameLine,
+      status: 'active',
       school_id: school.id,
       energy: parseNumeric(energyToken, i + 2),
       incantation_time: parseNumeric(tiToken, i + 3),
@@ -216,6 +218,7 @@ function main(): void {
     schools: SCHOOLS.map((school) => ({
       id: school.id,
       name: school.name,
+      status: 'active',
       source_label: school.source_label,
       color: school.color,
       specialist_class_id: school.specialist,

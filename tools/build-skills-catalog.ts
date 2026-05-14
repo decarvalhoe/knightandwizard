@@ -25,6 +25,7 @@ const FAMILIES = new Set([
 interface SkillEntry {
   id: string;
   name: string;
+  status: 'active';
   family: string;
   family_name: string;
   parent_id: string | null;
@@ -110,6 +111,7 @@ function parse(): { skills: SkillEntry[]; sourceHash: string; relativeSourcePath
     skills.push({
       id,
       name: rawName,
+      status: 'active',
       family: slugify(currentFamily),
       family_name: currentFamily,
       parent_id: parentId,
@@ -150,6 +152,7 @@ function buildCatalog(): unknown {
     skills: skills.map((skill) => ({
       id: skill.id,
       name: skill.name,
+      status: skill.status,
       family: skill.family,
       family_name: skill.family_name,
       parent_id: skill.parent_id,

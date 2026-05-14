@@ -26,7 +26,42 @@ const expectedCollections = [
   ['atouts.yaml', 'atouts', 416]
 ] as const;
 
+const traceableCollections = [
+  ['bestiaire.yaml', 'creatures'],
+  ['competences.yaml', 'skills'],
+  ['orientations.yaml', 'orientations'],
+  ['classes.yaml', 'classes'],
+  ['magic-schools.yaml', 'schools'],
+  ['spells.yaml', 'spells'],
+  ['legacy-characters.yaml', 'characters'],
+  ['atouts.yaml', 'atouts']
+] as const;
+
+const acceptedEntryStatuses = new Set(['active', 'ambiguous', 'deprecated', 'raw_reference_only']);
+
 describe('catalog Zod schemas', () => {
+  it.each(traceableCollections)(
+    'requires %s %s entries to carry status and source refs',
+    async (file, key) => {
+      const catalog = await loadValidatedCatalog(file);
+      const rows = (catalog as unknown as Record<string, Array<Record<string, unknown>>>)[key];
+
+      expect(rows.length).toBeGreaterThan(0);
+      for (const row of rows) {
+        expect(acceptedEntryStatuses.has(String(row.status))).toBe(true);
+        expect(row.source_refs).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              path: expect.stringMatching(/^(data|docs)\//),
+              ref: expect.any(String),
+              sha256: expect.stringMatching(/^[0-9a-f]{64}$/)
+            })
+          ])
+        );
+      }
+    }
+  );
+
   it.each(expectedCollections)(
     'validates %s %s against the canonical YAML',
     async (file, key, count) => {
@@ -284,6 +319,47 @@ describe('catalog Zod schemas', () => {
     expect(ids.has('ambidextrie')).toBe(true);
     expect(ids.has('anosmie')).toBe(true);
     expect(ids.has('demo-atout')).toBe(false);
+  });
+
+  it('rejects priority catalog entries without an explicit status', () => {
+    const validate = () =>
+      validateCatalogData(
+        'spells.yaml',
+        {
+          version: 1,
+          metadata: {
+            source: 'test'
+          },
+          spells: [
+            {
+              id: 'test-spell',
+              name: 'Test spell',
+              school_id: 'abjuration',
+              energy: 1,
+              incantation_time: 1,
+              difficulty: 1,
+              effect: 'Test effect',
+              value: 1,
+              source_refs: [
+                {
+                  path: 'data/legacy/web-scraped/documents/grimoire/index.md',
+                  ref: 'entry:test-spell',
+                  sha256: 'a'.repeat(64)
+                }
+              ]
+            }
+          ]
+        },
+        'fixtures/spells.yaml'
+      );
+
+    expect(validate).toThrow(CatalogValidationError);
+
+    try {
+      validate();
+    } catch (error) {
+      expect((error as Error).message).toContain('spells.0.status');
+    }
   });
 
   it('reports the file and data path when validation fails', () => {
