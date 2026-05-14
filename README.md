@@ -31,25 +31,25 @@ Les artefacts canoniques sont **générés, jamais édités à la main** :
 ```bash
 pnpm canonical:write            # régénère docs/canonical/*
 pnpm canonical:check            # gate inclus dans pnpm validate
-pnpm canonical:check:strict     # gate release, rouge tant que les imports sample.ts produit subsistent
+pnpm canonical:check:strict     # gate release, bloque toute réintroduction d'imports sample.ts produit
 ```
 
 Voir `docs/canonical/coverage-report.md` pour la couverture courante et `docs/plan/ISSUE-LIST.md` pour la liste opérationnelle des tickets.
 
 ## État Actuel
 
-| Domaine              |                            Statut | Ce qui existe aujourd'hui                                                                                      |
-| -------------------- | --------------------------------: | -------------------------------------------------------------------------------------------------------------- |
-| Règles canoniques    |                            Stable | 13 domaines D1 à D13, environ 230 règles et 70 entrées backlog dans `docs/rules`                               |
-| Catalogues           | Données stables, schémas à durcir | 13 catalogues YAML/CSV, environ 1100 entrées, 29 assets visuels référencés                                     |
-| Socle canonique      |        Fondation posée, P0 ouvert | 1467 sources hashées, matrice de 3452 unités atomisées (1006 covered, 1985 partial, 461 not_applicable)        |
-| Gate canonique       |        `check` vert, strict rouge | `pnpm canonical:check` inclus dans `validate`, `canonical:check:strict` bloqué par 5 imports sample.ts produit |
-| Carte interactive    |          Utilisable, en évolution | App Leaflet, pipeline QGIS, validation GeoJSON et build Vite                                                   |
-| Monorepo             |                      Opérationnel | pnpm workspaces, TypeScript strict, Vitest, gate de validation racine                                          |
-| Devlab local         |                      Opérationnel | Docker Compose avec PostgreSQL 16, pgvector et Adminer                                                         |
-| Backend              |                 Minimal mais réel | Fastify `apps/server`, migrations Drizzle, endpoints `/health` et `/ready`                                     |
-| Base de connaissance |     Indexation guidée par sources | Ingestion RAG pilotée par `docs/canonical/source-manifest.yaml`, metadata de traçabilité par chunk             |
-| CI                   |                             Verte | GitHub Actions lance le devlab Docker, les migrations et `pnpm validate` sur `dev`                             |
+| Domaine              |                            Statut | Ce qui existe aujourd'hui                                                                                                                     |
+| -------------------- | --------------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Règles canoniques    |                            Stable | 13 domaines D1 à D13, environ 230 règles et 70 entrées backlog dans `docs/rules`                                                              |
+| Catalogues           | Données stables, schémas à durcir | 13 catalogues YAML/CSV, environ 1100 entrées, 29 assets visuels référencés                                                                    |
+| Socle canonique      |        Fondation posée, P0 ouvert | 1475 sources hashées, matrice de 6158 unités atomisées (1014 covered, 4683 partial, 461 not_applicable)                                       |
+| Gate canonique       |         `check` et `strict` verts | `pnpm canonical:check` inclus dans `validate`; `canonical:check:strict` protège les promotions release contre les imports `sample.ts` produit |
+| Carte interactive    |          Utilisable, en évolution | App Leaflet, pipeline QGIS, validation GeoJSON et build Vite                                                                                  |
+| Monorepo             |                      Opérationnel | pnpm workspaces, TypeScript strict, Vitest, gate de validation racine                                                                         |
+| Devlab local         |                      Opérationnel | Docker Compose avec PostgreSQL 16, pgvector et Adminer                                                                                        |
+| Backend              |                 Minimal mais réel | Fastify `apps/server`, migrations Drizzle, endpoints `/health` et `/ready`                                                                    |
+| Base de connaissance |     Indexation guidée par sources | Ingestion RAG pilotée par `docs/canonical/source-manifest.yaml`, metadata de traçabilité par chunk                                            |
+| CI                   |                             Verte | GitHub Actions lance `pnpm validate` sur le flux normal et le gate strict canonique sur les contextes release                                 |
 
 Branche active : `dev`.
 Workspace local de référence : `/home/decarvalhoe/repos/knightandwizard` dans WSL.
@@ -90,27 +90,27 @@ curl -sf http://localhost:3002/ready
 
 ## Commandes Clés
 
-| Commande                      | Effet                                                                                              |
-| ----------------------------- | -------------------------------------------------------------------------------------------------- |
-| `pnpm validate`               | Gate complète : canonical check, lint, format, typecheck, tests, GeoJSON, build carte, devlab, e2e |
-| `pnpm canonical:write`        | Régénère `docs/canonical/source-manifest.yaml`, `canonical-matrix.yaml` et `coverage-report.md`    |
-| `pnpm canonical:check`        | Vérifie que les artefacts canoniques sont à jour ; inclus dans `validate`                          |
-| `pnpm canonical:check:strict` | Gate release : échoue tant que les imports `sample.ts` produit ou des unités partial subsistent    |
-| `pnpm lint`                   | ESLint sur les apps/packages actifs                                                                |
-| `pnpm format:check`           | Vérifie le format Prettier                                                                         |
-| `pnpm format`                 | Applique Prettier sur les fichiers actifs                                                          |
-| `pnpm test`                   | Suites Vitest des packages et du serveur                                                           |
-| `pnpm typecheck`              | TypeScript project references orchestrées par Turborepo                                            |
-| `pnpm build`                  | Builds workspace orchestrés par Turborepo                                                          |
-| `pnpm build:map`              | Build production direct de la carte Leaflet                                                        |
-| `pnpm validate:geojson`       | Vérifie les données de carte contre les YAML canoniques                                            |
-| `pnpm devlab:up`              | Lance PostgreSQL + pgvector et Adminer                                                             |
-| `pnpm devlab:test`            | Vérifie Docker, PostgreSQL, pgvector et le schéma migré                                            |
-| `pnpm devlab:reset`           | Destructif : supprime conteneurs et volume PostgreSQL local                                        |
-| `pnpm db:migrate`             | Applique les migrations DB applicatives                                                            |
-| `pnpm db:seed`                | Injecte des données de développement déterministes                                                 |
-| `pnpm knowledge:dry-run`      | Découpe les sources offline depuis le source-manifest, sans appel à un provider d'embeddings       |
-| `pnpm knowledge:index`        | Indexe règles, lore et catalogues dans PostgreSQL/pgvector avec metadata de traçabilité            |
+| Commande                      | Effet                                                                                                  |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `pnpm validate`               | Gate complète : canonical check, lint, format, typecheck, tests, GeoJSON, build carte, devlab, e2e     |
+| `pnpm canonical:write`        | Régénère `docs/canonical/source-manifest.yaml`, `canonical-matrix.yaml` et `coverage-report.md`        |
+| `pnpm canonical:check`        | Vérifie que les artefacts canoniques sont à jour ; inclus dans `validate`                              |
+| `pnpm canonical:check:strict` | Gate release : vérifie les artefacts canoniques et échoue si une surface produit réimporte `sample.ts` |
+| `pnpm lint`                   | ESLint sur les apps/packages actifs                                                                    |
+| `pnpm format:check`           | Vérifie le format Prettier                                                                             |
+| `pnpm format`                 | Applique Prettier sur les fichiers actifs                                                              |
+| `pnpm test`                   | Suites Vitest des packages et du serveur                                                               |
+| `pnpm typecheck`              | TypeScript project references orchestrées par Turborepo                                                |
+| `pnpm build`                  | Builds workspace orchestrés par Turborepo                                                              |
+| `pnpm build:map`              | Build production direct de la carte Leaflet                                                            |
+| `pnpm validate:geojson`       | Vérifie les données de carte contre les YAML canoniques                                                |
+| `pnpm devlab:up`              | Lance PostgreSQL + pgvector et Adminer                                                                 |
+| `pnpm devlab:test`            | Vérifie Docker, PostgreSQL, pgvector et le schéma migré                                                |
+| `pnpm devlab:reset`           | Destructif : supprime conteneurs et volume PostgreSQL local                                            |
+| `pnpm db:migrate`             | Applique les migrations DB applicatives                                                                |
+| `pnpm db:seed`                | Injecte des données de développement déterministes                                                     |
+| `pnpm knowledge:dry-run`      | Découpe les sources offline depuis le source-manifest, sans appel à un provider d'embeddings           |
+| `pnpm knowledge:index`        | Indexe règles, lore et catalogues dans PostgreSQL/pgvector avec metadata de traçabilité                |
 
 L'indexation RAG lit désormais sa liste de sources depuis `docs/canonical/source-manifest.yaml` (statut `active` ou `raw_reference_only`), pas depuis une liste codée en dur.
 
