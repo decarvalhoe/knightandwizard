@@ -41,6 +41,7 @@
     "dev:server": "pnpm --filter @knightandwizard/server dev",
     "devlab:reset": "bash scripts/devlab-reset.sh",
     "db:seed": "pnpm --filter @knightandwizard/server db:seed",
+    "db:import:catalogs": "tsx apps/server/src/catalogs/read-models.ts",
     "knowledge:dry-run": "tsx tools/index-knowledge-base.ts --dry-run",
     "knowledge:index": "tsx tools/index-knowledge-base.ts",
     "knowledge:index:dry-run": "tsx tools/index-knowledge-base.ts --dry-run",

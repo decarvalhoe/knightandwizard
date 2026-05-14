@@ -101,6 +101,22 @@ const generatedDir = 'docs/canonical';
 const sourceManifestPath = `${generatedDir}/source-manifest.yaml`;
 const canonicalMatrixPath = `${generatedDir}/canonical-matrix.yaml`;
 const coverageReportPath = `${generatedDir}/coverage-report.md`;
+const relationalReadModelCatalogPaths = new Set([
+  'data/catalogs/armes.yaml',
+  'data/catalogs/bestiaire.yaml',
+  'data/catalogs/protections.yaml',
+  'data/catalogs/potions.yaml',
+  'data/catalogs/nations.yaml',
+  'data/catalogs/organisations.yaml',
+  'data/catalogs/religions.yaml',
+  'data/catalogs/competences.yaml',
+  'data/catalogs/orientations.yaml',
+  'data/catalogs/classes.yaml',
+  'data/catalogs/magic-schools.yaml',
+  'data/catalogs/spells.yaml',
+  'data/catalogs/legacy-characters.yaml',
+  'data/catalogs/atouts.yaml'
+]);
 const ignoredDirectoryNames = new Set(['.git', '.next', '.turbo', 'dist', 'node_modules']);
 const textExtensions = new Set([
   '.css',
@@ -486,6 +502,12 @@ function collectCatalogUnits(
         'partial',
         'Zod schema coverage must be linked by domain implementation.'
       );
+      if (relationalReadModelCatalogPaths.has(source.path)) {
+        unit.relational_db = link(
+          'covered',
+          'apps/server/src/catalogs/read-models.ts imports validated catalog documents into catalog_documents with source hash, status and source_refs; apps/server/src/catalogs/read-models.test.ts verifies the PostgreSQL read model.'
+        );
+      }
       units.push(unit);
       for (const [childKey, childValue] of Object.entries(item)) {
         if (Array.isArray(childValue) || isRecord(childValue)) {
@@ -533,6 +555,10 @@ function extractAssetCsvUnits(source: SourceEntry, text: string): CanonicalMatri
       unit.zod_schema = link(
         'partial',
         'Zod schema coverage must be linked by domain implementation.'
+      );
+      unit.relational_db = link(
+        'covered',
+        'tools/import-catalogs.ts and apps/server/src/catalogs/read-models.ts preserve table/catalog rows in importable read models with source metadata; import tests verify idempotent loading.'
       );
       return unit;
     });
