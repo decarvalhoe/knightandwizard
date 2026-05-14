@@ -119,6 +119,60 @@ describe('character creation wizard model', () => {
     });
   });
 
+  it('validates a complete fighter draft with a specialization before its parent', () => {
+    const draft = withAttributes(
+      setSkillPoints(
+        setSkillPoints(
+          setSkillPoints(
+            setSkillPoints(
+              setSkillPoints(
+                createCreationDraft(catalog(), {
+                  classId: 'garde',
+                  id: 'draft-jehan',
+                  name: 'Jehan',
+                  orientationId: 'guerrier',
+                  raceId: 'humain'
+                }),
+                'frappe-a-la-tete',
+                4,
+                'epee-batarde'
+              ),
+              'chasse',
+              4
+            ),
+            'forge',
+            4
+          ),
+          'commandement',
+          4
+        ),
+        'histoire',
+        4
+      )
+    );
+    const view = buildCreationView(draft, catalog());
+    const character = previewCharacter(draft, catalog());
+
+    expect(view.skillBudget).toEqual({
+      convertedToSpells: 0,
+      limit: 20,
+      spent: 20
+    });
+    expect(view.spellBudget).toEqual({
+      extraPoints: 0,
+      freePoints: 0,
+      requiredPoints: 0,
+      spent: 0
+    });
+    expect(view.stepValidations.skills).toMatchObject({ valid: true, errors: [] });
+    expect(view.canSubmit).toBe(true);
+    expect(character.skills.find((skill) => skill.id === 'frappe-a-la-tete')).toMatchObject({
+      parentId: 'epee-batarde',
+      points: 4
+    });
+    expect(character.skills.some((skill) => skill.id === 'epee-batarde')).toBe(false);
+  });
+
   it('serializes a draft snapshot for localStorage/API persistence without embedding catalogs', () => {
     const draft = {
       ...completedMageDraft(),
@@ -310,7 +364,11 @@ function catalog(): CharacterCreationCatalog {
       { id: 'arcanologie', label: 'Arcanologie' },
       { id: 'arcanologie-des-rituels', label: 'Arcanologie des rituels', parentId: 'arcanologie' },
       { id: 'histoire', label: 'Histoire' },
-      { id: 'epee-batarde', label: 'Épée bâtarde' }
+      { id: 'epee-batarde', label: 'Épée bâtarde' },
+      { id: 'frappe-a-la-tete', label: 'Frappe à la tête', parentId: 'epee-batarde' },
+      { id: 'chasse', label: 'Chasse' },
+      { id: 'forge', label: 'Forge' },
+      { id: 'commandement', label: 'Commandement' }
     ],
     spells: [
       { id: 'boule-de-feu', label: 'Etincelle' },

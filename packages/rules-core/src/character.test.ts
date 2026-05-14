@@ -73,6 +73,43 @@ describe('character creation validation', () => {
     });
   });
 
+  it('allows a specialization to be bought while its parent remains implicit at 0', () => {
+    const skills = [
+      { id: 'frappe-a-la-tete', points: 4, parentId: 'epee' },
+      { id: 'course', points: 4 },
+      { id: 'chasse', points: 4 },
+      { id: 'histoire', points: 4 },
+      { id: 'medecine', points: 4 }
+    ];
+    const character = createPlayerCharacter({
+      id: 'pc-specialization-first',
+      name: 'Jehan',
+      race: humanRace(),
+      orientation: { id: 'guerrier', name: 'Guerrier' },
+      classProfile: {
+        id: 'garde',
+        name: 'Garde',
+        orientationId: 'guerrier',
+        primarySkillIds: ['epee']
+      },
+      attributes: validAttributes(),
+      skills
+    });
+
+    expect(validateSkillDistribution(skills, humanRace().category)).toMatchObject({
+      valid: true,
+      errors: [],
+      total: 20
+    });
+    expect(character.skills.some((skill) => skill.id === 'epee')).toBe(false);
+    expect(calculateLevelProgression(character)).toEqual({
+      level: 1,
+      levelPoints: 24,
+      levelUpAt: 40,
+      primarySkillIds: ['epee']
+    });
+  });
+
   it('validates magician spell creation points separately from skills', () => {
     expect(validateSpellDistribution([{ id: 'firebolt', points: 2 }], true, 0)).toMatchObject({
       valid: true,
