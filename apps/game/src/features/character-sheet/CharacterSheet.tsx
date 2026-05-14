@@ -16,13 +16,17 @@ import {
   type AttributeRollResult,
   type CharacterSheetMode,
   type InventoryItem,
+  type SkillCatalogEntry,
   type SpellEntry
 } from './model';
-import { attributeLabels, attributeOrder, skillCatalog, skillLabels } from './sample';
 
 interface CharacterSheetProps {
+  attributeLabels: Record<AttributeKey, string>;
+  attributeOrder: AttributeKey[];
   character: Character;
   initialInventory: InventoryItem[];
+  skillCatalog: SkillCatalogEntry[];
+  skillLabels: Record<string, string>;
   spells: SpellEntry[];
 }
 
@@ -49,8 +53,12 @@ const quickItem: InventoryItem = {
 };
 
 export function CharacterSheet({
+  attributeLabels,
+  attributeOrder,
   character,
   initialInventory,
+  skillCatalog,
+  skillLabels,
   spells
 }: Readonly<CharacterSheetProps>) {
   const [mode, setMode] = useState<CharacterSheetMode>('complete');

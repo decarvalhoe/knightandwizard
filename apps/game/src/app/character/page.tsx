@@ -1,9 +1,13 @@
 import { CharacterSheet } from '@/features/character-sheet/CharacterSheet';
-import { sampleCharacter, sampleInventory, sampleSpells } from '@/features/character-sheet/sample';
+import { getCharacterSheetReadModel } from '@/features/character-sheet/read-models';
 import { UserPlus } from 'lucide-react';
 import Link from 'next/link';
 
-export default function CharacterPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function CharacterPage() {
+  const sheet = await getCharacterSheetReadModel();
+
   return (
     <div className="grid gap-5">
       <section className="flex flex-col gap-3 rounded-md border border-ink/10 bg-white/78 p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
@@ -21,9 +25,13 @@ export default function CharacterPage() {
       </section>
 
       <CharacterSheet
-        character={sampleCharacter}
-        initialInventory={sampleInventory}
-        spells={sampleSpells}
+        attributeLabels={sheet.attributeLabels}
+        attributeOrder={sheet.attributeOrder}
+        character={sheet.character}
+        initialInventory={sheet.initialInventory}
+        skillCatalog={sheet.skillCatalog}
+        skillLabels={sheet.skillLabels}
+        spells={sheet.spells}
       />
     </div>
   );

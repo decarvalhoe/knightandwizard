@@ -30,12 +30,12 @@ import {
   queueTrackerAction,
   removeTrackerCombatant,
   resolveTrackerNextAction,
+  type CombatantTemplate,
   type CombatLogRow,
   type CombatRosterRow,
   type CombatTimelineRow,
   type VitalityState
 } from './model';
-import { combatantTemplates, createSampleCombatTrackerState } from './sample';
 
 const actionIcons: Record<CombatActionType, typeof Swords> = {
   attack: Swords,
@@ -67,8 +67,13 @@ const logToneClasses: Record<CombatLogRow['tone'], string> = {
   warning: 'border-gold/35 bg-gold/15 text-ink'
 };
 
-export function CombatTracker() {
-  const [state, setState] = useState<CombatState>(() => createSampleCombatTrackerState());
+interface CombatTrackerProps {
+  combatantTemplates: CombatantTemplate[];
+  initialState: CombatState;
+}
+
+export function CombatTracker({ combatantTemplates, initialState }: Readonly<CombatTrackerProps>) {
+  const [state, setState] = useState<CombatState>(() => initialState);
   const view = useMemo(() => buildCombatTrackerView(state), [state]);
   const activeCombatant = view.nextActor
     ? state.timeline.find((combatant) => combatant.id === view.nextActor?.id)
@@ -194,6 +199,7 @@ export function CombatTracker() {
         <aside className="grid content-start gap-5">
           <AddCombatantPanel
             addTemplate={addTemplate}
+            combatantTemplates={combatantTemplates}
             setTemplateId={setTemplateId}
             templateId={templateId}
           />
@@ -321,10 +327,12 @@ function RosterPanel({
 
 function AddCombatantPanel({
   addTemplate,
+  combatantTemplates,
   setTemplateId,
   templateId
 }: Readonly<{
   addTemplate: () => void;
+  combatantTemplates: CombatantTemplate[];
   setTemplateId: (templateId: string) => void;
   templateId: string;
 }>) {

@@ -1,7 +1,8 @@
 import type { SessionDecision, SessionEvent } from '@knightandwizard/rules-core';
+
 import { createSessionManagerState } from './model';
 
-const sampleEvents: SessionEvent[] = [
+const initialEvents: SessionEvent[] = [
   {
     actorId: 'gm',
     createdAt: '2026-04-30T20:04:00.000Z',
@@ -36,7 +37,7 @@ const sampleEvents: SessionEvent[] = [
   }
 ];
 
-const sampleDecisions: SessionDecision[] = [
+const initialDecisions: SessionDecision[] = [
   {
     assignedTo: 'human_gm',
     createdAt: '2026-04-30T20:19:00.000Z',
@@ -49,9 +50,9 @@ const sampleDecisions: SessionDecision[] = [
   }
 ];
 
-export function createSampleSessionManagerState() {
+export function createInitialSessionManagerState() {
   return createSessionManagerState({
-    decisions: sampleDecisions,
-    events: sampleEvents
+    decisions: initialDecisions,
+    events: initialEvents
   });
 }

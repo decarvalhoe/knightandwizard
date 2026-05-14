@@ -19,9 +19,9 @@ import {
   recordSessionEvent,
   requestRollbackFromEvent,
   resolveNextPendingDecision,
-  submitGmDecisionRequest
+  submitGmDecisionRequest,
+  type SessionManagerState
 } from './model';
-import { createSampleSessionManagerState } from './sample';
 
 const eventToneClasses = {
   audit: 'border-wine/25 bg-wine/8 text-wine',
@@ -37,8 +37,12 @@ const priorityClasses = {
   urgent: 'bg-wine/12 text-wine'
 };
 
-export function SessionManager() {
-  const [state, setState] = useState(createSampleSessionManagerState);
+interface SessionManagerProps {
+  initialState: SessionManagerState;
+}
+
+export function SessionManager({ initialState }: Readonly<SessionManagerProps>) {
+  const [state, setState] = useState(initialState);
   const view = useMemo(() => buildSessionManagerView(state), [state]);
   const [rollbackSequence, setRollbackSequence] = useState(
     view.rollbackTargets[0]?.sequence.toString() ?? ''
