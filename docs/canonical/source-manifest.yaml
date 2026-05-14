@@ -13097,6 +13097,15 @@ sources:
     domains: ["project-governance"]
     contains: ["project_documentation"]
     notes: "Project documentation source."
+  - id: "docs-product-api-catalog-read-models"
+    path: "docs/product/api-catalog-read-models.md"
+    sha256: "c94f41c22edd979492200a0fd35442d52a6c7dc348924ae9dfa7c044a2f44d02"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-product-architecture-strategie-llm"
     path: "docs/product/architecture-strategie-llm.md"
     sha256: "9cf14dda69786197cf9477f66ffa96cd2b2f31875961deb251ac8606f288d653"
@@ -13108,7 +13117,7 @@ sources:
     notes: "Project documentation source."
   - id: "docs-product-readme"
     path: "docs/product/README.md"
-    sha256: "7e2f16fde31adf8df6220568210ca21d3d664e25e29dcb3bbc025764220b40c6"
+    sha256: "82d176cb1a2480aacf8828a3e2a70712521a1b61e7c8b1e8994158bbac049e57"
     source_type: generated_doc
     priority: 40
     status: active

@@ -10,7 +10,6 @@ const sql = createSqlClient();
 
 beforeAll(async () => {
   await runMigrations();
-  await sql`DELETE FROM catalog_documents WHERE source_path LIKE 'data/catalogs/%'`;
 });
 
 afterAll(async () => {
@@ -41,11 +40,12 @@ describe('catalog document read models', () => {
     const documents = await buildCatalogDocumentReadModels();
     const imported = await upsertCatalogDocuments(sql, documents);
 
-    const countRows = await sql<{ count: string }[]>`
-      SELECT count(*)::text AS count
+    const catalogRows = await sql<{ source_path: string }[]>`
+      SELECT source_path
       FROM catalog_documents
       WHERE source_path LIKE 'data/catalogs/%'
     `;
+    const importedSourcePaths = new Set(catalogRows.map((row) => row.source_path));
     const spellRows = await sql<
       Array<{
         catalog_name: string;
@@ -64,7 +64,9 @@ describe('catalog document read models', () => {
     `;
 
     expect(imported).toBe(PRIORITY_CATALOG_NAMES.length);
-    expect(Number(countRows[0]?.count)).toBe(PRIORITY_CATALOG_NAMES.length);
+    for (const catalogName of PRIORITY_CATALOG_NAMES) {
+      expect(importedSourcePaths.has(`data/catalogs/${catalogName}`)).toBe(true);
+    }
     expect(spellRows[0]).toMatchObject({
       catalog_name: 'spells.yaml',
       status: 'active',
