@@ -11,24 +11,25 @@ Ce dossier contient les imports effectifs des catalogues legacy, structurés sel
 
 ## Catalogues (avancement)
 
-| Catalogue | Fichier | Source | Entrées | Statut |
-|---|---|---|---:|---|
-| Armes | `armes.yaml` + `armes-ambiguites.md` | `regles-papier/extracted/listes/armes.md` | 107 | ✅ import auto |
-| Protections | `protections.yaml` | `regles-papier/extracted/listes/protections.md` | 49 + 11 boucliers | ✅ import auto |
-| Potions | `potions.yaml` | `regles-papier/extracted/listes/rituels-et-potions.md` + `documents/potions/index.md` | 5 | ✅ import auto |
-| Champignons | `champignons.yaml` | `regles-papier/extracted/infos/champignons-toxiques.md` | 8 syndromes (~14 espèces) | ✅ import auto |
-| Bestiaire | `bestiaire.yaml` | `regles-papier/extracted/listes/bestiaire.md` | 30 | ✅ import auto |
-| Nations | `nations.yaml` (v2) | `regles-papier/extracted/histoires/nations.md` + cartes web | **29** (18 paper + 11 ajouts web) | ✅ import auto + extension cartes |
-| Religions/Divinités | `religions.yaml` | `regles-papier/extracted/histoires/cultes-et-religions.md` | 9 religions / 70+ divinités | ✅ import auto |
-| Carte du monde | `world-map.yaml` | `monde/regions/`, `monde/villes/`, `monde/lieux/`, `site/download/map/terres-oubliees.jpg` | 5 régions web + 9 villes + 17 lieux + 6 régions découvertes via carte + 15 villes Cortega | ✅ import auto |
-| Organisations | `organisations.yaml` | `regles-papier/extracted/histoires/organisations.md` | 7 organisations | ✅ import auto |
-| **Images visuelles** | `images.yaml` | `site/download/map/`, `site/img/flags/`, `site/img/maps/` | 1 carte mondiale + 15 cartes régionales + 10 blasons + 3 web assets | ✅ import auto |
-| **Villes des cartes régionales** | `cities-from-maps.yaml` | 15 cartes JPG `site/download/map/*.jpg` | ~280 villes + 10 portes fortifiées + 3 régions nouvelles + zones | ✅ extraction visuelle |
-| **Vectorisation cartes** | `vectorisation-cartes.md` | recherche 2026 outils interactifs | 6 options évaluées + workflow recommandé QGIS+Leaflet | ✅ guide d'implémentation |
-| **Valeurs d'atouts** | `atouts-values.csv` | `documents/atouts/index.md` | 416 atouts/handicaps | ✅ import auto, coûts familiers |
-| Lore narratif | `lore-index.yaml` | `regles-papier/extracted/histoires/*.md` | 6 entrées (préservées) | ✅ référencement |
+| Catalogue                        | Fichier                              | Source                                                                                     |                                                                                   Entrées | Statut                            |
+| -------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------: | --------------------------------- |
+| Armes                            | `armes.yaml` + `armes-ambiguites.md` | `regles-papier/extracted/listes/armes.md`                                                  |                                                                                       107 | ✅ import auto                    |
+| Protections                      | `protections.yaml`                   | `regles-papier/extracted/listes/protections.md`                                            |                                                                         49 + 11 boucliers | ✅ import auto                    |
+| Potions                          | `potions.yaml`                       | `regles-papier/extracted/listes/rituels-et-potions.md` + `documents/potions/index.md`      |                                                                                         5 | ✅ import auto                    |
+| Champignons                      | `champignons.yaml`                   | `regles-papier/extracted/infos/champignons-toxiques.md`                                    |                                                                 8 syndromes (~14 espèces) | ✅ import auto                    |
+| Bestiaire                        | `bestiaire.yaml`                     | `regles-papier/extracted/listes/bestiaire.md` + web                                        |                                                                              31 créatures | ✅ import auto                    |
+| Races                            | `races.yaml`                         | `bestiaire.yaml` source_refs web/paper                                                     |                                                                    31 races (25 jouables) | ✅ dérivé canonique               |
+| Nations                          | `nations.yaml` (v2)                  | `regles-papier/extracted/histoires/nations.md` + cartes web                                |                                                         **29** (18 paper + 11 ajouts web) | ✅ import auto + extension cartes |
+| Religions/Divinités              | `religions.yaml`                     | `regles-papier/extracted/histoires/cultes-et-religions.md`                                 |                                                               9 religions / 70+ divinités | ✅ import auto                    |
+| Carte du monde                   | `world-map.yaml`                     | `monde/regions/`, `monde/villes/`, `monde/lieux/`, `site/download/map/terres-oubliees.jpg` | 5 régions web + 9 villes + 17 lieux + 6 régions découvertes via carte + 15 villes Cortega | ✅ import auto                    |
+| Organisations                    | `organisations.yaml`                 | `regles-papier/extracted/histoires/organisations.md`                                       |                                                                           7 organisations | ✅ import auto                    |
+| **Images visuelles**             | `images.yaml`                        | `site/download/map/`, `site/img/flags/`, `site/img/maps/`                                  |                       1 carte mondiale + 15 cartes régionales + 10 blasons + 3 web assets | ✅ import auto                    |
+| **Villes des cartes régionales** | `cities-from-maps.yaml`              | 15 cartes JPG `site/download/map/*.jpg`                                                    |                          ~280 villes + 10 portes fortifiées + 3 régions nouvelles + zones | ✅ extraction visuelle            |
+| **Vectorisation cartes**         | `vectorisation-cartes.md`            | recherche 2026 outils interactifs                                                          |                                     6 options évaluées + workflow recommandé QGIS+Leaflet | ✅ guide d'implémentation         |
+| **Valeurs d'atouts**             | `atouts-values.csv`                  | `documents/atouts/index.md`                                                                |                                                                      416 atouts/handicaps | ✅ import auto, coûts familiers   |
+| Lore narratif                    | `lore-index.yaml`                    | `regles-papier/extracted/histoires/*.md`                                                   |                                                                    6 entrées (préservées) | ✅ référencement                  |
 
-**Total : ~1100 entrées canoniques importées dans 13 catalogues** (+ 29 fichiers images référencés). Les valeurs d'atouts servent aussi de règle `valeur / 10` pour la création des familiers.
+**Total : ~1100 entrées canoniques importées dans 14 catalogues prioritaires** (+ 29 fichiers images référencés). Les valeurs d'atouts servent aussi de règle `valeur / 10` pour la création des familiers.
 
 ## Backlogs résolus par cet import
 
@@ -48,6 +49,7 @@ Ce dossier contient les imports effectifs des catalogues legacy, structurés sel
 Cf. `armes-ambiguites.md` pour les ambiguïtés. Les autres catalogues ont moins d'ambiguïtés (les stats sont explicites dans le legacy).
 
 Points d'attention :
+
 - **`inferred: true`** : valeurs déduites par le moteur. À valider/surcharger par l'auteur.
 - **Difficulté legacy "95"** (4 armes + 1 potion) : ✅ tranché par auteur — c'est la notation étendue D1 R-1.X (= difficulté 10, "9 ET 5 minimum sur 2 dés").
 - **Champignons** : structure paper par syndrome plutôt que par espèce. Décomposition fine en backlog.
@@ -71,6 +73,7 @@ Points d'attention :
 ## Format
 
 Tous les catalogues sont en YAML (lisible humain + parseable). Chaque entrée porte :
+
 - `id` (slug)
 - `name`
 - champs spécifiques au type (cf. méta-modèle Phase 1)
@@ -80,14 +83,15 @@ Tous les catalogues sont en YAML (lisible humain + parseable). Chaque entrée po
 
 ## Validation Zod
 
-Les catalogues prioritaires (`armes`, `bestiaire`, `protections`, `potions`, `nations`,
+Les catalogues prioritaires (`armes`, `bestiaire`, `races`, `protections`, `potions`, `nations`,
 `organisations`, `religions`) sont validés par `@knightandwizard/catalogs`.
 
 API disponible :
+
 - `loadValidatedCatalog('armes.yaml')` : charge un YAML et applique son schéma Zod.
 - `loadValidatedCatalogs()` : charge tous les catalogues prioritaires.
 - `validateCatalogData(...)` : valide un objet déjà chargé et retourne une erreur contenant le fichier
   et le chemin de donnée fautif.
 
-Les types inférés (`Weapon`, `BestiaryEntry`, `Protection`, `Potion`, `Nation`, `Organisation`,
+Les types inférés (`Weapon`, `BestiaryEntry`, `Race`, `Protection`, `Potion`, `Nation`, `Organisation`,
 `Religion`, etc.) sont exportés depuis le package pour `apps/server`, `apps/cms` et `apps/game`.

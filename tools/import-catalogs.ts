@@ -12,6 +12,7 @@ import {
   type Organisation,
   type Potion,
   type Protection,
+  type Race,
   type Religion,
   type Weapon
 } from '../packages/catalogs/src/index.js';
@@ -92,11 +93,9 @@ export async function buildCatalogImportPlan(
     ...priorityCatalogs['bestiaire.yaml'].creatures.map((creature) =>
       bestiaryEntry(creature, priorityCatalogs['bestiaire.yaml'].metadata)
     ),
-    ...priorityCatalogs['bestiaire.yaml'].creatures
-      .filter((creature) => creature.playable)
-      .map((creature) =>
-        raceEntryFromBestiary(creature, priorityCatalogs['bestiaire.yaml'].metadata)
-      ),
+    ...priorityCatalogs['races.yaml'].races.map((race) =>
+      raceEntry(race, priorityCatalogs['races.yaml'].metadata)
+    ),
     ...priorityCatalogs['protections.yaml'].armor_pieces.map((protection) =>
       protectionEntry(protection, 'armor_piece', priorityCatalogs['protections.yaml'].metadata)
     ),
@@ -261,23 +260,25 @@ function bestiaryEntry(
   );
 }
 
-function raceEntryFromBestiary(
-  creature: BestiaryEntry,
-  catalogMetadata: Record<string, unknown>
-): ImportEntry {
+function raceEntry(race: Race, catalogMetadata: Record<string, unknown>): ImportEntry {
   return entry(
     'races',
-    creature,
+    race,
     {
-      attributeMax: creature.attribute_max,
-      category: creature.xp_category,
-      playable: creature.playable,
-      speedFactorBase: creature.speed_factor_base,
-      vitalityBase: creature.vitality_base,
-      willFactorBase: creature.will_factor_base
+      attributeMax: race.attribute_max,
+      category: race.xp_category,
+      innateAtouts: race.innate_atouts,
+      innateHandicaps: race.innate_handicaps,
+      playable: race.playable,
+      resistances: race.resistances,
+      sourceRefs: race.source_refs,
+      speedFactorBase: race.speed_factor_base,
+      taxonomy: race.taxonomy,
+      vitalityBase: race.vitality_base,
+      willFactorBase: race.will_factor_base
     },
     catalogMetadata,
-    'bestiaire.yaml'
+    'races.yaml'
   );
 }
 

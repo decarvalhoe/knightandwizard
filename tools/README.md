@@ -20,6 +20,16 @@ pnpm canonical:check:strict
 
 `canonical:check` est inclus dans `pnpm validate`. Les artefacts `docs/canonical/*` sont générés et comparés par ce gate ; ils ne doivent pas être édités à la main.
 
+### `build-races-catalog.ts`
+
+Génère `data/catalogs/races.yaml` depuis `data/catalogs/bestiaire.yaml`, en conservant les `source_refs` web/paper de chaque entrée. Le catalogue contient les 31 races connues du domaine D3, avec `playable: true` pour les 25 races disponibles au wizard PJ et `playable: false` pour les races non proposées à la création.
+
+Commande :
+
+```bash
+pnpm catalogs:build:races
+```
+
 ### `build-skills-catalog.ts`
 
 Génère `data/catalogs/competences.yaml` à partir de la liste web canonique `data/legacy/web-scraped/documents/competences/index.md`. Détecte les 10 familles, extrait les ~370 compétences avec slugs FR, résout les parents explicites (`(parent)` dans la source) et les parents implicites (préfixe de nom déjà rencontré). Les parents non-canoniques (paramètres comme `(cheval)`) sont nullifiés. Les artefacts sortent prettier-clean ; le tool rappelle Prettier sur sa sortie.

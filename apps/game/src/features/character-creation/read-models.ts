@@ -32,11 +32,11 @@ export interface CharacterCreationReadModel {
   catalog: CharacterCreationCatalog;
 }
 
-export interface BestiaryCatalogDocument {
-  creatures?: BestiaryCreature[];
+export interface RacesCatalogDocument {
+  races?: RaceCatalogEntry[];
 }
 
-export interface BestiaryCreature {
+export interface RaceCatalogEntry {
   attribute_max?: Partial<Record<AttributeKey, number>>;
   id?: string;
   name?: string;
@@ -107,9 +107,9 @@ export interface PotionsCatalogDocument {
 }
 
 export async function getCharacterCreationReadModel(): Promise<CharacterCreationReadModel> {
-  const [bestiary, orientations, classes, skills, spells, weapons, protections, potions] =
+  const [races, orientations, classes, skills, spells, weapons, protections, potions] =
     await Promise.all([
-      getCatalogDocument<BestiaryCatalogDocument>('bestiaire.yaml'),
+      getCatalogDocument<RacesCatalogDocument>('races.yaml'),
       getCatalogDocument<OrientationsCatalogDocument>('orientations.yaml'),
       getCatalogDocument<ClassesCatalogDocument>('classes.yaml'),
       getCatalogDocument<SkillsCatalogDocument>('competences.yaml'),
@@ -122,9 +122,9 @@ export async function getCharacterCreationReadModel(): Promise<CharacterCreation
   return {
     attributeLabels,
     catalog: buildCharacterCreationCatalogFromReadModels({
-      bestiary,
       classes,
       orientations,
+      races,
       potions,
       protections,
       skills,
@@ -135,7 +135,7 @@ export async function getCharacterCreationReadModel(): Promise<CharacterCreation
 }
 
 export function buildCharacterCreationCatalogFromReadModels(input: {
-  bestiary: BestiaryCatalogDocument;
+  races: RacesCatalogDocument;
   classes: ClassesCatalogDocument;
   orientations: OrientationsCatalogDocument;
   potions: PotionsCatalogDocument;
@@ -144,10 +144,10 @@ export function buildCharacterCreationCatalogFromReadModels(input: {
   spells: SpellsCatalogDocument;
   weapons: WeaponsCatalogDocument;
 }): CharacterCreationCatalog {
-  const races = toRaceProfiles(input.bestiary);
+  const races = toRaceProfiles(input.races);
 
   return {
-    assets: toRaceAssets(input.bestiary),
+    assets: toRaceAssets(input.races),
     classes: toClassProfiles(input.classes),
     equipment: toEquipmentOptions(input.weapons, input.protections, input.potions),
     orientations: toOrientationProfiles(input.orientations),
@@ -173,8 +173,8 @@ export function createDefaultCreationDraft(
   });
 }
 
-export function toRaceProfiles(catalog: BestiaryCatalogDocument): RaceProfile[] {
-  return (catalog.creatures ?? [])
+export function toRaceProfiles(catalog: RacesCatalogDocument): RaceProfile[] {
+  return (catalog.races ?? [])
     .filter(
       (entry) => entry.status === 'active' && entry.playable === true && entry.id && entry.name
     )
@@ -241,8 +241,8 @@ export function toEquipmentOptions(
   ].filter((entry): entry is { id: string; name: string } => entry !== null);
 }
 
-function toRaceAssets(catalog: BestiaryCatalogDocument) {
-  return (catalog.creatures ?? []).flatMap((creature) =>
+function toRaceAssets(catalog: RacesCatalogDocument) {
+  return (catalog.races ?? []).flatMap((creature) =>
     (creature.innate_atouts ?? []).map((assetName) => ({
       id: `${creature.id ?? 'race'}-${slugify(assetName)}`,
       label: assetName,

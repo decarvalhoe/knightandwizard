@@ -104,6 +104,7 @@ const coverageReportPath = `${generatedDir}/coverage-report.md`;
 const relationalReadModelCatalogPaths = new Set([
   'data/catalogs/armes.yaml',
   'data/catalogs/bestiaire.yaml',
+  'data/catalogs/races.yaml',
   'data/catalogs/protections.yaml',
   'data/catalogs/potions.yaml',
   'data/catalogs/nations.yaml',
@@ -519,6 +520,21 @@ function collectCatalogUnits(
           'apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors.'
         );
       }
+      if (source.path === 'data/catalogs/races.yaml') {
+        unit.status = 'covered';
+        unit.zod_schema = link(
+          'covered',
+          'packages/catalogs/src/schemas.ts defines RaceSchema and packages/catalogs/src/schemas.test.ts validates counts, source_refs and forbidden demo IDs.'
+        );
+        unit.ui = link(
+          'covered',
+          'apps/game/src/features/character-creation/read-models.ts and apps/game/src/features/character-sheet/read-models.ts consume races.yaml through the catalog API; tests/e2e/app-features.spec.ts exercises creation and sheet flows.'
+        );
+        unit.tests = link(
+          'covered',
+          'packages/catalogs/src/schemas.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts, tools/import-catalogs.test.ts and tests/e2e/app-features.spec.ts cover race catalog validation, DB/API exposure and product use.'
+        );
+      }
       units.push(unit);
       for (const [childKey, childValue] of Object.entries(item)) {
         if (Array.isArray(childValue) || isRecord(childValue)) {
@@ -879,6 +895,7 @@ function domainFromRulePath(path: string): string {
 }
 
 function domainsForCatalog(path: string): string[] {
+  if (path.includes('races')) return ['D3-races'];
   if (path.includes('bestiaire')) return ['D3-races', 'D11-creatures'];
   if (path.includes('atouts')) return ['D4-assets'];
   if (path.includes('armes') || path.includes('protections') || path.includes('potions'))
@@ -892,6 +909,7 @@ function domainsForCatalog(path: string): string[] {
 }
 
 function containsForCatalog(path: string): string[] {
+  if (path.includes('races')) return ['races', 'innate_assets', 'innate_handicaps'];
   if (path.includes('bestiaire'))
     return ['races', 'creatures', 'innate_assets', 'innate_handicaps'];
   if (path.includes('atouts')) return ['assets', 'handicaps'];
@@ -981,6 +999,7 @@ function catalogUnitType(collection: string, path: string): string {
   const explicit: Record<string, string> = {
     armor_pieces: 'armor_piece',
     creatures: 'creature',
+    races: 'race',
     factions: 'organisation',
     images: 'image',
     potions: 'potion',

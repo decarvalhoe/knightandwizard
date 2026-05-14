@@ -8039,9 +8039,27 @@ sources:
     domains: ["D10-equipment"]
     contains: ["armor", "shields"]
     notes: "Product YAML catalog."
+  - id: "data-catalogs-races-ambiguites"
+    path: "data/catalogs/races-ambiguites.md"
+    sha256: "647b4a792558b7cf51d8dfc769bd701366746d5e064940e7a686811a0e6cd9d5"
+    source_type: generated_doc
+    priority: 85
+    status: active
+    domains: ["D3-races"]
+    contains: ["catalog_documentation"]
+    notes: "Catalog documentation or ambiguity log."
+  - id: "data-catalogs-races"
+    path: "data/catalogs/races.yaml"
+    sha256: "8ac94f5dd430b021e8c7f1f92b991dd51568cabffebc18b2b0b7669f9d68ddff"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["D3-races"]
+    contains: ["races", "innate_assets", "innate_handicaps"]
+    notes: "Product YAML catalog."
   - id: "data-catalogs-readme"
     path: "data/catalogs/README.md"
-    sha256: "12d376c33d8c6285d34e820514a3acfdb6cc34c5495b8884e01a9f016702140e"
+    sha256: "50231e267bfd5e4643c39bc0afd563e1362e7633eade11a591c27cd421b59238"
     source_type: generated_doc
     priority: 85
     status: active
