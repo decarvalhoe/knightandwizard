@@ -43,7 +43,7 @@ pnpm format:check            # Vérifie le format Prettier
 pnpm format                  # Applique Prettier sur les fichiers actifs
 pnpm canonical:write         # Régénère les artefacts canoniques (source-manifest, matrix, coverage)
 pnpm canonical:check         # Vérifie que les artefacts canoniques sont à jour
-pnpm canonical:check:strict  # Gate release : exige zéro import sample.ts produit et zéro unité partial
+pnpm canonical:check:strict  # Gate release : artefacts canoniques à jour et zéro import sample.ts produit
 pnpm validate                # Gate locale complète (inclut canonical:check)
 ```
 
@@ -140,7 +140,9 @@ Si cette commande échoue, la PR ou le push n'est pas prêt.
 
 ### Gate release strict
 
-`pnpm canonical:check:strict` est intentionnellement **rouge** tant que les imports `sample.ts` produit n'ont pas été retirés (voir issue P0-12 / #46). Ce n'est pas du bruit : c'est la cible de conformité produit. Cette gate doit passer avant toute promotion `main`.
+`pnpm validate` reste la gate normale pour les branches de développement et les PR vers `dev`. Elle couvre lint, format, typecheck, tests, GeoJSON, build carte, devlab et E2E.
+
+`pnpm canonical:check:strict` est la gate de promotion release. Elle vérifie que les artefacts canoniques sont à jour et échoue si une surface produit réintroduit un import `sample.ts`. Le workflow GitHub Actions l'exécute sur `workflow_dispatch`, `staging` et `main`, puis cite et publie `docs/canonical/coverage-report.md` comme artefact de run. Cette gate doit passer avant toute promotion `main`.
 
 ## Code of conduct
 
