@@ -23,7 +23,7 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('Cuisine', { exact: true })).toBeVisible();
     await expect(page.getByText('Compétence implicite à 0').first()).toBeVisible();
     await expect(page.getByText('Cuisine corteganne')).toBeVisible();
-    await expect(page.getByText(/Catalogue implicite : 12 entrées, 8 notées/)).toBeVisible();
+    await expect(page.getByText(/Catalogue implicite : 10 entrées, 7 notées/)).toBeVisible();
 
     await page.getByRole('button', { name: /Force/ }).click();
     await expect(page.getByText('Dernier jet')).toBeVisible();
@@ -55,10 +55,10 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('20/20').first()).toBeVisible();
 
     await openCreationStep(page, 'Competences');
-    await increaseStepper(page, 'Art occulte', 4);
-    await increaseStepper(page, 'Armes longues', 4);
-    await increaseStepper(page, 'Survie', 4);
-    await increaseStepper(page, 'Artisanat', 4);
+    await increaseStepper(page, 'Arcanologie', 4);
+    await increaseStepper(page, 'Épée bâtarde', 4);
+    await increaseStepper(page, 'Chasse', 4);
+    await increaseStepper(page, 'Forge', 4);
     await increaseStepper(page, 'Commandement', 4);
     await expect(page.getByText('20/20').first()).toBeVisible();
 
@@ -126,6 +126,6 @@ async function openCreationStep(page: Page, stepName: string): Promise<void> {
 
 async function increaseStepper(page: Page, label: string, times: number): Promise<void> {
   for (let index = 0; index < times; index += 1) {
-    await page.getByTitle(`Augmenter ${label}`).click();
+    await page.getByTitle(`Augmenter ${label}`, { exact: true }).click();
   }
 }

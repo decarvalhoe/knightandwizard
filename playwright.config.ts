@@ -51,7 +51,7 @@ export default defineConfig({
         NEXT_PUBLIC_API_BASE_URL: apiBaseUrl
       },
       reuseExistingServer: !process.env.CI,
-      timeout: 45_000,
+      timeout: 120_000,
       url: gameBaseUrl
     }
   ],
