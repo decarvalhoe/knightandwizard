@@ -13,7 +13,7 @@ import {
   toOrientationProfiles,
   toRaceProfiles,
   toSkillOptions,
-  type BestiaryCatalogDocument,
+  type RacesCatalogDocument,
   type ClassesCatalogDocument,
   type OrientationsCatalogDocument,
   type PotionsCatalogDocument,
@@ -35,9 +35,9 @@ export interface CharacterSheetReadModel {
 }
 
 export async function getCharacterSheetReadModel(): Promise<CharacterSheetReadModel> {
-  const [bestiary, orientations, classes, skills, spells, weapons, protections, potions] =
+  const [races, orientations, classes, skills, spells, weapons, protections, potions] =
     await Promise.all([
-      getCatalogDocument<BestiaryCatalogDocument>('bestiaire.yaml'),
+      getCatalogDocument<RacesCatalogDocument>('races.yaml'),
       getCatalogDocument<OrientationsCatalogDocument>('orientations.yaml'),
       getCatalogDocument<ClassesCatalogDocument>('classes.yaml'),
       getCatalogDocument<SkillsCatalogDocument>('competences.yaml'),
@@ -52,7 +52,7 @@ export async function getCharacterSheetReadModel(): Promise<CharacterSheetReadMo
   return {
     attributeLabels,
     attributeOrder: [...ATTRIBUTE_KEYS],
-    character: buildActiveCharacter({ bestiary, classes, orientations }),
+    character: buildActiveCharacter({ classes, orientations, races }),
     initialInventory: buildInventory({ potions, protections, weapons }),
     skillCatalog,
     skillLabels,
@@ -61,11 +61,11 @@ export async function getCharacterSheetReadModel(): Promise<CharacterSheetReadMo
 }
 
 function buildActiveCharacter(input: {
-  bestiary: BestiaryCatalogDocument;
+  races: RacesCatalogDocument;
   classes: ClassesCatalogDocument;
   orientations: OrientationsCatalogDocument;
 }) {
-  const race = toRaceProfiles(input.bestiary).find((entry) => entry.id === 'humain');
+  const race = toRaceProfiles(input.races).find((entry) => entry.id === 'humain');
   const orientation = toOrientationProfiles(input.orientations).find(
     (entry) => entry.id === 'magicien'
   );

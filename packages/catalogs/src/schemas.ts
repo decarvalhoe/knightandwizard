@@ -41,6 +41,20 @@ export const DamageProfileSchema = z
   })
   .passthrough();
 
+export const AttributeMaxSchema = z
+  .object({
+    aestheticism: z.number(),
+    charisma: z.number(),
+    dexterity: z.number(),
+    empathy: z.number(),
+    intelligence: z.number(),
+    perception: z.number(),
+    reflexes: z.number(),
+    stamina: z.number(),
+    strength: z.number()
+  })
+  .passthrough();
+
 const CatalogBaseSchema = z
   .object({
     version: z.number().int().positive(),
@@ -77,7 +91,7 @@ export const BestiaryEntrySchema = z
     vitality_base: z.number(),
     speed_factor_base: z.number(),
     will_factor_base: z.number(),
-    attribute_max: z.object({}).passthrough(),
+    attribute_max: AttributeMaxSchema,
     language_capable: z.boolean(),
     playable: z.boolean(),
     source_refs: z.array(z.lazy(() => SourceRefSchema)).optional(),
@@ -87,6 +101,37 @@ export const BestiaryEntrySchema = z
 
 export const BestiaryCatalogSchema = CatalogBaseSchema.extend({
   creatures: z.array(BestiaryEntrySchema)
+});
+
+export const RaceSchema = z
+  .object({
+    id: NonEmptyStringSchema,
+    name: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema,
+    playable: z.boolean(),
+    taxonomy: NonEmptyStringSchema,
+    xp_category: z.number(),
+    vitality_base: z.number(),
+    speed_factor_base: z.number(),
+    will_factor_base: z.number(),
+    attribute_max: AttributeMaxSchema,
+    innate_atouts: z.array(NonEmptyStringSchema),
+    innate_handicaps: z.array(NonEmptyStringSchema),
+    resistances: z.array(z.object({}).passthrough()),
+    size_m: z.number(),
+    life_expectancy: z.number(),
+    intelligence_level: NonEmptyStringSchema.optional(),
+    language_capable: z.boolean(),
+    habitat: z.array(NonEmptyStringSchema),
+    social_structure: NonEmptyStringSchema.optional(),
+    lore: NonEmptyStringSchema.optional(),
+    source_refs: z.array(z.lazy(() => SourceRefSchema)),
+    metadata: EntryMetadataSchema.optional()
+  })
+  .passthrough();
+
+export const RacesCatalogSchema = CatalogBaseSchema.extend({
+  races: z.array(RaceSchema)
 });
 
 export const ArmorPieceSchema = z
@@ -343,6 +388,8 @@ export type Weapon = z.infer<typeof WeaponSchema>;
 export type WeaponsCatalog = z.infer<typeof WeaponsCatalogSchema>;
 export type BestiaryEntry = z.infer<typeof BestiaryEntrySchema>;
 export type BestiaryCatalog = z.infer<typeof BestiaryCatalogSchema>;
+export type Race = z.infer<typeof RaceSchema>;
+export type RacesCatalog = z.infer<typeof RacesCatalogSchema>;
 export type Protection = z.infer<typeof ProtectionSchema>;
 export type ProtectionsCatalog = z.infer<typeof ProtectionsCatalogSchema>;
 export type Potion = z.infer<typeof PotionSchema>;
@@ -377,6 +424,7 @@ export type AtoutsCatalog = z.infer<typeof AtoutsCatalogSchema>;
 export const PRIORITY_CATALOG_NAMES = [
   'armes.yaml',
   'bestiaire.yaml',
+  'races.yaml',
   'protections.yaml',
   'potions.yaml',
   'nations.yaml',
@@ -396,6 +444,7 @@ export type PriorityCatalogName = (typeof PRIORITY_CATALOG_NAMES)[number];
 export type PriorityCatalogData = {
   'armes.yaml': WeaponsCatalog;
   'bestiaire.yaml': BestiaryCatalog;
+  'races.yaml': RacesCatalog;
   'protections.yaml': ProtectionsCatalog;
   'potions.yaml': PotionsCatalog;
   'nations.yaml': NationsCatalog;
@@ -417,6 +466,7 @@ export type PriorityCatalogs = {
 export const PriorityCatalogSchemas = {
   'armes.yaml': WeaponsCatalogSchema,
   'bestiaire.yaml': BestiaryCatalogSchema,
+  'races.yaml': RacesCatalogSchema,
   'protections.yaml': ProtectionsCatalogSchema,
   'potions.yaml': PotionsCatalogSchema,
   'nations.yaml': NationsCatalogSchema,

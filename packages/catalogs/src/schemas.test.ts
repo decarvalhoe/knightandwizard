@@ -11,6 +11,7 @@ import {
 const expectedCollections = [
   ['armes.yaml', 'weapons', 107],
   ['bestiaire.yaml', 'creatures', 31],
+  ['races.yaml', 'races', 31],
   ['protections.yaml', 'armor_pieces', 59],
   ['protections.yaml', 'shields', 12],
   ['potions.yaml', 'potions', 5],
@@ -28,6 +29,7 @@ const expectedCollections = [
 
 const traceableCollections = [
   ['bestiaire.yaml', 'creatures'],
+  ['races.yaml', 'races'],
   ['competences.yaml', 'skills'],
   ['orientations.yaml', 'orientations'],
   ['classes.yaml', 'classes'],
@@ -163,20 +165,27 @@ describe('catalog Zod schemas', () => {
     }
   });
 
-  it('rejects demo race IDs and exposes the 26 canonical playable races', async () => {
-    const catalog = await loadValidatedCatalog('bestiaire.yaml');
-    const ids = new Set(catalog.creatures.map((c) => c.id));
-    const playable = catalog.creatures.filter((c) => c.playable);
+  it('rejects demo race IDs and exposes the canonical race catalog', async () => {
+    const catalog = await loadValidatedCatalog('races.yaml');
+    const ids = new Set(catalog.races.map((race) => race.id));
+    const playable = catalog.races.filter((race) => race.playable);
 
     for (const demoId of ['human', 'elf', 'dwarf']) {
       expect(ids.has(demoId)).toBe(false);
     }
 
+    expect(catalog.races).toHaveLength(31);
     expect(playable).toHaveLength(25);
     expect(ids.has('humain')).toBe(true);
     expect(ids.has('haut_elfe')).toBe(true);
     expect(ids.has('nain')).toBe(true);
     expect(ids.has('zombie')).toBe(true);
+    expect(catalog.races.find((race) => race.id === 'zombie')).toMatchObject({
+      playable: false,
+      source_refs: expect.arrayContaining([
+        expect.objectContaining({ path: 'data/legacy/web-scraped/documents/bestiaire/index.md' })
+      ])
+    });
   });
 
   it('preserves canonical source files at the bestiaire catalog level', async () => {
