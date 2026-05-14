@@ -16,6 +16,7 @@ const ACTIVATION_VALUES = new Set(['Permanent', 'Ephémère']);
 interface AtoutEntry {
   id: string;
   name: string;
+  status: 'active';
   effect: string;
   value: number;
   activation: 'permanent' | 'ephemere';
@@ -87,6 +88,7 @@ function parse(): { atouts: AtoutEntry[]; sourceHash: string } {
     atouts.push({
       id,
       name,
+      status: 'active',
       effect,
       value,
       activation: activationLine === 'Permanent' ? 'permanent' : 'ephemere',

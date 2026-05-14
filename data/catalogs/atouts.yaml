@@ -13,6 +13,7 @@ metadata:
 atouts:
   - id: abordage
     name: Abordage
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un combat sur un navire.
     value: 2000
     activation: permanent
@@ -23,6 +24,7 @@ atouts:
         ref: entry:abordage
   - id: accoutumance-a-la-douleur
     name: Accoutumance à la douleur
+    status: active
     effect: Diminue la difficulté des jets d’endurance de 1.
     value: 3000
     activation: permanent
@@ -33,6 +35,7 @@ atouts:
         ref: entry:accoutumance-a-la-douleur
   - id: adrenaline
     name: Adrénaline
+    status: active
     effect: >-
       Pendant toute la durée d’un combat, le personnage peut augmenter sa force, son endurance, ses réflexes  et sa
       dextérité de 1.
@@ -45,6 +48,7 @@ atouts:
         ref: entry:adrenaline
   - id: affinite-arcanique
     name: Affinité arcanique
+    status: active
     effect: "Le personnage apprend de nouveaux sorts, avec une aisance déconcertante. Le nombre de jours de son apprentissage sont divisés par son niveau en «\_Affinité arcanique » + 1. Soit s’il n’a qu’un point dans cet atout, ses jours d’apprentissage seront divisés par 2."
     value: 3000
     activation: permanent
@@ -55,6 +59,7 @@ atouts:
         ref: entry:affinite-arcanique
   - id: affinite-avec-les-illusions
     name: Affinité avec les illusions
+    status: active
     effect: >-
       Le personnage à tellement l'habitude de vivre entouré d'illusion que son sens de détection de celles-ci s'est
       fortement aiguisé. Il bénéficie d'une difficulté baissée de 3 pour tout jet de détection d'illusions.
@@ -67,6 +72,7 @@ atouts:
         ref: entry:affinite-avec-les-illusions
   - id: agilite
     name: Agilité
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet de danse.
     value: 2000
     activation: permanent
@@ -77,6 +83,7 @@ atouts:
         ref: entry:agilite
   - id: agitateur
     name: Agitateur
+    status: active
     effect: "Le personnage peut prendre son niveau en «\_Agitateur\_» en dès supplémentaire lors d’un combat dont il est responsable."
     value: 2000
     activation: permanent
@@ -87,6 +94,7 @@ atouts:
         ref: entry:agitateur
   - id: alcool-violent
     name: Alcool violent
+    status: active
     effect: "Lorsque le personnage combat ivre, il peut ajouter un dés par point dans «\_Alcool violent\_» à choix dans sa force ou endurance. Cette répartition peut être changée d’un combat à l’autre."
     value: 2000
     activation: permanent
@@ -97,6 +105,7 @@ atouts:
         ref: entry:alcool-violent
   - id: allegement
     name: Allègement
+    status: active
     effect: >-
       Le personnage peut confectionner des objets pesant X % de poids de moins que la normal (arrondi a l’inférieur)
       dans son domaine.
@@ -109,6 +118,7 @@ atouts:
         ref: entry:allegement
   - id: ambidextrie
     name: Ambidextrie
+    status: active
     effect: "Annule les pénalités dues à l’usage de la «\_mauvaise main\_»."
     value: 2000
     activation: permanent
@@ -119,6 +129,7 @@ atouts:
         ref: entry:ambidextrie
   - id: ames-jumelles
     name: Ames jumelles
+    status: active
     effect: >-
       Le personnage ressent ce que ressent son âme jumelle, peut connaître son état et sait dans quelle direction aller
       pour la retrouver, même si celle-ci se trouve a l’autre bout du monde.
@@ -131,6 +142,7 @@ atouts:
         ref: entry:ames-jumelles
   - id: ami-des-touts-petits
     name: Ami des touts petits
+    status: active
     effect: Le personnage est très vite accepter et apprécier par les enfants.
     value: 2000
     activation: permanent
@@ -141,6 +153,7 @@ atouts:
         ref: entry:ami-des-touts-petits
   - id: amnesie
     name: Amnésie
+    status: active
     effect: >-
       Le personnage peut effacer sa présence de la mémoire d’une personne en remontant dans celle-ci jusqu'à un maximum
       d’une minute par niveau. La victime effectue un test de volonté (difficulté plus le niveau ennemi) pour ne pas
@@ -154,6 +167,7 @@ atouts:
         ref: entry:amnesie
   - id: analyse
     name: Analyse
+    status: active
     effect: >-
       Le personnage peut prendre connaissance du nombre de points d’un autre personnage dans une aptitude, compétence ou
       spécialisation que celui-ci laisse transparaître.
@@ -166,6 +180,7 @@ atouts:
         ref: entry:analyse
   - id: ancrage
     name: Ancrage
+    status: active
     effect: >-
       Le personnage peut, suite aux pas d’araignée rester au mur ou même au plafond la tête en bas. Cet effet dure aussi
       longtemps que le désire le personnage, mais celui-ci ne peut ni se mouvoir, ni dormir et de plus il en viendrait à
@@ -179,6 +194,7 @@ atouts:
         ref: entry:ancrage
   - id: anosmie
     name: Anosmie
+    status: active
     effect: Le personnage ne possède aucun sens de l'odorat.
     value: -1500
     activation: permanent
@@ -189,6 +205,7 @@ atouts:
         ref: entry:anosmie
   - id: anti-bluff
     name: Anti-bluff
+    status: active
     effect: Additionne le niveau au nombre de dés pour déceler les mensonges.
     value: 2000
     activation: permanent
@@ -199,6 +216,7 @@ atouts:
         ref: entry:anti-bluff
   - id: anti-delivrance
     name: Anti-délivrance
+    status: active
     effect: >-
       Un personnage utilisant cet atout peut déduire son niveau aux malus d’affaiblissement du personnage qu’il
       maltraite (et ainsi lui faire mal plus longtemps). Cet atout ne s’applique que lorsque celui qui le possède le
@@ -212,6 +230,7 @@ atouts:
         ref: entry:anti-delivrance
   - id: anticipation-magique
     name: Anticipation magique
+    status: active
     effect: >-
       Le magicien peut incanter un sort sans le lancer, celui-ci est alors anticipé. Une fois le sort anticipé, le
       magicien peut le lancer à tout moment en 1 DT. Le magicien peut anticiper 1 sort par niveau en anticipation
@@ -227,6 +246,7 @@ atouts:
         ref: entry:anticipation-magique
   - id: antilimite-physique
     name: Antilimite physique
+    status: active
     effect: Le coût d’un point supplémentaire dans une aptitude, une fois la limite physique atteinte, est de NA x 10.
     value: 1800
     activation: permanent
@@ -237,6 +257,7 @@ atouts:
         ref: entry:antilimite-physique
   - id: apaisement
     name: Apaisement
+    status: active
     effect: Soigne les blessures par le touché. La vitalité ainsi récupérée est égale au niveau du soignant.
     value: 2000
     activation: ephemere
@@ -247,6 +268,7 @@ atouts:
         ref: entry:apaisement
   - id: apprentissage-rapide
     name: Apprentissage rapide
+    status: active
     effect: Le personnage additionne son niveau au nombre de réussites qu’il obtient lors d’un jet d’apprentissage.
     value: 2000
     activation: permanent
@@ -257,6 +279,7 @@ atouts:
         ref: entry:apprentissage-rapide
   - id: armure-partielle
     name: Armure partielle
+    status: active
     effect: >-
       Si dans sa touche (après une éventuelle esquive), un adversaire ne dépasse pas le score d’armure partielle du
       personnage, son coups sera alors dévier automatiquement dans une partie d’armure que possède le personnage (la
@@ -273,6 +296,7 @@ atouts:
         ref: entry:armure-partielle
   - id: art-de-la-charpente
     name: Art de la charpente
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux de charpenterie.
     value: 2000
     activation: permanent
@@ -283,6 +307,7 @@ atouts:
         ref: entry:art-de-la-charpente
   - id: art-de-la-chasse
     name: Art de la chasse
+    status: active
     effect: Additionne le niveau au nombre de dès lorsque le personnage chasse.
     value: 2000
     activation: permanent
@@ -293,6 +318,7 @@ atouts:
         ref: entry:art-de-la-chasse
   - id: art-de-la-peche
     name: Art de la pêche
+    status: active
     effect: Cet atout additionne le niveau au nombre de dès lorsque le personnage pêche.
     value: 2000
     activation: permanent
@@ -303,6 +329,7 @@ atouts:
         ref: entry:art-de-la-peche
   - id: art-de-la-table
     name: Art de la table
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux liés à la restauration.
     value: 2000
     activation: permanent
@@ -313,6 +340,7 @@ atouts:
         ref: entry:art-de-la-table
   - id: art-de-la-vannerie
     name: Art de la vannerie
+    status: active
     effect: Cet atout additionne le niveau au nombre de dès lorsque le personnage fait un travail de vannerie.
     value: 2000
     activation: permanent
@@ -323,6 +351,7 @@ atouts:
         ref: entry:art-de-la-vannerie
   - id: art-de-recevoir
     name: Art de recevoir
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux d'hôtellerie.
     value: 2000
     activation: permanent
@@ -333,6 +362,7 @@ atouts:
         ref: entry:art-de-recevoir
   - id: art-du-tonneau
     name: Art du tonneau
+    status: active
     effect: Cet atout additionne le niveau au nombre de dès lorsque le personnage confectionne un tonneau.
     value: 2000
     activation: permanent
@@ -343,6 +373,7 @@ atouts:
         ref: entry:art-du-tonneau
   - id: art-litteraire
     name: Art littéraire
+    status: active
     effect: Additionne le niveau au nombre de dès lorsque le personnage écrit.
     value: 2000
     activation: permanent
@@ -353,6 +384,7 @@ atouts:
         ref: entry:art-litteraire
   - id: art-occulte
     name: Art occulte
+    status: active
     effect: >-
       Le personnage peut choisir un sort de magie noire qu’il ajoute à sa feuille de personnage, comme s'il était
       magicien. Ce sort doit, bien sur être appris pour pouvoir être lancé. Le personnage débute avec un score de 0 dans
@@ -369,6 +401,7 @@ atouts:
         ref: entry:art-occulte
   - id: artisan-du-mensonge
     name: Artisan du mensonge
+    status: active
     effect: Diminue la difficulté d’un jet de mensonge de 1 par point dans cet atout.
     value: 2000
     activation: permanent
@@ -379,6 +412,7 @@ atouts:
         ref: entry:artisan-du-mensonge
   - id: assassinat
     name: Assassinat
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage assassine quelqu’un.
     value: 2000
     activation: permanent
@@ -389,6 +423,7 @@ atouts:
         ref: entry:assassinat
   - id: astre-regenerateur
     name: Astre régénérateur
+    status: active
     effect: >-
       Le personnage choisit un astre ainsi qu’un moment de la journée (par exemple le soleil de midi). Quand celui-ci
       regarde son astre au moment choisit, il récupère tous ses points de vitalité et perd toute trace fatigue.
@@ -401,6 +436,7 @@ atouts:
         ref: entry:astre-regenerateur
   - id: atterrissage
     name: Atterrissage
+    status: active
     effect: >-
       Le personnage peut amortir une chute de 1m par niveau sans être aucunement blessé à condition qu’il retombe sur
       ses jambes.
@@ -413,6 +449,7 @@ atouts:
         ref: entry:atterrissage
   - id: attrait-du-gain
     name: Attrait du gain
+    status: active
     effect: Cet atout permet à un personnage d’ignorer un test de volonté lorsque son intérêt financier est en jeu.
     value: 2000
     activation: permanent
@@ -423,6 +460,7 @@ atouts:
         ref: entry:attrait-du-gain
   - id: aube-meurtriere
     name: Aube meurtrière
+    status: active
     effect: Les rayons de soleil brûlent le personnage comme le feraient des flammes.
     value: -5000
     activation: permanent
@@ -433,6 +471,7 @@ atouts:
         ref: entry:aube-meurtriere
   - id: audition
     name: Audition
+    status: active
     effect: >-
       L'audition est représentée en pourcentage, ce qui signifie qu’un homme en bonne forme possède une audition de
       100%. Un personnage ayant 200% d'audition entendra donc deux fois mieux.
@@ -445,6 +484,7 @@ atouts:
         ref: entry:audition
   - id: aura-benefique
     name: Aura bénéfique
+    status: active
     effect: >-
       Le personnage dégage une aura qui empêche tout sort de magie noire d’être incantée sur un rayon d’un mètre par
       niveau, par un magicien d’un niveau inférieur.
@@ -457,6 +497,7 @@ atouts:
         ref: entry:aura-benefique
   - id: aura-magique
     name: Aura magique
+    status: active
     effect: >-
       Le magicien peut manifester son énergie visuellement autour de lui sous la forme et la couleur la plus proche de
       sa magie. Par exemple, des éclairs parcourront le corp d'un élémentaliste de foudre.
@@ -469,6 +510,7 @@ atouts:
         ref: entry:aura-magique
   - id: aura-malefique
     name: Aura maléfique
+    status: active
     effect: >-
       Le personnage dégage une aura qui empêche tout sort de magie blanche d’être incantée sur un rayon d’un mètre par
       niveau, par un magicien d’un niveau inférieur.
@@ -481,6 +523,7 @@ atouts:
         ref: entry:aura-malefique
   - id: auto-soin
     name: Auto-soin
+    status: active
     effect: Soigne les blessures du personnage, par sa propre concentration. La vitalité ainsi récupérée est égale au niveau.
     value: 2000
     activation: ephemere
@@ -491,6 +534,7 @@ atouts:
         ref: entry:auto-soin
   - id: autocombustion
     name: Autocombustion
+    status: active
     effect: >-
       Le corps du personnage se met subitement à brûler. Ces flammes infligent 1 point de dégâts par point dans cet
       atout par DT au personnage ainsi qu'à tout ceux qui entrent en contact avec lui durant la durée de son
@@ -504,6 +548,7 @@ atouts:
         ref: entry:autocombustion
   - id: autodidacte
     name: Autodidacte
+    status: active
     effect: >-
       Le personnage peut apprendre par lui-même des sorts qu’il a vu et entendu incanter. Le temps d’apprentissage est
       le double du temps normal (moins le jet d’autodidacticité).
@@ -516,6 +561,7 @@ atouts:
         ref: entry:autodidacte
   - id: autoregeneration
     name: Autorégénération
+    status: active
     effect: >-
       Le corps du personnage se régénère de lui-même en permanence. Ses membres perdus repoussent et ses plaies se
       referment à vue d’œil. Tout les 10 DT, le personnage récupère un point de vitalité. Cet atout prend fin à la mort
@@ -529,6 +575,7 @@ atouts:
         ref: entry:autoregeneration
   - id: aveugle
     name: Aveugle
+    status: active
     effect: Le personnage est incapable de voir.
     value: -5000
     activation: permanent
@@ -539,6 +586,7 @@ atouts:
         ref: entry:aveugle
   - id: baiser-de-la-nuit
     name: Baiser de la nuit
+    status: active
     effect: >-
       Le personnage peut faire boire à un humain, un peu de son sang vampirique pour transformer sa proie en goule. La
       quantité de sang nécéssaire à la transformation peut être ingérée en une ou plusieurs fois.
@@ -551,6 +599,7 @@ atouts:
         ref: entry:baiser-de-la-nuit
   - id: baiser-des-tenebres
     name: Baiser des ténèbres
+    status: active
     effect: >-
       Le personnage peut, après avoir vider un humain d’une partie de son sang, lui faire boire de son sang vampirique
       pour transformer sa proie en vampire. Cette opération peut être faîte en une fois ou sur plusieurs nuits.
@@ -563,6 +612,7 @@ atouts:
         ref: entry:baiser-des-tenebres
   - id: baiser-purificateur
     name: Baiser purificateur
+    status: active
     effect: En embrassant la personne qu’il aime, le personnage peut dissiper tous les sorts actifs sur celle-ci.
     value: 10000
     activation: ephemere
@@ -573,6 +623,7 @@ atouts:
         ref: entry:baiser-purificateur
   - id: baiser-salvateur
     name: Baiser salvateur
+    status: active
     effect: >-
       En embrassant la personne qu’il aime, le personnage peut rendre la vie à celle-ci. La mort du personnage ramené ne
       doit pas être plus ancienne qu’une minute par niveau du personnage la ramenant.
@@ -585,6 +636,7 @@ atouts:
         ref: entry:baiser-salvateur
   - id: baiser-vivifiant
     name: Baiser vivifiant
+    status: active
     effect: >-
       Le personnage peux rendre un nombre de point de vitalité égal à son niveau à la personne qu'il aime simplement en
       l'embrassant.
@@ -597,6 +649,7 @@ atouts:
         ref: entry:baiser-vivifiant
   - id: beaute-desarmante
     name: Beauté désarmante
+    status: active
     effect: >-
       Le personnage radie d’une telle beauté que si quelqu’un (qui pourrait être attiré par lui) désire lui nuire,
       celui-ci doit faire un jet de volonté en le voyant avec une difficulté supplémentaire égale à l’esthétique – 5 du
@@ -610,6 +663,7 @@ atouts:
         ref: entry:beaute-desarmante
   - id: bluff
     name: Bluff
+    status: active
     effect: Cet atout diminue la difficulté des jets de mensonge de 1.
     value: 2000
     activation: permanent
@@ -620,6 +674,7 @@ atouts:
         ref: entry:bluff
   - id: bonne-nuit
     name: Bonne nuit
+    status: active
     effect: >-
       Le personnage peut de son regard endormir celui ou ceux (une personne par niveau) qui le croiseront, sous un jet
       de volonté avec comme difficulté supplémentaire le niveau du personnage.
@@ -632,6 +687,7 @@ atouts:
         ref: entry:bonne-nuit
   - id: bouc-emissaire
     name: Bouc émissaire
+    status: active
     effect: >-
       En regardant quelqu’un dans les yeux, le personnage peut manipuler son mental de manière à ce qu’il soit persuadé
       d’avoir commis un crime effectué par le personnage. C’est effet dure 1 jour par niveau.
@@ -644,6 +700,7 @@ atouts:
         ref: entry:bouc-emissaire
   - id: bouclier-des-arcanes
     name: Bouclier des arcanes
+    status: active
     effect: >-
       Le magicien peut à tout moment expulser l’énergie magique de son corps sous la forme d’une bulle protectrice
       prenant la teinte de la magie du lanceur. Ce bouclier se développe en 1 DT et peut être dissipé à n’importe quel
@@ -659,6 +716,7 @@ atouts:
         ref: entry:bouclier-des-arcanes
   - id: boussole-interne
     name: Boussole interne
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet d’orientation.
     value: 2000
     activation: permanent
@@ -669,6 +727,7 @@ atouts:
         ref: entry:boussole-interne
   - id: brulure-de-l-argent
     name: Brûlure de l’argent
+    status: active
     effect: >-
       Annule l’autorégénération lorsque le personnage est blessé par de l’argent. Ce type de blessures guérit
       normalement.
@@ -681,6 +740,7 @@ atouts:
         ref: entry:brulure-de-l-argent
   - id: brumathropie
     name: Brumathropie
+    status: active
     effect: >-
       Permet au personnage de se changer en brume. La transformation prend 50 DT. Cette forme brumeuse prend
       grossièrement la forme du personnage et quelqu’un d’attentif pourra le détecter.
@@ -693,6 +753,7 @@ atouts:
         ref: entry:brumathropie
   - id: brume
     name: Brume
+    status: active
     effect: >-
       Le personnage peut embrumer autour de lui dans un rayon étant égal à son niveau. Celui-ci n’a aucune pénalité de
       vision dans sa propre brume.
@@ -705,6 +766,7 @@ atouts:
         ref: entry:brume
   - id: cachette-secrete
     name: Cachette secrète
+    status: active
     effect: >-
       Le personnage peut faire disparaître un objet (n’étant pas plus grand que lui) pendant une minute par niveau.
       Passé ce délai, l’objet tombe à terre des vêtements du personnage. Durant le laps de temps de disparition, l'objet
@@ -718,6 +780,7 @@ atouts:
         ref: entry:cachette-secrete
   - id: caresse-charnelle
     name: Caresse charnelle
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet de sexualité.
     value: 2000
     activation: permanent
@@ -728,6 +791,7 @@ atouts:
         ref: entry:caresse-charnelle
   - id: cerebralite
     name: Cérébralité
+    status: active
     effect: >-
       Le personnage peut décider de parler avec un langage cérébral et incompréhensible au commun des mortels en faisant
       maintes métaphores et autres jeux de langage à chacun de ses mots, si bien que seul ceux qui possèdent cet atout
@@ -741,6 +805,7 @@ atouts:
         ref: entry:cerebralite
   - id: chance
     name: Chance
+    status: active
     effect: Le joueur peut refaire (ou faire refaire), un jet directement lié à son personnage.
     value: 2000
     activation: ephemere
@@ -751,6 +816,7 @@ atouts:
         ref: entry:chance
   - id: chant-envoutant
     name: Chant envoûtant
+    status: active
     effect: >-
       Lorsque le personnage se met à chanter, les personnes autour de lui doivent faire un test de volonté pour ne pas
       être séduites (difficulté +1 par niveau du chanteur). Cet état se dissipe lentement après le chant (1 heure par
@@ -764,6 +830,7 @@ atouts:
         ref: entry:chant-envoutant
   - id: charme-tenebreux
     name: Charme ténébreux
+    status: active
     effect: "Le personnage possède de par son côté obscur un charme surnaturel. Les personnes (de races «\_compatibles\_») sont déstabilisées en sa présence et ajoute un malus égal au niveau du personnage à leur jet de volonté lorsque le personnage tente de les séduire."
     value: 4000
     activation: permanent
@@ -774,6 +841,7 @@ atouts:
         ref: entry:charme-tenebreux
   - id: chiropterothropie
     name: Chiroptèrothropie
+    status: active
     effect: >-
       Le personnage possède la capacité de se transformer en chauve-souris. La transformation prend 50 DT (soit 10
       secondes).
@@ -786,6 +854,7 @@ atouts:
         ref: entry:chiropterothropie
   - id: concentration
     name: Concentration
+    status: active
     effect: >-
       Le personnage peut décider de retarder son attaque, diminuant ainsi la difficulté de son jet pour toucher de 1
       pour chaque DT supplémentaire accordé.
@@ -798,6 +867,7 @@ atouts:
         ref: entry:concentration
   - id: conceptualisation
     name: Conceptualisation
+    status: active
     effect: >-
       Le personnage peut inventer de nouveaux sorts propre à sa magie. Le temps nécessaire à la création d’un nouveau
       sort est de 100 jours pour un sort de base moins le jet de conceptualisation. Ce nombre peut varier en fonction du
@@ -811,6 +881,7 @@ atouts:
         ref: entry:conceptualisation
   - id: conceptualisation-etendue
     name: Conceptualisation étendue
+    status: active
     effect: >-
       Le personnage peut inventer de nouveau sort de n’importe quel type de magie. Le temps nécessaire à la création
       d’un nouveau sort est de 100 jours pour un sort de basse (moins le jet de conceptualisation) (ce nombre varie en
@@ -824,6 +895,7 @@ atouts:
         ref: entry:conceptualisation-etendue
   - id: condition
     name: Condition
+    status: active
     effect: >-
       L'objet conçu avec une condition n'actionnera son effet magique que lorsque la condition imposée par celui qui l'a
       crée est remplie (par exemple une épée qui brille seulement en présence des orcs).
@@ -836,6 +908,7 @@ atouts:
         ref: entry:condition
   - id: connaissance-de-l-ennemi
     name: Connaissance de l’ennemi
+    status: active
     effect: "Le personnage n’oublie pas les ennemis qu’il a combattus et apprend de fois en fois un peu plus sur leurs techniques de combat respectives. Le personnage gagne un bonus de 1 sur les jets de dès qui entre en opposition avec ceux de son adversaire, pour chaque combat qu’il a déjà mené avec celui-ci. Ces points des bonus sont limités au score de connaissance de l’ennemi du personnage. Par exemple un personnage avec un score de 3 en connaissance de l’ennemi, qui a déjà combattu deux fois le même adversaire aura à présent une difficulté baissée de 2 lorsqu’il combattra à nouveau contre lui. Puis, cette difficulté sera baissée de 3 et ne montera pas plus haut tant que le niveau du personnage en «\_Connaissance de l’ennemi\_» ne dépasse pas 3."
     value: 5000
     activation: permanent
@@ -846,6 +919,7 @@ atouts:
         ref: entry:connaissance-de-l-ennemi
   - id: connaisseur
     name: Connaisseur
+    status: active
     effect: >-
       En goûtant, sentant, etc, le personnage est capable de citer les ingrédients d’une potion ou autre mixture. Il ne
       peut cependant déterminer que des ingrédients qu’il connaît et ne bénéficie pas d'information quant aux quantités.
@@ -858,6 +932,7 @@ atouts:
         ref: entry:connaisseur
   - id: contagion
     name: Contagion
+    status: active
     effect: >-
       Le personnage est contagieux de par ses morsures ou éventuellement griffure. La maladie transmise est au choix du
       joueur ou maître de jeu. Pour ne pas tomber malade, la cible diot faire un jet d'endurance avec pour difficilté
@@ -871,6 +946,7 @@ atouts:
         ref: entry:contagion
   - id: cordon-bleu
     name: Cordon-bleu
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage cuisine.
     value: 2000
     activation: permanent
@@ -881,6 +957,7 @@ atouts:
         ref: entry:cordon-bleu
   - id: corne-aux-mains
     name: Corne aux mains
+    status: active
     effect: Le personnage bénéficie d’une protection supplémentaire de 1 en P, E, C et T sur l'intérieure de ses mains.
     value: 3000
     activation: permanent
@@ -891,6 +968,7 @@ atouts:
         ref: entry:corne-aux-mains
   - id: coup-de-crayon
     name: Coup de crayon
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage dessine.
     value: 2000
     activation: permanent
@@ -901,6 +979,7 @@ atouts:
         ref: entry:coup-de-crayon
   - id: coup-de-pinceau
     name: Coup de pinceau
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage peint.
     value: 2000
     activation: permanent
@@ -911,6 +990,7 @@ atouts:
         ref: entry:coup-de-pinceau
   - id: coup-decisif
     name: Coup décisif
+    status: active
     effect: Additionne le niveau au nombre de dés pour toucher, lorsque le personnage utilise son arme de prédilection.
     value: 2000
     activation: permanent
@@ -921,6 +1001,7 @@ atouts:
         ref: entry:coup-decisif
   - id: coup-du-bucheron
     name: Coup du bûcheron
+    status: active
     effect: Additionne 1 dégât automatique, lorsque le personnage utilise une cognée.
     value: 2000
     activation: permanent
@@ -931,6 +1012,7 @@ atouts:
         ref: entry:coup-du-bucheron
   - id: coup-mortel
     name: Coup mortel
+    status: active
     effect: >-
       Additionne automatiquement le niveau du personnage, aux dégâts infligés par celui-ci. Un seul coup mortel peut
       être porté à la fois.
@@ -943,6 +1025,7 @@ atouts:
         ref: entry:coup-mortel
   - id: coupe-du-bois
     name: Coupe du bois
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage bûcheronne.
     value: 2000
     activation: permanent
@@ -953,6 +1036,7 @@ atouts:
         ref: entry:coupe-du-bois
   - id: coups-vicieux
     name: Coups vicieux
+    status: active
     effect: Le personnage peut déduire son niveau à l’endurance de sa cible pour 1 action.
     value: 2000
     activation: ephemere
@@ -963,6 +1047,7 @@ atouts:
         ref: entry:coups-vicieux
   - id: cours-toujours
     name: Cours toujours
+    status: active
     effect: Lorsque le personnage prend la fuite, il additionne automatiquement son niveau à son nombre de réussites.
     value: 4000
     activation: permanent
@@ -973,6 +1058,7 @@ atouts:
         ref: entry:cours-toujours
   - id: court-repit
     name: Court répit
+    status: active
     effect: Le personnage réduit son temps de sommeil nécéssaire de 2 heures.
     value: 2000
     activation: permanent
@@ -983,6 +1069,7 @@ atouts:
         ref: entry:court-repit
   - id: crane-dur
     name: Crâne dur
+    status: active
     effect: Les dégâts infligés dans la tête ne sont pas doublés.
     value: 3000
     activation: permanent
@@ -993,6 +1080,7 @@ atouts:
         ref: entry:crane-dur
   - id: cri-du-condamne
     name: Cri du condamné
+    status: active
     effect: >-
       Lorsque le personnage frappe sa cible et que celle-ci émet un son de souffrance, les personnages à proximité
       pouvant entendre ce son, doivent effectuer un test de volonté (difficulté + les dégâts qui ont été infligés) pour
@@ -1006,6 +1094,7 @@ atouts:
         ref: entry:cri-du-condamne
   - id: cris-de-guerre
     name: Cris de guerre
+    status: active
     effect: >-
       Le personnage pousse un tel cri de guerre que ses compagnons (capable de l’entendre) se sentent galvanisés par
       celui-ci et obtiennent 1 dès supplémentaire pour tous leurs jets guerriers du combat en court.
@@ -1018,6 +1107,7 @@ atouts:
         ref: entry:cris-de-guerre
   - id: culture-generale
     name: Culture générale
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet de connaissance.
     value: 2000
     activation: permanent
@@ -1028,6 +1118,7 @@ atouts:
         ref: entry:culture-generale
   - id: debordement-d-energie
     name: Débordement d’énergie
+    status: active
     effect: >-
       Cet atout permet au magicien de dépasser son propre quota d’énergie à l’aide de moyen auxiliaire tel que des
       potions d’énergie, des drains d’énergie, etc.
@@ -1040,6 +1131,7 @@ atouts:
         ref: entry:debordement-d-energie
   - id: defense
     name: Défense
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un combat défensif avec l’arme de prédilection.
     value: 2000
     activation: permanent
@@ -1050,6 +1142,7 @@ atouts:
         ref: entry:defense
   - id: dent-contre
     name: Dent contre
+    status: active
     effect: >-
       Cet atout est à choisir avec une race ou une classe. Il diminue la difficulté de 1, de tout jet pouvant nuire à la
       une cible appartenant au groupe choisi.
@@ -1062,6 +1155,7 @@ atouts:
         ref: entry:dent-contre
   - id: dents-de-sabres
     name: Dents de sabres
+    status: active
     effect: >-
       Le personnage possède des crocs plus acérées et une mâchoire plus puissante. Une morsure de sa part fera un dégât
       supplémentaire par point dans cet atout.
@@ -1074,6 +1168,7 @@ atouts:
         ref: entry:dents-de-sabres
   - id: depassement-de-soi
     name: Dépassement de soi
+    status: active
     effect: Le coût d’un point supplémentaire dans une aptitude, au delà de la limite physique est de NA x 15.
     value: 900
     activation: permanent
@@ -1084,6 +1179,7 @@ atouts:
         ref: entry:depassement-de-soi
   - id: deplacement-somnambule
     name: Déplacement somnambule
+    status: active
     effect: >-
       Le personnage peut continuer d'avancer tout en dormant. Un déplacement somnambule peu impliquer des notions fort
       simples tel que suivre quelque chose ou se diriger droit dans dans une direction donnée. Les opérations plus
@@ -1097,6 +1193,7 @@ atouts:
         ref: entry:deplacement-somnambule
   - id: desactivation
     name: Désactivation
+    status: active
     effect: Permet au magicien de désactiver à tout moment l'un de ces propre sort actif.
     value: 2000
     activation: permanent
@@ -1107,6 +1204,7 @@ atouts:
         ref: entry:desactivation
   - id: desamorcage-des-pieges-magiques
     name: Désamorçage des pièges magiques
+    status: active
     effect: Le personnage peut désamorcer des pièges tendus magiquement en faisant un jet de désamorçage traditionnel.
     value: 3000
     activation: permanent
@@ -1117,6 +1215,7 @@ atouts:
         ref: entry:desamorcage-des-pieges-magiques
   - id: detection-des-coups-portants
     name: Détection des coups portants
+    status: active
     effect: >-
       Le personnage a une telle habitude du combat que son instinct lui indique automatiquement si un coup donné dans sa
       direction en corps à corps le touchera ou non. Le joueur peut donc savoir si son adversaire le touche avant de
@@ -1131,6 +1230,7 @@ atouts:
         ref: entry:detection-des-coups-portants
   - id: detection-des-pieges-magiques
     name: Détection des pièges magiques
+    status: active
     effect: Le personnage peut détecter des pièges tendus magiquement en faisant un jet de détection traditionnel.
     value: 3000
     activation: permanent
@@ -1141,6 +1241,7 @@ atouts:
         ref: entry:detection-des-pieges-magiques
   - id: detection-des-projectiles-portants
     name: Détection des projectiles portants
+    status: active
     effect: >-
       Le personnage à une telle habitude d’être sous les feux balistiques qu’il a développé un instinct lui indiquant si
       le projectile lui est ou non, destiné. Le joueur peut donc savoir si le projectile le touche avant de décider de
@@ -1155,6 +1256,7 @@ atouts:
         ref: entry:detection-des-projectiles-portants
   - id: detection-du-defaut
     name: Détection du défaut
+    status: active
     effect: >-
       Le personnage peut savoir automatiquement le défaut d’un objet (ou son principal point faible) en observant
       celui-ci.
@@ -1167,6 +1269,7 @@ atouts:
         ref: entry:detection-du-defaut
   - id: developpement-avance
     name: Développement avancé
+    status: active
     effect: >-
       Le magicien peut développer et apprendre un sort qu’il possède en sort mineur, majeur, standard, de masse ou de
       distance. Le temps du développement dure le double du temps d’apprentissage du sort sur lequel travaille le
@@ -1180,6 +1283,7 @@ atouts:
         ref: entry:developpement-avance
   - id: developpement-magique
     name: Développement magique
+    status: active
     effect: >-
       Le magicien peut développer et apprendre un sort qu’il possède en sort mineur, majeur ou standard. Le temps du
       développement dure le double du temps d’apprentissage du sort sur lequel travaille le personnage (moins le jet de
@@ -1193,6 +1297,7 @@ atouts:
         ref: entry:developpement-magique
   - id: discretion
     name: Discrétion
+    status: active
     effect: Diminue la difficulté de 5 sur un jet de furtivité.
     value: 500
     activation: ephemere
@@ -1203,6 +1308,7 @@ atouts:
         ref: entry:discretion
   - id: disparition
     name: Disparition
+    status: active
     effect: >-
       Le personnage peut se cacher quelque part, non loin de l’endroit où il utilise cet atout. Cette action se fait en
       une fraction de seconde (1DT), cependant, personne ne doit le regarder s’il veut pouvoir disparaître.
@@ -1215,6 +1321,7 @@ atouts:
         ref: entry:disparition
   - id: dissimulation
     name: Dissimulation
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet basé sur le camouflage.
     value: 2000
     activation: permanent
@@ -1225,6 +1332,7 @@ atouts:
         ref: entry:dissimulation
   - id: doigts-de-fee
     name: Doigts de fée
+    status: active
     effect: Diminue la difficulté d’un jet basé sur le doigté de 1 par point dans l’atout.
     value: 4000
     activation: permanent
@@ -1235,6 +1343,7 @@ atouts:
         ref: entry:doigts-de-fee
   - id: domination-post-mortem
     name: Domination post-mortem
+    status: active
     effect: Le personnage ajoute 5 à la catégorie maximal de créature qu’il peut relever lors d’un appel des morts.
     value: 1
     activation: permanent
@@ -1245,6 +1354,7 @@ atouts:
         ref: entry:domination-post-mortem
   - id: don-pour-les-langues
     name: Don pour les langues
+    status: active
     effect: >-
       Le personnage divise ses jours d’apprentissage par son niveau, lors de l’apprentissage d’une langue (arrondi au
       supérieur).
@@ -1257,6 +1367,7 @@ atouts:
         ref: entry:don-pour-les-langues
   - id: douleur-aigue
     name: Douleur aigüe
+    status: active
     effect: >-
       Les blessures infligées par le personnage ne font pas plus de dégât, mais provoque le double de la douleur
       normale. Cet atout dure une minute par niveau.
@@ -1269,6 +1380,7 @@ atouts:
         ref: entry:douleur-aigue
   - id: droit-unique-de-revocation
     name: Droit unique de révocation
+    status: active
     effect: >-
       Le magicien est le seul à pouvoir révoquer une invocation qu’il a lui-même faite. Si celui-ci devait mourir,
       aucune révocation ne serait plus possible pour les objets ou créatures transporter par le magicien.
@@ -1281,6 +1393,7 @@ atouts:
         ref: entry:droit-unique-de-revocation
   - id: duel
     name: Duel
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un duel.
     value: 2000
     activation: permanent
@@ -1291,6 +1404,7 @@ atouts:
         ref: entry:duel
   - id: dulcinee
     name: Dulcinée
+    status: active
     effect: >-
       Cet atout est à choisir avec la dame des pensées du personnage. Lorsque celui-ci combat sous le regard de sa
       dulcinée, son niveau lui est accordé en dès supplémentaire pour toutes ses actions. Cet atout se lit au féminin
@@ -1304,6 +1418,7 @@ atouts:
         ref: entry:dulcinee
   - id: eau-benite
     name: Eau bénite
+    status: active
     effect: L’eau bénite par le personnage inflige 1 point de dégât (endurable) aux adorateurs opposés à sa foi.
     value: 2000
     activation: permanent
@@ -1314,6 +1429,7 @@ atouts:
         ref: entry:eau-benite
   - id: echappee-belle
     name: Echappée belle
+    status: active
     effect: >-
       Le personnage peut déduire son niveau au nombre de réussites obtenues par un autre personnage, lorsque ce dernier
       entreprend une action contre lui.
@@ -1326,6 +1442,7 @@ atouts:
         ref: entry:echappee-belle
   - id: effet-apeurant
     name: Effet apeurant
+    status: active
     effect: >-
       Le personnage a la capacité de  créer des œuvres ou objets étrangement malsains. Les personnages désirant s’en
       approcher doivent réussir un test de volonté.
@@ -1338,6 +1455,7 @@ atouts:
         ref: entry:effet-apeurant
   - id: effet-de-lumiere
     name: Effet de lumière
+    status: active
     effect: >-
       Permet de fabriquer des objets qui brillent plus ou moins en fonction du niveau de l’artisan au moment où il l’a
       conçu (la couleur, sera la plus approprier à l’objet).
@@ -1350,6 +1468,7 @@ atouts:
         ref: entry:effet-de-lumiere
   - id: effet-sonore
     name: Effet sonore
+    status: active
     effect: >-
       Permet de fabriquer des objet qui émettent un bruit plus ou moins fort en fonction du niveau de l’artisan, au
       moment ou il l’a conçu (le son, sera le plus approprier à l’objet).
@@ -1362,6 +1481,7 @@ atouts:
         ref: entry:effet-sonore
   - id: elaboration
     name: Elaboration
+    status: active
     effect: >-
       Permet d’élaborer une arme faisant 1 dégât supplémentaire à une race choisie. Celle-ci est sélectionnée par
       l’artisan lorsqu’il crée l’arme.
@@ -1374,6 +1494,7 @@ atouts:
         ref: entry:elaboration
   - id: elementaliste-de-l-element
     name: Elémentaliste de l’élément
+    status: active
     effect: >-
       L’élémentaliste possède un tel degré d’affinité avec l’élément dont il est enfant que tous les sorts de cet
       élément voient leur difficulté baisser de 1. Par exemple, un élémentaliste de feu lancera avec un bonus de 1 les
@@ -1387,6 +1508,7 @@ atouts:
         ref: entry:elementaliste-de-l-element
   - id: elevage
     name: Elevage
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage élève ses animaux de prédilections.
     value: 0
     activation: permanent
@@ -1397,6 +1519,7 @@ atouts:
         ref: entry:elevage
   - id: energie-a-l-honneur
     name: Energie à l’honneur
+    status: active
     effect: >-
       Le personnage teint l’air qui l’entoure, de la couleur de sa magie dans un rayon égal à son niveau en mètre. Dans
       cet environnement les sorts de la magie à l’honneur voient leurs difficultés baissées de 1 pendant 10
@@ -1410,6 +1533,7 @@ atouts:
         ref: entry:energie-a-l-honneur
   - id: energie-au-deshonneur
     name: Energie au déshonneur
+    status: active
     effect: >-
       Une vague jaune d’énergie s’extirpe du personnage en chassant une autre couleur dans un rayon égal au niveau du
       magicien en mètre. Dans cet environnement, tout sort lancé de la magie au déshonneur (choisie par le magicien
@@ -1424,6 +1548,7 @@ atouts:
         ref: entry:energie-au-deshonneur
   - id: energie-latente
     name: Energie latente
+    status: active
     effect: "Chaque fois que le personnage passe le niveau, son niveau en «\_Energie latente\_» multiplié par 3 est ajouté à ses points d'énergie."
     value: 2000
     activation: permanent
@@ -1434,6 +1559,7 @@ atouts:
         ref: entry:energie-latente
   - id: enfant-de-la-nature
     name: Enfant de la nature
+    status: active
     effect: >-
       La nature reconnaît dans le personnage un de ses enfants. Ainsi, les végétaux se tordent pour aider le personnage,
       les racines se retirent devant ses pieds, les branches des arbres le protègent de la pluie et du soleil, etc.
@@ -1446,6 +1572,7 @@ atouts:
         ref: entry:enfant-de-la-nature
   - id: enfant-de-l-element
     name: Enfant de l’élément
+    status: active
     effect: >-
       Cet atout est à choisir avec un élément (eau, feu, terre, pierre, glace, air, etc) Les éléments sont toujours
       matériels (pas d’ombre ou de lumière par exemple). L’élément reconnaît dans le personnage l'un des siens. Ainsi,
@@ -1462,6 +1589,7 @@ atouts:
         ref: entry:enfant-de-l-element
   - id: enseignement-efficace
     name: Enseignement efficace
+    status: active
     effect: >-
       Le personnage additionne automatiquement son niveau au nombre de réussites qu’il effectue lors d’un jet
       d’enseignement.
@@ -1474,6 +1602,7 @@ atouts:
         ref: entry:enseignement-efficace
   - id: epaules-solides
     name: Epaules solides
+    status: active
     effect: Le personnage peut porter 1kg supplémentaire par niveau sans être gêné par le poids.
     value: 2000
     activation: permanent
@@ -1484,6 +1613,7 @@ atouts:
         ref: entry:epaules-solides
   - id: epuration
     name: Epuration
+    status: active
     effect: Le personnage prend 1 dé supplémentaire pour toutes les actions visant à nuire à un sorcier.
     value: 10000
     activation: permanent
@@ -1494,6 +1624,7 @@ atouts:
         ref: entry:epuration
   - id: equilibre-controle
     name: Equilibre contrôlé
+    status: active
     effect: >-
       Le personnage possède un sens inné de l’équilibre et diminue la difficulté de touts les jets basés sur l’équilibre
       de 3.
@@ -1506,6 +1637,7 @@ atouts:
         ref: entry:equilibre-controle
   - id: erreur-de-la-nature
     name: Erreur de la nature
+    status: active
     effect: Diminue la difficulté de 1, de tout jet pouvant nuire à une cible de même race que celle du personnage.
     value: 2000
     activation: permanent
@@ -1516,6 +1648,7 @@ atouts:
         ref: entry:erreur-de-la-nature
   - id: escroquerie
     name: Escroquerie
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’une tentative d'escroquerie.
     value: 2000
     activation: permanent
@@ -1526,6 +1659,7 @@ atouts:
         ref: entry:escroquerie
   - id: espionnage
     name: Espionnage
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet d’espionnage.
     value: 2000
     activation: permanent
@@ -1536,6 +1670,7 @@ atouts:
         ref: entry:espionnage
   - id: esprit-logique
     name: Esprit logique
+    status: active
     effect: >-
       Le personnage divise ses jours d’apprentissage par son niveau, dans les sciences mathématique (arrondi au
       supérieur).
@@ -1548,6 +1683,7 @@ atouts:
         ref: entry:esprit-logique
   - id: esprit-mercatique
     name: Esprit mercatique
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet de marchandage.
     value: 2000
     activation: permanent
@@ -1558,6 +1694,7 @@ atouts:
         ref: entry:esprit-mercatique
   - id: estimation
     name: Estimation
+    status: active
     effect: >-
       Le personnage peut définir le nombre de réussites effectuées sur une réalisation (objet, concoction, danse, etc)
       dans son domaine de prédilection en utilisant ses sens (vue, odorat, goût, etc).
@@ -1570,6 +1707,7 @@ atouts:
         ref: entry:estimation
   - id: extermination
     name: Extermination
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un combat contre un ou plusieurs monstres.
     value: 2000
     activation: permanent
@@ -1580,6 +1718,7 @@ atouts:
         ref: entry:extermination
   - id: facture-d-arc
     name: Facture d'arc
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage construit un arc.
     value: 2000
     activation: permanent
@@ -1590,6 +1729,7 @@ atouts:
         ref: entry:facture-d-arc
   - id: familier
     name: Familier
+    status: active
     effect: >-
       Le personnage est aidé d’une créature qui peut prendre n’importe quelle forme. Ce suivant magique doit posséder
       une feuille de personnage dans laquelle son possesseurs pourra dépenser son niveau x 100 en points d’expérience
@@ -1614,6 +1754,7 @@ atouts:
         ref: entry:familier
   - id: familier-supplementaire
     name: Familier supplémentaire
+    status: active
     effect: >-
       Le personnage peut avoir un familier supplémentaire. Si le magicien avait placé des atouts en son familier, le
       nouveau hérite également de ceux-ci.
@@ -1626,6 +1767,7 @@ atouts:
         ref: entry:familier-supplementaire
   - id: familier-vigoureux
     name: Familier vigoureux
+    status: active
     effect: Le familier du magicien augmente ses points de vitalités par le niveau de son propriétaire.
     value: 8000
     activation: permanent
@@ -1636,6 +1778,7 @@ atouts:
         ref: entry:familier-vigoureux
   - id: feinte-du-bucheron
     name: Feinte du bûcheron
+    status: active
     effect: >-
       Le personnage peut frapper du dos de sa cognée et occasionné l’intégralité des dégâts de celle-ci sous la forme
       contendante.
@@ -1648,6 +1791,7 @@ atouts:
         ref: entry:feinte-du-bucheron
   - id: fidele-hombre
     name: Fidèle hombre
+    status: active
     effect: >-
       Le personnage peut se servir de son hombre pour effectuer 1 action matérielle (prendre des clefs, donner une
       baffe, etc).
@@ -1660,6 +1804,7 @@ atouts:
         ref: entry:fidele-hombre
   - id: flaire-infaillible
     name: Flaire infaillible
+    status: active
     effect: Le personnage possède un flaire hors norme et diminue la difficulté de tous ses jets basés sur l’odorat de 3.
     value: 500
     activation: permanent
@@ -1670,6 +1815,7 @@ atouts:
         ref: entry:flaire-infaillible
   - id: foi
     name: Foi
+    status: active
     effect: Diminue la difficulté d’un jet de volonté de 5.
     value: 500
     activation: ephemere
@@ -1680,6 +1826,7 @@ atouts:
         ref: entry:foi
   - id: folie-furieuse
     name: Folie furieuse
+    status: active
     effect: >-
       Additionne le niveau au nombre de dés lors d’un jet de force et endurance, lorsque le personnage est fou furieux
       (c’est à lui de décider d’activer ou non cet état) mais il réduit alors l’empathie, l’intelligence et la
@@ -1693,6 +1840,7 @@ atouts:
         ref: entry:folie-furieuse
   - id: force-de-geant
     name: Force de géant
+    status: active
     effect: >-
       Une fois atteint sa limite physique, les points supplémentaires pour la force ne coûtent que NA x 10 (à la place
       de NA x 20).
@@ -1705,6 +1853,7 @@ atouts:
         ref: entry:force-de-geant
   - id: force-de-l-ours
     name: Force de l’ours
+    status: active
     effect: Diminue la difficulté des jets de force de 1.
     value: 3000
     activation: permanent
@@ -1715,6 +1864,7 @@ atouts:
         ref: entry:force-de-l-ours
   - id: force-d-esprit
     name: Force d’esprit
+    status: active
     effect: Permet d'effectuer un test de volonté pour échapper aux effets d’un sort d’illusion.
     value: 3000
     activation: permanent
@@ -1725,6 +1875,7 @@ atouts:
         ref: entry:force-d-esprit
   - id: forteresse-mentale
     name: Forteresse mentale
+    status: active
     effect: "Le personnage possède un lourd passé qu’il a décidé d’enfermer à double tour dans sa mémoire. Lorsqu’un sort ou atout de pénétration mental est lancé sur le personnage (par exemple contrôle mental, vision de rêve, vol de secret, …), celui-ci se fait avec une difficulté supplémentaire égal au niveau du personnage. Si aucun jet n’est demandé (comme pour l’atout «\_Vol de secret\_») un jet d’intelligence de l’intrus se fait avec une difficulté supplémentaire égal au niveau du personnage comme pour les sorts."
     value: 3000
     activation: permanent
@@ -1735,6 +1886,7 @@ atouts:
         ref: entry:forteresse-mentale
   - id: frappe-affaiblissante
     name: Frappe affaiblissante
+    status: active
     effect: >-
       Augmente le facteur de vitesse d’un personnage ou d’une créature blessée par le personnage. L’augmentation est
       égale au nombre de points de dégât infligé. Cet état se prolonge un tour (50 DT) par niveau.
@@ -1747,6 +1899,7 @@ atouts:
         ref: entry:frappe-affaiblissante
   - id: frenesie-collective
     name: Frénésie collective
+    status: active
     effect: >-
       Lors d’un jet de peur, le personnage peut déduire 1 à son facteur de volonté pour chaque personnage de la même
       race que lui l’accompagnant.
@@ -1759,6 +1912,7 @@ atouts:
         ref: entry:frenesie-collective
   - id: fureur-guerriere
     name: Fureur guerrière
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet de force, pendant un combat.
     value: 2000
     activation: permanent
@@ -1769,6 +1923,7 @@ atouts:
         ref: entry:fureur-guerriere
   - id: garde-rapprochee
     name: Garde rapprochée
+    status: active
     effect: Additionne le niveau pour toute action visant la sauvegarde de son employeur.
     value: 2000
     activation: permanent
@@ -1779,6 +1934,7 @@ atouts:
         ref: entry:garde-rapprochee
   - id: generalisation
     name: Généralisation
+    status: active
     effect: "Permet au personnage d’utiliser l’atout «\_Répondre à l’insulte\_» non plus sur une personne, mais sur une race (nation pour les humains) ou sur une classe."
     value: 4000
     activation: permanent
@@ -1789,6 +1945,7 @@ atouts:
         ref: entry:generalisation
   - id: grace
     name: Grâce
+    status: active
     effect: >-
       Le personnage peut accorder sa grâce à n'importe qui sauf lui-même. Celui-ci implique une difficulté de +1 pour
       tout jet destiné à nuire au porteur de la grâce. Un même personnage peut scinder ses grâces sur plusieurs personne
@@ -1803,6 +1960,7 @@ atouts:
         ref: entry:grace
   - id: grand-amour
     name: Grand amour
+    status: active
     effect: >-
       Additionne le niveau aux points d’aptitudes physiques du personnage, son niveau, lorsque son grand amour se voit
       menacé directement.
@@ -1815,6 +1973,7 @@ atouts:
         ref: entry:grand-amour
   - id: grele-de-fleches
     name: Grêle de flèches
+    status: active
     effect: >-
       Le personnage peut ajouter une flèche à son tir par point en "Grêle de flèches". S'il possède plusieurs points
       dans cet atout, il pourra diviser ses flèche additionnelles comme bon lui semble (ex: un archer ayant Grêle de
@@ -1829,6 +1988,7 @@ atouts:
         ref: entry:grele-de-fleches
   - id: griffes-acerees
     name: Griffes acérées
+    status: active
     effect: >-
       Le personnage possède des griffes plus acérées et plus dures que la moyenne. Une griffure de sa part fera 1 dégât
       supplémentaire.
@@ -1841,6 +2001,7 @@ atouts:
         ref: entry:griffes-acerees
   - id: guerison
     name: Guérison
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’une intervention médicale.
     value: 2000
     activation: permanent
@@ -1851,6 +2012,7 @@ atouts:
         ref: entry:guerison
   - id: humanothropie
     name: Humanothropie
+    status: active
     effect: Le personnage possède la capacité de se transformer en humain. La transformation prend 50 DT (soit 10 secondes).
     value: 1700
     activation: permanent
@@ -1861,6 +2023,7 @@ atouts:
         ref: entry:humanothropie
   - id: hybridation-du-familier
     name: Hybridation du familier
+    status: active
     effect: >-
       Lors de l'acquisition de cet atout, le magicien doit choisir une partie du corps de son familier (ex. un bras, les
       yeux, la peau, ...). Une fois le familier rappeler dans son magicien, ce dernier pourra modifier sa propre forme
@@ -1878,6 +2041,7 @@ atouts:
         ref: entry:hybridation-du-familier
   - id: hypersensibilite
     name: Hypersensibilité
+    status: active
     effect: Le personnage peut ressentir les émotions d’une autre personne en la touchant.
     value: 3000
     activation: permanent
@@ -1888,6 +2052,7 @@ atouts:
         ref: entry:hypersensibilite
   - id: hypnotisme-artistique
     name: Hypnotisme artistique
+    status: active
     effect: >-
       Le personnage peut hypnotiser (sous jet de volonté) en exerçant son art. Cet effet dure un tour (soit 50 DT) par
       niveau.
@@ -1900,6 +2065,7 @@ atouts:
         ref: entry:hypnotisme-artistique
   - id: immaterialite
     name: Immatérialité
+    status: active
     effect: >-
       Le personnage est absent du monde physique. Ce qui signifie que toute interaction physique avec son environnement
       lui est impossible.
@@ -1912,6 +2078,7 @@ atouts:
         ref: entry:immaterialite
   - id: immobilisme
     name: Immobilisme
+    status: active
     effect: >-
       Le personnage peut se rendre parfaitement immobile sans effectuer aucun jet de dés pendant un temps maximum de 10
       minutes par niveau.
@@ -1924,6 +2091,7 @@ atouts:
         ref: entry:immobilisme
   - id: imparable
     name: Imparable
+    status: active
     effect: >-
       Toutes personnes essayant de parer le personnage, augmente leurs difficultés de 1 et ceci pendant 1 tours (50DT)
       par niveau.
@@ -1936,6 +2104,7 @@ atouts:
         ref: entry:imparable
   - id: incantation-silencieuse
     name: Incantation silencieuse
+    status: active
     effect: >-
       Le personnage à la capacité de réciter ses formules magiques dans sa tête lorsqu’il jette un sort et donc de
       rester silencieux en lançant un sort.
@@ -1948,6 +2117,7 @@ atouts:
         ref: entry:incantation-silencieuse
   - id: incantation-stoique
     name: Incantation stoïque
+    status: active
     effect: Le personnage a la capacité de lancer ses sorts uniquement de par la force de sa parole sans besoin de gestuelle.
     value: 3000
     activation: permanent
@@ -1958,6 +2128,7 @@ atouts:
         ref: entry:incantation-stoique
   - id: indestructible
     name: Indestructible
+    status: active
     effect: >-
       Le personnage peut construire des objets (dans son domaine de prédilection) pratiquement indestructible. Le seul
       moyen de les détruire est de le faire sur le lieux où celui-ci à été construit. Cet atout demande 30 réussites de
@@ -1971,6 +2142,7 @@ atouts:
         ref: entry:indestructible
   - id: inesquivable
     name: Inesquivable
+    status: active
     effect: >-
       Toutes personnes essayant d’esquiver le personnage, augmente leurs difficultés de 1 et ceci pendant 1 tours (50DT)
       par niveau.
@@ -1983,6 +2155,7 @@ atouts:
         ref: entry:inesquivable
   - id: infiltration-arcanique
     name: Infiltration arcanique
+    status: active
     effect: >-
       Le magicien est un tel spécialiste des flux arcaniques utilisés dans la magie qu'il est capable d'injecter un sort
       dans l'énergie drainée par un autre magicien qui lance lui-même un sort. A la fin du TI du sort infecté, les deux
@@ -1997,6 +2170,7 @@ atouts:
         ref: entry:infiltration-arcanique
   - id: inquisition
     name: Inquisition
+    status: active
     effect: Ajoute son niveau en dès lors d'un jet d'investigation religieuse.
     value: 2000
     activation: permanent
@@ -2007,6 +2181,7 @@ atouts:
         ref: entry:inquisition
   - id: inversion-des-energies
     name: Inversion des énergies
+    status: active
     effect: >-
       Le personnage possède un tel niveau de maîtrise en magie qu’il peut inverser sens dans lequel l’énergie le
       traverse lorsqu’il incante un sort. Cette pratique très risquée à but de lancer des sorts sans utiliser d’énergie.
@@ -2021,6 +2196,7 @@ atouts:
         ref: entry:inversion-des-energies
   - id: invisibilite
     name: Invisibilité
+    status: active
     effect: Le personnage peut se rendre invisible. Cet état peut durer jusqu’à 1 minute par niveau.
     value: 5000
     activation: ephemere
@@ -2031,6 +2207,7 @@ atouts:
         ref: entry:invisibilite
   - id: jamais-sans-mon-arme
     name: Jamais sans mon arme
+    status: active
     effect: Le personnage ne lâche jamais son arme sans son consentement (sauf s’il est mort ou inconscient).
     value: 4000
     activation: permanent
@@ -2041,6 +2218,7 @@ atouts:
         ref: entry:jamais-sans-mon-arme
   - id: jusqu-a-la-mort
     name: Jusqu'à la mort
+    status: active
     effect: Le personnage ne mourra que lorsque sa vitalité sera réduite à 0.
     value: 1200
     activation: permanent
@@ -2051,6 +2229,7 @@ atouts:
         ref: entry:jusqu-a-la-mort
   - id: juste-cause
     name: Juste cause
+    status: active
     effect: >-
       Additionne le niveau au nombre de dés lorsque le personnage défend les faibles (directement). Par exemple sauver
       une jeune dame en détresse comptera comme directe, alors que sauver le monde en détruisant un objet magique sera
@@ -2064,6 +2243,7 @@ atouts:
         ref: entry:juste-cause
   - id: langage-aquatique
     name: Langage aquatique
+    status: active
     effect: Cet atout permet au personnage de parfaitement comprendre et d’être compris de toutes les créatures aquatiques.
     value: 2000
     activation: permanent
@@ -2074,6 +2254,7 @@ atouts:
         ref: entry:langage-aquatique
   - id: langage-canin
     name: Langage canin
+    status: active
     effect: Cet atout permet au personnage de parfaitement comprendre et d’être compris de tous les canidés.
     value: 2000
     activation: permanent
@@ -2084,6 +2265,7 @@ atouts:
         ref: entry:langage-canin
   - id: langage-de-la-vermine
     name: Langage de la vermine
+    status: active
     effect: >-
       Cet atout permet au personnage de parfaitement comprendre et d’être compris de tous les insectes, vers et
       arachnides.
@@ -2096,6 +2278,7 @@ atouts:
         ref: entry:langage-de-la-vermine
   - id: langage-felin
     name: Langage félin
+    status: active
     effect: Cet atout permet au personnage de parfaitement comprendre et d’être compris de tous les félins.
     value: 2000
     activation: permanent
@@ -2106,6 +2289,7 @@ atouts:
         ref: entry:langage-felin
   - id: langage-reptilien
     name: Langage reptilien
+    status: active
     effect: Cet atout permet au personnage de parfaitement comprendre et d’être compris de tous les reptiles.
     value: 2000
     activation: permanent
@@ -2116,6 +2300,7 @@ atouts:
         ref: entry:langage-reptilien
   - id: langage-rongeur
     name: Langage rongeur
+    status: active
     effect: Cet atout permet au personnage de parfaitement comprendre et d’être compris de tous les rongeurs.
     value: 2000
     activation: permanent
@@ -2126,6 +2311,7 @@ atouts:
         ref: entry:langage-rongeur
   - id: langue-de-bois
     name: Langue de bois
+    status: active
     effect: >-
       Cet atout renforce la crédibilité du personnage et la fluidité de son discours, lorsque celui-ci tente d’échapper
       à une question. Le questionneur doit faire un jet d’intelligence (difficulté = 7 + niveau du parleur), pour se
@@ -2139,6 +2325,7 @@ atouts:
         ref: entry:langue-de-bois
   - id: leurre
     name: Leurre
+    status: active
     effect: >-
       Le personnage peut changer l’apparence d’un objet en un autre (les objets doivent être de tailles similaires) pour
       une durée de 1 minute par niveau.
@@ -2151,6 +2338,7 @@ atouts:
         ref: entry:leurre
   - id: levee-d-atout
     name: Levée d'atout
+    status: active
     effect: >-
       Cet atout est à prendre en choisissant en autre atout. Le personnage pourra dès lors, quand il le désirera,
       annuler les effets de cet atout choisit pendant la période de temps qu’il lui conviendra.
@@ -2163,6 +2351,7 @@ atouts:
         ref: entry:levee-d-atout
   - id: levitation
     name: Lévitation
+    status: active
     effect: >-
       Le personnage peut élever son corps dans les airs et se déplacer en hauteur grâce à la force de son esprit. La
       vitesse d’un tel déplacement se joue avec un jet d’intelligence. La hauteur maximale que le personnage peut
@@ -2176,6 +2365,7 @@ atouts:
         ref: entry:levitation
   - id: liberation-d-energie
     name: Libération d’énergie
+    status: active
     effect: "Le personnage peut libérer son énergie qui le quitte sous la forme d’une déflagration teintée de sa couleur. Toutes personnes prisent dans celle-ci doivent faire un jet de force pour ne pas être éjectées. La difficulté  du jet de force est de 1 par point d’énergie dépensé. Donc si un magicien dépense 7 point d’énergie, la difficulté du jet sera de 7. La zone de déflagration possède un rayon de 1m/niveau. (Permanent) (Atout de niveau 3 de l’orientation\_: Magicien)\""
     value: 3000
     activation: permanent
@@ -2186,6 +2376,7 @@ atouts:
         ref: entry:liberation-d-energie
   - id: liens-d-amities
     name: Liens d’amitiés
+    status: active
     effect: Le personnage peut défaire un nœud par le simple touché.
     value: 3000
     activation: ephemere
@@ -2196,6 +2387,7 @@ atouts:
         ref: entry:liens-d-amities
   - id: liens-spirituels
     name: Liens spirituels
+    status: active
     effect: >-
       Permet de connaître l’état de santé des créatures liées (invocables) en temps réel. Si une créature souffre,
       l’invocateur sentira que quelque chose ne va pas avec la créature en question.
@@ -2208,6 +2400,7 @@ atouts:
         ref: entry:liens-spirituels
   - id: lingua-vegetalis
     name: Lingua végétalis
+    status: active
     effect: Le personnage peut communiquer avec les végétaux.
     value: 500
     activation: permanent
@@ -2218,6 +2411,7 @@ atouts:
         ref: entry:lingua-vegetalis
   - id: loup-de-mer
     name: Loup de mer
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage dirige un bateau.
     value: 2000
     activation: permanent
@@ -2228,6 +2422,7 @@ atouts:
         ref: entry:loup-de-mer
   - id: lycanthropie
     name: Lycanthropie
+    status: active
     effect: Permet au personnage de se transformer en loup. La transformation prend 50 DT (10 secondes).
     value: 1565
     activation: permanent
@@ -2238,6 +2433,7 @@ atouts:
         ref: entry:lycanthropie
   - id: magie-banche
     name: Magie banche
+    status: active
     effect: Diminue la difficulté de tous les sorts de magie blanche 1.
     value: 2000
     activation: permanent
@@ -2248,6 +2444,7 @@ atouts:
         ref: entry:magie-banche
   - id: magie-bleue
     name: Magie bleue
+    status: active
     effect: Diminue la difficulté de tous les sorts élémentaux de 1.
     value: 2000
     activation: permanent
@@ -2258,6 +2455,7 @@ atouts:
         ref: entry:magie-bleue
   - id: magie-brune
     name: Magie brune
+    status: active
     effect: Diminue la difficulté de tous les sorts divinatoire de 1.
     value: 2000
     activation: permanent
@@ -2268,6 +2466,7 @@ atouts:
         ref: entry:magie-brune
   - id: magie-grise
     name: Magie grise
+    status: active
     effect: Diminue la difficulté de tous les sorts nécromancienne de 1.
     value: 0
     activation: permanent
@@ -2278,6 +2477,7 @@ atouts:
         ref: entry:magie-grise
   - id: magie-jaune
     name: Magie jaune
+    status: active
     effect: Diminue la difficulté de tous les sorts d'abjuration de 1.
     value: 2000
     activation: permanent
@@ -2288,6 +2488,7 @@ atouts:
         ref: entry:magie-jaune
   - id: magie-noire
     name: Magie noire
+    status: active
     effect: Diminue la difficulté de tous les sorts de magie noire de 1.
     value: 0
     activation: permanent
@@ -2298,6 +2499,7 @@ atouts:
         ref: entry:magie-noire
   - id: magie-orange
     name: Magie orange
+    status: active
     effect: Diminue la difficulté de tous les sorts oranges de 1.
     value: 2000
     activation: permanent
@@ -2308,6 +2510,7 @@ atouts:
         ref: entry:magie-orange
   - id: magie-rouge
     name: Magie rouge
+    status: active
     effect: Diminue la difficulté de tous les sorts d'altération de 1.
     value: 2000
     activation: permanent
@@ -2318,6 +2521,7 @@ atouts:
         ref: entry:magie-rouge
   - id: magie-turquoise
     name: Magie turquoise
+    status: active
     effect: Diminue la difficulté de tous les sorts d'enchantement de 1.
     value: 2000
     activation: permanent
@@ -2328,6 +2532,7 @@ atouts:
         ref: entry:magie-turquoise
   - id: magie-verte
     name: Magie verte
+    status: active
     effect: Diminue la difficulté de tous les sorts de magie verte de 1.
     value: 2000
     activation: permanent
@@ -2338,6 +2543,7 @@ atouts:
         ref: entry:magie-verte
   - id: magie-violette
     name: Magie violette
+    status: active
     effect: Diminue la difficulté de tous les sorts d'illusion de 1.
     value: 2000
     activation: permanent
@@ -2348,6 +2554,7 @@ atouts:
         ref: entry:magie-violette
   - id: magnetisme
     name: Magnétisme
+    status: active
     effect: Diminue la difficulté pour plaire, dans le domaine de prédilection, de 5.
     value: 500
     activation: ephemere
@@ -2358,6 +2565,7 @@ atouts:
         ref: entry:magnetisme
   - id: main-du-magicien
     name: Main du magicien
+    status: active
     effect: Permet au magicien de lancer 1 sorts depuis son familier.
     value: 4000
     activation: ephemere
@@ -2368,6 +2576,7 @@ atouts:
         ref: entry:main-du-magicien
   - id: main-verte
     name: Main verte
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage entretien des végétaux.
     value: 2000
     activation: permanent
@@ -2378,6 +2587,7 @@ atouts:
         ref: entry:main-verte
   - id: maitre-du-mensonge
     name: Maître du mensonge
+    status: active
     effect: Le personnage peut ajouter son niveau à son nombre de dès lors d'un jet de mensonge.
     value: 5000
     activation: permanent
@@ -2388,6 +2598,7 @@ atouts:
         ref: entry:maitre-du-mensonge
   - id: maitre-en-choc
     name: Maître en choc
+    status: active
     effect: Le personnage inflige un dégât supplémentaire automatique, lorsque celui-ci inflige des dégâts contondants.
     value: 10000
     activation: permanent
@@ -2398,6 +2609,7 @@ atouts:
         ref: entry:maitre-en-choc
   - id: maitre-en-guerison
     name: Maître en guérison
+    status: active
     effect: Tous les sorts de guérison du personnage voient leur difficulté réduite de 1 par point dans cet atout.
     value: 10000
     activation: permanent
@@ -2408,6 +2620,7 @@ atouts:
         ref: entry:maitre-en-guerison
   - id: maitre-en-lame
     name: Maître en lame
+    status: active
     effect: Le personnage inflige un dégât supplémentaire automatique, lorsque celui-ci inflige des dégâts tranchants.
     value: 10000
     activation: permanent
@@ -2418,6 +2631,7 @@ atouts:
         ref: entry:maitre-en-lame
   - id: maitre-en-perforation
     name: Maître en perforation
+    status: active
     effect: Le personnage inflige 1 dégât supplémentaire automatique, lorsque celui-ci inflige des dégâts perforants.
     value: 10000
     activation: permanent
@@ -2428,6 +2642,7 @@ atouts:
         ref: entry:maitre-en-perforation
   - id: maitre-en-sort-de-masse
     name: Maître en sort de masse
+    status: active
     effect: Tous les sorts de masse du personnage voient leur difficulté réduite de 1.
     value: 11000
     activation: permanent
@@ -2438,6 +2653,7 @@ atouts:
         ref: entry:maitre-en-sort-de-masse
   - id: maitre-en-sort-majeur
     name: Maître en sort majeur
+    status: active
     effect: Tous les sorts majeurs du personnage voient leur difficulté réduite de 1.
     value: 10000
     activation: permanent
@@ -2448,6 +2664,7 @@ atouts:
         ref: entry:maitre-en-sort-majeur
   - id: maitre-en-sort-mineur
     name: Maître en sort mineur
+    status: active
     effect: Tous les sorts mineurs du personnage voient leur difficulté réduite de 1.
     value: 10000
     activation: permanent
@@ -2458,6 +2675,7 @@ atouts:
         ref: entry:maitre-en-sort-mineur
   - id: maitrise-de-la-bete
     name: Maîtrise de la bête
+    status: active
     effect: >-
       Le personnage peut maîtriser ses actions lorsqu’il est transformé en Loup-Garou. Son agressivité reste toutefois
       énorme.
@@ -2470,6 +2688,7 @@ atouts:
         ref: entry:maitrise-de-la-bete
   - id: maitrise-de-la-hache
     name: Maîtrise de la hache
+    status: active
     effect: Diminue la difficulté d’un jet de hache de 1.
     value: 2000
     activation: permanent
@@ -2480,6 +2699,7 @@ atouts:
         ref: entry:maitrise-de-la-hache
   - id: maitrise-de-l-armure
     name: Maîtrise de l’armure
+    status: active
     effect: >-
       Permet d’augmenter les caractéristiques (PECT) d’une armure lors de sa fabrication. Le nombre de points
       supplémentaire à allouer est égal au nombre de point dans cet atout. La disposition des points additionnels peut
@@ -2493,6 +2713,7 @@ atouts:
         ref: entry:maitrise-de-l-armure
   - id: maitrise-de-l-energie
     name: Maîtrise de l’énergie
+    status: active
     effect: "Cet atout modifie l’atout «\_Energie à l’honneur\_» de la manière suivante\_: Le personnage teint l’air qui l’entoure de la couleur de sa magie dans un rayon égal à son niveau en mètre. Cette couleur est nettement plus intense que dans le simple «\_Energie à l’honneur\_». Dans cet environnement les sorts de la couleur maîtrisées voient leurs difficultés baissées de 1 pendant 10 minutes/niveau. Ce bonus ne s’applique pas au magicien qui lui bénéficie d’un bonus égal à son niveau. Maîtriser une énergie prend 10DT non réductible. Cet atout modifie de manière permanente l’\_«\_Energie à l’honneur\_» qui lui reste éphémère, ce qui signifie que passer d’un atout à l’autre n’amène pas de point supplémentaire dans l’atout."
     value: 15000
     activation: ephemere
@@ -2503,6 +2724,7 @@ atouts:
         ref: entry:maitrise-de-l-energie
   - id: maitrise-de-soi
     name: Maîtrise de soi
+    status: active
     effect: >-
       Cet atout permet au personnage de diminuer son nombre de réussites lors d’un jet. Cette diminution est au choix du
       joueur.
@@ -2515,6 +2737,7 @@ atouts:
         ref: entry:maitrise-de-soi
   - id: maitrise-des-fragrances
     name: Maîtrise des fragrances
+    status: active
     effect: Additionne le niveau au nombre de dés lors sur un jet de création de parfum.
     value: 2000
     activation: permanent
@@ -2525,6 +2748,7 @@ atouts:
         ref: entry:maitrise-des-fragrances
   - id: maitrise-equestre
     name: Maîtrise équestre
+    status: active
     effect: Additionne le niveau au nombre de dés pour une manœuvre équestre.
     value: 2000
     activation: permanent
@@ -2535,6 +2759,7 @@ atouts:
         ref: entry:maitrise-equestre
   - id: maitrise-martiale
     name: Maîtrise martiale
+    status: active
     effect: Diminue de 5 la difficulté d’un jet de combat dans le domaine de prédilection.
     value: 500
     activation: ephemere
@@ -2545,6 +2770,7 @@ atouts:
         ref: entry:maitrise-martiale
   - id: martyrisation
     name: Martyrisation
+    status: active
     effect: >-
       Cet atout est à choisir avec une personne. Il additionne le niveau du personnage en dés à tous les jets pouvant
       nuire à la cible choisie. Si la cible vient à mourir ou à disparaître depuis trop longtemps, l’atout peut être
@@ -2558,6 +2784,7 @@ atouts:
         ref: entry:martyrisation
   - id: mecanisme-d-autodefense
     name: Mécanisme d’autodéfense
+    status: active
     effect: >-
       Le personnage a vécut une expérience si traumatisante qu’il génère un mécanisme d’autodéfense lorsque les
       circonstances font que ses mauvais souvenirs resurgissent. Dès lors, le personnage gagne son niveau en dès
@@ -2572,6 +2799,7 @@ atouts:
         ref: entry:mecanisme-d-autodefense
   - id: mefait
     name: Méfait
+    status: active
     effect: Diminue la difficulté de 5 lorsque le personnage nuit à un autre.
     value: 500
     activation: ephemere
@@ -2582,6 +2810,7 @@ atouts:
         ref: entry:mefait
   - id: memoire-photographique
     name: Mémoire photographique
+    status: active
     effect: >-
       Le personnage peut enregistrer parfaitement une scène qu’il a vu. Il peut à tout moment échanger cette image pour
       celle qu’il a devant les yeux. Cet atout peut être cumulé pour augmenter le nombre d’image en mémoire du
@@ -2595,6 +2824,7 @@ atouts:
         ref: entry:memoire-photographique
   - id: mimetisme
     name: Mimétisme
+    status: active
     effect: >-
       La peau du personnage prend la couleur de son environnement. Cet état peut durer autant de temps que désirer. Par
       contre, si l’environnement vient à changer de couleur, la peau elle, ne peut changer de teinte (ou revenir à la
@@ -2608,6 +2838,7 @@ atouts:
         ref: entry:mimetisme
   - id: mobilisation-post-mortem
     name: Mobilisation post-mortem
+    status: active
     effect: "Lorsque le personnage fait un appel des morts, le nombre de revenant peut être au maximum de\_: son niveau X (mobilisation post-mortem + 1). Autrement dit, si un magicien ne possède pas cet atout, il relèvera son niveau au maximum de morts, s’il possède un points en mobilisation post-mortem, il relèvera 2X fois son niveau, puis trois fois s’il reprend à nouveau cet atout, et ainsi de suite."
     value: 2000
     activation: permanent
@@ -2618,6 +2849,7 @@ atouts:
         ref: entry:mobilisation-post-mortem
   - id: modele
     name: Modèle
+    status: active
     effect: >-
       Cet atout est à choisir avec une personne. Le personnage peut dès lors ajouter son niveau en dés pour représenter
       son modèle.
@@ -2630,6 +2862,7 @@ atouts:
         ref: entry:modele
   - id: modulation-de-souvenir
     name: Modulation de souvenir
+    status: active
     effect: >-
       Le personnage peut moduler le souvenir d’une personne en changeant un détail, et ce de manière permanente même si
       on essaye de lui rendre la mémoire.
@@ -2642,6 +2875,7 @@ atouts:
         ref: entry:modulation-de-souvenir
   - id: mon-precieux
     name: Mon précieux
+    status: active
     effect: >-
       Le personnage peut choisir 1 objet (qu’il voit) et saura dès lors en permanence dans quelle direction aller pour
       retrouver celui-ci. Il peut décider de changer d’objet quand il le souhaite.
@@ -2654,6 +2888,7 @@ atouts:
         ref: entry:mon-precieux
   - id: morsure-lupine
     name: Morsure lupine
+    status: active
     effect: Si le personnage mord un autre personnage humain, celui-ci devient un Loup-garou.
     value: 2300
     activation: permanent
@@ -2664,6 +2899,7 @@ atouts:
         ref: entry:morsure-lupine
   - id: mort-dans-le-sillage
     name: Mort dans le sillage
+    status: active
     effect: >-
       Le personnage est si profondément mauvais que sous ses pas l’herbe meurt et ne repousse qu’à grand peine. La
       végétation ne peut repousser qu’après une durée égale au niveau du personnage en année.
@@ -2676,6 +2912,7 @@ atouts:
         ref: entry:mort-dans-le-sillage
   - id: mort-vivant
     name: Mort-vivant
+    status: active
     effect: >-
       En tant que mort, le personnage ne respire plus, son cœur ne bat plus, son teint s’éclaircit et sa peau se
       refroidit.
@@ -2688,6 +2925,7 @@ atouts:
         ref: entry:mort-vivant
   - id: motivation-macabre
     name: Motivation macabre
+    status: active
     effect: "Lors d’un combat, le personnage peut ajouter un dès à chacune de ses actions pour chaque ennemi qu’il aura tué. Le nombre de dès ainsi additionnés ne peut dépasser le score du personnage en «\_Motivation macabre\_»."
     value: 6000
     activation: permanent
@@ -2698,6 +2936,7 @@ atouts:
         ref: entry:motivation-macabre
   - id: muet
     name: Muet
+    status: active
     effect: Le personnage est incapable de parler.
     value: -2500
     activation: permanent
@@ -2708,6 +2947,7 @@ atouts:
         ref: entry:muet
   - id: musique-stimulante
     name: Musique stimulante
+    status: active
     effect: >-
       Lorsque le personnage joue de la musique, il stimule une émotion (choisie de part le style musical) chez les
       personnes l’entendant.
@@ -2720,6 +2960,7 @@ atouts:
         ref: entry:musique-stimulante
   - id: narration-palpitante
     name: Narration palpitante
+    status: active
     effect: Additionne le niveau au nombre de dés pour raconter une histoire.
     value: 2000
     activation: permanent
@@ -2730,6 +2971,7 @@ atouts:
         ref: entry:narration-palpitante
   - id: ne-pour-tuer
     name: Né pour tuer
+    status: active
     effect: >-
       Le personnage apprend de nouvelle technique de combat ou utilisation d’arme, avec une aisance déconcertante. Le
       nombre de jours de son apprentissage sont divisés par son niveau.
@@ -2742,6 +2984,7 @@ atouts:
         ref: entry:ne-pour-tuer
   - id: nuit-blanche
     name: Nuit blanche
+    status: active
     effect: Permet au personnage de ne pas dormir pendant 1 nuit, sans pour autant avoir des malus.
     value: 2000
     activation: ephemere
@@ -2752,6 +2995,7 @@ atouts:
         ref: entry:nuit-blanche
   - id: odeur-du-sang
     name: Odeur du sang
+    status: active
     effect: >-
       Le personnage peut pister à l’instinct un autre personnage ou une créature qu’il aurait blessé au préalable. Cet
       atout possède un rayon d’action de 1 km par niveau. Si la proie récupère de ses plaies ou, si le personnage
@@ -2765,6 +3009,7 @@ atouts:
         ref: entry:odeur-du-sang
   - id: oeil-du-margoulin
     name: Oeil du margoulin
+    status: active
     effect: Le personnage voit naturellement scintiller les objets ayant de la valeur.
     value: 3000
     activation: permanent
@@ -2775,6 +3020,7 @@ atouts:
         ref: entry:oeil-du-margoulin
   - id: orateur-ideal
     name: Orateur idéal
+    status: active
     effect: Ajoute le niveau du personnage à ses dès lors d'un jet de discours.
     value: 5000
     activation: permanent
@@ -2785,6 +3031,7 @@ atouts:
         ref: entry:orateur-ideal
   - id: orfevrerie
     name: Orfèvrerie
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux d’orfèvre.
     value: 2000
     activation: permanent
@@ -2795,6 +3042,7 @@ atouts:
         ref: entry:orfevrerie
   - id: organisme-fragile
     name: Organisme fragile
+    status: active
     effect: L’organisme du personnage est particulièrement sensible aux maladies (deux fois plus).
     value: -500
     activation: permanent
@@ -2805,6 +3053,7 @@ atouts:
         ref: entry:organisme-fragile
   - id: osmose-avec-la-nature
     name: Osmose avec la nature
+    status: active
     effect: >-
       Permet au personnage d’ajouter son niveau en nombre de dés supplémentaires lorsqu’il effectue un jet basé sur son
       affinité avec la nature (comme par exemple dresser un animal).
@@ -2817,6 +3066,7 @@ atouts:
         ref: entry:osmose-avec-la-nature
   - id: osteoderme
     name: Ostéoderme
+    status: active
     effect: >-
       Le personnage est couvert d’écailles lui conférant une armure de 1 dans un type de dégât au choix (P, E, C ou T).
       Cette protection est valable sur l’ensemble du corps à l’exeption du ventre, cou, des yeux, etc.
@@ -2829,6 +3079,7 @@ atouts:
         ref: entry:osteoderme
   - id: outre-l-armure
     name: Outre l’armure
+    status: active
     effect: >-
       Le personnage frappe de telle manière que les armures sont de moindre efficacité face à ses coups. Les armures
       (ceci comprend également les armures naturelles telles que les écailles) sont diminuées de un point dans chaque
@@ -2842,6 +3093,7 @@ atouts:
         ref: entry:outre-l-armure
   - id: ouvrage
     name: Ouvrage
+    status: active
     effect: Diminue de 5 la difficulté pour un ouvrage dans le domaine de prédilection.
     value: 500
     activation: ephemere
@@ -2852,6 +3104,7 @@ atouts:
         ref: entry:ouvrage
   - id: paluche
     name: Paluche
+    status: active
     effect: Les dégâts occasionner par un coup de poing ou une claque font 1 dégât supplémentaire automatique.
     value: 2000
     activation: permanent
@@ -2862,6 +3115,7 @@ atouts:
         ref: entry:paluche
   - id: par-dela-les-forets
     name: Par-delà les forets
+    status: active
     effect: Lorsque le personnage se déplace dans les forets, tous ses jets de déplacement ont une difficulté réduite de 1.
     value: 3000
     activation: permanent
@@ -2872,6 +3126,7 @@ atouts:
         ref: entry:par-dela-les-forets
   - id: par-dela-les-marais
     name: Par-delà les marais
+    status: active
     effect: Lorsque le personnage se déplace dans les marais, tous ses jets de déplacement ont une difficulté réduite de 1.
     value: 3000
     activation: permanent
@@ -2882,6 +3137,7 @@ atouts:
         ref: entry:par-dela-les-marais
   - id: par-dela-les-montagnes
     name: Par-delà les montagnes
+    status: active
     effect: Lorsque le personnage se déplace dans les montagnes, tous ses jets de déplacement ont une difficulté réduite de 1.
     value: 3000
     activation: permanent
@@ -2892,6 +3148,7 @@ atouts:
         ref: entry:par-dela-les-montagnes
   - id: parfum-de-l-ombre
     name: Parfum de l’ombre
+    status: active
     effect: Le personnage ne dégage plus aucune odeur corporelle pendant 10 minutes par niveau.
     value: 4000
     activation: ephemere
@@ -2902,6 +3159,7 @@ atouts:
         ref: entry:parfum-de-l-ombre
   - id: parole-divine
     name: Parole divine
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage prêche la bonne parole.
     value: 2000
     activation: permanent
@@ -2912,6 +3170,7 @@ atouts:
         ref: entry:parole-divine
   - id: partenaire-ideal
     name: Partenaire idéal
+    status: active
     effect: "Lorsque le personnage danse avec quelqu’un, celui-ci peut décider de lui transférer un ou plusieurs dés pris dans sa compétence\_de danse. Cet effet prend fin à la fin de la danse."
     value: 2000
     activation: permanent
@@ -2922,6 +3181,7 @@ atouts:
         ref: entry:partenaire-ideal
   - id: pas-d-araignee
     name: Pas d’araignée
+    status: active
     effect: >-
       Avec de l’élan, le personnage peut courrir contre un mur et faire un nombre de pas égal a son niveau, tout en
       étant jusqu'à perpendiculaire au sol.
@@ -2934,6 +3194,7 @@ atouts:
         ref: entry:pas-d-araignee
   - id: pas-leger
     name: Pas léger
+    status: active
     effect: >-
       Permet au personnage de ne plus faire aucune trace de pas en marchant, et ce, sur n’importe quelle surface. Cet
       effet dure 10 minutes par niveau.
@@ -2946,6 +3207,7 @@ atouts:
         ref: entry:pas-leger
   - id: pasage-celeste
     name: Pasage céleste
+    status: active
     effect: NA
     value: 3000
     activation: permanent
@@ -2956,6 +3218,7 @@ atouts:
         ref: entry:pasage-celeste
   - id: passage-a-l-ombre
     name: Passage à l’ombre
+    status: active
     effect: >-
       Permet au personnage d’entrer intégralement dans sa propre hombre et de se déplacer ainsi ou bon lui semble. C’est
       état peut durer jusqu’à 1 minute par niveau au maximum.
@@ -2968,6 +3231,7 @@ atouts:
         ref: entry:passage-a-l-ombre
   - id: passage-au-familier
     name: Passage au familier
+    status: active
     effect: >-
       Cet atout permet au personnage d’entrer intégralement dans son familier et d’en sortir quand et ou bon lui semble.
       Ce passage prend un facteur de vitesse.
@@ -2980,6 +3244,7 @@ atouts:
         ref: entry:passage-au-familier
   - id: passe-muraille
     name: Passe muraille
+    status: active
     effect: >-
       Le corps du personnage devient immatériel et peut donc passer à travers les murs, les gens et tous ce qui est
       matériel. Cet état peut durer jusqu’à une minute par niveau.
@@ -2992,6 +3257,7 @@ atouts:
         ref: entry:passe-muraille
   - id: paysannerie
     name: Paysannerie
+    status: active
     effect: Diminue la difficulté de 5 lors d’un jet de paysannerie (dans le domaine de prédilection).
     value: 500
     activation: ephemere
@@ -3002,6 +3268,7 @@ atouts:
         ref: entry:paysannerie
   - id: pensee-profonde
     name: Pensée profonde
+    status: active
     effect: Additionne le niveau aux dés lors d’un jet de philosophie.
     value: 2000
     activation: permanent
@@ -3012,6 +3279,7 @@ atouts:
         ref: entry:pensee-profonde
   - id: perception-des-energies
     name: Perception des énergies
+    status: active
     effect: "Le personnage peut à tout moment «\_enclenché\_» sa perception des énergies. La couleur de ses iris peut alors changer. Le magicien percevra alors le monde de façon différente. Cet atout lui donne le don de percevoir l'énergie pure. Le magicien qui en est doté voit des brumes colorées scintillantes teintées de la couleur de la magie en question, un peu comme des aurores boréales. Il pourra estimer les stocks d'énergie dans un lieu, percevoir les fortes concentrations d'une énergie, mais il a aura aussi la capacité de voir les mouvements, les variations d'énergie. Si un sort est lancé, il pourra estimer la quantité d'énergie nécessaire pour le lancer, la localisation du lanceur et la nature de l'énergie utilisée (la couleur)."
     value: 7000
     activation: permanent
@@ -3022,6 +3290,7 @@ atouts:
         ref: entry:perception-des-energies
   - id: perfectionnisme
     name: Perfectionnisme
+    status: active
     effect: >-
       Permet de retravailler un objet déjà crée de manière à y additionner les réussites de qualité du nouveau jet. Un
       personnage peut retravailler autant de fois un objet qu’il possède de points de perfectionnisme.
@@ -3034,6 +3303,7 @@ atouts:
         ref: entry:perfectionnisme
   - id: periple
     name: Périple
+    status: active
     effect: Diminue la difficulté de 5 pour un jet de déplacement (avec le moyen de locomotion de prédilection).
     value: 500
     activation: ephemere
@@ -3044,6 +3314,7 @@ atouts:
         ref: entry:periple
   - id: persecution
     name: Persécution
+    status: active
     effect: >-
       Cet atout est à choisir avec une race, voir une classe. Il additionne 1 dé à tous les jets pouvant nuire à la
       cible choisie.
@@ -3056,6 +3327,7 @@ atouts:
         ref: entry:persecution
   - id: persistance-magique
     name: Persistance magique
+    status: active
     effect: >-
       Le magicien peut, en 1 DT, renouveler un sort actif sans faire d’incantation. Ce qui signifie qu’un sort à 3
       réussites qui durait 10 minutes sera renouvelé dès le moment ou le magicien utilisera son atout, et repartira pour
@@ -3069,6 +3341,7 @@ atouts:
         ref: entry:persistance-magique
   - id: peur
     name: Peur
+    status: active
     effect: >-
       Le personnage provoque la peur chez les autres. Ceux-ci doivent en sa présence faire un test de volonté pour
       maîtriser leur peur. Un personnage possédant cet atout s’y voit automatiquement immunisé.
@@ -3081,6 +3354,7 @@ atouts:
         ref: entry:peur
   - id: peur-du-noir
     name: Peur du noir
+    status: active
     effect: >-
       Le personnage peut lancer une peur du noir sur une personne par niveau. Celles-ci effectuent alors un test de
       volonté pour ne pas être apeurées. Celui qui échouera à ce test se sentira mal à l’aise et essayera (au possible)
@@ -3094,6 +3368,7 @@ atouts:
         ref: entry:peur-du-noir
   - id: pied-marin
     name: Pied marin
+    status: active
     effect: >-
       Avec de l’élan, le personnage peut se déplacer sur de l’eau (ou toute surfaces liquide), d’un nombre de pas égal à
       son niveau.
@@ -3106,6 +3381,7 @@ atouts:
         ref: entry:pied-marin
   - id: pieds-poilus
     name: Pieds poilus
+    status: active
     effect: Diminue de 3 la difficulté d’un jet pour se mouvoir silencieusement.
     value: 500
     activation: permanent
@@ -3116,6 +3392,7 @@ atouts:
         ref: entry:pieds-poilus
   - id: pisteur-ne
     name: Pisteur né
+    status: active
     effect: >-
       Le personnage possède un sens du pistage aiguisé et diminue la difficulté de tous les jets basés sur le pistage de
       3.
@@ -3128,6 +3405,7 @@ atouts:
         ref: entry:pisteur-ne
   - id: place-a-l-ombre
     name: Place à l’ombre
+    status: active
     effect: >-
       Le personnage peut à distance (1m/niveau) éteindre d’un geste de la main une flamme de bougie ou de torche. Cet
       atout est utilisable une fois par niveau.
@@ -3140,6 +3418,7 @@ atouts:
         ref: entry:place-a-l-ombre
   - id: polyvalence
     name: Polyvalence
+    status: active
     effect: "Le personnage peut désormais choisir ses les atouts de niveaux dans toutes les orientations (les classes et les conditions demeurent restrictives) jusqu’à un niveau égal à son nombre de point en «\_Polyvalence\_» + 1. Cet atout compte comme atout à part entière et ne permet de choisir un autre atout lorsqu’on l'acquière. Par exemple, si un guerrier niveau 5 choisit cet atout. Il pourra donc, quand il passera niveau 6, prendre un atout d’artiste niveau 2 (Polyvalence\_: 1 + 1). Il devra reprendre l’atout «\_Polyvalence\_» s’il désire accéder aux atouts de niveau 3 des orientations qui ne sont pas la sienne. Néanmoins, il ne pourra pas choisir l’atout «\_Musique stimulante\_» qui est réservé aux bardes car la polyvalence permet juste d’annuler la barrière des orientations."
     value: 5000
     activation: permanent
@@ -3150,6 +3429,7 @@ atouts:
         ref: entry:polyvalence
   - id: possession
     name: Possession
+    status: active
     effect: >-
       Le personnage peut entrer dans un le corps d’un autre personnage vivant. Celui-ci peut tenter de résister en
       effectuant un jet de volonté avec une difficulté supplémentaire égale au score détenu par le personnage entrant,
@@ -3165,6 +3445,7 @@ atouts:
         ref: entry:possession
   - id: potion-d-energie
     name: Potion d'énergie
+    status: active
     effect: >-
       Le personnage est capable de confectionner des potions de d'énergie arcanique. Les points restaurés sont égaux au
       nombre de réussites du jet d'alchimie (diff. 7).
@@ -3177,6 +3458,7 @@ atouts:
         ref: entry:potion-d-energie
   - id: potion-de-vitalite
     name: Potion de vitalité
+    status: active
     effect: >-
       Le personnage est capable de confectionner des potions de vitalité. Les points restaurés sont égaux au nombre de
       réussites du jet d'alchimie (diff. 9).
@@ -3189,6 +3471,7 @@ atouts:
         ref: entry:potion-de-vitalite
   - id: pour-la-prime
     name: Pour la prime
+    status: active
     effect: >-
       Additionne le niveau au nombre de dés pour permettant d'obtenir une prime directement. Arrêter un voleur pour une
       récompense sera considérer comme directe. Se sauver d'un traquenard pour survire (et arrêter un voleur par la
@@ -3202,6 +3485,7 @@ atouts:
         ref: entry:pour-la-prime
   - id: pouvoir-symbolique
     name: Pouvoir symbolique
+    status: active
     effect: >-
       Lorsque le personnage prend en main un symbole lié à son culte, celui-ci agit sur une distance égale au niveau du
       personnage. Par exemple un crucifix brûlera un vampire en entrant au contact avec sa peau. Mais si le personnage
@@ -3215,6 +3499,7 @@ atouts:
         ref: entry:pouvoir-symbolique
   - id: precision
     name: Précision
+    status: active
     effect: Additionne le niveau aux dés lors d’un jet de tir avec l’arme de prédilection.
     value: 2000
     activation: permanent
@@ -3225,6 +3510,7 @@ atouts:
         ref: entry:precision
   - id: pressentiment-de-la-cible
     name: Pressentiment de la cible
+    status: active
     effect: >-
       Le personnage à une telle habitude d’être la cible d’attaque qu’il en a développé un sens tout particulier de
       défense. Sons instinct lui indiquent infailliblement lorsque qu’un projectile, coup, ou autre forme d’agression en
@@ -3239,6 +3525,7 @@ atouts:
         ref: entry:pressentiment-de-la-cible
   - id: production
     name: Production
+    status: active
     effect: Diminue la difficulté de 5 pour la construction d’un objet.
     value: 500
     activation: ephemere
@@ -3249,6 +3536,7 @@ atouts:
         ref: entry:production
   - id: projections-cauchemardesques
     name: Projections cauchemardesques
+    status: active
     effect: >-
       En touchant un être, le personnage peut lui faire voir (sous la forme d’un flash) tout le mal que le personnage
       serait prêt à lui faire. Ces visions durent 1 DT par niveaux.
@@ -3261,6 +3549,7 @@ atouts:
         ref: entry:projections-cauchemardesques
   - id: protection-divine
     name: Protection divine
+    status: active
     effect: >-
       Dévie automatiquement un coup porté. L’utilisation de cet atout doit être décidé juste avant le jet de force de
       l’adversaire.
@@ -3273,6 +3562,7 @@ atouts:
         ref: entry:protection-divine
   - id: purification-celeste
     name: Purification céleste
+    status: active
     effect: NA
     value: 525
     activation: permanent
@@ -3283,6 +3573,7 @@ atouts:
         ref: entry:purification-celeste
   - id: race-aquatique
     name: Race aquatique
+    status: active
     effect: Le personnage peut respirer normalement sous l’eau. Ses jets de nage se ont une difficulté diminuée de 3.
     value: 1485
     activation: permanent
@@ -3293,6 +3584,7 @@ atouts:
         ref: entry:race-aquatique
   - id: rage
     name: Rage
+    status: active
     effect: >-
       Cet atout permet au personnage d’ignorer tous les malus dus aux coups encaisser, cet état dure un tour (50 DT) par
       niveau.
@@ -3305,6 +3597,7 @@ atouts:
         ref: entry:rage
   - id: rage-lunaire
     name: Rage lunaire
+    status: active
     effect: >-
       Les nuits de pleine lune, le personnage se transforme en Loup-Garou. Il ne contrôle plus ses actions et est pris
       d’une furie meurtrière. Le lendemain, le personnage, revenu sous sa forme de base (humain ou loup), ne se souvient
@@ -3319,6 +3612,7 @@ atouts:
         ref: entry:rage-lunaire
   - id: rancune
     name: Rancune
+    status: active
     effect: >-
       Pendant un combat chaque point de dégât subit est additionné et compte comme dégât automatique lorsque le
       personnage parvient à toucher celui qu’il l’a blessé.
@@ -3331,6 +3625,7 @@ atouts:
         ref: entry:rancune
   - id: rappel-de-l-arme
     name: Rappel de l’arme
+    status: active
     effect: >-
       L’arme revient automatiquement dans les mains de son possesseur au bon vouloir de celui-ci. Ceci compte pour une
       action (et dure donc un facteur de vitesse).
@@ -3343,6 +3638,7 @@ atouts:
         ref: entry:rappel-de-l-arme
   - id: rappel-du-familier
     name: Rappel du familier
+    status: active
     effect: >-
       Permet au magicien de rappeler son/ses familier(s) en lui à tout moment. Celui-ci disparaît pour une période
       choisie par le magicien. Faire entrer ou sortir un familier de soi-même prend un facteur de vitesse.
@@ -3355,6 +3651,7 @@ atouts:
         ref: entry:rappel-du-familier
   - id: recharge-rapide
     name: Recharge rapide
+    status: active
     effect: Diminue de 1  DT le temps nécessaire au chargement d’une arme de distance. Ce temps ne peut être inférieur à 1.
     value: 2000
     activation: permanent
@@ -3365,6 +3662,7 @@ atouts:
         ref: entry:recharge-rapide
   - id: recherche-personnelle
     name: Recherche personnelle
+    status: active
     effect: >-
       Permet au personnage d’apprendre des connaissances par lui-même, si celui-ci à la possibilité de faire ses propres
       expériences.
@@ -3377,6 +3675,7 @@ atouts:
         ref: entry:recherche-personnelle
   - id: reconnaissance-du-guerrier
     name: Reconnaissance du guerrier
+    status: active
     effect: >-
       Lorsque les yeux du personnage croisent ceux d’un autre guerrier, le niveau de celui-ci peut alors lui être
       révélé.
@@ -3389,6 +3688,7 @@ atouts:
         ref: entry:reconnaissance-du-guerrier
   - id: reflexes-fulgurants
     name: Réflexes fulgurants
+    status: active
     effect: >-
       Supprime la difficulté supplémentaire (de +1) lors d’un jet de réflexe. Cet atout peut être choisit à condition de
       posséder un score en réflexes minimum de 4.
@@ -3401,6 +3701,7 @@ atouts:
         ref: entry:reflexes-fulgurants
   - id: reflexion
     name: Réflexion
+    status: active
     effect: Diminue la difficulté d’un d’intelligence de 5.
     value: 500
     activation: ephemere
@@ -3411,6 +3712,7 @@ atouts:
         ref: entry:reflexion
   - id: regard-de-braise
     name: Regard de braise
+    status: active
     effect: Annule les pénalités dues à une luminosité trop intense ou même au soleil dans les yeux.
     value: 3000
     activation: permanent
@@ -3421,6 +3723,7 @@ atouts:
         ref: entry:regard-de-braise
   - id: regard-du-guerrier
     name: Regard du guerrier
+    status: active
     effect: >-
       Le personnage possède un regard de combattant aguerrit et les gens le ressentent, même s’ils ne comprennent pas
       toujours pourquoi. Les personnages peuvent faire un jet de volonté avec le niveau du guerrier comme difficulté
@@ -3434,6 +3737,7 @@ atouts:
         ref: entry:regard-du-guerrier
   - id: regeneration-des-membres
     name: Régénération des membres
+    status: active
     effect: >-
       Le personnage peut régénérer un membre coupé. Le temps de la repousse est de 30 jours moins le niveau du
       personnage.
@@ -3446,6 +3750,7 @@ atouts:
         ref: entry:regeneration-des-membres
   - id: renaissance-celeste
     name: Renaissance céleste
+    status: active
     effect: NA
     value: 6000
     activation: permanent
@@ -3456,6 +3761,7 @@ atouts:
         ref: entry:renaissance-celeste
   - id: repondre-a-l-insulte
     name: Répondre à l’insulte
+    status: active
     effect: >-
       Le personnage peut s’ajouter son niveau en nombre de dés lorsqu’il frappe sur quelqu’un l’aillant insulté. Les dés
       gagnés de la sorte peuvent êtres répartis au gré du joueur dans ses aptitudes physiques. Cet état dure jusqu'à ce
@@ -3469,6 +3775,7 @@ atouts:
         ref: entry:repondre-a-l-insulte
   - id: repos-du-guerrier
     name: Repos du guerrier
+    status: active
     effect: Le personnage récupère le double de points de vitalité lors d’une nuit de sommeil.
     value: 2000
     activation: permanent
@@ -3479,6 +3786,7 @@ atouts:
         ref: entry:repos-du-guerrier
   - id: repulsion
     name: Répulsion
+    status: active
     effect: >-
       Le personnage arrive à canaliser son énergie pour la libérer dans une direction bien précise. Généralement c’est
       de la paume de la main que sors cette force invisible qui repousse les corps. La portée de cette force (comparable
@@ -3494,6 +3802,7 @@ atouts:
         ref: entry:repulsion
   - id: resistance-a-la-chaleur
     name: Résistance à la chaleur
+    status: active
     effect: Le personnage résiste plus aisément à la chaleur. Jet en dessous de la résistance sur D100 pour résister.
     value: 2
     activation: permanent
@@ -3504,6 +3813,7 @@ atouts:
         ref: entry:resistance-a-la-chaleur
   - id: resistance-a-la-fatigue
     name: Résistance à la fatigue
+    status: active
     effect: Le personnage résiste plus aisément à la fatigue. Jet en dessous de la résistance sur D100 pour résister.
     value: 2
     activation: permanent
@@ -3514,6 +3824,7 @@ atouts:
         ref: entry:resistance-a-la-fatigue
   - id: resistance-a-la-fumee
     name: Résistance à la fumée
+    status: active
     effect: Le personnage résiste plus aisément à la fumée. Jet en dessous de la résistance sur D100 pour résister.
     value: 2
     activation: permanent
@@ -3524,6 +3835,7 @@ atouts:
         ref: entry:resistance-a-la-fumee
   - id: resistance-a-la-magie
     name: Résistance à la magie
+    status: active
     effect: Le personnage résiste plus aisément à la magie. Jet en dessous de la résistance sur D100 pour résister.
     value: 2
     activation: permanent
@@ -3534,6 +3846,7 @@ atouts:
         ref: entry:resistance-a-la-magie
   - id: resistance-a-l-alcool
     name: Résistance à l’alcool
+    status: active
     effect: Le personnage résiste plus aisément à l'alcool. Jet en dessous de la résistance sur D100 pour résister.
     value: 2
     activation: permanent
@@ -3544,6 +3857,7 @@ atouts:
         ref: entry:resistance-a-l-alcool
   - id: resistance-au-feu
     name: Résistance au feu
+    status: active
     effect: Le personnage résiste plus aisément au feu. Jet en dessous de la résistance sur D100 pour résister.
     value: 2
     activation: permanent
@@ -3554,6 +3868,7 @@ atouts:
         ref: entry:resistance-au-feu
   - id: resistance-au-froid
     name: Résistance au froid
+    status: active
     effect: Le personnage résiste plus aisément au froid. Jet en dessous de la résistance sur un D100 pour résister.
     value: 2000
     activation: permanent
@@ -3564,6 +3879,7 @@ atouts:
         ref: entry:resistance-au-froid
   - id: resistance-aux-drogues
     name: Résistance aux drogues
+    status: active
     effect: Le personnage résiste plus aisément aux drogues. Jet en dessous de la résistance sur D100 pour résister.
     value: 2
     activation: permanent
@@ -3574,6 +3890,7 @@ atouts:
         ref: entry:resistance-aux-drogues
   - id: resistance-aux-maladies
     name: Résistance aux maladies
+    status: active
     effect: Le personnage résiste plus aisément aux maladies. Jet en dessous de la résistance sur D100 pour résister.
     value: 2
     activation: permanent
@@ -3584,6 +3901,7 @@ atouts:
         ref: entry:resistance-aux-maladies
   - id: resistance-aux-poisons
     name: Résistance aux poisons
+    status: active
     effect: Le personnage résiste plus aisément aux poisons. Jet en dessous de la résistance sur D100 pour résister.
     value: 2
     activation: permanent
@@ -3594,6 +3912,7 @@ atouts:
         ref: entry:resistance-aux-poisons
   - id: resistance-selective
     name: Résistance sélective
+    status: active
     effect: >-
       Cet atout permet au personnage de choisir s'il souhaite ou non utiliser sa résistance. Pour choisir cet atout, le
       personnage doit posséder au minimum une résistance.
@@ -3606,6 +3925,7 @@ atouts:
         ref: entry:resistance-selective
   - id: resonance
     name: Résonance
+    status: active
     effect: >-
       Le magicien peut utiliser son énergie pour entrer en résonance avec l'un de ses sorts et augmenter la puissance de
       celui-ci. Moyennant 10 points d'énergie, le personnage peut, en un facteur de vitesse, ajouter une réussite à l'un
@@ -3620,6 +3940,7 @@ atouts:
         ref: entry:resonance
   - id: resonance-avancee
     name: Résonance avancée
+    status: active
     effect: >-
       En plus de pouvoir utiliser son atout de résonance sur ses propres sorts, le magicien peut l'utiliser sur
       n'importe quel sort de sa couleur magique peu importe le lanceur dudit sort.
@@ -3632,6 +3953,7 @@ atouts:
         ref: entry:resonance-avancee
   - id: ressentir-la-magie
     name: Ressentir la magie
+    status: active
     effect: Permet au personnage de ressentir le rayonnement de la magie sur un rayon d’un mètre par niveau.
     value: 2000
     activation: permanent
@@ -3642,6 +3964,7 @@ atouts:
         ref: entry:ressentir-la-magie
   - id: ressentir-la-trace-du-mal
     name: Ressentir la trace du mal
+    status: active
     effect: >-
       Permet au personnage de ressentir la présence du mal que se soit une personne, un acte ou autre. Plus le mal est
       grand, et plus le personnage le  ressentira fort au fond de lui. De plus, le personnage peut ressentir la trace
@@ -3657,6 +3980,7 @@ atouts:
         ref: entry:ressentir-la-trace-du-mal
   - id: ressentir-le-bien
     name: Ressentir le bien
+    status: active
     effect: >-
       Permet au personnage de ressentir la présence du bien, que se soit une personne, un acte ou autre. Plus le bien
       est grand, et plus le personnage le ressentira fort au fond de lui.
@@ -3669,6 +3993,7 @@ atouts:
         ref: entry:ressentir-le-bien
   - id: ressentir-le-magicien
     name: Ressentir le magicien
+    status: active
     effect: Permet au magicien de ressentir la présence d’autres magiciens sur une distance d’un mètre par niveau.
     value: 3000
     activation: permanent
@@ -3679,6 +4004,7 @@ atouts:
         ref: entry:ressentir-le-magicien
   - id: ressentir-le-mal
     name: Ressentir le mal
+    status: active
     effect: >-
       Permet au personnage de ressentir la présence du mal, que se soit une personne, un acte ou autre. Plus le mal est
       grand, et plus le personnage le  ressentira fort au fond de lui.
@@ -3691,6 +4017,7 @@ atouts:
         ref: entry:ressentir-le-mal
   - id: ressentir-l-arme
     name: Ressentir l’arme
+    status: active
     effect: >-
       Le personnage peut d’instinct ressentir une arme à proximité de lui. Par exemple, si un personnage cache un
       couteau dans sa botte, il ne saura pas qu’il s’agit d’un couteaux, mais son instinct lui soufflera de se méfier de
@@ -3704,6 +4031,7 @@ atouts:
         ref: entry:ressentir-l-arme
   - id: resurrection
     name: Résurrection
+    status: active
     effect: >-
       Le personnage peut ramener un mort à la vie (comme avec le sort de magie blanche). La mort du sujet, ne doit pas
       remonter à plus du niveau en minutes de celui qui le ramène.
@@ -3716,6 +4044,7 @@ atouts:
         ref: entry:resurrection
   - id: retombe-sur-ses-pattes
     name: Retombe sur ses pattes
+    status: active
     effect: Permet de retomber automatiquement sur ses pattes ou pieds.
     value: 350
     activation: permanent
@@ -3726,6 +4055,7 @@ atouts:
         ref: entry:retombe-sur-ses-pattes
   - id: retraite-strategique
     name: Retraite stratégique
+    status: active
     effect: Permet à un personnage de diminuer la difficulté d’un jet de fuite de 1.
     value: 2000
     activation: permanent
@@ -3736,6 +4066,7 @@ atouts:
         ref: entry:retraite-strategique
   - id: rien-a-perdre
     name: Rien à perdre
+    status: active
     effect: >-
       Le personnage déduit automatiquement son niveau aux malus distribuer lors d’un jet de volonté dans une situation
       dangereuse.
@@ -3748,6 +4079,7 @@ atouts:
         ref: entry:rien-a-perdre
   - id: robustesse
     name: Robustesse
+    status: active
     effect: Donne une résistance de +1C au corps du personnage.
     value: 2000
     activation: permanent
@@ -3758,6 +4090,7 @@ atouts:
         ref: entry:robustesse
   - id: ruee
     name: Ruée
+    status: active
     effect: La charge du personnage inflige un dégât supplémentaire par point dans cet atout.
     value: 2000
     activation: permanent
@@ -3768,6 +4101,7 @@ atouts:
         ref: entry:ruee
   - id: sacrifice
     name: Sacrifice
+    status: active
     effect: >-
       Le personnage peut décider de se sacrifier pour ramener quelqu’un à la vie. Ce personnage ne doit pas être mort
       depuis plus que d’heure par niveau du personnage qui se sacrifie.
@@ -3780,6 +4114,7 @@ atouts:
         ref: entry:sacrifice
   - id: sacrifice-d-energie
     name: Sacrifice d’énergie
+    status: active
     effect: >-
       Le magicien peut sacrifier autant de point d’énergie qu’il le souhaite en faisant perdre à un autre magicien (à
       une distance maximum de 1m/niveau) ce même nombre de points d’énergie.
@@ -3792,6 +4127,7 @@ atouts:
         ref: entry:sacrifice-d-energie
   - id: sang-froid
     name: Sang-froid
+    status: active
     effect: Le personnage ne tient compte d'aucun malus d'augmentation de son facteur de volonté.
     value: 550
     activation: permanent
@@ -3802,6 +4138,7 @@ atouts:
         ref: entry:sang-froid
   - id: sans-forme
     name: Sans forme
+    status: active
     effect: >-
       Le personnage peut d’un regard dans les yeux de sa victime effacer sa forme de la mémoire de celle-ci. La cible
       doit faire un test d’intelligence de difficulté égal au niveau du lanceur pour ne pas oublier. Une personne ayant
@@ -3815,6 +4152,7 @@ atouts:
         ref: entry:sans-forme
   - id: sans-hombre
     name: Sans hombre
+    status: active
     effect: Le personnage peut faire disparaître son hombre pendant une minute par niveau.
     value: 3000
     activation: ephemere
@@ -3825,6 +4163,7 @@ atouts:
         ref: entry:sans-hombre
   - id: sans-nom
     name: Sans nom
+    status: active
     effect: >-
       Le personnage peut d’un regard dans les yeux de sa victime effacer son nom de la mémoire de celle-ci. La cible
       doit faire un test d’intelligence de difficulté égal au niveau du lanceur pour ne pas oublier. Une personne ayant
@@ -3838,6 +4177,7 @@ atouts:
         ref: entry:sans-nom
   - id: sans-reflet
     name: Sans reflet
+    status: active
     effect: Le personnage n’a aucun reflet, que ce soit dans l’eau, dans un miroir, ou toute surface réfléchissante.
     value: -200
     activation: permanent
@@ -3848,6 +4188,7 @@ atouts:
         ref: entry:sans-reflet
   - id: sans-visage
     name: Sans visage
+    status: active
     effect: >-
       Le personnage peut d’un regard dans les yeux de sa victime effacer son visage de la mémoire de celle-ci. La cible
       doit faire un test d’intelligence de difficulté égal au niveau du lanceur pour ne pas oublier. Une personne ayant
@@ -3861,6 +4202,7 @@ atouts:
         ref: entry:sans-visage
   - id: sante-de-fer
     name: Santé de fer
+    status: active
     effect: "Chaque fois que le personnage passe un niveau, il ajoute alors son nouveau niveau en «\_Santé de fer\_» à ses points de vitalité."
     value: 2000
     activation: permanent
@@ -3871,6 +4213,7 @@ atouts:
         ref: entry:sante-de-fer
   - id: saut-de-l-ange
     name: Saut de l’ange
+    status: active
     effect: Le personnage peut effectuer un saut d’une hauteur égale à son niveau en mètre.
     value: 3000
     activation: ephemere
@@ -3881,6 +4224,7 @@ atouts:
         ref: entry:saut-de-l-ange
   - id: savoir-la-magie
     name: Savoir la magie
+    status: active
     effect: Permet au magicien d’identifier le type de magie qu’il ressent sur 1 mètre par niveau autour de lui.
     value: 4000
     activation: permanent
@@ -3891,6 +4235,7 @@ atouts:
         ref: entry:savoir-la-magie
   - id: savoir-l-arme
     name: Savoir l’arme
+    status: active
     effect: Permet au personnage d’identifier le type d’arme qu’il ressent sur 1 mètre par niveau autour de lui.
     value: 4000
     activation: permanent
@@ -3901,6 +4246,7 @@ atouts:
         ref: entry:savoir-l-arme
   - id: science-de-la-vie
     name: Science de la vie
+    status: active
     effect: Additionne le niveau du personnage au nombre de dès lancés lors d’un jet d’alchimie.
     value: 2000
     activation: permanent
@@ -3911,6 +4257,7 @@ atouts:
         ref: entry:science-de-la-vie
   - id: science-des-plantes
     name: Science des plantes
+    status: active
     effect: Additionne le niveau du personnage au nombre de dès lancés lors d’un jet d’herboristerie.
     value: 0
     activation: permanent
@@ -3921,6 +4268,7 @@ atouts:
         ref: entry:science-des-plantes
   - id: secret-des-poignards-volants
     name: Secret des poignards volants
+    status: active
     effect: Le personnage peut faire effectuer une courbe par niveau à un couteau de jet qu’il a lui-même lancé.
     value: 2000
     activation: ephemere
@@ -3931,6 +4279,7 @@ atouts:
         ref: entry:secret-des-poignards-volants
   - id: self-controle
     name: Self-contrôle
+    status: active
     effect: >-
       Le personnage possède la totale maîtrise de ses propres faits et gestes. Lors d’un jet, il peut définir un nombre
       de réussites maximum qu’il ne dépassera pas.
@@ -3943,6 +4292,7 @@ atouts:
         ref: entry:self-controle
   - id: sens-de-la-scene
     name: Sens de la scène
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet de comédie.
     value: 2000
     activation: permanent
@@ -3953,6 +4303,7 @@ atouts:
         ref: entry:sens-de-la-scene
   - id: sens-des-affaires
     name: Sens des affaires
+    status: active
     effect: Diminue la difficulté de 5 lors d’un jet de commerce.
     value: 500
     activation: ephemere
@@ -3963,6 +4314,7 @@ atouts:
         ref: entry:sens-des-affaires
   - id: sens-du-danger
     name: Sens du danger
+    status: active
     effect: >-
       Le personnage a l’habitude du danger dans son quotidien. Tant et si bien qu’il arrive à le flairer. Il ajoute donc
       son niveau en dés lors de jets de perceptions qui pourraient le prévenir d’un danger.
@@ -3975,6 +4327,7 @@ atouts:
         ref: entry:sens-du-danger
   - id: sens-du-familier
     name: Sens du familier
+    status: active
     effect: >-
       Le personnage peut choisir un sens par lequel il sera lié à son familier. Par exemple s’il choisit la vue, il
       verra tout ce que voie son familier.
@@ -3987,6 +4340,7 @@ atouts:
         ref: entry:sens-du-familier
   - id: sens-en-eveil
     name: Sens en éveil
+    status: active
     effect: Ajoute le niveau du personnage à ses dès lors d'un jet de perception.
     value: 5000
     activation: permanent
@@ -3997,6 +4351,7 @@ atouts:
         ref: entry:sens-en-eveil
   - id: sens-politique
     name: Sens politique
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet de politique.
     value: 2000
     activation: permanent
@@ -4007,6 +4362,7 @@ atouts:
         ref: entry:sens-politique
   - id: sentir-la-mort
     name: Sentir la mort
+    status: active
     effect: "Le personnage à développé la capacité de sentir l’odeur de la mort. Il détecte donc automatiquement la présence de cadavre ainsi que les Mort-Vivants sur un rayon de 3 mètres par niveaux. Il est aussi capable d’indiquer la direction d’où lui viens cette «\_odeur\_»."
     value: 4000
     activation: permanent
@@ -4017,6 +4373,7 @@ atouts:
         ref: entry:sentir-la-mort
   - id: sequelles
     name: Séquelles
+    status: active
     effect: Les coups portés par le personnage ne peuvent êtres soignés par l'atout "Régénération".
     value: 4000
     activation: permanent
@@ -4027,6 +4384,7 @@ atouts:
         ref: entry:sequelles
   - id: serrer-les-dents
     name: Serrer les dents
+    status: active
     effect: >-
       Le personnage peut, une fois par niveau, annuler un jet de force lors d’une frappe qu’il reçoit, ne subissant
       ainsi que les dégâts automatiques.
@@ -4039,6 +4397,7 @@ atouts:
         ref: entry:serrer-les-dents
   - id: service
     name: Service
+    status: active
     effect: Diminue la difficulté de 5 pour un jet de tâches domestiques (dans le domaine de prédilection).
     value: 500
     activation: ephemere
@@ -4049,6 +4408,7 @@ atouts:
         ref: entry:service
   - id: servitude
     name: Servitude
+    status: active
     effect: >-
       Additionne le niveau au nombre de dés lorsque le personnage sert son maître. La tâche que le personnage effectue
       doit être en rapport avec sa condition de domestique.
@@ -4061,6 +4421,7 @@ atouts:
         ref: entry:servitude
   - id: seul-contre-tous
     name: Seul contre tous
+    status: active
     effect: Le personnage additionne à ses jets de dés, un dé supplémentaire par ennemi qu’il combat en plus du premier.
     value: 5000
     activation: permanent
@@ -4071,6 +4432,7 @@ atouts:
         ref: entry:seul-contre-tous
   - id: silence-de-mort
     name: Silence de mort
+    status: active
     effect: >-
       Le personnage crée un silence anormal d’ou aucun son ne pourra s’échapper. Celui-ci s’étend sur un rayon d’un
       mètre par niveau autour du personnage et dure une minute par niveau. Cet espace insonorisé ne se déplace pas avec
@@ -4084,6 +4446,7 @@ atouts:
         ref: entry:silence-de-mort
   - id: soif-de-sang
     name: Soif de sang
+    status: active
     effect: Le personnage ne peut se nourrir que de sang.
     value: -1000
     activation: permanent
@@ -4094,6 +4457,7 @@ atouts:
         ref: entry:soif-de-sang
   - id: soleil-petrificateur
     name: Soleil pétrificateur
+    status: active
     effect: >-
       Les rayons du soleil change le personnage en pierre. Un personnage ainsi statufié ne reviens pas à son état normal
       une fois la nuit venue.
@@ -4106,6 +4470,7 @@ atouts:
         ref: entry:soleil-petrificateur
   - id: sommeil-leger
     name: Sommeil léger
+    status: active
     effect: Annule les malus dus au sommeil d’un personnage, pour les jets de perception.
     value: 2000
     activation: permanent
@@ -4116,6 +4481,7 @@ atouts:
         ref: entry:sommeil-leger
   - id: son-envoutant
     name: Son envoûtant
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage joue de son instrument de prédilection.
     value: 2000
     activation: permanent
@@ -4126,6 +4492,7 @@ atouts:
         ref: entry:son-envoutant
   - id: sonar
     name: Sonar
+    status: active
     effect: >-
       Le personnage est doté d'un sonar lui permettant de se repérer dans l'espace par retour d'ultrasons qu'il émet.
       Ses jets de reconnaissance lié à son environnement passent par l'ouïe lorsqu'il utilise cet atout.
@@ -4138,6 +4505,7 @@ atouts:
         ref: entry:sonar
   - id: sourd
     name: Sourd
+    status: active
     effect: Le personnage est incapable d'entendre.
     value: -2500
     activation: permanent
@@ -4148,6 +4516,7 @@ atouts:
         ref: entry:sourd
   - id: souvenir-de-la-bete
     name: Souvenir de la bête
+    status: active
     effect: >-
       Le personnage arrive à se souvenir de se qu’il a fait les soirs de pleine lune lorsqu’il était changé en
       Loup-Garou.
@@ -4160,6 +4529,7 @@ atouts:
         ref: entry:souvenir-de-la-bete
   - id: sublimation
     name: Sublimation
+    status: active
     effect: >-
       Les objet créés par le personnage (dans son domaine de prédilection) octroient un bonus de +1 en esthétisme à son
       porteur par points en Sublimation. Un objet offrant un bonus de X doit avoir un minimum de X * 5 réussites lors de
@@ -4174,6 +4544,7 @@ atouts:
         ref: entry:sublimation
   - id: subtilisation
     name: Subtilisation
+    status: active
     effect: Additionne son niveau au nombre de dès lorsque le personnage effectue un vol.
     value: 2000
     activation: permanent
@@ -4184,6 +4555,7 @@ atouts:
         ref: entry:subtilisation
   - id: survie
     name: Survie
+    status: active
     effect: Le personnage n’accumule des malus de blessure qu’à partir du quart (et non de la moitié) de sa vitalité.
     value: 3000
     activation: permanent
@@ -4194,6 +4566,7 @@ atouts:
         ref: entry:survie
   - id: sus-aux-magiciens
     name: Sus aux magiciens
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage nui à un magicien.
     value: 2000
     activation: permanent
@@ -4204,6 +4577,7 @@ atouts:
         ref: entry:sus-aux-magiciens
   - id: telekinesie
     name: Télékinésie
+    status: active
     effect: >-
       Le personnage peut soulever et déplacer de la matière solide dans les airs (les liquides et gazeux ne sont donc
       pas inclus). Pour se faire, le personnage doit s'aider au moins une de ses main et se concentrer sur la cible
@@ -4221,6 +4595,7 @@ atouts:
         ref: entry:telekinesie
   - id: telekinesie-avancee
     name: Télékinésie avancée
+    status: active
     effect: >-
       Le personnage peut maintenant utiliser sa télékinésie sans forcément devoir utiliser ses mains. Il peut également
       déplacer la matière quelle qu’elle soit (solide, liquide, gazeux, etc) ce qui signifie que l'atout permet
@@ -4235,6 +4610,7 @@ atouts:
         ref: entry:telekinesie-avancee
   - id: telekinesie-lourde
     name: Télékinésie lourde
+    status: active
     effect: >-
       Le poids maximal déplacé par le personnage grace à sa télékinésie est maintenant égale à son niveau en
       "Télékinésie lourde" + 1 kg/niveaux.
@@ -4247,6 +4623,7 @@ atouts:
         ref: entry:telekinesie-lourde
   - id: telepathie
     name: Télépathie
+    status: active
     effect: Le personnage peut entrer en contact avec une personne de par la pensée, il doit pour cela voir cette personne.
     value: 600
     activation: permanent
@@ -4257,6 +4634,7 @@ atouts:
         ref: entry:telepathie
   - id: teleportation
     name: Téléportation
+    status: active
     effect: Le personnage peut se téléporter dans un lieu à portée de vue et à 1m de distance par niveau maximum.
     value: 6000
     activation: ephemere
@@ -4267,6 +4645,7 @@ atouts:
         ref: entry:teleportation
   - id: temps-d-arret
     name: Temps d’arrêt
+    status: active
     effect: >-
       Le personnage peut se stopper net ou et quand bon lui semble pendant 1 DT/niveau. Pendant se temps il peut
       entreprendre des action (comme par exemple se rattraper lors d’une chute qu’il peut stopper).
@@ -4279,6 +4658,7 @@ atouts:
         ref: entry:temps-d-arret
   - id: tenacite
     name: Ténacité
+    status: active
     effect: Donne une résistance de +1E au corps du personnage.
     value: 2000
     activation: permanent
@@ -4289,6 +4669,7 @@ atouts:
         ref: entry:tenacite
   - id: terreur
     name: Terreur
+    status: active
     effect: >-
       Le personnage provoque la terreur chez les autres. Ceux-ci doivent, en sa présence, faire un test de volonté avec
       une difficulté supplémentaire égale au niveau du personnage terrifiant pour maîtriser leur peur. Un personnage
@@ -4302,6 +4683,7 @@ atouts:
         ref: entry:terreur
   - id: tornade-de-coups
     name: Tornade de coups
+    status: active
     effect: Additionne un coup porté par le personnage lorsque celui-ci utilise cet atout (les coups sont tous identiques).
     value: 5000
     activation: ephemere
@@ -4312,6 +4694,7 @@ atouts:
         ref: entry:tornade-de-coups
   - id: totem
     name: Totem
+    status: active
     effect: "Cet atout est à choisir avec une race animale se rapprochant du personnage. Les animaux de cette race reconnaissent le personnage comme l’un des leurs et ne lui feront aucun mal. Au contraire, s’ils ont la possibilité de l’aider, ils le feront dans la mesure de leurs moyens. Cet atout ne peut être choisit qu’une seule fois et ne peut être combiné avec l’atout «\_Enfant de l’élément\_»."
     value: 4000
     activation: permanent
@@ -4322,6 +4705,7 @@ atouts:
         ref: entry:totem
   - id: touche-leger
     name: Touché léger
+    status: active
     effect: Additionne le niveau au nombre de dés pour toucher quelqu’un sans que celui-ci ne le remarque.
     value: 2000
     activation: permanent
@@ -4332,6 +4716,7 @@ atouts:
         ref: entry:touche-leger
   - id: toujours-sur-soi
     name: Toujours sur soi
+    status: active
     effect: >-
       Le personnage peut choisir 1 objet qu’il peut faire disparaître et réapparaître à volonté dans sa main. Le poids
       de cet objet est toujours comptabilisé.
@@ -4344,6 +4729,7 @@ atouts:
         ref: entry:toujours-sur-soi
   - id: tour-de-passe-passe
     name: Tour de passe-passe
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un tour de passe-passe.
     value: 2000
     activation: permanent
@@ -4354,6 +4740,7 @@ atouts:
         ref: entry:tour-de-passe-passe
   - id: tranchant
     name: Tranchant
+    status: active
     effect: >-
       Les armes tranchantes créés par le personnage inflige un dégât de +1 T. Un objet ayant un bonus de X Tranchant
       supplémentaire doit avoir un minimum de X * 5 réussites lors de sa création (ceci représente une qualité
@@ -4367,6 +4754,7 @@ atouts:
         ref: entry:tranchant
   - id: transfert-de-vision
     name: Transfert de vision
+    status: active
     effect: NA
     value: 100
     activation: permanent
@@ -4377,6 +4765,7 @@ atouts:
         ref: entry:transfert-de-vision
   - id: transfert-spatial
     name: Transfert spatial
+    status: active
     effect: >-
       Cet atout est à choisir avec un lieu. Dès lors, le magicien peut, en faisant une invocation standard, décider de
       transférer sa cible dans ce lieu choisit. Le lieu peut être changé par le magicien à tout moment pour autant que
@@ -4390,6 +4779,7 @@ atouts:
         ref: entry:transfert-spatial
   - id: transformation-hybride
     name: Transformation hybride
+    status: active
     effect: >-
       Le personnage peut se transformer en Loup-Garou quand il le désire. Il ne peut toutefois pas décider de ne pas se
       transformer les nuits de pleine lune.
@@ -4402,6 +4792,7 @@ atouts:
         ref: entry:transformation-hybride
   - id: traque
     name: Traque
+    status: active
     effect: Additionne le niveau au nombre de dés, lors d’un jet de pistage ou autre investigation forestière.
     value: 2000
     activation: permanent
@@ -4412,6 +4803,7 @@ atouts:
         ref: entry:traque
   - id: travail-de-la-peau
     name: Travail de la peau
+    status: active
     effect: Additionne le niveau au nombre de dès lorsque le personnage effectue un travail de tannerie.
     value: 2000
     activation: permanent
@@ -4422,6 +4814,7 @@ atouts:
         ref: entry:travail-de-la-peau
   - id: travail-du-bois
     name: Travail du bois
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux de menuiserie.
     value: 2000
     activation: permanent
@@ -4432,6 +4825,7 @@ atouts:
         ref: entry:travail-du-bois
   - id: travail-du-metal
     name: Travail du métal
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage forge.
     value: 2000
     activation: permanent
@@ -4442,6 +4836,7 @@ atouts:
         ref: entry:travail-du-metal
   - id: travail-du-recipient
     name: Travail du récipient
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux de poterie.
     value: 2000
     activation: permanent
@@ -4452,6 +4847,7 @@ atouts:
         ref: entry:travail-du-recipient
   - id: travail-du-textile
     name: Travail du textile
+    status: active
     effect: Additionne le niveau au nombre de dés lors d’un jet de couture.
     value: 2000
     activation: permanent
@@ -4462,6 +4858,7 @@ atouts:
         ref: entry:travail-du-textile
   - id: trompe-la-mort
     name: Trompe la mort
+    status: active
     effect: >-
       Permet au personnage de simuler un mort. La peau se blanchit, le cœur ralentit et n’est presque plus perceptible,
       il en va de même pour la respiration. Cet état peut être conservé 10 minutes par niveau.
@@ -4474,6 +4871,7 @@ atouts:
         ref: entry:trompe-la-mort
   - id: trop-facile
     name: Trop facile
+    status: active
     effect: >-
       Diminue la difficulté d’un sort choisi de 1. Le sort est à définir avec la prise de l'atout et ne peut être
       changer par la suite.
@@ -4486,6 +4884,7 @@ atouts:
         ref: entry:trop-facile
   - id: tuons-la-bete
     name: Tuons la bête
+    status: active
     effect: >-
       Le personnage choisit un monstre sur lequel, il infligera automatiquement son niveau en dégât supplémentaire
       lorsqu’il touchera celui-ci.
@@ -4498,6 +4897,7 @@ atouts:
         ref: entry:tuons-la-bete
   - id: unicite
     name: Unicité
+    status: active
     effect: >-
       Les ouvrages du personnage (dans son domaine) ne peuvent êtres recopiés. Son travail lui est si propre que
       quelqu’un ayant les connaissances suffisantes pourra déterminer la personne qui à fabriquer l’objet en question.
@@ -4510,6 +4910,7 @@ atouts:
         ref: entry:unicite
   - id: vade-retro
     name: Vade rétro
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage effectue un exorcisme.
     value: 2000
     activation: permanent
@@ -4520,6 +4921,7 @@ atouts:
         ref: entry:vade-retro
   - id: vegothropie
     name: Vegothropie
+    status: active
     effect: >-
       Le personnage peut se transformer en plante. La durée de la transformation est de 10 minutes. La plante en
       question est relative au personnage.
@@ -4532,6 +4934,7 @@ atouts:
         ref: entry:vegothropie
   - id: velocite
     name: Vélocité
+    status: active
     effect: Diminue de 3 la difficulté de course.
     value: 600
     activation: permanent
@@ -4542,6 +4945,7 @@ atouts:
         ref: entry:velocite
   - id: ventre-du-magicien
     name: Ventre du magicien
+    status: active
     effect: Le familier peut, en se nourrissant, sustenter son magicien.
     value: 4000
     activation: permanent
@@ -4552,6 +4956,7 @@ atouts:
         ref: entry:ventre-du-magicien
   - id: ventre-vide
     name: Ventre vide
+    status: active
     effect: >-
       Lorsque le personnage tente d’obtenir de la nourriture, ses actions ont une difficulté diminuée de 1 par point
       dans cet attout.
@@ -4564,6 +4969,7 @@ atouts:
         ref: entry:ventre-vide
   - id: verrouillage-de-souvenir
     name: Verrouillage de souvenir
+    status: active
     effect: >-
       Le personnage peut mettre un verrou sur un souvenir d’une personne, de manière à ce que elle-ci n’y ait plus
       accès, même si on essaye de le lui rendre la mémoire.
@@ -4576,6 +4982,7 @@ atouts:
         ref: entry:verrouillage-de-souvenir
   - id: victime
     name: Victime
+    status: active
     effect: >-
       Le personnage peut choisir 1 être vivant (qu’il voit) et saura en permanence dans quelle direction aller pour
       retrouver celui-ci. Il peut décider de changer d’être quand il le souhaite.
@@ -4588,6 +4995,7 @@ atouts:
         ref: entry:victime
   - id: vision
     name: Vision
+    status: active
     effect: >-
       La vision est représentée en pourcentage, ce qui signifie qu’un homme en bonne forme possède une vision de 100%.
       Un personnage ayant 200% en vision verra donc deux fois plus loin et plus précisément.
@@ -4600,6 +5008,7 @@ atouts:
         ref: entry:vision
   - id: vision-nocturne
     name: Vision nocturne
+    status: active
     effect: Le personnage est nyctalope.
     value: 1000
     activation: permanent
@@ -4610,6 +5019,7 @@ atouts:
         ref: entry:vision-nocturne
   - id: vision-thermique
     name: Vision thermique
+    status: active
     effect: >-
       Permet au personnage de voir toutes sources de chaleur. Celles-ci brillent, ce qui les rend donc visibles même
       dans le noir total.
@@ -4622,6 +5032,7 @@ atouts:
         ref: entry:vision-thermique
   - id: visions-cauchemardesques
     name: Visions cauchemardesques
+    status: active
     effect: >-
       En touchant un être, le personnage peut lui faire voir (sous forme d’un flash) des visions du mal qu’à fait le
       personnage. Ces visions durent 1 DT par niveau.
@@ -4634,6 +5045,7 @@ atouts:
         ref: entry:visions-cauchemardesques
   - id: voix-intense
     name: Voix intense
+    status: active
     effect: Additionne le niveau au nombre de dés lorsque le personnage chante.
     value: 2000
     activation: permanent
@@ -4644,6 +5056,7 @@ atouts:
         ref: entry:voix-intense
   - id: voix-surnaturelle
     name: Voix surnaturelle
+    status: active
     effect: >-
       Le personnage peut, quand il le désire, moduler sa voix qui devient alors plus impressionnante mais d’aspect non
       naturel. Quand le personnage utilise sa voix surnaturelle, il additionne son niveau au nombre de dès lors d’un jet
@@ -4657,6 +5070,7 @@ atouts:
         ref: entry:voix-surnaturelle
   - id: vol
     name: Vol
+    status: active
     effect: >-
       Le personnage peut voler. Que ce soit grâce à des ailes, une faculté mentale ou autres, celui-ci peut se déplacer
       librement dans les airs.
@@ -4669,6 +5083,7 @@ atouts:
         ref: entry:vol
   - id: vol-de-familier
     name: Vol de familier
+    status: active
     effect: >-
       Le magicien peut détourner le lien qui relie un autre magicien à son familier et rediriger ce lien vers lui-même.
       De la sorte, le personnage peut avoir un familier supplémentaire. Ce nouveau familier reste lié et au service du
@@ -4683,6 +5098,7 @@ atouts:
         ref: entry:vol-de-familier
   - id: vol-de-secret
     name: Vol de secret
+    status: active
     effect: >-
       Le personnage peut entendre pendant 1 minute par niveau ce qu’un autre personnage se dit mentalement. Il peut
       également voir les images que celui-ci s’imagine. Toutefois, pour pénétrer le mental de quelqu'un, le personnage

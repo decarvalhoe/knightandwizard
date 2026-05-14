@@ -6,8 +6,8 @@
 version: 1
 metadata:
   source: web
-  imported_at: "2026-04-25"
-  updated_at: "2026-04-30"
+  imported_at: '2026-04-25'
+  updated_at: '2026-04-30'
   total_entries: 31
   total_playable_races: 25
   source_files:
@@ -30,11 +30,11 @@ metadata:
 #   lore (descriptif narratif)
 
 creatures:
-
   # === HUMAINS ET PROCHES ===
 
   - id: humain
-    name: "Humain, -e"
+    name: 'Humain, -e'
+    status: active
     category: humanoid
     size_m: 1.75
     life_expectancy: 75
@@ -52,24 +52,37 @@ creatures:
       intelligence: 5
       reflexes: 5
       perception: 5
-    innate_atouts: ["Anti-limites physiques"]
+    innate_atouts: ['Anti-limites physiques']
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Empire", "Enorie", "Aderand", "Terres du Nord", "Alteria", "Cortega", "Dundoria", "Yonkado", "Irtanie", "Dêtre"]
+    habitat:
+      [
+        'Empire',
+        'Enorie',
+        'Aderand',
+        'Terres du Nord',
+        'Alteria',
+        'Cortega',
+        'Dundoria',
+        'Yonkado',
+        'Irtanie',
+        'Dêtre'
+      ]
     social_structure: civilized
     playable: true
-    lore: "Race-pivot polyvalente. Capable du meilleur comme du pire."
+    lore: 'Race-pivot polyvalente. Capable du meilleur comme du pire.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:humain"
+        ref: 'entry:humain'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:humain"
+        ref: 'entry:humain'
     metadata: { source: paper, version: 1 }
 
   - id: demi_elfe
-    name: "Demi-elfe"
+    name: 'Demi-elfe'
+    status: active
     category: humanoid
     size_m: 1.80
     life_expectancy: 2000
@@ -87,29 +100,30 @@ creatures:
       intelligence: 5
       reflexes: 5
       perception: 5
-    innate_atouts: ["Dépassement de soi", "Vision nocturne"]
+    innate_atouts: ['Dépassement de soi', 'Vision nocturne']
     intelligence_level: sentient
     language_capable: true
-    habitat: ["parmi les Elfes ou les Humains"]
+    habitat: ['parmi les Elfes ou les Humains']
     social_structure: civilized
     playable: true
     lore: "Issu d'une union humain × elfe. Mentalité variable selon enfance."
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:demi_elfe"
+        ref: 'entry:demi_elfe'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:demi_elfe"
+        ref: 'entry:demi_elfe'
     metadata: { source: paper, version: 1 }
 
   # === ELFES ===
 
   - id: haut_elfe
-    name: "Haut-elfe, -"
+    name: 'Haut-elfe, -'
+    status: active
     category: humanoid
     size_m: 1.90
-    life_expectancy: -1  # immortel
+    life_expectancy: -1 # immortel
     xp_category: 20
     vitality_base: 15
     speed_factor_base: 7
@@ -124,28 +138,29 @@ creatures:
       intelligence: 7
       reflexes: 5
       perception: 5
-    innate_atouts: ["Vision nocturne"]
+    innate_atouts: ['Vision nocturne']
     resistances:
-      - { type: alcool, value: 30, source: "race:haut_elfe" }
-      - { type: maladies, value: 30, source: "race:haut_elfe" }
-      - { type: vision, value: 110, source: "race:haut_elfe" }
+      - { type: alcool, value: 30, source: 'race:haut_elfe' }
+      - { type: maladies, value: 30, source: 'race:haut_elfe' }
+      - { type: vision, value: 110, source: 'race:haut_elfe' }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Haut Royaume"]
+    habitat: ['Haut Royaume']
     social_structure: civilized
     playable: true
-    lore: "Cités blanches utopiques, sagesse, calme."
+    lore: 'Cités blanches utopiques, sagesse, calme.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:haut_elfe"
+        ref: 'entry:haut_elfe'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:haut_elfe"
+        ref: 'entry:haut_elfe'
     metadata: { source: paper, version: 1 }
 
   - id: elfe_des_bois
-    name: "Elfe des Bois"
+    name: 'Elfe des Bois'
+    status: active
     category: humanoid
     size_m: 1.85
     life_expectancy: -1
@@ -163,28 +178,29 @@ creatures:
       intelligence: 6
       reflexes: 6
       perception: 6
-    innate_atouts: ["Vision nocturne"]
+    innate_atouts: ['Vision nocturne']
     resistances:
       - { type: alcool, value: 24 }
       - { type: maladies, value: 30 }
       - { type: vision, value: 110 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Forêt de Tyrkan"]
+    habitat: ['Forêt de Tyrkan']
     social_structure: civilized
     playable: true
     lore: "Philosophie de l'équilibre, archers réputés."
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:elfe_des_bois"
+        ref: 'entry:elfe_des_bois'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:elfe_des_bois"
+        ref: 'entry:elfe_des_bois'
     metadata: { source: paper, version: 1 }
 
   - id: elfe_sombre
-    name: "Elfe Sombre"
+    name: 'Elfe Sombre'
+    status: active
     category: humanoid
     size_m: 1.90
     life_expectancy: -1
@@ -202,28 +218,29 @@ creatures:
       intelligence: 6
       reflexes: 5
       perception: 5
-    innate_atouts: ["Vision nocturne"]
+    innate_atouts: ['Vision nocturne']
     resistances:
       - { type: alcool, value: 30 }
       - { type: maladies, value: 30 }
       - { type: vision, value: 110 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Monde Sombre"]
+    habitat: ['Monde Sombre']
     social_structure: civilized
     playable: true
-    lore: "Sans larmes, sans sentiments envers les étrangers. Présage funeste."
+    lore: 'Sans larmes, sans sentiments envers les étrangers. Présage funeste.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:elfe_sombre"
+        ref: 'entry:elfe_sombre'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:elfe_sombre"
+        ref: 'entry:elfe_sombre'
     metadata: { source: paper, version: 1 }
 
   - id: elfe_de_nacre
-    name: "Elfe de Nacre"
+    name: 'Elfe de Nacre'
+    status: active
     category: humanoid
     size_m: 1.85
     life_expectancy: -1
@@ -241,7 +258,7 @@ creatures:
       intelligence: 6
       reflexes: 5
       perception: 5
-    innate_atouts: ["Vision nocturne"]
+    innate_atouts: ['Vision nocturne']
     resistances:
       - { type: alcool, value: 30 }
       - { type: drogues, value: 12 }
@@ -249,24 +266,25 @@ creatures:
       - { type: vision, value: 110 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Blanc Royaume"]
+    habitat: ['Blanc Royaume']
     social_structure: civilized
     playable: true
-    lore: "Le plus cruel des peuples. Drogues, piercings, prisonniers."
+    lore: 'Le plus cruel des peuples. Drogues, piercings, prisonniers.'
     notes_kw_invention: true
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:elfe_de_nacre"
+        ref: 'entry:elfe_de_nacre'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:elfe_de_nacre"
+        ref: 'entry:elfe_de_nacre'
     metadata: { source: paper, version: 1 }
 
   # === PETITES RACES ===
 
   - id: nain
-    name: "Nain, -e"
+    name: 'Nain, -e'
+    status: active
     category: humanoid
     size_m: 1.30
     life_expectancy: 500
@@ -284,7 +302,7 @@ creatures:
       intelligence: 5
       reflexes: 4
       perception: 4
-    innate_atouts: ["Force de géant"]
+    innate_atouts: ['Force de géant']
     resistances:
       - { type: alcool, value: 30 }
       - { type: drogues, value: 21 }
@@ -296,18 +314,19 @@ creatures:
     habitat: ["Portes d'Azrak"]
     social_structure: civilized
     playable: true
-    lore: "Entêtés, déterminés. Meilleurs artisans (architecture, joaillerie, forge, brasseurs de bières)."
+    lore: 'Entêtés, déterminés. Meilleurs artisans (architecture, joaillerie, forge, brasseurs de bières).'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:nain"
+        ref: 'entry:nain'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:nain"
+        ref: 'entry:nain'
     metadata: { source: paper, version: 1 }
 
   - id: hobbit
-    name: "Hobbit"
+    name: 'Hobbit'
+    status: active
     category: humanoid
     size_m: 1.10
     life_expectancy: 95
@@ -325,27 +344,28 @@ creatures:
       intelligence: 5
       reflexes: 5
       perception: 5
-    innate_atouts: ["Pieds poilus"]
+    innate_atouts: ['Pieds poilus']
     resistances:
       - { type: fumee, value: 60 }
       - { type: magie, value: 60 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["paysans, vallées"]
+    habitat: ['paysans, vallées']
     social_structure: civilized
     playable: true
-    lore: "Paisibles paysans. Tabac, agriculture. Déplacement silencieux."
+    lore: 'Paisibles paysans. Tabac, agriculture. Déplacement silencieux.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:hobbit"
+        ref: 'entry:hobbit'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:hobbit"
+        ref: 'entry:hobbit'
     metadata: { source: paper, version: 1 }
 
   - id: gnome
-    name: "Gnome"
+    name: 'Gnome'
+    status: active
     category: humanoid
     size_m: 0.6
     life_expectancy: 200
@@ -363,7 +383,7 @@ creatures:
       intelligence: 5
       reflexes: 5
       perception: 6
-    innate_atouts: ["Affinité avec les illusions", "Vision nocturne"]
+    innate_atouts: ['Affinité avec les illusions', 'Vision nocturne']
     resistances:
       - { type: magie, value: 20 }
     intelligence_level: sentient
@@ -371,18 +391,19 @@ creatures:
     habitat: ["Collines d'Ico"]
     social_structure: civilized
     playable: true
-    lore: "Mystérieux, joyeux. Plus grands illusionnistes."
+    lore: 'Mystérieux, joyeux. Plus grands illusionnistes.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:gnome"
+        ref: 'entry:gnome'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:gnome"
+        ref: 'entry:gnome'
     metadata: { source: paper, version: 1 }
 
   - id: gobelin
-    name: "Gobelin, -e"
+    name: 'Gobelin, -e'
+    status: active
     category: humanoid
     size_m: 0.5
     life_expectancy: 15
@@ -400,28 +421,29 @@ creatures:
       intelligence: 4
       reflexes: 5
       perception: 5
-    innate_atouts: ["Frénésie collective", "Vision nocturne"]
+    innate_atouts: ['Frénésie collective', 'Vision nocturne']
     resistances:
       - { type: maladies, value: 16 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Terres Sauvages"]
+    habitat: ['Terres Sauvages']
     social_structure: tribal
     playable: true
-    lore: "Sale, vert, sournois. Pillent en nombre. Nocturne."
+    lore: 'Sale, vert, sournois. Pillent en nombre. Nocturne.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:gobelin"
+        ref: 'entry:gobelin'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:gobelin"
+        ref: 'entry:gobelin'
     metadata: { source: paper, version: 1 }
 
   # === RACES MASSIVES ===
 
   - id: orc
-    name: "Orc"
+    name: 'Orc'
+    status: active
     category: humanoid
     size_m: 1.60
     life_expectancy: 35
@@ -439,26 +461,27 @@ creatures:
       intelligence: 4
       reflexes: 5
       perception: 5
-    innate_atouts: ["Peur", "Vision nocturne"]
+    innate_atouts: ['Peur', 'Vision nocturne']
     resistances:
       - { type: maladies, value: 4 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Terres Sauvages"]
+    habitat: ['Terres Sauvages']
     social_structure: tribal
     playable: true
-    lore: "Brutalité, violence, pillage. Soldats parfaits sous bon chef."
+    lore: 'Brutalité, violence, pillage. Soldats parfaits sous bon chef.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:orc"
+        ref: 'entry:orc'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:orc"
+        ref: 'entry:orc'
     metadata: { source: paper, version: 1 }
 
   - id: ogre
-    name: "Ogre, -sse"
+    name: 'Ogre, -sse'
+    status: active
     category: humanoid
     size_m: 3.0
     life_expectancy: 300
@@ -476,29 +499,30 @@ creatures:
       intelligence: 4
       reflexes: 3
       perception: 4
-    innate_atouts: ["Terreur"]
+    innate_atouts: ['Terreur']
     resistances:
       - { type: feu, value: 54 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Terres Sauvages"]
+    habitat: ['Terres Sauvages']
     social_structure: tribal
     playable: true
-    lore: "Énormes créatures grasses. Carnivores, friands de chair humaine, surtout enfants."
+    lore: 'Énormes créatures grasses. Carnivores, friands de chair humaine, surtout enfants.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:ogre"
+        ref: 'entry:ogre'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:ogre"
+        ref: 'entry:ogre'
     metadata: { source: paper, version: 1 }
 
   - id: troll
-    name: "Troll, -ope"
+    name: 'Troll, -ope'
+    status: active
     category: humanoid
     size_m: 3.60
-    life_expectancy: -1  # immortel
+    life_expectancy: -1 # immortel
     xp_category: 48
     vitality_base: 120
     speed_factor_base: 10
@@ -513,30 +537,31 @@ creatures:
       intelligence: 2
       reflexes: 4
       perception: 4
-    innate_atouts: ["Auto régénération", "Terreur", "Vision nocturne"]
-    innate_handicaps: ["Aube pétrificatrice"]
+    innate_atouts: ['Auto régénération', 'Terreur', 'Vision nocturne']
+    innate_handicaps: ['Aube pétrificatrice']
     resistances:
       - { type: maladies, value: 20 }
       - { type: poisons, value: 11 }
     intelligence_level: semi_sentient
-    language_capable: true  # rarement
-    habitat: ["Terres Sauvages"]
+    language_capable: true # rarement
+    habitat: ['Terres Sauvages']
     social_structure: solitary
     playable: true
     lore: "Force brute. Régénération, mais pétrifié à l'aube."
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:troll"
+        ref: 'entry:troll'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:troll"
+        ref: 'entry:troll'
     metadata: { source: paper, version: 1 }
 
   # === CRÉATURES MYTHOLOGIQUES ===
 
   - id: centaure
-    name: "Centaure, -sse"
+    name: 'Centaure, -sse'
+    status: active
     category: humanoid
     size_m: 2.40
     life_expectancy: 100
@@ -554,7 +579,7 @@ creatures:
       intelligence: 5
       reflexes: 5
       perception: 5
-    innate_atouts: ["Vélocité"]
+    innate_atouts: ['Vélocité']
     resistances:
       - { type: alcool, value: 11 }
     intelligence_level: sentient
@@ -562,18 +587,19 @@ creatures:
     habitat: []
     social_structure: tribal
     playable: true
-    lore: "Forces de la nature. Esprits violents, attirance pour le bon vin."
+    lore: 'Forces de la nature. Esprits violents, attirance pour le bon vin.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:centaure"
+        ref: 'entry:centaure'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:centaure"
+        ref: 'entry:centaure'
     metadata: { source: paper, version: 1 }
 
   - id: dryade
-    name: "Dryade"
+    name: 'Dryade'
+    status: active
     category: spirit
     size_m: 1.70
     life_expectancy: -1
@@ -591,24 +617,25 @@ creatures:
       intelligence: 5
       reflexes: 5
       perception: 5
-    innate_atouts: ["Lingua vegetalis", "Vegothropie"]
+    innate_atouts: ['Lingua vegetalis', 'Vegothropie']
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Forêt de Tyrkan", "Collines d'Ico"]
+    habitat: ['Forêt de Tyrkan', "Collines d'Ico"]
     social_structure: solitary
     playable: true
-    lore: "Nymphes des arbres. Toujours féminines. Transformation en arbre possible."
+    lore: 'Nymphes des arbres. Toujours féminines. Transformation en arbre possible.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:dryade"
+        ref: 'entry:dryade'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:dryade"
+        ref: 'entry:dryade'
     metadata: { source: paper, version: 1 }
 
   - id: ondine
-    name: "Ondine"
+    name: 'Ondine'
+    status: active
     category: spirit
     size_m: 1.75
     life_expectancy: -1
@@ -626,26 +653,27 @@ creatures:
       intelligence: 5
       reflexes: 5
       perception: 5
-    innate_atouts: ["Chant envoûtant", "Race aquatique"]
+    innate_atouts: ['Chant envoûtant', 'Race aquatique']
     intelligence_level: sentient
     language_capable: true
     habitat: ["points d'eaux vives"]
     social_structure: solitary
     playable: true
-    lore: "Nymphes des eaux. Charme surnaturel. Acquièrent une âme par mariage."
+    lore: 'Nymphes des eaux. Charme surnaturel. Acquièrent une âme par mariage.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:ondine"
+        ref: 'entry:ondine'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:ondine"
+        ref: 'entry:ondine'
     metadata: { source: paper, version: 1 }
 
   # === FÉLIDÉS ===
 
   - id: chigr
-    name: "Chigr"
+    name: 'Chigr'
+    status: active
     category: humanoid
     size_m: 1.70
     life_expectancy: 50
@@ -663,26 +691,27 @@ creatures:
       intelligence: 4
       reflexes: 6
       perception: 6
-    innate_atouts: ["Équilibre contrôlé", "Retombe sur ses pattes", "Vision nocturne"]
+    innate_atouts: ['Équilibre contrôlé', 'Retombe sur ses pattes', 'Vision nocturne']
     resistances:
       - { type: chaleur, value: 3 }
     intelligence_level: sentient
     language_capable: true
     social_structure: tribal
     playable: true
-    lore: "Le plus petit des félidés. Mélange humain × petit félin (chat, lynx, ocelot)."
+    lore: 'Le plus petit des félidés. Mélange humain × petit félin (chat, lynx, ocelot).'
     notes_kw_invention: true
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:chigr"
+        ref: 'entry:chigr'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:chigr"
+        ref: 'entry:chigr'
     metadata: { source: paper, version: 1 }
 
   - id: khochigr
-    name: "Khochigr"
+    name: 'Khochigr'
+    status: active
     category: humanoid
     size_m: 1.90
     life_expectancy: 55
@@ -700,26 +729,27 @@ creatures:
       intelligence: 4
       reflexes: 6
       perception: 6
-    innate_atouts: ["Équilibre contrôlé", "Retombe sur ses pattes", "Vision nocturne"]
+    innate_atouts: ['Équilibre contrôlé', 'Retombe sur ses pattes', 'Vision nocturne']
     resistances:
       - { type: chaleur, value: 6 }
     intelligence_level: sentient
     language_capable: true
     social_structure: tribal
     playable: true
-    lore: "Mélange équilibré humain × félin moyen (léopard, panthère, puma, jaguar, guépard)."
+    lore: 'Mélange équilibré humain × félin moyen (léopard, panthère, puma, jaguar, guépard).'
     notes_kw_invention: true
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:khochigr"
+        ref: 'entry:khochigr'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:khochigr"
+        ref: 'entry:khochigr'
     metadata: { source: paper, version: 1 }
 
   - id: khogr
-    name: "Khogr"
+    name: 'Khogr'
+    status: active
     category: humanoid
     size_m: 1.95
     life_expectancy: 60
@@ -737,28 +767,29 @@ creatures:
       intelligence: 4
       reflexes: 6
       perception: 6
-    innate_atouts: ["Équilibre contrôlé", "Retombe sur ses pattes", "Vision nocturne"]
+    innate_atouts: ['Équilibre contrôlé', 'Retombe sur ses pattes', 'Vision nocturne']
     resistances:
       - { type: chaleur, value: 9 }
     intelligence_level: sentient
     language_capable: true
     social_structure: tribal
     playable: true
-    lore: "Plus grand des félidés (lion, tigre). Force de la nature, prédateur."
+    lore: 'Plus grand des félidés (lion, tigre). Force de la nature, prédateur.'
     notes_kw_invention: true
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:khogr"
+        ref: 'entry:khogr'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:khogr"
+        ref: 'entry:khogr'
     metadata: { source: paper, version: 1 }
 
   # === HOMMES-X (anthropomorphes) ===
 
   - id: canidae
-    name: "Canidae"
+    name: 'Canidae'
+    status: active
     category: humanoid
     size_m: 2.10
     life_expectancy: 65
@@ -776,27 +807,28 @@ creatures:
       intelligence: 5
       reflexes: 5
       perception: 7
-    innate_atouts: ["Flaire infaillible", "Pisteur né"]
+    innate_atouts: ['Flaire infaillible', 'Pisteur né']
     resistances:
       - { type: fatigue, value: 25 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["orées de forêts, plaines karstiques, grottes"]
-    social_structure: pack  # meutes
+    habitat: ['orées de forêts, plaines karstiques, grottes']
+    social_structure: pack # meutes
     playable: true
-    lore: "Hommes-loup / Hommes-chien. Endurance et flaire. Sous-espèce : Gnolls (mélange humain + hyène)."
-    sub_species: ["gnolls"]
+    lore: 'Hommes-loup / Hommes-chien. Endurance et flaire. Sous-espèce : Gnolls (mélange humain + hyène).'
+    sub_species: ['gnolls']
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:canidae"
+        ref: 'entry:canidae'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:canidae"
+        ref: 'entry:canidae'
     metadata: { source: paper, version: 1 }
 
   - id: homme_lezard
-    name: "Homme Lézard / Femme Lézard"
+    name: 'Homme Lézard / Femme Lézard'
+    status: active
     category: humanoid
     size_m: 1.80
     life_expectancy: 70
@@ -814,28 +846,29 @@ creatures:
       intelligence: 5
       reflexes: 8
       perception: 6
-    innate_atouts: ["Sang-froid", "Vision nocturne"]
-    innate_handicaps: ["Organisme fragile"]
+    innate_atouts: ['Sang-froid', 'Vision nocturne']
+    innate_handicaps: ['Organisme fragile']
     resistances:
       - { type: chaleur, value: 36 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Stazyliss"]
+    habitat: ['Stazyliss']
     social_structure: tribal
     playable: true
-    lore: "Imperturbables, escarmouches ciblées. Pacifiques, isolationnistes."
+    lore: 'Imperturbables, escarmouches ciblées. Pacifiques, isolationnistes.'
     notes_kw_invention: true
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:homme_lezard"
+        ref: 'entry:homme_lezard'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:homme_lezard"
+        ref: 'entry:homme_lezard'
     metadata: { source: paper, version: 1 }
 
   - id: homme_oiseau
-    name: "Homme Oiseau / Femme Oiselle"
+    name: 'Homme Oiseau / Femme Oiselle'
+    status: active
     category: humanoid
     size_m: 1.85
     life_expectancy: 90
@@ -853,27 +886,28 @@ creatures:
       intelligence: 5
       reflexes: 5
       perception: 7
-    innate_atouts: ["Vol"]
+    innate_atouts: ['Vol']
     resistances:
       - { type: vision, value: 235 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Grande Cité Haute (palais flottant)"]
+    habitat: ['Grande Cité Haute (palais flottant)']
     social_structure: civilized
     playable: true
-    lore: "Pacifique, discret, légendaire."
+    lore: 'Pacifique, discret, légendaire.'
     notes_kw_invention: true
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:homme_oiseau"
+        ref: 'entry:homme_oiseau'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:homme_oiseau"
+        ref: 'entry:homme_oiseau'
     metadata: { source: paper, version: 1 }
 
   - id: homme_rat
-    name: "Homme Rat / Femme Ratte"
+    name: 'Homme Rat / Femme Ratte'
+    status: active
     category: humanoid
     size_m: 1.50
     life_expectancy: 45
@@ -891,31 +925,32 @@ creatures:
       intelligence: 5
       reflexes: 6
       perception: 6
-    innate_atouts: ["Frénésie collective", "Vision nocturne"]
+    innate_atouts: ['Frénésie collective', 'Vision nocturne']
     resistances:
       - { type: maladies, value: 49 }
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Souterrain"]
-    social_structure: civilized  # Empire
+    habitat: ['Souterrain']
+    social_structure: civilized # Empire
     playable: true
-    lore: "Sociaux, imprévisibles, adaptatifs. Empereur héréditaire par joutes."
+    lore: 'Sociaux, imprévisibles, adaptatifs. Empereur héréditaire par joutes.'
     notes_kw_invention: true
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:homme_rat"
+        ref: 'entry:homme_rat'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:homme_rat"
+        ref: 'entry:homme_rat'
     metadata: { source: paper, version: 1 }
 
   # === MORT-VIVANTS ===
 
   - id: fantome
-    name: "Fantôme"
+    name: 'Fantôme'
+    status: active
     category: undead
-    size_m: 0  # dépend de la race de base
+    size_m: 0 # dépend de la race de base
     life_expectancy: -1
     xp_category: 31
     vitality_base: 13
@@ -931,26 +966,27 @@ creatures:
       intelligence: 5
       reflexes: 3
       perception: 4
-    innate_atouts: ["Immatérialité", "Mort-vivant", "Possession", "Vision nocturne", "Vol"]
+    innate_atouts: ['Immatérialité', 'Mort-vivant', 'Possession', 'Vision nocturne', 'Vol']
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Landes Désertiques"]
+    habitat: ['Landes Désertiques']
     social_structure: solitary
     playable: false
-    lore: "Âmes errantes avec mission. Possession = 1 par défaut."
+    lore: 'Âmes errantes avec mission. Possession = 1 par défaut.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:fantome"
+        ref: 'entry:fantome'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:fantome"
+        ref: 'entry:fantome'
     metadata: { source: paper, version: 1 }
 
   - id: squelette
-    name: "Squelette"
+    name: 'Squelette'
+    status: active
     category: undead
-    size_m: 0  # celle de l'ancienne race
+    size_m: 0 # celle de l'ancienne race
     life_expectancy: -1
     xp_category: 16
     vitality_base: 15
@@ -966,24 +1002,25 @@ creatures:
       intelligence: 4
       reflexes: 4
       perception: 3
-    innate_atouts: ["Jusqu'à la mort", "Mort-vivant", "Peur"]
-    intelligence_level: instinctive  # parfois plus selon l'individu
-    language_capable: false  # généralement
-    habitat: ["Landes Désertiques", "nécropoles"]
+    innate_atouts: ["Jusqu'à la mort", 'Mort-vivant', 'Peur']
+    intelligence_level: instinctive # parfois plus selon l'individu
+    language_capable: false # généralement
+    habitat: ['Landes Désertiques', 'nécropoles']
     social_structure: pack
     playable: false
-    lore: "Relevés par nécromancie. Sans peur, sans tentation, sans remords."
+    lore: 'Relevés par nécromancie. Sans peur, sans tentation, sans remords.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:squelette"
+        ref: 'entry:squelette'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:squelette"
+        ref: 'entry:squelette'
     metadata: { source: paper, version: 1 }
 
   - id: vampire
-    name: "Vampire, sse"
+    name: 'Vampire, sse'
+    status: active
     category: undead
     size_m: 1.75
     life_expectancy: -1
@@ -1001,26 +1038,36 @@ creatures:
       intelligence: 5
       reflexes: 5
       perception: 5
-    innate_atouts: ["Baiser de la nuit", "Baiser des ténèbres", "Brumathropie", "Chiroptèrothropie", "Lycanthropie", "Mort-vivant", "Vision nocturne"]
-    innate_handicaps: ["Aube meurtrière", "Sans reflet", "Soif de sang"]
+    innate_atouts:
+      [
+        'Baiser de la nuit',
+        'Baiser des ténèbres',
+        'Brumathropie',
+        'Chiroptèrothropie',
+        'Lycanthropie',
+        'Mort-vivant',
+        'Vision nocturne'
+      ]
+    innate_handicaps: ['Aube meurtrière', 'Sans reflet', 'Soif de sang']
     intelligence_level: sentient
     language_capable: true
-    habitat: ["Partout"]
+    habitat: ['Partout']
     social_structure: solitary
-    playable: true  # via transformation D3 Q-D3.5
-    lore: "Humains qui ont embrassé la mort. Beauté ténébreuse, canines, peau froide."
+    playable: true # via transformation D3 Q-D3.5
+    lore: 'Humains qui ont embrassé la mort. Beauté ténébreuse, canines, peau froide.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:vampire"
+        ref: 'entry:vampire'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:vampire"
+        ref: 'entry:vampire'
     metadata: { source: paper, version: 1 }
 
   - id: loup_garou
-    name: "Loup-garou, Louve-garou"
-    category: humanoid  # forme hybride
+    name: 'Loup-garou, Louve-garou'
+    status: active
+    category: humanoid # forme hybride
     size_m: 2.50
     life_expectancy: 50
     xp_category: 45
@@ -1037,27 +1084,36 @@ creatures:
       intelligence: 4
       reflexes: 7
       perception: 7
-    innate_atouts: ["Auto régénération", "Humanothropie", "Lycanthropie", "Morsure lupine", "Terreur", "Vision nocturne"]
-    innate_handicaps: ["Brûlure de l'argent", "Rage lunaire"]
-    intelligence_level: sentient  # forme humaine ; instinctive en forme bestiale
-    language_capable: true  # en forme humaine
+    innate_atouts:
+      [
+        'Auto régénération',
+        'Humanothropie',
+        'Lycanthropie',
+        'Morsure lupine',
+        'Terreur',
+        'Vision nocturne'
+      ]
+    innate_handicaps: ["Brûlure de l'argent", 'Rage lunaire']
+    intelligence_level: sentient # forme humaine ; instinctive en forme bestiale
+    language_capable: true # en forme humaine
     habitat: ["régions peuplées d'humains"]
-    social_structure: pack  # parmi les loups
-    playable: true  # via Morsure lupine D3 Q-D3.5
-    lore: "Vit parmi les hommes, transformation pleine lune. Société secrète parmi les meutes de loups."
+    social_structure: pack # parmi les loups
+    playable: true # via Morsure lupine D3 Q-D3.5
+    lore: 'Vit parmi les hommes, transformation pleine lune. Société secrète parmi les meutes de loups.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:loup_garou"
+        ref: 'entry:loup_garou'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:loup_garou"
+        ref: 'entry:loup_garou'
     metadata: { source: paper, version: 1 }
 
   # === ANIMAUX ===
 
   - id: cheval
-    name: "Cheval, Jument"
+    name: 'Cheval, Jument'
+    status: active
     category: beast
     size_m: 1.80
     life_expectancy: 25
@@ -1075,23 +1131,24 @@ creatures:
       intelligence: 2
       reflexes: 3
       perception: 4
-    innate_atouts: ["Vélocité"]
+    innate_atouts: ['Vélocité']
     intelligence_level: instinctive
     language_capable: false
-    social_structure: pack  # troupeau
+    social_structure: pack # troupeau
     playable: false
     lore: "Plus belle conquête de l'homme. Transport, symbole de richesse."
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:cheval"
+        ref: 'entry:cheval'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:cheval"
+        ref: 'entry:cheval'
     metadata: { source: paper, version: 1, default_mount: true }
 
   - id: chat
-    name: "Chat, -te"
+    name: 'Chat, -te'
+    status: active
     category: beast
     size_m: 0.25
     life_expectancy: 15
@@ -1109,23 +1166,24 @@ creatures:
       intelligence: 2
       reflexes: 6
       perception: 7
-    innate_atouts: ["Équilibre contrôlé", "Retombe sur ses pattes", "Vision nocturne"]
+    innate_atouts: ['Équilibre contrôlé', 'Retombe sur ses pattes', 'Vision nocturne']
     intelligence_level: instinctive
     language_capable: false
     social_structure: solitary
     playable: false
-    lore: "Lien occulte. Familier de sorcière par excellence. Neuf vies."
+    lore: 'Lien occulte. Familier de sorcière par excellence. Neuf vies.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:chat"
+        ref: 'entry:chat'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:chat"
+        ref: 'entry:chat'
     metadata: { source: paper, version: 1, common_familiar: true }
 
   - id: loup
-    name: "Loup, Louve"
+    name: 'Loup, Louve'
+    status: active
     category: beast
     size_m: 0.8
     life_expectancy: 50
@@ -1143,26 +1201,27 @@ creatures:
       intelligence: 3
       reflexes: 6
       perception: 7
-    innate_atouts: ["Frénésie collective", "Vision nocturne"]
+    innate_atouts: ['Frénésie collective', 'Vision nocturne']
     intelligence_level: instinctive
     language_capable: false
-    habitat: ["forêts"]
-    social_structure: pack  # 3-15 individus
+    habitat: ['forêts']
+    social_structure: pack # 3-15 individus
     playable: false
-    lore: "Prédateur des forêts. En meute (3-15). Origine du mythe loup-garou."
+    lore: 'Prédateur des forêts. En meute (3-15). Origine du mythe loup-garou.'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:loup"
+        ref: 'entry:loup'
       - path: data/legacy/paper/regles-papier/extracted/listes/bestiaire.md
         sha256: 42bb96214a287182f5b009bf8c2a0019c0f339cb19bf84d477abdc18f9a159cd
-        ref: "entry:loup"
+        ref: 'entry:loup'
     metadata: { source: paper, version: 1 }
 
   # === MORTS-VIVANTS (web only) ===
 
   - id: zombie
-    name: "Zombie"
+    name: 'Zombie'
+    status: active
     category: undead
     size_m: 1.75
     life_expectancy: 0
@@ -1185,9 +1244,9 @@ creatures:
     language_capable: false
     social_structure: horde
     playable: false
-    lore: "Cadavre animé par nécromancie. Présent web-canonique uniquement (absent du paper)."
+    lore: 'Cadavre animé par nécromancie. Présent web-canonique uniquement (absent du paper).'
     source_refs:
       - path: data/legacy/web-scraped/documents/bestiaire/index.md
         sha256: 3c6089bf92473e5022e22064678fe2004bc64399c4f205b9d9b5e90c145f2da9
-        ref: "entry:zombie"
+        ref: 'entry:zombie'
     metadata: { source: web, version: 1, web_only: true }

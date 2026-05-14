@@ -12,6 +12,7 @@ metadata:
 orientations:
   - id: artisan
     name: Artisan
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -19,6 +20,7 @@ orientations:
         ref: line:8
   - id: artiste
     name: Artiste
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -26,6 +28,7 @@ orientations:
         ref: line:20
   - id: commercant
     name: Commerçant
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -33,6 +36,7 @@ orientations:
         ref: line:30
   - id: dommestique
     name: Dommestique
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -40,6 +44,7 @@ orientations:
         ref: line:37
   - id: guerrier
     name: Guerrier
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -47,6 +52,7 @@ orientations:
         ref: line:43
   - id: hors-la-loi
     name: Hors-la-loi
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -54,6 +60,7 @@ orientations:
         ref: line:60
   - id: intellectuel
     name: Intellectuel
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -61,6 +68,7 @@ orientations:
         ref: line:68
   - id: magicien
     name: Magicien
+    status: active
     is_magical: true
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -68,6 +76,7 @@ orientations:
         ref: line:77
   - id: ouvrier
     name: Ouvrier
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -75,6 +84,7 @@ orientations:
         ref: line:90
   - id: paysan
     name: Paysan
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -82,6 +92,7 @@ orientations:
         ref: line:92
   - id: religieux
     name: Religieux
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md
@@ -89,6 +100,7 @@ orientations:
         ref: line:100
   - id: voyageur
     name: Voyageur
+    status: active
     is_magical: false
     source_refs:
       - path: data/legacy/web-scraped/documents/classes/index.md

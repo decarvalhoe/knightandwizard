@@ -7906,7 +7906,7 @@ sources:
     notes: "Product catalog table."
   - id: "data-catalogs-atouts"
     path: "data/catalogs/atouts.yaml"
-    sha256: "4b88861f7ab2177e411097976074e0321805b7e20485ea14aef4f9e2d7b3a66c"
+    sha256: "309112ef179836b88a98802314f34124d762486103f810c4e8d4cd96136490d8"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -7915,7 +7915,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-bestiaire"
     path: "data/catalogs/bestiaire.yaml"
-    sha256: "0fd177814a8cba18e28ff59df5bd40b2d44dca343545088501b415dbffcdd763"
+    sha256: "b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -7942,7 +7942,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-classes"
     path: "data/catalogs/classes.yaml"
-    sha256: "ca0f8b071238de3af184c2a13d300ff260482756bc661d844db16b1b9d0ed0d3"
+    sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -7951,7 +7951,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-competences"
     path: "data/catalogs/competences.yaml"
-    sha256: "07b5cb838a6f93548cb02cc4e611498cb07397630a580f8c3fb16ad588424058"
+    sha256: "c3f2bbf779626391287e720fa05ffc6cbf5506ab4b42d78ecaefeb6dd9f0cb07"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -7987,7 +7987,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-magic-schools"
     path: "data/catalogs/magic-schools.yaml"
-    sha256: "05286d621d627b28ca8ed509844cd07f982826b321b2f8b847b354bd7d74c7c6"
+    sha256: "e800ed7248c76f0683e32bbb9bb4148fa6bf555d66d1ace620164c5d9a5a7b6e"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -8014,7 +8014,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-orientations"
     path: "data/catalogs/orientations.yaml"
-    sha256: "2fface6be9852d23627263c7c39ffb212bd30cff6aca3ecdae19c58acf745a44"
+    sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -8059,7 +8059,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-spells"
     path: "data/catalogs/spells.yaml"
-    sha256: "7ee80f69170c015e80616adf56aeac6ce10a5fcc2165e1fdd9c368955dfbba7c"
+    sha256: "9791f9f5706c718d0c85545f10177a5887817e868ee47cb1c3450b857c14b51e"
     source_type: catalog_yaml
     priority: 90
     status: active

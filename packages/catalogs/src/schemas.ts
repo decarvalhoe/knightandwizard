@@ -25,6 +25,13 @@ export const EntryMetadataSchema = z
   })
   .passthrough();
 
+export const CatalogEntryStatusSchema = z.enum([
+  'active',
+  'ambiguous',
+  'deprecated',
+  'raw_reference_only'
+]);
+
 export const DamageProfileSchema = z
   .object({
     P: z.number(),
@@ -62,6 +69,7 @@ export const BestiaryEntrySchema = z
   .object({
     id: NonEmptyStringSchema,
     name: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema,
     category: NonEmptyStringSchema,
     size_m: z.number(),
     life_expectancy: z.number(),
@@ -203,6 +211,7 @@ export const SkillSchema = z
   .object({
     id: NonEmptyStringSchema,
     name: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema,
     family: NonEmptyStringSchema,
     family_name: NonEmptyStringSchema.optional(),
     parent_id: NullableStringSchema.optional(),
@@ -219,6 +228,7 @@ export const OrientationSchema = z
   .object({
     id: NonEmptyStringSchema,
     name: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema,
     is_magical: z.boolean(),
     source_refs: z.array(SourceRefSchema).optional(),
     metadata: EntryMetadataSchema.optional()
@@ -235,6 +245,7 @@ export const ClassSchema = z
   .object({
     id: NonEmptyStringSchema,
     name: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema,
     orientation_id: NonEmptyStringSchema,
     primary_skill_id: NullableStringSchema.optional(),
     primary_skill_choice: PrimarySkillChoiceSchema,
@@ -251,6 +262,7 @@ export const MagicSchoolSchema = z
   .object({
     id: NonEmptyStringSchema,
     name: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema,
     source_label: NonEmptyStringSchema.optional(),
     color: NonEmptyStringSchema,
     specialist_class_id: NonEmptyStringSchema,
@@ -268,6 +280,7 @@ export const SpellSchema = z
   .object({
     id: NonEmptyStringSchema,
     name: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema,
     school_id: NonEmptyStringSchema,
     energy: z.number().int(),
     incantation_time: z.number().int(),
@@ -312,6 +325,7 @@ export const AtoutSchema = z
   .object({
     id: NonEmptyStringSchema,
     name: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema,
     effect: z.string(),
     value: z.number().int(),
     activation: AtoutActivationSchema,
@@ -340,6 +354,7 @@ export type OrganisationsCatalog = z.infer<typeof OrganisationsCatalogSchema>;
 export type Religion = z.infer<typeof ReligionSchema>;
 export type ReligionsCatalog = z.infer<typeof ReligionsCatalogSchema>;
 export type SourceRef = z.infer<typeof SourceRefSchema>;
+export type CatalogEntryStatus = z.infer<typeof CatalogEntryStatusSchema>;
 export type Skill = z.infer<typeof SkillSchema>;
 export type SkillsCatalog = z.infer<typeof SkillsCatalogSchema>;
 export type Orientation = z.infer<typeof OrientationSchema>;
