@@ -25,8 +25,20 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('Cuisine corteganne')).toBeVisible();
     await expect(page.getByText(/Catalogue implicite : 10 entrées, 7 notées/)).toBeVisible();
 
+    await page.getByRole('button', { name: /Esthétisme/ }).click();
+    await expect(page.getByTestId('last-roll-forced-failure')).toHaveText(
+      'Échec automatique (attribut 0)'
+    );
+
+    await page.evaluate(() => {
+      const values = [0, 0, 0, 0, 0.72];
+      Math.random = () => values.shift() ?? 0.5;
+    });
     await page.getByRole('button', { name: /Force/ }).click();
     await expect(page.getByText('Dernier jet')).toBeVisible();
+    await expect(page.getByTestId('last-roll-critical-failure')).toHaveText(
+      'Échec critique · D100 = 73'
+    );
 
     await page.getByRole('button', { name: 'Combat' }).click();
     await expect(page.getByRole('heading', { name: 'Armes équipées' })).toBeVisible();

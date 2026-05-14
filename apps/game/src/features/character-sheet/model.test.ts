@@ -8,6 +8,7 @@ import {
 } from '@knightandwizard/rules-core';
 import {
   addInventoryItem,
+  attributeRollOutcomeLabels,
   buildCharacterSheetView,
   removeInventoryItem,
   rollAttributeCheck,
@@ -141,6 +142,48 @@ describe('character sheet model', () => {
     expect(result.isCriticalFailure).toBe(false);
     expect(result.isCriticalSuccess).toBe(false);
     expect(result.criticalFailureSeverity).toBeUndefined();
+  });
+
+  it('formats forced failures and critical D100 severity for the sheet UI', () => {
+    expect(
+      attributeRollOutcomeLabels({
+        attribute: 'aestheticism',
+        criticalFailureSeverity: undefined,
+        difficulty: 7,
+        isCriticalFailure: false,
+        isCriticalSuccess: false,
+        pool: 0,
+        rolls: [],
+        successes: 0,
+        total: 0
+      })
+    ).toEqual([
+      {
+        id: 'forced-failure',
+        label: 'Échec automatique (attribut 0)',
+        testId: 'last-roll-forced-failure'
+      }
+    ]);
+
+    expect(
+      attributeRollOutcomeLabels({
+        attribute: 'strength',
+        criticalFailureSeverity: 73,
+        difficulty: 7,
+        isCriticalFailure: true,
+        isCriticalSuccess: false,
+        pool: 2,
+        rolls: [2, 1],
+        successes: 0,
+        total: 3
+      })
+    ).toEqual([
+      {
+        id: 'critical-failure',
+        label: 'Échec critique · D100 = 73',
+        testId: 'last-roll-critical-failure'
+      }
+    ]);
   });
 
   it('adds and removes inventory quantities without duplicating item rows', () => {

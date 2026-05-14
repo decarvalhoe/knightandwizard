@@ -275,7 +275,7 @@ function buildDeterministicNarration(
     const critical = output.isCriticalSuccess
       ? ' Reussite critique.'
       : output.isCriticalFailure
-        ? ' Echec critique.'
+        ? ` Echec critique${typeof output.criticalFailureSeverity === 'number' ? ` D100 ${output.criticalFailureSeverity}` : ''}.`
         : '';
 
     return `Jet D10 difficulte ${input.difficulty}${reason}: ${output.successes} succes [${output.rolls.join(', ')}].${critical}`;
