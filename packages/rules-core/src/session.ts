@@ -243,6 +243,7 @@ export function queueGmDecision(
       payload: {
         assignedTo: decision.assignedTo,
         decisionId: decision.id,
+        payload: decision.payload,
         priority: decision.priority,
         requestedBy: decision.requestedBy,
         title: decision.title
@@ -392,6 +393,174 @@ export function requestSessionRollback(
       })
     ]
   };
+}
+
+/**
+ * Validates a rollback target and returns the reconstructed prior state.
+ *
+ * Unlike {@link requestSessionRollback} — which preserves history by appending
+ * a `rollback_requested` marker — this performs the actual revert: it rebuilds
+ * the derived projection (scenes, decisions, retained events) from the ordered
+ * log up to and including `targetSequence`. Throws when the target does not
+ * reference an existing event.
+ */
+export function revertSessionToSequence(
+  state: SessionState,
+  targetSequence: number
+): SessionState {
+  const target = state.events.find((event) => event.sequence === targetSequence);
+
+  if (!target) {
+    throw new Error('targetSequence must reference an existing event');
+  }
+
+  return rebuildSessionStateFromEvents(state, { upToSequence: targetSequence });
+}
+
+export interface RebuildSessionStateOptions {
+  /**
+   * When provided, only events whose sequence is less than or equal to this
+   * value are folded into the reconstructed state. Events after the target are
+   * dropped from the rebuilt projection. Defaults to the latest event.
+   */
+  upToSequence?: number;
+  /** Timestamp used for the rebuilt `updatedAt`. Defaults to the last folded event's `createdAt`. */
+  now?: string;
+}
+
+/**
+ * Pure event-sourced reconstruction of the derived session projection.
+ *
+ * The immutable event log is the source of truth: `scenes` and `decisions` are
+ * recomputed by folding the ordered events up to (and including) the target
+ * sequence. This is a real rollback/revert — it reconstructs the prior state
+ * rather than appending a marker. Players, mode, slug, title and the audit
+ * trail are session-level facts and are preserved from the input `state`.
+ *
+ * Events strictly after `upToSequence` are removed from the rebuilt projection,
+ * so callers obtain the exact state the session had at that point in time.
+ */
+export function rebuildSessionStateFromEvents(
+  state: SessionState,
+  options: RebuildSessionStateOptions = {}
+): SessionState {
+  const ordered = sortEvents(state.events);
+  const target =
+    options.upToSequence ?? ordered.reduce((max, event) => Math.max(max, event.sequence), 0);
+  const retained = ordered.filter((event) => event.sequence <= target);
+  const projection = retained.reduce<SessionProjection>(reduceSessionEvent, {
+    decisions: [],
+    scenes: []
+  });
+  const lastEvent = retained.at(-1);
+
+  return {
+    ...state,
+    decisions: projection.decisions,
+    events: retained,
+    scenes: projection.scenes,
+    updatedAt: options.now ?? lastEvent?.createdAt ?? state.createdAt
+  };
+}
+
+interface SessionProjection {
+  decisions: SessionDecision[];
+  scenes: SessionScene[];
+}
+
+function reduceSessionEvent(projection: SessionProjection, event: SessionEvent): SessionProjection {
+  switch (event.type) {
+    case 'scene_opened':
+      return {
+        ...projection,
+        scenes: [...projection.scenes, sceneFromEvent(event)]
+      };
+    case 'gm_decision_requested':
+      return {
+        ...projection,
+        decisions: [...projection.decisions, decisionFromRequestEvent(event)]
+      };
+    case 'gm_decision_resolved':
+      return {
+        ...projection,
+        decisions: applyDecisionResolution(projection.decisions, event)
+      };
+    default:
+      return projection;
+  }
+}
+
+function sceneFromEvent(event: SessionEvent): SessionScene {
+  const payload = event.payload;
+
+  return {
+    description: optionalString(payload.description),
+    id: optionalString(payload.sceneId) ?? optionalString(payload.id) ?? `scene-${event.sequence}`,
+    location: optionalString(payload.location) ?? 'unknown',
+    npcIds: Array.isArray(payload.npcIds)
+      ? payload.npcIds.filter((value): value is string => typeof value === 'string')
+      : undefined,
+    openedAtSequence: event.sequence,
+    status: 'active',
+    title: optionalString(payload.title) ?? optionalString(payload.location) ?? 'Scene'
+  };
+}
+
+function decisionFromRequestEvent(event: SessionEvent): SessionDecision {
+  const payload = event.payload;
+  const assignedTo = optionalString(payload.assignedTo);
+  const priority = optionalString(payload.priority);
+
+  return {
+    assignedTo: isControllerRole(assignedTo) ? assignedTo : 'human_gm',
+    createdAt: event.createdAt,
+    id: optionalString(payload.decisionId) ?? `decision-${event.sequence}`,
+    payload: isRecord(payload.payload) ? { ...payload.payload } : {},
+    priority: isPriority(priority) ? priority : 'normal',
+    requestedBy: optionalString(payload.requestedBy) ?? event.actorId ?? 'unknown',
+    status: 'pending',
+    title: optionalString(payload.title) ?? 'Untitled decision'
+  };
+}
+
+function applyDecisionResolution(
+  decisions: SessionDecision[],
+  event: SessionEvent
+): SessionDecision[] {
+  const decisionId = optionalString(event.payload.decisionId);
+  const status = optionalString(event.payload.status);
+  const resolvedStatus: SessionDecisionStatus = isDecisionStatus(status) ? status : 'approved';
+
+  return decisions.map((decision) =>
+    decision.id === decisionId
+      ? {
+          ...decision,
+          resolution: isRecord(event.payload.resolution) ? { ...event.payload.resolution } : {},
+          resolvedAt: event.createdAt,
+          status: resolvedStatus
+        }
+      : decision
+  );
+}
+
+function optionalString(value: unknown): string | undefined {
+  return typeof value === 'string' ? value : undefined;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function isControllerRole(value: string | undefined): value is SessionControllerRole {
+  return value !== undefined && (SESSION_CONTROLLER_ROLES as readonly string[]).includes(value);
+}
+
+function isPriority(value: string | undefined): value is SessionDecisionPriority {
+  return value !== undefined && (SESSION_DECISION_PRIORITIES as readonly string[]).includes(value);
+}
+
+function isDecisionStatus(value: string | undefined): value is SessionDecisionStatus {
+  return value !== undefined && (SESSION_DECISION_STATUSES as readonly string[]).includes(value);
 }
 
 export function getPendingDecisions(state: SessionState): SessionDecision[] {
