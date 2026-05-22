@@ -1,0 +1,61 @@
+name: NOMOS Binary Gate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - dev
+      - staging
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: nomos-strict-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nomos-strict:
+    name: NOMOS Binary Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Read access to the private RBOKproject/NOMOS repo (PAT in repo secrets).
+      # When the secret is absent (e.g. forks), the gate steps are skipped.
+      NOMOS_TOKEN: ${{ secrets.NOMOS_REPO_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Skip notice when NOMOS token is absent
+        if: ${{ env.NOMOS_TOKEN == '' }}
+        run: echo "NOMOS_REPO_TOKEN not configured - deep NOMOS gate skipped."
+
+      - name: Setup Go
+        if: ${{ env.NOMOS_TOKEN != '' }}
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+
+      - name: Checkout NOMOS (pinned commit)
+        if: ${{ env.NOMOS_TOKEN != '' }}
+        uses: actions/checkout@v6
+        with:
+          repository: RBOKproject/NOMOS
+          ref: 0c9e8fa90c70b0c7ec25bc20a64f6464e14c15cb
+          token: ${{ env.NOMOS_TOKEN }}
+          path: .nomos-src
+
+      - name: Build NOMOS CLI
+        if: ${{ env.NOMOS_TOKEN != '' }}
+        run: |
+          cd .nomos-src/cli
+          CGO_ENABLED=1 go build -o "$GITHUB_WORKSPACE/nomos" .
+
+      - name: Validate canonical artifacts against NOMOS schemas
+        if: ${{ env.NOMOS_TOKEN != '' }}
+        run: ./nomos validate --format text nomos.project.yaml docs/canonical/nomos/source-manifest.yaml docs/canonical/nomos/canonical-matrix.yaml
+
+      - name: NOMOS admission diagnose (advisory)
+        if: ${{ env.NOMOS_TOKEN != '' }}
+        run: ./nomos diagnose -root . -mode auto -format markdown >> "$GITHUB_STEP_SUMMARY" || true
