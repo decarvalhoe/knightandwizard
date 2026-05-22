@@ -37170,7 +37170,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.62
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Abjurateur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37190,7 +37190,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.75
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Agriculteur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37210,7 +37210,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.54
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Alchimiste from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37230,7 +37230,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.63
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Altérateur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37250,7 +37250,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.76
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Apiculteur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37270,7 +37270,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.31
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Arbalétrier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37290,7 +37290,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.32
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Archer from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37310,7 +37310,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.47
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Assassin from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37330,7 +37330,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.20
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Aubergiste from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37350,7 +37350,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.33
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Barbare from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37370,7 +37370,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.11
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Barde from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37390,7 +37390,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.77
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Berger from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37410,7 +37410,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.34
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Berzerker from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37430,7 +37430,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Bijoutier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37442,6 +37442,26 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: CLASSE-BOURREAU
+    unit_type: catalog_entry
+    name: Bourreau
+    domain: catalogs
+    criticality: high
+    source_refs:
+      - source_id: DATA-CATALOGS-CLASSES
+        locator: classes.90
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
+    business_rule: Bourreau from data/catalogs/classes.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'ui: UI exposure evidence pending.'
+    canonical_contract:
+      path: data/catalogs/classes.yaml
+      object_id: CLASSE-BOURREAU
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: CLASSE-BRACONNIER
     unit_type: catalog_entry
     name: Braconnier
@@ -37450,7 +37470,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.48
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Braconnier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37470,7 +37490,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.74
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Bûcheron from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37490,7 +37510,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.35
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Cavalier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37510,7 +37530,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.64
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Chaman from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37530,7 +37550,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.12
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Chanteur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37550,7 +37570,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.1
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Charpentier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37570,7 +37590,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.21
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Chasseur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37590,7 +37610,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.36
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Chasseur de magicien from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37610,7 +37630,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.26
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Chasseur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37630,7 +37650,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.78
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Chevrier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37650,7 +37670,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.65
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Clerc from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37670,7 +37690,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.13
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Comédien from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37690,7 +37710,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.14
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Conteur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37710,7 +37730,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.2
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Couturier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37730,7 +37750,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.27
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Cuisinier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37750,7 +37770,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.15
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Danseur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37770,7 +37790,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.16
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Dessinateur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37790,7 +37810,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.66
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Devin from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37810,7 +37830,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.67
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Druide from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37830,7 +37850,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.37
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Duelliste from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37850,7 +37870,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.85
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Eclaireur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37870,7 +37890,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.17
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Écrivain from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37890,7 +37910,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.68
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Elémentaliste from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37910,7 +37930,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.79
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Eleveur de bovidés from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37930,7 +37950,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.80
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Eleveur de volailles from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37950,7 +37970,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.69
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Enchanteur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37970,7 +37990,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.49
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Escroc from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -37990,7 +38010,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.50
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Espion from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38010,7 +38030,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.82
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Exorciste from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38030,7 +38050,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.3
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Facteur d’arc from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38050,7 +38070,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.38
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Fantassin from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38070,7 +38090,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.39
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Fantassin léger from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38090,7 +38110,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.40
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Fantassin lourd from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38110,7 +38130,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.4
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Forgeron from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38130,7 +38150,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.41
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Garde from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38150,7 +38170,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.42
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Garde du corps from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38170,7 +38190,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.55
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Herboriste from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38190,7 +38210,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.70
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Illusionniste from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38210,7 +38230,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.83
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Inquisiteur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38230,7 +38250,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.71
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Invocateur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38250,7 +38270,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.28
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Jardinier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38270,7 +38290,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.56
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Joueur de poker from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38290,7 +38310,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.43
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Justicier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38310,7 +38330,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.22
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Marchand from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38330,7 +38350,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.57
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Médecin from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38350,7 +38370,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.5
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Menuisier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38370,7 +38390,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.44
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Mercenaires from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38390,7 +38410,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.86
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Navigateur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38410,7 +38430,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.72
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Nécromancien from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38430,7 +38450,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.51
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Ninja from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38450,7 +38470,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.6
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Parfumeur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38470,7 +38490,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.23
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Pêcheur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38490,7 +38510,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.18
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Peintre from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38510,7 +38530,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.58
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Philosophe from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38530,7 +38550,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.87
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Pirate from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38550,7 +38570,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.59
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Politicien from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38570,7 +38590,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.81
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Porcher from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38590,7 +38610,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.7
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Potier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38610,7 +38630,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.60
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Précepteur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38630,7 +38650,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.19
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Prestidigitateur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38650,7 +38670,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.84
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Prêtre from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38670,7 +38690,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.24
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Prostitué from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38690,7 +38710,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.88
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Ranger from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38710,7 +38730,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.89
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Rôdeur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38730,7 +38750,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.45
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Samouraï from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38750,7 +38770,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.61
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Scribe from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38770,7 +38790,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.29
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Serf from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38790,7 +38810,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.73
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Sorcier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38810,7 +38830,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.30
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Soubrette from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38830,7 +38850,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.8
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Tanneur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38850,7 +38870,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.25
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Tavernier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38870,7 +38890,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.9
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Tonnelier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38890,7 +38910,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.46
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Tueur de monstres from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38910,7 +38930,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.10
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Vannier from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38930,7 +38950,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.52
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Voleur from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -38950,7 +38970,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.53
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: Voleur à la tire from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -48463,7 +48483,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Artisan from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48483,7 +48503,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.1
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Artiste from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48503,7 +48523,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.2
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Commerçant from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48523,7 +48543,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.3
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Dommestique from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48543,7 +48563,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.4
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Guerrier from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48563,7 +48583,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.5
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Hors-la-loi from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48583,7 +48603,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.6
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Intellectuel from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48603,7 +48623,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.7
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Magicien from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48615,6 +48635,26 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: ORIENTATION-MALFAISANT
+    unit_type: catalog_entry
+    name: Malfaisant
+    domain: catalogs
+    criticality: high
+    source_refs:
+      - source_id: DATA-CATALOGS-ORIENTATIONS
+        locator: orientations.12
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
+    business_rule: Malfaisant from data/catalogs/orientations.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'ui: UI exposure evidence pending.'
+    canonical_contract:
+      path: data/catalogs/orientations.yaml
+      object_id: ORIENTATION-MALFAISANT
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: ORIENTATION-OUVRIER
     unit_type: catalog_entry
     name: Ouvrier
@@ -48623,7 +48663,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.8
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Ouvrier from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48643,7 +48683,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.9
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Paysan from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48663,7 +48703,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.10
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Religieux from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48683,7 +48723,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.11
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: Voyageur from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -48803,7 +48843,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 41
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: 'Précisé par l''auteur (D2 Q-2-bis-a) : from docs/rules/04-classes.md.'
     status: partial
     gaps:
@@ -49270,7 +49310,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 48
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: >-
       → Le bonus dés s'ajoute au pool R-1.2, pour des actions dans le **domaine de la classe**. from
       docs/rules/04-classes.md.
@@ -52912,7 +52952,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 60
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: 'Coût XP pour +1 usage/jour : NA × 10 (Experience.doc, cf. R-2.20) from docs/rules/04-classes.md.'
     status: partial
     gaps:
@@ -53377,7 +53417,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 115
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: 'D''après R-3.4 (D3) : from docs/rules/04-classes.md.'
     status: partial
     gaps:
@@ -53436,7 +53476,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 131
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: >-
       character_resistances(character_id, type, value, source) -- déjà défini en D3 R-3.5/Q-D3.8 from
       docs/rules/04-classes.md.
@@ -53501,7 +53541,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 18
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: 'R-4.1 — Orientations et classes : modèle hiérarchique from docs/rules/04-classes.md.'
     status: partial
     gaps:
@@ -53545,7 +53585,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 28
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: >-
       R-4.2 — Chaque orientation octroie un atout d'orientation (toujours éphémère, sauf magicien) from
       docs/rules/04-classes.md.
@@ -53591,7 +53631,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 39
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: R-4.3 — Chaque classe octroie 2 atouts de classe (Q-D2 confirmé) from docs/rules/04-classes.md.
     status: partial
     gaps:
@@ -53652,7 +53692,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 56
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: 'R-4.4 — Atout d''orientation : usage par jour & progression XP from docs/rules/04-classes.md.'
     status: partial
     gaps:
@@ -53671,7 +53711,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 66
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: R-4.5 — Mapping classe → compétence primaire from docs/rules/04-classes.md.
     status: partial
     gaps:
@@ -53735,7 +53775,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 90
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: 'R-4.6 — Polyvalence : atout pivot du système from docs/rules/04-classes.md.'
     status: partial
     gaps:
@@ -53798,7 +53838,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 113
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: R-4.7 — Pool d'atouts au passage de niveau (rappel D3) from docs/rules/04-classes.md.
     status: partial
     gaps:
@@ -53817,7 +53857,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: line 124
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: R-4.8 — Modèle de données from docs/rules/04-classes.md.
     status: partial
     gaps:
@@ -70460,7 +70500,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.0.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-0-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70480,7 +70520,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.1.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-1-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70500,7 +70540,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.10.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-10-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70520,7 +70560,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.11.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-11-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70540,7 +70580,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.12.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-12-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70560,7 +70600,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.13.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-13-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70580,7 +70620,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.14.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-14-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70600,7 +70640,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.15.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-15-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70620,7 +70660,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.16.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-16-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70640,7 +70680,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.17.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-17-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70660,7 +70700,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.18.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-18-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70680,7 +70720,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.19.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-19-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70700,7 +70740,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.2.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-2-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70720,7 +70760,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.20.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-20-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70740,7 +70780,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.21.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-21-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70760,7 +70800,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.22.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-22-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70780,7 +70820,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.23.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-23-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70800,7 +70840,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.24.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-24-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70820,7 +70860,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.25.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-25-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70840,7 +70880,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.26.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-26-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70860,7 +70900,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.27.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-27-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70880,7 +70920,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.28.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-28-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70900,7 +70940,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.29.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-29-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70920,7 +70960,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.3.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-3-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70940,7 +70980,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.30.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-30-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70960,7 +71000,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.31.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-31-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -70980,7 +71020,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.32.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-32-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71000,7 +71040,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.33.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-33-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71020,7 +71060,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.34.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-34-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71040,7 +71080,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.35.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-35-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71060,7 +71100,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.36.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-36-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71080,7 +71120,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.37.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-37-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71100,7 +71140,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.38.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-38-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71120,7 +71160,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.39.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-39-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71140,7 +71180,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.4.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-4-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71160,7 +71200,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.40.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-40-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71180,7 +71220,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.41.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-41-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71200,7 +71240,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.42.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-42-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71220,7 +71260,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.43.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-43-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71240,7 +71280,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.44.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-44-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71260,7 +71300,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.45.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-45-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71280,7 +71320,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.46.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-46-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71300,7 +71340,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.47.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-47-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71320,7 +71360,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.48.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-48-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71340,7 +71380,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.49.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-49-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71360,7 +71400,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.5.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-5-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71380,7 +71420,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.50.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-50-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71400,7 +71440,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.51.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-51-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71420,7 +71460,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.52.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-52-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71440,7 +71480,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.53.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-53-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71460,7 +71500,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.54.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-54-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71480,7 +71520,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.55.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-55-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71500,7 +71540,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.56.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-56-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71520,7 +71560,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.57.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-57-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71540,7 +71580,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.58.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-58-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71560,7 +71600,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.59.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-59-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71580,7 +71620,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.6.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-6-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71600,7 +71640,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.60.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-60-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71620,7 +71660,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.61.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-61-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71640,7 +71680,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.62.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-62-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71660,7 +71700,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.63.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-63-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71680,7 +71720,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.64.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-64-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71700,7 +71740,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.65.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-65-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71720,7 +71760,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.66.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-66-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71740,7 +71780,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.67.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-67-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71760,7 +71800,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.68.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-68-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71780,7 +71820,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.69.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-69-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71800,7 +71840,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.7.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-7-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71820,7 +71860,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.70.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-70-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71840,7 +71880,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.71.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-71-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71860,7 +71900,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.72.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-72-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71880,7 +71920,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.73.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-73-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71900,7 +71940,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.74.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-74-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71920,7 +71960,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.75.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-75-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71940,7 +71980,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.76.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-76-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71960,7 +72000,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.77.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-77-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -71980,7 +72020,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.78.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-78-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72000,7 +72040,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.79.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-79-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72020,7 +72060,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.8.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-8-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72040,7 +72080,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.80.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-80-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72060,7 +72100,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.81.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-81-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72080,7 +72120,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.82.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-82-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72100,7 +72140,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.83.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-83-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72120,7 +72160,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.84.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-84-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72140,7 +72180,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.85.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-85-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72160,7 +72200,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.86.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-86-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72180,7 +72220,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.87.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-87-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72200,7 +72240,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.88.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-88-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72220,7 +72260,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.89.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-89-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72240,7 +72280,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: classes.9.source_refs.0
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: classes-9-source-refs-0 from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -72249,6 +72289,26 @@ units:
     canonical_contract:
       path: data/catalogs/classes.yaml
       object_id: SOURCE-REF-CLASSES-9-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CLASSES-90-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: classes-90-source-refs-0
+    domain: catalogs
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-CLASSES
+        locator: classes.90.source_refs.0
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
+    business_rule: classes-90-source-refs-0 from data/catalogs/classes.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'ui: UI exposure evidence pending.'
+    canonical_contract:
+      path: data/catalogs/classes.yaml
+      object_id: SOURCE-REF-CLASSES-90-SOURCE-REFS-0
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -73480,7 +73540,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.0.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-0-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73500,7 +73560,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.1.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-1-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73520,7 +73580,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.10.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-10-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73540,7 +73600,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.11.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-11-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73552,6 +73612,66 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-ORIENTATIONS-12-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: orientations-12-source-refs-0
+    domain: catalogs
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-ORIENTATIONS
+        locator: orientations.12.source_refs.0
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
+    business_rule: orientations-12-source-refs-0 from data/catalogs/orientations.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'ui: UI exposure evidence pending.'
+    canonical_contract:
+      path: data/catalogs/orientations.yaml
+      object_id: SOURCE-REF-ORIENTATIONS-12-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-ORIENTATIONS-12-SOURCE-REFS-1
+    unit_type: catalog_entry
+    name: orientations-12-source-refs-1
+    domain: catalogs
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-ORIENTATIONS
+        locator: orientations.12.source_refs.1
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
+    business_rule: orientations-12-source-refs-1 from data/catalogs/orientations.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'ui: UI exposure evidence pending.'
+    canonical_contract:
+      path: data/catalogs/orientations.yaml
+      object_id: SOURCE-REF-ORIENTATIONS-12-SOURCE-REFS-1
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-ORIENTATIONS-12-SOURCE-REFS-2
+    unit_type: catalog_entry
+    name: orientations-12-source-refs-2
+    domain: catalogs
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-ORIENTATIONS
+        locator: orientations.12.source_refs.2
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
+    business_rule: orientations-12-source-refs-2 from data/catalogs/orientations.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'ui: UI exposure evidence pending.'
+    canonical_contract:
+      path: data/catalogs/orientations.yaml
+      object_id: SOURCE-REF-ORIENTATIONS-12-SOURCE-REFS-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-REF-ORIENTATIONS-2-SOURCE-REFS-0
     unit_type: catalog_entry
     name: orientations-2-source-refs-0
@@ -73560,7 +73680,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.2.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-2-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73580,7 +73700,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.3.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-3-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73600,7 +73720,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.4.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-4-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73620,7 +73740,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.5.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-5-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73640,7 +73760,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.6.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-6-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73660,7 +73780,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.7.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-7-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73680,7 +73800,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.8.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-8-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -73700,7 +73820,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: orientations.9.source_refs.0
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: orientations-9-source-refs-0 from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -102790,7 +102910,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-CLASSES
         locator: data/catalogs/classes.yaml
-        hash: sha256:16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+        hash: sha256:786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     business_rule: data/catalogs/classes.yaml from data/catalogs/classes.yaml.
     status: partial
     gaps:
@@ -102910,7 +103030,7 @@ units:
     source_refs:
       - source_id: DATA-CATALOGS-ORIENTATIONS
         locator: data/catalogs/orientations.yaml
-        hash: sha256:13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+        hash: sha256:5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     business_rule: data/catalogs/orientations.yaml from data/catalogs/orientations.yaml.
     status: partial
     gaps:
@@ -112520,7 +112640,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-04-CLASSES
         locator: docs/rules/04-classes.md
-        hash: sha256:af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+        hash: sha256:1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     business_rule: docs/rules/04-classes.md from docs/rules/04-classes.md.
     status: partial
     gaps:
