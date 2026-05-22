@@ -67,10 +67,13 @@ export const WeaponSchema = z
     id: NonEmptyStringSchema,
     name: NonEmptyStringSchema,
     category: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema.optional(),
     damage_type: z.union([NonEmptyStringSchema, z.array(NonEmptyStringSchema)]).optional(),
     damage_formula: NonEmptyStringSchema,
     difficulty: z.number().optional(),
     hands_required: z.number().optional(),
+    weight_kg: z.union([z.number(), NonEmptyStringSchema]).optional(),
+    source_refs: z.array(z.lazy(() => SourceRefSchema)).optional(),
     metadata: EntryMetadataSchema.optional()
   })
   .passthrough();
@@ -140,9 +143,11 @@ export const ArmorPieceSchema = z
     name: NonEmptyStringSchema,
     layer: NonEmptyStringSchema,
     category: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema.optional(),
     protection: DamageProfileSchema,
     zones_covered: z.array(NonEmptyStringSchema),
     weight_kg_human: z.number(),
+    source_refs: z.array(z.lazy(() => SourceRefSchema)).optional(),
     metadata: EntryMetadataSchema.optional()
   })
   .passthrough();
@@ -153,10 +158,12 @@ export const ShieldSchema = z
     name: NonEmptyStringSchema,
     category: NonEmptyStringSchema,
     material: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema.optional(),
     protection: DamageProfileSchema,
     pass_chance_pct: z.number(),
     weight_kg_human: z.number(),
     size: NonEmptyStringSchema,
+    source_refs: z.array(z.lazy(() => SourceRefSchema)).optional(),
     metadata: EntryMetadataSchema.optional()
   })
   .passthrough();
@@ -182,10 +189,12 @@ export const PotionSchema = z
     id: NonEmptyStringSchema,
     name: NonEmptyStringSchema,
     category: NonEmptyStringSchema,
+    status: CatalogEntryStatusSchema.optional(),
     output_type: NonEmptyStringSchema,
     effect: NonEmptyStringSchema,
     ingredients: z.array(PotionIngredientSchema),
     craft_check: z.object({}).passthrough(),
+    source_refs: z.array(z.lazy(() => SourceRefSchema)).optional(),
     metadata: EntryMetadataSchema.optional()
   })
   .passthrough();

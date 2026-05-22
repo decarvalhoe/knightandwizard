@@ -42,6 +42,135 @@ export interface InventoryItem {
   weightKg?: number;
 }
 
+/**
+ * A selectable equipment option derived from the canonical catalogs
+ * (armes/protections/potions). Used to populate the inventory picker so the UI
+ * never offers invented items.
+ */
+export interface EquipmentCatalogEntry {
+  category: InventoryCategory;
+  id: string;
+  name: string;
+  weightKg?: number;
+}
+
+/**
+ * Minimal shape of a catalog equipment entry as exposed by the catalog API
+ * documents (armes/protections/potions). Only the fields the inventory consumes
+ * are typed; the underlying read models carry the full canonical payload.
+ */
+export interface EquipmentCatalogEntryInput {
+  id?: string;
+  name?: string;
+  status?: string;
+  weight_kg?: number | string;
+  weight_kg_human?: number;
+}
+
+export interface WeaponsEquipmentDocument {
+  weapons?: EquipmentCatalogEntryInput[];
+}
+
+export interface ProtectionsEquipmentDocument {
+  armor_pieces?: EquipmentCatalogEntryInput[];
+  shields?: EquipmentCatalogEntryInput[];
+}
+
+export interface PotionsEquipmentDocument {
+  potions?: EquipmentCatalogEntryInput[];
+}
+
+/**
+ * Builds the canonical equipment picker list consumed by the inventory UI.
+ *
+ * Every entry is derived from the armes/protections/potions catalogs (no invented
+ * product data). Entries are normalized into inventory categories so the sheet can
+ * append them directly. Non-active entries are skipped when a status is present.
+ */
+export function buildEquipmentCatalog(input: {
+  potions: PotionsEquipmentDocument;
+  protections: ProtectionsEquipmentDocument;
+  weapons: WeaponsEquipmentDocument;
+}): EquipmentCatalogEntry[] {
+  return [
+    ...(input.weapons.weapons ?? []).map((entry) => toEquipmentCatalogEntry(entry, 'weapon')),
+    ...(input.protections.shields ?? []).map((entry) => toEquipmentCatalogEntry(entry, 'shield')),
+    ...(input.protections.armor_pieces ?? []).map((entry) =>
+      toEquipmentCatalogEntry(entry, 'armor')
+    ),
+    ...(input.potions.potions ?? []).map((entry) => toEquipmentCatalogEntry(entry, 'consumable'))
+  ].filter((entry): entry is EquipmentCatalogEntry => entry !== undefined);
+}
+
+/**
+ * Seeds the inventory from explicit canonical catalog ids. When a seed id is
+ * absent from the catalogs the slot is dropped rather than fabricated.
+ */
+export function buildInventory(input: {
+  potions: PotionsEquipmentDocument;
+  protections: ProtectionsEquipmentDocument;
+  weapons: WeaponsEquipmentDocument;
+}): InventoryItem[] {
+  const weapon = input.weapons.weapons?.find((entry) => entry.id === 'epee_batarde');
+  const shield = input.protections.shields?.find((entry) => entry.id === 'bouclier_bois');
+  const potion = input.potions.potions?.find((entry) => entry.id === 'soin');
+
+  const items: Array<InventoryItem | undefined> = [
+    weapon
+      ? {
+          category: 'weapon',
+          equipped: true,
+          id: weapon.id as string,
+          name: weapon.name as string,
+          quantity: 1,
+          weightKg: readEquipmentWeightKg(weapon)
+        }
+      : undefined,
+    shield
+      ? {
+          category: 'shield',
+          equipped: true,
+          id: shield.id as string,
+          name: shield.name as string,
+          quantity: 1,
+          weightKg: readEquipmentWeightKg(shield)
+        }
+      : undefined,
+    potion
+      ? {
+          category: 'consumable',
+          id: potion.id as string,
+          name: potion.name as string,
+          quantity: 2,
+          weightKg: readEquipmentWeightKg(potion)
+        }
+      : undefined
+  ];
+
+  return items.filter((item): item is InventoryItem => item !== undefined);
+}
+
+function toEquipmentCatalogEntry(
+  entry: EquipmentCatalogEntryInput,
+  category: InventoryCategory
+): EquipmentCatalogEntry | undefined {
+  if (!entry.id || !entry.name || (entry.status !== undefined && entry.status !== 'active')) {
+    return undefined;
+  }
+
+  return {
+    category,
+    id: entry.id,
+    name: entry.name,
+    weightKg: readEquipmentWeightKg(entry)
+  };
+}
+
+function readEquipmentWeightKg(entry: EquipmentCatalogEntryInput): number | undefined {
+  const weight = entry.weight_kg ?? entry.weight_kg_human;
+  return typeof weight === 'number' ? weight : undefined;
+}
+
 export interface SpellEntry {
   active?: boolean;
   id: string;

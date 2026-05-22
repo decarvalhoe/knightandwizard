@@ -93,17 +93,25 @@ export interface SpellEntry {
   status?: string;
 }
 
+export interface EquipmentCatalogEntryDocument {
+  id?: string;
+  name?: string;
+  status?: string;
+  weight_kg?: number | string;
+  weight_kg_human?: number;
+}
+
 export interface WeaponsCatalogDocument {
-  weapons?: Array<{ id?: string; name?: string; status?: string }>;
+  weapons?: EquipmentCatalogEntryDocument[];
 }
 
 export interface ProtectionsCatalogDocument {
-  armor_pieces?: Array<{ id?: string; name?: string; status?: string }>;
-  shields?: Array<{ id?: string; name?: string; status?: string }>;
+  armor_pieces?: EquipmentCatalogEntryDocument[];
+  shields?: EquipmentCatalogEntryDocument[];
 }
 
 export interface PotionsCatalogDocument {
-  potions?: Array<{ id?: string; name?: string; status?: string }>;
+  potions?: EquipmentCatalogEntryDocument[];
 }
 
 export async function getCharacterCreationReadModel(): Promise<CharacterCreationReadModel> {
