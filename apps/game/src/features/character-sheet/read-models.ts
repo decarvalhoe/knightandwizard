@@ -22,12 +22,20 @@ import {
   type SpellsCatalogDocument,
   type WeaponsCatalogDocument
 } from '../character-creation/read-models';
-import type { InventoryItem, SkillCatalogEntry, SpellEntry } from './model';
+import {
+  buildEquipmentCatalog,
+  buildInventory,
+  type EquipmentCatalogEntry,
+  type InventoryItem,
+  type SkillCatalogEntry,
+  type SpellEntry
+} from './model';
 
 export interface CharacterSheetReadModel {
   attributeLabels: Record<AttributeKey, string>;
   attributeOrder: AttributeKey[];
   character: ReturnType<typeof createPlayerCharacter>;
+  equipmentCatalog: EquipmentCatalogEntry[];
   initialInventory: InventoryItem[];
   skillCatalog: SkillCatalogEntry[];
   skillLabels: Record<string, string>;
@@ -53,6 +61,7 @@ export async function getCharacterSheetReadModel(): Promise<CharacterSheetReadMo
     attributeLabels,
     attributeOrder: [...ATTRIBUTE_KEYS],
     character: buildActiveCharacter({ classes, orientations, races }),
+    equipmentCatalog: buildEquipmentCatalog({ potions, protections, weapons }),
     initialInventory: buildInventory({ potions, protections, weapons }),
     skillCatalog,
     skillLabels,
@@ -118,50 +127,6 @@ function buildActiveCharacter(input: {
   });
 }
 
-function buildInventory(input: {
-  potions: PotionsCatalogDocument;
-  protections: ProtectionsCatalogDocument;
-  weapons: WeaponsCatalogDocument;
-}): InventoryItem[] {
-  const weapon = input.weapons.weapons?.find((entry) => entry.id === 'epee_batarde');
-  const shield = input.protections.shields?.find((entry) => entry.id === 'bouclier_bois');
-  const potion = input.potions.potions?.find((entry) => entry.id === 'potion_soin');
-
-  const items: Array<InventoryItem | undefined> = [
-    weapon
-      ? {
-          category: 'weapon',
-          equipped: true,
-          id: weapon.id as string,
-          name: weapon.name as string,
-          quantity: 1,
-          weightKg: readWeightKg(weapon)
-        }
-      : undefined,
-    shield
-      ? {
-          category: 'shield',
-          equipped: true,
-          id: shield.id as string,
-          name: shield.name as string,
-          quantity: 1,
-          weightKg: readWeightKg(shield)
-        }
-      : undefined,
-    potion
-      ? {
-          category: 'consumable',
-          id: potion.id as string,
-          name: potion.name as string,
-          quantity: 2,
-          weightKg: readWeightKg(potion)
-        }
-      : undefined
-  ];
-
-  return items.filter((item): item is InventoryItem => item !== undefined);
-}
-
 function buildSpells(catalog: SpellsCatalogDocument): SpellEntry[] {
   const activeSpellIds = new Set(['bouclier', 'boule-de-feu']);
 
@@ -173,14 +138,4 @@ function buildSpells(catalog: SpellsCatalogDocument): SpellEntry[] {
       name: spell.name as string,
       points: 1
     }));
-}
-
-function readWeightKg(entry: unknown): number | undefined {
-  if (typeof entry !== 'object' || entry === null) {
-    return undefined;
-  }
-
-  const record = entry as Record<string, unknown>;
-  const weight = record.weight_kg ?? record.weight_kg_human;
-  return typeof weight === 'number' ? weight : undefined;
 }

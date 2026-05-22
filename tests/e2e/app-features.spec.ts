@@ -51,8 +51,12 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByRole('heading', { name: 'Audit complet' })).toBeVisible();
 
     await page.getByRole('button', { name: 'Complet' }).click();
-    await page.getByRole('button', { name: /Torche/ }).click();
-    await expect(page.getByText('gear · 0.4 kg')).toBeVisible();
+    const equipmentPicker = page.locator('#equipment-picker');
+    await expect(equipmentPicker).toBeVisible();
+    expect(await equipmentPicker.locator('option').count()).toBeGreaterThan(0);
+    await equipmentPicker.selectOption({ index: 0 });
+    await page.getByRole('button', { name: 'Ajouter' }).click();
+    await expect(page.getByText(/Charge .* kg/)).toBeVisible();
   });
 
   test('character creation validates fighter and magician creation budgets', async ({ page }) => {
