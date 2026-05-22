@@ -90,7 +90,7 @@ apps/game (implémentation Next.js)
 | **F3** Figma `01 Core` + `packages/ui` | composants core + K&W (DicePool, StatBlock…) | Figma + `packages/ui`+Storybook | Storybook vert, a11y axe | ⏳ |
 | **F4** Code Connect | mapping Figma ↔ `packages/ui` | `*.figma.tsx` | Dev Mode émet le vrai code | ⏳ |
 | **F5** Figma `02 Patterns` | fiche/combat/session/browsers/MJ | maquettes patterns | revues | ⏳ |
-| **F6** Claude Design | pointer codebase + Figma, générer écrans | prototypes | cohérents DA | ⏳ |
+| **F6** Claude Design | pointer codebase + Figma, générer écrans | prototypes + brief `CLAUDE-DESIGN-BRIEF.md` | cohérents DA | 🟡 brief prêt |
 | **F7** Surfaces | implémenter par surface (fiche #52 d'abord) | apps/game | tests + e2e verts | ⏳ |
 | **F8** CI/qualité | boundaries-lint + Storybook + visual reg + Lighthouse dans `pnpm validate` | ci.yml | gates verts | ⏳ |
 
@@ -106,6 +106,7 @@ apps/game (implémentation Next.js)
 - **2026-05-22** — F2 : fichier Figma **Knight & Wizard — Design System** créé (key `d6rwR90ptCWCcrOZFhBZ3n` · https://www.figma.com/design/d6rwR90ptCWCcrOZFhBZ3n · plan « L'équipe de Dev Réalisons », auth `DevRealisons`). Build des Variables en cours, miroir de `tokens.resolved.json` : Primitives (26) → Color light/night (21) → Dimension (spacing+radius) → Typography ; scopes + code syntax `var(--…)` posés sur le sémantique.
   - **Variables livrées** : 4 collections, **80 variables** — Primitives `1:2` (26, scopes masqués), Color `2:2` (21, modes Light `2:0`/Night `2:1`, alias→primitives, scopes par rôle, `var(--color-*)`), Dimension `3:2` (15 : spacing+radius, `var(--spacing-*/--radius-*)`), Typography `3:18` (18 : family/weights/sizes px/line-heights, `var(--font-sans/--font-weight-*/--text-*/--leading-*)`). Page `Foundations` (`4:2`) + planche nuanciers sémantiques (frame `4:3`, fills/texte liés aux variables) **validée par screenshot** (Light).
   - **Foundations complétées** : planche **Night** (frame `5:2`, clone + mode explicite Night) ✅ ; panneau **Type & Scales** (`6:2`) — spécimen typo (font-size lié aux variables `xs→5xl`), échelle spacing (4→64px), radius ✅ ; **styles de grille** réutilisables `Baseline / 8px` + `Columns / 12` + frame exemple (`7:5`) ✅. Validé par screenshots (Light / Night / Type). **Publication en library = action manuelle Figma** (Assets → Publish ; non exposée à l'API plugin).
+- **2026-05-22** — **Brief Claude Design** préparé : [`CLAUDE-DESIGN-BRIEF.md`](./CLAUDE-DESIGN-BRIEF.md) — démarche bout-en-bout pour **challenger la DA** via claude.ai/design. Recherche outil confirmée (ingère repo GitHub + Figma + tokens/assets → design system → écrans HTML interactifs → handoff Claude Code ; « comparison workflow » natif). Contenu : prérequis (push repo + publish Figma), onboarding DS, **brief produit copier-coller** (produit/public/DA baseline/surfaces/dés/contraintes dures/axes ouverts), **4 prompts**, **grille de comparaison pondérée**, **boucle de réintégration** tokens↔Figma anti-drift.
 
 ## 10. Decisions register
 | Date | Décision | Rationale |
