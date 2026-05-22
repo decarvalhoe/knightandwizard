@@ -67041,7 +67041,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.62"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Abjurateur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67079,7 +67079,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.75"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Agriculteur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67117,7 +67117,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.54"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Alchimiste from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67155,7 +67155,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.63"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Altérateur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67193,7 +67193,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.76"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Apiculteur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67231,7 +67231,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.31"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Arbalétrier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67269,7 +67269,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.32"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Archer from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67307,7 +67307,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.47"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Assassin from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67345,7 +67345,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.20"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Aubergiste from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67383,7 +67383,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.33"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Barbare from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67421,7 +67421,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.11"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Barde from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67459,7 +67459,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.77"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Berger from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67497,7 +67497,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.34"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Berzerker from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67535,7 +67535,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Bijoutier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67565,6 +67565,44 @@ units:
     tests:
       status: covered
       evidence: "apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors."
+  - unit_id: "classe:bourreau"
+    unit_type: "classe"
+    domain: "catalogs"
+    title: "Bourreau"
+    status: partial
+    sources:
+      - path: "data/catalogs/classes.yaml"
+        ref: "classes.90"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
+    business_rule:
+      summary: "Bourreau from data/catalogs/classes.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/classes.yaml"
+      entry_id: "bourreau"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: covered
+      evidence: "apps/server/src/catalogs/read-models.ts imports validated catalog documents into catalog_documents with source hash, status and source_refs; apps/server/src/catalogs/read-models.test.ts verifies the PostgreSQL read model."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.ts exposes canonical catalog read models through GET /catalogs and GET /catalogs/:catalogName with stable JSON errors."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors."
   - unit_id: "classe:braconnier"
     unit_type: "classe"
     domain: "catalogs"
@@ -67573,7 +67611,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.48"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Braconnier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67611,7 +67649,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.74"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Bûcheron from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67649,7 +67687,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.35"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Cavalier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67687,7 +67725,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.64"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Chaman from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67725,7 +67763,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.12"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Chanteur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67763,7 +67801,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.1"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Charpentier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67801,7 +67839,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.21"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Chasseur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67839,7 +67877,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.36"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Chasseur de magicien from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67877,7 +67915,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.26"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Chasseur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67915,7 +67953,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.78"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Chevrier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67953,7 +67991,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.65"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Clerc from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -67991,7 +68029,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.13"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Comédien from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68029,7 +68067,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.14"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Conteur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68067,7 +68105,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.2"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Couturier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68105,7 +68143,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.27"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Cuisinier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68143,7 +68181,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.15"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Danseur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68181,7 +68219,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.16"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Dessinateur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68219,7 +68257,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.66"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Devin from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68257,7 +68295,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.67"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Druide from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68295,7 +68333,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.37"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Duelliste from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68333,7 +68371,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.85"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Eclaireur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68371,7 +68409,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.17"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Écrivain from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68409,7 +68447,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.68"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Elémentaliste from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68447,7 +68485,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.79"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Eleveur de bovidés from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68485,7 +68523,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.80"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Eleveur de volailles from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68523,7 +68561,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.69"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Enchanteur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68561,7 +68599,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.49"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Escroc from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68599,7 +68637,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.50"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Espion from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68637,7 +68675,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.82"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Exorciste from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68675,7 +68713,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.3"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Facteur d’arc from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68713,7 +68751,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.38"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Fantassin from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68751,7 +68789,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.39"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Fantassin léger from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68789,7 +68827,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.40"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Fantassin lourd from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68827,7 +68865,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.4"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Forgeron from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68865,7 +68903,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.41"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Garde from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68903,7 +68941,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.42"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Garde du corps from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68941,7 +68979,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.55"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Herboriste from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -68979,7 +69017,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.70"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Illusionniste from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69017,7 +69055,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.83"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Inquisiteur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69055,7 +69093,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.71"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Invocateur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69093,7 +69131,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.28"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Jardinier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69131,7 +69169,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.56"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Joueur de poker from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69169,7 +69207,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.43"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Justicier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69207,7 +69245,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.22"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Marchand from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69245,7 +69283,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.57"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Médecin from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69283,7 +69321,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.5"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Menuisier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69321,7 +69359,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.44"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Mercenaires from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69359,7 +69397,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.86"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Navigateur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69397,7 +69435,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.72"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Nécromancien from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69435,7 +69473,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.51"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Ninja from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69473,7 +69511,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.6"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Parfumeur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69511,7 +69549,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.23"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Pêcheur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69549,7 +69587,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.18"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Peintre from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69587,7 +69625,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.58"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Philosophe from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69625,7 +69663,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.87"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Pirate from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69663,7 +69701,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.59"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Politicien from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69701,7 +69739,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.81"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Porcher from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69739,7 +69777,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.7"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Potier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69777,7 +69815,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.60"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Précepteur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69815,7 +69853,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.19"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Prestidigitateur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69853,7 +69891,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.84"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Prêtre from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69891,7 +69929,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.24"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Prostitué from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69929,7 +69967,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.88"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Ranger from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -69967,7 +70005,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.89"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Rôdeur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70005,7 +70043,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.45"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Samouraï from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70043,7 +70081,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.61"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Scribe from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70081,7 +70119,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.29"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Serf from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70119,7 +70157,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.73"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Sorcier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70157,7 +70195,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.30"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Soubrette from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70195,7 +70233,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.8"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Tanneur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70233,7 +70271,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.25"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Tavernier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70271,7 +70309,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.9"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Tonnelier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70309,7 +70347,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.46"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Tueur de monstres from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70347,7 +70385,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.10"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Vannier from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70385,7 +70423,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.52"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Voleur from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -70423,7 +70461,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.53"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "Voleur à la tire from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -88539,7 +88577,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Artisan from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88577,7 +88615,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.1"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Artiste from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88615,7 +88653,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.2"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Commerçant from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88653,7 +88691,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.3"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Dommestique from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88691,7 +88729,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.4"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Guerrier from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88729,7 +88767,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.5"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Hors-la-loi from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88767,7 +88805,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.6"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Intellectuel from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88805,7 +88843,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.7"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Magicien from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88835,6 +88873,44 @@ units:
     tests:
       status: covered
       evidence: "apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors."
+  - unit_id: "orientation:malfaisant"
+    unit_type: "orientation"
+    domain: "catalogs"
+    title: "Malfaisant"
+    status: partial
+    sources:
+      - path: "data/catalogs/orientations.yaml"
+        ref: "orientations.12"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
+    business_rule:
+      summary: "Malfaisant from data/catalogs/orientations.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/orientations.yaml"
+      entry_id: "malfaisant"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: covered
+      evidence: "apps/server/src/catalogs/read-models.ts imports validated catalog documents into catalog_documents with source hash, status and source_refs; apps/server/src/catalogs/read-models.test.ts verifies the PostgreSQL read model."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.ts exposes canonical catalog read models through GET /catalogs and GET /catalogs/:catalogName with stable JSON errors."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors."
   - unit_id: "orientation:ouvrier"
     unit_type: "orientation"
     domain: "catalogs"
@@ -88843,7 +88919,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.8"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Ouvrier from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88881,7 +88957,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.9"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Paysan from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88919,7 +88995,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.10"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Religieux from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -88957,7 +89033,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.11"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "Voyageur from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -89185,7 +89261,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 41"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "Précisé par l'auteur (D2 Q-2-bis-a) : from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -90013,7 +90089,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 48"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "→ Le bonus dés s'ajoute au pool R-1.2, pour des actions dans le **domaine de la classe**. from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -96601,7 +96677,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 60"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "Coût XP pour +1 usage/jour : NA × 10 (Experience.doc, cf. R-2.20) from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -97429,7 +97505,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 115"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "D'après R-3.4 (D3) : from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -97537,7 +97613,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 131"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "character_resistances(character_id, type, value, source) -- déjà défini en D3 R-3.5/Q-D3.8 from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -97645,7 +97721,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 18"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "R-4.1 — Orientations et classes : modèle hiérarchique from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -97717,7 +97793,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 28"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "R-4.2 — Chaque orientation octroie un atout d'orientation (toujours éphémère, sauf magicien) from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -97789,7 +97865,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 39"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "R-4.3 — Chaque classe octroie 2 atouts de classe (Q-D2 confirmé) from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -97897,7 +97973,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 56"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "R-4.4 — Atout d'orientation : usage par jour & progression XP from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -97933,7 +98009,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 66"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "R-4.5 — Mapping classe → compétence primaire from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -98041,7 +98117,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 90"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "R-4.6 — Polyvalence : atout pivot du système from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -98149,7 +98225,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 113"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "R-4.7 — Pool d'atouts au passage de niveau (rappel D3) from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -98185,7 +98261,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "line 124"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "R-4.8 — Modèle de données from docs/rules/04-classes.md."
       ambiguity_ref: null
@@ -129597,7 +129673,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.0.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-0-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -129635,7 +129711,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.1.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-1-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -129673,7 +129749,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.10.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-10-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -129711,7 +129787,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.11.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-11-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -129749,7 +129825,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.12.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-12-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -129787,7 +129863,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.13.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-13-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -129825,7 +129901,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.14.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-14-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -129863,7 +129939,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.15.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-15-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -129901,7 +129977,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.16.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-16-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -129939,7 +130015,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.17.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-17-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -129977,7 +130053,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.18.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-18-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130015,7 +130091,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.19.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-19-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130053,7 +130129,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.2.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-2-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130091,7 +130167,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.20.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-20-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130129,7 +130205,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.21.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-21-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130167,7 +130243,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.22.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-22-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130205,7 +130281,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.23.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-23-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130243,7 +130319,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.24.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-24-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130281,7 +130357,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.25.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-25-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130319,7 +130395,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.26.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-26-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130357,7 +130433,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.27.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-27-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130395,7 +130471,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.28.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-28-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130433,7 +130509,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.29.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-29-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130471,7 +130547,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.3.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-3-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130509,7 +130585,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.30.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-30-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130547,7 +130623,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.31.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-31-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130585,7 +130661,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.32.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-32-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130623,7 +130699,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.33.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-33-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130661,7 +130737,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.34.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-34-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130699,7 +130775,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.35.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-35-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130737,7 +130813,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.36.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-36-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130775,7 +130851,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.37.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-37-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130813,7 +130889,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.38.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-38-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130851,7 +130927,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.39.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-39-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130889,7 +130965,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.4.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-4-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130927,7 +131003,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.40.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-40-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -130965,7 +131041,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.41.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-41-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131003,7 +131079,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.42.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-42-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131041,7 +131117,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.43.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-43-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131079,7 +131155,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.44.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-44-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131117,7 +131193,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.45.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-45-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131155,7 +131231,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.46.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-46-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131193,7 +131269,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.47.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-47-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131231,7 +131307,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.48.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-48-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131269,7 +131345,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.49.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-49-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131307,7 +131383,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.5.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-5-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131345,7 +131421,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.50.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-50-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131383,7 +131459,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.51.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-51-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131421,7 +131497,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.52.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-52-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131459,7 +131535,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.53.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-53-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131497,7 +131573,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.54.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-54-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131535,7 +131611,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.55.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-55-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131573,7 +131649,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.56.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-56-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131611,7 +131687,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.57.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-57-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131649,7 +131725,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.58.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-58-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131687,7 +131763,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.59.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-59-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131725,7 +131801,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.6.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-6-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131763,7 +131839,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.60.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-60-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131801,7 +131877,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.61.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-61-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131839,7 +131915,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.62.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-62-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131877,7 +131953,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.63.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-63-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131915,7 +131991,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.64.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-64-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131953,7 +132029,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.65.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-65-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -131991,7 +132067,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.66.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-66-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132029,7 +132105,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.67.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-67-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132067,7 +132143,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.68.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-68-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132105,7 +132181,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.69.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-69-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132143,7 +132219,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.7.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-7-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132181,7 +132257,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.70.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-70-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132219,7 +132295,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.71.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-71-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132257,7 +132333,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.72.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-72-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132295,7 +132371,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.73.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-73-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132333,7 +132409,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.74.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-74-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132371,7 +132447,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.75.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-75-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132409,7 +132485,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.76.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-76-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132447,7 +132523,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.77.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-77-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132485,7 +132561,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.78.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-78-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132523,7 +132599,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.79.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-79-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132561,7 +132637,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.8.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-8-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132599,7 +132675,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.80.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-80-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132637,7 +132713,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.81.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-81-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132675,7 +132751,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.82.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-82-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132713,7 +132789,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.83.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-83-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132751,7 +132827,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.84.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-84-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132789,7 +132865,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.85.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-85-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132827,7 +132903,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.86.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-86-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132865,7 +132941,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.87.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-87-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132903,7 +132979,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.88.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-88-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132941,7 +133017,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.89.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-89-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132979,7 +133055,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "classes.9.source_refs.0"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "classes-9-source-refs-0 from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -132988,6 +133064,44 @@ units:
       evidence: "Catalog source entry exists."
       path: "data/catalogs/classes.yaml"
       entry_id: "classes-9-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: covered
+      evidence: "apps/server/src/catalogs/read-models.ts imports validated catalog documents into catalog_documents with source hash, status and source_refs; apps/server/src/catalogs/read-models.test.ts verifies the PostgreSQL read model."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.ts exposes canonical catalog read models through GET /catalogs and GET /catalogs/:catalogName with stable JSON errors."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors."
+  - unit_id: "source_ref:classes-90-source-refs-0"
+    unit_type: "source_ref"
+    domain: "catalogs"
+    title: "classes-90-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/classes.yaml"
+        ref: "classes.90.source_refs.0"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
+    business_rule:
+      summary: "classes-90-source-refs-0 from data/catalogs/classes.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/classes.yaml"
+      entry_id: "classes-90-source-refs-0"
     zod_schema:
       status: partial
       evidence: "Zod schema coverage must be linked by domain implementation."
@@ -135335,7 +135449,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.0.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-0-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135373,7 +135487,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.1.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-1-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135411,7 +135525,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.10.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-10-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135449,7 +135563,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.11.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-11-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135479,6 +135593,120 @@ units:
     tests:
       status: covered
       evidence: "apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors."
+  - unit_id: "source_ref:orientations-12-source-refs-0"
+    unit_type: "source_ref"
+    domain: "catalogs"
+    title: "orientations-12-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/orientations.yaml"
+        ref: "orientations.12.source_refs.0"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
+    business_rule:
+      summary: "orientations-12-source-refs-0 from data/catalogs/orientations.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/orientations.yaml"
+      entry_id: "orientations-12-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: covered
+      evidence: "apps/server/src/catalogs/read-models.ts imports validated catalog documents into catalog_documents with source hash, status and source_refs; apps/server/src/catalogs/read-models.test.ts verifies the PostgreSQL read model."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.ts exposes canonical catalog read models through GET /catalogs and GET /catalogs/:catalogName with stable JSON errors."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors."
+  - unit_id: "source_ref:orientations-12-source-refs-1"
+    unit_type: "source_ref"
+    domain: "catalogs"
+    title: "orientations-12-source-refs-1"
+    status: partial
+    sources:
+      - path: "data/catalogs/orientations.yaml"
+        ref: "orientations.12.source_refs.1"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
+    business_rule:
+      summary: "orientations-12-source-refs-1 from data/catalogs/orientations.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/orientations.yaml"
+      entry_id: "orientations-12-source-refs-1"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: covered
+      evidence: "apps/server/src/catalogs/read-models.ts imports validated catalog documents into catalog_documents with source hash, status and source_refs; apps/server/src/catalogs/read-models.test.ts verifies the PostgreSQL read model."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.ts exposes canonical catalog read models through GET /catalogs and GET /catalogs/:catalogName with stable JSON errors."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors."
+  - unit_id: "source_ref:orientations-12-source-refs-2"
+    unit_type: "source_ref"
+    domain: "catalogs"
+    title: "orientations-12-source-refs-2"
+    status: partial
+    sources:
+      - path: "data/catalogs/orientations.yaml"
+        ref: "orientations.12.source_refs.2"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
+    business_rule:
+      summary: "orientations-12-source-refs-2 from data/catalogs/orientations.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/orientations.yaml"
+      entry_id: "orientations-12-source-refs-2"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: covered
+      evidence: "apps/server/src/catalogs/read-models.ts imports validated catalog documents into catalog_documents with source hash, status and source_refs; apps/server/src/catalogs/read-models.test.ts verifies the PostgreSQL read model."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.ts exposes canonical catalog read models through GET /catalogs and GET /catalogs/:catalogName with stable JSON errors."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors."
   - unit_id: "source_ref:orientations-2-source-refs-0"
     unit_type: "source_ref"
     domain: "catalogs"
@@ -135487,7 +135715,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.2.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-2-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135525,7 +135753,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.3.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-3-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135563,7 +135791,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.4.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-4-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135601,7 +135829,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.5.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-5-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135639,7 +135867,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.6.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-6-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135677,7 +135905,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.7.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-7-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135715,7 +135943,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.8.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-8-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -135753,7 +135981,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "orientations.9.source_refs.0"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "orientations-9-source-refs-0 from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -196575,7 +196803,7 @@ units:
     sources:
       - path: "data/catalogs/classes.yaml"
         ref: "data/catalogs/classes.yaml"
-        sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+        sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     business_rule:
       summary: "data/catalogs/classes.yaml from data/catalogs/classes.yaml."
       ambiguity_ref: null
@@ -196863,7 +197091,7 @@ units:
     sources:
       - path: "data/catalogs/orientations.yaml"
         ref: "data/catalogs/orientations.yaml"
-        sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+        sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     business_rule:
       summary: "data/catalogs/orientations.yaml from data/catalogs/orientations.yaml."
       ambiguity_ref: null
@@ -217599,7 +217827,7 @@ units:
     sources:
       - path: "docs/rules/04-classes.md"
         ref: "docs/rules/04-classes.md"
-        sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+        sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     business_rule:
       summary: "docs/rules/04-classes.md from docs/rules/04-classes.md."
       ambiguity_ref: null

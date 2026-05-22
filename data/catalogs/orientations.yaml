@@ -3,12 +3,13 @@ version: 1
 metadata:
   source: data/legacy/web-scraped/documents/classes/index.md
   source_sha256: 1c865297bdfbfa555fd4892188331a200d7c15c29e4c06178a3013459778449a
-  imported_at: '2026-04-30'
-  total_entries: 12
-  catalog_status: partial
+  imported_at: '2026-05-22'
+  total_entries: 13
+  catalog_status: complete
   notes: >-
-    Liste web canonique : 12 orientations. La 13e ('Malfaisant') référencée dans docs/rules/04-classes.md C.9 est
-    absente du web — à inventorier en ambiguïté ultérieure.
+    13 orientations canoniques (Q-D4.1, tranché 2026-04-25). La liste web ne porte que 12 orientations ; la 13e
+    ('Malfaisant', atout d'orientation Méfait) est sourcée depuis la liste papier (orientations-et-classes.md:141) et
+    docs/rules/04-classes.md (C.9, lexique:699).
 orientations:
   - id: artisan
     name: Artisan
@@ -106,3 +107,17 @@ orientations:
       - path: data/legacy/web-scraped/documents/classes/index.md
         sha256: 1c865297bdfbfa555fd4892188331a200d7c15c29e4c06178a3013459778449a
         ref: line:104
+  - id: malfaisant
+    name: Malfaisant
+    status: active
+    is_magical: false
+    source_refs:
+      - path: data/legacy/paper/regles-papier/extracted/listes/orientations-et-classes.md
+        sha256: 4a9f0e8c0e5a0943077d2b6104be1e5a6bac3d1f3206b08c17ba2cd8b37f50d7
+        ref: line:141
+      - path: docs/rules/04-classes.md
+        sha256: 1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
+        ref: line:152
+      - path: docs/rules/04-classes.md
+        sha256: 1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
+        ref: line:172
