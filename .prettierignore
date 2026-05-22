@@ -16,3 +16,8 @@ data/legacy/
 *.gpkg
 *.qgs
 *.qgz
+
+# Generated design tokens (owned by packages/tokens/src/build.ts — run `pnpm tokens:build`)
+apps/game/src/app/tokens.generated.css
+packages/tokens/tokens.resolved.json
+packages/tokens/src/generated/

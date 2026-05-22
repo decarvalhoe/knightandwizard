@@ -1,0 +1,21 @@
+{
+  "name": "@knightandwizard/tokens",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./resolved": "./tokens.resolved.json"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "generate": "tsx src/build.ts",
+    "lint": "eslint src",
+    "typecheck": "tsc -b"
+  }
+}

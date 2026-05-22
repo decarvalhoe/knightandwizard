@@ -51,6 +51,7 @@
     "canonical:check": "tsx tools/canonical.ts",
     "canonical:check:strict": "tsx tools/canonical.ts --strict",
     "nomos:export": "tsx tools/nomos-export.ts",
+    "tokens:build": "tsx packages/tokens/src/build.ts",
     "catalogs:build:races": "tsx tools/build-races-catalog.ts",
     "catalogs:build:competences": "tsx tools/build-skills-catalog.ts",
     "catalogs:build:orientations-classes": "tsx tools/build-orientations-classes-catalog.ts",

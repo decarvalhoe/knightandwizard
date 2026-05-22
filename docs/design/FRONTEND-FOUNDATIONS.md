@@ -85,8 +85,8 @@ apps/game (implémentation Next.js)
 | Phase | Objectif | Artefacts | Acceptance | Statut |
 |---|---|---|---|---|
 | **F0** Recherche & pack | Best practices Figma/Claude Design/game-UX/frontend + synthèse | ce runbook | recoupé + cité | ✅ fait |
-| **F1** DA / tokens | tokens DTCG (primitif→sémantique→composant), light+night | `packages/tokens` (DTCG json) | tokens dérivés de la palette, modes définis | ⏳ |
-| **F2** Figma `00 Foundations` | Variables/modes/type/grille | fichier Figma publié | library publiée | ⏳ |
+| **F1** DA / tokens | tokens DTCG (primitif→sémantique), light+night → Tailwind v4 `@theme` | `packages/tokens` + `apps/game/src/app/tokens.generated.css` | gates verts + vars CSS émises au build Next | ✅ fait |
+| **F2** Figma `00 Foundations` | Variables/modes/type/grille | fichier Figma + Variables (80) + nuanciers/typo/grille | library publiée (manuel) | 🟡 prêt à publier |
 | **F3** Figma `01 Core` + `packages/ui` | composants core + K&W (DicePool, StatBlock…) | Figma + `packages/ui`+Storybook | Storybook vert, a11y axe | ⏳ |
 | **F4** Code Connect | mapping Figma ↔ `packages/ui` | `*.figma.tsx` | Dev Mode émet le vrai code | ⏳ |
 | **F5** Figma `02 Patterns` | fiche/combat/session/browsers/MJ | maquettes patterns | revues | ⏳ |
@@ -95,7 +95,17 @@ apps/game (implémentation Next.js)
 | **F8** CI/qualité | boundaries-lint + Storybook + visual reg + Lighthouse dans `pnpm validate` | ci.yml | gates verts | ⏳ |
 
 ## 9. Execution log (vivant — mis à jour à chaque étape)
-- **2026-05-22** — F0 lancée : 3 recherches profondes en parallèle (design systems/Figma ; game-UX/TTRPG ; frontend robuste/canonical/CI), grounding DA lu dans `globals.css`. Pack de synthèse produit. « Claude Design » identifié (claude.ai/design, Anthropic Labs, lit codebase+design files). Décisions de cadrage prises (voir §10). Runbook créé. **Prochaine : F1 (tokens) ou F2 (Figma) selon choix build A/B/C.**
+- **2026-05-22** — F0 lancée : 3 recherches profondes en parallèle (design systems/Figma ; game-UX/TTRPG ; frontend robuste/canonical/CI), grounding DA lu dans `globals.css`. Pack de synthèse produit. « Claude Design » identifié (claude.ai/design, Anthropic Labs, lit codebase+design files). Décisions de cadrage prises (voir §10). Runbook créé.
+- **2026-05-22** — **F1 tokens livrée.** Décision utilisateur : Figma vierge à créer (pas d'URL) + scaffolder `packages/tokens` + branchement Tailwind v4, « en parallèle ». Skills Figma chargés (`figma-generate-library` + `figma-use`).
+  - *Env vérifié* : WSL OK via `wsl.exe`, branche `feat/frontend-foundations`, `packages/{catalogs,rules-core}` (tokens à créer), pnpm 10.33.2 / node 20.
+  - *Set v1 (source unique)* : `packages/tokens/src/tokens/*.json` (DTCG W3C) — **primitives** (6 ancres marque + dérivés deep/soft, rampe neutre warm 0→900, 4 fonctionnels), **semantic.light/night** (21 rôles : canvas/surface/raised/inset · fg/-muted/-subtle/-inverse/on-accent · border/-strong/-subtle · forest/forest-strong/wine/wine-strong/gold · success/warning/danger/info), **dimensions** (spacing 0→4xl, radius none→full), **typography** (Inter, 4 weights, 9 tailles, 4 line-heights).
+  - *Générateur* : `src/build.ts` (+`lib.ts`) — flatten DTCG + résolution d'alias `{…}` → émet (a) `apps/game/src/app/tokens.generated.css` (`@theme` light + override `[data-theme='night']`), (b) `tokens.resolved.json` (miroir pour Figma), (c) `src/generated/tokens.ts` (export typé). Script racine `pnpm tokens:build`.
+  - *Wiring Tailwind v4* : `globals.css` → `@import './tokens.generated.css'` + styles de base sur variables (`var(--color-canvas/-fg/-forest/-wine)`, `--font-sans`).
+  - *Validation* : `format:check` ✓ · `lint` ✓ (0 pb) · `typecheck` ✓ (7 packages dont `@knightandwizard/tokens`) · `next build` ✓ (4 pages) ; **vérifié** que `--color-canvas` et `[data-theme]` sont émis dans `.next/static/css`. Artefacts générés exclus de prettier (contrat « générateur = source de vérité »).
+  - **Prochaine : F2 — créer le fichier Figma + Variables (miroir des 21 couleurs × 2 modes + spacing/radius/type), après checkpoint scope-lock.**
+- **2026-05-22** — F2 : fichier Figma **Knight & Wizard — Design System** créé (key `d6rwR90ptCWCcrOZFhBZ3n` · https://www.figma.com/design/d6rwR90ptCWCcrOZFhBZ3n · plan « L'équipe de Dev Réalisons », auth `DevRealisons`). Build des Variables en cours, miroir de `tokens.resolved.json` : Primitives (26) → Color light/night (21) → Dimension (spacing+radius) → Typography ; scopes + code syntax `var(--…)` posés sur le sémantique.
+  - **Variables livrées** : 4 collections, **80 variables** — Primitives `1:2` (26, scopes masqués), Color `2:2` (21, modes Light `2:0`/Night `2:1`, alias→primitives, scopes par rôle, `var(--color-*)`), Dimension `3:2` (15 : spacing+radius, `var(--spacing-*/--radius-*)`), Typography `3:18` (18 : family/weights/sizes px/line-heights, `var(--font-sans/--font-weight-*/--text-*/--leading-*)`). Page `Foundations` (`4:2`) + planche nuanciers sémantiques (frame `4:3`, fills/texte liés aux variables) **validée par screenshot** (Light).
+  - **Foundations complétées** : planche **Night** (frame `5:2`, clone + mode explicite Night) ✅ ; panneau **Type & Scales** (`6:2`) — spécimen typo (font-size lié aux variables `xs→5xl`), échelle spacing (4→64px), radius ✅ ; **styles de grille** réutilisables `Baseline / 8px` + `Columns / 12` + frame exemple (`7:5`) ✅. Validé par screenshots (Light / Night / Type). **Publication en library = action manuelle Figma** (Assets → Publish ; non exposée à l'API plugin).
 
 ## 10. Decisions register
 | Date | Décision | Rationale |
@@ -103,10 +113,14 @@ apps/game (implémentation Next.js)
 | 2026-05-22 | Le design n'est **pas** du canonical-first ; rien dans `docs/canonical/` | Le canonical-first gouverne les règles/contenu, pas la DA (clarification utilisateur) |
 | 2026-05-22 | **Figma-first**, repo ensuite si utile | Choix utilisateur |
 | 2026-05-22 | Périmètre **large** (toutes les surfaces) | Choix utilisateur |
-| 2026-05-22 | Tokens **DTCG → Style Dictionary → Tailwind v4 `@theme`** (CSS vars, pas de JS config) | Tailwind v4 CSS-first ; source unique anti-drift |
+| 2026-05-22 | Tokens **DTCG → générateur tsx maison → Tailwind v4 `@theme`** (CSS vars). **Pas** Style Dictionary | Cohérent avec les outils repo (tsx : canonical, nomos-export) ; zéro dépendance ; SD n'émet pas le `@theme` v4 nativement (formatter custom de toute façon) |
 | 2026-05-22 | `packages/ui` = **Radix re-skinné tokens** (départ shadcn) | a11y native + pas de lock-in |
 | 2026-05-22 | **Dark/night mode dès J1** au niveau sémantique | éviter le retrofit |
 | 2026-05-22 | Claude Design alimenté via **codebase (packages/ui+tokens) + lib Figma** | c'est ce que Claude Design lit |
+| 2026-05-22 | `packages/tokens` = **source unique**, Figma Variables = **miroir** (via `tokens.resolved.json`) | Aligne code↔design dès J1, anti-drift |
+| 2026-05-22 | Clés sémantiques **plates** (`canvas`,`fg`,`fg-muted`,`border`,`forest`…) = vars `--color-*` = utilitaires Tailwind (`bg-canvas`,`text-fg`) | Tailwind v4 met toutes les couleurs dans un seul namespace ; évite `bg-bg-*` |
+| 2026-05-22 | Night via override **`[data-theme='night']`** des vars `@theme` (pas de variantes `dark:`) | Un seul jeu d'utilitaires bascule via l'attribut HTML ; maintenance simplifiée |
+| 2026-05-22 | CSS généré = **fichier séparé** `tokens.generated.css` importé + `.prettierignore` | Découple généré/manuel ; évite le conflit générateur↔prettier |
 
 ## 11. References
 Claude Design : [Anthropic Labs](https://www.anthropic.com/news/claude-design-anthropic-labs) · [TechCrunch](https://techcrunch.com/2026/04/17/anthropic-launches-claude-design-a-new-product-for-creating-quick-visuals/) · [DataCamp](https://www.datacamp.com/blog/claude-design).

@@ -1,0 +1,26 @@
+{
+  "color": {
+    "$type": "color",
+    "canvas": { "$value": "{color.brand.ink}" },
+    "surface": { "$value": "{color.neutral.800}" },
+    "raised": { "$value": "{color.neutral.700}" },
+    "inset": { "$value": "{color.neutral.900}" },
+    "fg": { "$value": "{color.brand.paper}" },
+    "fg-muted": { "$value": "{color.neutral.300}" },
+    "fg-subtle": { "$value": "{color.neutral.400}" },
+    "fg-inverse": { "$value": "{color.brand.ink}" },
+    "on-accent": { "$value": "{color.brand.paper}" },
+    "border": { "$value": "{color.neutral.600}" },
+    "border-strong": { "$value": "{color.neutral.500}" },
+    "border-subtle": { "$value": "{color.neutral.700}" },
+    "forest": { "$value": "{color.brand.forest-soft}" },
+    "forest-strong": { "$value": "{color.brand.forest}" },
+    "wine": { "$value": "{color.brand.wine-soft}" },
+    "wine-strong": { "$value": "{color.brand.wine}" },
+    "gold": { "$value": "{color.brand.gold-soft}" },
+    "success": { "$value": "{color.functional.success}" },
+    "warning": { "$value": "{color.functional.warning}" },
+    "danger": { "$value": "{color.functional.danger}" },
+    "info": { "$value": "{color.functional.info}" }
+  }
+}
