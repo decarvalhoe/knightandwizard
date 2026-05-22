@@ -5,6 +5,7 @@ import {
   type CharacterSkill,
   type CharacterSpell
 } from './character.js';
+import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
 
 export type LearningKind =
   | 'skill'
@@ -65,11 +66,14 @@ export class ProgressionError extends Error {
   }
 }
 
-export function calculateSessionXPAward(criteria: SessionXPAwardCriteria): SessionXPAward {
+export function calculateSessionXPAward(
+  criteria: SessionXPAwardCriteria,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): SessionXPAward {
   const roleplayPoints = criteria.roleplayPoints ?? 0;
   const bonusXP = criteria.bonusXP ?? 0;
 
-  assertIntegerInRange('roleplayPoints', roleplayPoints, 0, 3);
+  assertIntegerInRange('roleplayPoints', roleplayPoints, 0, config.progression.maxRoleplayPoints);
   assertNonNegativeInteger('bonusXP', bonusXP);
 
   return {
@@ -112,7 +116,10 @@ export function finalizeDefinitiveDeath<TCharacter extends Character>(
   });
 }
 
-export function calculateLearningPlan(input: LearningPlanInput): LearningPlan {
+export function calculateLearningPlan(
+  input: LearningPlanInput,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): LearningPlan {
   assertPositiveInteger('xpCost', input.xpCost);
   assertNonNegativeInteger('learningSuccesses', input.learningSuccesses ?? 0);
   assertNonNegativeInteger('teachingSuccesses', input.teachingSuccesses ?? 0);
@@ -121,25 +128,29 @@ export function calculateLearningPlan(input: LearningPlanInput): LearningPlan {
 
   assertPositiveInteger('divisor', divisor);
 
-  const baseDays = input.xpCost * 3 * (input.selfTaught === true ? 2 : 1);
+  const baseDays =
+    input.xpCost *
+    config.progression.learningDaysPerXP *
+    (input.selfTaught === true ? config.progression.selfTaughtMultiplier : 1);
   const successes = (input.learningSuccesses ?? 0) + (input.teachingSuccesses ?? 0);
   const reducedDays = Math.ceil(Math.max(0, baseDays - successes) / divisor);
 
   return {
     baseDays,
-    finalDays: Math.max(learningFloor(input.kind), reducedDays)
+    finalDays: Math.max(learningFloor(input.kind, config), reducedDays)
   };
 }
 
 export function learnSkill<TCharacter extends Character>(
   character: TCharacter,
   skillId: string,
-  options: LearnSkillOptions = {}
+  options: LearnSkillOptions = {},
+  config: RulesConfig = DEFAULT_RULES_CONFIG
 ): TCharacter {
   assertNarrativeAccess(options.hasNarrativeAccess);
 
   const currentSkill = character.skills.find((skill) => skill.id === skillId);
-  const cost = skillImprovementCost(currentSkill?.points ?? 0);
+  const cost = skillImprovementCost(currentSkill?.points ?? 0, config);
 
   assertCanSpendXP(character, cost);
 
@@ -175,7 +186,8 @@ export function learnSkill<TCharacter extends Character>(
 export function learnSpell<TCharacter extends Character>(
   character: TCharacter,
   spellId: string,
-  options: LearnSpellOptions = {}
+  options: LearnSpellOptions = {},
+  config: RulesConfig = DEFAULT_RULES_CONFIG
 ): TCharacter {
   if (!isMagician(character)) {
     throw new ProgressionError('only magician characters can learn spells');
@@ -185,7 +197,7 @@ export function learnSpell<TCharacter extends Character>(
   assertMinimumLevel(character, options.minimumLevel);
 
   const currentSpell = character.spells.find((spell) => spell.id === spellId);
-  const cost = spellImprovementCost(currentSpell?.points ?? 0);
+  const cost = spellImprovementCost(currentSpell?.points ?? 0, config);
 
   assertCanSpendXP(character, cost);
 
@@ -216,14 +228,22 @@ export function learnSpell<TCharacter extends Character>(
   );
 }
 
-export function skillImprovementCost(currentPoints: number): number {
+export function skillImprovementCost(
+  currentPoints: number,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): number {
   assertNonNegativeInteger('currentPoints', currentPoints);
-  return currentPoints === 0 ? 3 : currentPoints * 3;
+  const base = config.progression.skillImprovementBaseCost;
+  return currentPoints === 0 ? base : currentPoints * base;
 }
 
-export function spellImprovementCost(currentPoints: number): number {
+export function spellImprovementCost(
+  currentPoints: number,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): number {
   assertNonNegativeInteger('currentPoints', currentPoints);
-  return currentPoints === 0 ? 10 : currentPoints * 10;
+  const base = config.progression.spellImprovementBaseCost;
+  return currentPoints === 0 ? base : currentPoints * base;
 }
 
 function spendXP(progression: CharacterProgression, cost: number): CharacterProgression {
@@ -279,19 +299,8 @@ function isMagician(character: Character): boolean {
   );
 }
 
-function learningFloor(kind: LearningKind): number {
-  switch (kind) {
-    case 'skill':
-      return 1;
-    case 'complex_skill':
-      return 3;
-    case 'new_spell':
-      return 7;
-    case 'spell_development':
-      return 14;
-    case 'conceptualization':
-      return 30;
-  }
+function learningFloor(kind: LearningKind, config: RulesConfig = DEFAULT_RULES_CONFIG): number {
+  return config.progression.learningFloors[kind];
 }
 
 function boolPoint(value?: boolean): number {

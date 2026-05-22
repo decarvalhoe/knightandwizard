@@ -1,4 +1,5 @@
 import { type Combatant } from './combat.js';
+import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
 
 export const ATTRIBUTE_KEYS = [
   'strength',
@@ -172,7 +173,8 @@ export class CharacterValidationError extends Error {
 
 export function validateAttributeDistribution(
   attributes: CharacterAttributes,
-  race: RaceProfile
+  race: RaceProfile,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
 ): CharacterValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -184,7 +186,7 @@ export function validateAttributeDistribution(
 
   for (const key of ATTRIBUTE_KEYS) {
     const value = attributes[key];
-    const maximumAtCreation = race.attributeMax[key] - 1;
+    const maximumAtCreation = race.attributeMax[key] - config.creation.attributeMaxOffset;
 
     if (!Number.isInteger(value) || value < 0) {
       errors.push(`${key} must be a non-negative integer`);
@@ -208,11 +210,12 @@ export function validateAttributeDistribution(
 export function validateSkillDistribution(
   skills: CharacterSkill[],
   raceCategory: number,
-  extraSpellPoints = 0
+  extraSpellPoints = 0,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
 ): CharacterValidationResult {
   const errors: string[] = [];
   const total = sumPoints(skills);
-  const requiredSkillPoints = raceCategory - extraSpellPoints * 10;
+  const requiredSkillPoints = raceCategory - extraSpellPoints * config.creation.skillPointsPerSpellPoint;
 
   if (requiredSkillPoints < 0) {
     errors.push(`extra spell points cannot consume more than ${raceCategory} skill points`);
@@ -223,7 +226,7 @@ export function validateSkillDistribution(
   }
 
   for (const skill of skills) {
-    validatePointEntry('skill', skill, 4, errors);
+    validatePointEntry('skill', skill, config.creation.maxSkillPointsAtCreation, errors);
   }
 
   return buildValidationResult(errors, [], total);
@@ -232,40 +235,47 @@ export function validateSkillDistribution(
 export function validateSpellDistribution(
   spells: CharacterSpell[],
   isMagician: boolean,
-  extraSpellPoints = 0
+  extraSpellPoints = 0,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
 ): CharacterValidationResult {
   const errors: string[] = [];
   const total = sumPoints(spells);
-  const requiredSpellPoints = isMagician ? 2 + extraSpellPoints : 0;
+  const baseSpellPoints = config.creation.magicianBaseSpellPoints;
+  const requiredSpellPoints = isMagician ? baseSpellPoints + extraSpellPoints : 0;
 
   if (!isMagician && total > 0) {
     errors.push('non-magician characters cannot receive spell points at creation');
   }
 
-  if (isMagician && total < 2) {
-    errors.push('magician spell points must be at least 2 at creation');
+  if (isMagician && total < baseSpellPoints) {
+    errors.push(`magician spell points must be at least ${baseSpellPoints} at creation`);
   }
 
-  if (isMagician && total >= 2 && total !== requiredSpellPoints) {
+  if (isMagician && total >= baseSpellPoints && total !== requiredSpellPoints) {
     errors.push(`magician spell points must total ${requiredSpellPoints} at creation`);
   }
 
   for (const spell of spells) {
-    validatePointEntry('spell', spell, 2, errors);
+    validatePointEntry('spell', spell, config.creation.maxSpellPointsAtCreation, errors);
   }
 
   return buildValidationResult(errors, [], total);
 }
 
-export function createPlayerCharacter(input: CreatePlayerCharacterInput): PlayerCharacter {
+export function createPlayerCharacter(
+  input: CreatePlayerCharacterInput,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): PlayerCharacter {
   const spells = input.spells ?? [];
   const magician = isMagician(input.orientation);
   const spellTotal = sumPoints(spells);
-  const extraSpellPoints = magician ? Math.max(0, spellTotal - 2) : 0;
+  const extraSpellPoints = magician
+    ? Math.max(0, spellTotal - config.creation.magicianBaseSpellPoints)
+    : 0;
   const validationResults = [
-    validateAttributeDistribution(input.attributes, input.race),
-    validateSkillDistribution(input.skills, input.race.category, extraSpellPoints),
-    validateSpellDistribution(spells, magician, extraSpellPoints)
+    validateAttributeDistribution(input.attributes, input.race, config),
+    validateSkillDistribution(input.skills, input.race.category, extraSpellPoints, config),
+    validateSpellDistribution(spells, magician, extraSpellPoints, config)
   ];
   const errors = validationResults.flatMap((result) => result.errors);
   const warnings = validationResults.flatMap((result) => result.warnings);
@@ -274,7 +284,9 @@ export function createPlayerCharacter(input: CreatePlayerCharacterInput): Player
     throw new CharacterValidationError(errors, warnings);
   }
 
-  const energy = isMagician(input.orientation) ? { current: 60, max: 60 } : { current: 0, max: 0 };
+  const energy = magician
+    ? { current: config.creation.magicianStartingEnergy, max: config.creation.magicianStartingEnergy }
+    : { current: 0, max: 0 };
 
   return {
     id: input.id,
@@ -301,9 +313,12 @@ export function createPlayerCharacter(input: CreatePlayerCharacterInput): Player
   };
 }
 
-export function createNonPlayerCharacter(input: CreateNonPlayerCharacterInput): NonPlayerCharacter {
+export function createNonPlayerCharacter(
+  input: CreateNonPlayerCharacterInput,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): NonPlayerCharacter {
   const defaultEnergy = isMagician(input.orientation)
-    ? { current: 60, max: 60 }
+    ? { current: config.creation.magicianStartingEnergy, max: config.creation.magicianStartingEnergy }
     : { current: 0, max: 0 };
 
   return {
@@ -348,7 +363,10 @@ export function calculateEffectiveAttributes(character: Character): CharacterAtt
   return effective;
 }
 
-export function calculateLevelProgression(character: Character): LevelProgression {
+export function calculateLevelProgression(
+  character: Character,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): LevelProgression {
   if (isFamiliar(character.race)) {
     return {
       level: null,
@@ -362,7 +380,8 @@ export function calculateLevelProgression(character: Character): LevelProgressio
     ? []
     : collectPrimarySkillIds(character);
   const levelPoints = isMagician(character.orientation)
-    ? sumPoints(character.skills) + sumPoints(character.spells) * 2
+    ? sumPoints(character.skills) +
+      sumPoints(character.spells) * config.progression.magicianLevelSpellMultiplier
     : sumPoints(character.skills) + sumPrimaryTreePoints(character.skills, primarySkillIds);
 
   return {
