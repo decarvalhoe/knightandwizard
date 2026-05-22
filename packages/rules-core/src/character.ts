@@ -88,6 +88,13 @@ export interface CharacterBase {
   id: string;
   name: string;
   kind: 'player' | 'npc';
+  /**
+   * Ruleset version this character was built (or last migrated) under. Optional
+   * to stay backward-compatible with characters persisted before versioning;
+   * {@link createPlayerCharacter} / {@link createNonPlayerCharacter} stamp it
+   * from the config they use and {@link migrateCharacter} updates it.
+   */
+  rulesVersion?: number;
   race: RaceProfile;
   orientation: CharacterOrientationProfile;
   classProfile: CharacterClassProfile;
@@ -157,6 +164,19 @@ export interface LevelProgression {
   levelPoints: number | null;
   levelUpAt: number | null;
   primarySkillIds: string[];
+}
+
+export interface CharacterMigrationResult<T extends Character = Character> {
+  /** A NEW character object stamped with the target ruleset version. */
+  character: T;
+  /** Human-readable record of every derived value that was recomputed. */
+  changes: string[];
+  /**
+   * Human-readable record of preserved player choices that now violate the
+   * target ruleset (e.g. a chosen value exceeding a lowered cap). These are
+   * surfaced, never silently corrected.
+   */
+  warnings: string[];
 }
 
 export class CharacterValidationError extends Error {
@@ -296,6 +316,7 @@ export function createPlayerCharacter(
     id: input.id,
     name: input.name,
     kind: 'player',
+    rulesVersion: config.version,
     userId: input.userId,
     race: input.race,
     orientation: input.orientation,
@@ -332,6 +353,7 @@ export function createNonPlayerCharacter(
     id: input.id,
     name: input.name,
     kind: 'npc',
+    rulesVersion: config.version,
     templateId: input.templateId,
     race: input.race,
     orientation: input.orientation,
@@ -351,6 +373,93 @@ export function createNonPlayerCharacter(
     progression: copyProgression(input.progression),
     metadata: { ...(input.metadata ?? {}) }
   };
+}
+
+/**
+ * Migrate a character onto a new ruleset version.
+ *
+ * The contract is deliberately conservative:
+ * - DERIVED resources are recomputed (magician energy.max from the target
+ *   config; energy.current is clamped down to the new max). Every change is
+ *   recorded in `changes`.
+ * - PLAYER CHOICES (attributes, skills, spells, equipment, modifiers) are
+ *   PRESERVED verbatim.
+ * - If a preserved choice now exceeds a target cap
+ *   (maxSkillPointsAtCreation / maxSpellPointsAtCreation / the per-attribute
+ *   creation cap derived from race.attributeMax - attributeMaxOffset), a
+ *   warning is emitted but the value is NEVER truncated -- truncating would
+ *   silently make a business decision.
+ * - The returned `character` is a NEW object; the input is not mutated.
+ */
+export function migrateCharacter<T extends Character>(
+  character: T,
+  toConfig: RulesConfig = DEFAULT_RULES_CONFIG
+): CharacterMigrationResult<T> {
+  const changes: string[] = [];
+  const warnings: string[] = [];
+
+  // Deep-copy the resources we may recompute so the input stays untouched.
+  const energy: CharacterResource = { ...character.energy };
+
+  // Recompute derived resources: magician energy ceiling comes from the ruleset.
+  if (isMagician(character.orientation)) {
+    const newMax = toConfig.creation.magicianStartingEnergy;
+
+    if (energy.max !== newMax) {
+      changes.push(`energy.max recomputed from ${energy.max} to ${newMax}`);
+      energy.max = newMax;
+    }
+
+    if (energy.current > energy.max) {
+      changes.push(`energy.current clamped from ${energy.current} to ${energy.max}`);
+      energy.current = energy.max;
+    }
+  }
+
+  // Re-validate preserved player choices against the new caps (warn, never cut).
+  for (const skill of character.skills) {
+    if (skill.points > toConfig.creation.maxSkillPointsAtCreation) {
+      warnings.push(
+        `skill ${skill.id} has ${skill.points} points which exceeds the new creation cap of ` +
+          `${toConfig.creation.maxSkillPointsAtCreation}; value preserved`
+      );
+    }
+  }
+
+  for (const spell of character.spells) {
+    if (spell.points > toConfig.creation.maxSpellPointsAtCreation) {
+      warnings.push(
+        `spell ${spell.id} has ${spell.points} points which exceeds the new creation cap of ` +
+          `${toConfig.creation.maxSpellPointsAtCreation}; value preserved`
+      );
+    }
+  }
+
+  for (const key of ATTRIBUTE_KEYS) {
+    const value = character.attributes[key];
+    const attributeMaxAtCreation =
+      character.race.attributeMax[key] - toConfig.creation.attributeMaxOffset;
+
+    if (value > attributeMaxAtCreation) {
+      warnings.push(
+        `attribute ${key} is ${value} which exceeds the new creation cap of ` +
+          `${attributeMaxAtCreation} for ${character.race.name}; value preserved`
+      );
+    }
+  }
+
+  // Stamp the target ruleset version.
+  changes.push(
+    `rulesVersion stamped from ${character.rulesVersion ?? 'unset'} to ${toConfig.version}`
+  );
+
+  const migrated: T = {
+    ...character,
+    energy,
+    rulesVersion: toConfig.version
+  };
+
+  return { character: migrated, changes, warnings };
 }
 
 export function calculateEffectiveAttributes(character: Character): CharacterAttributes {
