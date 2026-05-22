@@ -65,6 +65,54 @@ const UNIT_TYPE: Record<string, string> = {
   // default below: catalog_entry
 };
 
+// Graduated criticality, keyed on the K&W unit_type. NOMOS uses this for impact /
+// blast-radius prioritisation (high/critical units are flagged when sources change).
+//   critical = mechanical core the engine computes (a bug here breaks the game)
+//   high     = character/combat-defining catalog content
+//   medium   = other catalog content (default)
+//   low      = lore / world / reference / legacy material
+const CRITICALITY: Record<string, string> = {
+  rule: 'critical',
+  resistance: 'critical',
+  bonus_damage_extra: 'critical',
+  bonus_damage_extra_per_param: 'critical',
+  race: 'high',
+  classe: 'high',
+  orientation: 'high',
+  skill: 'high',
+  spell: 'high',
+  school: 'high',
+  weapon: 'high',
+  armor_piece: 'high',
+  shield: 'high',
+  ambiguity: 'high',
+  anomaly: 'high',
+  creature: 'medium',
+  potion: 'medium',
+  ingredient: 'medium',
+  optional_ingredient: 'medium',
+  deity: 'medium',
+  religion: 'medium',
+  organisation: 'medium',
+  mushroom_syndrome: 'medium',
+  asset: 'medium',
+  city: 'low',
+  region: 'low',
+  regions_from_world_map: 'low',
+  web_regions_complement: 'low',
+  location: 'low',
+  lore_entry: 'low',
+  notable_individual: 'low',
+  image: 'low',
+  legacy_character: 'low',
+  legacy_session_page: 'low',
+  source_document: 'low',
+  source_file: 'low',
+  source_ref: 'low',
+  changelog: 'low'
+  // default below: medium
+};
+
 function nomosId(raw: string): string {
   const up = String(raw).toUpperCase().replace(/[^A-Z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   return /^[A-Z0-9]/.test(up) ? up : `X-${up}`;
@@ -157,7 +205,7 @@ async function main(): Promise<void> {
       unit_type: UNIT_TYPE[String(u.unit_type)] ?? 'catalog_entry',
       name: String(u.title ?? u.unit_id),
       domain,
-      criticality: 'medium',
+      criticality: CRITICALITY[String(u.unit_type)] ?? 'medium',
       source_refs: sourceRefs,
       business_rule: businessRule,
       status,
