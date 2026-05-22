@@ -1,0 +1,79 @@
+schema_version: '0.1.0'
+project:
+  id: knightandwizard
+  name: 'Knight & Wizard'
+  description: Transposition digitale canonical-first du JdR papier Knight & Wizard (tabletop-first).
+  repository: https://github.com/decarvalhoe/knightandwizard
+  domain: tabletop-rpg
+  lifecycle: brownfield
+  risk_level: low
+  owners:
+    - name: decarvalhoe
+      role: maintainer
+      email: devlab@realisons.com
+scope:
+  verdict: in_scope
+  confidence: high
+  in_scope:
+    - manifest-validation
+    - source-checks
+    - contract-checks
+    - product-checks
+    - strict-cross-checks
+    - exception-management
+surfaces:
+  - name: server-api
+    type: api
+    path: apps/server/
+    stack: typescript
+    critical: true
+  - name: game-ui
+    type: ui
+    path: apps/game/
+    stack: typescript
+    critical: true
+  - name: cms
+    type: ui
+    path: apps/cms/
+    stack: typescript
+    critical: false
+  - name: interactive-map
+    type: ui
+    path: apps/interactive-map/
+    stack: javascript
+    critical: false
+  - name: catalogs-data
+    type: data
+    path: data/
+    stack: yaml
+    critical: true
+  - name: rules-docs
+    type: docs
+    path: docs/
+    stack: markdown
+    critical: true
+  - name: canonical-tooling
+    type: cli
+    path: tools/
+    stack: typescript
+    critical: true
+toolchain:
+  build:
+    - pnpm build
+  test:
+    - pnpm test
+  lint:
+    - pnpm lint
+  typecheck:
+    - pnpm typecheck
+  ci_systems:
+    - github-actions
+compliance:
+  regulated: false
+  data_sensitivity: internal
+  exceptions_allowed: true
+evidence:
+  required_reports:
+    - nomos-report.json
+    - coverage-report.md
+  attestation_level: none
