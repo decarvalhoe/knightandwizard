@@ -215,7 +215,8 @@ export function validateSkillDistribution(
 ): CharacterValidationResult {
   const errors: string[] = [];
   const total = sumPoints(skills);
-  const requiredSkillPoints = raceCategory - extraSpellPoints * config.creation.skillPointsPerSpellPoint;
+  const requiredSkillPoints =
+    raceCategory - extraSpellPoints * config.creation.skillPointsPerSpellPoint;
 
   if (requiredSkillPoints < 0) {
     errors.push(`extra spell points cannot consume more than ${raceCategory} skill points`);
@@ -285,7 +286,10 @@ export function createPlayerCharacter(
   }
 
   const energy = magician
-    ? { current: config.creation.magicianStartingEnergy, max: config.creation.magicianStartingEnergy }
+    ? {
+        current: config.creation.magicianStartingEnergy,
+        max: config.creation.magicianStartingEnergy
+      }
     : { current: 0, max: 0 };
 
   return {
@@ -318,7 +322,10 @@ export function createNonPlayerCharacter(
   config: RulesConfig = DEFAULT_RULES_CONFIG
 ): NonPlayerCharacter {
   const defaultEnergy = isMagician(input.orientation)
-    ? { current: config.creation.magicianStartingEnergy, max: config.creation.magicianStartingEnergy }
+    ? {
+        current: config.creation.magicianStartingEnergy,
+        max: config.creation.magicianStartingEnergy
+      }
     : { current: 0, max: 0 };
 
   return {

@@ -286,7 +286,11 @@ export function resolveStaminaDamage(
   config: RulesConfig = DEFAULT_RULES_CONFIG
 ): CombatState {
   const target = findCombatant(state, targetId);
-  const staminaRoll = rollDice(target.attributes.stamina, config.combat.staminaRollDifficulty, options);
+  const staminaRoll = rollDice(
+    target.attributes.stamina,
+    config.combat.staminaRollDifficulty,
+    options
+  );
   const preventedDamage = staminaRoll.successes;
   const finalDamage = Math.max(0, damage - preventedDamage);
   const damagedState = finalDamage > 0 ? applyDamage(state, targetId, finalDamage) : state;

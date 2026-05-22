@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
 import { addCombatant, createCombatState, resolveStaminaDamage } from './combat.js';
-import { calculateLearningPlan, skillImprovementCost, spellImprovementCost } from './progression.js';
+import {
+  calculateLearningPlan,
+  skillImprovementCost,
+  spellImprovementCost
+} from './progression.js';
 import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
 
 /**
