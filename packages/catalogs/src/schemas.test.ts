@@ -3,6 +3,9 @@ import { describe, expect, it } from 'vitest';
 import {
   CatalogValidationError,
   PRIORITY_CATALOG_NAMES,
+  PotionSchema,
+  ProtectionSchema,
+  WeaponSchema,
   loadValidatedCatalog,
   loadValidatedCatalogs,
   validateCatalogData
@@ -369,6 +372,64 @@ describe('catalog Zod schemas', () => {
     } catch (error) {
       expect((error as Error).message).toContain('spells.0.status');
     }
+  });
+
+  it('keeps equipment status and source refs optional while preserving them when present', () => {
+    const sourceRef = {
+      path: 'data/legacy/paper/regles-papier/extracted/listes/armes.md',
+      ref: 'entry:epee_batarde',
+      sha256: 'b'.repeat(64)
+    };
+
+    const weapon = WeaponSchema.parse({
+      id: 'epee_batarde',
+      name: 'Épée bâtarde',
+      category: 'melee',
+      damage_formula: 'F+6',
+      status: 'active',
+      weight_kg: 2.2,
+      source_refs: [sourceRef]
+    });
+    expect(weapon.status).toBe('active');
+    expect(weapon.source_refs).toEqual([sourceRef]);
+
+    const shield = ProtectionSchema.parse({
+      id: 'bouclier_bois',
+      name: 'Bouclier (bois)',
+      category: 'shield',
+      material: 'wood',
+      protection: { P: 2, E: 2, C: 1, T: 3 },
+      pass_chance_pct: 40,
+      weight_kg_human: 3,
+      size: 'medium',
+      source_refs: [sourceRef]
+    });
+    expect((shield as { source_refs?: unknown }).source_refs).toEqual([sourceRef]);
+
+    // Status and source refs remain optional: a minimal entry still validates.
+    const potion = PotionSchema.parse({
+      id: 'soin',
+      name: 'Potion de Soin',
+      category: 'potion',
+      output_type: 'potion',
+      effect: 'Restaure de la vitalité',
+      ingredients: [{ id: 'huile' }],
+      craft_check: { skill: 'alchimie' }
+    });
+    expect(potion.status).toBeUndefined();
+    expect(potion.source_refs).toBeUndefined();
+  });
+
+  it('rejects an invalid equipment status value', () => {
+    const parsed = WeaponSchema.safeParse({
+      id: 'broken',
+      name: 'Arme cassée',
+      category: 'melee',
+      damage_formula: 'F',
+      status: 'legendary'
+    });
+
+    expect(parsed.success).toBe(false);
   });
 
   it('reports the file and data path when validation fails', () => {

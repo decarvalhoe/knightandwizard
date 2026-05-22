@@ -28,6 +28,7 @@ export default async function CharacterPage() {
         attributeLabels={sheet.attributeLabels}
         attributeOrder={sheet.attributeOrder}
         character={sheet.character}
+        equipmentCatalog={sheet.equipmentCatalog}
         initialInventory={sheet.initialInventory}
         skillCatalog={sheet.skillCatalog}
         skillLabels={sheet.skillLabels}

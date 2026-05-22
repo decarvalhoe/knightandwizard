@@ -15,6 +15,7 @@ import {
   socialAttributeKeys,
   type AttributeRollResult,
   type CharacterSheetMode,
+  type EquipmentCatalogEntry,
   type InventoryItem,
   type SkillCatalogEntry,
   type SpellEntry
@@ -24,6 +25,7 @@ interface CharacterSheetProps {
   attributeLabels: Record<AttributeKey, string>;
   attributeOrder: AttributeKey[];
   character: Character;
+  equipmentCatalog: EquipmentCatalogEntry[];
   initialInventory: InventoryItem[];
   skillCatalog: SkillCatalogEntry[];
   skillLabels: Record<string, string>;
@@ -44,18 +46,11 @@ const modeIcons: Record<CharacterSheetMode, typeof BookOpen> = {
   social: Sparkles
 };
 
-const quickItem: InventoryItem = {
-  category: 'gear',
-  id: 'torch',
-  name: 'Torche',
-  quantity: 1,
-  weightKg: 0.4
-};
-
 export function CharacterSheet({
   attributeLabels,
   attributeOrder,
   character,
+  equipmentCatalog,
   initialInventory,
   skillCatalog,
   skillLabels,
@@ -64,6 +59,27 @@ export function CharacterSheet({
   const [mode, setMode] = useState<CharacterSheetMode>('complete');
   const [inventory, setInventory] = useState(initialInventory);
   const [lastRoll, setLastRoll] = useState<AttributeRollResult | null>(null);
+  const [selectedEquipmentId, setSelectedEquipmentId] = useState<string>(
+    () => equipmentCatalog[0]?.id ?? ''
+  );
+
+  function addEquipment(equipmentId: string) {
+    const option = equipmentCatalog.find((entry) => entry.id === equipmentId);
+
+    if (!option) {
+      return;
+    }
+
+    setInventory((current) =>
+      addInventoryItem(current, {
+        category: option.category,
+        id: option.id,
+        name: option.name,
+        quantity: 1,
+        weightKg: option.weightKg
+      })
+    );
+  }
   const view = useMemo(
     () => buildCharacterSheetView({ character, inventory, mode, spells }),
     [character, inventory, mode, spells]
@@ -338,14 +354,33 @@ export function CharacterSheet({
       <div className="grid gap-5 lg:grid-cols-[1fr_0.85fr]">
         <Panel
           action={
-            <button
-              className="inline-flex min-h-10 items-center gap-2 rounded-md bg-forest px-3 text-sm font-semibold text-paper"
-              onClick={() => setInventory(addInventoryItem(inventory, quickItem))}
-              type="button"
-            >
-              <PackagePlus aria-hidden="true" className="size-4" />
-              Torche
-            </button>
+            equipmentCatalog.length > 0 ? (
+              <div className="flex items-center gap-2">
+                <label className="sr-only" htmlFor="equipment-picker">
+                  Équipement du catalogue
+                </label>
+                <select
+                  className="min-h-10 rounded-md border border-ink/15 bg-paper px-2 text-sm text-ink"
+                  id="equipment-picker"
+                  onChange={(event) => setSelectedEquipmentId(event.target.value)}
+                  value={selectedEquipmentId}
+                >
+                  {equipmentCatalog.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.name}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  className="inline-flex min-h-10 items-center gap-2 rounded-md bg-forest px-3 text-sm font-semibold text-paper"
+                  onClick={() => addEquipment(selectedEquipmentId)}
+                  type="button"
+                >
+                  <PackagePlus aria-hidden="true" className="size-4" />
+                  Ajouter
+                </button>
+              </div>
+            ) : undefined
           }
           title="Inventaire"
         >
