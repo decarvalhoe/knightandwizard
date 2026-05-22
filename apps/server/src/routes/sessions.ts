@@ -1,4 +1,16 @@
 import type { FastifyInstance } from 'fastify';
+import {
+  type SessionDecision,
+  type SessionEvent,
+  type SessionState,
+  SESSION_CONTROLLER_ROLES,
+  SESSION_DECISION_PRIORITIES,
+  SESSION_DECISION_STATUSES,
+  SESSION_MODES,
+  SESSION_STATUSES,
+  createSessionState,
+  revertSessionToSequence
+} from '@knightandwizard/rules-core';
 import type postgres from 'postgres';
 import { createSqlClient } from '../db/client.js';
 
@@ -44,17 +56,16 @@ interface DecisionParams extends SessionParams {
   decisionId: string;
 }
 
-const validModes = new Set([
-  'classic_table',
-  'digital_human_gm',
-  'digital_llm_gm',
-  'digital_auto_gm',
-  'multiplayer_no_gm'
-]);
-const validStatuses = new Set(['planned', 'active', 'paused', 'archived']);
-const validPriorities = new Set(['low', 'normal', 'high', 'urgent']);
-const validDecisionStatuses = new Set(['approved', 'rejected', 'superseded']);
-const validControllerRoles = new Set(['player', 'human_gm', 'llm', 'auto']);
+// Validation vocabularies are derived from the canonical rules-core unions so
+// the SQL surface and the pure model never drift apart.
+const validModes = new Set<string>(SESSION_MODES);
+const validStatuses = new Set<string>(SESSION_STATUSES);
+const validPriorities = new Set<string>(SESSION_DECISION_PRIORITIES);
+// A decision cannot be *resolved* into the 'pending' state.
+const validDecisionStatuses = new Set<string>(
+  SESSION_DECISION_STATUSES.filter((status) => status !== 'pending')
+);
+const validControllerRoles = new Set<string>(SESSION_CONTROLLER_ROLES);
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export async function registerSessionRoutes(app: FastifyInstance): Promise<void> {
@@ -545,6 +556,12 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
     }
   );
 
+  // TODO(#54): the reverted projection is now computed by rules-core and
+  // returned to the caller, but the canonical journal still keeps every event
+  // (history-preserving markers). Deferred follow-ups: (a) event->entity links
+  // (characters/places/objects/cited rules) so reconstruction can re-project
+  // those relations, (b) frontend session-manager persistence of the reverted
+  // state, and (c) an e2e covering a multi-actor rollback round-trip.
   app.post<{ Body: RollbackRequestBody; Params: SessionParams }>(
     '/sessions/:slug/rollback',
     async (request, reply) => {
@@ -631,7 +648,43 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             WHERE id = ${session.id}
           `;
 
-          return { event: eventRows[0]!, status: 'created' as const };
+          // Read the full (post-marker) journal so the reverted projection is
+          // computed by the pure rules-core reconstruction rather than re-derived
+          // in SQL. The marker we just inserted sits beyond `targetSequence`, so
+          // it is naturally excluded from the reverted state while remaining in
+          // the immutable log for audit.
+          const fullEventRows = await tx<SessionEventRow[]>`
+            SELECT id, session_id, sequence, event_type, actor_id, payload, created_at
+            FROM session_events
+            WHERE session_id = ${session.id}
+            ORDER BY sequence ASC
+          `;
+          const decisionRows = await tx<SessionDecisionRow[]>`
+            SELECT
+              id,
+              session_id,
+              title,
+              requested_by,
+              assigned_to,
+              priority,
+              status,
+              payload,
+              resolution,
+              created_at,
+              resolved_at,
+              updated_at
+            FROM session_decisions
+            WHERE session_id = ${session.id}
+          `;
+
+          return {
+            decisionRows,
+            event: eventRows[0]!,
+            fullEventRows,
+            session,
+            status: 'created' as const,
+            targetSequence: target.sequence
+          };
         });
 
         if (result.status === 'not_found') {
@@ -645,8 +698,19 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
           });
         }
 
+        // Delegate the actual revert to the canonical pure model. This replaces
+        // the previous behaviour where the endpoint only recorded a marker and
+        // never returned the reverted state (#54).
+        const priorState = buildSessionState(
+          result.session,
+          result.fullEventRows,
+          result.decisionRows
+        );
+        const revertedState = revertSessionToSequence(priorState, result.targetSequence);
+
         return reply.code(201).send({
           event: toEventResponse(result.event),
+          revertedState: toSessionStateResponse(revertedState),
           status: 'created'
         });
       } finally {
@@ -828,6 +892,84 @@ function toSessionResponse(
     status: session.status,
     title: session.title,
     updatedAt: serializeDate(session.updated_at)
+  };
+}
+
+/**
+ * Lifts persisted session rows into the canonical pure {@link SessionState}.
+ *
+ * Persisted `mode`/`status`/`priority`/role values originate from the validated
+ * write endpoints (see the `valid*` vocabularies), so the narrowing casts here
+ * are safe; the pure model is the single source of truth for derived projection
+ * logic such as rollback reconstruction.
+ */
+function buildSessionState(
+  session: SessionRow,
+  events: SessionEventRow[],
+  decisions: SessionDecisionRow[]
+): SessionState {
+  return createSessionState({
+    createdAt: serializeDate(session.created_at),
+    decisions: decisions.map(toDecisionModel),
+    events: events.map(toEventModel),
+    id: session.id,
+    metadata: session.metadata,
+    mode: session.mode as SessionState['mode'],
+    slug: session.slug,
+    status: session.status as SessionState['status'],
+    title: session.title,
+    updatedAt: serializeDate(session.updated_at)
+  });
+}
+
+function toEventModel(row: SessionEventRow): SessionEvent {
+  return {
+    actorId: row.actor_id ?? undefined,
+    createdAt: serializeDate(row.created_at),
+    id: row.id,
+    payload: row.payload,
+    sequence: row.sequence,
+    type: row.event_type as SessionEvent['type']
+  };
+}
+
+function toDecisionModel(row: SessionDecisionRow): SessionDecision {
+  return {
+    assignedTo: row.assigned_to as SessionDecision['assignedTo'],
+    createdAt: serializeDate(row.created_at),
+    id: row.id,
+    payload: row.payload,
+    priority: row.priority as SessionDecision['priority'],
+    requestedBy: row.requested_by,
+    resolution: row.resolution ?? undefined,
+    resolvedAt: row.resolved_at ? serializeDate(row.resolved_at) : undefined,
+    status: row.status as SessionDecision['status'],
+    title: row.title
+  };
+}
+
+/** Serializes a reverted {@link SessionState} projection for HTTP responses. */
+function toSessionStateResponse(state: SessionState) {
+  return {
+    createdAt: state.createdAt,
+    decisions: state.decisions,
+    events: state.events.map((event) => ({
+      actorId: event.actorId,
+      createdAt: event.createdAt,
+      eventType: event.type,
+      id: event.id,
+      payload: event.payload,
+      sequence: event.sequence,
+      sessionId: state.id
+    })),
+    id: state.id,
+    metadata: state.metadata,
+    mode: state.mode,
+    scenes: state.scenes,
+    slug: state.slug,
+    status: state.status,
+    title: state.title,
+    updatedAt: state.updatedAt
   };
 }
 

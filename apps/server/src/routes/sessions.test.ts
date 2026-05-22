@@ -169,6 +169,69 @@ describe('session routes', () => {
     ]);
   });
 
+  it('returns a reverted state reconstructed from the event log', async () => {
+    const slug = `revert-session-${randomUUID()}`;
+
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, title: 'Revert API' },
+      url: '/sessions'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'scene_opened',
+        payload: { location: 'Brumeval', sceneId: 'gate', title: 'Porte nord' }
+      },
+      url: `/sessions/${slug}/events`
+    });
+    const queuedResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        assignedTo: 'human_gm',
+        payload: { options: ['negotiate', 'fight'] },
+        priority: 'high',
+        requestedBy: 'llm',
+        title: 'Les brigands negocient-ils ?'
+      },
+      url: `/sessions/${slug}/decisions`
+    });
+    const decisionId = queuedResponse.json().decision.id;
+    // Resolving appends event sequence 3 (request was sequence 2, scene was 1).
+    await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', resolution: { ruling: 'fight' }, status: 'approved' },
+      url: `/sessions/${slug}/decisions/${decisionId}/resolve`
+    });
+
+    // Revert to sequence 2 (decision requested) — the resolution at seq 3 must vanish.
+    const rollbackResponse = await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', reason: 'Annule la resolution', targetSequence: 2 },
+      url: `/sessions/${slug}/rollback`
+    });
+
+    expect(rollbackResponse.statusCode).toBe(201);
+    const reverted = rollbackResponse.json().revertedState;
+    // The rollback marker (seq 4) and the resolution (seq 3) are excluded.
+    expect(reverted.events.map((event: { sequence: number }) => event.sequence)).toEqual([1, 2]);
+    expect(reverted.scenes).toMatchObject([{ id: 'gate', openedAtSequence: 1 }]);
+    expect(reverted.decisions).toMatchObject([{ id: decisionId, status: 'pending' }]);
+    expect(reverted.decisions[0].resolvedAt).toBeUndefined();
+
+    // The persisted journal still preserves the full history including the marker.
+    const readResponse = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+    expect(
+      readResponse.json().events.map((event: { eventType: string }) => event.eventType)
+    ).toEqual([
+      'scene_opened',
+      'gm_decision_requested',
+      'gm_decision_resolved',
+      'rollback_requested'
+    ]);
+  });
+
   it('rejects invalid session payloads', async () => {
     const response = await app.inject({
       method: 'POST',
