@@ -404,10 +404,7 @@ export function requestSessionRollback(
  * log up to and including `targetSequence`. Throws when the target does not
  * reference an existing event.
  */
-export function revertSessionToSequence(
-  state: SessionState,
-  targetSequence: number
-): SessionState {
+export function revertSessionToSequence(state: SessionState, targetSequence: number): SessionState {
   const target = state.events.find((event) => event.sequence === targetSequence);
 
   if (!target) {
