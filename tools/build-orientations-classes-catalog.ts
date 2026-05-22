@@ -11,6 +11,18 @@ const ORIENTATIONS_OUTPUT = join(ROOT, 'data/catalogs/orientations.yaml');
 const CLASSES_OUTPUT = join(ROOT, 'data/catalogs/classes.yaml');
 const RELATIVE_SOURCE = 'data/legacy/web-scraped/documents/classes/index.md';
 
+// The web list (`SOURCE_PATH`) only carries 12 orientations. The 13th, "Malfaisant",
+// is canonical per Q-D4.1 (Tranché 2026-04-25) and is sourced from the paper list and
+// the rules digest instead of the web scrape.
+const PAPER_SOURCE_PATH = join(
+  ROOT,
+  'data/legacy/paper/regles-papier/extracted/listes/orientations-et-classes.md'
+);
+const RELATIVE_PAPER_SOURCE =
+  'data/legacy/paper/regles-papier/extracted/listes/orientations-et-classes.md';
+const RULES_SOURCE_PATH = join(ROOT, 'docs/rules/04-classes.md');
+const RELATIVE_RULES_SOURCE = 'docs/rules/04-classes.md';
+
 const ORIENTATIONS = new Set([
   'Artisan',
   'Artiste',
@@ -113,13 +125,17 @@ function slugify(value: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+function sha256(content: string): string {
+  return createHash('sha256').update(content).digest('hex');
+}
+
 function parse(): {
   orientations: OrientationEntry[];
   classes: ClassEntry[];
   sourceHash: string;
 } {
   const content = readFileSync(SOURCE_PATH, 'utf8');
-  const sourceHash = createHash('sha256').update(content).digest('hex');
+  const sourceHash = sha256(content);
   const lines = content.split('\n');
 
   const startIdx = lines.findIndex((line) => line.trim() === 'Liste des classes');
@@ -181,6 +197,40 @@ function parse(): {
     });
   }
 
+  // The web list stops at 12 orientations. "Malfaisant" (Q-D4.1, Tranché 2026-04-25) is the
+  // canonical 13th orientation. It is absent from the web scrape, so it and its single canonical
+  // class (Bourreau, paper line 145) are sourced from the paper list and the rules digest.
+  const paperHash = sha256(readFileSync(PAPER_SOURCE_PATH, 'utf8'));
+  const rulesHash = sha256(readFileSync(RULES_SOURCE_PATH, 'utf8'));
+
+  orientations.push({
+    id: 'malfaisant',
+    name: 'Malfaisant',
+    status: 'active',
+    is_magical: false,
+    source_refs: [
+      // Paper list header "Malfaisant" + "Atout d'orientation : Méfait".
+      { path: RELATIVE_PAPER_SOURCE, sha256: paperHash, ref: 'line:141' },
+      // Rules digest synthesis table row 9 (Malfaisant / Méfait / Éph / -5 nuire à autrui).
+      { path: RELATIVE_RULES_SOURCE, sha256: rulesHash, ref: 'line:152' },
+      // Rules digest detailed atout row citing lexique:699.
+      { path: RELATIVE_RULES_SOURCE, sha256: rulesHash, ref: 'line:172' }
+    ]
+  });
+
+  // Bourreau is the only class the paper attaches to Malfaisant (orientation atout: Méfait;
+  // class atout "Sadisme" is deferred per Q-D4.2, not invented here). Its primary skill is left
+  // to player choice, consistent with other classes lacking an evident R-4.5 mapping.
+  classes.push({
+    id: 'bourreau',
+    name: 'Bourreau',
+    status: 'active',
+    orientation_id: 'malfaisant',
+    primary_skill_id: null,
+    primary_skill_choice: 'player_choice',
+    source_refs: [{ path: RELATIVE_PAPER_SOURCE, sha256: paperHash, ref: 'line:145' }]
+  });
+
   return { orientations, classes, sourceHash };
 }
 
@@ -206,9 +256,9 @@ function main(): void {
       source_sha256: sourceHash,
       imported_at: new Date().toISOString().slice(0, 10),
       total_entries: orientations.length,
-      catalog_status: 'partial',
+      catalog_status: 'complete',
       notes:
-        "Liste web canonique : 12 orientations. La 13e ('Malfaisant') référencée dans docs/rules/04-classes.md C.9 est absente du web — à inventorier en ambiguïté ultérieure."
+        "13 orientations canoniques (Q-D4.1, tranché 2026-04-25). La liste web ne porte que 12 orientations ; la 13e ('Malfaisant', atout d'orientation Méfait) est sourcée depuis la liste papier (orientations-et-classes.md:141) et docs/rules/04-classes.md (C.9, lexique:699)."
     },
     orientations
   });
@@ -222,7 +272,7 @@ function main(): void {
       total_entries: classes.length,
       catalog_status: 'partial',
       notes:
-        "Mapping primary_skill_id : 'fixed' suit R-4.5 (mapping de nom évident), 'magician_no_primary' = magiciens (pas de compétence primaire), 'player_choice' = classes ambiguës (Pirate, Voleur, Soldat générique...) où le joueur choisit au runtime."
+        "Mapping primary_skill_id : 'fixed' suit R-4.5 (mapping de nom évident), 'magician_no_primary' = magiciens (pas de compétence primaire), 'player_choice' = classes ambiguës (Pirate, Voleur, Soldat générique...) où le joueur choisit au runtime. La classe Bourreau (orientation Malfaisant) est sourcée depuis la liste papier (orientations-et-classes.md:145) car absente du web ; son atout de classe 'Sadisme' reste à reconstituer (Q-D4.2)."
     },
     classes
   });

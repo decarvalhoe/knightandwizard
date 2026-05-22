@@ -22,8 +22,8 @@ const expectedCollections = [
   ['organisations.yaml', 'factions', 7],
   ['religions.yaml', 'religions', 15],
   ['competences.yaml', 'skills', 368],
-  ['orientations.yaml', 'orientations', 12],
-  ['classes.yaml', 'classes', 90],
+  ['orientations.yaml', 'orientations', 13],
+  ['classes.yaml', 'classes', 91],
   ['magic-schools.yaml', 'schools', 11],
   ['spells.yaml', 'spells', 324],
   ['legacy-characters.yaml', 'characters', 96],
@@ -139,6 +139,45 @@ describe('catalog Zod schemas', () => {
     for (const demoId of ['knight', 'mage-arms', 'lore-mage', 'blacksmith']) {
       expect(classIds.has(demoId)).toBe(false);
     }
+  });
+
+  it('exposes the 13 canonical orientations including the paper-sourced Malfaisant', async () => {
+    const orientations = await loadValidatedCatalog('orientations.yaml');
+    const classes = await loadValidatedCatalog('classes.yaml');
+    const orientationIds = new Set(orientations.orientations.map((o) => o.id));
+
+    expect(orientations.orientations).toHaveLength(13);
+    expect(orientationIds).toEqual(
+      new Set([
+        'artisan',
+        'artiste',
+        'commercant',
+        'dommestique',
+        'guerrier',
+        'hors-la-loi',
+        'intellectuel',
+        'magicien',
+        'malfaisant',
+        'ouvrier',
+        'paysan',
+        'religieux',
+        'voyageur'
+      ])
+    );
+
+    const malfaisant = orientations.orientations.find((o) => o.id === 'malfaisant');
+    expect(malfaisant).toMatchObject({ name: 'Malfaisant', status: 'active', is_magical: false });
+    expect(malfaisant?.source_refs).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          path: 'data/legacy/paper/regles-papier/extracted/listes/orientations-et-classes.md'
+        }),
+        expect.objectContaining({ path: 'docs/rules/04-classes.md' })
+      ])
+    );
+
+    const malfaisantClasses = classes.classes.filter((c) => c.orientation_id === 'malfaisant');
+    expect(malfaisantClasses.map((c) => c.id)).toEqual(['bourreau']);
   });
 
   it('flags only the magician orientation as magical', async () => {

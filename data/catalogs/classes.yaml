@@ -3,13 +3,14 @@ version: 1
 metadata:
   source: data/legacy/web-scraped/documents/classes/index.md
   source_sha256: 1c865297bdfbfa555fd4892188331a200d7c15c29e4c06178a3013459778449a
-  imported_at: '2026-04-30'
-  total_entries: 90
+  imported_at: '2026-05-22'
+  total_entries: 91
   catalog_status: partial
   notes: >-
     Mapping primary_skill_id : 'fixed' suit R-4.5 (mapping de nom évident), 'magician_no_primary' = magiciens (pas de
     compétence primaire), 'player_choice' = classes ambiguës (Pirate, Voleur, Soldat générique...) où le joueur choisit
-    au runtime.
+    au runtime. La classe Bourreau (orientation Malfaisant) est sourcée depuis la liste papier
+    (orientations-et-classes.md:145) car absente du web ; son atout de classe 'Sadisme' reste à reconstituer (Q-D4.2).
 classes:
   - id: bijoutier
     name: Bijoutier
@@ -911,3 +912,13 @@ classes:
       - path: data/legacy/web-scraped/documents/classes/index.md
         sha256: 1c865297bdfbfa555fd4892188331a200d7c15c29e4c06178a3013459778449a
         ref: line:109
+  - id: bourreau
+    name: Bourreau
+    status: active
+    orientation_id: malfaisant
+    primary_skill_id: null
+    primary_skill_choice: player_choice
+    source_refs:
+      - path: data/legacy/paper/regles-papier/extracted/listes/orientations-et-classes.md
+        sha256: 4a9f0e8c0e5a0943077d2b6104be1e5a6bac3d1f3206b08c17ba2cd8b37f50d7
+        ref: line:145

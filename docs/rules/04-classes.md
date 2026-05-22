@@ -299,9 +299,13 @@ Chaque atout est référencé par son `id` et son `source_*` permet de tracer l'
 | Nécromancien | Magie Grise | **Magie grise** | Multiple (Sentir la mort, Mobilisation post-mortem, etc.) |
 | Sorcier | Magie Noire | **Magie noire** | **Aura maléfique** (N8) |
 
-### C.9 Malfaisant (à inventorier — paper ligne 141)
+### C.9 Malfaisant (1)
 
-> Cette orientation est citée dans la TDM de orientations-et-classes.md mais ses **classes spécifiques ne sont pas extraites** par l'agent. À vérifier.
+| Classe | Compétence primaire | Atout perm | Atout éph |
+|---|---|---|---|
+| Bourreau | à choix (player_choice) | **Sadisme** (à reconstituer, Q-D4.2) | ⚠️ |
+
+> Orientation canonique (Q-D4.1, tranché 2026-04-25). La liste papier (orientations-et-classes.md:141-145) attache une seule classe à Malfaisant : **Bourreau** (atout de classe « Sadisme »). L'atout d'orientation est **Méfait** (Éph, -5 difficulté lorsque le perso nuit à autrui, [lexique:699]). Présent dans `data/catalogs/orientations.yaml` et `data/catalogs/classes.yaml`.
 
 ### C.10 Ouvrier (1)
 

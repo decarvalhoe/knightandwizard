@@ -7942,7 +7942,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-classes"
     path: "data/catalogs/classes.yaml"
-    sha256: "16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a"
+    sha256: "786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -8014,7 +8014,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-orientations"
     path: "data/catalogs/orientations.yaml"
-    sha256: "13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b"
+    sha256: "5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -13198,7 +13198,7 @@ sources:
     notes: "Canonical rule document."
   - id: "docs-rules-04-classes"
     path: "docs/rules/04-classes.md"
-    sha256: "af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb"
+    sha256: "1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714"
     source_type: canonical_rule
     priority: 100
     status: active

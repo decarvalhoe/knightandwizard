@@ -12458,7 +12458,7 @@ sources:
     domain: catalogs
     priority: secondary
     status: active
-    hash: 16822417735d45e9692d45318dc998eca88b70ac572c074fbcc7fe7ee97c5a7a
+    hash: 786b0290476da0f6639a03706beda8b63f1e5f3f13c66fa4088a23603b31fe39
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
@@ -12578,7 +12578,7 @@ sources:
     domain: catalogs
     priority: secondary
     status: active
-    hash: 13a1cb8496628c2708ea9f53f12c2c63b230f9918effc3e68db5280b53526e6b
+    hash: 5b3fab5974fafe2956c526b008a998a46aa6ab7e07dfbba0abe9b083e93caa22
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
@@ -20655,7 +20655,7 @@ sources:
     domain: D4-classes
     priority: primary
     status: active
-    hash: af450c0ba9c588652d9e87f38a946cd921adac11ab2c6d85fa732b263d062bdb
+    hash: 1e7ab5d179060d59ef5667afeeb1ccd8671b0bfabbd83987c76066d5f1b71714
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
