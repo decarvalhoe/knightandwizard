@@ -114,7 +114,10 @@ const CRITICALITY: Record<string, string> = {
 };
 
 function nomosId(raw: string): string {
-  const up = String(raw).toUpperCase().replace(/[^A-Z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  const up = String(raw)
+    .toUpperCase()
+    .replace(/[^A-Z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
   return /^[A-Z0-9]/.test(up) ? up : `X-${up}`;
 }
 
@@ -123,16 +126,30 @@ function allowedUses(sourceType: string, status: string): string[] {
   if (sourceType === 'canonical_rule') {
     return ['structured_contract', 'vector_index', 'citation_internal', 'golden_case'];
   }
-  if (sourceType.startsWith('catalog')) return ['structured_contract', 'vector_index', 'citation_internal'];
+  if (sourceType.startsWith('catalog'))
+    return ['structured_contract', 'vector_index', 'citation_internal'];
   if (sourceType.startsWith('legacy')) return ['citation_internal', 'human_review_only'];
   return ['vector_index', 'citation_internal'];
 }
 
-const LAYERS = ['yaml', 'zod_schema', 'relational_db', 'vector_store', 'rules_core', 'api', 'ui', 'tests'];
+const LAYERS = [
+  'yaml',
+  'zod_schema',
+  'relational_db',
+  'vector_store',
+  'rules_core',
+  'api',
+  'ui',
+  'tests'
+];
 
 async function main(): Promise<void> {
-  const srcManifest = load(await readFile(SRC_MANIFEST, 'utf8')) as { sources?: Record<string, unknown>[] };
-  const srcMatrix = load(await readFile(SRC_MATRIX, 'utf8')) as { units?: Record<string, unknown>[] };
+  const srcManifest = load(await readFile(SRC_MANIFEST, 'utf8')) as {
+    sources?: Record<string, unknown>[];
+  };
+  const srcMatrix = load(await readFile(SRC_MATRIX, 'utf8')) as {
+    units?: Record<string, unknown>[];
+  };
 
   const pathToId = new Map<string, string>();
   const sources = (srcManifest.sources ?? []).map((s) => {
@@ -177,9 +194,12 @@ async function main(): Promise<void> {
       if (sr.sha256) ref.hash = `sha256:${sr.sha256}`;
       return ref;
     });
-    if (sourceRefs.length === 0) sourceRefs.push({ source_id: nomosId(String(u.unit_id)), locator: String(u.unit_id) });
+    if (sourceRefs.length === 0)
+      sourceRefs.push({ source_id: nomosId(String(u.unit_id)), locator: String(u.unit_id) });
 
-    const businessRuleObj = u.business_rule as { summary?: string; ambiguity_ref?: string | null } | undefined;
+    const businessRuleObj = u.business_rule as
+      | { summary?: string; ambiguity_ref?: string | null }
+      | undefined;
     const businessRule = businessRuleObj?.summary || String(u.title ?? u.unit_id);
 
     const gaps: string[] = [];
@@ -191,13 +211,20 @@ async function main(): Promise<void> {
     }
 
     const status = u.status === 'not_applicable' ? 'not_applicable' : 'partial';
-    if (u.status === 'covered') gaps.push('End-to-end test_refs not yet linked (K&W-covered at foundation layer only).');
+    if (u.status === 'covered')
+      gaps.push('End-to-end test_refs not yet linked (K&W-covered at foundation layer only).');
     if (u.status === 'blocked_ambiguity') {
-      gaps.push(`Blocked by ambiguity${businessRuleObj?.ambiguity_ref ? `: ${businessRuleObj.ambiguity_ref}` : '.'}`);
+      gaps.push(
+        `Blocked by ambiguity${businessRuleObj?.ambiguity_ref ? `: ${businessRuleObj.ambiguity_ref}` : '.'}`
+      );
     }
     if (gaps.length === 0) {
       const rulesCore = u.rules_core as { evidence?: string } | undefined;
-      gaps.push(status === 'not_applicable' ? rulesCore?.evidence ?? 'Not applicable to product behavior.' : 'Downstream implementation evidence pending.');
+      gaps.push(
+        status === 'not_applicable'
+          ? (rulesCore?.evidence ?? 'Not applicable to product behavior.')
+          : 'Downstream implementation evidence pending.'
+      );
     }
 
     const unit: Record<string, unknown> = {
@@ -230,8 +257,14 @@ async function main(): Promise<void> {
 
   await mkdir(OUT_DIR, { recursive: true });
   const dumpOpts = { lineWidth: 120, noRefs: true } as const;
-  await writeFile(join(OUT_DIR, 'source-manifest.yaml'), dump({ schema_version: '0.1.0', sources }, dumpOpts));
-  await writeFile(join(OUT_DIR, 'canonical-matrix.yaml'), dump({ schema_version: '0.1.0', units }, dumpOpts));
+  await writeFile(
+    join(OUT_DIR, 'source-manifest.yaml'),
+    dump({ schema_version: '0.1.0', sources }, dumpOpts)
+  );
+  await writeFile(
+    join(OUT_DIR, 'canonical-matrix.yaml'),
+    dump({ schema_version: '0.1.0', units }, dumpOpts)
+  );
 
   console.log(`NOMOS export written to docs/canonical/nomos/`);
   console.log(`  sources: ${sources.length}`);

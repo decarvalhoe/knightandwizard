@@ -1,7 +1,7 @@
-schema_version: "0.1.0"
+schema_version: '0.1.0'
 project:
   id: knightandwizard
-  name: "Knight & Wizard"
+  name: 'Knight & Wizard'
   description: Transposition digitale canonical-first du JdR papier Knight & Wizard (tabletop-first).
   repository: https://github.com/decarvalhoe/knightandwizard
   domain: tabletop-rpg
