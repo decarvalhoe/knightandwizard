@@ -27,7 +27,7 @@ const expectedCollections = [
   ['magic-schools.yaml', 'schools', 11],
   ['spells.yaml', 'spells', 324],
   ['legacy-characters.yaml', 'characters', 96],
-  ['atouts.yaml', 'atouts', 416]
+  ['atouts.yaml', 'atouts', 802]
 ] as const;
 
 const traceableCollections = [
@@ -343,33 +343,91 @@ describe('catalog Zod schemas', () => {
     }
   });
 
-  it('exposes atouts catalog with permanent/ephemere activation and scope partition', async () => {
+  it('exposes atouts catalog with activation, scope partition and source-derived race relations', async () => {
     const catalog = await loadValidatedCatalog('atouts.yaml');
+    const races = await loadValidatedCatalog('races.yaml');
+    const raceIds = new Set(races.races.map((race) => race.id));
     const totals = {
       permanent: 0,
       ephemere: 0,
+      unknown: 0,
       classe: 0,
       neutre: 0,
       orientation: 0,
-      handicap: 0
+      race: 0,
+      niveau: 0,
+      handicap: 0,
+      rawReferenceOnly: 0,
+      nullValue: 0
     };
 
     for (const atout of catalog.atouts) {
       totals[atout.activation] += 1;
       totals[atout.scope] += 1;
-      if (atout.value < 0) totals.handicap += 1;
+      if (typeof atout.value === 'number' && atout.value < 0) totals.handicap += 1;
+      if (atout.status === 'raw_reference_only') totals.rawReferenceOnly += 1;
+      if (atout.value === null) totals.nullValue += 1;
     }
 
-    expect(totals.permanent + totals.ephemere).toBe(416);
+    expect(totals.permanent + totals.ephemere + totals.unknown).toBe(802);
+    expect(totals.permanent).toBe(616);
+    expect(totals.ephemere).toBe(183);
+    expect(totals.unknown).toBe(3);
     expect(totals.classe).toBe(75);
     expect(totals.neutre).toBe(328);
     expect(totals.orientation).toBe(13);
-    expect(totals.handicap).toBeGreaterThan(0);
+    expect(totals.race).toBe(86);
+    expect(totals.niveau).toBe(300);
+    expect(totals.handicap).toBe(17);
+    expect(totals.rawReferenceOnly).toBe(3);
+    expect(totals.nullValue).toBe(3);
 
     const ids = new Set(catalog.atouts.map((a) => a.id));
     expect(ids.has('ambidextrie')).toBe(true);
     expect(ids.has('anosmie')).toBe(true);
+    expect(ids.has('niveau-2-alcool-violent')).toBe(true);
+    expect(ids.has('niveau-2-agitateur-voyageur-berzerker')).toBe(true);
+    expect(ids.has('race-2-art-occulte-vampire')).toBe(true);
+    expect(ids.has('race-innate-vision-nocturne')).toBe(true);
+    expect(ids.has('race-innate-handicap-aube-petrificatrice')).toBe(true);
     expect(ids.has('demo-atout')).toBe(false);
+
+    const levelAsset = catalog.atouts.find(
+      (atout) => atout.id === 'niveau-2-agitateur-voyageur-berzerker'
+    );
+    expect(levelAsset?.metadata).toMatchObject({
+      source_kind: 'level_asset',
+      minimum_level: 2,
+      orientation: 'Voyageur',
+      class: 'Berzerker'
+    });
+
+    const raceLevelAsset = catalog.atouts.find(
+      (atout) => atout.id === 'race-2-art-occulte-vampire'
+    );
+    expect(raceLevelAsset?.metadata).toMatchObject({
+      source_kind: 'level_asset',
+      minimum_level: 2,
+      race: 'Vampire'
+    });
+
+    const innateVision = catalog.atouts.find((atout) => atout.id === 'race-innate-vision-nocturne');
+    const innateVisionRaceIds = innateVision?.metadata?.race_ids;
+    expect(Array.isArray(innateVisionRaceIds)).toBe(true);
+    expect(innateVisionRaceIds).toEqual(expect.arrayContaining(['demi_elfe', 'troll', 'vampire']));
+    for (const raceId of innateVisionRaceIds as string[]) {
+      expect(raceIds.has(raceId)).toBe(true);
+    }
+
+    const rawRaceAtout = catalog.atouts.find(
+      (atout) => atout.id === 'race-innate-anti-limites-physiques'
+    );
+    expect(rawRaceAtout).toMatchObject({
+      status: 'raw_reference_only',
+      activation: 'unknown',
+      value: null,
+      scope: 'race'
+    });
   });
 
   it('rejects priority catalog entries without an explicit status', () => {

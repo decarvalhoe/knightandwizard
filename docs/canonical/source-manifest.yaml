@@ -7906,7 +7906,7 @@ sources:
     notes: "Product catalog table."
   - id: "data-catalogs-atouts"
     path: "data/catalogs/atouts.yaml"
-    sha256: "309112ef179836b88a98802314f34124d762486103f810c4e8d4cd96136490d8"
+    sha256: "0414b6d7719a52fef25f36ed9d076e29682c54802cf3ec7f87bbf56ebe605b5d"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -8059,7 +8059,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-readme"
     path: "data/catalogs/README.md"
-    sha256: "50231e267bfd5e4643c39bc0afd563e1362e7633eade11a591c27cd421b59238"
+    sha256: "ab233e2a1f7b2a03e156d253222df8dacb57299d3d9ff262767ed34855b9b5ed"
     source_type: generated_doc
     priority: 85
     status: active

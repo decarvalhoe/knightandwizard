@@ -372,8 +372,8 @@ export const LegacyCharactersCatalogSchema = CatalogBaseSchema.extend({
   characters: z.array(LegacyCharacterSchema)
 });
 
-export const AtoutScopeSchema = z.enum(['classe', 'neutre', 'orientation', 'race']);
-export const AtoutActivationSchema = z.enum(['permanent', 'ephemere']);
+export const AtoutScopeSchema = z.enum(['classe', 'neutre', 'orientation', 'race', 'niveau']);
+export const AtoutActivationSchema = z.enum(['permanent', 'ephemere', 'unknown']);
 
 export const AtoutSchema = z
   .object({
@@ -381,7 +381,7 @@ export const AtoutSchema = z
     name: NonEmptyStringSchema,
     status: CatalogEntryStatusSchema,
     effect: z.string(),
-    value: z.number().int(),
+    value: z.number().int().nullable(),
     activation: AtoutActivationSchema,
     scope: AtoutScopeSchema,
     source_refs: z.array(SourceRefSchema).optional(),
