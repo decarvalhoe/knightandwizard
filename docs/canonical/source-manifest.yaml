@@ -13133,9 +13133,18 @@ sources:
     domains: ["project-governance"]
     contains: ["project_documentation"]
     notes: "Project documentation source."
+  - id: "docs-product-llm-tool-calling-contract"
+    path: "docs/product/llm-tool-calling-contract.md"
+    sha256: "c5fb658288aea0c0b2caef8e3220734414fdc900a59e51125f595233e963eb02"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-product-readme"
     path: "docs/product/README.md"
-    sha256: "82d176cb1a2480aacf8828a3e2a70712521a1b61e7c8b1e8994158bbac049e57"
+    sha256: "da5d19d8aa2ef12221242a77c1999bca06a8751a3a8f28a2f5081166f2974d50"
     source_type: generated_doc
     priority: 40
     status: active

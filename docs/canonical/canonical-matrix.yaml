@@ -261571,6 +261571,42 @@ units:
     tests:
       status: not_applicable
       evidence: "Source document only."
+  - unit_id: "source:docs-product-llm-tool-calling-contract"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/product/llm-tool-calling-contract.md"
+    status: covered
+    sources:
+      - path: "docs/product/llm-tool-calling-contract.md"
+        ref: "docs/product/llm-tool-calling-contract.md"
+        sha256: "c5fb658288aea0c0b2caef8e3220734414fdc900a59e51125f595233e963eb02"
+    business_rule:
+      summary: "docs/product/llm-tool-calling-contract.md from docs/product/llm-tool-calling-contract.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
   - unit_id: "source:docs-product-readme"
     unit_type: "source_document"
     domain: "project-governance"
@@ -261579,7 +261615,7 @@ units:
     sources:
       - path: "docs/product/README.md"
         ref: "docs/product/README.md"
-        sha256: "82d176cb1a2480aacf8828a3e2a70712521a1b61e7c8b1e8994158bbac049e57"
+        sha256: "da5d19d8aa2ef12221242a77c1999bca06a8751a3a8f28a2f5081166f2974d50"
     business_rule:
       summary: "docs/product/README.md from docs/product/README.md."
       ambiguity_ref: null

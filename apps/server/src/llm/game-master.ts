@@ -10,16 +10,19 @@ import {
 } from './episodic-memory.js';
 import {
   createGameMasterRulesTools,
+  normalizeRuleToolResult,
   type GameMasterRuleTools,
   type RollDiceToolInput,
-  type RollDiceToolResult
+  type RollDiceToolResult,
+  type RuleToolResult
 } from './rules-tools.js';
 
 export {
   executeRollDiceTool,
   validateRollDiceShape,
   type RollDiceToolInput,
-  type RollDiceToolResult
+  type RollDiceToolResult,
+  type RuleToolResult
 } from './rules-tools.js';
 
 export const DEFAULT_GAME_MASTER_MODEL = 'ollama/qwen2.5:7b';
@@ -35,7 +38,7 @@ export const GAME_MASTER_INSTRUCTIONS = [
 
 export interface GameMasterToolCall {
   input: RollDiceToolInput;
-  output: RollDiceToolResult;
+  output: RuleToolResult<RollDiceToolResult>;
   tool: 'rollDice';
 }
 
@@ -203,16 +206,15 @@ export async function describeSceneWithGameMaster(
 
   if (input.roll) {
     const output = (await runtime.tools.rollDice.execute?.(input.roll, {} as never)) as
-      | RollDiceToolResult
+      | RuleToolResult<RollDiceToolResult>
       | undefined;
-
-    if (!output) {
-      throw new Error('rollDice tool did not return a result');
-    }
 
     toolCalls.push({
       input: input.roll,
-      output,
+      output: normalizeRuleToolResult<RollDiceToolResult>(
+        output,
+        'rollDice tool did not return a result'
+      ),
       tool: 'rollDice'
     });
   }
@@ -272,6 +274,11 @@ function buildDeterministicNarration(
 
   const rollFragments = toolCalls.map(({ input, output }) => {
     const reason = input.reason ? ` (${input.reason})` : '';
+
+    if (output.status === 'error') {
+      return `Erreur outil rollDice${reason}: ${output.message}. Le MJ attend une entree corrigee avant toute resolution mecanique.`;
+    }
+
     const critical = output.isCriticalSuccess
       ? ' Reussite critique.'
       : output.isCriticalFailure
