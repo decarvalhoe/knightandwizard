@@ -1,1 +1,1 @@
-export * from './generated/tokens.js';
+export * from './kw-system.js';

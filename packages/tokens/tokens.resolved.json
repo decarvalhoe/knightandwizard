@@ -1,115 +1,242 @@
 {
-  "primitives": {
-    "color.brand.ink": "#151619",
-    "color.brand.paper": "#f6f2ea",
-    "color.brand.vellum": "#e8dfd1",
-    "color.brand.forest": "#22473b",
-    "color.brand.forest-deep": "#1a382e",
-    "color.brand.forest-soft": "#4a6e60",
-    "color.brand.wine": "#7a2638",
-    "color.brand.wine-deep": "#5f1d2b",
-    "color.brand.wine-soft": "#9c4453",
-    "color.brand.gold": "#c79b4b",
-    "color.brand.gold-deep": "#a87f33",
-    "color.brand.gold-soft": "#d8b56f",
-    "color.neutral.0": "#ffffff",
-    "color.neutral.100": "#f0ebe0",
-    "color.neutral.200": "#e2d9c8",
-    "color.neutral.300": "#cabfa8",
-    "color.neutral.400": "#a99d83",
-    "color.neutral.500": "#847a64",
-    "color.neutral.600": "#5f5849",
-    "color.neutral.700": "#423d33",
-    "color.neutral.800": "#2a261f",
-    "color.neutral.900": "#151619",
-    "color.functional.success": "#3f7d5a",
-    "color.functional.warning": "#c2871f",
-    "color.functional.danger": "#a32f3f",
-    "color.functional.info": "#3f6f8f"
-  },
-  "semantic": {
-    "light": {
-      "canvas": "#f6f2ea",
-      "surface": "#e8dfd1",
-      "raised": "#ffffff",
-      "inset": "#f0ebe0",
-      "fg": "#151619",
-      "fg-muted": "#5f5849",
-      "fg-subtle": "#847a64",
-      "fg-inverse": "#f6f2ea",
-      "on-accent": "#f6f2ea",
-      "border": "#cabfa8",
-      "border-strong": "#a99d83",
-      "border-subtle": "#e2d9c8",
-      "forest": "#22473b",
-      "forest-strong": "#1a382e",
-      "wine": "#7a2638",
-      "wine-strong": "#5f1d2b",
-      "gold": "#c79b4b",
-      "success": "#3f7d5a",
-      "warning": "#c2871f",
-      "danger": "#a32f3f",
-      "info": "#3f6f8f"
+  "engine": {
+    "geometry": {
+      "radiusRect": "0px",
+      "radiusDisc": "9999px",
+      "borderHairline": "1.5px",
+      "borderStrong": "2.5px",
+      "shadowCard": "4px 4px 0",
+      "shadowButton": "0 2px 0",
+      "grain": {
+        "filter": "feTurbulence",
+        "blend": "multiply"
+      }
     },
-    "night": {
-      "canvas": "#151619",
-      "surface": "#2a261f",
-      "raised": "#423d33",
-      "inset": "#151619",
-      "fg": "#f6f2ea",
-      "fg-muted": "#cabfa8",
-      "fg-subtle": "#a99d83",
-      "fg-inverse": "#151619",
-      "on-accent": "#f6f2ea",
-      "border": "#5f5849",
-      "border-strong": "#847a64",
-      "border-subtle": "#423d33",
-      "forest": "#4a6e60",
-      "forest-strong": "#22473b",
-      "wine": "#9c4453",
-      "wine-strong": "#7a2638",
-      "gold": "#d8b56f",
-      "success": "#3f7d5a",
-      "warning": "#c2871f",
-      "danger": "#a32f3f",
-      "info": "#3f6f8f"
+    "type": {
+      "ratio": 1.25,
+      "size": {
+        "cote": "0.6875rem",
+        "label-sm": "0.6875rem",
+        "body-m": "1rem",
+        "body-l": "1.125rem",
+        "title-m": "1.5rem",
+        "title-l": "1.875rem"
+      },
+      "label": {
+        "size": "0.6875rem",
+        "tracking": "0.14em",
+        "transform": "uppercase"
+      },
+      "lineHeight": {
+        "tight": 1.2,
+        "normal": 1.5
+      }
+    },
+    "dice": {
+      "size": "34px",
+      "border": "1.5px",
+      "success": "ink-fill",
+      "critical": "accent-fill",
+      "one": "red-italic",
+      "cascade": "dashed",
+      "cascadeGlyph": "↪",
+      "oneColor": "#6E1414",
+      "rule": "le LLM suggère, le moteur arbitre, le destin tire au cent."
     }
   },
-  "dimensions": {
-    "spacing.0": "0px",
-    "spacing.xs": "4px",
-    "spacing.sm": "8px",
-    "spacing.md": "12px",
-    "spacing.lg": "16px",
-    "spacing.xl": "24px",
-    "spacing.2xl": "32px",
-    "spacing.3xl": "48px",
-    "spacing.4xl": "64px",
-    "radius.none": "0px",
-    "radius.sm": "4px",
-    "radius.md": "8px",
-    "radius.lg": "12px",
-    "radius.xl": "20px",
-    "radius.full": "9999px"
+  "toBase": {
+    "veillee": {
+      "bg-canvas": "#15110A",
+      "bg-surface": "#1F1810",
+      "bg-elevated": "#2A2218",
+      "text-ink": "#E8D9B0",
+      "text-muted": "#9A8056",
+      "border-hairline": "#453825",
+      "border-rule": "#605036",
+      "fb-success": "#92B098",
+      "fb-warn": "#DDB060",
+      "fb-danger": "#C75044",
+      "fb-info": "#7C9FBE"
+    },
+    "jourFeedback": {
+      "fb-success": "#3A4F1F",
+      "fb-warn": "#A8721E",
+      "fb-danger": "#6E1414",
+      "fb-info": "#1F4870"
+    },
+    "fonts": {
+      "body": "'EB Garamond', Georgia, serif",
+      "mono": "'Courier Prime', monospace"
+    }
   },
-  "typography": {
-    "font.family.sans": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-    "font.weight.regular": 400,
-    "font.weight.medium": 500,
-    "font.weight.semibold": 600,
-    "font.weight.bold": 700,
-    "font.size.xs": "0.75rem",
-    "font.size.sm": "0.875rem",
-    "font.size.md": "1rem",
-    "font.size.lg": "1.125rem",
-    "font.size.xl": "1.25rem",
-    "font.size.2xl": "1.5rem",
-    "font.size.3xl": "1.875rem",
-    "font.size.4xl": "2.25rem",
-    "font.size.5xl": "3rem",
-    "font.lineHeight.tight": 1.2,
-    "font.lineHeight.snug": 1.35,
-    "font.lineHeight.normal": 1.5,
-    "font.lineHeight.relaxed": 1.65
-  }
+  "skins": {
+    "grimoire": {
+      "surface": "Sorts & magie",
+      "jour": {
+        "bg-canvas": "#EFE2BC",
+        "bg-surface": "#FAF3DE",
+        "bg-elevated": "#FFFBE8",
+        "text-ink": "#1F1810",
+        "text-muted": "#5A4830",
+        "border-hairline": "#BAA478",
+        "border-rule": "#1F1810",
+        "accent": "#7B5618",
+        "accent-2": "#8B2018"
+      },
+      "veilleeAccent": {
+        "accent": "#B8862F",
+        "accent-2": "#C75044"
+      },
+      "fonts": {
+        "display": "'Cormorant Garamond', serif",
+        "body": "'EB Garamond', Georgia, serif",
+        "label": "'Cormorant SC', serif"
+      },
+      "hero": "spell-statblock"
+    },
+    "registre": {
+      "surface": "Combat / Tracker DT",
+      "jour": {
+        "bg-canvas": "#E8DCB8",
+        "bg-surface": "#F2E8C8",
+        "bg-elevated": "#FAF3DE",
+        "text-ink": "#0F0A04",
+        "text-muted": "#5C4A30",
+        "border-hairline": "#A8946A",
+        "border-rule": "#1F1812",
+        "accent": "#264874",
+        "accent-2": "#8B2418"
+      },
+      "veilleeAccent": {
+        "accent": "#7C9FBE",
+        "accent-2": "#C75044"
+      },
+      "fonts": {
+        "display": "'Big Shoulders Display', sans-serif",
+        "body": "'Bitter', Georgia, serif",
+        "label": "'Big Shoulders Display', sans-serif"
+      },
+      "hero": "dt-timeline"
+    },
+    "tripot": {
+      "surface": "Lancer de dés",
+      "jour": {
+        "bg-canvas": "#1E3328",
+        "bg-surface": "#FAF3DE",
+        "bg-elevated": "#FFFBE8",
+        "text-ink": "#100A04",
+        "text-muted": "#5A4830",
+        "border-hairline": "#BAA478",
+        "border-rule": "#1F1810",
+        "accent": "#C58A2A",
+        "accent-2": "#6E1414"
+      },
+      "veilleeCanvas": "#0E1B14",
+      "veilleeAccent": {
+        "accent": "#D89148",
+        "accent-2": "#C75044"
+      },
+      "fonts": {
+        "display": "'Playfair Display', serif",
+        "body": "'EB Garamond', serif",
+        "label": "'Special Elite', monospace"
+      },
+      "hero": "dice-result+d100-roulette"
+    },
+    "archives": {
+      "surface": "Lecteur de règles D1-D13",
+      "jour": {
+        "bg-canvas": "#ECE2BE",
+        "bg-surface": "#F8F3E0",
+        "bg-elevated": "#FFFBE8",
+        "text-ink": "#1A140A",
+        "text-muted": "#5C4A30",
+        "border-hairline": "#D8C8A6",
+        "border-rule": "#1A140A",
+        "accent": "#8B2018",
+        "accent-2": "#1F3A55"
+      },
+      "veilleeAccent": {
+        "accent": "#C75044",
+        "accent-2": "#7C9FBE"
+      },
+      "fonts": {
+        "display": "'Libre Caslon Display', serif",
+        "body": "'Source Serif 4', Georgia, serif",
+        "label": "'Courier Prime', monospace"
+      },
+      "hero": "law-article"
+    },
+    "bibliotheque": {
+      "surface": "CMS regles vivantes",
+      "jour": {
+        "bg-canvas": "#E8DFC5",
+        "bg-surface": "#F5EDD2",
+        "bg-elevated": "#FBF5E2",
+        "text-ink": "#1F1810",
+        "text-muted": "#5A4830",
+        "border-hairline": "#D5C8A0",
+        "border-rule": "#1F1810",
+        "accent": "#5C2A6A",
+        "accent-2": "#B68842"
+      },
+      "veilleeAccent": {
+        "accent": "#9C6FBE",
+        "accent-2": "#D89148"
+      },
+      "fonts": {
+        "display": "'Cormorant SC', serif",
+        "body": "'EB Garamond', serif",
+        "label": "'Courier Prime', monospace"
+      },
+      "hero": "versioning-form"
+    }
+  },
+  "schools": {
+    "abjuration": {
+      "label": "Abjuration",
+      "color": "#C9A52A"
+    },
+    "alteration": {
+      "label": "Altération",
+      "color": "#B0432E"
+    },
+    "blanche": {
+      "label": "Magie blanche",
+      "color": "#E0D6B8"
+    },
+    "divination": {
+      "label": "Divination",
+      "color": "#7B5618"
+    },
+    "enchantement": {
+      "label": "Enchantement",
+      "color": "#2A8A8A"
+    },
+    "elementaire": {
+      "label": "Élémentaire",
+      "color": "#264874"
+    },
+    "illusion": {
+      "label": "Illusion",
+      "color": "#5C2A6A"
+    },
+    "invocation": {
+      "label": "Invocation",
+      "color": "#B8631F"
+    },
+    "naturelle": {
+      "label": "Magie naturelle",
+      "color": "#4D6B2A"
+    },
+    "noire": {
+      "label": "Magie noire",
+      "color": "#1A1410"
+    },
+    "necromancie": {
+      "label": "Nécromancie",
+      "color": "#6E6A60"
+    }
+  },
+  "defaultSkin": "grimoire"
 }

@@ -209,3 +209,17 @@ K&W est **collaboratif et vivant** :
 2. **Packs de setting (skins)** : l'habillage thématique d'un univers. **Terres Oubliées = 1er pack** (parchemin/encre/sceau, héraldique/émaux, voix pince-sans-rire, supports diégétiques §12, couleurs d'écoles §14). Un autre univers = un **autre pack** sur le **même moteur**.
 
 → « Design system K&W » = **moteur + packs**. Claude Design produit d'abord le **pack Terres Oubliées** (§12), mais sur une **ossature pensée comme ré-skinnable** (le branchage rhizomatique/temporel est une affaire de **données narratives**, pas de refonte visuelle).
+
+## 16. Dossier codifié — `packages/tokens` (moteur + pack + skins)
+
+**Source unique** : `packages/tokens/src/kw-system.ts` (`engine` + `toBase` + 5 `skins` + 11 `schools`). Extrait des 5 planches validées (`docs/design/boards/`).
+**Générateur** : `pnpm tokens:build` (`src/build.ts`) → `apps/game/src/app/tokens.generated.css` (importé par `globals.css`) + `tokens.resolved.json` ; exports typés via `@knightandwizard/tokens`.
+
+**Contrat CSS (consommation) :**
+- `@theme` (→ utilitaires Tailwind) : couleurs sémantiques `--color-{bg-canvas,bg-surface,bg-elevated,text-ink,text-muted,border-hairline,border-rule,accent,accent-2,fb-*}`, tailles `--text-*`, polices `--font-{display,body,label,mono}`, `--radius-{rect,disc}`, `--leading-*`.
+- `:root` (hors @theme, **toujours émis** — anti tree-shaking) : `--border-hairline/-strong`, `--shadow-card/-button`, `--tracking-label`, et les **11 `--school-*`** (via `var()`).
+- **Skin par surface** : `[data-skin="grimoire|registre|tripot|archives|bibliotheque"]` (couleurs Jour + polices) ; défaut `grimoire`.
+- **Veillée** : `[data-theme="night"]` (rampe sombre partagée + feedback nuit + accent défaut) ; `[data-skin=X][data-theme="night"]` (accent du skin + canvas Tripot).
+- **App** : `data-skin` sur le conteneur de surface, `data-theme="night"` sur `<html>` pour la nuit.
+
+**Validé** : `format`/`lint`/`typecheck`/`build:game` verts ; `--color-accent`, `--school-necromancie`, `--shadow-card`, `[data-skin]` présents dans le CSS de prod. Tokens F1 DTCG supprimés (superseded). **Suite** : (b) surfaces restantes, (c) proto DT, (d) test ré-skin.

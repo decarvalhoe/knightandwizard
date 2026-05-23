@@ -1,96 +1,106 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { flattenTokens, readJson, resolveAlias, type FlatTokens } from './lib.js';
+import { engine, schools, skins, toBase, type SkinId } from './kw-system.js';
+
+// Génère le CSS multi-skin (moteur + pack Terres Oubliées) consommé par apps/game,
+// à partir de la source unique kw-system.ts. Modes : Jour (défaut) + Veillée (nuit).
 
 const here = dirname(fileURLToPath(import.meta.url));
-const tokensDir = resolve(here, 'tokens');
 const repoRoot = resolve(here, '../../..');
 const generatedCssPath = resolve(repoRoot, 'apps/game/src/app/tokens.generated.css');
 const resolvedJsonPath = resolve(here, '../tokens.resolved.json');
-const generatedTsPath = resolve(here, 'generated/tokens.ts');
 
-const primitives = flattenTokens(readJson(resolve(tokensDir, 'primitives.json')));
-const dimensions = flattenTokens(readJson(resolve(tokensDir, 'dimensions.json')));
-const typography = flattenTokens(readJson(resolve(tokensDir, 'typography.json')));
+const DEFAULT_SKIN: SkinId = 'grimoire';
 
-function resolveSemantic(file: string): Record<string, string> {
-  const raw = flattenTokens(readJson(resolve(tokensDir, file)));
-  const out: Record<string, string> = {};
-  for (const [key, value] of Object.entries(raw)) {
-    out[key.replace(/^color\./, '')] = String(resolveAlias(value, primitives));
-  }
-  return out;
-}
+const colorVars = (map: object): string[] =>
+  Object.entries(map).map(([role, hex]) => `  --color-${role}: ${String(hex)};`);
 
-const light = resolveSemantic('semantic.light.json');
-const night = resolveSemantic('semantic.night.json');
+const fontVars = (fonts: { display: string; body: string; label: string }): string[] => [
+  `  --font-display: ${fonts.display};`,
+  `  --font-body: ${fonts.body};`,
+  `  --font-label: ${fonts.label};`
+];
 
-function pick(flat: FlatTokens, prefix: string): [string, string | number][] {
-  return Object.entries(flat)
-    .filter(([key]) => key.startsWith(prefix))
-    .map(([key, value]) => [key.slice(prefix.length), value]);
-}
+const def = skins[DEFAULT_SKIN];
 
-const theme: string[] = [`  --font-sans: ${typography['font.family.sans']};`];
-for (const [name, value] of pick(typography, 'font.weight.')) {
-  theme.push(`  --font-weight-${name}: ${value};`);
-}
-for (const [name, value] of pick(typography, 'font.size.')) {
+// @theme : seulement ce qui doit générer des utilitaires Tailwind (couleurs, tailles, polices, radius, leading)
+const theme: string[] = [
+  `  --radius-rect: ${engine.geometry.radiusRect};`,
+  `  --radius-disc: ${engine.geometry.radiusDisc};`,
+  `  --leading-tight: ${engine.type.lineHeight.tight};`,
+  `  --leading-normal: ${engine.type.lineHeight.normal};`
+];
+for (const [name, value] of Object.entries(engine.type.size)) {
   theme.push(`  --text-${name}: ${value};`);
 }
-for (const [name, value] of pick(typography, 'font.lineHeight.')) {
-  theme.push(`  --leading-${name}: ${value};`);
-}
-for (const [name, value] of pick(dimensions, 'spacing.')) {
-  theme.push(`  --spacing-${name}: ${value};`);
-}
-for (const [name, value] of pick(dimensions, 'radius.')) {
-  theme.push(`  --radius-${name}: ${value};`);
-}
-for (const [name, value] of Object.entries(light)) {
-  theme.push(`  --color-${name}: ${value};`);
+theme.push(...colorVars(def.jour));
+theme.push(...colorVars(toBase.jourFeedback));
+theme.push(...fontVars(def.fonts));
+theme.push(`  --font-mono: ${toBase.fonts.mono};`);
+
+// :root brut : tokens consommés via var() (géométrie, ombres, tracking, écoles).
+// Hors @theme pour éviter le tree-shaking Tailwind v4 des vars non utilisées par un utilitaire.
+const rootEngine: string[] = [
+  `  --border-hairline: ${engine.geometry.borderHairline};`,
+  `  --border-strong: ${engine.geometry.borderStrong};`,
+  `  --shadow-card: ${engine.geometry.shadowCard};`,
+  `  --shadow-button: ${engine.geometry.shadowButton};`,
+  `  --tracking-label: ${engine.type.label.tracking};`
+];
+for (const [name, school] of Object.entries(schools)) {
+  rootEngine.push(`  --school-${name}: ${school.color};`);
 }
 
-const nightOverrides: string[] = ['  color-scheme: dark;'];
-for (const [name, value] of Object.entries(night)) {
-  if (value !== light[name]) {
-    nightOverrides.push(`  --color-${name}: ${value};`);
+// Skins par surface (Jour) + leur override Veillée (accent, + canvas du Tripot)
+const skinBlocks: string[] = [];
+const nightSkinBlocks: string[] = [];
+for (const [id, skin] of Object.entries(skins)) {
+  skinBlocks.push(
+    `[data-skin='${id}'] {\n${colorVars(skin.jour).join('\n')}\n${fontVars(skin.fonts).join('\n')}\n}`
+  );
+  const night: string[] = [];
+  if ('veilleeCanvas' in skin && skin.veilleeCanvas) {
+    night.push(`  --color-bg-canvas: ${skin.veilleeCanvas};`);
   }
+  night.push(...colorVars(skin.veilleeAccent));
+  nightSkinBlocks.push(`[data-skin='${id}'][data-theme='night'] {\n${night.join('\n')}\n}`);
 }
+
+// Veillée partagée : rampe sombre commune + feedback nuit + accent du skin par défaut
+const nightShared = `[data-theme='night'] {\n  color-scheme: dark;\n${colorVars(
+  toBase.veillee
+).join('\n')}\n${colorVars(def.veilleeAccent).join('\n')}\n}`;
 
 const css = [
   '/* AUTO-GENERATED by packages/tokens/src/build.ts - do not edit by hand. */',
-  '/* Source of truth: packages/tokens/src/tokens/*.json (run `pnpm tokens:build`). */',
+  '/* Source: packages/tokens/src/kw-system.ts (run `pnpm tokens:build`). */',
   '',
   '@theme {',
   ...theme,
   '}',
   '',
-  "[data-theme='night'] {",
-  ...nightOverrides,
+  '/* --- Tokens moteur via var() (hors @theme, toujours emis) --- */',
+  ':root {',
+  ...rootEngine,
   '}',
+  '',
+  '/* --- Skins par surface (Jour) --- */',
+  ...skinBlocks,
+  '',
+  '/* --- Veillee (nuit) : rampe partagee + accent par skin --- */',
+  nightShared,
+  ...nightSkinBlocks,
   ''
 ].join('\n');
 writeFileSync(generatedCssPath, css);
 
-const resolved = { primitives, semantic: { light, night }, dimensions, typography };
-writeFileSync(resolvedJsonPath, `${JSON.stringify(resolved, null, 2)}\n`);
-
-mkdirSync(dirname(generatedTsPath), { recursive: true });
-const generated = `// AUTO-GENERATED by packages/tokens/src/build.ts - do not edit by hand.
-export const primitiveTokens = ${JSON.stringify(primitives, null, 2)} as const;
-export const lightTokens = ${JSON.stringify(light, null, 2)} as const;
-export const nightTokens = ${JSON.stringify(night, null, 2)} as const;
-export const dimensionTokens = ${JSON.stringify(dimensions, null, 2)} as const;
-export const typographyTokens = ${JSON.stringify(typography, null, 2)} as const;
-export type SemanticColorName = keyof typeof lightTokens;
-`;
-writeFileSync(generatedTsPath, generated);
+writeFileSync(
+  resolvedJsonPath,
+  `${JSON.stringify({ engine, toBase, skins, schools, defaultSkin: DEFAULT_SKIN }, null, 2)}\n`
+);
 
 console.log(
-  `[tokens] generated ${Object.keys(light).length} colors, ` +
-    `${pick(dimensions, 'spacing.').length} spacing, ${pick(dimensions, 'radius.').length} radii, ` +
-    `${pick(typography, 'font.size.').length} type sizes`
+  `[kw-tokens] ${Object.keys(skins).length} skins, ${Object.keys(schools).length} ecoles, default=${DEFAULT_SKIN}`
 );
