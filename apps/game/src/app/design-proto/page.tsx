@@ -140,6 +140,7 @@ export default function DesignProtoPage() {
                 <div
                   style={{
                     position: 'relative',
+                    overflow: 'hidden',
                     height: 14,
                     background: 'var(--color-bg-elevated)',
                     border: 'var(--border-hairline) solid var(--color-border-hairline)'
