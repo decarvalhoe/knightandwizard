@@ -29,7 +29,9 @@ describe('game master episodic memory', () => {
       importance: 4,
       kind: 'npc_encounter',
       payload: { npcId: 'sergent_malo' },
+      provenanceType: 'session_fact',
       sessionKey,
+      source: 'game-master',
       subject: 'Sergent Malo',
       summary: 'La compagnie a rencontre le Sergent Malo, qui garde la porte nord de Brumeval.'
     });
@@ -51,28 +53,43 @@ describe('game master episodic memory', () => {
       });
 
       expect(memories[0]).toMatchObject({
+        provenanceType: 'session_fact',
         sessionKey,
+        source: 'game-master',
         subject: 'Sergent Malo'
       });
-      expect(buildEpisodicMemoryContext(memories)).toContain('[M1] Sergent Malo');
+      expect(buildEpisodicMemoryContext(memories)).toContain(
+        '[M1] Sergent Malo (session_fact, npc_encounter, source game-master'
+      );
     } finally {
       await freshStore.close?.();
     }
   });
 
-  it('supports direct lexical search for past decisions', async () => {
+  it('supports direct lexical search and provenance filters for hypotheses', async () => {
     const sessionKey = `test-memory-${randomUUID()}`;
 
     await recordGmMemory(sql, {
       importance: 5,
       kind: 'decision',
+      provenanceType: 'hypothesis',
       sessionKey,
+      source: 'player-note',
       subject: 'Pacte avec la guilde',
-      summary: 'Le groupe a promis a la Guilde des Lanternes de livrer la relique intacte.'
+      summary: 'Le groupe pense que la Guilde des Lanternes veut recuperer la relique intacte.'
+    });
+    await recordGmMemory(sql, {
+      importance: 2,
+      kind: 'scene_event',
+      provenanceType: 'session_fact',
+      sessionKey,
+      subject: 'Relique emballee',
+      summary: 'La relique intacte est emballee dans une couverture.'
     });
 
     const memories = await searchGmMemories(sql, {
-      limit: 1,
+      limit: 2,
+      provenanceTypes: ['hypothesis'],
       query: 'relique intacte',
       sessionKey
     });
@@ -80,7 +97,37 @@ describe('game master episodic memory', () => {
     expect(memories).toHaveLength(1);
     expect(memories[0]).toMatchObject({
       kind: 'decision',
+      provenanceType: 'hypothesis',
       subject: 'Pacte avec la guilde'
+    });
+  });
+
+  it('requires canonical sources for canonical lore memories', async () => {
+    const sessionKey = `test-memory-${randomUUID()}`;
+
+    await expect(
+      recordGmMemory(sql, {
+        kind: 'lore_note',
+        provenanceType: 'canonical_lore',
+        sessionKey,
+        source: 'game-master',
+        subject: 'Brumeval',
+        summary: 'Le MJ affirme un fait de lore depuis la narration.'
+      })
+    ).rejects.toThrow('Canonical lore memories require a canonical source');
+
+    const memory = await recordGmMemory(sql, {
+      kind: 'lore_note',
+      provenanceType: 'canonical_lore',
+      sessionKey,
+      source: 'docs/rules/12-geographie-social-economie.md',
+      subject: 'Geographie sociale',
+      summary: 'Fait canonique cite depuis le corpus source.'
+    });
+
+    expect(memory).toMatchObject({
+      provenanceType: 'canonical_lore',
+      source: 'docs/rules/12-geographie-social-economie.md'
     });
   });
 });

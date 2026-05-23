@@ -182,6 +182,7 @@ describe('game master Mastra runtime', () => {
               kind: 'npc_encounter',
               occurredAt: '2026-04-29T20:00:00.000Z',
               payload: {},
+              provenanceType: 'session_fact',
               score: 2.5,
               sessionKey: 'session-rag',
               source: 'test',
@@ -219,7 +220,12 @@ describe('game master Mastra runtime', () => {
     expect(recorded).toEqual([
       expect.objectContaining({
         kind: 'scene_event',
-        sessionKey: 'session-rag'
+        payload: expect.objectContaining({
+          canonicalLoreMutable: false
+        }),
+        provenanceType: 'session_fact',
+        sessionKey: 'session-rag',
+        source: 'game-master'
       })
     ]);
   });

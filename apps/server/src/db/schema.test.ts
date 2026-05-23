@@ -35,6 +35,18 @@ describe('database schema', () => {
     }
   });
 
+  it('stores GM memory provenance columns', async () => {
+    const rows = await sql<{ column_name: string }[]>`
+      SELECT column_name
+      FROM information_schema.columns
+      WHERE table_schema = 'public'
+        AND table_name = 'gm_memories'
+        AND column_name = 'provenance_type'
+    `;
+
+    expect(rows).toEqual([{ column_name: 'provenance_type' }]);
+  });
+
   it('stores knowledge source metadata columns', async () => {
     const rows = await sql<{ table_name: string; column_name: string }[]>`
       SELECT table_name, column_name

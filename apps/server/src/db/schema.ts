@@ -159,6 +159,7 @@ export const gmMemories = pgTable(
     id: uuid('id').primaryKey().defaultRandom(),
     sessionKey: text('session_key').notNull(),
     memoryKind: text('memory_kind').notNull(),
+    provenanceType: text('provenance_type').notNull().default('session_fact'),
     subject: text('subject').notNull(),
     summary: text('summary').notNull(),
     importance: integer('importance').notNull().default(1),
@@ -174,6 +175,7 @@ export const gmMemories = pgTable(
   (table) => ({
     sessionKeyIdx: index('gm_memories_session_key_idx').on(table.sessionKey),
     kindIdx: index('gm_memories_kind_idx').on(table.memoryKind),
+    provenanceTypeIdx: index('gm_memories_provenance_type_idx').on(table.provenanceType),
     importanceIdx: index('gm_memories_importance_idx').on(table.importance),
     occurredAtIdx: index('gm_memories_occurred_at_idx').on(table.occurredAt)
   })
