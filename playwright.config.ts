@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices, type ReporterDescription } from '@playwright/test';
 
 const gamePort = Number.parseInt(process.env.E2E_GAME_PORT ?? '3100', 10);
 const apiPort = Number.parseInt(process.env.E2E_API_PORT ?? '3102', 10);
@@ -8,18 +8,27 @@ const databaseUrl =
   process.env.DATABASE_URL ??
   'postgres://knightandwizard:knightandwizard@127.0.0.1:55432/knightandwizard';
 const payloadSecret = process.env.PAYLOAD_SECRET ?? 'local-dev-only-secret';
+const htmlReporter: ReporterDescription = [
+  'html',
+  { open: 'never', outputFolder: 'playwright-report' }
+];
+const reporter: ReporterDescription[] = process.env.CI
+  ? [['github'], ['list'], htmlReporter]
+  : [['list'], htmlReporter];
 
 export default defineConfig({
   expect: {
     timeout: 10_000
   },
   fullyParallel: false,
-  reporter: process.env.CI ? [['github'], ['list']] : [['list']],
+  outputDir: 'test-results/e2e',
+  reporter,
   retries: process.env.CI ? 1 : 0,
   testDir: './tests/e2e',
   timeout: 45_000,
   use: {
     baseURL: gameBaseUrl,
+    screenshot: 'only-on-failure',
     trace: 'retain-on-failure'
   },
   webServer: [

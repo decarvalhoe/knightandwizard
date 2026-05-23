@@ -1,4 +1,10 @@
-import { expect, type APIRequestContext, test } from '@playwright/test';
+import { expect, type APIRequestContext, test, type TestInfo } from '@playwright/test';
+
+import {
+  canonicalE2EFixtures,
+  formatCanonicalSourceRefs,
+  type CanonicalE2EScenario
+} from './fixtures/canonical';
 
 const apiBaseUrl = process.env.E2E_API_URL ?? 'http://127.0.0.1:3102';
 
@@ -7,7 +13,8 @@ type JsonObject = Record<string, unknown>;
 test.describe('K&W backend, RAG and GM runtime flows', () => {
   test('persists drafts, session events, GM decisions, RAG context and episodic memory', async ({
     request
-  }) => {
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'backendGm');
     const suffix = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
     const draftId = `e2e-draft-${suffix}`;
     const sessionSlug = `e2e-session-${suffix}`;
@@ -36,7 +43,7 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
       {
         currentStep: 'review',
         payload: {
-          name: 'E2E Aveline',
+          name: canonicalE2EFixtures.actors.avelineDraftName,
           rules: 'character creation draft persistence'
         },
         userId: 'e2e'
@@ -45,7 +52,7 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
 
     await expectJson(request, 'GET', `/character-drafts/${draftId}`, 200, (body) => {
       expect(body.status).toBe('found');
-      expect(asRecord(body.payload).name).toBe('E2E Aveline');
+      expect(asRecord(body.payload).name).toBe(canonicalE2EFixtures.actors.avelineDraftName);
     });
 
     await expectJson(
@@ -183,7 +190,7 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
           pool: 4,
           reason: 'jet de des difficile'
         },
-        sceneDescription: 'Aveline tente un jet de des difficile a la porte nord.',
+        sceneDescription: canonicalE2EFixtures.scenes.firstDifficultRoll,
         sessionId: gmSessionId
       }
     );
@@ -201,12 +208,21 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
         expect(body.narration).toContain('Memoire');
       },
       {
-        sceneDescription: 'Aveline repense au jet de des difficile avant de parler au guetteur.',
+        sceneDescription: canonicalE2EFixtures.scenes.memoryRecall,
         sessionId: gmSessionId
       }
     );
   });
 });
+
+function annotateCanonical(testInfo: TestInfo, scenario: CanonicalE2EScenario): void {
+  const fixture = canonicalE2EFixtures.scenarios[scenario];
+
+  testInfo.annotations.push({
+    description: formatCanonicalSourceRefs(fixture.sourceRefs),
+    type: 'canonical-sources'
+  });
+}
 
 async function expectJson(
   request: APIRequestContext,
