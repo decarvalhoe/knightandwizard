@@ -14,7 +14,8 @@ export type SkinId =
   | 'archives'
   | 'bibliotheque'
   | 'gazette'
-  | 'armorial';
+  | 'armorial'
+  | 'moderne';
 
 /** Rôles sémantiques de couleur — schéma partagé par tous les skins. */
 export const SEMANTIC_ROLES = [
@@ -249,6 +250,37 @@ export const skins = {
       label: "'Cormorant SC', serif"
     },
     hero: 'blason-livret'
+  },
+  // Pack ALTERNATIF (preuve de l'invariant moteur↔pack) : un autre univers, même ossature.
+  moderne: {
+    surface: 'Pack alternatif (moteur↔pack)',
+    jour: {
+      'bg-canvas': '#F4F5F7',
+      'bg-surface': '#FFFFFF',
+      'bg-elevated': '#FFFFFF',
+      'text-ink': '#14181F',
+      'text-muted': '#5B6573',
+      'border-hairline': '#D7DCE3',
+      'border-rule': '#14181F',
+      accent: '#2563EB',
+      'accent-2': '#DB2777'
+    },
+    veillee: {
+      'bg-canvas': '#0B0E14',
+      'bg-surface': '#141923',
+      'bg-elevated': '#1C2230',
+      'text-ink': '#E6E9EF',
+      'text-muted': '#93A0B4',
+      'border-hairline': '#2A3140',
+      'border-rule': '#3A4150'
+    },
+    veilleeAccent: { accent: '#60A5FA', 'accent-2': '#F472B6' },
+    fonts: {
+      display: "'Inter', system-ui, sans-serif",
+      body: "'Inter', system-ui, sans-serif",
+      label: "'IBM Plex Mono', monospace"
+    },
+    hero: 'generic'
   }
 } as const;
 

@@ -154,6 +154,20 @@
   --font-body: 'EB Garamond', Georgia, serif;
   --font-label: 'Cormorant SC', serif;
 }
+[data-skin='moderne'] {
+  --color-bg-canvas: #F4F5F7;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-elevated: #FFFFFF;
+  --color-text-ink: #14181F;
+  --color-text-muted: #5B6573;
+  --color-border-hairline: #D7DCE3;
+  --color-border-rule: #14181F;
+  --color-accent: #2563EB;
+  --color-accent-2: #DB2777;
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-label: 'IBM Plex Mono', monospace;
+}
 
 /* --- Veillee (nuit) : rampe partagee + accent par skin --- */
 [data-theme='night'] {
@@ -200,4 +214,15 @@
 [data-skin='armorial'][data-theme='night'] {
   --color-accent: #C7544A;
   --color-accent-2: #7C9FBE;
+}
+[data-skin='moderne'][data-theme='night'] {
+  --color-bg-canvas: #0B0E14;
+  --color-bg-surface: #141923;
+  --color-bg-elevated: #1C2230;
+  --color-text-ink: #E6E9EF;
+  --color-text-muted: #93A0B4;
+  --color-border-hairline: #2A3140;
+  --color-border-rule: #3A4150;
+  --color-accent: #60A5FA;
+  --color-accent-2: #F472B6;
 }

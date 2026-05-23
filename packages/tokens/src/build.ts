@@ -67,6 +67,9 @@ for (const [id, skin] of Object.entries(skins)) {
   if ('veilleeCanvas' in skin && skin.veilleeCanvas) {
     night.push(`  --color-bg-canvas: ${skin.veilleeCanvas};`);
   }
+  if ('veillee' in skin && skin.veillee) {
+    night.push(...colorVars(skin.veillee)); // rampe nuit propre au pack
+  }
   night.push(...colorVars(skin.veilleeAccent));
   nightSkinBlocks.push(`[data-skin='${id}'][data-theme='night'] {\n${night.join('\n')}\n}`);
 }
