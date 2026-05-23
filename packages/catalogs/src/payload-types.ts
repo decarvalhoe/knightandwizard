@@ -72,6 +72,7 @@ export interface Config {
     protections: Protection;
     bestiary: Bestiary;
     potions: Potion;
+    'magic-schools': MagicSchool;
     spells: Spell;
     nations: Nation;
     organisations: Organisation;
@@ -102,6 +103,7 @@ export interface Config {
     protections: ProtectionsSelect<false> | ProtectionsSelect<true>;
     bestiary: BestiarySelect<false> | BestiarySelect<true>;
     potions: PotionsSelect<false> | PotionsSelect<true>;
+    'magic-schools': MagicSchoolsSelect<false> | MagicSchoolsSelect<true>;
     spells: SpellsSelect<false> | SpellsSelect<true>;
     nations: NationsSelect<false> | NationsSelect<true>;
     organisations: OrganisationsSelect<false> | OrganisationsSelect<true>;
@@ -168,6 +170,7 @@ export interface UserAuthOperations {
 export interface User {
   id: number;
   name?: string | null;
+  roles?: ('admin' | 'catalog_editor' | 'catalog_reviewer')[] | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -198,6 +201,10 @@ export interface Weapon {
    */
   canonicalId: string;
   name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
   category: string;
   damageTypes?: ('P' | 'E' | 'C' | 'T' | 'special')[] | null;
   damageFormula: string;
@@ -211,8 +218,10 @@ export interface Weapon {
    */
   sourceRefs?:
     | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
         path: string;
+        ref?: string | null;
+        sha256?: string | null;
         note?: string | null;
         id?: string | null;
       }[]
@@ -247,6 +256,10 @@ export interface Nation {
    */
   canonicalId: string;
   name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
   category: string;
   capital?: string | null;
   officialLanguage?: string | null;
@@ -278,8 +291,10 @@ export interface Nation {
    */
   sourceRefs?:
     | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
         path: string;
+        ref?: string | null;
+        sha256?: string | null;
         note?: string | null;
         id?: string | null;
       }[]
@@ -314,6 +329,10 @@ export interface Protection {
    */
   canonicalId: string;
   name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
   kind: 'armor_piece' | 'shield';
   layer?: string | null;
   category: string;
@@ -347,8 +366,10 @@ export interface Protection {
    */
   sourceRefs?:
     | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
         path: string;
+        ref?: string | null;
+        sha256?: string | null;
         note?: string | null;
         id?: string | null;
       }[]
@@ -383,6 +404,10 @@ export interface Bestiary {
    */
   canonicalId: string;
   name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
   category: string;
   sizeM?: number | null;
   lifeExpectancy?: number | null;
@@ -408,8 +433,10 @@ export interface Bestiary {
    */
   sourceRefs?:
     | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
         path: string;
+        ref?: string | null;
+        sha256?: string | null;
         note?: string | null;
         id?: string | null;
       }[]
@@ -444,6 +471,10 @@ export interface Potion {
    */
   canonicalId: string;
   name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
   category: string;
   outputType: string;
   effect: string;
@@ -481,8 +512,10 @@ export interface Potion {
    */
   sourceRefs?:
     | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
         path: string;
+        ref?: string | null;
+        sha256?: string | null;
         note?: string | null;
         id?: string | null;
       }[]
@@ -508,712 +541,33 @@ export interface Potion {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "spells".
+ * via the `definition` "magic-schools".
  */
-export interface Spell {
+export interface MagicSchool {
   id: number;
   /**
    * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
    */
   canonicalId: string;
   name: string;
-  magicType:
-    | 'abjuration'
-    | 'alteration'
-    | 'white_magic'
-    | 'divination'
-    | 'enchantment'
-    | 'elemental'
-    | 'illusion'
-    | 'invocation'
-    | 'natural_magic'
-    | 'black_magic'
-    | 'necromancy'
-    | 'legacy_type';
-  effect?: string | null;
-  energyCost?: number | null;
-  castingTimeDT?: number | null;
-  difficulty?: number | null;
-  value?: number | null;
-  directMagic?: boolean | null;
-  legacyTypeId?: string | null;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  sourceLabel?: string | null;
+  color: string;
+  domain: string;
+  specialistClassCanonicalId: string;
+  specialistClass?: (number | null) | CharacterClass;
   /**
    * Source files, legacy tables or rules documents used to create this entry.
    */
   sourceRefs?:
     | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
         path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "organisations".
- */
-export interface Organisation {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  category: string;
-  description?: string | null;
-  homeNation?: (number | null) | Nation;
-  relatedReligion?: (number | null) | Religion;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "religions".
- */
-export interface Religion {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  category: string;
-  primaryRace?: (number | null) | Race;
-  doctrine?: string | null;
-  deities?:
-    | {
-        name: string;
-        title?: string | null;
-        domain?: string | null;
-        notes?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "races".
- */
-export interface Race {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  category?: number | null;
-  vitalityBase?: number | null;
-  speedFactorBase?: number | null;
-  willFactorBase?: number | null;
-  attributeMax?: {
-    strength?: number | null;
-    dexterity?: number | null;
-    stamina?: number | null;
-    reflexes?: number | null;
-    perception?: number | null;
-    intelligence?: number | null;
-    charisma?: number | null;
-    empathy?: number | null;
-    aestheticism?: number | null;
-  };
-  raceAssets?: (number | Asset)[] | null;
-  playable?: boolean | null;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "assets".
- */
-export interface Asset {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  type: 'neutral' | 'race' | 'orientation' | 'class' | 'level' | 'handicap' | 'familiar';
-  activation?: ('permanent' | 'ephemeral' | 'manual' | 'legacy_unknown') | null;
-  effect: string;
-  value?: number | null;
-  familiarCostPoints?: number | null;
-  familiarGrantPoints?: number | null;
-  isHandicap?: boolean | null;
-  sourceLine?: number | null;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "rules".
- */
-export interface Rule {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  section:
-    | 'resolution'
-    | 'attributes'
-    | 'races'
-    | 'classes'
-    | 'skills'
-    | 'character_creation'
-    | 'progression'
-    | 'magic'
-    | 'combat'
-    | 'equipment'
-    | 'npc_control'
-    | 'world'
-    | 'roles';
-  sourcePath: string;
-  order?: number | null;
-  content: string;
-  tags?:
-    | {
-        tag: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mushrooms".
- */
-export interface Mushroom {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  syndrome?: string | null;
-  toxicity?: string | null;
-  symptoms?: string | null;
-  treatment?: string | null;
-  species?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "images".
- */
-export interface Image {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  assetType: 'world_map' | 'regional_map' | 'coat_of_arms' | 'web_asset';
-  sourcePath: string;
-  altText?: string | null;
-  width?: number | null;
-  height?: number | null;
-  relatedNation?: (number | null) | Nation;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "lore-entries".
- */
-export interface LoreEntry {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  topic: string;
-  sourcePath: string;
-  summary?: string | null;
-  content?: string | null;
-  tags?:
-    | {
-        tag: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "world-map-regions".
- */
-export interface WorldMapRegion {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  kind: 'region' | 'nation' | 'zone' | 'landmark';
-  parentRegion?: (number | null) | WorldMapRegion;
-  nation?: (number | null) | Nation;
-  sourceMap?: string | null;
-  borders?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  geometry?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "map-cities".
- */
-export interface MapCity {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  parentRegion?: (number | null) | WorldMapRegion;
-  nation?: (number | null) | Nation;
-  role:
-    | 'capital'
-    | 'capital_centre'
-    | 'major_city'
-    | 'town'
-    | 'border_town'
-    | 'village'
-    | 'landmark'
-    | 'gate'
-    | 'island'
-    | 'island_group'
-    | 'tribal_capital';
-  domain?: string | null;
-  sourceMap?: string | null;
-  webId?: number | null;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "orientations".
- */
-export interface Orientation {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  asset?: (number | null) | Asset;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "skill-families".
- */
-export interface SkillFamily {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  description?: string | null;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
-        note?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Internal notes for source ambiguity, author validation or migration decisions.
-   */
-  migrationNotes?: string | null;
-  /**
-   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
-   */
-  metadata?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "skills".
- */
-export interface Skill {
-  id: number;
-  /**
-   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
-   */
-  canonicalId: string;
-  name: string;
-  family?: (number | null) | SkillFamily;
-  parentSkill?: (number | null) | Skill;
-  isPrimaryCandidate?: boolean | null;
-  /**
-   * Source files, legacy tables or rules documents used to create this entry.
-   */
-  sourceRefs?:
-    | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
-        path: string;
+        ref?: string | null;
+        sha256?: string | null;
         note?: string | null;
         id?: string | null;
       }[]
@@ -1248,6 +602,13 @@ export interface CharacterClass {
    */
   canonicalId: string;
   name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  orientationCanonicalId: string;
+  primarySkillCanonicalId?: string | null;
+  primarySkillChoice: 'fixed' | 'player_choice' | 'magician_no_primary';
   orientation?: (number | null) | Orientation;
   classAsset?: (number | null) | Asset;
   primarySkills?: (number | Skill)[] | null;
@@ -1256,8 +617,833 @@ export interface CharacterClass {
    */
   sourceRefs?:
     | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
         path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orientations".
+ */
+export interface Orientation {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  isMagical?: boolean | null;
+  asset?: (number | null) | Asset;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "assets".
+ */
+export interface Asset {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  type: 'neutral' | 'race' | 'orientation' | 'class' | 'level' | 'handicap' | 'familiar';
+  activation?: ('permanent' | 'ephemeral' | 'manual' | 'legacy_unknown') | null;
+  effect: string;
+  value?: number | null;
+  familiarCostPoints?: number | null;
+  familiarGrantPoints?: number | null;
+  isHandicap?: boolean | null;
+  sourceLine?: number | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skills".
+ */
+export interface Skill {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  familyCanonicalId: string;
+  parentSkillCanonicalId?: string | null;
+  family?: (number | null) | SkillFamily;
+  parentSkill?: (number | null) | Skill;
+  isPrimaryCandidate?: boolean | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "skill-families".
+ */
+export interface SkillFamily {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  description?: string | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "spells".
+ */
+export interface Spell {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  magicSchoolCanonicalId: string;
+  magicSchool?: (number | null) | MagicSchool;
+  magicType?:
+    | (
+        | 'abjuration'
+        | 'alteration'
+        | 'white_magic'
+        | 'divination'
+        | 'enchantment'
+        | 'elemental'
+        | 'illusion'
+        | 'invocation'
+        | 'natural_magic'
+        | 'black_magic'
+        | 'necromancy'
+        | 'legacy_type'
+      )
+    | null;
+  effect: string;
+  energyCost: number;
+  castingTimeDT: number;
+  difficulty: number;
+  value?: number | null;
+  directMagic?: boolean | null;
+  legacyTypeId?: string | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organisations".
+ */
+export interface Organisation {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  category: string;
+  description?: string | null;
+  homeNation?: (number | null) | Nation;
+  relatedReligion?: (number | null) | Religion;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "religions".
+ */
+export interface Religion {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  category: string;
+  primaryRace?: (number | null) | Race;
+  doctrine?: string | null;
+  deities?:
+    | {
+        name: string;
+        title?: string | null;
+        domain?: string | null;
+        notes?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "races".
+ */
+export interface Race {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  category?: number | null;
+  vitalityBase?: number | null;
+  speedFactorBase?: number | null;
+  willFactorBase?: number | null;
+  attributeMax?: {
+    strength?: number | null;
+    dexterity?: number | null;
+    stamina?: number | null;
+    reflexes?: number | null;
+    perception?: number | null;
+    intelligence?: number | null;
+    charisma?: number | null;
+    empathy?: number | null;
+    aestheticism?: number | null;
+  };
+  raceAssets?: (number | Asset)[] | null;
+  playable?: boolean | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rules".
+ */
+export interface Rule {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  section:
+    | 'resolution'
+    | 'attributes'
+    | 'races'
+    | 'classes'
+    | 'skills'
+    | 'character_creation'
+    | 'progression'
+    | 'magic'
+    | 'combat'
+    | 'equipment'
+    | 'npc_control'
+    | 'world'
+    | 'roles';
+  sourcePath: string;
+  order?: number | null;
+  content: string;
+  tags?:
+    | {
+        tag: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mushrooms".
+ */
+export interface Mushroom {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  syndrome?: string | null;
+  toxicity?: string | null;
+  symptoms?: string | null;
+  treatment?: string | null;
+  species?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "images".
+ */
+export interface Image {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  assetType: 'world_map' | 'regional_map' | 'coat_of_arms' | 'web_asset';
+  sourcePath: string;
+  altText?: string | null;
+  width?: number | null;
+  height?: number | null;
+  relatedNation?: (number | null) | Nation;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "lore-entries".
+ */
+export interface LoreEntry {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  topic: string;
+  sourcePath: string;
+  summary?: string | null;
+  content?: string | null;
+  tags?:
+    | {
+        tag: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "world-map-regions".
+ */
+export interface WorldMapRegion {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  kind: 'region' | 'nation' | 'zone' | 'landmark';
+  parentRegion?: (number | null) | WorldMapRegion;
+  nation?: (number | null) | Nation;
+  sourceMap?: string | null;
+  borders?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  geometry?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Internal notes for source ambiguity, author validation or migration decisions.
+   */
+  migrationNotes?: string | null;
+  /**
+   * Raw catalog metadata preserved from YAML/PHP until importer-specific fields stabilize.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "map-cities".
+ */
+export interface MapCity {
+  id: number;
+  /**
+   * Stable source id used by YAML imports, legacy PHP mapping and rules-core references.
+   */
+  canonicalId: string;
+  name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  parentRegion?: (number | null) | WorldMapRegion;
+  nation?: (number | null) | Nation;
+  role:
+    | 'capital'
+    | 'capital_centre'
+    | 'major_city'
+    | 'town'
+    | 'border_town'
+    | 'village'
+    | 'landmark'
+    | 'gate'
+    | 'island'
+    | 'island_group'
+    | 'tribal_capital';
+  domain?: string | null;
+  sourceMap?: string | null;
+  webId?: number | null;
+  /**
+   * Source files, legacy tables or rules documents used to create this entry.
+   */
+  sourceRefs?:
+    | {
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        path: string;
+        ref?: string | null;
+        sha256?: string | null;
         note?: string | null;
         id?: string | null;
       }[]
@@ -1292,9 +1478,17 @@ export interface LevelAsset {
    */
   canonicalId: string;
   name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
+  assetCanonicalId: string;
   asset?: (number | null) | Asset;
   level: number;
   points?: number | null;
+  raceName?: string | null;
+  orientationName?: string | null;
+  characterClassName?: string | null;
   race?: (number | null) | Race;
   orientation?: (number | null) | Orientation;
   characterClass?: (number | null) | CharacterClass;
@@ -1304,8 +1498,10 @@ export interface LevelAsset {
    */
   sourceRefs?:
     | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
         path: string;
+        ref?: string | null;
+        sha256?: string | null;
         note?: string | null;
         id?: string | null;
       }[]
@@ -1340,9 +1536,13 @@ export interface Place {
    */
   canonicalId: string;
   name: string;
+  /**
+   * Canonical review status preserved from YAML imports.
+   */
+  status?: ('active' | 'ambiguous' | 'deprecated' | 'raw_reference_only') | null;
   parentPlace?: (number | null) | Place;
   nation?: (number | null) | Nation;
-  status?: string | null;
+  placeStatus?: string | null;
   isCapital?: boolean | null;
   mapRole?: ('forum_place' | 'city' | 'town' | 'region' | 'landmark' | 'unknown') | null;
   /**
@@ -1350,8 +1550,10 @@ export interface Place {
    */
   sourceRefs?:
     | {
-        kind: 'yaml' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+        kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
         path: string;
+        ref?: string | null;
+        sha256?: string | null;
         note?: string | null;
         id?: string | null;
       }[]
@@ -1418,6 +1620,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'potions';
         value: number | Potion;
+      } | null)
+    | ({
+        relationTo: 'magic-schools';
+        value: number | MagicSchool;
       } | null)
     | ({
         relationTo: 'spells';
@@ -1539,6 +1745,7 @@ export interface PayloadMigration {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  roles?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1563,6 +1770,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface WeaponsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   category?: T;
   damageTypes?: T;
   damageFormula?: T;
@@ -1576,6 +1784,8 @@ export interface WeaponsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1591,6 +1801,7 @@ export interface WeaponsSelect<T extends boolean = true> {
 export interface ProtectionsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   kind?: T;
   layer?: T;
   category?: T;
@@ -1618,6 +1829,8 @@ export interface ProtectionsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1633,6 +1846,7 @@ export interface ProtectionsSelect<T extends boolean = true> {
 export interface BestiarySelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   category?: T;
   sizeM?: T;
   lifeExpectancy?: T;
@@ -1660,6 +1874,8 @@ export interface BestiarySelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1675,6 +1891,7 @@ export interface BestiarySelect<T extends boolean = true> {
 export interface PotionsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   category?: T;
   outputType?: T;
   effect?: T;
@@ -1696,6 +1913,36 @@ export interface PotionsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
+        note?: T;
+        id?: T;
+      };
+  migrationNotes?: T;
+  metadata?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "magic-schools_select".
+ */
+export interface MagicSchoolsSelect<T extends boolean = true> {
+  canonicalId?: T;
+  name?: T;
+  status?: T;
+  sourceLabel?: T;
+  color?: T;
+  domain?: T;
+  specialistClassCanonicalId?: T;
+  specialistClass?: T;
+  sourceRefs?:
+    | T
+    | {
+        kind?: T;
+        path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1711,6 +1958,9 @@ export interface PotionsSelect<T extends boolean = true> {
 export interface SpellsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
+  magicSchoolCanonicalId?: T;
+  magicSchool?: T;
   magicType?: T;
   effect?: T;
   energyCost?: T;
@@ -1724,6 +1974,8 @@ export interface SpellsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1739,6 +1991,7 @@ export interface SpellsSelect<T extends boolean = true> {
 export interface NationsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   category?: T;
   capital?: T;
   officialLanguage?: T;
@@ -1754,6 +2007,8 @@ export interface NationsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1769,6 +2024,7 @@ export interface NationsSelect<T extends boolean = true> {
 export interface OrganisationsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   category?: T;
   description?: T;
   homeNation?: T;
@@ -1778,6 +2034,8 @@ export interface OrganisationsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1793,6 +2051,7 @@ export interface OrganisationsSelect<T extends boolean = true> {
 export interface ReligionsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   category?: T;
   primaryRace?: T;
   doctrine?: T;
@@ -1810,6 +2069,8 @@ export interface ReligionsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1825,6 +2086,7 @@ export interface ReligionsSelect<T extends boolean = true> {
 export interface RulesSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   section?: T;
   sourcePath?: T;
   order?: T;
@@ -1840,6 +2102,8 @@ export interface RulesSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1855,6 +2119,7 @@ export interface RulesSelect<T extends boolean = true> {
 export interface MushroomsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   syndrome?: T;
   toxicity?: T;
   symptoms?: T;
@@ -1865,6 +2130,8 @@ export interface MushroomsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1880,6 +2147,7 @@ export interface MushroomsSelect<T extends boolean = true> {
 export interface ImagesSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   assetType?: T;
   sourcePath?: T;
   altText?: T;
@@ -1891,6 +2159,8 @@ export interface ImagesSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1906,6 +2176,7 @@ export interface ImagesSelect<T extends boolean = true> {
 export interface LoreEntriesSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   topic?: T;
   sourcePath?: T;
   summary?: T;
@@ -1921,6 +2192,8 @@ export interface LoreEntriesSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1936,6 +2209,7 @@ export interface LoreEntriesSelect<T extends boolean = true> {
 export interface WorldMapRegionsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   kind?: T;
   parentRegion?: T;
   nation?: T;
@@ -1947,6 +2221,8 @@ export interface WorldMapRegionsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1962,6 +2238,7 @@ export interface WorldMapRegionsSelect<T extends boolean = true> {
 export interface MapCitiesSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   parentRegion?: T;
   nation?: T;
   role?: T;
@@ -1973,6 +2250,8 @@ export interface MapCitiesSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -1988,12 +2267,16 @@ export interface MapCitiesSelect<T extends boolean = true> {
 export interface OrientationsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
+  isMagical?: T;
   asset?: T;
   sourceRefs?:
     | T
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -2009,6 +2292,7 @@ export interface OrientationsSelect<T extends boolean = true> {
 export interface RacesSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   category?: T;
   vitalityBase?: T;
   speedFactorBase?: T;
@@ -2033,6 +2317,8 @@ export interface RacesSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -2048,12 +2334,15 @@ export interface RacesSelect<T extends boolean = true> {
 export interface SkillFamiliesSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   description?: T;
   sourceRefs?:
     | T
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -2069,6 +2358,9 @@ export interface SkillFamiliesSelect<T extends boolean = true> {
 export interface SkillsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
+  familyCanonicalId?: T;
+  parentSkillCanonicalId?: T;
   family?: T;
   parentSkill?: T;
   isPrimaryCandidate?: T;
@@ -2077,6 +2369,8 @@ export interface SkillsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -2092,6 +2386,10 @@ export interface SkillsSelect<T extends boolean = true> {
 export interface CharacterClassesSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
+  orientationCanonicalId?: T;
+  primarySkillCanonicalId?: T;
+  primarySkillChoice?: T;
   orientation?: T;
   classAsset?: T;
   primarySkills?: T;
@@ -2100,6 +2398,8 @@ export interface CharacterClassesSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -2115,6 +2415,7 @@ export interface CharacterClassesSelect<T extends boolean = true> {
 export interface AssetsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   type?: T;
   activation?: T;
   effect?: T;
@@ -2128,6 +2429,8 @@ export interface AssetsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -2143,9 +2446,14 @@ export interface AssetsSelect<T extends boolean = true> {
 export interface LevelAssetsSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
+  assetCanonicalId?: T;
   asset?: T;
   level?: T;
   points?: T;
+  raceName?: T;
+  orientationName?: T;
+  characterClassName?: T;
   race?: T;
   orientation?: T;
   characterClass?: T;
@@ -2155,6 +2463,8 @@ export interface LevelAssetsSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };
@@ -2170,9 +2480,10 @@ export interface LevelAssetsSelect<T extends boolean = true> {
 export interface PlacesSelect<T extends boolean = true> {
   canonicalId?: T;
   name?: T;
+  status?: T;
   parentPlace?: T;
   nation?: T;
-  status?: T;
+  placeStatus?: T;
   isCapital?: T;
   mapRole?: T;
   sourceRefs?:
@@ -2180,6 +2491,8 @@ export interface PlacesSelect<T extends boolean = true> {
     | {
         kind?: T;
         path?: T;
+        ref?: T;
+        sha256?: T;
         note?: T;
         id?: T;
       };

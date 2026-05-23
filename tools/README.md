@@ -20,6 +20,21 @@ pnpm canonical:check:strict
 
 `canonical:check` est inclus dans `pnpm validate`. Les artefacts `docs/canonical/*` sont générés et comparés par ce gate ; ils ne doivent pas être édités à la main.
 
+### `import-catalogs.ts`
+
+Construit le plan d'import Payload depuis les catalogues canoniques P0 et les sources YAML et Markdown. Les documents importes conservent `status`, `source_refs.path`, `source_refs.ref` et `source_refs.sha256`, avec les donnees brutes en `metadata.raw` pour permettre un export round-trip controlable. Le plan couvre notamment races, orientations, classes, competences, ecoles de magie, sorts, atouts et atouts de niveau.
+
+Commandes :
+
+```bash
+pnpm cms:import:catalogs:dry-run
+pnpm cms:import:catalogs
+pnpm cms:verify:catalogs
+pnpm exec tsx tools/import-catalogs.ts --export-yaml-dir /tmp/kw-catalog-roundtrip
+```
+
+L'edition CMS passe par les roles Payload `catalog_editor` et `catalog_reviewer`; les imports automatises utilisent `overrideAccess` mais n'effacent pas la tracabilite YAML.
+
 ### `build-races-catalog.ts`
 
 Génère `data/catalogs/races.yaml` depuis `data/catalogs/bestiaire.yaml`, en conservant les `source_refs` web/paper de chaque entrée. Le catalogue contient les 31 races connues du domaine D3, avec `playable: true` pour les 25 races disponibles au wizard PJ et `playable: false` pour les races non proposées à la création.

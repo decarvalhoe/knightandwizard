@@ -1,40 +1,60 @@
 import { parse as parsePath, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { readdir, readFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 
+import yaml from 'js-yaml';
 import type { Payload } from 'payload';
 import {
   DEFAULT_CATALOGS_DIR,
   loadCatalog,
   loadValidatedCatalogs,
+  type Atout,
   type BestiaryEntry,
+  type ClassEntry,
+  type MagicSchool,
   type Nation,
   type Organisation,
+  type Orientation,
   type Potion,
   type Protection,
   type Race,
   type Religion,
+  type Skill,
+  type Spell,
   type Weapon
 } from '../packages/catalogs/src/index.js';
 
 type ImportCollection =
   | 'assets'
   | 'bestiary'
+  | 'character-classes'
   | 'images'
+  | 'level-assets'
   | 'lore-entries'
+  | 'magic-schools'
   | 'map-cities'
   | 'mushrooms'
   | 'nations'
   | 'organisations'
+  | 'orientations'
   | 'potions'
   | 'protections'
   | 'races'
   | 'religions'
   | 'rules'
+  | 'skill-families'
+  | 'skills'
+  | 'spells'
   | 'weapons'
   | 'world-map-regions';
 
-type SourceRefKind = 'legacy_php' | 'manual' | 'map_asset' | 'rules_markdown' | 'yaml';
+type SourceRefKind =
+  | 'legacy_php'
+  | 'legacy_source'
+  | 'manual'
+  | 'map_asset'
+  | 'rules_markdown'
+  | 'yaml';
 
 type ImportDocument = {
   canonicalId: string;
@@ -53,11 +73,27 @@ type SourceRef = {
   kind: SourceRefKind;
   note?: string;
   path: string;
+  ref?: string;
+  sha256?: string;
 };
 
 type ImportPlan = {
   ambiguityFiles: string[];
   entries: ImportEntry[];
+};
+
+type CatalogRoundTripEntry = {
+  canonicalId: string;
+  collection: ImportCollection;
+  name: string;
+  raw: Record<string, unknown>;
+  sourceRefs: SourceRef[];
+  status?: string;
+};
+
+type CatalogRoundTripDocument = {
+  catalogName: string;
+  entries: CatalogRoundTripEntry[];
 };
 
 type ImportStats = {
@@ -76,7 +112,6 @@ type ExistingDocumentsByCollection = Map<ImportCollection, Map<string, ExistingC
 const PAYLOAD_LOOKUP_CHUNK_SIZE = 50;
 const repoRoot = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const defaultRulesDir = resolve(repoRoot, 'docs/rules');
-const defaultAtoutsCsv = resolve(DEFAULT_CATALOGS_DIR, 'atouts-values.csv');
 
 export async function buildCatalogImportPlan(
   catalogsDir = DEFAULT_CATALOGS_DIR,
@@ -113,11 +148,33 @@ export async function buildCatalogImportPlan(
     ),
     ...priorityCatalogs['religions.yaml'].religions.map((religion) =>
       religionEntry(religion, priorityCatalogs['religions.yaml'].metadata)
+    ),
+    ...priorityCatalogs['orientations.yaml'].orientations.map((orientation) =>
+      orientationEntry(orientation, priorityCatalogs['orientations.yaml'].metadata)
+    ),
+    ...skillFamilyEntries(
+      priorityCatalogs['competences.yaml'].skills,
+      priorityCatalogs['competences.yaml'].metadata
+    ),
+    ...priorityCatalogs['competences.yaml'].skills.map((skill) =>
+      skillEntry(skill, priorityCatalogs['competences.yaml'].metadata)
+    ),
+    ...priorityCatalogs['classes.yaml'].classes.map((characterClass) =>
+      characterClassEntry(characterClass, priorityCatalogs['classes.yaml'].metadata)
+    ),
+    ...priorityCatalogs['magic-schools.yaml'].schools.map((school) =>
+      magicSchoolEntry(school, priorityCatalogs['magic-schools.yaml'].metadata)
+    ),
+    ...priorityCatalogs['spells.yaml'].spells.map((spell) =>
+      spellEntry(spell, priorityCatalogs['spells.yaml'].metadata)
+    ),
+    ...atoutsEntries(
+      priorityCatalogs['atouts.yaml'].atouts,
+      priorityCatalogs['atouts.yaml'].metadata
     )
   );
 
   entries.push(...(await extendedYamlEntries(catalogsDir)));
-  entries.push(...(await atoutsEntries(defaultAtoutsCsv)));
   entries.push(...(await ruleEntries(rulesDir)));
 
   return {
@@ -187,15 +244,76 @@ export function summarizePlan(plan: ImportPlan): Record<string, number> {
   }, {});
 }
 
+export function buildCatalogYamlRoundTripDocuments(plan: ImportPlan): CatalogRoundTripDocument[] {
+  const byCatalog = new Map<string, CatalogRoundTripEntry[]>();
+
+  for (const importEntry of plan.entries) {
+    const metadata = importEntry.data.metadata;
+    const catalogName =
+      isRecord(metadata) && typeof metadata.catalog === 'string'
+        ? metadata.catalog
+        : importEntry.collection;
+    const raw = isRecord(metadata) && isRecord(metadata.raw) ? metadata.raw : {};
+    const sourceRefs = toArray<SourceRef>(importEntry.data.sourceRefs);
+    const entries = byCatalog.get(catalogName) ?? [];
+
+    entries.push({
+      canonicalId: importEntry.data.canonicalId,
+      collection: importEntry.collection,
+      name: importEntry.data.name,
+      raw,
+      sourceRefs,
+      status: typeof importEntry.data.status === 'string' ? importEntry.data.status : undefined
+    });
+    byCatalog.set(catalogName, entries);
+  }
+
+  return [...byCatalog.entries()]
+    .map(([catalogName, entries]) => ({ catalogName, entries }))
+    .sort((left, right) => left.catalogName.localeCompare(right.catalogName));
+}
+
+export function exportCatalogRoundTripYaml(plan: ImportPlan): Record<string, string> {
+  return Object.fromEntries(
+    buildCatalogYamlRoundTripDocuments(plan).map((document) => [
+      document.catalogName,
+      yaml.dump(
+        {
+          entries: document.entries
+        },
+        { lineWidth: 100, noRefs: true, sortKeys: true }
+      )
+    ])
+  );
+}
+
+async function writeRoundTripYaml(plan: ImportPlan, outputDir: string): Promise<void> {
+  await mkdir(outputDir, { recursive: true });
+
+  for (const [catalogName, content] of Object.entries(exportCatalogRoundTripYaml(plan))) {
+    await writeFile(resolve(outputDir, safeExportFileName(catalogName)), content, 'utf8');
+  }
+}
+
+function safeExportFileName(catalogName: string): string {
+  return catalogName.replace(/[^a-zA-Z0-9._-]+/g, '_');
+}
+
 async function main(): Promise<void> {
   const args = new Set(process.argv.slice(2));
   const dryRun = args.has('--dry-run');
   const verifyOnly = args.has('--verify-only');
+  const exportYamlDir = argValue('--export-yaml-dir');
   const catalogsDir = argValue('--catalogs-dir') ?? DEFAULT_CATALOGS_DIR;
   const rulesDir = argValue('--rules-dir') ?? defaultRulesDir;
   const plan = await buildCatalogImportPlan(catalogsDir, rulesDir);
 
   printPlan(plan);
+
+  if (exportYamlDir) {
+    await writeRoundTripYaml(plan, resolve(exportYamlDir));
+    return;
+  }
 
   if (dryRun) {
     return;
@@ -397,6 +515,119 @@ function religionEntry(religion: Religion, catalogMetadata: Record<string, unkno
   );
 }
 
+function orientationEntry(
+  orientation: Orientation,
+  catalogMetadata: Record<string, unknown>
+): ImportEntry {
+  return entry(
+    'orientations',
+    orientation,
+    {
+      isMagical: orientation.is_magical
+    },
+    catalogMetadata,
+    'orientations.yaml'
+  );
+}
+
+function skillFamilyEntries(
+  skills: Skill[],
+  catalogMetadata: Record<string, unknown>
+): ImportEntry[] {
+  const families = new Map<string, Skill>();
+
+  for (const skill of skills) {
+    if (!families.has(skill.family)) {
+      families.set(skill.family, skill);
+    }
+  }
+
+  return [...families.values()].map((skill) =>
+    entry(
+      'skill-families',
+      {
+        id: skill.family,
+        name: skill.family_name ?? labelFromId(skill.family),
+        source_refs: skill.source_refs,
+        status: skill.status
+      },
+      {
+        description: 'Canonical skill family imported from competences.yaml.'
+      },
+      catalogMetadata,
+      'competences.yaml'
+    )
+  );
+}
+
+function skillEntry(skill: Skill, catalogMetadata: Record<string, unknown>): ImportEntry {
+  return entry(
+    'skills',
+    skill,
+    {
+      familyCanonicalId: skill.family,
+      isPrimaryCandidate: !skill.parent_id,
+      parentSkillCanonicalId: skill.parent_id ?? undefined
+    },
+    catalogMetadata,
+    'competences.yaml'
+  );
+}
+
+function characterClassEntry(
+  characterClass: ClassEntry,
+  catalogMetadata: Record<string, unknown>
+): ImportEntry {
+  return entry(
+    'character-classes',
+    characterClass,
+    {
+      orientationCanonicalId: characterClass.orientation_id,
+      primarySkillCanonicalId: characterClass.primary_skill_id ?? undefined,
+      primarySkillChoice: characterClass.primary_skill_choice
+    },
+    catalogMetadata,
+    'classes.yaml'
+  );
+}
+
+function magicSchoolEntry(
+  school: MagicSchool,
+  catalogMetadata: Record<string, unknown>
+): ImportEntry {
+  return entry(
+    'magic-schools',
+    school,
+    {
+      color: school.color,
+      domain: school.domain,
+      sourceLabel: school.source_label,
+      specialistClassCanonicalId: school.specialist_class_id
+    },
+    catalogMetadata,
+    'magic-schools.yaml'
+  );
+}
+
+function spellEntry(spell: Spell, catalogMetadata: Record<string, unknown>): ImportEntry {
+  return entry(
+    'spells',
+    spell,
+    {
+      castingTimeDT: spell.incantation_time,
+      difficulty: spell.difficulty,
+      effect: spell.effect,
+      energyCost: spell.energy,
+      legacyTypeId: spell.school_id,
+      magicSchoolCanonicalId: spell.school_id,
+      magicType: magicTypeValue(spell.school_id),
+      value: spell.value
+    },
+    catalogMetadata,
+    'spells.yaml'
+  );
+}
+
 async function extendedYamlEntries(catalogsDir: string): Promise<ImportEntry[]> {
   const entries: ImportEntry[] = [];
   const mushrooms = await loadCatalog<Record<string, unknown>>('champignons.yaml', catalogsDir);
@@ -573,27 +804,48 @@ function regionalMapCityEntries(regionalCities: Record<string, unknown>): Import
   return entries;
 }
 
-async function atoutsEntries(csvFile = defaultAtoutsCsv): Promise<ImportEntry[]> {
-  const csv = await readFile(csvFile, 'utf8');
-  const rows = parseCsv(csv);
+function atoutsEntries(atouts: Atout[], catalogMetadata: Record<string, unknown>): ImportEntry[] {
+  return [
+    ...atouts.map((atout) => atoutEntry(atout, catalogMetadata)),
+    ...atouts
+      .filter((atout) => atout.scope === 'niveau')
+      .map((atout) => levelAssetEntry(atout, catalogMetadata))
+  ];
+}
 
-  return rows.map((row) =>
-    entry(
-      'assets',
-      { id: row.id, name: row.name, ...row },
-      {
-        activation: activationValue(row.activation),
-        effect: row.effect,
-        familiarCostPoints: numberOrUndefined(row.familiar_cost_points),
-        familiarGrantPoints: numberOrUndefined(row.familiar_grant_points),
-        isHandicap: row.is_handicap === 'True',
-        sourceLine: numberOrUndefined(row.source_line),
-        type: row.is_handicap === 'True' ? 'handicap' : assetTypeValue(row.type),
-        value: numberOrUndefined(row.value)
-      },
-      { source: 'atouts-values.csv' },
-      'atouts-values.csv'
-    )
+function atoutEntry(atout: Atout, catalogMetadata: Record<string, unknown>): ImportEntry {
+  return entry(
+    'assets',
+    atout,
+    {
+      activation: activationValue(atout.activation),
+      effect: atout.effect,
+      isHandicap: typeof atout.value === 'number' && atout.value < 0,
+      type: assetTypeValue(atout),
+      value: atout.value ?? undefined
+    },
+    catalogMetadata,
+    'atouts.yaml'
+  );
+}
+
+function levelAssetEntry(atout: Atout, catalogMetadata: Record<string, unknown>): ImportEntry {
+  const metadata = isRecord(atout.metadata) ? atout.metadata : {};
+
+  return entry(
+    'level-assets',
+    atout,
+    {
+      assetCanonicalId: atout.id,
+      characterClassName: stringOrUndefined(metadata.class),
+      orientationName: stringOrUndefined(metadata.orientation),
+      points: atout.value ?? undefined,
+      raceName: stringOrUndefined(metadata.race),
+      specialCondition: atout.effect,
+      level: numberOrUndefined(metadata.minimum_level)
+    },
+    catalogMetadata,
+    'atouts.yaml'
   );
 }
 
@@ -648,9 +900,10 @@ function entry(
         catalogMetadata,
         raw
       }),
-      migrationNotes: data.migrationNotes,
+      migrationNotes: typeof data.migrationNotes === 'string' ? data.migrationNotes : undefined,
       name: String(raw.name ?? raw.title ?? canonicalId),
-      sourceRefs: data.sourceRefs ?? sourceRefs(sourcePath, undefined, sourceKind)
+      sourceRefs: normalizeSourceRefs(data.sourceRefs ?? raw.source_refs, sourcePath, sourceKind),
+      status: typeof raw.status === 'string' ? raw.status : undefined
     })
   };
 }
@@ -789,6 +1042,77 @@ function sourceRefs(
   ];
 }
 
+function normalizeSourceRefs(
+  value: unknown,
+  sourcePath: string,
+  sourceKind: SourceRefKind
+): SourceRef[] {
+  const refs = toArray(value)
+    .map((refValue) => normalizeSourceRef(refValue, sourcePath, sourceKind))
+    .filter((ref): ref is SourceRef => ref !== undefined);
+
+  return refs.length > 0 ? refs : sourceRefs(sourcePath, undefined, sourceKind);
+}
+
+function normalizeSourceRef(
+  value: unknown,
+  sourcePath: string,
+  sourceKind: SourceRefKind
+): SourceRef | undefined {
+  if (typeof value === 'string') {
+    return { kind: kindFromSourcePath(value, sourceKind), path: value };
+  }
+
+  if (!isRecord(value)) {
+    return undefined;
+  }
+
+  const path = stringOrUndefined(value.path) ?? sourcePath;
+
+  return compactObject({
+    kind: sourceRefKindOrDefault(value.kind, path, sourceKind),
+    note: stringOrUndefined(value.note),
+    path,
+    ref: stringOrUndefined(value.ref),
+    sha256: stringOrUndefined(value.sha256)
+  });
+}
+
+function sourceRefKindOrDefault(
+  value: unknown,
+  path: string,
+  fallback: SourceRefKind
+): SourceRefKind {
+  if (
+    value === 'legacy_php' ||
+    value === 'legacy_source' ||
+    value === 'manual' ||
+    value === 'map_asset' ||
+    value === 'rules_markdown' ||
+    value === 'yaml'
+  ) {
+    return value;
+  }
+
+  return kindFromSourcePath(path, fallback);
+}
+
+function kindFromSourcePath(path: string, fallback: SourceRefKind): SourceRefKind {
+  if (path.startsWith('data/legacy/') || path.includes('/legacy/')) {
+    return 'legacy_source';
+  }
+
+  if (path.startsWith('docs/rules/') || path.endsWith('.md')) {
+    return 'rules_markdown';
+  }
+
+  if (path.endsWith('.yaml') || path.endsWith('.yml')) {
+    return 'yaml';
+  }
+
+  return fallback;
+}
+
 async function findAmbiguityFiles(catalogsDir: string): Promise<string[]> {
   const files = await readdir(catalogsDir);
   return files.filter((file) => file.endsWith('-ambiguites.md')).sort();
@@ -816,70 +1140,48 @@ function sectionFromRuleFile(file: string): string {
   return sectionMap[section] ?? section;
 }
 
-function parseCsv(csv: string): Record<string, string>[] {
-  const lines = csv.trim().split(/\r?\n/);
-  const headers = parseCsvLine(lines[0] ?? '');
+function assetTypeValue(atout: Atout): string {
+  if (typeof atout.value === 'number' && atout.value < 0) {
+    return 'handicap';
+  }
 
-  return lines.slice(1).map((line) => {
-    const values = parseCsvLine(line);
-    return Object.fromEntries(headers.map((header, index) => [header, values[index] ?? '']));
-  });
+  const scopeMap: Record<Atout['scope'], string> = {
+    classe: 'class',
+    neutre: 'neutral',
+    niveau: 'level',
+    orientation: 'orientation',
+    race: 'race'
+  };
+
+  return scopeMap[atout.scope];
 }
 
-function parseCsvLine(line: string): string[] {
-  const values: string[] = [];
-  let current = '';
-  let quoted = false;
-
-  for (let index = 0; index < line.length; index += 1) {
-    const char = line[index];
-    const next = line[index + 1];
-
-    if (char === '"' && quoted && next === '"') {
-      current += '"';
-      index += 1;
-      continue;
-    }
-
-    if (char === '"') {
-      quoted = !quoted;
-      continue;
-    }
-
-    if (char === ',' && !quoted) {
-      values.push(current);
-      current = '';
-      continue;
-    }
-
-    current += char;
-  }
-
-  values.push(current);
-  return values;
-}
-
-function assetTypeValue(type: string | undefined): string {
-  if (type === 'Classe') {
-    return 'class';
-  }
-  if (type === 'Race') {
-    return 'race';
-  }
-  if (type === 'Orientation') {
-    return 'orientation';
-  }
-  return 'neutral';
-}
-
-function activationValue(activation: string | undefined): string {
-  if (activation === 'Permanent') {
+function activationValue(activation: Atout['activation']): string {
+  if (activation === 'permanent') {
     return 'permanent';
   }
-  if (activation === 'Ephémère') {
+  if (activation === 'ephemere') {
     return 'ephemeral';
   }
   return 'legacy_unknown';
+}
+
+function magicTypeValue(schoolId: string): string {
+  const magicTypesBySchool: Record<string, string> = {
+    abjuration: 'abjuration',
+    alteration: 'alteration',
+    divination: 'divination',
+    elementaire: 'elemental',
+    enchantement: 'enchantment',
+    illusion: 'illusion',
+    invocation: 'invocation',
+    'magie-blanche': 'white_magic',
+    'magie-naturelle': 'natural_magic',
+    'magie-noire': 'black_magic',
+    necromancie: 'necromancy'
+  };
+
+  return magicTypesBySchool[schoolId] ?? 'legacy_type';
 }
 
 function compactObject<T extends Record<string, unknown>>(object: T): T {
@@ -896,6 +1198,14 @@ function toArray<T = Record<string, unknown>>(value: unknown): T[] {
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function stringOrUndefined(value: unknown): string | undefined {
+  if (typeof value !== 'string' || value.length === 0) {
+    return undefined;
+  }
+
+  return value;
 }
 
 function numberOrUndefined(value: unknown): number | undefined {
