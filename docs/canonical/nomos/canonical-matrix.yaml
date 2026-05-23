@@ -135800,8 +135800,23 @@ units:
     source_refs:
       - source_id: DOCS-README
         locator: docs/README.md
-        hash: sha256:b94537236bfae39fdc8e9b76c13b69cc5a5eb423ab29002a6867eb7c9eb3b2f8
+        hash: sha256:f6f3abba3b04a9d6f28d4768b12bbeb0009395ff2b88ca4250b135bd148747e7
     business_rule: docs/README.md from docs/README.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-RELEASE-README
+    unit_type: catalog_entry
+    name: docs/release/README.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-RELEASE-README
+        locator: docs/release/README.md
+        hash: sha256:5319b131cf5c79ad31491f8a3187c4571af451c3e0ba34777c8360fcc212783b
+    business_rule: docs/release/README.md from docs/release/README.md.
     status: partial
     gaps:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).

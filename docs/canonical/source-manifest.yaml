@@ -13198,7 +13198,16 @@ sources:
     notes: "Project documentation source."
   - id: "docs-readme"
     path: "docs/README.md"
-    sha256: "b94537236bfae39fdc8e9b76c13b69cc5a5eb423ab29002a6867eb7c9eb3b2f8"
+    sha256: "f6f3abba3b04a9d6f28d4768b12bbeb0009395ff2b88ca4250b135bd148747e7"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-release-readme"
+    path: "docs/release/README.md"
+    sha256: "5319b131cf5c79ad31491f8a3187c4571af451c3e0ba34777c8360fcc212783b"
     source_type: generated_doc
     priority: 40
     status: active

@@ -11,6 +11,8 @@ Le projet bascule en mode **canonical-first**. La trajectoire technique des phas
 
 ### Ajouté
 
+- Runbook de release `docs/release/README.md` : checklist, promotion `main` par PR verte, contrat changelog, backup PostgreSQL/pgvector et rollback documente.
+- `pnpm validate` construit explicitement `rules-core` et `catalogs` avant les tests pour eviter les resolutions de packages cassees dans les worktrees fraiches.
 - Outil `tools/canonical.ts` : registre des sources, atomisation en matrice canonique, rapport de couverture et gates `pnpm canonical:write`/`canonical:check`/`canonical:check:strict`.
 - `pnpm canonical:check` ajouté à `pnpm validate`.
 - Artefacts canoniques générés : `docs/canonical/source-manifest.yaml` (1467 sources), `docs/canonical/canonical-matrix.yaml` (3452 unités), `docs/canonical/coverage-report.md`.

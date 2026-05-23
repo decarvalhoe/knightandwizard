@@ -130,6 +130,7 @@ Elle couvre actuellement :
 - lint ESLint
 - vérification Prettier
 - typecheck TypeScript
+- build explicite des packages partagés `rules-core` et `catalogs`
 - tests Vitest
 - validation GeoJSON
 - build de la carte interactive
@@ -143,6 +144,8 @@ Si cette commande échoue, la PR ou le push n'est pas prêt.
 `pnpm validate` reste la gate normale pour les branches de développement et les PR vers `dev`. Elle couvre lint, format, typecheck, tests, GeoJSON, build carte, devlab et E2E.
 
 `pnpm canonical:check:strict` est la gate de promotion release. Elle vérifie que les artefacts canoniques sont à jour et échoue si une surface produit réintroduit un import `sample.ts`. Le workflow GitHub Actions l'exécute sur `workflow_dispatch`, `staging` et `main`, puis cite et publie `docs/canonical/coverage-report.md` comme artefact de run. Cette gate doit passer avant toute promotion `main`.
+
+Le runbook de release vit dans [`docs/release/README.md`](docs/release/README.md). Toute promotion `dev` -> `staging` ou `staging` -> `main` doit être faite par PR verte, avec changelog, backup et rollback documentés dans le corps de PR.
 
 ## Code of conduct
 
