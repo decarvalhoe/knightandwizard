@@ -117,26 +117,33 @@ export interface CombatResolutionOptions {
  * Legacy UI displays DT as a cyclic 1-50 value. The engine stores absolute DTs
  * to keep timeline sorting unambiguous, while `getCyclicDT` preserves the old counter behavior.
  */
-export function createCombatState(currentDT = 1): CombatState {
+export function createCombatState(
+  currentDT = 1,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): CombatState {
   assertPositiveInteger('currentDT', currentDT);
 
   return {
     timeline: [],
     currentDT,
-    round: roundForDT(currentDT),
+    round: roundForDT(currentDT, config),
     log: []
   };
 }
 
-export function getCyclicDT(currentDT: number, direction: TimelineDirection): number {
+export function getCyclicDT(
+  currentDT: number,
+  direction: TimelineDirection,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): number {
   assertPositiveInteger('currentDT', currentDT);
 
   if (direction === '+') {
-    return currentDT >= COMBAT_ROUND_LENGTH_DT ? 1 : currentDT + 1;
+    return currentDT >= config.combat.roundLengthDT ? 1 : currentDT + 1;
   }
 
   if (direction === '-') {
-    return currentDT <= 1 ? COMBAT_ROUND_LENGTH_DT : currentDT - 1;
+    return currentDT <= 1 ? config.combat.roundLengthDT : currentDT - 1;
   }
 
   return currentDT;
@@ -148,12 +155,21 @@ export function getCyclicDT(currentDT: number, direction: TimelineDirection): nu
  * If `nextActionAt` is not set, the first action follows the legacy assistant:
  * current DT + speed factor.
  */
-export function addCombatant(state: CombatState, combatant: Combatant): CombatState {
-  const normalized = normalizeCombatant({
-    ...combatant,
-    nextActionAt:
-      combatant.nextActionAt > 0 ? combatant.nextActionAt : state.currentDT + combatant.speedFactor
-  });
+export function addCombatant(
+  state: CombatState,
+  combatant: Combatant,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): CombatState {
+  const normalized = normalizeCombatant(
+    {
+      ...combatant,
+      nextActionAt:
+        combatant.nextActionAt > 0
+          ? combatant.nextActionAt
+          : state.currentDT + combatant.speedFactor
+    },
+    config
+  );
 
   return {
     ...state,
@@ -166,7 +182,8 @@ export function addCombatant(state: CombatState, combatant: Combatant): CombatSt
  */
 export function resolveNextAction(
   state: CombatState,
-  options: CombatResolutionOptions = {}
+  options: CombatResolutionOptions = {},
+  config: RulesConfig = DEFAULT_RULES_CONFIG
 ): CombatState {
   if (state.timeline.length === 0) {
     throw new Error('Cannot resolve combat action without combatants');
@@ -179,12 +196,16 @@ export function resolveNextAction(
   const activeState: CombatState = {
     ...state,
     currentDT,
-    round: roundForDT(currentDT),
+    round: roundForDT(currentDT, config),
     timeline
   };
 
   if (action.type === 'attack') {
-    return rescheduleActor(resolveAttack(activeState, actor, action, options), actor.id, action);
+    return rescheduleActor(
+      resolveAttack(activeState, actor, action, options, config),
+      actor.id,
+      action
+    );
   }
 
   const event: CombatEvent = {
@@ -209,25 +230,35 @@ export function resolveNextAction(
  *
  * Positive values are damage. Negative values are healing.
  */
-export function applyDamage(state: CombatState, targetId: string, damage: number): CombatState {
+export function applyDamage(
+  state: CombatState,
+  targetId: string,
+  damage: number,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): CombatState {
   const target = findCombatant(state, targetId);
   const previousVitality = target.vitality.current;
   const nextVitality = clamp(previousVitality - damage, 0, target.vitality.max);
   const finalDamage = Math.max(0, previousVitality - nextVitality);
   const healed = Math.max(0, nextVitality - previousVitality);
-  const nextTarget = recomputeVitalityMalus({
-    ...target,
-    vitality: {
-      ...target.vitality,
-      current: nextVitality
+  const nextTarget = recomputeVitalityMalus(
+    {
+      ...target,
+      vitality: {
+        ...target.vitality,
+        current: nextVitality
+      },
+      nextActionAt: finalDamage > 0 ? target.nextActionAt + finalDamage : target.nextActionAt
     },
-    nextActionAt: finalDamage > 0 ? target.nextActionAt + finalDamage : target.nextActionAt
-  });
+    config
+  );
 
   const withDeath =
     nextVitality === 0 ? withStatus(nextTarget, { id: 'dead' }, state.currentDT) : nextTarget;
   const withUnconscious =
-    finalDamage > previousVitality / 2 && nextVitality > 0 && !target.ignoresVitalityMalus
+    finalDamage > previousVitality * config.combat.unconsciousDamageRatio &&
+    nextVitality > 0 &&
+    !target.ignoresVitalityMalus
       ? withStatus(withDeath, { id: 'unconscious' }, state.currentDT)
       : withDeath;
 
@@ -293,7 +324,7 @@ export function resolveStaminaDamage(
   );
   const preventedDamage = staminaRoll.successes;
   const finalDamage = Math.max(0, damage - preventedDamage);
-  const damagedState = finalDamage > 0 ? applyDamage(state, targetId, finalDamage) : state;
+  const damagedState = finalDamage > 0 ? applyDamage(state, targetId, finalDamage, config) : state;
 
   return {
     ...damagedState,
@@ -316,7 +347,8 @@ function resolveAttack(
   state: CombatState,
   actor: Combatant,
   action: AttackAction,
-  options: CombatResolutionOptions
+  options: CombatResolutionOptions,
+  config: RulesConfig
 ): CombatState {
   const attackRoll = rollDice(action.attack.pool, action.attack.difficulty, options);
   const defenseRoll = action.defense
@@ -340,7 +372,7 @@ function resolveAttack(
   };
 
   if (successes > 0 && action.damageOnHit !== undefined && action.damageOnHit > 0) {
-    return applyDamage(withAttackLog, action.targetId, action.damageOnHit);
+    return applyDamage(withAttackLog, action.targetId, action.damageOnHit, config);
   }
 
   return withAttackLog;
@@ -357,20 +389,33 @@ function rescheduleActor(state: CombatState, actorId: string, action: CombatActi
   });
 }
 
-function normalizeCombatant(combatant: Combatant): Combatant {
-  return recomputeVitalityMalus({
-    ...combatant,
-    baseAttributes: combatant.baseAttributes ?? combatant.attributes,
-    statuses: combatant.statuses ?? [],
-    skills: combatant.skills ?? {}
-  });
+function normalizeCombatant(
+  combatant: Combatant,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): Combatant {
+  return recomputeVitalityMalus(
+    {
+      ...combatant,
+      baseAttributes: combatant.baseAttributes ?? combatant.attributes,
+      statuses: combatant.statuses ?? [],
+      skills: combatant.skills ?? {}
+    },
+    config
+  );
 }
 
-function recomputeVitalityMalus(combatant: Combatant): Combatant {
+function recomputeVitalityMalus(
+  combatant: Combatant,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): Combatant {
   const baseAttributes = combatant.baseAttributes ?? combatant.attributes;
   const malus = combatant.ignoresVitalityMalus
     ? 0
-    : Math.max(0, Math.round(combatant.vitality.max / 2) - combatant.vitality.current);
+    : Math.max(
+        0,
+        Math.round(combatant.vitality.max * config.combat.vitalityMalusRatio) -
+          combatant.vitality.current
+      );
 
   return {
     ...combatant,
@@ -437,8 +482,8 @@ function sortTimeline(timeline: Combatant[]): Combatant[] {
   });
 }
 
-function roundForDT(currentDT: number): number {
-  return Math.floor((currentDT - 1) / COMBAT_ROUND_LENGTH_DT) + 1;
+function roundForDT(currentDT: number, config: RulesConfig = DEFAULT_RULES_CONFIG): number {
+  return Math.floor((currentDT - 1) / config.combat.roundLengthDT) + 1;
 }
 
 function clamp(value: number, min: number, max: number): number {

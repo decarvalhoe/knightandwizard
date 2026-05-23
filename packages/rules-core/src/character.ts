@@ -288,7 +288,7 @@ export function createPlayerCharacter(
   config: RulesConfig = DEFAULT_RULES_CONFIG
 ): PlayerCharacter {
   const spells = input.spells ?? [];
-  const magician = isMagician(input.orientation);
+  const magician = isMagicianOrientation(input.orientation, config);
   const spellTotal = sumPoints(spells);
   const extraSpellPoints = magician
     ? Math.max(0, spellTotal - config.creation.magicianBaseSpellPoints)
@@ -342,7 +342,7 @@ export function createNonPlayerCharacter(
   input: CreateNonPlayerCharacterInput,
   config: RulesConfig = DEFAULT_RULES_CONFIG
 ): NonPlayerCharacter {
-  const defaultEnergy = isMagician(input.orientation)
+  const defaultEnergy = isMagicianOrientation(input.orientation, config)
     ? {
         current: config.creation.magicianStartingEnergy,
         max: config.creation.magicianStartingEnergy
@@ -402,7 +402,7 @@ export function migrateCharacter<T extends Character>(
   const energy: CharacterResource = { ...character.energy };
 
   // Recompute derived resources: magician energy ceiling comes from the ruleset.
-  if (isMagician(character.orientation)) {
+  if (isMagicianOrientation(character.orientation, toConfig)) {
     const newMax = toConfig.creation.magicianStartingEnergy;
 
     if (energy.max !== newMax) {
@@ -483,7 +483,7 @@ export function calculateLevelProgression(
   character: Character,
   config: RulesConfig = DEFAULT_RULES_CONFIG
 ): LevelProgression {
-  if (isFamiliar(character.race)) {
+  if (isFamiliarRace(character.race, config)) {
     return {
       level: null,
       levelPoints: null,
@@ -492,10 +492,10 @@ export function calculateLevelProgression(
     };
   }
 
-  const primarySkillIds = isMagician(character.orientation)
+  const primarySkillIds = isMagicianOrientation(character.orientation, config)
     ? []
     : collectPrimarySkillIds(character);
-  const levelPoints = isMagician(character.orientation)
+  const levelPoints = isMagicianOrientation(character.orientation, config)
     ? sumPoints(character.skills) +
       sumPoints(character.spells) * config.progression.magicianLevelSpellMultiplier
     : sumPoints(character.skills) + sumPrimaryTreePoints(character.skills, primarySkillIds);
@@ -570,12 +570,26 @@ function sumPoints(entries: Array<{ points: number }>): number {
   return entries.reduce((total, entry) => total + entry.points, 0);
 }
 
-function isMagician(orientation: CharacterOrientationProfile): boolean {
-  return orientation.isMagical === true || orientation.id === '1' || orientation.id === 'magicien';
+export function isMagicianOrientation(
+  orientation: CharacterOrientationProfile,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): boolean {
+  return (
+    orientation.isMagical === true ||
+    configuredIdMatches(orientation.id, config.creation.magicianOrientationIds)
+  );
 }
 
-function isFamiliar(race: RaceProfile): boolean {
-  return race.id === '32' || race.id.toLowerCase() === 'familiar';
+export function isFamiliarRace(
+  race: RaceProfile,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): boolean {
+  return configuredIdMatches(race.id, config.creation.familiarRaceIds);
+}
+
+function configuredIdMatches(id: string, configuredIds: string[]): boolean {
+  const normalizedId = id.toLowerCase();
+  return configuredIds.some((configuredId) => configuredId.toLowerCase() === normalizedId);
 }
 
 function collectPrimarySkillIds(character: Character): string[] {

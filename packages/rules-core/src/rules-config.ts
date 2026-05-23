@@ -30,6 +30,10 @@ export interface CreationRulesConfig {
   skillPointsPerSpellPoint: number;
   /** Starting energy (current and max) for a magician character. */
   magicianStartingEnergy: number;
+  /** Orientation ids treated as magician when source data does not expose isMagical. */
+  magicianOrientationIds: string[];
+  /** Race ids treated as familiars for level progression. */
+  familiarRaceIds: string[];
 }
 
 export interface ProgressionRulesConfig {
@@ -85,7 +89,9 @@ export const DEFAULT_RULES_CONFIG: RulesConfig = {
     maxSpellPointsAtCreation: 2,
     magicianBaseSpellPoints: 2,
     skillPointsPerSpellPoint: 10,
-    magicianStartingEnergy: 60
+    magicianStartingEnergy: 60,
+    magicianOrientationIds: ['1', 'magicien'],
+    familiarRaceIds: ['32', 'familiar']
   },
   progression: {
     skillImprovementBaseCost: 3,
