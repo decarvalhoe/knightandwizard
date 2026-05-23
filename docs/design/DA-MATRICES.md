@@ -25,6 +25,8 @@ Nuit (commun aux trois) : fonds `#16100A`/`#211810`/`#2C2218`, texte `#E8D9B0`/`
 
 ## 3. Matrice 1 — Surface → métaphore → skin
 
+> ⚠️ **Superseded par §12.** Ce tableau ne liste que les **3 skins de base** ; l'**assignation par surface qui fait foi = §12** (atomisation diégétique). Conservé pour mémoire.
+
 | Surface (statut) | Métaphore réelle | Skin de base | Pourquoi |
 |---|---|---|---|
 | Dashboard « Poste de table » (live) | **Bureau des dépêches** | Gazette | la une du jour = santé serveur + accès |
@@ -174,6 +176,7 @@ Une **police/texture par surface** — mais **une seule ossature** dessous. Ce q
 - **Deux systèmes d'accent** : **émaux héraldiques par nation** (§4) + **11 couleurs d'écoles** pour la magie (§14).
 - **Tokens & composants partagés** : échelle typo, espacements, radius, états (focus/hover), a11y AA, et composants de base (boutons, champs, badges, sceaux) = **un seul système**.
 - **Règle d'or** : *chaque skin habille la MÊME ossature (mêmes tokens/composants) ; seules typo + texture + ornement + couleur changent par surface.*
+- **Deux niveaux de signature** (cf. §15) : la **signature moteur** (dé/destin, multi-arbitrage, dualité Chevalier↔Sorcier, ossature de tokens) est **universelle** ; la **signature Terres Oubliées** (parchemin, héraldique, voix, supports diégétiques §12, couleurs d'écoles §14) est un **pack de setting ré-skinnable**.
 
 ## 14. Accent « magie » — 11 écoles = 11 couleurs (canon D8 R-8.3 / Grand Grimoire 🟢)
 
@@ -192,3 +195,17 @@ Une **police/texture par surface** — mais **une seule ossature** dessous. Ce q
 | 11 | Nécromancie | Gris | Nécromancien | Nec |
 
 → Usage : couleur d'école pour les sorts (grimoire, fiche, combat). À décliner en versions **Jour/Veillée accessibles** (les couleurs canon sont des teintes nominales, à mapper en tokens contrastés AA).
+
+## 15. Architecture multivers — moteur agnostique + packs de setting
+
+K&W est **collaboratif et vivant** :
+- **Règles = canoniques ET vivantes** : elles évoluent, mais un changement doit être **validé** (équilibrage / cohérence) pour devenir canon.
+- **Lore = encore plus vivant** : les MJ papier ajoutent éléments / personnages-clés ; une fois validés, ils deviennent canon (incarnables par d'autres MJ, pris en compte dans les nouveaux scénarios). **Leviers géopolitiques** (guerres, alliances, traités commerciaux) qui changent les rapports entre nations et le cours de l'Histoire.
+- **Narration rhizomatique / multiverselle** : un MJ peut situer son scénario dans une **temporalité différente** ou une **branche propre** → mondes parallèles, timelines alternées.
+- **Les Terres Oubliées = la branche ORIGINELLE** (médiéval-fantasy), mais le **système (« la cuisine ») doit pouvoir servir n'importe quel univers** — y compris non médiéval-fantasy, autres cartes, autre setting.
+
+**Conséquence design — séparer deux couches :**
+1. **Moteur (agnostique)** : ossature de tokens primitifs, composants de base, **UI dé/destin** (pool D10, cascade, D100), **multi-arbitrage**, **dualité Chevalier↔Sorcier** + modes Jour/Veillée, a11y, invariant « suggère, ne calcule pas ». → **persiste à travers les univers**.
+2. **Packs de setting (skins)** : l'habillage thématique d'un univers. **Terres Oubliées = 1er pack** (parchemin/encre/sceau, héraldique/émaux, voix pince-sans-rire, supports diégétiques §12, couleurs d'écoles §14). Un autre univers = un **autre pack** sur le **même moteur**.
+
+→ « Design system K&W » = **moteur + packs**. Claude Design produit d'abord le **pack Terres Oubliées** (§12), mais sur une **ossature pensée comme ré-skinnable** (le branchage rhizomatique/temporel est une affaire de **données narratives**, pas de refonte visuelle).
