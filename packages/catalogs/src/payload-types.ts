@@ -91,6 +91,8 @@ export interface Config {
     assets: Asset;
     'level-assets': LevelAsset;
     places: Place;
+    'catalog-ambiguities': CatalogAmbiguity;
+    'catalog-decisions': CatalogDecision;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -122,6 +124,8 @@ export interface Config {
     assets: AssetsSelect<false> | AssetsSelect<true>;
     'level-assets': LevelAssetsSelect<false> | LevelAssetsSelect<true>;
     places: PlacesSelect<false> | PlacesSelect<true>;
+    'catalog-ambiguities': CatalogAmbiguitiesSelect<false> | CatalogAmbiguitiesSelect<true>;
+    'catalog-decisions': CatalogDecisionsSelect<false> | CatalogDecisionsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents':
       | PayloadLockedDocumentsSelect<false>
@@ -1579,6 +1583,175 @@ export interface Place {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "catalog-ambiguities".
+ */
+export interface CatalogAmbiguity {
+  id: number;
+  /**
+   * Stable governance id used to reference ambiguity and decision records.
+   */
+  canonicalId: string;
+  name: string;
+  status: 'open' | 'assigned' | 'resolved' | 'rejected';
+  severity: 'P0' | 'P1' | 'P2' | 'P3' | 'P4';
+  domain: string;
+  catalogCollection:
+    | 'weapons'
+    | 'protections'
+    | 'bestiary'
+    | 'potions'
+    | 'magic-schools'
+    | 'spells'
+    | 'nations'
+    | 'organisations'
+    | 'religions'
+    | 'rules'
+    | 'mushrooms'
+    | 'images'
+    | 'lore-entries'
+    | 'world-map-regions'
+    | 'map-cities'
+    | 'orientations'
+    | 'races'
+    | 'skill-families'
+    | 'skills'
+    | 'character-classes'
+    | 'assets'
+    | 'level-assets'
+    | 'places';
+  catalogEntryCanonicalId: string;
+  fieldPath?: string | null;
+  conflictSummary: string;
+  proposedResolution?: string | null;
+  /**
+   * Source files, anchors and hashes that justify the ambiguity or decision.
+   */
+  sourceRefs: {
+    kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+    path: string;
+    ref?: string | null;
+    sha256?: string | null;
+    note?: string | null;
+    id?: string | null;
+  }[];
+  assignedTo?: (number | null) | User;
+  resolvedBy?: (number | null) | User;
+  resolvedAt?: string | null;
+  resolutionDecision?: (number | null) | CatalogDecision;
+  regenerationStatus: 'not_required' | 'pending' | 'completed';
+  /**
+   * Artifacts regenerated after applying the decision.
+   */
+  regeneratedArtifacts?:
+    | {
+        path: string;
+        command?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Raw governance metadata preserved for audits and import/export workflows.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "catalog-decisions".
+ */
+export interface CatalogDecision {
+  id: number;
+  /**
+   * Stable governance id used to reference ambiguity and decision records.
+   */
+  canonicalId: string;
+  name: string;
+  status: 'proposed' | 'accepted' | 'applied' | 'superseded' | 'rejected';
+  decisionType: 'catalog_resolution' | 'rules_interpretation' | 'source_priority' | 'migration';
+  catalogCollection:
+    | 'weapons'
+    | 'protections'
+    | 'bestiary'
+    | 'potions'
+    | 'magic-schools'
+    | 'spells'
+    | 'nations'
+    | 'organisations'
+    | 'religions'
+    | 'rules'
+    | 'mushrooms'
+    | 'images'
+    | 'lore-entries'
+    | 'world-map-regions'
+    | 'map-cities'
+    | 'orientations'
+    | 'races'
+    | 'skill-families'
+    | 'skills'
+    | 'character-classes'
+    | 'assets'
+    | 'level-assets'
+    | 'places';
+  catalogEntryCanonicalId: string;
+  fieldPath?: string | null;
+  rationale: string;
+  resolutionSummary: string;
+  ambiguities: (number | CatalogAmbiguity)[];
+  /**
+   * Source files, anchors and hashes that justify the ambiguity or decision.
+   */
+  sourceRefs: {
+    kind: 'yaml' | 'legacy_source' | 'legacy_php' | 'rules_markdown' | 'map_asset' | 'manual';
+    path: string;
+    ref?: string | null;
+    sha256?: string | null;
+    note?: string | null;
+    id?: string | null;
+  }[];
+  decidedBy?: (number | null) | User;
+  decidedAt?: string | null;
+  regenerationCommand?: string | null;
+  regenerationStatus: 'not_required' | 'pending' | 'completed';
+  /**
+   * Artifacts regenerated after applying the decision.
+   */
+  regeneratedArtifacts?:
+    | {
+        path: string;
+        command?: string | null;
+        sha256?: string | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Raw governance metadata preserved for audits and import/export workflows.
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -1696,6 +1869,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'places';
         value: number | Place;
+      } | null)
+    | ({
+        relationTo: 'catalog-ambiguities';
+        value: number | CatalogAmbiguity;
+      } | null)
+    | ({
+        relationTo: 'catalog-decisions';
+        value: number | CatalogDecision;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -2497,6 +2678,91 @@ export interface PlacesSelect<T extends boolean = true> {
         id?: T;
       };
   migrationNotes?: T;
+  metadata?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "catalog-ambiguities_select".
+ */
+export interface CatalogAmbiguitiesSelect<T extends boolean = true> {
+  canonicalId?: T;
+  name?: T;
+  status?: T;
+  severity?: T;
+  domain?: T;
+  catalogCollection?: T;
+  catalogEntryCanonicalId?: T;
+  fieldPath?: T;
+  conflictSummary?: T;
+  proposedResolution?: T;
+  sourceRefs?:
+    | T
+    | {
+        kind?: T;
+        path?: T;
+        ref?: T;
+        sha256?: T;
+        note?: T;
+        id?: T;
+      };
+  assignedTo?: T;
+  resolvedBy?: T;
+  resolvedAt?: T;
+  resolutionDecision?: T;
+  regenerationStatus?: T;
+  regeneratedArtifacts?:
+    | T
+    | {
+        path?: T;
+        command?: T;
+        sha256?: T;
+        note?: T;
+        id?: T;
+      };
+  metadata?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "catalog-decisions_select".
+ */
+export interface CatalogDecisionsSelect<T extends boolean = true> {
+  canonicalId?: T;
+  name?: T;
+  status?: T;
+  decisionType?: T;
+  catalogCollection?: T;
+  catalogEntryCanonicalId?: T;
+  fieldPath?: T;
+  rationale?: T;
+  resolutionSummary?: T;
+  ambiguities?: T;
+  sourceRefs?:
+    | T
+    | {
+        kind?: T;
+        path?: T;
+        ref?: T;
+        sha256?: T;
+        note?: T;
+        id?: T;
+      };
+  decidedBy?: T;
+  decidedAt?: T;
+  regenerationCommand?: T;
+  regenerationStatus?: T;
+  regeneratedArtifacts?:
+    | T
+    | {
+        path?: T;
+        command?: T;
+        sha256?: T;
+        note?: T;
+        id?: T;
+      };
   metadata?: T;
   updatedAt?: T;
   createdAt?: T;

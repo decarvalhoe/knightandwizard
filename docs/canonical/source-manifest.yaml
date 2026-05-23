@@ -13133,6 +13133,15 @@ sources:
     domains: ["project-governance"]
     contains: ["project_documentation"]
     notes: "Project documentation source."
+  - id: "docs-product-cms-governance-workflow"
+    path: "docs/product/cms-governance-workflow.md"
+    sha256: "6b47d1a4a509819e19f5e3e8e2daeda980b3160032a179f5007322e47d38e525"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-product-episodic-memory-contract"
     path: "docs/product/episodic-memory-contract.md"
     sha256: "3759d88fd5cbb9eca0a7931c6202da40f651bbb88d2193a8eca0f8aa5e646b34"
@@ -13162,7 +13171,7 @@ sources:
     notes: "Project documentation source."
   - id: "docs-product-readme"
     path: "docs/product/README.md"
-    sha256: "f08f21edd429aa44c547adc54f6d06b5bd627644dea62aa9dfb7fb3384b33934"
+    sha256: "89b72ccb0eb81c25e99d5a74b642df90218db4f2dec7e5facf30e339194a2eb3"
     source_type: generated_doc
     priority: 40
     status: active

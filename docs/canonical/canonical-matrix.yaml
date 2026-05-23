@@ -261571,6 +261571,42 @@ units:
     tests:
       status: not_applicable
       evidence: "Source document only."
+  - unit_id: "source:docs-product-cms-governance-workflow"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/product/cms-governance-workflow.md"
+    status: covered
+    sources:
+      - path: "docs/product/cms-governance-workflow.md"
+        ref: "docs/product/cms-governance-workflow.md"
+        sha256: "6b47d1a4a509819e19f5e3e8e2daeda980b3160032a179f5007322e47d38e525"
+    business_rule:
+      summary: "docs/product/cms-governance-workflow.md from docs/product/cms-governance-workflow.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
   - unit_id: "source:docs-product-episodic-memory-contract"
     unit_type: "source_document"
     domain: "project-governance"
@@ -261687,7 +261723,7 @@ units:
     sources:
       - path: "docs/product/README.md"
         ref: "docs/product/README.md"
-        sha256: "f08f21edd429aa44c547adc54f6d06b5bd627644dea62aa9dfb7fb3384b33934"
+        sha256: "89b72ccb0eb81c25e99d5a74b642df90218db4f2dec7e5facf30e339194a2eb3"
     business_rule:
       summary: "docs/product/README.md from docs/product/README.md."
       ambiguity_ref: null

@@ -135687,6 +135687,21 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PRODUCT-CMS-GOVERNANCE-WORKFLOW
+    unit_type: catalog_entry
+    name: docs/product/cms-governance-workflow.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PRODUCT-CMS-GOVERNANCE-WORKFLOW
+        locator: docs/product/cms-governance-workflow.md
+        hash: sha256:6b47d1a4a509819e19f5e3e8e2daeda980b3160032a179f5007322e47d38e525
+    business_rule: docs/product/cms-governance-workflow.md from docs/product/cms-governance-workflow.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-DOCS-PRODUCT-EPISODIC-MEMORY-CONTRACT
     unit_type: catalog_entry
     name: docs/product/episodic-memory-contract.md
@@ -135740,7 +135755,7 @@ units:
     source_refs:
       - source_id: DOCS-PRODUCT-README
         locator: docs/product/README.md
-        hash: sha256:f08f21edd429aa44c547adc54f6d06b5bd627644dea62aa9dfb7fb3384b33934
+        hash: sha256:89b72ccb0eb81c25e99d5a74b642df90218db4f2dec7e5facf30e339194a2eb3
     business_rule: docs/product/README.md from docs/product/README.md.
     status: partial
     gaps:
