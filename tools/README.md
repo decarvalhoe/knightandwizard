@@ -64,7 +64,7 @@ pnpm catalogs:build:magic
 
 ### `build-atouts-catalog.ts`
 
-Génère `data/catalogs/atouts.yaml` à partir de `data/legacy/web-scraped/documents/atouts/index.md`. Extrait 416 atouts/handicaps avec activation (`permanent`/`ephemere`), scope (`classe`/`neutre`/`orientation`), valeur (négative pour les handicaps), effet et `source_refs`. Les atouts du même nom dans plusieurs scopes reçoivent un suffixe `-<scope>-<n>`.
+Génère `data/catalogs/atouts.yaml` à partir de `documents/atouts/index.md`, `documents/atouts-niveaux/index.md` et `data/catalogs/races.yaml`. Extrait 802 entrées : 416 atouts/handicaps de base, 347 atouts de niveau et 39 atouts/handicaps innés de races. Les scopes couverts sont `classe` / `neutre` / `orientation` / `race` / `niveau`; les relations de race portent `metadata.race_ids`, et les relations sans valeur explicite restent `raw_reference_only` avec `activation: unknown` / `value: null`.
 
 Commande :
 

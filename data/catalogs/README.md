@@ -26,7 +26,7 @@ Ce dossier contient les imports effectifs des catalogues legacy, structurés sel
 | **Images visuelles**             | `images.yaml`                        | `site/download/map/`, `site/img/flags/`, `site/img/maps/`                                  |                       1 carte mondiale + 15 cartes régionales + 10 blasons + 3 web assets | ✅ import auto                    |
 | **Villes des cartes régionales** | `cities-from-maps.yaml`              | 15 cartes JPG `site/download/map/*.jpg`                                                    |                          ~280 villes + 10 portes fortifiées + 3 régions nouvelles + zones | ✅ extraction visuelle            |
 | **Vectorisation cartes**         | `vectorisation-cartes.md`            | recherche 2026 outils interactifs                                                          |                                     6 options évaluées + workflow recommandé QGIS+Leaflet | ✅ guide d'implémentation         |
-| **Valeurs d'atouts**             | `atouts-values.csv`                  | `documents/atouts/index.md`                                                                |                                                                      416 atouts/handicaps | ✅ import auto, coûts familiers   |
+| **Atouts / handicaps**           | `atouts.yaml` + `atouts-values.csv`  | `documents/atouts/index.md` + `documents/atouts-niveaux/index.md` + `races.yaml`           |                                                        802 entrées YAML + 416 valeurs CSV | ✅ scopes classe/race/niveau      |
 | Lore narratif                    | `lore-index.yaml`                    | `regles-papier/extracted/histoires/*.md`                                                   |                                                                    6 entrées (préservées) | ✅ référencement                  |
 
 **Total : ~1100 entrées canoniques importées dans 14 catalogues prioritaires** (+ 29 fichiers images référencés). Les valeurs d'atouts servent aussi de règle `valeur / 10` pour la création des familiers.
@@ -68,7 +68,7 @@ Points d'attention :
   - **Terres Sauvages** (sud-est) — mentionné comme habitat dans bestiaire mais pas comme entrée nations
   - **Terres Sans Noms** visible sur carte cortega.jpg (zone tampon liée à organisation Sans Noms ?)
 - **Cortega** : 16 villes visibles sur la carte régionale (Senec, Mellec, Précy, Ozora, Teglas, Gampey, Gara, Gan, Letak, Cetara, Udvan, Padan, Selice, Massa, Pilis + Cortega capitale). Les 14 autres cartes régionales contiennent probablement aussi de nombreuses villes non-extraites.
-- **Atouts familiers** : `atouts-values.csv` est la table générale d'atouts extraite du web et sert de règle de coût des atouts/handicaps de familier (`valeur / 10`).
+- **Atouts / handicaps** : `atouts.yaml` consolide la liste web de base, les atouts de niveau et les atouts/handicaps innés de races. `atouts-values.csv` reste la table générale de coût des familiers (`valeur / 10`).
 
 ## Format
 
