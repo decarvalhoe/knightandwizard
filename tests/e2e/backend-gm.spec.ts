@@ -36,6 +36,26 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
       expect(body.pgvector).toBe(true);
     });
 
+    await expectJson(request, 'GET', '/catalogs/equipment', 200, (body) => {
+      const totals = asRecord(body.totals);
+      const equipment = records(body.equipment);
+
+      expect(body.status).toBe('ok');
+      expect(totals.total).toBe(183);
+      expect(equipment.find((entry) => entry.id === 'epee_batarde')).toMatchObject({
+        category: 'weapon',
+        sourceCatalog: 'armes.yaml'
+      });
+      expect(equipment.find((entry) => entry.id === 'bouclier_bois')).toMatchObject({
+        category: 'shield',
+        sourceCatalog: 'protections.yaml'
+      });
+      expect(equipment.find((entry) => entry.id === 'soin')).toMatchObject({
+        category: 'consumable',
+        sourceCatalog: 'potions.yaml'
+      });
+    });
+
     await expectJson(
       request,
       'PUT',
