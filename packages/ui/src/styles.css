@@ -96,3 +96,51 @@
   color: var(--color-fb-danger);
   font-style: italic;
 }
+
+.kw-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-disc);
+  background: var(--color-accent-2);
+  color: var(--color-bg-canvas);
+  font-family: var(--font-label);
+  font-size: var(--text-label-sm);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-align: center;
+  transform: rotate(-4deg);
+  box-shadow: var(--shadow-button) color-mix(in oklab, var(--color-text-ink) 30%, transparent);
+}
+
+.kw-statblock__title {
+  font-family: var(--font-label);
+  font-size: var(--text-label-sm);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+.kw-statblock__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+.kw-statblock__item {
+  display: flex;
+  flex-direction: column;
+  border: var(--border-hairline) solid var(--color-border-hairline);
+  padding: 6px 10px;
+}
+.kw-statblock__label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.kw-statblock__value {
+  font-family: var(--font-display);
+  font-size: 22px;
+}
