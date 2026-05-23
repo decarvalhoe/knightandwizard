@@ -16,7 +16,43 @@ const CATALOG_GROUP = 'Catalogues canoniques';
 const LEGACY_GROUP = 'Referentiels PHP';
 const RULES_GROUP = 'Regles vivantes';
 
+const catalogEntryStatuses = ['active', 'ambiguous', 'deprecated', 'raw_reference_only'] as const;
+const catalogEditorRoles = ['admin', 'catalog_editor'] as const;
+const catalogReviewerRoles = ['admin', 'catalog_editor', 'catalog_reviewer'] as const;
+
 const canonicalIdPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+type CatalogUser = {
+  role?: string | null;
+  roles?: string[] | string | null;
+};
+
+const catalogAccess: CollectionConfig['access'] = {
+  read: ({ req }) => hasCatalogRole(req.user, catalogReviewerRoles),
+  create: ({ req }) => hasCatalogRole(req.user, catalogEditorRoles),
+  update: ({ req }) => hasCatalogRole(req.user, catalogEditorRoles),
+  delete: ({ req }) => hasCatalogRole(req.user, catalogEditorRoles)
+};
+
+function hasCatalogRole(
+  user: unknown,
+  allowedRoles: readonly (typeof catalogReviewerRoles)[number][]
+): boolean {
+  if (!isCatalogUser(user)) {
+    return false;
+  }
+
+  const roles = [
+    ...(Array.isArray(user.roles) ? user.roles : user.roles ? [user.roles] : []),
+    ...(user.role ? [user.role] : [])
+  ];
+
+  return roles.some((role) => allowedRoles.includes(role as (typeof catalogReviewerRoles)[number]));
+}
+
+function isCatalogUser(user: unknown): user is CatalogUser {
+  return typeof user === 'object' && user !== null;
+}
 
 const normalizeCanonicalId: CollectionBeforeValidateHook = ({ data }) => {
   if (!data) {
@@ -63,6 +99,14 @@ const nameField: Field = {
   required: true
 };
 
+const statusField: Field = selectField('status', catalogEntryStatuses, false, {
+  admin: {
+    description: 'Canonical review status preserved from YAML imports.'
+  },
+  defaultValue: 'active',
+  index: true
+});
+
 const migrationNotesField: Field = {
   name: 'migrationNotes',
   type: 'textarea',
@@ -87,8 +131,14 @@ const sourceRefsField: Field = {
     description: 'Source files, legacy tables or rules documents used to create this entry.'
   },
   fields: [
-    selectField('kind', ['yaml', 'legacy_php', 'rules_markdown', 'map_asset', 'manual'], true),
+    selectField(
+      'kind',
+      ['yaml', 'legacy_source', 'legacy_php', 'rules_markdown', 'map_asset', 'manual'],
+      true
+    ),
     textField('path', true),
+    textField('ref'),
+    textField('sha256'),
     textField('note')
   ]
 };
@@ -193,14 +243,29 @@ export const Potions = catalogCollection({
   slug: 'potions'
 });
 
-export const Spells = catalogCollection({
-  defaultColumns: ['canonicalId', 'name', 'magicType', 'energyCost', 'difficulty'],
+export const MagicSchools = catalogCollection({
+  defaultColumns: ['canonicalId', 'name', 'color', 'specialistClassCanonicalId', 'status'],
   fields: [
-    selectField('magicType', magicTypes, true),
-    textareaField('effect'),
-    numberField('energyCost'),
-    numberField('castingTimeDT'),
-    numberField('difficulty'),
+    textField('sourceLabel'),
+    textField('color', true),
+    textareaField('domain', true),
+    textField('specialistClassCanonicalId', true),
+    relationshipField('specialistClass', 'character-classes')
+  ],
+  labels: { singular: 'Magic School', plural: 'Magic Schools' },
+  slug: 'magic-schools'
+});
+
+export const Spells = catalogCollection({
+  defaultColumns: ['canonicalId', 'name', 'magicSchoolCanonicalId', 'energyCost', 'difficulty'],
+  fields: [
+    textField('magicSchoolCanonicalId', true),
+    relationshipField('magicSchool', 'magic-schools'),
+    selectField('magicType', magicTypes),
+    textareaField('effect', true),
+    numberField('energyCost', true),
+    numberField('castingTimeDT', true),
+    numberField('difficulty', true),
     numberField('value'),
     checkboxField('directMagic'),
     textField('legacyTypeId')
@@ -374,8 +439,8 @@ export const MapCities = catalogCollection({
 
 export const Orientations = catalogCollection({
   adminGroup: LEGACY_GROUP,
-  defaultColumns: ['canonicalId', 'name'],
-  fields: [relationshipField('asset', 'assets')],
+  defaultColumns: ['canonicalId', 'name', 'isMagical', 'status'],
+  fields: [checkboxField('isMagical'), relationshipField('asset', 'assets')],
   labels: { singular: 'Orientation', plural: 'Orientations' },
   slug: 'orientations'
 });
@@ -398,7 +463,7 @@ export const Races = catalogCollection({
 
 export const SkillFamilies = catalogCollection({
   adminGroup: LEGACY_GROUP,
-  defaultColumns: ['canonicalId', 'name'],
+  defaultColumns: ['canonicalId', 'name', 'status'],
   fields: [textareaField('description')],
   labels: { singular: 'Skill Family', plural: 'Skill Families' },
   slug: 'skill-families'
@@ -406,8 +471,10 @@ export const SkillFamilies = catalogCollection({
 
 export const Skills = catalogCollection({
   adminGroup: LEGACY_GROUP,
-  defaultColumns: ['canonicalId', 'name', 'family', 'parentSkill'],
+  defaultColumns: ['canonicalId', 'name', 'familyCanonicalId', 'parentSkillCanonicalId'],
   fields: [
+    textField('familyCanonicalId', true),
+    textField('parentSkillCanonicalId'),
     relationshipField('family', 'skill-families'),
     relationshipField('parentSkill', 'skills'),
     checkboxField('isPrimaryCandidate')
@@ -418,8 +485,11 @@ export const Skills = catalogCollection({
 
 export const CharacterClasses = catalogCollection({
   adminGroup: LEGACY_GROUP,
-  defaultColumns: ['canonicalId', 'name', 'orientation', 'classAsset'],
+  defaultColumns: ['canonicalId', 'name', 'orientationCanonicalId', 'primarySkillChoice'],
   fields: [
+    textField('orientationCanonicalId', true),
+    textField('primarySkillCanonicalId'),
+    selectField('primarySkillChoice', ['fixed', 'player_choice', 'magician_no_primary'], true),
     relationshipField('orientation', 'orientations'),
     relationshipField('classAsset', 'assets'),
     relationshipField('primarySkills', 'skills', { hasMany: true })
@@ -451,11 +521,15 @@ export const Assets = catalogCollection({
 
 export const LevelAssets = catalogCollection({
   adminGroup: LEGACY_GROUP,
-  defaultColumns: ['canonicalId', 'name', 'asset', 'level', 'points'],
+  defaultColumns: ['canonicalId', 'name', 'assetCanonicalId', 'level', 'points'],
   fields: [
+    textField('assetCanonicalId', true),
     relationshipField('asset', 'assets'),
     numberField('level', true),
     numberField('points'),
+    textField('raceName'),
+    textField('orientationName'),
+    textField('characterClassName'),
     relationshipField('race', 'races'),
     relationshipField('orientation', 'orientations'),
     relationshipField('characterClass', 'character-classes'),
@@ -467,11 +541,11 @@ export const LevelAssets = catalogCollection({
 
 export const Places = catalogCollection({
   adminGroup: LEGACY_GROUP,
-  defaultColumns: ['canonicalId', 'name', 'status', 'nation', 'isCapital'],
+  defaultColumns: ['canonicalId', 'name', 'placeStatus', 'nation', 'isCapital'],
   fields: [
     relationshipField('parentPlace', 'places'),
     relationshipField('nation', 'nations'),
-    textField('status'),
+    textField('placeStatus'),
     checkboxField('isCapital'),
     selectField('mapRole', ['forum_place', 'city', 'town', 'region', 'landmark', 'unknown'])
   ],
@@ -484,6 +558,7 @@ export const CatalogCollections = [
   Protections,
   Bestiary,
   Potions,
+  MagicSchools,
   Spells,
   Nations,
   Organisations,
@@ -519,6 +594,7 @@ function catalogCollection({
       useAsTitle: 'name'
     },
     labels,
+    access: catalogAccess,
     versions: true,
     hooks: {
       beforeValidate: [normalizeCanonicalId]
@@ -526,6 +602,7 @@ function catalogCollection({
     fields: [
       canonicalIdField,
       nameField,
+      statusField,
       ...fields,
       sourceRefsField,
       migrationNotesField,
