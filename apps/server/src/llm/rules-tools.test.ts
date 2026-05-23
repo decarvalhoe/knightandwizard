@@ -9,7 +9,8 @@ import {
   executeGetCharacterStatusTool,
   executeLookupBestiaryTool,
   executeLookupRuleTool,
-  executeResolveAttackTool
+  executeResolveAttackTool,
+  executeRollDiceTool
 } from './rules-tools.js';
 
 describe('game master rules-core tools', () => {
@@ -28,6 +29,7 @@ describe('game master rules-core tools', () => {
     ).resolves.toEqual(
       expect.objectContaining({
         rolls: [7, 8],
+        status: 'ok',
         successes: 2
       })
     );
@@ -186,6 +188,10 @@ describe('game master rules-core tools', () => {
   });
 
   it('returns graceful rule errors instead of throwing opaque exceptions', async () => {
+    await expect(toolsRollDiceWithInvalidPool()).resolves.toMatchObject({
+      message: expect.stringContaining('pool'),
+      status: 'error'
+    });
     await expect(
       executeApplyDamageTool({
         combatantId: 'missing',
@@ -198,6 +204,10 @@ describe('game master rules-core tools', () => {
     });
   });
 });
+
+async function toolsRollDiceWithInvalidPool() {
+  return executeRollDiceTool({ difficulty: 7, pool: 0 });
+}
 
 function sampleCombatState() {
   return addCombatant(

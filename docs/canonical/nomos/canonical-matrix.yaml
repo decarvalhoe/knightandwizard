@@ -135687,6 +135687,21 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PRODUCT-LLM-TOOL-CALLING-CONTRACT
+    unit_type: catalog_entry
+    name: docs/product/llm-tool-calling-contract.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PRODUCT-LLM-TOOL-CALLING-CONTRACT
+        locator: docs/product/llm-tool-calling-contract.md
+        hash: sha256:c5fb658288aea0c0b2caef8e3220734414fdc900a59e51125f595233e963eb02
+    business_rule: docs/product/llm-tool-calling-contract.md from docs/product/llm-tool-calling-contract.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-DOCS-PRODUCT-README
     unit_type: catalog_entry
     name: docs/product/README.md
@@ -135695,7 +135710,7 @@ units:
     source_refs:
       - source_id: DOCS-PRODUCT-README
         locator: docs/product/README.md
-        hash: sha256:82d176cb1a2480aacf8828a3e2a70712521a1b61e7c8b1e8994158bbac049e57
+        hash: sha256:da5d19d8aa2ef12221242a77c1999bca06a8751a3a8f28a2f5081166f2974d50
     business_rule: docs/product/README.md from docs/product/README.md.
     status: partial
     gaps:

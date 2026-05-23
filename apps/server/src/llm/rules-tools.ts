@@ -27,7 +27,6 @@ export const GAME_MASTER_RULE_TOOL_IDS = [
 ] as const;
 
 export type GameMasterRuleToolId = (typeof GAME_MASTER_RULE_TOOL_IDS)[number];
-export type GameMasterRuleTools = Record<GameMasterRuleToolId, ToolAction<unknown, unknown>>;
 
 export interface GameMasterRuleToolOptions {
   randomInteger?: RandomInteger;
@@ -49,6 +48,7 @@ export interface RollDiceToolResult extends DiceRollResult {
   difficulty: number;
   pool: number;
   reason?: string;
+  status: 'ok';
 }
 
 export interface ApplyDamageToolResult {
@@ -104,7 +104,37 @@ type SearchRulesForTool = (
   options?: { limit?: number }
 ) => Promise<RuleSearchResult[]>;
 
-type RuleToolResult<T> = T | ToolErrorResult;
+export type RuleToolResult<T> = T | ToolErrorResult;
+
+export function normalizeRuleToolResult<T extends object>(
+  output: RuleToolResult<T> | Record<string, unknown> | undefined,
+  fallbackMessage: string
+): RuleToolResult<T> {
+  if (output === undefined) {
+    return {
+      message: fallbackMessage,
+      status: 'error'
+    };
+  }
+
+  const candidate = output as Record<string, unknown>;
+
+  if (candidate.status === 'ok' || candidate.status === 'error') {
+    return output as RuleToolResult<T>;
+  }
+
+  if (candidate.error === true && typeof candidate.message === 'string') {
+    return {
+      message: candidate.message,
+      status: 'error'
+    };
+  }
+
+  return {
+    message: fallbackMessage,
+    status: 'error'
+  };
+}
 
 const RollDiceInputSchema = z.object({
   pool: z.number().int().positive(),
@@ -231,6 +261,37 @@ const DecideNpcActionInputSchema = z.object({
   profile: NpcControlProfileSchema
 });
 
+export interface GameMasterRuleToolInputMap {
+  advanceCombatTimeline: z.infer<typeof AdvanceCombatTimelineInputSchema>;
+  applyDamage: z.infer<typeof ApplyDamageInputSchema>;
+  decideNpcAction: z.infer<typeof DecideNpcActionInputSchema>;
+  getCharacterStatus: z.infer<typeof GetCharacterStatusInputSchema>;
+  lookupBestiary: z.infer<typeof LookupBestiaryInputSchema>;
+  lookupRule: z.infer<typeof LookupRuleInputSchema>;
+  resolveAttack: z.infer<typeof ResolveAttackInputSchema>;
+  rollDice: RollDiceToolInput;
+}
+
+export interface GameMasterRuleToolResultMap {
+  advanceCombatTimeline: RuleToolResult<AdvanceCombatTimelineToolResult>;
+  applyDamage: RuleToolResult<ApplyDamageToolResult>;
+  decideNpcAction: RuleToolResult<DecideNpcActionToolResult>;
+  getCharacterStatus: RuleToolResult<GetCharacterStatusToolResult>;
+  lookupBestiary: RuleToolResult<LookupBestiaryToolResult>;
+  lookupRule: RuleToolResult<LookupRuleToolResult>;
+  resolveAttack: RuleToolResult<ResolveAttackToolResult>;
+  rollDice: RuleToolResult<RollDiceToolResult>;
+}
+
+export type GameMasterRuleTool<TId extends GameMasterRuleToolId> = ToolAction<
+  GameMasterRuleToolInputMap[TId],
+  GameMasterRuleToolResultMap[TId]
+>;
+
+export type GameMasterRuleTools = {
+  [TId in GameMasterRuleToolId]: GameMasterRuleTool<TId>;
+};
+
 export function createGameMasterRulesTools(
   options: GameMasterRuleToolOptions = {}
 ): GameMasterRuleTools {
@@ -300,18 +361,21 @@ export function createGameMasterRulesTools(
 export async function executeRollDiceTool(
   input: unknown,
   options: Pick<GameMasterRuleToolOptions, 'randomInteger'> = {}
-): Promise<RollDiceToolResult> {
-  const normalizedInput = RollDiceInputSchema.parse(input);
-  const result = rollDice(normalizedInput.pool, normalizedInput.difficulty, {
-    randomInteger: options.randomInteger
-  });
+): Promise<RuleToolResult<RollDiceToolResult>> {
+  return safeRuleToolExecution(() => {
+    const normalizedInput = RollDiceInputSchema.parse(input);
+    const result = rollDice(normalizedInput.pool, normalizedInput.difficulty, {
+      randomInteger: options.randomInteger
+    });
 
-  return {
-    ...result,
-    difficulty: normalizedInput.difficulty,
-    pool: normalizedInput.pool,
-    reason: normalizedInput.reason
-  };
+    return {
+      ...result,
+      difficulty: normalizedInput.difficulty,
+      pool: normalizedInput.pool,
+      reason: normalizedInput.reason,
+      status: 'ok'
+    };
+  });
 }
 
 export async function executeApplyDamageTool(

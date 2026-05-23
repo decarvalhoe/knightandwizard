@@ -20545,13 +20545,27 @@ sources:
       - vector_index
       - citation_internal
     notes: Project documentation source.
+  - id: DOCS-PRODUCT-LLM-TOOL-CALLING-CONTRACT
+    path: docs/product/llm-tool-calling-contract.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: c5fb658288aea0c0b2caef8e3220734414fdc900a59e51125f595233e963eb02
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-PRODUCT-README
     path: docs/product/README.md
     type: markdown
     domain: project-governance
     priority: derived
     status: active
-    hash: 82d176cb1a2480aacf8828a3e2a70712521a1b61e7c8b1e8994158bbac049e57
+    hash: da5d19d8aa2ef12221242a77c1999bca06a8751a3a8f28a2f5081166f2974d50
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal

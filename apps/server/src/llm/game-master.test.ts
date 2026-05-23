@@ -43,6 +43,7 @@ describe('game master Mastra runtime', () => {
       pool: 3,
       reason: 'Tester la vigilance du guetteur',
       rolls: [7, 8, 2],
+      status: 'ok',
       successes: 2,
       total: 17
     });
@@ -78,6 +79,7 @@ describe('game master Mastra runtime', () => {
         },
         output: expect.objectContaining({
           rolls: [7, 8, 2],
+          status: 'ok',
           successes: 2
         }),
         tool: 'rollDice'
@@ -114,6 +116,25 @@ describe('game master Mastra runtime', () => {
       successes: 0
     });
     expect(result.narration).toContain('Echec critique D100 73.');
+  });
+
+  it('keeps invalid roll tool errors visible and recoverable', async () => {
+    const result = await describeSceneWithGameMaster({
+      sceneDescription: 'Le MJ demande un jet mal forme pendant un test outil.',
+      roll: {
+        difficulty: 7,
+        pool: 0,
+        reason: 'Contrat de recuperation tool calling'
+      } as never,
+      sessionId: 'session-roll-error'
+    });
+
+    expect(result.toolCalls[0]?.output).toMatchObject({
+      message: expect.stringContaining('pool'),
+      status: 'error'
+    });
+    expect(result.narration).toContain('Erreur outil rollDice');
+    expect(result.narration).toContain('attend une entree corrigee');
   });
 
   it('injects retrieved rules context and cites it in the deterministic narration', async () => {
