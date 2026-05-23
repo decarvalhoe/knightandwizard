@@ -194,6 +194,15 @@ importers:
 
   packages/tokens: {}
 
+  packages/ui:
+    devDependencies:
+      '@types/react':
+        specifier: ^19.2.14
+        version: 19.2.14
+      react:
+        specifier: ^19.2.5
+        version: 19.2.5
+
 packages:
 
   '@a2a-js/sdk@0.3.13':
