@@ -10,7 +10,7 @@ const nextConfig = {
   },
   outputFileTracingRoot: resolve(appDir, '../..'),
   reactStrictMode: true,
-  transpilePackages: ['@knightandwizard/rules-core'],
+  transpilePackages: ['@knightandwizard/rules-core', '@knightandwizard/ui'],
   webpack(config) {
     config.resolve.extensionAlias = {
       ...config.resolve.extensionAlias,

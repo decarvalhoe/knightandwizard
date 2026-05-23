@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 
 import { AppShell } from '@/components/app-shell';
 import './globals.css';
+import '@knightandwizard/ui/styles.css';
 
 export const metadata: Metadata = {
   title: 'Knight & Wizard',

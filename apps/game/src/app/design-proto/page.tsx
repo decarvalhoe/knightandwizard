@@ -1,13 +1,14 @@
 'use client';
 
-import { useState, type CSSProperties } from 'react';
+import { useState } from 'react';
 
-// Proto « design lab » : un Tracker DT rendu via les tokens du design system
-// (packages/tokens). Sélecteur de skin (7) + bascule Jour/Veillée prouvent le
-// moteur ré-skinnable en live. Tout est stylé via les variables CSS --color-*,
-// --shadow-*, --font-*, --border-* posées par [data-skin] / [data-theme].
+import { Badge, Button, Card, Die, Label } from '@knightandwizard/ui';
 
-const SKINS: { id: string; label: string }[] = [
+// Proto « design lab » : un Tracker DT composé avec les VRAIS composants
+// (@knightandwizard/ui), branchés tokens. Le sélecteur de skin + la bascule
+// Jour/Veillée prouvent le moteur ré-skinnable en live.
+
+const SKINS = [
   { id: 'registre', label: 'Registre (combat)' },
   { id: 'grimoire', label: 'Grimoire (sorts)' },
   { id: 'tripot', label: 'Tripot (dés)' },
@@ -31,63 +32,17 @@ const DT_START = 140;
 const DT_END = 154;
 const NOW = 142;
 
-const card: CSSProperties = {
-  background: 'var(--color-bg-surface)',
-  color: 'var(--color-text-ink)',
-  border: 'var(--border-hairline) solid var(--color-border-rule)',
-  borderRadius: 'var(--radius-rect)',
-  boxShadow: 'var(--shadow-card) color-mix(in oklab, var(--color-text-ink) 18%, transparent)',
-  padding: '20px'
-};
-
-const eyebrow: CSSProperties = {
-  fontFamily: 'var(--font-label)',
-  fontSize: 'var(--text-label-sm)',
-  letterSpacing: 'var(--tracking-label)',
-  textTransform: 'uppercase',
-  color: 'var(--color-text-muted)'
-};
-
-function Die({ kind, value }: { kind: 's' | 't' | 'o'; value: number }) {
-  const base: CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 34,
-    height: 34,
-    border: 'var(--border-hairline) solid var(--color-text-ink)',
-    fontFamily: 'var(--font-display)',
-    fontSize: 18
-  };
-  if (kind === 's')
-    return (
-      <span
-        style={{ ...base, background: 'var(--color-text-ink)', color: 'var(--color-bg-canvas)' }}
-      >
-        {value}
-      </span>
-    );
-  if (kind === 't')
-    return (
-      <span style={{ ...base, background: 'var(--color-accent)', color: 'var(--color-bg-canvas)' }}>
-        {value}
-      </span>
-    );
-  return (
-    <span style={{ ...base, color: 'var(--color-fb-danger)', fontStyle: 'italic' }}>{value}</span>
-  );
-}
-
 export default function DesignProtoPage() {
   const [skin, setSkin] = useState('registre');
   const [night, setNight] = useState(false);
 
   return (
-    <div style={{ padding: '24px', maxWidth: 980, margin: '0 auto' }}>
+    <div style={{ padding: 24, maxWidth: 980, margin: '0 auto' }}>
       <h1 style={{ marginBottom: 4 }}>Design Lab — Tracker DT</h1>
       <p style={{ color: '#666', marginTop: 0 }}>
-        Le même composant, rendu via les tokens du design system. Change le skin / le mode : seuls
-        couleurs, polices et ornements bougent — l’ossature reste identique.
+        Composé avec les vrais composants <code>@knightandwizard/ui</code> (Card, Button, Die,
+        Badge, Label). Change le skin / le mode : seuls couleurs, polices et ornements bougent —
+        composants et ossature restent identiques.
       </p>
 
       <div style={{ display: 'flex', gap: 12, alignItems: 'center', margin: '16px 0' }}>
@@ -115,26 +70,45 @@ export default function DesignProtoPage() {
           color: 'var(--color-text-ink)',
           fontFamily: 'var(--font-body)',
           padding: 24,
-          border: 'var(--border-strong) solid var(--color-border-rule)'
+          border: 'var(--border-strong) solid var(--color-border-rule)',
+          display: 'grid',
+          gap: 16
         }}
       >
-        <div style={eyebrow}>Carnet de campagne · le commandant consigne</div>
-        <h2 style={{ fontFamily: 'var(--font-display)', margin: '4px 0 16px' }}>
-          Round courant · DT {NOW}
-        </h2>
+        <div>
+          <Label>Carnet de campagne · le commandant consigne</Label>
+          <h2 style={{ fontFamily: 'var(--font-display)', margin: '4px 0' }}>
+            Round courant · DT {NOW}
+          </h2>
+        </div>
 
-        <div style={{ ...card, marginBottom: 16 }}>
-          <div style={eyebrow}>Timeline · Divisions de Temps (0,2 s)</div>
+        <Card>
+          <Label>Timeline · Divisions de Temps (0,2 s)</Label>
           {ACTORS.map((a) => {
             const left = ((a.dt - DT_START) / (DT_END - DT_START)) * 100;
             const width = (a.vitesse / (DT_END - DT_START)) * 100;
-            const isEnemy = a.camp === 'ennemi';
+            const enemy = a.camp === 'ennemi';
             return (
               <div key={a.nom} style={{ margin: '10px 0' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13 }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    fontSize: 13
+                  }}
+                >
                   <strong>{a.nom}</strong>
-                  <span style={{ color: 'var(--color-text-muted)' }}>
+                  <span
+                    style={{
+                      display: 'inline-flex',
+                      gap: 8,
+                      alignItems: 'center',
+                      color: 'var(--color-text-muted)'
+                    }}
+                  >
                     DT {a.dt} · F.Vit {a.vitesse} · {a.action}
+                    <Badge tone={enemy ? 'danger' : 'success'}>{enemy ? 'ennemi' : 'allié'}</Badge>
                   </span>
                 </div>
                 <div
@@ -153,24 +127,24 @@ export default function DesignProtoPage() {
                       width: `${Math.max(width, 4)}%`,
                       top: 0,
                       bottom: 0,
-                      background: isEnemy ? 'var(--color-accent-2)' : 'var(--color-accent)'
+                      background: enemy ? 'var(--color-accent-2)' : 'var(--color-accent)'
                     }}
                   />
                 </div>
               </div>
             );
           })}
-          <div style={{ ...eyebrow, marginTop: 8 }}>↳ « maintenant » = DT {NOW}</div>
-        </div>
+          <Label>↳ « maintenant » = DT {NOW}</Label>
+        </Card>
 
-        <div style={card}>
-          <div style={eyebrow}>Jet de pool D10 — Aveline décoche</div>
+        <Card>
+          <Label>Jet de pool D10 — Aveline décoche</Label>
           <div style={{ display: 'flex', gap: 8, alignItems: 'center', margin: '8px 0' }}>
-            <Die kind="s" value={10} />
+            <Die value={10} kind="success" />
             <span style={{ fontFamily: 'var(--font-display)' }}>↪</span>
-            <Die kind="s" value={8} />
-            <Die kind="t" value={9} />
-            <Die kind="o" value={1} />
+            <Die value={8} kind="success" />
+            <Die value={9} kind="critical" />
+            <Die value={1} kind="one" />
             <span style={{ marginLeft: 8, fontFamily: 'var(--font-display)', fontSize: 28 }}>
               2 réussites
             </span>
@@ -178,7 +152,11 @@ export default function DesignProtoPage() {
           <div style={{ color: 'var(--color-text-muted)', fontStyle: 'italic' }}>
             « La flèche file droit… trouve la gorge. » Le moteur arbitre ; le destin tire au cent.
           </div>
-        </div>
+          <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+            <Button variant="primary">Résoudre</Button>
+            <Button variant="secondary">Annuler l’ordre</Button>
+          </div>
+        </Card>
       </div>
     </div>
   );
