@@ -135702,6 +135702,21 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PRODUCT-RAG-CITATION-EVALUATION-CONTRACT
+    unit_type: catalog_entry
+    name: docs/product/rag-citation-evaluation-contract.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PRODUCT-RAG-CITATION-EVALUATION-CONTRACT
+        locator: docs/product/rag-citation-evaluation-contract.md
+        hash: sha256:d9bd517265bfeb7d9af0dfbbab3d6feb1f88835cec432cb381c3386d40f7efbb
+    business_rule: docs/product/rag-citation-evaluation-contract.md from docs/product/rag-citation-evaluation-contract.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-DOCS-PRODUCT-README
     unit_type: catalog_entry
     name: docs/product/README.md
@@ -135710,7 +135725,7 @@ units:
     source_refs:
       - source_id: DOCS-PRODUCT-README
         locator: docs/product/README.md
-        hash: sha256:da5d19d8aa2ef12221242a77c1999bca06a8751a3a8f28a2f5081166f2974d50
+        hash: sha256:9731e3162342e4b6e642a5a5e0666eac76d347c5024373e7e505fe0676ee94fd
     business_rule: docs/product/README.md from docs/product/README.md.
     status: partial
     gaps:

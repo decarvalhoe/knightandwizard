@@ -1,6 +1,7 @@
 import { Agent } from '@mastra/core/agent';
 import { Mastra } from '@mastra/core/mastra';
 import { type RandomInteger } from '@knightandwizard/rules-core';
+import { RAG_GROUNDING_POLICY, type RagGroundingPolicy } from '../knowledge/evaluations.js';
 import { buildRuleContext, searchRules, type RuleSearchResult } from '../knowledge/rules.js';
 import {
   buildEpisodicMemoryContext,
@@ -92,6 +93,7 @@ export interface GameMasterKnowledgeContext {
   citations: GameMasterKnowledgeCitation[];
   context: string;
   error?: string;
+  grounding: RagGroundingPolicy;
   query: string;
 }
 
@@ -310,6 +312,7 @@ async function retrieveKnowledgeContext(
         sourcePath: result.sourcePath
       })),
       context: buildRuleContext(results),
+      grounding: RAG_GROUNDING_POLICY,
       query
     };
   } catch (error) {
@@ -317,6 +320,7 @@ async function retrieveKnowledgeContext(
       citations: [],
       context: '',
       error: error instanceof Error ? error.message : 'Unknown knowledge retrieval error',
+      grounding: RAG_GROUNDING_POLICY,
       query
     };
   }

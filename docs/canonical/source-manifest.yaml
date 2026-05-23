@@ -13142,9 +13142,18 @@ sources:
     domains: ["project-governance"]
     contains: ["project_documentation"]
     notes: "Project documentation source."
+  - id: "docs-product-rag-citation-evaluation-contract"
+    path: "docs/product/rag-citation-evaluation-contract.md"
+    sha256: "d9bd517265bfeb7d9af0dfbbab3d6feb1f88835cec432cb381c3386d40f7efbb"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-product-readme"
     path: "docs/product/README.md"
-    sha256: "da5d19d8aa2ef12221242a77c1999bca06a8751a3a8f28a2f5081166f2974d50"
+    sha256: "9731e3162342e4b6e642a5a5e0666eac76d347c5024373e7e505fe0676ee94fd"
     source_type: generated_doc
     priority: 40
     status: active

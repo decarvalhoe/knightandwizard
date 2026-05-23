@@ -105,6 +105,14 @@ pnpm knowledge:index
 
 Le RAG sert à citer, expliquer et retrouver le contexte. Il ne remplace pas les catalogues structurés ni les validations métier.
 
+### `evaluate-rag.ts`
+
+Execute les cas d'evaluation canoniques resolution, creation, magie et combat contre l'index RAG courant. Les resultats doivent citer les documents attendus et rester dans la politique `citation_and_arbitration_context`, sans override des donnees structurees.
+
+```bash
+pnpm rag:evaluate
+```
+
 ### `parse.py`
 
 Parser legacy hérité de la phase d'extraction des sources web/papier. Utilisé pour générer les `.md` extraits de `data/legacy/`.

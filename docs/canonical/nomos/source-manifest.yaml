@@ -20559,13 +20559,27 @@ sources:
       - vector_index
       - citation_internal
     notes: Project documentation source.
+  - id: DOCS-PRODUCT-RAG-CITATION-EVALUATION-CONTRACT
+    path: docs/product/rag-citation-evaluation-contract.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: d9bd517265bfeb7d9af0dfbbab3d6feb1f88835cec432cb381c3386d40f7efbb
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-PRODUCT-README
     path: docs/product/README.md
     type: markdown
     domain: project-governance
     priority: derived
     status: active
-    hash: da5d19d8aa2ef12221242a77c1999bca06a8751a3a8f28a2f5081166f2974d50
+    hash: 9731e3162342e4b6e642a5a5e0666eac76d347c5024373e7e505fe0676ee94fd
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
