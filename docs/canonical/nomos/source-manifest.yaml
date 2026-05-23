@@ -20545,6 +20545,20 @@ sources:
       - vector_index
       - citation_internal
     notes: Project documentation source.
+  - id: DOCS-PRODUCT-EPISODIC-MEMORY-CONTRACT
+    path: docs/product/episodic-memory-contract.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 3759d88fd5cbb9eca0a7931c6202da40f651bbb88d2193a8eca0f8aa5e646b34
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-PRODUCT-LLM-TOOL-CALLING-CONTRACT
     path: docs/product/llm-tool-calling-contract.md
     type: markdown
@@ -20579,7 +20593,7 @@ sources:
     domain: project-governance
     priority: derived
     status: active
-    hash: 9731e3162342e4b6e642a5a5e0666eac76d347c5024373e7e505fe0676ee94fd
+    hash: f08f21edd429aa44c547adc54f6d06b5bd627644dea62aa9dfb7fb3384b33934
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal

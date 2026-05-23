@@ -366,10 +366,13 @@ async function recordSceneMemory(
       importance: toolCalls.length > 0 ? 3 : 2,
       kind: 'scene_event',
       payload: {
+        canonicalLoreMutable: false,
         knowledgeCitations: knowledge.citations,
         toolCalls
       },
+      provenanceType: 'session_fact',
       sessionKey: input.sessionId,
+      source: 'game-master',
       subject: summarizeMemorySubject(input.sceneDescription),
       summary: `Scene: ${input.sceneDescription.trim()} Narration: ${narration}`
     });

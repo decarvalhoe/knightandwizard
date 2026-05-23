@@ -2,11 +2,14 @@ import type { SqlClient } from '../db/client.js';
 import { createSqlClient } from '../db/client.js';
 import type postgres from 'postgres';
 
+export type GmMemoryProvenanceType = 'canonical_lore' | 'hypothesis' | 'session_fact';
+
 export interface GmMemoryInput {
   importance?: number;
   kind: string;
   occurredAt?: Date | string;
   payload?: Record<string, unknown>;
+  provenanceType?: GmMemoryProvenanceType;
   sessionKey: string;
   source?: string;
   subject: string;
@@ -19,6 +22,7 @@ export interface GmMemoryEntry {
   kind: string;
   occurredAt: string;
   payload: Record<string, unknown>;
+  provenanceType: GmMemoryProvenanceType;
   score?: number;
   sessionKey: string;
   source: string;
@@ -28,6 +32,7 @@ export interface GmMemoryEntry {
 
 export interface GmMemoryRecallInput {
   limit?: number;
+  provenanceTypes?: GmMemoryProvenanceType[];
   query: string;
   sessionKey: string;
 }
@@ -43,6 +48,7 @@ interface GmMemoryRow {
   importance: number;
   memory_kind: string;
   occurred_at: Date | string;
+  provenance_type: GmMemoryProvenanceType;
   payload: Record<string, unknown>;
   session_key: string;
   source: string;
@@ -53,10 +59,16 @@ interface GmMemoryRow {
 const DEFAULT_RECALL_LIMIT = 5;
 
 export async function recordGmMemory(sql: SqlClient, input: GmMemoryInput): Promise<GmMemoryEntry> {
+  const provenanceType = input.provenanceType ?? 'session_fact';
+  const source = input.source ?? 'game-master';
+
+  assertMemoryProvenance({ provenanceType, source });
+
   const rows = await sql<GmMemoryRow[]>`
     INSERT INTO gm_memories (
       session_key,
       memory_kind,
+      provenance_type,
       subject,
       summary,
       importance,
@@ -67,14 +79,15 @@ export async function recordGmMemory(sql: SqlClient, input: GmMemoryInput): Prom
     VALUES (
       ${input.sessionKey},
       ${input.kind},
+      ${provenanceType},
       ${input.subject},
       ${input.summary},
       ${input.importance ?? 1},
-      ${input.source ?? 'game-master'},
+      ${source},
       ${sql.json((input.payload ?? {}) as postgres.JSONValue)}::jsonb,
       ${input.occurredAt ?? new Date()}
     )
-    RETURNING id, session_key, memory_kind, subject, summary, importance, source, payload, occurred_at
+    RETURNING id, session_key, memory_kind, provenance_type, subject, summary, importance, source, payload, occurred_at
   `;
   const row = rows[0];
 
@@ -91,8 +104,10 @@ export async function searchGmMemories(
 ): Promise<GmMemoryEntry[]> {
   const limit = input.limit ?? DEFAULT_RECALL_LIMIT;
   const tokens = significantTokens(input.query);
+  const provenanceTypes =
+    input.provenanceTypes === undefined ? undefined : new Set(input.provenanceTypes);
   const rows = await sql<GmMemoryRow[]>`
-    SELECT id, session_key, memory_kind, subject, summary, importance, source, payload, occurred_at
+    SELECT id, session_key, memory_kind, provenance_type, subject, summary, importance, source, payload, occurred_at
     FROM gm_memories
     WHERE session_key = ${input.sessionKey}
     ORDER BY occurred_at DESC
@@ -105,8 +120,14 @@ export async function searchGmMemories(
       score: scoreMemory(tokens, entry)
     };
   });
+  const scopedMemories =
+    provenanceTypes === undefined
+      ? memories
+      : memories.filter((memory) => provenanceTypes.has(memory.provenanceType));
   const candidates =
-    tokens.length === 0 ? memories : memories.filter((memory) => (memory.score ?? 0) > 0);
+    tokens.length === 0
+      ? scopedMemories
+      : scopedMemories.filter((memory) => (memory.score ?? 0) > 0);
 
   return candidates
     .sort((left, right) => {
@@ -150,9 +171,32 @@ export function buildEpisodicMemoryContext(memories: GmMemoryEntry[]): string {
   return memories
     .map(
       (memory, index) =>
-        `[M${index + 1}] ${memory.subject} (${memory.kind}, importance ${memory.importance})\n${memory.summary}`
+        `[M${index + 1}] ${memory.subject} (${memory.provenanceType}, ${memory.kind}, source ${memory.source}, importance ${memory.importance})\n${memory.summary}`
     )
     .join('\n\n');
+}
+
+function assertMemoryProvenance(input: {
+  provenanceType: GmMemoryProvenanceType;
+  source: string;
+}): void {
+  if (input.source.trim().length === 0) {
+    throw new Error('GM memory source is required');
+  }
+
+  if (input.provenanceType === 'canonical_lore' && !isCanonicalMemorySource(input.source)) {
+    throw new Error('Canonical lore memories require a canonical source, not GM narration');
+  }
+}
+
+function isCanonicalMemorySource(source: string): boolean {
+  return (
+    source.startsWith('catalog:') ||
+    source.startsWith('data/') ||
+    source.startsWith('docs/') ||
+    source.startsWith('rule:') ||
+    source.startsWith('source:')
+  );
 }
 
 function toMemoryEntry(row: GmMemoryRow): GmMemoryEntry {
@@ -162,6 +206,7 @@ function toMemoryEntry(row: GmMemoryRow): GmMemoryEntry {
     kind: row.memory_kind,
     occurredAt: row.occurred_at instanceof Date ? row.occurred_at.toISOString() : row.occurred_at,
     payload: row.payload,
+    provenanceType: row.provenance_type,
     sessionKey: row.session_key,
     source: row.source,
     subject: row.subject,

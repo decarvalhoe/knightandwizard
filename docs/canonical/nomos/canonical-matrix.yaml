@@ -135687,6 +135687,21 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PRODUCT-EPISODIC-MEMORY-CONTRACT
+    unit_type: catalog_entry
+    name: docs/product/episodic-memory-contract.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PRODUCT-EPISODIC-MEMORY-CONTRACT
+        locator: docs/product/episodic-memory-contract.md
+        hash: sha256:3759d88fd5cbb9eca0a7931c6202da40f651bbb88d2193a8eca0f8aa5e646b34
+    business_rule: docs/product/episodic-memory-contract.md from docs/product/episodic-memory-contract.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-DOCS-PRODUCT-LLM-TOOL-CALLING-CONTRACT
     unit_type: catalog_entry
     name: docs/product/llm-tool-calling-contract.md
@@ -135725,7 +135740,7 @@ units:
     source_refs:
       - source_id: DOCS-PRODUCT-README
         locator: docs/product/README.md
-        hash: sha256:9731e3162342e4b6e642a5a5e0666eac76d347c5024373e7e505fe0676ee94fd
+        hash: sha256:f08f21edd429aa44c547adc54f6d06b5bd627644dea62aa9dfb7fb3384b33934
     business_rule: docs/product/README.md from docs/product/README.md.
     status: partial
     gaps:
