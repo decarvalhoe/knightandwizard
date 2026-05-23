@@ -1,5 +1,6 @@
 import {
   calculateLevelProgression,
+  isMagicianOrientation,
   type Character,
   type CharacterProgression,
   type CharacterSkill,
@@ -189,12 +190,12 @@ export function learnSpell<TCharacter extends Character>(
   options: LearnSpellOptions = {},
   config: RulesConfig = DEFAULT_RULES_CONFIG
 ): TCharacter {
-  if (!isMagician(character)) {
+  if (!isMagicianOrientation(character.orientation, config)) {
     throw new ProgressionError('only magician characters can learn spells');
   }
 
   assertNarrativeAccess(options.hasNarrativeAccess);
-  assertMinimumLevel(character, options.minimumLevel);
+  assertMinimumLevel(character, options.minimumLevel, config);
 
   const currentSpell = character.spells.find((spell) => spell.id === spellId);
   const cost = spellImprovementCost(currentSpell?.points ?? 0, config);
@@ -277,26 +278,22 @@ function assertNarrativeAccess(hasNarrativeAccess = true): void {
   }
 }
 
-function assertMinimumLevel(character: Character, minimumLevel?: number): void {
+function assertMinimumLevel(
+  character: Character,
+  minimumLevel?: number,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): void {
   if (minimumLevel === undefined) {
     return;
   }
 
   assertPositiveInteger('minimumLevel', minimumLevel);
 
-  const level = calculateLevelProgression(character).level ?? 0;
+  const level = calculateLevelProgression(character, config).level ?? 0;
 
   if (level < minimumLevel) {
     throw new ProgressionError(`level ${minimumLevel} required, current level is ${level}`);
   }
-}
-
-function isMagician(character: Character): boolean {
-  return (
-    character.orientation.isMagical === true ||
-    character.orientation.id === '1' ||
-    character.orientation.id === 'magicien'
-  );
 }
 
 function learningFloor(kind: LearningKind, config: RulesConfig = DEFAULT_RULES_CONFIG): number {
