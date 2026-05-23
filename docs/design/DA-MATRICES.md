@@ -212,7 +212,7 @@ K&W est **collaboratif et vivant** :
 
 ## 16. Dossier codifié — `packages/tokens` (moteur + pack + skins)
 
-**Source unique** : `packages/tokens/src/kw-system.ts` (`engine` + `toBase` + 5 `skins` + 11 `schools`). Extrait des 5 planches validées (`docs/design/boards/`).
+**Source unique** : `packages/tokens/src/kw-system.ts` (`engine` + `toBase` + **7 `skins`** + 11 `schools` + `emaux`). Extrait des planches validées (`docs/design/boards/`).
 **Générateur** : `pnpm tokens:build` (`src/build.ts`) → `apps/game/src/app/tokens.generated.css` (importé par `globals.css`) + `tokens.resolved.json` ; exports typés via `@knightandwizard/tokens`.
 
 **Contrat CSS (consommation) :**
@@ -222,4 +222,6 @@ K&W est **collaboratif et vivant** :
 - **Veillée** : `[data-theme="night"]` (rampe sombre partagée + feedback nuit + accent défaut) ; `[data-skin=X][data-theme="night"]` (accent du skin + canvas Tripot).
 - **App** : `data-skin` sur le conteneur de surface, `data-theme="night"` sur `<html>` pour la nuit.
 
-**Validé** : `format`/`lint`/`typecheck`/`build:game` verts ; `--color-accent`, `--school-necromancie`, `--shadow-card`, `[data-skin]` présents dans le CSS de prod. Tokens F1 DTCG supprimés (superseded). **Suite** : (b) surfaces restantes, (c) proto DT, (d) test ré-skin.
+**Couverture surfaces → skin (7) :** `grimoire` (sorts/magie) · `registre` (combat DT) · `tripot` (dés) · `archives` (famille Greffe : règles D1-D13, décisions MJ/arbitrage, ambiguïtés, release/ops, mémoire/lore) · `bibliotheque` (CMS) · `gazette` (dashboard, session/journal, assistant LLM) · `armorial` (fiche, création, catalogues armes/sorts-index/bestiaire/atouts/équipement, carte/cartulaire). Émaux héraldiques `--emaux-{gueules,azur,or,sinople}` = accent par nation (§4).
+
+**Validé** : `format`/`lint`/`typecheck`/`build:game` verts ; `--color-accent`, `--school-necromancie`, `--shadow-card`, `--emaux-gueules`, `[data-skin=armorial|gazette]` présents dans le CSS de prod. Tokens F1 DTCG supprimés (superseded). **Suite** : (c) proto DT live, (d) test ré-skin.

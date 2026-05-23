@@ -2,7 +2,7 @@ import { writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { engine, schools, skins, toBase, type SkinId } from './kw-system.js';
+import { emaux, engine, schools, skins, toBase, type SkinId } from './kw-system.js';
 
 // Génère le CSS multi-skin (moteur + pack Terres Oubliées) consommé par apps/game,
 // à partir de la source unique kw-system.ts. Modes : Jour (défaut) + Veillée (nuit).
@@ -51,6 +51,9 @@ const rootEngine: string[] = [
 ];
 for (const [name, school] of Object.entries(schools)) {
   rootEngine.push(`  --school-${name}: ${school.color};`);
+}
+for (const [name, e] of Object.entries(emaux)) {
+  rootEngine.push(`  --emaux-${name}: ${e.color};`);
 }
 
 // Skins par surface (Jour) + leur override Veillée (accent, + canvas du Tripot)

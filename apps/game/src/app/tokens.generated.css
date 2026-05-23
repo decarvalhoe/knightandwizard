@@ -49,6 +49,10 @@
   --school-naturelle: #4D6B2A;
   --school-noire: #1A1410;
   --school-necromancie: #6E6A60;
+  --emaux-gueules: #8B1F1F;
+  --emaux-azur: #1F4870;
+  --emaux-or: #B68842;
+  --emaux-sinople: #4D5E2A;
 }
 
 /* --- Skins par surface (Jour) --- */
@@ -122,6 +126,34 @@
   --font-body: 'EB Garamond', serif;
   --font-label: 'Courier Prime', monospace;
 }
+[data-skin='gazette'] {
+  --color-bg-canvas: #EDE2B6;
+  --color-bg-surface: #F4ECCC;
+  --color-bg-elevated: #FAF4E5;
+  --color-text-ink: #1C160E;
+  --color-text-muted: #7A6A4E;
+  --color-border-hairline: #B19878;
+  --color-border-rule: #1C160E;
+  --color-accent: #264874;
+  --color-accent-2: #8B2418;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'PT Serif', Georgia, serif;
+  --font-label: 'Special Elite', monospace;
+}
+[data-skin='armorial'] {
+  --color-bg-canvas: #EFE2B6;
+  --color-bg-surface: #F6ECCB;
+  --color-bg-elevated: #FBF4DF;
+  --color-text-ink: #1F1810;
+  --color-text-muted: #5C4E32;
+  --color-border-hairline: #B89F6C;
+  --color-border-rule: #1F1810;
+  --color-accent: #8B1F1F;
+  --color-accent-2: #1F4870;
+  --font-display: 'Cormorant SC', serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+  --font-label: 'Cormorant SC', serif;
+}
 
 /* --- Veillee (nuit) : rampe partagee + accent par skin --- */
 [data-theme='night'] {
@@ -160,4 +192,12 @@
 [data-skin='bibliotheque'][data-theme='night'] {
   --color-accent: #9C6FBE;
   --color-accent-2: #D89148;
+}
+[data-skin='gazette'][data-theme='night'] {
+  --color-accent: #7C9FBE;
+  --color-accent-2: #C75044;
+}
+[data-skin='armorial'][data-theme='night'] {
+  --color-accent: #C7544A;
+  --color-accent-2: #7C9FBE;
 }
