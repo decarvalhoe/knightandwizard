@@ -25,11 +25,13 @@ interface CreateSessionRequestBody {
 interface AppendEventRequestBody {
   actorId?: unknown;
   eventType?: unknown;
+  links?: unknown;
   payload?: unknown;
 }
 
 interface QueueDecisionRequestBody {
   assignedTo?: unknown;
+  links?: unknown;
   payload?: unknown;
   priority?: unknown;
   requestedBy?: unknown;
@@ -38,12 +40,14 @@ interface QueueDecisionRequestBody {
 
 interface ResolveDecisionRequestBody {
   actorId?: unknown;
+  links?: unknown;
   resolution?: unknown;
   status?: unknown;
 }
 
 interface RollbackRequestBody {
   actorId?: unknown;
+  links?: unknown;
   reason?: unknown;
   targetSequence?: unknown;
 }
@@ -54,6 +58,19 @@ interface SessionParams {
 
 interface DecisionParams extends SessionParams {
   decisionId: string;
+}
+
+interface SessionRuleLink {
+  ref?: string;
+  sourcePath: string;
+  title?: string;
+}
+
+interface SessionEntityLinks {
+  characters?: string[];
+  objects?: string[];
+  places?: string[];
+  rules?: SessionRuleLink[];
 }
 
 // Validation vocabularies are derived from the canonical rules-core unions so
@@ -228,7 +245,11 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
       }
 
       const sql = createSqlClient();
-      const payload = body.payload === undefined ? {} : (body.payload as Record<string, unknown>);
+      const links = normalizeSessionLinks(body.links);
+      const payload = attachLinks(
+        body.payload === undefined ? {} : (body.payload as Record<string, unknown>),
+        links
+      );
       const actorId = typeof body.actorId === 'string' ? body.actorId : null;
       const eventType = body.eventType as string;
 
@@ -271,11 +292,16 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               'session.event.appended',
               'session_event',
               ${eventRows[0]!.id},
-              ${tx.json({
-                eventType,
-                sequence,
-                sessionId: session.id
-              } as postgres.JSONValue)}::jsonb
+              ${tx.json(
+                attachLinks(
+                  {
+                    eventType,
+                    sequence,
+                    sessionId: session.id
+                  },
+                  links
+                ) as postgres.JSONValue
+              )}::jsonb
             )
           `;
           await tx`
@@ -315,7 +341,11 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
       }
 
       const sql = createSqlClient();
-      const payload = body.payload === undefined ? {} : (body.payload as Record<string, unknown>);
+      const links = normalizeSessionLinks(body.links);
+      const payload = attachLinks(
+        body.payload === undefined ? {} : (body.payload as Record<string, unknown>),
+        links
+      );
       const priority = typeof body.priority === 'string' ? body.priority : 'normal';
       const assignedTo = typeof body.assignedTo === 'string' ? body.assignedTo : 'human_gm';
       const requestedBy = body.requestedBy as string;
@@ -380,13 +410,18 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               ${sequence},
               'gm_decision_requested',
               ${requestedBy},
-              ${tx.json({
-                assignedTo,
-                decisionId: decision.id,
-                priority,
-                requestedBy,
-                title
-              } as postgres.JSONValue)}::jsonb
+              ${tx.json(
+                attachLinks(
+                  {
+                    assignedTo,
+                    decisionId: decision.id,
+                    priority,
+                    requestedBy,
+                    title
+                  },
+                  links
+                ) as postgres.JSONValue
+              )}::jsonb
             )
             RETURNING id, session_id, sequence, event_type, actor_id, payload, created_at
           `;
@@ -398,11 +433,16 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               'session.decision.queued',
               'session_decision',
               ${decision.id},
-              ${tx.json({
-                eventId: eventRows[0]!.id,
-                priority,
-                sessionId: session.id
-              } as postgres.JSONValue)}::jsonb
+              ${tx.json(
+                attachLinks(
+                  {
+                    eventId: eventRows[0]!.id,
+                    priority,
+                    sessionId: session.id
+                  },
+                  links
+                ) as postgres.JSONValue
+              )}::jsonb
             )
           `;
           await tx`
@@ -443,8 +483,11 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
       }
 
       const sql = createSqlClient();
-      const resolution =
-        body.resolution === undefined ? {} : (body.resolution as Record<string, unknown>);
+      const links = normalizeSessionLinks(body.links);
+      const resolution = attachLinks(
+        body.resolution === undefined ? {} : (body.resolution as Record<string, unknown>),
+        links
+      );
       const actorId = body.actorId as string;
       const decisionStatus = body.status as string;
 
@@ -505,11 +548,16 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               ${sequence},
               'gm_decision_resolved',
               ${actorId},
-              ${tx.json({
-                decisionId: decision.id,
-                resolution,
-                status: decisionStatus
-              } as postgres.JSONValue)}::jsonb
+              ${tx.json(
+                attachLinks(
+                  {
+                    decisionId: decision.id,
+                    resolution,
+                    status: decisionStatus
+                  },
+                  links
+                ) as postgres.JSONValue
+              )}::jsonb
             )
             RETURNING id, session_id, sequence, event_type, actor_id, payload, created_at
           `;
@@ -521,11 +569,16 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               'session.decision.resolved',
               'session_decision',
               ${decision.id},
-              ${tx.json({
-                eventId: eventRows[0]!.id,
-                sessionId: session.id,
-                status: decisionStatus
-              } as postgres.JSONValue)}::jsonb
+              ${tx.json(
+                attachLinks(
+                  {
+                    eventId: eventRows[0]!.id,
+                    sessionId: session.id,
+                    status: decisionStatus
+                  },
+                  links
+                ) as postgres.JSONValue
+              )}::jsonb
             )
           `;
           await tx`
@@ -556,12 +609,8 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
     }
   );
 
-  // TODO(#54): the reverted projection is now computed by rules-core and
-  // returned to the caller, but the canonical journal still keeps every event
-  // (history-preserving markers). Deferred follow-ups: (a) event->entity links
-  // (characters/places/objects/cited rules) so reconstruction can re-project
-  // those relations, (b) frontend session-manager persistence of the reverted
-  // state, and (c) an e2e covering a multi-actor rollback round-trip.
+  // The journal is history-preserving: rollback records an auditable marker
+  // and returns a pure rules-core projection at the requested sequence.
   app.post<{ Body: RollbackRequestBody; Params: SessionParams }>(
     '/sessions/:slug/rollback',
     async (request, reply) => {
@@ -579,6 +628,7 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
       const actorId = body.actorId as string;
       const reason = body.reason as string;
       const targetSequence = body.targetSequence as number;
+      const links = normalizeSessionLinks(body.links);
 
       try {
         const result = await sql.begin(async (tx) => {
@@ -619,11 +669,16 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               ${sequence},
               'rollback_requested',
               ${actorId},
-              ${tx.json({
-                reason,
-                targetEventId: target.id,
-                targetSequence: target.sequence
-              } as postgres.JSONValue)}::jsonb
+              ${tx.json(
+                attachLinks(
+                  {
+                    reason,
+                    targetEventId: target.id,
+                    targetSequence: target.sequence
+                  },
+                  links
+                ) as postgres.JSONValue
+              )}::jsonb
             )
             RETURNING id, session_id, sequence, event_type, actor_id, payload, created_at
           `;
@@ -635,11 +690,17 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               'session.rollback.requested',
               'session',
               ${session.id},
-              ${tx.json({
-                eventId: eventRows[0]!.id,
-                reason,
-                targetSequence: target.sequence
-              } as postgres.JSONValue)}::jsonb
+              ${tx.json(
+                attachLinks(
+                  {
+                    eventId: eventRows[0]!.id,
+                    reason,
+                    sessionId: session.id,
+                    targetSequence: target.sequence
+                  },
+                  links
+                ) as postgres.JSONValue
+              )}::jsonb
             )
           `;
           await tx`
@@ -805,6 +866,8 @@ function validateEventBody(body: AppendEventRequestBody): ValidationResult {
     errors.push('payload must be an object');
   }
 
+  validateSessionLinks(body.links, errors);
+
   return { errors, valid: errors.length === 0 };
 }
 
@@ -837,6 +900,8 @@ function validateDecisionBody(body: QueueDecisionRequestBody): ValidationResult 
     errors.push('payload must be an object');
   }
 
+  validateSessionLinks(body.links, errors);
+
   return { errors, valid: errors.length === 0 };
 }
 
@@ -854,6 +919,8 @@ function validateResolveDecisionBody(body: ResolveDecisionRequestBody): Validati
   if (body.resolution !== undefined && !isRecord(body.resolution)) {
     errors.push('resolution must be an object');
   }
+
+  validateSessionLinks(body.links, errors);
 
   return { errors, valid: errors.length === 0 };
 }
@@ -873,7 +940,124 @@ function validateRollbackBody(body: RollbackRequestBody): ValidationResult {
     errors.push('targetSequence must be a positive integer');
   }
 
+  validateSessionLinks(body.links, errors);
+
   return { errors, valid: errors.length === 0 };
+}
+
+const linkCollectionKeys = ['characters', 'objects', 'places'] as const;
+
+function validateSessionLinks(value: unknown, errors: string[]): void {
+  if (value === undefined) {
+    return;
+  }
+
+  if (!isRecord(value)) {
+    errors.push('links must be an object');
+    return;
+  }
+
+  for (const key of linkCollectionKeys) {
+    const entries = value[key];
+
+    if (entries === undefined) {
+      continue;
+    }
+
+    if (!Array.isArray(entries) || entries.some((entry) => !isNonEmptyString(entry))) {
+      errors.push(`links.${key} must be an array of non-empty strings`);
+    }
+  }
+
+  const rules = value.rules;
+
+  if (rules === undefined) {
+    return;
+  }
+
+  if (!Array.isArray(rules)) {
+    errors.push('links.rules must be an array of rule links');
+    return;
+  }
+
+  rules.forEach((rule, index) => {
+    if (!isRecord(rule)) {
+      errors.push(`links.rules[${index}] must be an object`);
+      return;
+    }
+
+    if (!isNonEmptyString(rule.sourcePath)) {
+      errors.push(`links.rules[${index}].sourcePath is required`);
+    }
+
+    for (const key of ['ref', 'title'] as const) {
+      if (rule[key] !== undefined && !isNonEmptyString(rule[key])) {
+        errors.push(`links.rules[${index}].${key} must be a non-empty string`);
+      }
+    }
+  });
+}
+
+function normalizeSessionLinks(value: unknown): SessionEntityLinks | undefined {
+  if (!isRecord(value)) {
+    return undefined;
+  }
+
+  const links: SessionEntityLinks = {};
+
+  for (const key of linkCollectionKeys) {
+    const entries = value[key];
+
+    if (!Array.isArray(entries)) {
+      continue;
+    }
+
+    const normalizedEntries = entries.filter(isNonEmptyString).map((entry) => entry.trim());
+
+    if (normalizedEntries.length > 0) {
+      links[key] = normalizedEntries;
+    }
+  }
+
+  if (Array.isArray(value.rules)) {
+    const rules = value.rules
+      .filter(isRecord)
+      .map((rule) => {
+        if (!isNonEmptyString(rule.sourcePath)) {
+          return undefined;
+        }
+
+        const normalizedRule: SessionRuleLink = { sourcePath: rule.sourcePath.trim() };
+
+        if (isNonEmptyString(rule.ref)) {
+          normalizedRule.ref = rule.ref.trim();
+        }
+
+        if (isNonEmptyString(rule.title)) {
+          normalizedRule.title = rule.title.trim();
+        }
+
+        return normalizedRule;
+      })
+      .filter((rule): rule is SessionRuleLink => rule !== undefined);
+
+    if (rules.length > 0) {
+      links.rules = rules;
+    }
+  }
+
+  return Object.keys(links).length > 0 ? links : undefined;
+}
+
+function attachLinks(
+  payload: Record<string, unknown>,
+  links: SessionEntityLinks | undefined
+): Record<string, unknown> {
+  return links === undefined ? payload : { ...payload, links };
+}
+
+function isNonEmptyString(value: unknown): value is string {
+  return typeof value === 'string' && value.trim().length > 0;
 }
 
 function toSessionResponse(

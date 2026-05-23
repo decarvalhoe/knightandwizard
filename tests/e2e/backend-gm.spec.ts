@@ -19,6 +19,12 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
     const draftId = `e2e-draft-${suffix}`;
     const sessionSlug = `e2e-session-${suffix}`;
     const gmSessionId = `e2e-gm-${suffix}`;
+    const canonicalLinks = {
+      characters: ['aveline'],
+      objects: ['relique-brisee'],
+      places: ['porte-nord'],
+      rules: [{ ref: 'D13 arbitrage et rollback', sourcePath: 'docs/rules/13-roles-passation.md' }]
+    };
 
     await expectJson(request, 'GET', '/health', 200, (body) => {
       expect(body.status).toBe('ok');
@@ -85,10 +91,12 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
         expect(body.status).toBe('created');
         expect(event.sequence).toBe(1);
         expect(event.eventType).toBe('scene_opened');
+        expect(asRecord(event.payload).links).toEqual(canonicalLinks);
       },
       {
         actorId: 'gm',
         eventType: 'scene_opened',
+        links: canonicalLinks,
         payload: { location: 'Porte nord' }
       }
     );
@@ -105,9 +113,12 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
         expect(body.status).toBe('created');
         expect(decisionBody.status).toBe('pending');
         expect(event.eventType).toBe('gm_decision_requested');
+        expect(asRecord(decisionBody.payload).links).toEqual(canonicalLinks);
+        expect(asRecord(event.payload).links).toEqual(canonicalLinks);
       },
       {
         assignedTo: 'human_gm',
+        links: canonicalLinks,
         payload: { options: ['negocier', 'combattre'] },
         priority: 'high',
         requestedBy: 'llm',
@@ -129,9 +140,12 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
         expect(body.status).toBe('resolved');
         expect(decisionBody.status).toBe('approved');
         expect(event.eventType).toBe('gm_decision_resolved');
+        expect(asRecord(decisionBody.resolution).links).toEqual(canonicalLinks);
+        expect(asRecord(event.payload).links).toEqual(canonicalLinks);
       },
       {
         actorId: 'gm',
+        links: canonicalLinks,
         resolution: { ruling: 'Reaction validee' },
         status: 'approved'
       }
@@ -147,20 +161,30 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
 
         expect(body.status).toBe('created');
         expect(event.eventType).toBe('rollback_requested');
+        expect(asRecord(event.payload).links).toEqual(canonicalLinks);
       },
       {
         actorId: 'gm',
+        links: canonicalLinks,
         reason: 'Correction E2E',
         targetSequence: 1
       }
     );
 
     await expectJson(request, 'GET', `/sessions/${sessionSlug}`, 200, (body) => {
-      expect(records(body.events).map((event) => event.eventType)).toEqual([
+      const events = records(body.events);
+
+      expect(events.map((event) => event.eventType)).toEqual([
         'scene_opened',
         'gm_decision_requested',
         'gm_decision_resolved',
         'rollback_requested'
+      ]);
+      expect(events.map((event) => asRecord(event.payload).links)).toEqual([
+        canonicalLinks,
+        canonicalLinks,
+        canonicalLinks,
+        canonicalLinks
       ]);
       expect(asRecord(records(body.decisions)[0]).status).toBe('approved');
     });
