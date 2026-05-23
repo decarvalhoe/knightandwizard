@@ -6,6 +6,7 @@ import sharp from 'sharp';
 import { fileURLToPath } from 'url';
 
 import { CatalogCollections } from './collections/catalogCollections';
+import { GovernanceCollections } from './collections/governanceCollections';
 import { Users } from './collections/Users';
 
 const filename = fileURLToPath(import.meta.url);
@@ -23,7 +24,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname)
     }
   },
-  collections: [Users, ...CatalogCollections],
+  collections: [Users, ...CatalogCollections, ...GovernanceCollections],
   db: postgresAdapter({
     pool: {
       connectionString: databaseURL

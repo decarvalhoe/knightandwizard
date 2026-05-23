@@ -20545,6 +20545,20 @@ sources:
       - vector_index
       - citation_internal
     notes: Project documentation source.
+  - id: DOCS-PRODUCT-CMS-GOVERNANCE-WORKFLOW
+    path: docs/product/cms-governance-workflow.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 6b47d1a4a509819e19f5e3e8e2daeda980b3160032a179f5007322e47d38e525
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-PRODUCT-EPISODIC-MEMORY-CONTRACT
     path: docs/product/episodic-memory-contract.md
     type: markdown
@@ -20593,7 +20607,7 @@ sources:
     domain: project-governance
     priority: derived
     status: active
-    hash: f08f21edd429aa44c547adc54f6d06b5bd627644dea62aa9dfb7fb3384b33934
+    hash: 89b72ccb0eb81c25e99d5a74b642df90218db4f2dec7e5facf30e339194a2eb3
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal

@@ -11,6 +11,7 @@ Le projet **K&W-game** est un projet separe, dans un autre depot, avec ses propr
 
 ## Documents
 
+- [CMS governance workflow](cms-governance-workflow.md) - workflow Payload pour ambiguites, decisions metier et artefacts regeneres.
 - [vision-assistant-mj-joueur.md](vision-assistant-mj-joueur.md) — vision tabletop-first de l'assistant MJ/Joueur.
 - [synthese-comprehension.md](synthese-comprehension.md) — synthese de comprehension du projet K&W.
 - [architecture-strategie-llm.md](architecture-strategie-llm.md) — analyse technique et strategie d'architecture pour K&W/LLM.
