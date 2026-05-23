@@ -50,7 +50,10 @@ export const canonicalE2EFixtures = {
       sourceRefs: [
         { path: 'docs/product/llm-tool-calling-contract.md', ref: 'tool calling MJ' },
         { path: 'docs/product/rag-citation-evaluation-contract.md', ref: 'citations RAG' },
-        { path: 'docs/product/episodic-memory-contract.md', ref: 'memoire episodique' }
+        { path: 'docs/product/episodic-memory-contract.md', ref: 'memoire episodique' },
+        { path: 'data/catalogs/armes.yaml', ref: 'inventaire armes' },
+        { path: 'data/catalogs/protections.yaml', ref: 'inventaire protections' },
+        { path: 'data/catalogs/potions.yaml', ref: 'inventaire potions' }
       ]
     }
   }
