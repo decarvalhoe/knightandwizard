@@ -20649,7 +20649,21 @@ sources:
     domain: project-governance
     priority: derived
     status: active
-    hash: b94537236bfae39fdc8e9b76c13b69cc5a5eb423ab29002a6867eb7c9eb3b2f8
+    hash: f6f3abba3b04a9d6f28d4768b12bbeb0009395ff2b88ca4250b135bd148747e7
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
+  - id: DOCS-RELEASE-README
+    path: docs/release/README.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 5319b131cf5c79ad31491f8a3187c4571af451c3e0ba34777c8360fcc212783b
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal

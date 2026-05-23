@@ -102,6 +102,7 @@ curl -sf http://localhost:3002/ready
 | `pnpm test`                   | Suites Vitest des packages et du serveur                                                               |
 | `pnpm typecheck`              | TypeScript project references orchestrées par Turborepo                                                |
 | `pnpm build`                  | Builds workspace orchestrés par Turborepo                                                              |
+| `pnpm build:shared`           | Build explicite de `rules-core` et `catalogs` avant les tests consommateurs                            |
 | `pnpm build:map`              | Build production direct de la carte Leaflet                                                            |
 | `pnpm validate:geojson`       | Vérifie les données de carte contre les YAML canoniques                                                |
 | `pnpm devlab:up`              | Lance PostgreSQL + pgvector et Adminer                                                                 |
@@ -219,6 +220,7 @@ La liste opérationnelle des tickets vit dans [`docs/plan/ISSUE-LIST.md`](docs/p
 | `docs/HANDOVER.md`                        | État global du projet et décisions structurantes                                           |
 | `docs/plan/ROADMAP.md`                    | Roadmap canonical-first (v0.3.1 → v1.0.0)                                                  |
 | `docs/plan/ISSUE-LIST.md`                 | Registre opérationnel des tickets P0→P4 avec dépendances et critères d'accept              |
+| `docs/release/README.md`                  | Runbook release, promotion `main`, changelog, backup et rollback                           |
 | `docs/plan/ADR-001-architecture-cible.md` | Décision d'architecture cible                                                              |
 | `docs/plan/INFRA-DEVLAB-PLAN.md`          | Plan infra/devlab exécuté                                                                  |
 | `docs/canonical/source-manifest.yaml`     | Registre exhaustif des sources canoniques scannées, hashées, statutées                     |

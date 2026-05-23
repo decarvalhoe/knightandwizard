@@ -261831,9 +261831,45 @@ units:
     sources:
       - path: "docs/README.md"
         ref: "docs/README.md"
-        sha256: "b94537236bfae39fdc8e9b76c13b69cc5a5eb423ab29002a6867eb7c9eb3b2f8"
+        sha256: "f6f3abba3b04a9d6f28d4768b12bbeb0009395ff2b88ca4250b135bd148747e7"
     business_rule:
       summary: "docs/README.md from docs/README.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:docs-release-readme"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/release/README.md"
+    status: covered
+    sources:
+      - path: "docs/release/README.md"
+        ref: "docs/release/README.md"
+        sha256: "5319b131cf5c79ad31491f8a3187c4571af451c3e0ba34777c8360fcc212783b"
+    business_rule:
+      summary: "docs/release/README.md from docs/release/README.md."
       ambiguity_ref: null
     yaml:
       status: not_applicable
