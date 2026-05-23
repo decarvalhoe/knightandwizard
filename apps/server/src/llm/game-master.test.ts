@@ -204,6 +204,10 @@ describe('game master Mastra runtime', () => {
           score: 0.92
         }
       ],
+      grounding: {
+        catalogOverrideAllowed: false,
+        vectorRole: 'citation_and_arbitration_context'
+      },
       query: 'Comment resoudre un jet difficile pour crocheter une serrure ?'
     });
     expect(result.knowledge.context).toContain('[1] docs/rules/01-resolution.md > Jets difficiles');

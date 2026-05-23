@@ -13,6 +13,7 @@ import {
   type RandomInteger
 } from '@knightandwizard/rules-core';
 import { z } from 'zod';
+import { RAG_GROUNDING_POLICY, type RagGroundingPolicy } from '../knowledge/evaluations.js';
 import { buildRuleContext, searchRules, type RuleSearchResult } from '../knowledge/rules.js';
 
 export const GAME_MASTER_RULE_TOOL_IDS = [
@@ -75,6 +76,7 @@ export interface AdvanceCombatTimelineToolResult {
 export interface LookupRuleToolResult {
   citations: Array<Pick<RuleSearchResult, 'citation' | 'heading' | 'score' | 'sourcePath'>>;
   context: string;
+  grounding: RagGroundingPolicy;
   query: string;
   results: RuleSearchResult[];
   status: 'ok';
@@ -457,6 +459,7 @@ export async function executeLookupRuleTool(
         sourcePath: result.sourcePath
       })),
       context: buildRuleContext(results),
+      grounding: RAG_GROUNDING_POLICY,
       query: normalizedInput.query,
       results,
       status: 'ok'

@@ -148,6 +148,10 @@ describe('game master rules-core tools', () => {
 
     expect(rule).toMatchObject({
       citations: [{ citation: 'docs/rules/01-resolution.md > D1' }],
+      grounding: {
+        catalogOverrideAllowed: false,
+        vectorRole: 'citation_and_arbitration_context'
+      },
       status: 'ok'
     });
     if (rule.status !== 'ok') {
