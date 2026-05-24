@@ -8,8 +8,14 @@ import { getCharacterSheetReadModel } from '@/features/character-sheet/read-mode
 
 export const dynamic = 'force-dynamic';
 
-export default async function CharacterPage() {
-  const sheet = await getCharacterSheetReadModel();
+interface CharacterPageProps {
+  searchParams?: Promise<{ draftId?: string | string[] }>;
+}
+
+export default async function CharacterPage({ searchParams }: Readonly<CharacterPageProps>) {
+  const params = await searchParams;
+  const draftId = normalizeSearchParam(params?.draftId);
+  const sheet = await getCharacterSheetReadModel({ draftId });
 
   return (
     <div className="kw-character-page">
@@ -31,6 +37,7 @@ export default async function CharacterPage() {
         attributeLabels={sheet.attributeLabels}
         attributeOrder={sheet.attributeOrder}
         character={sheet.character}
+        dataSourceLabel={sheet.dataSourceLabel}
         equipmentCatalog={sheet.equipmentCatalog}
         initialInventory={sheet.initialInventory}
         skillCatalog={sheet.skillCatalog}
@@ -39,4 +46,12 @@ export default async function CharacterPage() {
       />
     </div>
   );
+}
+
+function normalizeSearchParam(value: string | string[] | undefined): string | undefined {
+  if (Array.isArray(value)) {
+    return value[0];
+  }
+
+  return value;
 }

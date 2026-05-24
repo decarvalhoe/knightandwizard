@@ -582,7 +582,8 @@ a {
 .kw-sheet__skill-row,
 .kw-sheet__inventory-row,
 .kw-sheet__info-line,
-.kw-sheet__tab-label {
+.kw-sheet__tab-label,
+.kw-sheet__badge-row {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -759,11 +760,29 @@ a {
   text-transform: uppercase;
 }
 
+.kw-sheet__roll-history {
+  display: grid;
+  gap: 10px;
+  border-top: var(--border-hairline) solid var(--color-border-hairline);
+  padding-top: 12px;
+}
+
+.kw-sheet__roll-history-row {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kw-sheet__roll-history-row div {
+  display: grid;
+  gap: 4px;
+}
+
 .kw-sheet__skill-row,
 .kw-sheet__spell-row,
 .kw-sheet__inventory-row,
 .kw-sheet__audit-row,
-.kw-sheet__info-line {
+.kw-sheet__info-line,
+.kw-sheet__roll-history-row {
   border: var(--border-hairline) solid var(--color-border-hairline);
   background: var(--color-bg-elevated);
   padding: 10px 12px;
@@ -771,7 +790,8 @@ a {
 
 .kw-sheet__skill-row,
 .kw-sheet__inventory-row,
-.kw-sheet__spell-row {
+.kw-sheet__spell-row,
+.kw-sheet__roll-history-row {
   align-items: center;
   justify-content: space-between;
 }

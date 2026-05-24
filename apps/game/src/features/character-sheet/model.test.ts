@@ -10,6 +10,7 @@ import {
   addInventoryItem,
   attributeRollOutcomeLabels,
   buildCharacterSheetView,
+  buildInventoryFromCharacterEquipment,
   removeInventoryItem,
   rollAttributeCheck,
   skillPoints,
@@ -182,6 +183,34 @@ describe('character sheet model', () => {
         id: 'critical-failure',
         label: 'Échec critique · D100 = 73',
         testId: 'last-roll-critical-failure'
+      }
+    ]);
+  });
+
+  it('hydrates inventory rows from saved character equipment and canonical catalog details', () => {
+    expect(
+      buildInventoryFromCharacterEquipment(
+        [
+          { id: 'epee_batarde', quantity: 2 },
+          { id: 'unknown-kit', name: 'Kit sans catalogue', quantity: 1 }
+        ],
+        [{ category: 'weapon', id: 'epee_batarde', name: 'Épée bâtarde', weightKg: 2.2 }]
+      )
+    ).toEqual([
+      {
+        category: 'weapon',
+        equipped: true,
+        id: 'epee_batarde',
+        name: 'Épée bâtarde',
+        quantity: 2,
+        weightKg: 2.2
+      },
+      {
+        category: 'gear',
+        id: 'unknown-kit',
+        name: 'Kit sans catalogue',
+        quantity: 1,
+        weightKg: undefined
       }
     ]);
   });
