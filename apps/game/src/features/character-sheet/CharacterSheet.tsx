@@ -1,9 +1,23 @@
 'use client';
 
 import { BookOpen, Dices, Minus, PackagePlus, Shield, Sparkles, UserCog } from 'lucide-react';
-import { useMemo, useState, type ReactNode } from 'react';
+import { useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 
 import { type AttributeKey, type Character } from '@knightandwizard/rules-core';
+import {
+  Badge,
+  Button,
+  Card,
+  Die,
+  Label,
+  ProgressBar,
+  Seal,
+  SelectField,
+  StatBlock,
+  Tabs,
+  Toast,
+  type ToastTone
+} from '@knightandwizard/ui';
 
 import {
   addInventoryItem,
@@ -18,6 +32,7 @@ import {
   type EquipmentCatalogEntry,
   type InventoryItem,
   type SkillCatalogEntry,
+  type SkillTreeRow,
   type SpellEntry
 } from './model';
 
@@ -97,394 +112,442 @@ export function CharacterSheet({
     );
   }
 
-  return (
-    <div className="grid gap-5">
-      <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-wine">Fiche PJ</p>
-            <h1 className="mt-1 text-3xl font-semibold text-ink">{character.name}</h1>
-            <p className="mt-2 text-sm text-ink/62">
-              {character.race.name} · {character.orientation.name} · {character.classProfile.name}
-            </p>
-          </div>
-          <div className="grid grid-cols-4 gap-1 rounded-md bg-vellum/70 p-1">
-            {modes.map((item) => {
-              const Icon = modeIcons[item.id];
-              const active = item.id === mode;
+  const tabItems = modes.map((item) => {
+    const Icon = modeIcons[item.id];
 
-              return (
-                <button
-                  className={[
-                    'flex min-h-11 items-center justify-center gap-2 rounded-md px-3 text-sm font-semibold transition',
-                    active
-                      ? 'bg-ink text-paper shadow-sm'
-                      : 'text-ink/66 hover:bg-paper hover:text-ink'
-                  ].join(' ')}
+    return {
+      id: item.id,
+      label: (
+        <span className="kw-sheet__tab-label">
+          <Icon aria-hidden="true" className="kw-sheet__tab-icon" />
+          {item.label}
+        </span>
+      ),
+      panel: item.id === mode ? renderModePanel(item.id) : null
+    };
+  });
+
+  function renderModePanel(panelMode: CharacterSheetMode): ReactNode {
+    switch (panelMode) {
+      case 'combat':
+        return (
+          <div className="kw-sheet__split-grid">
+            <SectionCard title="Armes équipées">
+              {view.equippedWeapons.map((item) => (
+                <InventoryRow
+                  item={item}
                   key={item.id}
-                  onClick={() => setMode(item.id)}
-                  type="button"
-                >
-                  <Icon aria-hidden="true" className="size-4" />
-                  <span className="hidden sm:inline">{item.label}</span>
-                </button>
-              );
-            })}
+                  onRemove={() => setInventory((current) => removeInventoryItem(current, item.id))}
+                />
+              ))}
+            </SectionCard>
+            <SectionCard title="Sorts actifs">
+              {spells
+                .filter((spell) => spell.active)
+                .map((spell) => (
+                  <div className="kw-sheet__spell-row" key={spell.id}>
+                    <div>
+                      <h3>{spell.name}</h3>
+                      <p>{spell.points} point de sort</p>
+                    </div>
+                    <Badge tone="info">Actif</Badge>
+                  </div>
+                ))}
+            </SectionCard>
           </div>
-        </div>
-
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <Resource
-            label="Vitalité"
-            value={character.vitality.current}
-            max={character.vitality.max}
-          />
-          <Resource label="Énergie" value={character.energy.current} max={character.energy.max} />
-          <Metric label="Facteur vitesse" value={character.speedFactor} />
-          <Metric label="Facteur volonté" value={character.willFactor} />
-        </div>
-      </section>
-
-      {mode === 'complete' && (
-        <div className="grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
-          <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <h2 className="text-xl font-semibold text-ink">9 aptitudes</h2>
-                <p className="text-sm text-ink/58">
-                  Total création {attributeTotal}/{character.race.category}
-                </p>
+        );
+      case 'social':
+        return (
+          <div className="kw-sheet__social-grid">
+            <SectionCard title="Attributs sociaux">
+              <div className="kw-sheet__attribute-grid kw-sheet__attribute-grid--social">
+                {socialAttributeKeys.map((attribute) => (
+                  <AttributeButton
+                    attribute={attribute}
+                    baseValue={character.attributes[attribute]}
+                    effectiveValue={view.attributes[attribute]}
+                    key={attribute}
+                    label={attributeLabels[attribute]}
+                    onRoll={() => roll(attribute)}
+                  />
+                ))}
               </div>
-              {lastRoll && (
-                <div
-                  className="rounded-md bg-forest px-3 py-2 text-right text-paper"
-                  data-testid="last-roll"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-paper/70">
-                    Dernier jet
-                  </p>
-                  <p className="font-mono text-sm">
-                    {attributeLabels[lastRoll.attribute]} · {lastRoll.pool}D · DT{' '}
-                    {lastRoll.difficulty} · {lastRoll.successes} succès
-                  </p>
-                  {attributeRollOutcomeLabels(lastRoll).map((label) => (
-                    <p
-                      className="font-mono text-xs uppercase tracking-[0.14em] text-paper/85"
-                      data-testid={label.testId}
-                      key={label.id}
-                    >
-                      {label.label}
-                    </p>
-                  ))}
+            </SectionCard>
+            <SectionCard title="Réputation et relations">
+              <InfoLine label="Réputation" value={String(character.metadata.reputation)} />
+              <InfoLine label="Divinité" value={String(character.metadata.deity)} />
+              <InfoLine label="Citation" value={String(character.metadata.quote)} />
+            </SectionCard>
+          </div>
+        );
+      case 'gm':
+        return (
+          <div className="kw-sheet__split-grid">
+            <SectionCard title="Audit complet">
+              {view.sections.map((section) => (
+                <div className="kw-sheet__audit-row" key={section.id}>
+                  {section.label}
                 </div>
+              ))}
+            </SectionCard>
+            <SectionCard title="Notes privées MJ">
+              <InfoLine label="MJ" value={String(character.metadata.gmNotes)} />
+            </SectionCard>
+          </div>
+        );
+      case 'complete':
+      default:
+        return (
+          <div className="kw-sheet__complete-grid">
+            <SectionCard
+              action={
+                lastRoll ? (
+                  <RollResult attributeLabels={attributeLabels} result={lastRoll} />
+                ) : undefined
+              }
+              title="9 aptitudes"
+            >
+              <p className="kw-sheet__muted">
+                Total création {attributeTotal}/{character.race.category}
+              </p>
+              <div className="kw-sheet__attribute-grid">
+                {attributeOrder.map((attribute) => (
+                  <AttributeButton
+                    attribute={attribute}
+                    baseValue={character.attributes[attribute]}
+                    effectiveValue={view.attributes[attribute]}
+                    key={attribute}
+                    label={attributeLabels[attribute]}
+                    onRoll={() => roll(attribute)}
+                  />
+                ))}
+              </div>
+            </SectionCard>
+
+            <SectionCard
+              action={
+                <Badge tone="info">
+                  Niveau {view.levelProgression.level ?? 'NA'} ·{' '}
+                  {view.levelProgression.levelPoints ?? 'NA'} /{' '}
+                  {view.levelProgression.levelUpAt ?? 'NA'} points
+                </Badge>
+              }
+              title="Compétences"
+            >
+              <p className="kw-sheet__muted">
+                Points {view.creationBudget.skillPointsSpent}/{view.creationBudget.skillPointLimit}
+                {view.creationBudget.convertedSkillPoints > 0 &&
+                  ` · ${view.creationBudget.convertedSkillPoints} convertis en sorts`}
+              </p>
+              <p className="kw-sheet__muted">
+                Catalogue implicite : {skills.length} entrées, {trainedSkillCount} notées sur la
+                fiche.
+              </p>
+              {character.orientation.isMagical && (
+                <Toast title="Magicien" tone="info">
+                  Pas de compétence primaire mécanique, les sorts comptent double en progression.
+                </Toast>
               )}
-            </div>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {attributeOrder.map((attribute) => (
-                <button
-                  className="rounded-md border border-ink/10 bg-paper p-4 text-left shadow-sm transition hover:border-wine/30 hover:bg-vellum"
-                  key={attribute}
-                  onClick={() => roll(attribute)}
-                  type="button"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-sm font-semibold text-ink">
-                      {attributeLabels[attribute]}
-                    </span>
-                    <Dices aria-hidden="true" className="size-4 text-wine" />
-                  </div>
-                  <div className="mt-3 flex items-end justify-between gap-3">
-                    <span className="text-3xl font-semibold text-ink">
-                      {view.attributes[attribute]}
-                    </span>
-                    <span className="text-xs font-medium uppercase tracking-[0.12em] text-ink/50">
-                      base {character.attributes[attribute]}
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </section>
+              <SkillTreeRows skills={skills} skillLabels={skillLabels} />
+            </SectionCard>
+          </div>
+        );
+    }
+  }
 
-          <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <h2 className="text-xl font-semibold text-ink">Compétences</h2>
-                <p className="text-sm text-ink/58">
-                  Points {view.creationBudget.skillPointsSpent}/
-                  {view.creationBudget.skillPointLimit}
-                  {view.creationBudget.convertedSkillPoints > 0 &&
-                    ` · ${view.creationBudget.convertedSkillPoints} convertis en sorts`}
-                </p>
-                <p className="mt-1 text-sm text-ink/58">
-                  Catalogue implicite : {skills.length} entrées, {trainedSkillCount} notées sur la
-                  fiche.
-                </p>
-                {character.orientation.isMagical && (
-                  <p className="mt-1 text-sm text-wine">
-                    Magicien : pas de compétence primaire mécanique, les sorts comptent double en
-                    progression.
-                  </p>
-                )}
-              </div>
-              <span className="rounded-md bg-gold px-3 py-2 text-sm font-semibold text-ink">
-                Niveau {view.levelProgression.level ?? 'NA'} ·{' '}
-                {view.levelProgression.levelPoints ?? 'NA'} /{' '}
-                {view.levelProgression.levelUpAt ?? 'NA'} points
-              </span>
+  return (
+    <div className="kw-sheet">
+      <Card className="kw-sheet__hero">
+        <div className="kw-sheet__hero-head">
+          <div className="kw-sheet__title-lockup">
+            <Seal>PJ</Seal>
+            <div>
+              <Label>Fiche PJ</Label>
+              <h1>{character.name}</h1>
+              <p>
+                {character.race.name} · {character.orientation.name} · {character.classProfile.name}
+              </p>
             </div>
-            <div className="mt-4 grid gap-3">
-              {skills.map((skill) => (
-                <div
-                  className={[
-                    'grid grid-cols-[1fr_auto] items-center gap-3 rounded-md bg-paper p-3',
-                    skill.isImplicitZero ? 'opacity-70' : ''
-                  ].join(' ')}
-                  key={skill.id}
-                  style={{ marginLeft: `${skill.depth * 1.25}rem` }}
-                >
-                  <div>
-                    <p className="font-semibold text-ink">
-                      {skill.depth > 0 && <span className="text-ink/36">└ </span>}
-                      {skill.label ?? skillLabels[skill.id] ?? skill.id}
-                    </p>
-                    <p className="text-sm text-ink/56">
-                      {skill.isImplicitZero
-                        ? skill.parentId
-                          ? 'Spécialisation implicite à 0'
-                          : 'Compétence implicite à 0'
-                        : skill.isMain
-                          ? 'Compétence primaire'
-                          : skill.isInheritedPrimary
-                            ? 'Spécialisation héritée primaire'
-                            : skill.implicitParentId
-                              ? `Spécialisation, parent implicite à 0 (${skill.implicitParentId})`
-                              : skill.parentId
-                                ? 'Spécialisation'
-                                : 'Compétence'}
-                    </p>
-                  </div>
-                  <span className="rounded-md bg-ink px-3 py-2 font-mono text-sm font-semibold text-paper">
-                    {skill.points} {skill.points > 1 ? 'pts' : 'pt'}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </section>
+          </div>
+          <Badge tone="neutral">Skin armorial</Badge>
         </div>
-      )}
 
-      {mode === 'combat' && (
-        <div className="grid gap-5 lg:grid-cols-2">
-          <Panel title="Armes équipées">
-            {view.equippedWeapons.map((item) => (
-              <InventoryRow
-                item={item}
-                key={item.id}
-                onRemove={() => setInventory(removeInventoryItem(inventory, item.id))}
-              />
-            ))}
-          </Panel>
-          <Panel title="Sorts actifs">
-            {spells
-              .filter((spell) => spell.active)
-              .map((spell) => (
-                <div className="rounded-md bg-paper p-3" key={spell.id}>
-                  <p className="font-semibold text-ink">{spell.name}</p>
-                  <p className="text-sm text-ink/58">{spell.points} point de sort</p>
-                </div>
-              ))}
-          </Panel>
+        <div className="kw-sheet__resources" aria-label="Ressources personnage">
+          <ProgressBar
+            label="Vitalité"
+            max={character.vitality.max}
+            tone="danger"
+            value={character.vitality.current}
+          />
+          <ProgressBar
+            label="Énergie"
+            max={character.energy.max}
+            tone="info"
+            value={character.energy.current}
+          />
+          <StatBlock
+            items={[
+              { label: 'Facteur vitesse', value: character.speedFactor },
+              { label: 'Facteur volonté', value: character.willFactor }
+            ]}
+          />
         </div>
-      )}
+      </Card>
 
-      {mode === 'social' && (
-        <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
-          <Panel title="Attributs sociaux">
-            <div className="grid gap-3 sm:grid-cols-3">
-              {socialAttributeKeys.map((attribute) => (
-                <button
-                  className="rounded-md bg-paper p-4 text-left"
-                  key={attribute}
-                  onClick={() => roll(attribute)}
-                  type="button"
-                >
-                  <p className="text-sm font-semibold text-ink/64">{attributeLabels[attribute]}</p>
-                  <p className="mt-2 text-3xl font-semibold text-ink">
-                    {view.attributes[attribute]}
-                  </p>
-                </button>
-              ))}
-            </div>
-          </Panel>
-          <Panel title="Réputation et relations">
-            <p className="rounded-md bg-paper p-3 text-sm leading-6 text-ink/72">
-              {String(character.metadata.reputation)}
-            </p>
-            <p className="rounded-md bg-paper p-3 text-sm leading-6 text-ink/72">
-              Divinité : {String(character.metadata.deity)}
-            </p>
-            <p className="rounded-md bg-paper p-3 text-sm leading-6 text-ink/72">
-              Citation : {String(character.metadata.quote)}
-            </p>
-          </Panel>
-        </div>
-      )}
+      <Tabs
+        activeId={mode}
+        items={tabItems}
+        label="Modes fiche"
+        onTabChange={(nextMode) => setMode(nextMode as CharacterSheetMode)}
+      />
 
-      {mode === 'gm' && (
-        <div className="grid gap-5 lg:grid-cols-2">
-          <Panel title="Audit complet">
-            {view.sections.map((section) => (
-              <div
-                className="rounded-md bg-paper p-3 text-sm font-medium text-ink"
-                key={section.id}
-              >
-                {section.label}
-              </div>
-            ))}
-          </Panel>
-          <Panel title="Notes privées MJ">
-            <p className="rounded-md bg-paper p-3 text-sm leading-6 text-ink/72">
-              {String(character.metadata.gmNotes)}
-            </p>
-          </Panel>
-        </div>
-      )}
-
-      <div className="grid gap-5 lg:grid-cols-[1fr_0.85fr]">
-        <Panel
+      <div className="kw-sheet__bottom-grid">
+        <SectionCard
           action={
             equipmentCatalog.length > 0 ? (
-              <div className="flex items-center gap-2">
-                <label className="sr-only" htmlFor="equipment-picker">
-                  Équipement du catalogue
-                </label>
-                <select
-                  className="min-h-10 rounded-md border border-ink/15 bg-paper px-2 text-sm text-ink"
+              <div className="kw-sheet__inventory-tools">
+                <SelectField
                   id="equipment-picker"
+                  label="Équipement du catalogue"
                   onChange={(event) => setSelectedEquipmentId(event.target.value)}
+                  options={equipmentCatalog.map((option) => ({
+                    label: option.name,
+                    value: option.id
+                  }))}
                   value={selectedEquipmentId}
-                >
-                  {equipmentCatalog.map((option) => (
-                    <option key={option.id} value={option.id}>
-                      {option.name}
-                    </option>
-                  ))}
-                </select>
-                <button
-                  className="inline-flex min-h-10 items-center gap-2 rounded-md bg-forest px-3 text-sm font-semibold text-paper"
+                />
+                <Button
+                  className="kw-sheet__add-button"
                   onClick={() => addEquipment(selectedEquipmentId)}
                   type="button"
                 >
-                  <PackagePlus aria-hidden="true" className="size-4" />
+                  <PackagePlus aria-hidden="true" className="kw-sheet__button-icon" />
                   Ajouter
-                </button>
+                </Button>
               </div>
             ) : undefined
           }
           title="Inventaire"
         >
-          <p className="text-sm text-ink/58">Charge {view.carriedWeightKg} kg</p>
-          {inventory.map((item) => (
-            <InventoryRow
-              item={item}
-              key={item.id}
-              onRemove={() => setInventory(removeInventoryItem(inventory, item.id))}
-            />
-          ))}
-        </Panel>
-
-        <Panel title="Grimoire">
-          <div className="grid grid-cols-3 gap-3">
-            <Metric label="Sorts" value={view.spellSummary.knownSpells} />
-            <Metric label="Points" value={view.spellSummary.pointsCommitted} />
-            <Metric label="Énergie" value={view.spellSummary.energyAvailable} />
+          <p className="kw-sheet__muted">Charge {view.carriedWeightKg} kg</p>
+          <div className="kw-sheet__row-list">
+            {inventory.map((item) => (
+              <InventoryRow
+                item={item}
+                key={item.id}
+                onRemove={() => setInventory((current) => removeInventoryItem(current, item.id))}
+              />
+            ))}
           </div>
+        </SectionCard>
+
+        <SectionCard title="Grimoire">
+          <StatBlock
+            items={[
+              { label: 'Sorts', value: view.spellSummary.knownSpells },
+              { label: 'Points', value: view.spellSummary.pointsCommitted },
+              { label: 'Énergie', value: view.spellSummary.energyAvailable }
+            ]}
+          />
           {character.orientation.isMagical && (
-            <p className="rounded-md bg-vellum/70 p-3 text-sm leading-6 text-ink/72">
-              Création : {view.creationBudget.spellPoints} points de sort ={' '}
-              {view.creationBudget.freeSpellPoints} gratuits +{' '}
-              {view.creationBudget.extraSpellPoints} achetés.
-            </p>
+            <InfoLine
+              label="Création"
+              value={`${view.creationBudget.spellPoints} points de sort = ${view.creationBudget.freeSpellPoints} gratuits + ${view.creationBudget.extraSpellPoints} achetés.`}
+            />
           )}
-          {spells.map((spell) => (
-            <div className="rounded-md bg-paper p-3" key={spell.id}>
-              <div className="flex items-center justify-between gap-3">
-                <p className="font-semibold text-ink">{spell.name}</p>
-                <span className="rounded-md bg-vellum px-2 py-1 text-xs font-semibold text-ink">
-                  {spell.points} pt
-                </span>
+          <div className="kw-sheet__row-list">
+            {spells.map((spell) => (
+              <div className="kw-sheet__spell-row" key={spell.id}>
+                <div>
+                  <h3>{spell.name}</h3>
+                  <p>{spell.active ? 'Actif' : 'Disponible'}</p>
+                </div>
+                <Badge tone={spell.active ? 'info' : 'neutral'}>{spell.points} pt</Badge>
               </div>
-              <p className="mt-1 text-sm text-ink/58">{spell.active ? 'Actif' : 'Disponible'}</p>
-            </div>
-          ))}
-        </Panel>
+            ))}
+          </div>
+        </SectionCard>
       </div>
     </div>
   );
 }
 
-function Panel({
+function SectionCard({
   action,
   children,
   title
 }: Readonly<{ action?: ReactNode; children: ReactNode; title: string }>) {
   return (
-    <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <h2 className="text-xl font-semibold text-ink">{title}</h2>
-        {action}
+    <Card className="kw-sheet__panel">
+      <div className="kw-sheet__panel-head">
+        <h2>{title}</h2>
+        {action ? <div className="kw-sheet__panel-action">{action}</div> : null}
       </div>
-      <div className="grid gap-3">{children}</div>
-    </section>
+      <div className="kw-sheet__panel-body">{children}</div>
+    </Card>
   );
 }
 
-function Resource({ label, max, value }: Readonly<{ label: string; max: number; value: number }>) {
-  const percent = max === 0 ? 0 : Math.round((value / max) * 100);
+function AttributeButton({
+  baseValue,
+  effectiveValue,
+  label,
+  onRoll
+}: Readonly<{
+  attribute: AttributeKey;
+  baseValue: number;
+  effectiveValue: number;
+  label: string;
+  onRoll: () => void;
+}>) {
+  return (
+    <button className="kw-sheet__attribute-card" onClick={onRoll} type="button">
+      <span className="kw-sheet__attribute-name">
+        {label}
+        <Dices aria-hidden="true" className="kw-sheet__attribute-icon" />
+      </span>
+      <span className="kw-sheet__attribute-score">
+        <Die kind={effectiveValue <= 0 ? 'one' : 'plain'} value={effectiveValue} />
+        <span>base {baseValue}</span>
+      </span>
+    </button>
+  );
+}
+
+function RollResult({
+  attributeLabels,
+  result
+}: Readonly<{
+  attributeLabels: Record<AttributeKey, string>;
+  result: AttributeRollResult;
+}>) {
+  const tone: ToastTone =
+    result.pool === 0 || result.isCriticalFailure
+      ? 'danger'
+      : result.isCriticalSuccess
+        ? 'success'
+        : 'info';
 
   return (
-    <div className="rounded-md bg-vellum/70 p-3">
-      <div className="flex items-center justify-between gap-3">
-        <p className="text-sm font-medium text-ink/58">{label}</p>
-        <p className="font-mono text-sm font-semibold text-ink">
-          {value}/{max}
-        </p>
-      </div>
-      <div className="mt-3 h-2 rounded-full bg-ink/10">
-        <div className="h-2 rounded-full bg-wine" style={{ width: `${percent}%` }} />
-      </div>
+    <div className="kw-sheet__roll" data-testid="last-roll">
+      <Toast title="Dernier jet" tone={tone}>
+        <span>
+          {attributeLabels[result.attribute]} · {result.pool}D · DT {result.difficulty} ·{' '}
+          {result.successes} succès
+        </span>
+        {result.rolls.length > 0 ? (
+          <span className="kw-sheet__dice-row" aria-label="Dés lancés">
+            {result.rolls.map((value, index) => (
+              <Die
+                kind={dieKindForRoll(value, result.difficulty)}
+                key={`${value}-${index}`}
+                value={value}
+              />
+            ))}
+          </span>
+        ) : null}
+        {attributeRollOutcomeLabels(result).map((label) => (
+          <span className="kw-sheet__roll-outcome" data-testid={label.testId} key={label.id}>
+            {label.label}
+          </span>
+        ))}
+      </Toast>
     </div>
   );
 }
 
-function Metric({ label, value }: Readonly<{ label: string; value: number | string }>) {
+function SkillTreeRows({
+  skillLabels,
+  skills
+}: Readonly<{
+  skillLabels: Record<string, string>;
+  skills: SkillTreeRow[];
+}>) {
   return (
-    <div className="rounded-md bg-vellum/70 p-3">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink/52">{label}</p>
-      <p className="mt-1 text-2xl font-semibold text-ink">{value}</p>
+    <div className="kw-sheet__row-list">
+      {skills.map((skill) => (
+        <div
+          className="kw-sheet__skill-row"
+          data-implicit={skill.isImplicitZero ? 'true' : undefined}
+          key={skill.id}
+          style={{ '--kw-sheet-depth': skill.depth } as CSSProperties}
+        >
+          <div>
+            <h3>
+              {skill.depth > 0 && <span aria-hidden="true">↪ </span>}
+              {skill.label ?? skillLabels[skill.id] ?? skill.id}
+            </h3>
+            <p>{skillDescription(skill)}</p>
+          </div>
+          <Badge tone={skill.isImplicitZero ? 'neutral' : 'success'}>
+            {skill.points} {skill.points > 1 ? 'pts' : 'pt'}
+          </Badge>
+        </div>
+      ))}
     </div>
   );
 }
 
 function InventoryRow({ item, onRemove }: Readonly<{ item: InventoryItem; onRemove: () => void }>) {
   return (
-    <div className="grid grid-cols-[1fr_auto_auto] items-center gap-3 rounded-md bg-paper p-3">
+    <div className="kw-sheet__inventory-row">
       <div>
-        <p className="font-semibold text-ink">{item.name}</p>
-        <p className="text-sm text-ink/56">
+        <h3>{item.name}</h3>
+        <p>
           {item.equipped ? 'Équipé' : item.category} · {item.weightKg ?? 0} kg
         </p>
       </div>
-      <span className="font-mono text-sm font-semibold text-ink">x{item.quantity}</span>
-      <button
+      <Badge tone={item.equipped ? 'info' : 'neutral'}>x{item.quantity}</Badge>
+      <Button
         aria-label={`Retirer ${item.name}`}
-        className="grid size-9 place-items-center rounded-md bg-vellum text-ink transition hover:bg-wine hover:text-paper"
+        className="kw-sheet__icon-button"
         onClick={onRemove}
         type="button"
+        variant="secondary"
       >
-        <Minus aria-hidden="true" className="size-4" />
-      </button>
+        <Minus aria-hidden="true" className="kw-sheet__button-icon" />
+      </Button>
     </div>
   );
+}
+
+function InfoLine({ label, value }: Readonly<{ label: string; value: string }>) {
+  return (
+    <div className="kw-sheet__info-line">
+      <Badge tone="neutral">{label}</Badge>
+      <p>{value}</p>
+    </div>
+  );
+}
+
+function skillDescription(skill: SkillTreeRow): string {
+  if (skill.isImplicitZero) {
+    return skill.parentId ? 'Spécialisation implicite à 0' : 'Compétence implicite à 0';
+  }
+
+  if (skill.isMain) {
+    return 'Compétence primaire';
+  }
+
+  if (skill.isInheritedPrimary) {
+    return 'Spécialisation héritée primaire';
+  }
+
+  if (skill.implicitParentId) {
+    return `Spécialisation, parent implicite à 0 (${skill.implicitParentId})`;
+  }
+
+  return skill.parentId ? 'Spécialisation' : 'Compétence';
+}
+
+function dieKindForRoll(value: number, difficulty: number) {
+  if (value === 1) {
+    return 'one';
+  }
+
+  if (value === 10) {
+    return 'critical';
+  }
+
+  return value >= difficulty ? 'success' : 'plain';
 }

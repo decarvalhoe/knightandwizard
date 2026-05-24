@@ -65,6 +65,10 @@ test.describe('K&W player and GM application flows', () => {
 
     await page.goto('/character');
 
+    await expect(page.locator('html')).toHaveAttribute('data-skin', 'armorial');
+    await expect(page.getByRole('tablist', { name: 'Modes fiche' })).toBeVisible();
+    await expect(page.getByRole('progressbar', { name: 'Vitalité' })).toBeVisible();
+    await expect(page.getByRole('progressbar', { name: 'Énergie' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Fiche active' })).toBeVisible();
     await expect(page.getByRole('heading', { name: '9 aptitudes' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Compétences' })).toBeVisible();
@@ -89,23 +93,26 @@ test.describe('K&W player and GM application flows', () => {
       'Échec critique · D100 = 73'
     );
 
-    await page.getByRole('button', { name: 'Combat' }).click();
-    await expect(page.getByRole('heading', { name: 'Armes équipées' })).toBeVisible();
-    await expect(page.getByText('Bouclier').first()).toBeVisible();
+    await page.getByRole('tab', { name: 'Combat' }).click();
+    const combatPanel = page.getByRole('tabpanel', { name: 'Combat' });
+    await expect(combatPanel.getByRole('heading', { name: 'Armes équipées' })).toBeVisible();
+    await expect(combatPanel.getByText('Bouclier').first()).toBeVisible();
 
-    await page.getByRole('button', { name: 'Social' }).click();
+    await page.getByRole('tab', { name: 'Social' }).click();
     await expect(page.getByRole('heading', { name: 'Attributs sociaux' })).toBeVisible();
 
-    await page.getByRole('button', { name: 'MJ' }).click();
+    await page.getByRole('tab', { name: 'MJ' }).click();
     await expect(page.getByRole('heading', { name: 'Audit complet' })).toBeVisible();
 
-    await page.getByRole('button', { name: 'Complet' }).click();
+    await page.getByRole('tab', { name: 'Complet' }).click();
     const equipmentPicker = page.locator('#equipment-picker');
     await expect(equipmentPicker).toBeVisible();
     expect(await equipmentPicker.locator('option').count()).toBeGreaterThan(0);
     await equipmentPicker.selectOption({ index: 0 });
     await page.getByRole('button', { name: 'Ajouter' }).click();
-    await expect(page.getByText(/Charge .* kg/)).toBeVisible();
+    await expect(
+      page.locator('p.kw-sheet__muted').filter({ hasText: /Charge .* kg/ })
+    ).toBeVisible();
   });
 
   test('character creation validates fighter and magician creation budgets', async ({

@@ -1,7 +1,10 @@
-import { CharacterSheet } from '@/features/character-sheet/CharacterSheet';
-import { getCharacterSheetReadModel } from '@/features/character-sheet/read-models';
 import { UserPlus } from 'lucide-react';
 import Link from 'next/link';
+
+import { Card, Label } from '@knightandwizard/ui';
+
+import { CharacterSheet } from '@/features/character-sheet/CharacterSheet';
+import { getCharacterSheetReadModel } from '@/features/character-sheet/read-models';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,20 +12,20 @@ export default async function CharacterPage() {
   const sheet = await getCharacterSheetReadModel();
 
   return (
-    <div className="grid gap-5">
-      <section className="flex flex-col gap-3 rounded-md border border-ink/10 bg-white/78 p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+    <div className="kw-character-page">
+      <Card className="kw-character-page__header">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-wine">Personnage</p>
-          <h1 className="mt-1 text-2xl font-semibold text-ink">Fiche active</h1>
+          <Label>Personnage</Label>
+          <h1>Fiche active</h1>
         </div>
         <Link
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-ink px-4 text-sm font-semibold text-paper transition hover:bg-ink/88"
+          className="kw-btn kw-btn--secondary kw-character-page__create-link"
           href="/character/create"
         >
-          <UserPlus aria-hidden="true" className="size-4" />
+          <UserPlus aria-hidden="true" className="kw-character-page__icon" />
           Créer
         </Link>
-      </section>
+      </Card>
 
       <CharacterSheet
         attributeLabels={sheet.attributeLabels}
