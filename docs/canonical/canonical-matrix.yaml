@@ -133444,8 +133444,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1192"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1209"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "3. Si une spécialisation pertinente existe (ex. « Fauchage (Épée à deux mains) »), elle réduit la difficulté selon les règles standard (R-1.10 / R-9.5). from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -133624,8 +133624,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 668"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 685"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "1. **Type d'action** : action conservée (D1 R-1.12). Le perso déclare la transformation au DT `T`. Elle se résout au DT `T + 50` par défaut (cf. D3 Q-D3.7). from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -134200,8 +134200,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 2076"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 2093"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "| D1 R-1.2/12/25/34/36/40 | ⬅ rappel | Action standard, types d'action, interruption, échec critique, modificateurs | from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -134417,7 +134417,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 97"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "La réussite du jet actif réduit ou annule les réussites de l'attaque, selon le modèle général des contre-actions (D1 R-1.23). Si l'attaque est complètement neutralisée, le coup ne produit pas de dégâts. from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -134597,7 +134597,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 56"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "*Rappel D1 R-1.25** : les DT déjà écoulés sont perdus. Il n'existe pas de demi-action récupérable par défaut. from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -135245,7 +135245,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 193"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "Les résistances exprimées en `%` (`feu`, `froid`, `poison`, `magie`, etc.) utilisent la mécanique D100 (D1 R-1.32 / D3 Q-D3.8). Elles sont testées avant la résolution des dégâts ou de l'effet concerné. Si le test réussit, la composante ou l'effet auquel la résistance s'oppose est ignoré. from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -135424,8 +135424,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 530"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 547"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "2. **Standard** (casse sur échec critique uniquement) — seule une fumble (D1 R-1.34, échec critique avec D100 sur table d'incidents) peut briser une arme ou endommager une armure. La table d'échec critique inclut des résultats `arme brisée`, `armure entaillée`, `lacet de protection rompu`. Aucun tracking continu. Conforme au legacy minimaliste. from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -135640,8 +135640,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 474"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 491"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "**MJ LLM** : applique automatiquement le modificateur de la catégorie courante, ajuste contextuellement (taille cible, mouvement, météo, couvert) avec D1 R-1.36. from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -139997,7 +139997,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 337"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "*Statut** : 🟢 acté (D2 R-2.X, D7 R-7.20) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -140140,8 +140140,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 2077"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 2094"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "| D2 R-2.10/17 | ⬅ rappel | Repos/vitalité, malus d'affaiblissement | from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -142372,8 +142372,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 2079"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 2096"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "| D4 R-4.9 | ⬅ rappel | Orientations / classes / atouts | from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -144316,8 +144316,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 664"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 681"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "Réfère D3 Q-D3.7 (durée canonique 50 DT ≈ 10 s) et D7 R-7.16/17/18 (math du changement de race). Cette règle traite uniquement de la **fenêtre temporelle** et du **flux d'action** pendant la transformation. from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -144424,8 +144424,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 693"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 710"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "   - Buffs/debuffs sur le personnage : conservés à travers la transformation tant que leur durée n'est pas expirée (cf. D7 R-7.17). from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -144568,8 +144568,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 768"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 785"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "*Migration** : changement de schéma d'item-type → moteur propose une stratégie de migration item par item. Admin valide. Les persos sont notifiés des items modifiés (cf. R-7.19 méta-principe règles vivantes). from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -144676,8 +144676,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 559"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 576"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "Le legacy ne mentionne explicitement que les états `mort`, `inconscient` (D7 R-7.20), `à terre` (regles:567 quand la Force est insuffisante pour porter l'équipement) et `affaibli` (D2 R-2.17). Tout système digital exige un catalogue plus large. from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -145180,8 +145180,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 781"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 798"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "2. **Coût en énergie** : déduction immédiate au DT `T` (l'énergie est mobilisée dès le début, cf. D8 R-8.10/12). from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -145648,8 +145648,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 787"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 804"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "5. **Effet** : si réussi, application immédiate. Si raté, énergie perdue (R-8.13). from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -145937,7 +145937,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 286"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "*Mécanique** : Jet d'aptitude brute (D8 R-8.19) sur Endurance, difficulté 7. Chaque réussite − 1 dégât. from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146045,7 +146045,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 3"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "> Système de combat. Repose sur le rythme DT (Divisions de Temps, 1 DT = 0,2 s) acté en D8 R-8.20, le facteur de vitesse acté en D2, les types d'actions actés en D1 R-1.12, le modèle de modificateurs additif acté en D1 R-1.36/40, le malus d'affaiblissement acté en D2 R-2.17, la machine d'état mort/mourant actée en D7 R-7.20/21, les résistances multi-couches actées en D3 Q-D3.8. from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146188,8 +146188,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 786"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 803"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "4. **Résolution** au DT `T + TI` : jet d'action D8 R-8.5 (Intelligence + sort + spécialisations) contre la difficulté du sort. from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146260,8 +146260,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 776"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 793"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "Cette règle complète D8 R-8.6 (TI), R-8.7 (concentration / interruption) et l'école Abjuration (Captage d'énergie, sorts d'annulation). from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146405,7 +146405,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 19"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.1 — DT comme rythme de combat (rappel D8 R-8.20) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146441,7 +146441,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 137"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.10 — Difficulté du jet de force = 7 − réussites au toucher from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146477,7 +146477,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 147"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.11 — Quatre types de dégâts (TD) : P/E/C/T from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146513,7 +146513,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 178"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.12 — Ordre fixe d'application des modificateurs de dégâts from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146549,7 +146549,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 208"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.13 — Modificateurs de circonstance (charge, chute) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146585,7 +146585,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 216"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.14 — Armures : protection P/E/C/T par pièce from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146693,7 +146693,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 265"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.15 — Modificateurs de zone de touche from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146765,7 +146765,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 280"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.16 — Endurance en dernier rempart from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146801,7 +146801,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 294"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.17 — Évanouissement / mort en un coup (rappel D2/D7) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146873,7 +146873,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 339"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.18 — Malus d'affaiblissement (rappel D2 R-2.17) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146909,7 +146909,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 343"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.18-bis — Dégâts subis retardent l'action from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -146945,7 +146945,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 363"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.19 — Catalogue d'armes (table vivante) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147017,7 +147017,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 30"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.2 — Facteur de vitesse comme délai d'action from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147053,7 +147053,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 371"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.20 — Catalogue de protections (table vivante) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147089,7 +147089,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 377"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.21 — Table des touches (D100, table vivante) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147125,9 +147125,45 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 422"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.22 — Flux de combat digital = timeline dynamique, pas initiative fixe from docs/rules/09-combat.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: partial
+      evidence: "Rules-core behavior evidence pending or must be linked."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "R-9.22-BIS"
+    unit_type: "rule"
+    domain: "D9-combat"
+    title: "R-9.22-bis — Audit `FightAssistantMan` vers `rules-core`"
+    status: partial
+    sources:
+      - path: "docs/rules/09-combat.md"
+        ref: "line 442"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
+    business_rule:
+      summary: "R-9.22-bis — Audit `FightAssistantMan` vers `rules-core` from docs/rules/09-combat.md."
       ambiguity_ref: null
     yaml:
       status: not_applicable
@@ -147232,8 +147268,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 442"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 459"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.23 — Égalités de DT dans la timeline from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147268,8 +147304,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 453"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 470"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.24 — Portée des armes à distance (modèle hybride catégorie + numérique) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147340,8 +147376,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 483"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 500"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.25 — Munitions (stock, qualité, récupération) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147412,8 +147448,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 520"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 537"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.26 — Durabilité des armes et armures (mode paramétrable par campagne) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147520,8 +147556,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 555"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 572"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.27 — États tactiques en combat (catalogue vivant d'états) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147664,8 +147700,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 604"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 621"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.28 — Spawn de PNJ en cours de combat (renforts, vagues, invocations) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147736,8 +147772,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 660"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 677"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.29 — Transformation de race en cours de combat (action conservée 50 DT) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147773,7 +147809,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 40"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.3 — Recharge des armes balistiques comme action from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147808,8 +147844,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 707"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 724"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.30 — Catalogues d'armes, protections et items : méta-modèle type-classes dynamiques from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147952,8 +147988,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 772"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 789"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.31 — Sorts en combat (interruption, ciblage, AOE, contre-sort) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -147988,8 +148024,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 864"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 881"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.32 — Déplacement et positionnement en combat (zones abstraites + vitesse numérique + terrain + UI) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148096,8 +148132,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 947"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 964"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.33 — Soins en combat (potions, sorts, médecine, atouts d'auto-soin) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148132,8 +148168,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 915"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 932"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "E. UI : zone de déplacement max visualisable (couplée au mode R-9.34) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148204,8 +148240,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1043"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1060"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.35 — Poisons (item-type, double échelle, catalogue Harold) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148312,8 +148348,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1155"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1172"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.36 — Attaques physiques multi-cibles (fauchage, cône, ligne, rebond, charge) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148384,8 +148420,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1216"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1233"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.37 — Fuite, poursuite et conditions de fin de combat from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148492,8 +148528,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1285"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1302"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.38 — Désengagement de mêlée (3 modes + atouts dédiés) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148528,8 +148564,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1344"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1361"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.39 — Round de surprise / embuscade (niveaux + atouts dédiés) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148565,7 +148601,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 50"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.4 — Interruption d'action from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148600,8 +148636,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1406"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1423"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.40 — Tactique de groupe (5 modules + atouts dédiés) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148708,8 +148744,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1489"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1506"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.41 — Combat à mains nues, lutte, saisies, désarmement from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148780,8 +148816,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1543"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1560"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "Les pénalités de main faible ne s'appliquent qu'aux membres « surnuméraires », et seulement si le perso n'a pas un atout équivalent à Ambidextrie (R-9.42). from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148852,8 +148888,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1614"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1631"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.43 — Combat à cheval / sur monture from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -148960,8 +148996,8 @@ units:
     status: partial
     sources:
       - path: "docs/rules/09-combat.md"
-        ref: "line 1681"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        ref: "line 1698"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.44 — Coup de grâce, achèvement, reddition, interrogatoire from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -149069,7 +149105,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 69"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.5 — Jet pour toucher = jet d'action standard (rappel D1 R-1.2) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -149177,7 +149213,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 75"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.6 — Esquive = contre-action improvisée (rappel D1 R-1.12) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -149213,7 +149249,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 85"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.7 — Bouclier actif from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -149285,7 +149321,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 101"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.8 — Bouclier passif (jet de chance) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -149321,7 +149357,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "line 125"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "R-9.9 — Jet de dégâts = Force seule (mêlée) ou arme seule (distance) from docs/rules/09-combat.md."
       ambiguity_ref: null
@@ -262191,7 +262227,7 @@ units:
     sources:
       - path: "docs/rules/09-combat.md"
         ref: "docs/rules/09-combat.md"
-        sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+        sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     business_rule:
       summary: "docs/rules/09-combat.md from docs/rules/09-combat.md."
       ambiguity_ref: null

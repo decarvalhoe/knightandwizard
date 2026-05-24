@@ -439,6 +439,23 @@ Le moteur digital peut toutefois présenter ce flux sous forme de **file d'actio
 
 **Statut** : 🟢 acté
 
+### R-9.22-bis — Audit `FightAssistantMan` vers `rules-core`
+
+**Source legacy auditée** : `apps/legacy-php-site/includes/managers/user/FightAssistantMan.php`.
+
+| Comportement legacy | Transposition canonique | Statut rules-core |
+| --- | --- | --- |
+| `getNextTD` maintient un compteur visible `1..50` puis boucle. | Le moteur stocke un DT absolu pour trier sans ambiguïté ; `getCyclicDT` conserve l'affichage legacy `1..50`. | Couvert par tests DT cycliques. |
+| `updateNpcNextTurn` initialise puis avance `nextTurn` par facteur de vitesse, avec wrap visuel à 50. | `addCombatant` initialise `nextActionAt = currentDT + speedFactor`; `resolveNextAction` replanifie par `costDT` ou `speedFactor`. | Couvert par tests de planification, tie-breakers et `costDT`. |
+| `modifyNpc(vitality)` borne la vitalité, applique le malus sous la moitié, sauf races squelette `30/31`, puis retarde `nextTurn` des dégâts subis. | `applyDamage` borne vitalité, recalcule le malus depuis `baseAttributes`, expose `ignoresVitalityMalus`, ajoute `+finalDamage` au `nextActionAt`. | Couvert par tests malus, guérison, mort-vivant, mort à 0 et retard DT. |
+| `staminaRoll` lance Endurance contre difficulté 7, normalise les échecs critiques non numériques à 0 succès, puis applique les dégâts finaux. | `resolveStaminaDamage` utilise `attributes.stamina`, `combat.staminaRollDifficulty`, la sévérité D100 du moteur de dés et `applyDamage` sur le résiduel. | Couvert par test d'endurance avant dégâts. |
+| `rollNpcDices` automatise un PNJ en Dextérité + compétence principale contre difficulté 6. | Conservé comme comportement d'assistant legacy, pas comme règle universelle : l'attaque canonique passe par `AttackAction.attack` et la difficulté de l'arme/situation. | Non promu en règle générique. |
+| Chargement arène/PNJ et formes HTML de l'assistant. | Hors règles-core : à traiter par read models/catalogues/API/UI, sans dupliquer la mécanique. | Hors scope moteur pur. |
+
+Le log de résolution expose `costDT` et `nextActionAt` pour rendre auditable la décision de timeline : le LLM ou l'UI peuvent l'afficher, mais seul `rules-core` calcule la replanification mécanique. Les échecs critiques d'attaque conservent `isCriticalFailure` et `criticalFailureSeverity` dans `attackRoll` sans appliquer de dégâts automatiques.
+
+**Statut** : 🟢 audité (issue #53, slice rules-core/docs)
+
 ### R-9.23 — Égalités de DT dans la timeline
 
 Si plusieurs actions doivent être résolues au même DT :
