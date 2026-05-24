@@ -17,8 +17,18 @@ describe('surface theme contract', () => {
     expect(resolveSkinForPath('/grimoire')).toBe('grimoire');
     expect(resolveSkinForPath('/dice')).toBe('tripot');
     expect(resolveSkinForPath('/rules')).toBe('archives');
+    expect(resolveSkinForPath('/greffe')).toBe('archives');
     expect(resolveSkinForPath('/bibliotheque')).toBe('bibliotheque');
     expect(resolveSkinForPath('/design-proto')).toBe('moderne');
+  });
+
+  it('exposes the greffe surface in navigation', () => {
+    expect(surfaceNavItems).toContainEqual({
+      href: '/greffe',
+      label: 'Greffe',
+      shortLabel: 'Greffe',
+      skin: 'archives'
+    });
   });
 
   it('keeps navigation coverage for every emitted skin', () => {
