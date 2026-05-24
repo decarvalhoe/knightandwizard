@@ -135706,6 +135706,21 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PLAN-PHASE-V0-4-RC
+    unit_type: catalog_entry
+    name: docs/plan/PHASE-v0.4-RC.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PLAN-PHASE-V0-4-RC
+        locator: docs/plan/PHASE-v0.4-RC.md
+        hash: sha256:43b575069627ea4a0dbe724cd9afa41923003f84129ebd9a952603dd48e1846f
+    business_rule: docs/plan/PHASE-v0.4-RC.md from docs/plan/PHASE-v0.4-RC.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-DOCS-PLAN-ROADMAP
     unit_type: catalog_entry
     name: docs/plan/ROADMAP.md

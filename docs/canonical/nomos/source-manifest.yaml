@@ -20545,6 +20545,20 @@ sources:
       - vector_index
       - citation_internal
     notes: Project documentation source.
+  - id: DOCS-PLAN-PHASE-V0-4-RC
+    path: docs/plan/PHASE-v0.4-RC.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 43b575069627ea4a0dbe724cd9afa41923003f84129ebd9a952603dd48e1846f
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-PLAN-ROADMAP
     path: docs/plan/ROADMAP.md
     type: markdown

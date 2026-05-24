@@ -261607,6 +261607,42 @@ units:
     tests:
       status: not_applicable
       evidence: "Source document only."
+  - unit_id: "source:docs-plan-phase-v0-4-rc"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/plan/PHASE-v0.4-RC.md"
+    status: covered
+    sources:
+      - path: "docs/plan/PHASE-v0.4-RC.md"
+        ref: "docs/plan/PHASE-v0.4-RC.md"
+        sha256: "43b575069627ea4a0dbe724cd9afa41923003f84129ebd9a952603dd48e1846f"
+    business_rule:
+      summary: "docs/plan/PHASE-v0.4-RC.md from docs/plan/PHASE-v0.4-RC.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
   - unit_id: "source:docs-plan-roadmap"
     unit_type: "source_document"
     domain: "project-governance"
