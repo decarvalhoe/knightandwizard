@@ -842,9 +842,11 @@ function applyRuleImplementationEvidence(
     next[layerName] = link(evidenceLayer.status, renderEvidenceLayer(evidenceLayer));
   }
 
-  if (unit.unit_type === 'rule' && entry.layers.rules_core?.status === 'covered') {
-    next.status = 'covered';
-  }
+  const allResolved = evidenceLayerNames.every(
+    (layerName) =>
+      next[layerName].status === 'covered' || next[layerName].status === 'not_applicable'
+  );
+  next.status = allResolved ? 'covered' : 'partial';
 
   return next;
 }

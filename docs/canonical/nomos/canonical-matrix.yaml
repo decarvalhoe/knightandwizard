@@ -72330,8 +72330,6 @@ units:
       réussites) causent l'échec critique (R-1.17). from docs/rules/01-resolution.md.
     status: partial
     gaps:
-      - 'relational_db: Canonical relational tables/import evidence pending.'
-      - 'api: Downstream API evidence pending.'
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
@@ -73640,8 +73638,6 @@ units:
     business_rule: R-1.6 — Attribut nul → échec total automatique from docs/rules/01-resolution.md.
     status: partial
     gaps:
-      - 'relational_db: Canonical relational tables/import evidence pending.'
-      - 'api: Downstream API evidence pending.'
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
@@ -76461,7 +76457,6 @@ units:
       - 'api: Downstream API evidence pending.'
       - 'ui: UI exposure evidence pending.'
       - 'tests: Automated coverage evidence pending.'
-      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: R-3-1-2
@@ -76505,7 +76500,6 @@ units:
       - 'api: Downstream API evidence pending.'
       - 'ui: UI exposure evidence pending.'
       - 'tests: Automated coverage evidence pending.'
-      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: R-3-3
@@ -76621,10 +76615,6 @@ units:
     business_rule: R-3.5 — Modèle de données de la race from docs/rules/03-races.md.
     status: partial
     gaps:
-      - 'relational_db: Canonical relational tables/import evidence pending.'
-      - 'api: Downstream API evidence pending.'
-      - 'ui: UI exposure evidence pending.'
-      - 'tests: Automated coverage evidence pending.'
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks

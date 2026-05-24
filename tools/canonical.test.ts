@@ -77,7 +77,7 @@ describe('canonical compliance artifacts', () => {
     }
   });
 
-  it('loads declarative rule evidence and applies it to matching units', async () => {
+  it('loads declarative rule evidence and derives covered from resolved layers', async () => {
     const fixture = await createFixtureRepo();
 
     try {
@@ -93,6 +93,17 @@ describe('canonical compliance artifacts', () => {
           '      - "packages/rules-core/src/dice.ts"',
           '    tests:',
           '      - "packages/rules-core/src/dice.test.ts"',
+          '  relational_db:',
+          '    status: not_applicable',
+          '    evidence: "Pure resolution behavior has no dedicated relational projection."',
+          '  api:',
+          '    status: not_applicable',
+          '    evidence: "Pure resolution behavior has no dedicated endpoint."',
+          '  ui:',
+          '    status: covered',
+          '    evidence: "Fixture UI coverage."',
+          '    files:',
+          '      - "apps/game/src/features/character-sheet/CharacterSheet.tsx"',
           '  tests:',
           '    status: covered',
           '    evidence: "Fixture automated coverage."',
@@ -115,6 +126,37 @@ describe('canonical compliance artifacts', () => {
         status: 'covered',
         evidence: 'Fixture automated coverage. Tests: tools/canonical.test.ts.'
       });
+    } finally {
+      await rm(fixture, { force: true, recursive: true });
+    }
+  });
+
+  it('keeps declarative rule evidence partial when any default layer remains unresolved', async () => {
+    const fixture = await createFixtureRepo();
+
+    try {
+      await writeRuleEvidence(
+        fixture,
+        [
+          'R-1.17:',
+          '  ambiguity_ref: null',
+          '  rules_core:',
+          '    status: covered',
+          '    evidence: "Fixture evidence from rules-core."',
+          '    files:',
+          '      - "packages/rules-core/src/dice.ts"',
+          '    tests:',
+          '      - "packages/rules-core/src/dice.test.ts"'
+        ].join('\n')
+      );
+
+      const manifest = await buildSourceManifest({ repoRoot: fixture });
+      const matrix = await buildCanonicalMatrix(manifest, { repoRoot: fixture });
+      const unit = matrix.units.find((candidate) => candidate.unit_id === 'R-1.17');
+
+      expect(unit?.status).toBe('partial');
+      expect(unit?.rules_core.status).toBe('covered');
+      expect(unit?.api.status).toBe('partial');
     } finally {
       await rm(fixture, { force: true, recursive: true });
     }
