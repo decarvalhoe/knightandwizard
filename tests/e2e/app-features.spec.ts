@@ -19,6 +19,45 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByRole('link', { name: /Session/ })).toBeVisible();
   });
 
+  test('application shell applies surface skins and persists Veillee', async ({
+    page
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'dashboard');
+
+    const serverRenderedCombat = await page.request.get('/combat', {
+      headers: { Cookie: 'kw-theme=night' }
+    });
+    const serverHtml = await serverRenderedCombat.text();
+    expect(serverHtml).toContain('data-theme="night"');
+
+    const routeSkins = [
+      ['/', 'gazette'],
+      ['/character', 'armorial'],
+      ['/combat', 'registre'],
+      ['/session', 'gazette'],
+      ['/grimoire', 'grimoire'],
+      ['/dice', 'tripot'],
+      ['/rules', 'archives'],
+      ['/bibliotheque', 'bibliotheque'],
+      ['/design-proto', 'moderne']
+    ] as const;
+
+    for (const [route, skin] of routeSkins) {
+      await page.goto(route);
+      await expect(page.locator('html')).toHaveAttribute('data-skin', skin);
+    }
+
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Passer en mode Veillee' }).click();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'night');
+    await page.reload();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'night');
+
+    await page.getByRole('link', { name: /^Combat/ }).click();
+    await expect(page.locator('html')).toHaveAttribute('data-skin', 'registre');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'night');
+  });
+
   test('character sheet exposes canonical attributes, nested skills and level budget', async ({
     page
   }, testInfo) => {
