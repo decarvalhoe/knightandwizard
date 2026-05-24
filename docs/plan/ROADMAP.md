@@ -43,3 +43,9 @@ Harden release, docs, CI/CD, backups, rollback and PR-only promotion to `main`.
 ## Issue Register
 
 The tracked issue list is maintained in `docs/plan/ISSUE-LIST.md` and mirrored to GitHub issues.
+
+## Execution Plans
+
+Detailed phase plans complement this version map:
+
+- [`PHASE-v0.4-RC.md`](./PHASE-v0.4-RC.md) — v0.4 RC « Table jouable en réseau » : campagne de complétude canonique (gating) puis boucle jouable + réseau (synthèse d'une session de sparring).
