@@ -115,6 +115,10 @@ test.describe('K&W player and GM application flows', () => {
 
     await page.goto('/character/create');
 
+    await expect(page.getByRole('heading', { name: 'Ambiguïtés catalogues' })).toBeVisible();
+    await expect(page.getByText('Armes: 8 ambiguïtés')).toBeVisible();
+    await expect(page.getByText('Protections: 4 ambiguïtés')).toBeVisible();
+
     await page.getByLabel('Nom').fill(canonicalE2EFixtures.actors.avelineDraftName);
     await openCreationStep(page, 'Aptitudes');
     await increaseStepper(page, 'Force', 4);

@@ -213,6 +213,25 @@ export function CharacterCreationWizard({
         </div>
       </section>
 
+      {view.ambiguityNotices.length > 0 && (
+        <section
+          aria-label="Ambiguïtés catalogues"
+          className="rounded-md border border-gold/35 bg-gold/15 p-4 text-ink"
+        >
+          <h2 className="text-lg font-semibold text-ink">Ambiguïtés catalogues</h2>
+          <p className="mt-1 text-sm text-ink/68">
+            Ces valeurs proviennent des imports canoniques et restent à trancher en règle vivante.
+          </p>
+          <ul className="mt-3 grid gap-1 text-sm font-semibold text-ink">
+            {view.ambiguityNotices.map((notice) => (
+              <li key={`${notice.catalogName}-${notice.sourcePath}`}>
+                {notice.catalogName}: {notice.count} ambiguïtés · {notice.sourcePath}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <div className="grid gap-5 xl:grid-cols-[1.12fr_0.88fr]">
         <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">

@@ -57,7 +57,14 @@ export interface CharacterCreationEquipmentOption {
   name: string;
 }
 
+export interface CharacterCreationAmbiguityNotice {
+  catalogName: string;
+  count: number;
+  sourcePath: string;
+}
+
 export interface CharacterCreationCatalog {
+  ambiguityNotices: CharacterCreationAmbiguityNotice[];
   assets: CharacterCreationAsset[];
   classes: CharacterClassProfile[];
   equipment: CharacterCreationEquipmentOption[];
@@ -119,6 +126,7 @@ export interface StepValidation {
 }
 
 export interface CharacterCreationView {
+  ambiguityNotices: CharacterCreationAmbiguityNotice[];
   attributeBudget: AttributeCreationBudget;
   availableClasses: CharacterClassProfile[];
   canSubmit: boolean;
@@ -207,6 +215,7 @@ export function buildCreationView(
   );
 
   return {
+    ambiguityNotices: [...catalog.ambiguityNotices],
     attributeBudget,
     availableClasses,
     canSubmit,
