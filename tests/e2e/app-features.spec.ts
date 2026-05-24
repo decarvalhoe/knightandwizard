@@ -158,12 +158,17 @@ test.describe('K&W player and GM application flows', () => {
 
     await page.goto('/combat');
 
+    await expect(page.locator('html')).toHaveAttribute('data-skin', 'registre');
     await expect(page.getByRole('heading', { name: 'Tracker DT' })).toBeVisible();
     await expect(page.getByText(/Round 1 · DT 1 · prochain Aveline/)).toBeVisible();
+    await expect(page.getByRole('progressbar', { name: 'Vitalité Aveline' })).toBeVisible();
+    await expect(page.getByText('Coût DT 5').first()).toBeVisible();
 
     await page.getByTitle('Attaque').click();
     await page.getByRole('button', { name: /Résoudre/ }).click();
     await expect(page.getByText(/Aveline (touche|rate) Brigand/)).toBeVisible();
+    await expect(page.getByText(/coût DT 5 -> prochain DT 11/)).toBeVisible();
+    await expect(page.getByText(/Attaque D10:/)).toBeVisible();
 
     await page.getByRole('button', { name: /Ajouter/ }).click();
     await expect(page.getByRole('heading', { name: 'Squelette' }).first()).toBeVisible();

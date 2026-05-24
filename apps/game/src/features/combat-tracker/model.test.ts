@@ -41,6 +41,38 @@ describe('combat tracker model', () => {
     ]);
   });
 
+  it('exposes pending action DT costs in the timeline view', () => {
+    const state = createCombatTrackerState({
+      combatants: [
+        template({
+          id: 'attacker',
+          name: 'Aveline',
+          nextActionAt: 6,
+          pendingAction: {
+            attack: { difficulty: 7, pool: 3 },
+            targetId: 'defender',
+            type: 'attack'
+          },
+          speedFactor: 5
+        }),
+        template({
+          id: 'defender',
+          name: 'Brigand',
+          nextActionAt: 8,
+          pendingAction: { costDT: 3, type: 'defense' },
+          speedFactor: 8
+        })
+      ],
+      currentDT: 1
+    });
+    const view = buildCombatTrackerView(state);
+
+    expect(view.timeline.map((row) => [row.id, row.pendingCostDT])).toEqual([
+      ['attacker', 5],
+      ['defender', 3]
+    ]);
+  });
+
   it('adds and removes combatants through the tracker state', () => {
     const state = createCombatTrackerState({ currentDT: 10 });
     const withAveline = addTrackerCombatant(state, template({ id: 'aveline', name: 'Aveline' }));
@@ -106,7 +138,39 @@ describe('combat tracker model', () => {
     expect(defender?.vitality.current).toBe(9);
     expect(defender?.nextActionAt).toBe(15);
     expect(view.current).toEqual({ absoluteDT: 6, cyclicDT: 6, round: 1 });
-    expect(view.log.map((event) => event.label)).toContain('Aveline touche Brigand : 2 succès');
+    expect(view.log.map((event) => event.label)).toContain(
+      'Aveline touche Brigand : 2 succès · coût DT 5 -> prochain DT 11'
+    );
+  });
+
+  it('formats attack rolls with DT timing and critical failure severity', () => {
+    const state = createCombatTrackerState({
+      combatants: [
+        template({
+          id: 'attacker',
+          name: 'Aveline',
+          nextActionAt: 6,
+          pendingAction: {
+            attack: { difficulty: 7, pool: 2 },
+            defense: { difficulty: 7, pool: 2 },
+            targetId: 'defender',
+            type: 'attack'
+          },
+          speedFactor: 5
+        }),
+        template({ id: 'defender', name: 'Brigand', nextActionAt: 12, speedFactor: 8 })
+      ],
+      currentDT: 1
+    });
+    const resolved = resolveTrackerNextAction(state, scriptedRolls([1, 2, 73, 7, 8]));
+    const logRow = formatCombatEvent(resolved.log[0]!, resolved.timeline);
+
+    expect(logRow).toEqual({
+      atDT: 6,
+      details: ['Attaque D10: 1, 2', 'Défense D10: 7, 8'],
+      label: 'Aveline rate Brigand · échec critique D100 73 · coût DT 5 -> prochain DT 11',
+      tone: 'danger'
+    });
   });
 
   it('formats non-attack actions for the combat log', () => {
@@ -120,7 +184,7 @@ describe('combat tracker model', () => {
 
     expect(formatCombatEvent(resolved.log.at(-1)!, resolved.timeline)).toEqual({
       atDT: 7,
-      label: 'Mire résout spell',
+      label: 'Mire résout sort · coût DT 4 -> prochain DT 11',
       tone: 'neutral'
     });
   });

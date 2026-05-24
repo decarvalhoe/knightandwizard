@@ -7,14 +7,13 @@ import {
   Hourglass,
   Minus,
   Plus,
-  ScrollText,
   Shield,
   Sparkles,
   Swords,
   Trash2,
   UserPlus
 } from 'lucide-react';
-import { useMemo, useState, type ReactNode } from 'react';
+import { useMemo, useState } from 'react';
 
 import type {
   CombatAction,
@@ -22,6 +21,20 @@ import type {
   Combatant,
   CombatState
 } from '@knightandwizard/rules-core';
+import {
+  Badge,
+  Button,
+  Card,
+  Label,
+  ProgressBar,
+  Seal,
+  SelectField,
+  TimelineDT,
+  Toast,
+  type BadgeTone,
+  type ProgressTone,
+  type ToastTone
+} from '@knightandwizard/ui';
 
 import {
   addTrackerCombatant,
@@ -51,20 +64,6 @@ const actionLabels: Record<CombatActionType, string> = {
   move: 'Mouvement',
   spell: 'Sort',
   wait: 'Attente'
-};
-
-const vitalityClasses: Record<VitalityState, string> = {
-  critical: 'bg-wine',
-  dead: 'bg-ink',
-  healthy: 'bg-forest',
-  wounded: 'bg-gold'
-};
-
-const logToneClasses: Record<CombatLogRow['tone'], string> = {
-  danger: 'border-wine/25 bg-wine/10 text-wine',
-  neutral: 'border-ink/10 bg-paper text-ink/68',
-  success: 'border-forest/25 bg-forest/10 text-forest',
-  warning: 'border-gold/35 bg-gold/15 text-ink'
 };
 
 interface CombatTrackerProps {
@@ -139,43 +138,52 @@ export function CombatTracker({ combatantTemplates, initialState }: Readonly<Com
   }
 
   return (
-    <div className="grid gap-5">
-      <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-          <div className="flex items-start gap-3">
-            <Swords aria-hidden="true" className="mt-1 size-5 text-wine" />
+    <div className="kw-combat">
+      <Card className="kw-combat__hero">
+        <div className="kw-combat__hero-head">
+          <div className="kw-combat__title-lockup">
+            <Swords aria-hidden="true" className="kw-combat__hero-icon" />
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-wine">Combat</p>
-              <h1 className="mt-1 text-3xl font-semibold text-ink">Tracker DT</h1>
-              <p className="mt-2 text-sm text-ink/62">
+              <Label>Combat</Label>
+              <h1>Tracker DT</h1>
+              <p>
                 Round {view.current.round} · DT {view.current.cyclicDT} · prochain{' '}
                 {view.nextActor?.name ?? 'NA'}
               </p>
             </div>
           </div>
-
-          <div className="grid grid-cols-3 gap-2 rounded-md bg-vellum/70 p-2 text-center">
-            <Metric label="DT" value={view.current.cyclicDT} />
-            <Metric label="Absolu" value={view.current.absoluteDT} />
-            <Metric label="Acteurs" value={view.roster.length} />
-          </div>
+          <Seal>DT {view.current.cyclicDT}</Seal>
         </div>
-      </section>
 
-      <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
-        <div className="flex items-center justify-between gap-3">
-          <h2 className="text-xl font-semibold text-ink">Timeline DT</h2>
-          <Hourglass aria-hidden="true" className="size-5 text-wine" />
+        <div className="kw-combat__metrics" aria-label="Etat du combat">
+          <Metric label="DT" value={view.current.cyclicDT} />
+          <Metric label="Absolu" value={view.current.absoluteDT} />
+          <Metric label="Acteurs" value={view.roster.length} />
         </div>
-        <div className="mt-4 grid gap-3 lg:grid-cols-3">
-          {view.timeline.map((row) => (
-            <TimelineCard key={row.id} row={row} />
-          ))}
-        </div>
-      </section>
+      </Card>
 
-      <div className="grid gap-5 xl:grid-cols-[1.15fr_0.85fr]">
-        <section className="grid gap-5">
+      <Card>
+        <div className="kw-combat__section-head">
+          <h2>Timeline DT</h2>
+          <Hourglass aria-hidden="true" className="kw-combat__section-icon" />
+        </div>
+        <TimelineDT
+          items={view.timeline.map((row) => ({
+            id: row.id,
+            current: row.active,
+            description: row.pendingCostDT
+              ? `${row.intent} · Coût DT ${row.pendingCostDT}`
+              : row.intent,
+            dt: row.absoluteDT,
+            label: row.name,
+            meta: `R${row.round} · DT ${row.cyclicDT} · +${row.relativeDT}`
+          }))}
+          label="Timeline DT"
+        />
+      </Card>
+
+      <div className="kw-combat__layout">
+        <section className="kw-combat__stack">
           <ActionPanel
             activeCombatant={activeCombatant}
             effectiveTargetId={effectiveTargetId}
@@ -196,7 +204,7 @@ export function CombatTracker({ combatantTemplates, initialState }: Readonly<Com
           />
         </section>
 
-        <aside className="grid content-start gap-5">
+        <aside className="kw-combat__stack">
           <AddCombatantPanel
             addTemplate={addTemplate}
             combatantTemplates={combatantTemplates}
@@ -230,48 +238,33 @@ function ActionPanel({
   viewNextActor: CombatTimelineRow | undefined;
 }>) {
   return (
-    <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+    <Card>
+      <div className="kw-combat__panel-head">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-forest">
-            Action active
-          </p>
-          <h2 className="mt-1 text-2xl font-semibold text-ink">{viewNextActor?.name ?? 'NA'}</h2>
-          <p className="mt-1 text-sm text-ink/58">{viewNextActor?.intent ?? 'Timeline vide'}</p>
+          <Label>Action active</Label>
+          <h2>{viewNextActor?.name ?? 'NA'}</h2>
+          <p>{viewNextActor?.intent ?? 'Timeline vide'}</p>
         </div>
-        <button
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-ink px-4 text-sm font-semibold text-paper transition hover:bg-ink/88 disabled:opacity-40"
-          disabled={!activeCombatant}
-          onClick={resolveNext}
-          type="button"
-        >
-          <Activity aria-hidden="true" className="size-4" />
+        <Button disabled={!activeCombatant} onClick={resolveNext}>
+          <Activity aria-hidden="true" className="kw-combat__button-icon" />
           Résoudre
-        </button>
+        </Button>
       </div>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
-        <label className="grid gap-2 text-sm font-semibold text-ink">
-          Cible
-          <select
-            className="min-h-11 rounded-md border border-ink/10 bg-paper px-3 font-medium outline-none ring-wine/20 transition focus:ring-4"
-            onChange={(event) => setTargetId(event.target.value)}
-            value={effectiveTargetId || targetId}
-          >
-            {targets.map((combatant) => (
-              <option key={combatant.id} value={combatant.id}>
-                {combatant.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <div className="grid grid-cols-5 gap-2 sm:self-end">
+      <div className="kw-combat__action-grid">
+        <SelectField
+          label="Cible"
+          onChange={(event) => setTargetId(event.target.value)}
+          options={targets.map((combatant) => ({ label: combatant.name, value: combatant.id }))}
+          value={effectiveTargetId || targetId}
+        />
+        <div className="kw-combat__action-buttons" aria-label="Actions disponibles">
           {(['attack', 'defense', 'spell', 'move', 'wait'] as CombatActionType[]).map((type) => (
             <ActionButton key={type} onClick={() => queueAction(type)} type={type} />
           ))}
         </div>
       </div>
-    </section>
+    </Card>
   );
 }
 
@@ -289,25 +282,23 @@ function RosterPanel({
   setDamageTargetId: (combatantId: string) => void;
 }>) {
   return (
-    <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+    <Card>
+      <div className="kw-combat__panel-head">
         <div>
-          <h2 className="text-xl font-semibold text-ink">Combattants</h2>
-          <p className="mt-1 text-sm text-ink/58">Vitalité, FV, réflexes et états actifs.</p>
+          <h2>Combattants</h2>
+          <p>Vitalité, FV, réflexes et états actifs.</p>
         </div>
-        <div className="grid gap-2 sm:grid-cols-[12rem_auto]">
-          <select
-            className="min-h-10 rounded-md border border-ink/10 bg-paper px-3 text-sm font-semibold outline-none ring-wine/20 transition focus:ring-4"
+        <div className="kw-combat__damage-tools">
+          <SelectField
+            label="Cible vitalité"
             onChange={(event) => setDamageTargetId(event.target.value)}
+            options={combatants.map((combatant) => ({
+              label: combatant.name,
+              value: combatant.id
+            }))}
             value={damageTargetId}
-          >
-            {combatants.map((combatant) => (
-              <option key={combatant.id} value={combatant.id}>
-                {combatant.name}
-              </option>
-            ))}
-          </select>
-          <div className="grid grid-cols-4 overflow-hidden rounded-md border border-ink/10 bg-white">
+          />
+          <div className="kw-combat__small-buttons" aria-label="Ajuster la vitalité">
             <SmallButton label="-3" onClick={() => damageTarget(3)} />
             <SmallButton label="-1" onClick={() => damageTarget(1)} />
             <SmallButton label="+1" onClick={() => damageTarget(-1)} />
@@ -316,12 +307,12 @@ function RosterPanel({
         </div>
       </div>
 
-      <div className="mt-4 grid gap-3 lg:grid-cols-2">
+      <div className="kw-combat__roster-grid">
         {combatants.map((combatant) => (
           <RosterCard combatant={combatant} key={combatant.id} removeCombatant={removeCombatant} />
         ))}
       </div>
-    </section>
+    </Card>
   );
 }
 
@@ -337,33 +328,27 @@ function AddCombatantPanel({
   templateId: string;
 }>) {
   return (
-    <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
-      <div className="flex items-center justify-between gap-3">
-        <h2 className="text-xl font-semibold text-ink">Renfort</h2>
-        <UserPlus aria-hidden="true" className="size-5 text-wine" />
+    <Card>
+      <div className="kw-combat__section-head">
+        <h2>Renfort</h2>
+        <UserPlus aria-hidden="true" className="kw-combat__section-icon" />
       </div>
-      <div className="mt-4 grid gap-2 sm:grid-cols-[1fr_auto]">
-        <select
-          className="min-h-11 rounded-md border border-ink/10 bg-paper px-3 text-sm font-semibold outline-none ring-wine/20 transition focus:ring-4"
+      <div className="kw-combat__add-grid">
+        <SelectField
+          label="Modele"
           onChange={(event) => setTemplateId(event.target.value)}
+          options={combatantTemplates.map((template) => ({
+            label: template.name,
+            value: template.id
+          }))}
           value={templateId}
-        >
-          {combatantTemplates.map((template) => (
-            <option key={template.id} value={template.id}>
-              {template.name}
-            </option>
-          ))}
-        </select>
-        <button
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-forest px-4 text-sm font-semibold text-paper transition hover:bg-forest/90"
-          onClick={addTemplate}
-          type="button"
-        >
-          <Plus aria-hidden="true" className="size-4" />
+        />
+        <Button onClick={addTemplate}>
+          <Plus aria-hidden="true" className="kw-combat__button-icon" />
           Ajouter
-        </button>
+        </Button>
       </div>
-    </section>
+    </Card>
   );
 }
 
@@ -371,54 +356,30 @@ function CombatLogPanel({ log }: Readonly<{ log: CombatLogRow[] }>) {
   const visibleLog = [...log].reverse().slice(0, 8);
 
   return (
-    <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
-      <div className="flex items-center justify-between gap-3">
-        <h2 className="text-xl font-semibold text-ink">Journal</h2>
-        <ScrollText aria-hidden="true" className="size-5 text-wine" />
+    <Card>
+      <div className="kw-combat__section-head">
+        <h2>Journal de bataille</h2>
       </div>
-      <div className="mt-4 grid gap-2">
+      <div className="kw-combat__log-list">
         {visibleLog.length === 0 && (
-          <p className="rounded-md bg-paper p-3 text-sm font-medium text-ink/58">
+          <Toast title="Registre vide" tone="neutral">
             Aucun événement.
-          </p>
+          </Toast>
         )}
         {visibleLog.map((event, index) => (
-          <article
-            className={`rounded-md border p-3 text-sm font-semibold ${logToneClasses[event.tone]}`}
+          <Toast
             key={`${event.atDT}-${event.label}-${index}`}
+            title={`DT ${event.atDT}`}
+            tone={logTone(event.tone)}
           >
-            <span className="font-mono">DT {event.atDT}</span>
-            <span className="ml-2">{event.label}</span>
-          </article>
+            <span>{event.label}</span>
+            {event.details?.length ? (
+              <span className="kw-combat__log-details">{event.details.join(' · ')}</span>
+            ) : null}
+          </Toast>
         ))}
       </div>
-    </section>
-  );
-}
-
-function TimelineCard({ row }: Readonly<{ row: CombatTimelineRow }>) {
-  return (
-    <article
-      className={[
-        'grid min-h-32 gap-3 rounded-md border p-4 shadow-sm',
-        row.active ? 'border-wine/40 bg-wine/10' : 'border-ink/10 bg-paper'
-      ].join(' ')}
-    >
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2 font-mono text-xl font-semibold text-wine">
-          <Hourglass aria-hidden="true" className="size-4" />
-          DT {row.cyclicDT}
-        </div>
-        <span className="rounded-md bg-white/70 px-2 py-1 text-xs font-semibold text-ink/58">
-          +{row.relativeDT}
-        </span>
-      </div>
-      <div>
-        <h3 className="text-lg font-semibold text-ink">{row.name}</h3>
-        <p className="mt-1 text-sm text-ink/58">{row.intent}</p>
-      </div>
-      <VitalityBar percent={row.vitalityPercent} state={row.vitalityState} />
-    </article>
+    </Card>
   );
 }
 
@@ -430,32 +391,40 @@ function RosterCard({
   removeCombatant: (combatantId: string) => void;
 }>) {
   return (
-    <article className="grid gap-3 rounded-md border border-ink/10 bg-paper p-4">
-      <div className="flex items-start justify-between gap-3">
+    <article className="kw-combat__roster-card">
+      <div className="kw-combat__roster-head">
         <div>
-          <h3 className="font-semibold text-ink">{combatant.name}</h3>
-          <p className="mt-1 text-sm text-ink/56">
+          <h3>{combatant.name}</h3>
+          <p>
             FV {combatant.speedFactor} · Réflexes {combatant.reflexes} · prochain DT{' '}
             {combatant.cyclicDT}
           </p>
         </div>
         <button
-          className="grid size-9 place-items-center rounded-md text-ink/58 transition hover:bg-wine/10 hover:text-wine"
+          aria-label={`Retirer ${combatant.name}`}
+          className="kw-combat__icon-button"
           onClick={() => removeCombatant(combatant.id)}
           title={`Retirer ${combatant.name}`}
           type="button"
         >
-          <Trash2 aria-hidden="true" className="size-4" />
+          <Trash2 aria-hidden="true" className="kw-combat__icon" />
         </button>
       </div>
-      <VitalityBar percent={combatant.vitalityPercent} state={combatant.vitalityState} />
-      <div className="flex flex-wrap gap-2">
-        <Pill>
-          <HeartPulse aria-hidden="true" className="size-3.5" />
+      <ProgressBar
+        label={`Vitalité ${combatant.name}`}
+        max={combatant.vitality.max}
+        tone={vitalityTone(combatant.vitalityState)}
+        value={combatant.vitality.current}
+      />
+      <div className="kw-combat__pill-row">
+        <Badge tone="info">
+          <HeartPulse aria-hidden="true" className="kw-combat__badge-icon" />
           {combatant.vitality.current}/{combatant.vitality.max}
-        </Pill>
+        </Badge>
         {combatant.statusLabels.map((status) => (
-          <Pill key={status}>{status}</Pill>
+          <Badge key={status} tone={statusTone(status)}>
+            {status}
+          </Badge>
         ))}
       </div>
     </article>
@@ -473,12 +442,13 @@ function ActionButton({
 
   return (
     <button
-      className="grid min-h-11 min-w-11 place-items-center rounded-md bg-vellum text-ink transition hover:bg-paper"
+      aria-label={actionLabels[type]}
+      className="kw-combat__icon-button"
       onClick={onClick}
       title={actionLabels[type]}
       type="button"
     >
-      <Icon aria-hidden="true" className="size-4" />
+      <Icon aria-hidden="true" className="kw-combat__icon" />
     </button>
   );
 }
@@ -493,12 +463,8 @@ function SmallButton({
   const Icon = label.startsWith('+') ? Plus : Minus;
 
   return (
-    <button
-      className="inline-flex min-h-10 items-center justify-center gap-1 border-r border-ink/10 px-2 text-sm font-semibold text-ink transition last:border-r-0 hover:bg-vellum"
-      onClick={onClick}
-      type="button"
-    >
-      <Icon aria-hidden="true" className="size-3.5" />
+    <button className="kw-combat__small-button" onClick={onClick} type="button">
+      <Icon aria-hidden="true" className="kw-combat__small-icon" />
       {label.replace(/^[-+]/, '')}
     </button>
   );
@@ -506,41 +472,27 @@ function SmallButton({
 
 function Metric({ label, value }: Readonly<{ label: string; value: number }>) {
   return (
-    <div className="min-w-20 rounded-md bg-white/75 px-3 py-2">
-      <p className="text-xs font-semibold uppercase tracking-[0.12em] text-ink/50">{label}</p>
-      <p className="mt-1 text-xl font-semibold text-ink">{value}</p>
+    <div className="kw-combat__metric">
+      <span>{label}</span>
+      <strong>{value}</strong>
     </div>
   );
 }
 
-function VitalityBar({
-  percent,
-  state
-}: Readonly<{
-  percent: number;
-  state: VitalityState;
-}>) {
-  return (
-    <div className="grid gap-1.5">
-      <div className="h-2 overflow-hidden rounded-full bg-ink/10">
-        <div
-          className={`h-full rounded-full ${vitalityClasses[state]}`}
-          style={{ width: `${Math.max(0, Math.min(100, percent))}%` }}
-        />
-      </div>
-      <p className="text-xs font-semibold uppercase tracking-[0.12em] text-ink/46">
-        Vitalité {percent}%
-      </p>
-    </div>
-  );
+function vitalityTone(state: VitalityState): ProgressTone {
+  if (state === 'dead' || state === 'critical') return 'danger';
+  if (state === 'wounded') return 'warn';
+  return 'success';
 }
 
-function Pill({ children }: Readonly<{ children: ReactNode }>) {
-  return (
-    <span className="inline-flex min-h-7 items-center gap-1.5 rounded-md bg-white/70 px-2 text-xs font-semibold text-ink/62">
-      {children}
-    </span>
-  );
+function statusTone(status: string): BadgeTone {
+  if (status === 'Mort' || status === 'Inconscient') return 'danger';
+  if (status === 'Saignement' || status === 'Étourdi') return 'warn';
+  return 'neutral';
+}
+
+function logTone(tone: CombatLogRow['tone']): ToastTone {
+  return tone === 'warning' ? 'warn' : tone;
 }
 
 function buildAction(type: CombatActionType, actor: Combatant, targetId: string): CombatAction {

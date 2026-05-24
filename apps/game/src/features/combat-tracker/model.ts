@@ -31,6 +31,7 @@ export interface CombatTimelineRow {
   id: string;
   intent: string;
   name: string;
+  pendingCostDT?: number;
   relativeDT: number;
   round: number;
   statusLabels: string[];
@@ -49,6 +50,7 @@ export interface CombatRosterRow extends CombatTimelineRow {
 
 export interface CombatLogRow {
   atDT: number;
+  details?: string[];
   label: string;
   tone: CombatLogTone;
 }
@@ -178,14 +180,23 @@ export function formatCombatEvent(event: CombatEvent, combatants: Combatant[]): 
 
   if (event.type === 'attack_resolved') {
     const successes = event.successes ?? 0;
+    const criticalFailure = event.attackRoll?.isCriticalFailure ?? false;
+    const criticalSuffix = criticalFailure
+      ? ` · échec critique D100 ${event.attackRoll?.criticalFailureSeverity ?? '—'}`
+      : '';
+    const details = [
+      rollDetails('Attaque', event.attackRoll),
+      rollDetails('Défense', event.defenseRoll)
+    ].filter((detail): detail is string => Boolean(detail));
 
     return {
       atDT: event.atDT,
+      details: details.length > 0 ? details : undefined,
       label:
         successes > 0
-          ? `${actor ?? 'Un combattant'} touche ${target ?? 'la cible'} : ${successes} succès`
-          : `${actor ?? 'Un combattant'} rate ${target ?? 'la cible'}`,
-      tone: successes > 0 ? 'success' : 'warning'
+          ? `${actor ?? 'Un combattant'} touche ${target ?? 'la cible'} : ${successes} succès${timingSuffix(event)}`
+          : `${actor ?? 'Un combattant'} rate ${target ?? 'la cible'}${criticalSuffix}${timingSuffix(event)}`,
+      tone: criticalFailure ? 'danger' : successes > 0 ? 'success' : 'warning'
     };
   }
 
@@ -221,7 +232,7 @@ export function formatCombatEvent(event: CombatEvent, combatants: Combatant[]): 
 
   return {
     atDT: event.atDT,
-    label: `${actor ?? 'Un combattant'} résout ${event.actionType ?? 'action'}`,
+    label: `${actor ?? 'Un combattant'} résout ${event.actionType ? actionLabels[event.actionType] : 'action'}${timingSuffix(event)}`,
     tone: 'neutral'
   };
 }
@@ -238,6 +249,7 @@ function toTimelineRow(
     id: combatant.id,
     intent: actionIntent(combatant.pendingAction),
     name: combatant.name,
+    pendingCostDT: pendingActionCostDT(combatant),
     relativeDT: Math.max(0, combatant.nextActionAt - state.currentDT),
     round: roundForDT(combatant.nextActionAt),
     statusLabels: combatant.statuses.map((status) => statusLabel(status.id)),
@@ -256,6 +268,30 @@ function actionIntent(action: CombatAction | undefined): string {
   }
 
   return actionLabels[action.type];
+}
+
+function pendingActionCostDT(combatant: Combatant): number | undefined {
+  if (!combatant.pendingAction) {
+    return undefined;
+  }
+
+  return combatant.pendingAction.costDT ?? combatant.speedFactor;
+}
+
+function timingSuffix(event: CombatEvent): string {
+  if (event.costDT === undefined || event.nextActionAt === undefined) {
+    return '';
+  }
+
+  return ` · coût DT ${event.costDT} -> prochain DT ${event.nextActionAt}`;
+}
+
+function rollDetails(label: string, roll: CombatEvent['attackRoll']): string | undefined {
+  if (!roll) {
+    return undefined;
+  }
+
+  return `${label} D10: ${roll.rolls.length > 0 ? roll.rolls.join(', ') : 'aucun dé'}`;
 }
 
 function vitalityPercent(combatant: Combatant): number {
