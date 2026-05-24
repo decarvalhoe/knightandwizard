@@ -13133,9 +13133,18 @@ sources:
     domains: ["project-governance"]
     contains: ["project_documentation"]
     notes: "Project documentation source."
+  - id: "docs-plan-phase-v0-4-rc"
+    path: "docs/plan/PHASE-v0.4-RC.md"
+    sha256: "087d61943fef32d9ac1f6201d021f8ec1a380843beffb1c11d2438144b38540a"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-plan-roadmap"
     path: "docs/plan/ROADMAP.md"
-    sha256: "f8d50ea37b0518b50a9e3474cb3edf88cad6b745765a1f998d65b02c19bdf1d9"
+    sha256: "8fd4b914b8dd497ba6744744b1a4f87a09c6528ab2bfefd44b8ae499eaa25d12"
     source_type: generated_doc
     priority: 40
     status: active
