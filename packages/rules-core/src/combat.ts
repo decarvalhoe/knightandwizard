@@ -90,6 +90,8 @@ export interface CombatEvent {
   actorId?: string;
   targetId?: string;
   actionType?: CombatActionType;
+  costDT?: number;
+  nextActionAt?: number;
   damage?: number;
   preventedDamage?: number;
   finalDamage?: number;
@@ -192,7 +194,9 @@ export function resolveNextAction(
   const timeline = sortTimeline(state.timeline);
   const actor = timeline[0];
   const action = actor.pendingAction ?? { type: 'wait' };
+  const costDT = actionCostDT(actor, action);
   const currentDT = actor.nextActionAt;
+  const nextActionAt = currentDT + costDT;
   const activeState: CombatState = {
     ...state,
     currentDT,
@@ -202,7 +206,7 @@ export function resolveNextAction(
 
   if (action.type === 'attack') {
     return rescheduleActor(
-      resolveAttack(activeState, actor, action, options, config),
+      resolveAttack(activeState, actor, action, { costDT, nextActionAt }, options, config),
       actor.id,
       action
     );
@@ -212,7 +216,9 @@ export function resolveNextAction(
     type: 'action_resolved',
     actorId: actor.id,
     actionType: action.type,
-    atDT: currentDT
+    atDT: currentDT,
+    costDT,
+    nextActionAt
   };
 
   return rescheduleActor(
@@ -347,6 +353,7 @@ function resolveAttack(
   state: CombatState,
   actor: Combatant,
   action: AttackAction,
+  timing: { costDT: number; nextActionAt: number },
   options: CombatResolutionOptions,
   config: RulesConfig
 ): CombatState {
@@ -362,6 +369,8 @@ function resolveAttack(
     actorId: actor.id,
     targetId: action.targetId,
     actionType: action.type,
+    costDT: timing.costDT,
+    nextActionAt: timing.nextActionAt,
     successes,
     attackRoll,
     defenseRoll
@@ -380,13 +389,17 @@ function resolveAttack(
 
 function rescheduleActor(state: CombatState, actorId: string, action: CombatAction): CombatState {
   const actor = findCombatant(state, actorId);
-  const delay = action.costDT ?? actor.speedFactor;
+  const delay = actionCostDT(actor, action);
 
   return replaceCombatant(state, {
     ...actor,
     nextActionAt: state.currentDT + delay,
     pendingAction: undefined
   });
+}
+
+function actionCostDT(actor: Combatant, action: CombatAction): number {
+  return action.costDT ?? actor.speedFactor;
 }
 
 function normalizeCombatant(

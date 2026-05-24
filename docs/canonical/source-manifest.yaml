@@ -13288,7 +13288,7 @@ sources:
     notes: "Canonical rule document."
   - id: "docs-rules-09-combat"
     path: "docs/rules/09-combat.md"
-    sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+    sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     source_type: canonical_rule
     priority: 100
     status: active
