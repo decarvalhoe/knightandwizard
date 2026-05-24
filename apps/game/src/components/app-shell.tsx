@@ -7,6 +7,7 @@ import {
   FileArchive,
   LayoutDashboard,
   LibraryBig,
+  Map,
   Moon,
   PenLine,
   ScrollText,
@@ -40,6 +41,7 @@ const navIcons: Record<string, LucideIcon> = {
   '/dice': Dices,
   '/rules': FileArchive,
   '/bibliotheque': LibraryBig,
+  '/cartulaire': Map,
   '/design-proto': BookOpen
 };
 

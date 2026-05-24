@@ -18,6 +18,7 @@ describe('surface theme contract', () => {
     expect(resolveSkinForPath('/dice')).toBe('tripot');
     expect(resolveSkinForPath('/rules')).toBe('archives');
     expect(resolveSkinForPath('/bibliotheque')).toBe('bibliotheque');
+    expect(resolveSkinForPath('/cartulaire')).toBe('armorial');
     expect(resolveSkinForPath('/design-proto')).toBe('moderne');
   });
 
