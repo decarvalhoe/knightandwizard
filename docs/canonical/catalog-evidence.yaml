@@ -1,0 +1,553 @@
+# Declarative implementation evidence for catalog families.
+#
+# Schema:
+#   <catalog source path>:
+#     <layer>:
+#       status: covered | not_applicable
+#       evidence: "<honest human-readable evidence or not_applicable reason>"
+#       files: ["repo/path.ts"]        # optional implementation citations
+#       tests: ["repo/path.test.ts"]   # optional verification citations
+#     unit_types:                      # optional scopes for mixed catalogs
+#       <unit_type>:
+#         ref_pattern: "^entries\\.\\d+$"  # optional; matches sources[].ref for this catalog
+#         <layer>:
+#           status: covered | not_applicable
+#           evidence: "<same layer schema as above>"
+#
+# Family evidence applies to units whose sources[].path equals the catalog path.
+# Top-level layers apply to every matching unit. unit_types layers apply only to
+# matching unit_type rows, and ref_pattern narrows that unit_type scope by source ref.
+# Unit-level rule-evidence.yaml entries still override these family layers.
+#
+# Rules:
+# - Do not declare partial here. Absence means "still pending" in the generated matrix.
+# - Unknown catalog paths, unit_type scopes with zero matches, unknown layers, and unknown
+#   evidence fields are generator errors.
+# - Declare covered only when the cited implementation is true for every unit in the scope.
+
+data/catalogs/armes.yaml:
+  unit_types:
+    weapon:
+      zod_schema:
+        status: covered
+        evidence: 'WeaponsCatalogSchema validates every weapons entry through loadValidatedCatalog/loadValidatedCatalogs.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: covered
+        evidence: 'Character creation and character sheet read models map every catalog weapon into equipment picker options consumed by the UI.'
+        files:
+          - 'apps/game/src/features/character-creation/read-models.ts'
+          - 'apps/game/src/features/character-creation/CharacterCreationWizard.tsx'
+          - 'apps/game/src/features/character-sheet/read-models.ts'
+          - 'apps/game/src/features/character-sheet/model.ts'
+          - 'apps/game/src/features/character-sheet/CharacterSheet.tsx'
+        tests:
+          - 'apps/game/src/features/character-sheet/read-models.test.ts'
+          - 'tests/e2e/app-features.spec.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate armes.yaml counts through loadValidatedCatalog, and server tests exercise priority catalog DB/API exposure.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+
+data/catalogs/bestiaire.yaml:
+  unit_types:
+    creature:
+      zod_schema:
+        status: covered
+        evidence: 'BestiaryCatalogSchema validates every creatures entry through loadValidatedCatalog/loadValidatedCatalogs.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: covered
+        evidence: 'The bestiaire read model and surface map every active creature entry into the species index and detail view; all bestiaire creatures are active.'
+        files:
+          - 'apps/game/src/features/bestiaire/read-models.ts'
+          - 'apps/game/src/features/bestiaire/model.ts'
+          - 'apps/game/src/features/bestiaire/BestiaireSurface.tsx'
+        tests:
+          - 'apps/game/src/features/bestiaire/model.test.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'apps/game/src/features/bestiaire/model.test.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+    source_ref:
+      zod_schema:
+        status: covered
+        evidence: 'BestiaryEntrySchema validates source_refs with SourceRefSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: not_applicable
+        evidence: 'Source-ref units are trace metadata for catalog entries; they have no standalone product UI.'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+
+data/catalogs/races.yaml:
+  unit_types:
+    race:
+      zod_schema:
+        status: covered
+        evidence: 'RacesCatalogSchema validates every races entry through loadValidatedCatalog/loadValidatedCatalogs.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate races.yaml counts, source refs and forbidden demo IDs.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+    source_ref:
+      zod_schema:
+        status: covered
+        evidence: 'RaceSchema validates source_refs with SourceRefSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: not_applicable
+        evidence: 'Source-ref units are trace metadata for catalog entries; they have no standalone product UI.'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests require race entries to carry source refs and validate them through loadValidatedCatalog.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+
+data/catalogs/protections.yaml:
+  unit_types:
+    armor_piece:
+      zod_schema:
+        status: covered
+        evidence: 'ProtectionsCatalogSchema validates every armor_pieces entry through ArmorPieceSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: covered
+        evidence: 'Character creation and character sheet read models map every armor piece into equipment picker options consumed by the UI.'
+        files:
+          - 'apps/game/src/features/character-creation/read-models.ts'
+          - 'apps/game/src/features/character-creation/CharacterCreationWizard.tsx'
+          - 'apps/game/src/features/character-sheet/read-models.ts'
+          - 'apps/game/src/features/character-sheet/model.ts'
+          - 'apps/game/src/features/character-sheet/CharacterSheet.tsx'
+        tests:
+          - 'apps/game/src/features/character-sheet/read-models.test.ts'
+          - 'tests/e2e/app-features.spec.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate protections.yaml armor_pieces counts, and server tests exercise priority catalog DB/API exposure.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+    shield:
+      zod_schema:
+        status: covered
+        evidence: 'ProtectionsCatalogSchema validates every shields entry through ShieldSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: covered
+        evidence: 'Character creation and character sheet read models map every shield into equipment picker options consumed by the UI.'
+        files:
+          - 'apps/game/src/features/character-creation/read-models.ts'
+          - 'apps/game/src/features/character-creation/CharacterCreationWizard.tsx'
+          - 'apps/game/src/features/character-sheet/read-models.ts'
+          - 'apps/game/src/features/character-sheet/model.ts'
+          - 'apps/game/src/features/character-sheet/CharacterSheet.tsx'
+        tests:
+          - 'apps/game/src/features/character-sheet/read-models.test.ts'
+          - 'tests/e2e/app-features.spec.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate protections.yaml shields counts, and server tests exercise priority catalog DB/API exposure.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+
+data/catalogs/potions.yaml:
+  unit_types:
+    potion:
+      zod_schema:
+        status: covered
+        evidence: 'PotionsCatalogSchema validates every potions entry through PotionSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: covered
+        evidence: 'Character creation and character sheet read models map every potion into equipment picker options consumed by the UI.'
+        files:
+          - 'apps/game/src/features/character-creation/read-models.ts'
+          - 'apps/game/src/features/character-creation/CharacterCreationWizard.tsx'
+          - 'apps/game/src/features/character-sheet/read-models.ts'
+          - 'apps/game/src/features/character-sheet/model.ts'
+          - 'apps/game/src/features/character-sheet/CharacterSheet.tsx'
+        tests:
+          - 'apps/game/src/features/character-sheet/read-models.test.ts'
+          - 'tests/e2e/app-features.spec.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate potions.yaml counts, and server tests exercise priority catalog DB/API exposure.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+    ingredient:
+      zod_schema:
+        status: covered
+        evidence: 'PotionSchema validates required ingredients with PotionIngredientSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate potions.yaml through loadValidatedCatalog.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+
+data/catalogs/nations.yaml:
+  unit_types:
+    region:
+      zod_schema:
+        status: covered
+        evidence: 'NationsCatalogSchema validates every regions entry through NationSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: covered
+        evidence: 'The cartulaire read model and surface map every nation region into the armorial nation grid and summary.'
+        files:
+          - 'apps/game/src/features/cartulaire/read-models.ts'
+          - 'apps/game/src/features/cartulaire/model.ts'
+          - 'apps/game/src/features/cartulaire/CartulaireSurface.tsx'
+        tests:
+          - 'apps/game/src/features/cartulaire/model.test.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate nations.yaml counts, and cartulaire model tests exercise the UI-facing read model.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'apps/game/src/features/cartulaire/model.test.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+
+data/catalogs/organisations.yaml:
+  unit_types:
+    organisation:
+      zod_schema:
+        status: covered
+        evidence: 'OrganisationsCatalogSchema validates every factions entry through OrganisationSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate organisations.yaml counts, and server tests exercise priority catalog DB/API exposure.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+
+data/catalogs/religions.yaml:
+  unit_types:
+    religion:
+      zod_schema:
+        status: covered
+        evidence: 'ReligionsCatalogSchema validates every religions entry through ReligionSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate religions.yaml counts, and server tests exercise priority catalog DB/API exposure.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+
+data/catalogs/competences.yaml:
+  unit_types:
+    skill:
+      zod_schema:
+        status: covered
+        evidence: 'SkillsCatalogSchema validates every skills entry through SkillSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: covered
+        evidence: 'Character creation maps every active skill into stepper controls; all competences entries are active.'
+        files:
+          - 'apps/game/src/features/character-creation/read-models.ts'
+          - 'apps/game/src/features/character-creation/CharacterCreationWizard.tsx'
+        tests:
+          - 'tests/e2e/app-features.spec.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate competences.yaml counts and relationships, and character creation e2e exercises skill controls.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'tests/e2e/app-features.spec.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+    source_ref:
+      zod_schema:
+        status: covered
+        evidence: 'SkillSchema validates source_refs with SourceRefSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: not_applicable
+        evidence: 'Source-ref units are trace metadata for catalog entries; they have no standalone product UI.'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests require competences entries to carry source refs and validate them through loadValidatedCatalog.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+
+data/catalogs/orientations.yaml:
+  unit_types:
+    orientation:
+      zod_schema:
+        status: covered
+        evidence: 'OrientationsCatalogSchema validates every orientations entry through OrientationSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: covered
+        evidence: 'Character creation maps every active orientation into selectable path controls; all orientations entries are active.'
+        files:
+          - 'apps/game/src/features/character-creation/read-models.ts'
+          - 'apps/game/src/features/character-creation/CharacterCreationWizard.tsx'
+        tests:
+          - 'tests/e2e/app-features.spec.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate orientations.yaml counts and magical flags, and character creation e2e exercises path controls.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'tests/e2e/app-features.spec.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+    source_ref:
+      zod_schema:
+        status: covered
+        evidence: 'OrientationSchema validates source_refs with SourceRefSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: not_applicable
+        evidence: 'Source-ref units are trace metadata for catalog entries; they have no standalone product UI.'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests require orientations entries to carry source refs and validate them through loadValidatedCatalog.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+
+data/catalogs/classes.yaml:
+  unit_types:
+    classe:
+      zod_schema:
+        status: covered
+        evidence: 'ClassesCatalogSchema validates every classes entry through ClassSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: covered
+        evidence: 'Character creation maps active classes into selectable path controls by orientation; all classes entries are active.'
+        files:
+          - 'apps/game/src/features/character-creation/read-models.ts'
+          - 'apps/game/src/features/character-creation/CharacterCreationWizard.tsx'
+        tests:
+          - 'tests/e2e/app-features.spec.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate classes.yaml counts, orientation links and primary skills, and character creation e2e exercises path controls.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'tests/e2e/app-features.spec.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+    source_ref:
+      zod_schema:
+        status: covered
+        evidence: 'ClassSchema validates source_refs with SourceRefSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: not_applicable
+        evidence: 'Source-ref units are trace metadata for catalog entries; they have no standalone product UI.'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate classes.yaml through loadValidatedCatalog.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+
+data/catalogs/magic-schools.yaml:
+  unit_types:
+    school:
+      zod_schema:
+        status: covered
+        evidence: 'MagicSchoolsCatalogSchema validates every schools entry through MagicSchoolSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate magic-schools.yaml counts and specialist class links.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+    source_ref:
+      zod_schema:
+        status: covered
+        evidence: 'MagicSchoolSchema validates source_refs with SourceRefSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: not_applicable
+        evidence: 'Source-ref units are trace metadata for catalog entries; they have no standalone product UI.'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate magic-schools.yaml through loadValidatedCatalog.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+
+data/catalogs/spells.yaml:
+  unit_types:
+    spell:
+      zod_schema:
+        status: covered
+        evidence: 'SpellsCatalogSchema validates every spells entry through SpellSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: covered
+        evidence: 'Character creation maps every active spell into spell point controls; all spells entries are active.'
+        files:
+          - 'apps/game/src/features/character-creation/read-models.ts'
+          - 'apps/game/src/features/character-creation/CharacterCreationWizard.tsx'
+        tests:
+          - 'tests/e2e/app-features.spec.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate spells.yaml counts and school links, and character creation e2e exercises spell controls.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'tests/e2e/app-features.spec.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+    source_ref:
+      zod_schema:
+        status: covered
+        evidence: 'SpellSchema validates source_refs with SourceRefSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: not_applicable
+        evidence: 'Source-ref units are trace metadata for catalog entries; they have no standalone product UI.'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate spells.yaml through loadValidatedCatalog.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+
+data/catalogs/legacy-characters.yaml:
+  unit_types:
+    character:
+      zod_schema:
+        status: covered
+        evidence: 'LegacyCharactersCatalogSchema validates every characters entry through LegacyCharacterSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate the 96 legacy characters as raw_reference_only with traceable source refs.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+          - 'apps/server/src/catalogs/read-models.test.ts'
+          - 'apps/server/src/routes/catalogs.test.ts'
+    source_ref:
+      zod_schema:
+        status: covered
+        evidence: 'LegacyCharacterSchema validates source_refs with SourceRefSchema.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      ui:
+        status: not_applicable
+        evidence: 'Source-ref units are trace metadata for catalog entries; they have no standalone product UI.'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate legacy-characters.yaml source refs through loadValidatedCatalog.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+
+data/catalogs/atouts.yaml:
+  unit_types:
+    asset:
+      ref_pattern: '^atouts\.\d+$'
+      zod_schema:
+        status: covered
+        evidence: 'AtoutsCatalogSchema validates every top-level atouts entry through AtoutSchema; ref_pattern excludes nested source_ref metadata units currently emitted with the same unit_type.'
+        files:
+          - 'packages/catalogs/src/schemas.ts'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'
+      tests:
+        status: covered
+        evidence: 'Catalog schema tests validate atouts.yaml counts, activation/scope partitions and source-derived race relations.'
+        tests:
+          - 'packages/catalogs/src/schemas.test.ts'

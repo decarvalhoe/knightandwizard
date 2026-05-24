@@ -102,6 +102,7 @@ const sourceManifestPath = `${generatedDir}/source-manifest.yaml`;
 const canonicalMatrixPath = `${generatedDir}/canonical-matrix.yaml`;
 const coverageReportPath = `${generatedDir}/coverage-report.md`;
 const ruleEvidencePath = `${generatedDir}/rule-evidence.yaml`;
+const catalogEvidencePath = `${generatedDir}/catalog-evidence.yaml`;
 const relationalReadModelCatalogPaths = new Set([
   'data/catalogs/armes.yaml',
   'data/catalogs/bestiaire.yaml',
@@ -168,6 +169,16 @@ interface RuleEvidenceLayer {
 interface RuleEvidenceEntry {
   ambiguity_ref?: string | null;
   layers: Partial<Record<EvidenceLayerName, RuleEvidenceLayer>>;
+}
+
+interface CatalogEvidenceEntry {
+  layers: Partial<Record<EvidenceLayerName, RuleEvidenceLayer>>;
+  unitTypeScopes: Map<string, CatalogEvidenceScope>;
+}
+
+interface CatalogEvidenceScope {
+  layers: Partial<Record<EvidenceLayerName, RuleEvidenceLayer>>;
+  refPattern?: RegExp;
 }
 
 export async function buildSourceManifest(
@@ -251,15 +262,142 @@ export async function buildCanonicalMatrix(
     }
   }
 
+  const catalogEvidence = await loadCatalogEvidence(options);
   const ruleEvidence = await loadRuleEvidence(options);
+  const unitList = [...units.values()];
+  validateCatalogEvidenceMatches(catalogEvidence, unitList);
   validateRuleEvidenceUnitIds(ruleEvidence, new Set(units.keys()));
 
   return {
     version: 1,
-    units: [...units.values()]
-      .map((unit) => applyRuleImplementationEvidence(unit, ruleEvidence))
+    units: unitList
+      .map((unit) => applyCatalogImplementationEvidence(unit, catalogEvidence))
+      .map((unit) => applyImplementationEvidence(unit, ruleEvidence.get(unit.unit_id)))
       .sort((left, right) => left.unit_id.localeCompare(right.unit_id))
   };
+}
+
+async function loadCatalogEvidence(
+  options: CanonicalBuildOptions = {}
+): Promise<Map<string, CatalogEvidenceEntry>> {
+  let text: string;
+  try {
+    text = await readFile(join(options.repoRoot ?? repoRoot, catalogEvidencePath), 'utf8');
+  } catch (error: unknown) {
+    if (isNodeError(error) && error.code === 'ENOENT') return new Map();
+    throw error;
+  }
+
+  const parsed = load(text);
+  if (parsed === null || parsed === undefined) return new Map();
+  if (!isRecord(parsed)) {
+    throw new Error(`${catalogEvidencePath} must be a mapping keyed by catalog source path`);
+  }
+
+  return new Map(
+    Object.entries(parsed).map(([sourcePath, value]) => [
+      sourcePath,
+      parseCatalogEvidenceEntry(sourcePath, value)
+    ])
+  );
+}
+
+function parseCatalogEvidenceEntry(sourcePath: string, value: unknown): CatalogEvidenceEntry {
+  if (!isRecord(value)) {
+    throw new Error(`${catalogEvidencePath} entry ${sourcePath} must be a mapping`);
+  }
+
+  const layers: Partial<Record<EvidenceLayerName, RuleEvidenceLayer>> = {};
+  const unitTypeScopes = new Map<string, CatalogEvidenceScope>();
+
+  for (const [key, rawValue] of Object.entries(value)) {
+    if (key === 'unit_types') {
+      if (!isRecord(rawValue)) {
+        throw new Error(`${catalogEvidencePath} entry ${sourcePath}.unit_types must be a mapping`);
+      }
+
+      for (const [unitType, unitTypeValue] of Object.entries(rawValue)) {
+        unitTypeScopes.set(
+          unitType,
+          parseCatalogEvidenceUnitType(sourcePath, unitType, unitTypeValue)
+        );
+      }
+      continue;
+    }
+
+    if (!evidenceLayerNameSet.has(key)) {
+      throw new Error(
+        `${catalogEvidencePath} entry ${sourcePath}.${key} is not a known matrix layer or unit_types`
+      );
+    }
+
+    layers[key as EvidenceLayerName] = parseEvidenceLayer(
+      catalogEvidencePath,
+      sourcePath,
+      key,
+      rawValue
+    );
+  }
+
+  if (Object.keys(layers).length === 0 && unitTypeScopes.size === 0) {
+    throw new Error(`${catalogEvidencePath} entry ${sourcePath} must declare at least one layer`);
+  }
+
+  return { layers, unitTypeScopes };
+}
+
+function parseCatalogEvidenceUnitType(
+  sourcePath: string,
+  unitType: string,
+  value: unknown
+): CatalogEvidenceScope {
+  if (!isRecord(value)) {
+    throw new Error(
+      `${catalogEvidencePath} entry ${sourcePath}.unit_types.${unitType} must be a mapping`
+    );
+  }
+
+  const layers: Partial<Record<EvidenceLayerName, RuleEvidenceLayer>> = {};
+  let refPattern: RegExp | undefined;
+  for (const [key, rawValue] of Object.entries(value)) {
+    if (key === 'ref_pattern') {
+      if (typeof rawValue !== 'string' || rawValue.trim().length === 0) {
+        throw new Error(
+          `${catalogEvidencePath} entry ${sourcePath}.unit_types.${unitType}.ref_pattern must be a string`
+        );
+      }
+      try {
+        refPattern = new RegExp(rawValue);
+      } catch (error: unknown) {
+        throw new Error(
+          `${catalogEvidencePath} entry ${sourcePath}.unit_types.${unitType}.ref_pattern is not a valid regular expression: ${error instanceof Error ? error.message : String(error)}`,
+          { cause: error }
+        );
+      }
+      continue;
+    }
+
+    if (!evidenceLayerNameSet.has(key)) {
+      throw new Error(
+        `${catalogEvidencePath} entry ${sourcePath}.unit_types.${unitType}.${key} is not a known matrix layer or ref_pattern`
+      );
+    }
+
+    layers[key as EvidenceLayerName] = parseEvidenceLayer(
+      catalogEvidencePath,
+      `${sourcePath}.unit_types.${unitType}`,
+      key,
+      rawValue
+    );
+  }
+
+  if (Object.keys(layers).length === 0) {
+    throw new Error(
+      `${catalogEvidencePath} entry ${sourcePath}.unit_types.${unitType} must declare at least one layer`
+    );
+  }
+
+  return { layers, refPattern };
 }
 
 async function loadRuleEvidence(
@@ -307,7 +445,7 @@ function parseRuleEvidenceEntry(unitId: string, value: unknown): RuleEvidenceEnt
       throw new Error(`${ruleEvidencePath} entry ${unitId}.${key} is not a known matrix layer`);
     }
 
-    layers[key as EvidenceLayerName] = parseRuleEvidenceLayer(unitId, key, rawValue);
+    layers[key as EvidenceLayerName] = parseEvidenceLayer(ruleEvidencePath, unitId, key, rawValue);
   }
 
   if (Object.keys(layers).length === 0) {
@@ -317,19 +455,20 @@ function parseRuleEvidenceEntry(unitId: string, value: unknown): RuleEvidenceEnt
   return { ambiguity_ref: ambiguityRef, layers };
 }
 
-function parseRuleEvidenceLayer(
-  unitId: string,
+function parseEvidenceLayer(
+  evidencePath: string,
+  entryName: string,
   layerName: string,
   value: unknown
 ): RuleEvidenceLayer {
   if (!isRecord(value)) {
-    throw new Error(`${ruleEvidencePath} entry ${unitId}.${layerName} must be a mapping`);
+    throw new Error(`${evidencePath} entry ${entryName}.${layerName} must be a mapping`);
   }
 
   for (const key of Object.keys(value)) {
     if (!['status', 'evidence', 'files', 'tests'].includes(key)) {
       throw new Error(
-        `${ruleEvidencePath} entry ${unitId}.${layerName}.${key} is not a supported evidence field`
+        `${evidencePath} entry ${entryName}.${layerName}.${key} is not a supported evidence field`
       );
     }
   }
@@ -337,21 +476,54 @@ function parseRuleEvidenceLayer(
   const status = value.status;
   if (status !== 'covered' && status !== 'not_applicable') {
     throw new Error(
-      `${ruleEvidencePath} entry ${unitId}.${layerName}.status must be covered or not_applicable`
+      `${evidencePath} entry ${entryName}.${layerName}.status must be covered or not_applicable`
     );
   }
 
   const evidence = value.evidence;
   if (typeof evidence !== 'string' || evidence.trim().length === 0) {
-    throw new Error(`${ruleEvidencePath} entry ${unitId}.${layerName}.evidence must be a string`);
+    throw new Error(`${evidencePath} entry ${entryName}.${layerName}.evidence must be a string`);
   }
 
   return {
     evidence,
-    files: optionalStringArray(value.files, `${unitId}.${layerName}.files`),
+    files: optionalStringArray(value.files, evidencePath, `${entryName}.${layerName}.files`),
     status,
-    tests: optionalStringArray(value.tests, `${unitId}.${layerName}.tests`)
+    tests: optionalStringArray(value.tests, evidencePath, `${entryName}.${layerName}.tests`)
   };
+}
+
+function validateCatalogEvidenceMatches(
+  catalogEvidence: Map<string, CatalogEvidenceEntry>,
+  units: CanonicalMatrixUnit[]
+): void {
+  for (const [sourcePath, entry] of catalogEvidence) {
+    const matchingUnits = units.filter((unit) =>
+      unit.sources.some((source) => source.path === sourcePath)
+    );
+    if (matchingUnits.length === 0) {
+      throw new Error(
+        `${catalogEvidencePath} references catalog source path ${sourcePath} with no matching units`
+      );
+    }
+
+    for (const [unitType, scope] of entry.unitTypeScopes) {
+      if (!matchingUnits.some((unit) => unit.unit_type === unitType)) {
+        throw new Error(
+          `${catalogEvidencePath} entry ${sourcePath}.unit_types.${unitType} matches no units`
+        );
+      }
+      if (
+        !matchingUnits.some(
+          (unit) => unit.unit_type === unitType && scopeMatchesUnit(unit, sourcePath, scope)
+        )
+      ) {
+        throw new Error(
+          `${catalogEvidencePath} entry ${sourcePath}.unit_types.${unitType} scope matches no units`
+        );
+      }
+    }
+  }
 }
 
 function validateRuleEvidenceUnitIds(
@@ -659,21 +831,6 @@ function collectCatalogUnits(
           'apps/server/src/routes/catalogs.test.ts verifies catalog listing, document payloads, status/source_refs preservation and documented API errors.'
         );
       }
-      if (source.path === 'data/catalogs/races.yaml') {
-        unit.status = 'covered';
-        unit.zod_schema = link(
-          'covered',
-          'packages/catalogs/src/schemas.ts defines RaceSchema and packages/catalogs/src/schemas.test.ts validates counts, source_refs and forbidden demo IDs.'
-        );
-        unit.ui = link(
-          'covered',
-          'apps/game/src/features/character-creation/read-models.ts and apps/game/src/features/character-sheet/read-models.ts consume races.yaml through the catalog API; tests/e2e/app-features.spec.ts exercises creation and sheet flows.'
-        );
-        unit.tests = link(
-          'covered',
-          'packages/catalogs/src/schemas.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts, tools/import-catalogs.test.ts and tests/e2e/app-features.spec.ts cover race catalog validation, DB/API exposure and product use.'
-        );
-      }
       units.push(unit);
       for (const [childKey, childValue] of Object.entries(item)) {
         if (Array.isArray(childValue) || isRecord(childValue)) {
@@ -821,11 +978,44 @@ function buildUnit(
   return unit;
 }
 
-function applyRuleImplementationEvidence(
+function applyCatalogImplementationEvidence(
   unit: CanonicalMatrixUnit,
-  ruleEvidence: Map<string, RuleEvidenceEntry>
+  catalogEvidence: Map<string, CatalogEvidenceEntry>
 ): CanonicalMatrixUnit {
-  const entry = ruleEvidence.get(unit.unit_id);
+  let layers: Partial<Record<EvidenceLayerName, RuleEvidenceLayer>> = {};
+
+  for (const source of unit.sources) {
+    const entry = catalogEvidence.get(source.path);
+    if (entry === undefined) continue;
+    const scoped = entry.unitTypeScopes.get(unit.unit_type);
+
+    layers = {
+      ...layers,
+      ...entry.layers,
+      ...(scoped !== undefined && scopeMatchesUnit(unit, source.path, scoped) ? scoped.layers : {})
+    };
+  }
+
+  if (Object.keys(layers).length === 0) return unit;
+
+  return applyImplementationEvidence(unit, { layers });
+}
+
+function scopeMatchesUnit(
+  unit: CanonicalMatrixUnit,
+  sourcePath: string,
+  scope: CatalogEvidenceScope
+): boolean {
+  if (scope.refPattern === undefined) return true;
+  return unit.sources.some(
+    (source) => source.path === sourcePath && scope.refPattern?.test(source.ref) === true
+  );
+}
+
+function applyImplementationEvidence(
+  unit: CanonicalMatrixUnit,
+  entry: RuleEvidenceEntry | undefined
+): CanonicalMatrixUnit {
   if (entry === undefined) return unit;
 
   const next: CanonicalMatrixUnit = {
@@ -1247,10 +1437,10 @@ function stringArray(value: unknown): string[] {
     : [];
 }
 
-function optionalStringArray(value: unknown, name: string): string[] {
+function optionalStringArray(value: unknown, evidencePath: string, name: string): string[] {
   if (value === undefined) return [];
   if (!Array.isArray(value) || value.some((item) => typeof item !== 'string')) {
-    throw new Error(`${ruleEvidencePath} entry ${name} must be an array of strings`);
+    throw new Error(`${evidencePath} entry ${name} must be an array of strings`);
   }
   return value;
 }

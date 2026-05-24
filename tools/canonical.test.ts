@@ -162,6 +162,193 @@ describe('canonical compliance artifacts', () => {
     }
   });
 
+  it('applies catalog family evidence layers to every unit from the matching source path', async () => {
+    const fixture = await createFixtureRepo();
+
+    try {
+      await writeCatalogEvidence(
+        fixture,
+        [
+          'data/catalogs/bestiaire.yaml:',
+          '  zod_schema:',
+          '    status: covered',
+          '    evidence: "Fixture catalog schema evidence."',
+          '    files:',
+          '      - "packages/catalogs/src/schemas.ts"'
+        ].join('\n')
+      );
+
+      const manifest = await buildSourceManifest({ repoRoot: fixture });
+      const matrix = await buildCanonicalMatrix(manifest, { repoRoot: fixture });
+      const bestiaryUnits = matrix.units.filter((unit) =>
+        unit.sources.some((source) => source.path === 'data/catalogs/bestiaire.yaml')
+      );
+
+      expect(bestiaryUnits.length).toBeGreaterThan(1);
+      expect(
+        bestiaryUnits.every(
+          (unit) =>
+            unit.zod_schema.status === 'covered' &&
+            unit.zod_schema.evidence.includes('Fixture catalog schema evidence.')
+        )
+      ).toBe(true);
+    } finally {
+      await rm(fixture, { force: true, recursive: true });
+    }
+  });
+
+  it('rejects catalog family evidence for source paths that match no units', async () => {
+    const fixture = await createFixtureRepo();
+
+    try {
+      await writeCatalogEvidence(
+        fixture,
+        [
+          'data/catalogs/missing.yaml:',
+          '  zod_schema:',
+          '    status: covered',
+          '    evidence: "This catalog does not exist."'
+        ].join('\n')
+      );
+
+      const manifest = await buildSourceManifest({ repoRoot: fixture });
+
+      await expect(buildCanonicalMatrix(manifest, { repoRoot: fixture })).rejects.toThrow(
+        'docs/canonical/catalog-evidence.yaml references catalog source path data/catalogs/missing.yaml with no matching units'
+      );
+    } finally {
+      await rm(fixture, { force: true, recursive: true });
+    }
+  });
+
+  it('lets unit-level rule evidence override catalog family evidence per layer', async () => {
+    const fixture = await createFixtureRepo();
+
+    try {
+      await writeCatalogEvidence(
+        fixture,
+        [
+          'data/catalogs/bestiaire.yaml:',
+          '  unit_types:',
+          '    creature:',
+          '      zod_schema:',
+          '        status: covered',
+          '        evidence: "Family schema coverage."',
+          '      ui:',
+          '        status: not_applicable',
+          '        evidence: "Family UI is not applicable."'
+        ].join('\n')
+      );
+      await writeRuleEvidence(
+        fixture,
+        [
+          'creature:humain:',
+          '  ui:',
+          '    status: covered',
+          '    evidence: "Specific creature UI surface."',
+          '    files:',
+          '      - "apps/game/src/features/bestiaire/BestiaireSurface.tsx"'
+        ].join('\n')
+      );
+
+      const manifest = await buildSourceManifest({ repoRoot: fixture });
+      const matrix = await buildCanonicalMatrix(manifest, { repoRoot: fixture });
+      const unit = matrix.units.find((candidate) => candidate.unit_id === 'creature:humain');
+
+      expect(unit?.ui).toEqual({
+        status: 'covered',
+        evidence:
+          'Specific creature UI surface. Files: apps/game/src/features/bestiaire/BestiaireSurface.tsx.'
+      });
+      expect(unit?.zod_schema).toMatchObject({
+        status: 'covered',
+        evidence: expect.stringContaining('Family schema coverage.')
+      });
+    } finally {
+      await rm(fixture, { force: true, recursive: true });
+    }
+  });
+
+  it('scopes catalog unit type evidence by source ref pattern when provided', async () => {
+    const fixture = await createFixtureRepo();
+
+    try {
+      await writeFile(
+        join(fixture, 'data/catalogs/atouts.yaml'),
+        [
+          'version: 1',
+          'metadata:',
+          '  sources:',
+          '    - path: docs/rules/04-atouts.md',
+          'atouts:',
+          '  - id: test-atout',
+          '    name: Test atout',
+          '    source_refs:',
+          '      - path: docs/rules/04-atouts.md',
+          '        ref: entry:test-atout',
+          '        sha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+        ].join('\n')
+      );
+      await writeCatalogEvidence(
+        fixture,
+        [
+          'data/catalogs/atouts.yaml:',
+          '  unit_types:',
+          '    asset:',
+          '      ref_pattern: "^atouts\\\\.\\\\d+$"',
+          '      zod_schema:',
+          '        status: covered',
+          '        evidence: "Top-level atout schema coverage."'
+        ].join('\n')
+      );
+
+      const manifest = await buildSourceManifest({ repoRoot: fixture });
+      const matrix = await buildCanonicalMatrix(manifest, { repoRoot: fixture });
+      const topLevelAtout = matrix.units.find(
+        (candidate) => candidate.unit_id === 'asset:test-atout'
+      );
+      const nestedSourceRef = matrix.units.find(
+        (candidate) => candidate.unit_id === 'asset:atouts-0-source-refs-0'
+      );
+
+      expect(topLevelAtout?.zod_schema).toMatchObject({
+        status: 'covered',
+        evidence: expect.stringContaining('Top-level atout schema coverage.')
+      });
+      expect(nestedSourceRef?.zod_schema.status).toBe('partial');
+    } finally {
+      await rm(fixture, { force: true, recursive: true });
+    }
+  });
+
+  it('keeps catalog family units partial when family evidence covers only some unresolved layers', async () => {
+    const fixture = await createFixtureRepo();
+
+    try {
+      await writeCatalogEvidence(
+        fixture,
+        [
+          'data/catalogs/bestiaire.yaml:',
+          '  unit_types:',
+          '    creature:',
+          '      zod_schema:',
+          '        status: covered',
+          '        evidence: "Family schema coverage only."'
+        ].join('\n')
+      );
+
+      const manifest = await buildSourceManifest({ repoRoot: fixture });
+      const matrix = await buildCanonicalMatrix(manifest, { repoRoot: fixture });
+      const unit = matrix.units.find((candidate) => candidate.unit_id === 'creature:humain');
+
+      expect(unit?.status).toBe('partial');
+      expect(unit?.zod_schema.status).toBe('covered');
+      expect(unit?.ui.status).toBe('partial');
+    } finally {
+      await rm(fixture, { force: true, recursive: true });
+    }
+  });
+
   it('rejects malformed declarative rule evidence', async () => {
     const fixture = await createFixtureRepo();
 
@@ -284,4 +471,9 @@ async function createFixtureRepo(): Promise<string> {
 async function writeRuleEvidence(root: string, text: string): Promise<void> {
   await mkdir(join(root, 'docs/canonical'), { recursive: true });
   await writeFile(join(root, 'docs/canonical/rule-evidence.yaml'), `${text}\n`);
+}
+
+async function writeCatalogEvidence(root: string, text: string): Promise<void> {
+  await mkdir(join(root, 'docs/canonical'), { recursive: true });
+  await writeFile(join(root, 'docs/canonical/catalog-evidence.yaml'), `${text}\n`);
 }
