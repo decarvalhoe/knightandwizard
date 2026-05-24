@@ -882,3 +882,192 @@ a {
     align-items: flex-start;
   }
 }
+
+.kw-bestiary-page,
+.kw-bestiary,
+.kw-bestiary__detail,
+.kw-bestiary__species-list,
+.kw-bestiary__trait-list {
+  display: grid;
+  gap: 16px;
+}
+
+.kw-bestiary-page h1,
+.kw-bestiary h2,
+.kw-bestiary h3,
+.kw-bestiary p {
+  margin: 0;
+}
+
+.kw-bestiary-page h1,
+.kw-bestiary h2,
+.kw-bestiary h3 {
+  color: var(--color-text-ink);
+  font-family: var(--font-display);
+  line-height: var(--leading-tight);
+}
+
+.kw-bestiary-page h1 {
+  font-size: var(--text-title-l);
+}
+
+.kw-bestiary h2 {
+  font-size: var(--text-title-l);
+}
+
+.kw-bestiary h3 {
+  font-size: var(--text-title-m);
+}
+
+.kw-bestiary-page p,
+.kw-bestiary p,
+.kw-bestiary__muted {
+  color: var(--color-text-muted);
+}
+
+.kw-bestiary-page__header,
+.kw-bestiary__hero,
+.kw-bestiary__panel-head,
+.kw-bestiary__category-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.kw-bestiary-page__header {
+  align-items: center;
+}
+
+.kw-bestiary {
+  border: var(--border-strong) solid var(--color-border-rule);
+  background: var(--color-bg-canvas);
+  color: var(--color-text-ink);
+  font-family: var(--font-body);
+  padding: 24px;
+}
+
+.kw-bestiary__hero {
+  gap: 20px;
+}
+
+.kw-bestiary__badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.kw-bestiary__overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.62fr);
+  gap: 16px;
+}
+
+.kw-bestiary__category-grid {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.kw-bestiary__category-row {
+  align-items: center;
+  border: var(--border-hairline) solid var(--color-border-hairline);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-ink);
+  font-family: var(--font-label);
+  font-size: var(--text-label-sm);
+  letter-spacing: var(--tracking-label);
+  padding: 8px 10px;
+  text-transform: uppercase;
+}
+
+.kw-bestiary__layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.kw-bestiary__species-list {
+  max-height: 720px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.kw-bestiary__species-button.kw-btn {
+  display: grid;
+  width: 100%;
+  min-height: 58px;
+  justify-items: start;
+  gap: 4px;
+  text-align: left;
+  white-space: normal;
+}
+
+.kw-bestiary__species-name {
+  font-family: var(--font-display);
+  font-size: var(--text-body-l);
+  line-height: var(--leading-tight);
+}
+
+.kw-bestiary__species-meta {
+  font-family: var(--font-label);
+  font-size: var(--text-label-sm);
+  letter-spacing: var(--tracking-label);
+  opacity: 0.74;
+  text-transform: uppercase;
+}
+
+.kw-bestiary__lore {
+  border-left: var(--border-strong) solid var(--color-accent);
+  background: color-mix(in oklab, var(--color-accent) 8%, var(--color-bg-elevated));
+  color: var(--color-text-ink);
+  font-style: italic;
+  padding: 12px;
+}
+
+.kw-bestiary__detail-grid,
+.kw-bestiary__trait-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.kw-bestiary__trait-list {
+  align-content: start;
+  border: var(--border-hairline) solid var(--color-border-hairline);
+  background: var(--color-bg-elevated);
+  padding: 12px;
+}
+
+.kw-bestiary .kw-badge {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 980px) {
+  .kw-bestiary__overview,
+  .kw-bestiary__layout,
+  .kw-bestiary__detail-grid,
+  .kw-bestiary__trait-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kw-bestiary__species-list {
+    max-height: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .kw-bestiary-page__header,
+  .kw-bestiary__hero,
+  .kw-bestiary__panel-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .kw-bestiary {
+    padding: 16px;
+  }
+}
