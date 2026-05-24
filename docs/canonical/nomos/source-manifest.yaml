@@ -20545,13 +20545,27 @@ sources:
       - vector_index
       - citation_internal
     notes: Project documentation source.
+  - id: DOCS-PLAN-PHASE-V0-4-RC
+    path: docs/plan/PHASE-v0.4-RC.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 087d61943fef32d9ac1f6201d021f8ec1a380843beffb1c11d2438144b38540a
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-PLAN-ROADMAP
     path: docs/plan/ROADMAP.md
     type: markdown
     domain: project-governance
     priority: derived
     status: active
-    hash: f8d50ea37b0518b50a9e3474cb3edf88cad6b745765a1f998d65b02c19bdf1d9
+    hash: 8fd4b914b8dd497ba6744744b1a4f87a09c6528ab2bfefd44b8ae499eaa25d12
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
