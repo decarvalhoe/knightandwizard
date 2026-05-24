@@ -6,6 +6,7 @@ import {
   type AttributeKey,
   type Character,
   type CharacterAttributes,
+  type CharacterEquipmentItem,
   type CharacterSkill,
   type DiceRollResult,
   type LevelProgression,
@@ -148,6 +149,28 @@ export function buildInventory(input: {
   ];
 
   return items.filter((item): item is InventoryItem => item !== undefined);
+}
+
+export function buildInventoryFromCharacterEquipment(
+  equipment: CharacterEquipmentItem[],
+  catalog: EquipmentCatalogEntry[]
+): InventoryItem[] {
+  const catalogById = new Map(catalog.map((entry) => [entry.id, entry]));
+
+  return equipment.map((item) => {
+    const catalogEntry = catalogById.get(item.id);
+    const category = catalogEntry?.category ?? 'gear';
+    const equipped = ['armor', 'shield', 'weapon'].includes(category) ? true : undefined;
+
+    return {
+      category,
+      ...(equipped ? { equipped } : {}),
+      id: item.id,
+      name: catalogEntry?.name ?? item.name ?? item.id,
+      quantity: Math.max(1, item.quantity ?? 1),
+      weightKg: catalogEntry?.weightKg
+    };
+  });
 }
 
 function toEquipmentCatalogEntry(

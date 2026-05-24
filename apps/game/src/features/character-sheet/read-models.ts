@@ -2,13 +2,20 @@ import {
   ATTRIBUTE_KEYS,
   createPlayerCharacter,
   type AttributeKey,
+  type Character,
   type CharacterAttributes
 } from '@knightandwizard/rules-core';
 
-import { getCatalogDocument } from '@/lib/catalogs';
+import { getApiBaseUrl, getCatalogDocument } from '@/lib/catalogs';
 
 import {
+  fromDraftSnapshot,
+  previewCharacter,
+  type DraftSnapshot
+} from '../character-creation/model';
+import {
   attributeLabels,
+  buildCharacterCreationCatalogFromReadModels,
   toClassProfiles,
   toOrientationProfiles,
   toRaceProfiles,
@@ -25,6 +32,7 @@ import {
 import {
   buildEquipmentCatalog,
   buildInventory,
+  buildInventoryFromCharacterEquipment,
   type EquipmentCatalogEntry,
   type InventoryItem,
   type SkillCatalogEntry,
@@ -34,7 +42,8 @@ import {
 export interface CharacterSheetReadModel {
   attributeLabels: Record<AttributeKey, string>;
   attributeOrder: AttributeKey[];
-  character: ReturnType<typeof createPlayerCharacter>;
+  character: Character;
+  dataSourceLabel: string;
   equipmentCatalog: EquipmentCatalogEntry[];
   initialInventory: InventoryItem[];
   skillCatalog: SkillCatalogEntry[];
@@ -42,7 +51,13 @@ export interface CharacterSheetReadModel {
   spells: SpellEntry[];
 }
 
-export async function getCharacterSheetReadModel(): Promise<CharacterSheetReadModel> {
+export interface CharacterSheetReadModelOptions {
+  draftId?: string;
+}
+
+export async function getCharacterSheetReadModel(
+  options: CharacterSheetReadModelOptions = {}
+): Promise<CharacterSheetReadModel> {
   const [races, orientations, classes, skills, spells, weapons, protections, potions] =
     await Promise.all([
       getCatalogDocument<RacesCatalogDocument>('races.yaml'),
@@ -54,19 +69,66 @@ export async function getCharacterSheetReadModel(): Promise<CharacterSheetReadMo
       getCatalogDocument<ProtectionsCatalogDocument>('protections.yaml'),
       getCatalogDocument<PotionsCatalogDocument>('potions.yaml')
     ]);
+  const draftSnapshot = options.draftId ? await getCharacterDraftSnapshot(options.draftId) : null;
+  const creationCatalog = buildCharacterCreationCatalogFromReadModels({
+    classes,
+    orientations,
+    potions,
+    protections,
+    races,
+    skills,
+    spells,
+    weapons
+  });
+  const character = draftSnapshot
+    ? previewCharacter(fromDraftSnapshot(draftSnapshot), creationCatalog)
+    : buildActiveCharacter({ classes, orientations, races });
+  const equipmentCatalog = buildEquipmentCatalog({ potions, protections, weapons });
   const skillCatalog = toSkillOptions(skills);
   const skillLabels = Object.fromEntries(skillCatalog.map((skill) => [skill.id, skill.label]));
 
   return {
     attributeLabels,
     attributeOrder: [...ATTRIBUTE_KEYS],
-    character: buildActiveCharacter({ classes, orientations, races }),
-    equipmentCatalog: buildEquipmentCatalog({ potions, protections, weapons }),
-    initialInventory: buildInventory({ potions, protections, weapons }),
+    character,
+    dataSourceLabel: draftSnapshot ? 'Brouillon API' : 'Catalogues API',
+    equipmentCatalog,
+    initialInventory: draftSnapshot
+      ? buildInventoryFromCharacterEquipment(character.equipment, equipmentCatalog)
+      : buildInventory({ potions, protections, weapons }),
     skillCatalog,
     skillLabels,
-    spells: buildSpells(spells)
+    spells: draftSnapshot ? buildCharacterSpells(character, spells) : buildSpells(spells)
   };
+}
+
+async function getCharacterDraftSnapshot(draftId: string): Promise<DraftSnapshot | null> {
+  const response = await fetch(
+    `${getApiBaseUrl()}/character-drafts/${encodeURIComponent(draftId)}`,
+    { cache: 'no-store' }
+  );
+
+  if (response.status === 404) {
+    return null;
+  }
+
+  if (!response.ok) {
+    throw new Error(`Unable to load character draft ${draftId}: HTTP ${response.status}`);
+  }
+
+  const body = (await response.json()) as CharacterDraftEnvelope;
+
+  return {
+    currentStep: body.currentStep,
+    id: body.id,
+    payload: body.payload,
+    updatedAt: body.updatedAt
+  };
+}
+
+interface CharacterDraftEnvelope extends DraftSnapshot {
+  status?: 'found';
+  userId?: string;
 }
 
 function buildActiveCharacter(input: {
@@ -138,4 +200,19 @@ function buildSpells(catalog: SpellsCatalogDocument): SpellEntry[] {
       name: spell.name as string,
       points: 1
     }));
+}
+
+function buildCharacterSpells(character: Character, catalog: SpellsCatalogDocument): SpellEntry[] {
+  const namesById = new Map(
+    (catalog.spells ?? [])
+      .filter((spell) => spell.id && spell.name)
+      .map((spell) => [spell.id as string, spell.name as string])
+  );
+
+  return character.spells.map((spell) => ({
+    active: spell.id === 'bouclier',
+    id: spell.id,
+    name: namesById.get(spell.id) ?? spell.id,
+    points: spell.points
+  }));
 }

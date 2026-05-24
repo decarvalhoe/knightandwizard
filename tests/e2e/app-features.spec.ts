@@ -6,6 +6,9 @@ import {
   type CanonicalE2EScenario
 } from './fixtures/canonical';
 
+const e2eApiBaseUrl =
+  process.env.E2E_API_URL ?? `http://127.0.0.1:${process.env.E2E_API_PORT ?? '3102'}`;
+
 test.describe('K&W player and GM application flows', () => {
   test('dashboard reports the API and links the main work surfaces', async ({ page }, testInfo) => {
     annotateCanonical(testInfo, 'dashboard');
@@ -92,6 +95,10 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByTestId('last-roll-critical-failure')).toHaveText(
       'Échec critique · D100 = 73'
     );
+    const rollHistory = page.getByLabel('Historique des jets');
+    await expect(page.getByRole('heading', { name: 'Historique des jets' })).toBeVisible();
+    await expect(rollHistory.getByText('Échec automatique (attribut 0)')).toBeVisible();
+    await expect(rollHistory.getByText('Échec critique · D100 = 73')).toBeVisible();
 
     await page.getByRole('tab', { name: 'Combat' }).click();
     const combatPanel = page.getByRole('tabpanel', { name: 'Combat' });
@@ -113,6 +120,62 @@ test.describe('K&W player and GM application flows', () => {
     await expect(
       page.locator('p.kw-sheet__muted').filter({ hasText: /Charge .* kg/ })
     ).toBeVisible();
+  });
+
+  test('character sheet can render an API-backed saved draft', async ({ page }, testInfo) => {
+    annotateCanonical(testInfo, 'characterSheet');
+
+    const draftId = 'draft-sheet-api-e2e';
+    const saveResponse = await page.request.put(`${e2eApiBaseUrl}/character-drafts/${draftId}`, {
+      data: {
+        currentStep: 'review',
+        payload: {
+          attributes: {
+            aestheticism: 1,
+            charisma: 2,
+            dexterity: 3,
+            empathy: 2,
+            intelligence: 2,
+            perception: 2,
+            reflexes: 2,
+            stamina: 3,
+            strength: 3
+          },
+          background: 'Formee dans une tour frontaliere.',
+          classId: 'enchanteur',
+          deity: 'Les Trois Flammes',
+          equipmentIds: ['epee_batarde', 'bouclier_bois'],
+          extraSpellPoints: 1,
+          genderId: 'unspecified',
+          name: 'Aveline API',
+          orientationId: 'magicien',
+          psychology: 'calme',
+          quote: 'Le mot engage.',
+          raceId: 'humain',
+          skills: [
+            { id: 'arcanologie', points: 4 },
+            { id: 'histoire', points: 4 },
+            { id: 'arcanologie-des-rituels', parentId: 'arcanologie', points: 2 }
+          ],
+          spells: [
+            { id: 'boule-de-feu', points: 2 },
+            { id: 'bouclier', points: 1 }
+          ]
+        }
+      }
+    });
+
+    expect(saveResponse.ok()).toBe(true);
+
+    await page.goto(`/character?draftId=${draftId}`);
+
+    await expect(page.locator('html')).toHaveAttribute('data-skin', 'armorial');
+    await expect(page.getByRole('heading', { name: 'Aveline API' })).toBeVisible();
+    await expect(page.getByText('Brouillon API')).toBeVisible();
+    const inventoryRows = page.locator('.kw-sheet__inventory-row');
+    await expect(inventoryRows.getByRole('heading', { name: 'Épée bâtarde' })).toBeVisible();
+    await expect(inventoryRows.getByRole('heading', { name: 'Bouclier (bois)' })).toBeVisible();
+    await expect(page.getByText('Niveau 0 · 16 / 20 points')).toBeVisible();
   });
 
   test('character creation validates fighter and magician creation budgets', async ({

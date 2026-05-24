@@ -40,6 +40,7 @@ interface CharacterSheetProps {
   attributeLabels: Record<AttributeKey, string>;
   attributeOrder: AttributeKey[];
   character: Character;
+  dataSourceLabel: string;
   equipmentCatalog: EquipmentCatalogEntry[];
   initialInventory: InventoryItem[];
   skillCatalog: SkillCatalogEntry[];
@@ -65,6 +66,7 @@ export function CharacterSheet({
   attributeLabels,
   attributeOrder,
   character,
+  dataSourceLabel,
   equipmentCatalog,
   initialInventory,
   skillCatalog,
@@ -74,6 +76,7 @@ export function CharacterSheet({
   const [mode, setMode] = useState<CharacterSheetMode>('complete');
   const [inventory, setInventory] = useState(initialInventory);
   const [lastRoll, setLastRoll] = useState<AttributeRollResult | null>(null);
+  const [rollHistory, setRollHistory] = useState<AttributeRollResult[]>([]);
   const [selectedEquipmentId, setSelectedEquipmentId] = useState<string>(
     () => equipmentCatalog[0]?.id ?? ''
   );
@@ -107,9 +110,15 @@ export function CharacterSheet({
   const trainedSkillCount = skills.filter((skill) => !skill.isImplicitZero).length;
 
   function roll(attribute: AttributeKey) {
-    setLastRoll(
-      rollAttributeCheck(character, attribute, 7, (sides) => Math.floor(Math.random() * sides) + 1)
+    const result = rollAttributeCheck(
+      character,
+      attribute,
+      7,
+      (sides) => Math.floor(Math.random() * sides) + 1
     );
+
+    setLastRoll(result);
+    setRollHistory((current) => [result, ...current].slice(0, 6));
   }
 
   const tabItems = modes.map((item) => {
@@ -222,6 +231,7 @@ export function CharacterSheet({
                   />
                 ))}
               </div>
+              <RollHistory attributeLabels={attributeLabels} results={rollHistory} />
             </SectionCard>
 
             <SectionCard
@@ -269,7 +279,12 @@ export function CharacterSheet({
               </p>
             </div>
           </div>
-          <Badge tone="neutral">Skin armorial</Badge>
+          <div className="kw-sheet__badge-row">
+            <Badge tone="neutral">Skin armorial</Badge>
+            <Badge tone={dataSourceLabel === 'Brouillon API' ? 'info' : 'neutral'}>
+              {dataSourceLabel}
+            </Badge>
+          </div>
         </div>
 
         <div className="kw-sheet__resources" aria-label="Ressources personnage">
@@ -421,12 +436,7 @@ function RollResult({
   attributeLabels: Record<AttributeKey, string>;
   result: AttributeRollResult;
 }>) {
-  const tone: ToastTone =
-    result.pool === 0 || result.isCriticalFailure
-      ? 'danger'
-      : result.isCriticalSuccess
-        ? 'success'
-        : 'info';
+  const tone = rollTone(result);
 
   return (
     <div className="kw-sheet__roll" data-testid="last-roll">
@@ -453,6 +463,44 @@ function RollResult({
         ))}
       </Toast>
     </div>
+  );
+}
+
+function RollHistory({
+  attributeLabels,
+  results
+}: Readonly<{
+  attributeLabels: Record<AttributeKey, string>;
+  results: AttributeRollResult[];
+}>) {
+  if (results.length === 0) {
+    return null;
+  }
+
+  return (
+    <section aria-label="Historique des jets" className="kw-sheet__roll-history">
+      <h3>Historique des jets</h3>
+      <div className="kw-sheet__row-list">
+        {results.map((result, index) => (
+          <div className="kw-sheet__roll-history-row" key={`${result.attribute}-${index}`}>
+            <div>
+              <p>
+                {attributeLabels[result.attribute]} · {result.pool}D · DT {result.difficulty} ·{' '}
+                {result.successes} succès
+              </p>
+              {attributeRollOutcomeLabels(result).map((label) => (
+                <span className="kw-sheet__roll-outcome" key={label.id}>
+                  {label.label}
+                </span>
+              ))}
+            </div>
+            <Badge tone={rollTone(result) === 'success' ? 'success' : 'neutral'}>
+              {index === 0 ? 'Dernier' : `Jet ${results.length - index}`}
+            </Badge>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -538,6 +586,14 @@ function skillDescription(skill: SkillTreeRow): string {
   }
 
   return skill.parentId ? 'Spécialisation' : 'Compétence';
+}
+
+function rollTone(result: AttributeRollResult): ToastTone {
+  if (result.pool === 0 || result.isCriticalFailure) {
+    return 'danger';
+  }
+
+  return result.isCriticalSuccess ? 'success' : 'info';
 }
 
 function dieKindForRoll(value: number, difficulty: number) {
