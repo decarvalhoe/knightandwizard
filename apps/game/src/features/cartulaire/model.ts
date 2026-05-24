@@ -149,7 +149,7 @@ export function buildCartulaireReadModel(input: CartulaireReadModelInput): Cartu
     name: feature.properties.name,
     parentRegionId: feature.properties.parent_region ?? null,
     parentRegionName: feature.properties.parent_region
-      ? regionNameById.get(feature.properties.parent_region) ?? null
+      ? (regionNameById.get(feature.properties.parent_region) ?? null)
       : null,
     role: feature.properties.role ?? 'town',
     x: feature.geometry.coordinates[0],
