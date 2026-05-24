@@ -12,6 +12,7 @@ describe('surface theme contract', () => {
     expect(resolveSkinForPath('/')).toBe('gazette');
     expect(resolveSkinForPath('/character')).toBe('armorial');
     expect(resolveSkinForPath('/character/create')).toBe('armorial');
+    expect(resolveSkinForPath('/bestiaire')).toBe('armorial');
     expect(resolveSkinForPath('/combat')).toBe('registre');
     expect(resolveSkinForPath('/session')).toBe('gazette');
     expect(resolveSkinForPath('/grimoire')).toBe('grimoire');
@@ -25,6 +26,15 @@ describe('surface theme contract', () => {
     const navSkins = new Set(surfaceNavItems.map((item) => item.skin));
 
     expect(navSkins).toEqual(new Set(KW_SKINS));
+  });
+
+  it('exposes the bestiaire as an armorial surface in primary navigation', () => {
+    expect(surfaceNavItems).toContainEqual({
+      href: '/bestiaire',
+      label: 'Bestiaire',
+      shortLabel: 'Betes',
+      skin: 'armorial'
+    });
   });
 
   it('normalizes the persisted Jour/Veillee preference', () => {
