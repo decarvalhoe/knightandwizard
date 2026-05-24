@@ -1,0 +1,143 @@
+# Declarative implementation evidence for canonical rule units.
+#
+# Schema:
+#   <unit_id>:
+#     ambiguity_ref: null | "<issue-or-decision-ref>"   # optional; use for linked ambiguity work, e.g. #57
+#     <layer>:
+#       status: covered | not_applicable
+#       evidence: "<honest human-readable evidence or not_applicable reason>"
+#       files: ["repo/path.ts"]        # optional implementation citations
+#       tests: ["repo/path.test.ts"]   # optional verification citations
+#
+# Supported layers mirror the canonical matrix:
+# yaml, zod_schema, relational_db, vector_store, rules_core, api, ui, tests.
+#
+# Rules:
+# - Do not declare partial here. Absence means "still pending" in the generated matrix.
+# - Unknown unit_id or unknown layer is a generator error.
+# - Evidence must describe implemented behavior. Use not_applicable with a reason when rules-core
+#   deliberately does not implement the rule yet.
+
+R-1.6:
+  ambiguity_ref: null
+  rules_core:
+    status: covered
+    evidence: 'packages/rules-core/src/dice.ts returns 0 successes and no D100 for pool 0; apps/game/src/features/character-sheet/model.ts maps effective attribute 0 to pool 0.'
+  relational_db:
+    status: not_applicable
+    evidence: 'Pure resolution behavior is computed by rules-core at runtime; there is no dedicated relational projection or table for forced-failure dice outcomes.'
+  api:
+    status: not_applicable
+    evidence: 'Pure resolution behavior has no dedicated dice API endpoint; callers use rules-core directly or through higher-level GM/session flows.'
+  tests:
+    status: covered
+    evidence: 'packages/rules-core/src/dice.test.ts, apps/game/src/features/character-sheet/model.test.ts, and tests/e2e/app-features.spec.ts cover forced failure with no critical D100.'
+  ui:
+    status: covered
+    evidence: 'apps/game/src/features/character-sheet/CharacterSheet.tsx renders the attribute-0 forced-failure state; tests/e2e/app-features.spec.ts verifies it.'
+
+R-1.17:
+  ambiguity_ref: null
+  rules_core:
+    status: covered
+    evidence: 'packages/rules-core/src/dice.ts marks critical failures when excess initial 1s remain and rolls one D100 severity.'
+  relational_db:
+    status: not_applicable
+    evidence: 'Pure resolution behavior is computed by rules-core at runtime; there is no dedicated relational projection or table for critical-failure dice outcomes.'
+  api:
+    status: not_applicable
+    evidence: 'Pure resolution behavior has no dedicated dice API endpoint; callers use rules-core directly or through higher-level GM/session flows.'
+  tests:
+    status: covered
+    evidence: 'packages/rules-core/src/dice.test.ts, apps/game/src/features/character-sheet/model.test.ts, apps/game/src/features/session-manager/model.test.ts, apps/server/src/llm/game-master.test.ts, and tests/e2e/app-features.spec.ts cover critical-failure severity display.'
+  ui:
+    status: covered
+    evidence: 'apps/game/src/features/character-sheet/CharacterSheet.tsx and apps/game/src/features/session-manager/SessionManager.tsx surface critical state and D100 severity.'
+
+R-3.1:
+  ambiguity_ref: null
+  rules_core:
+    status: covered
+    evidence: 'Race category is used for creation point validation and level thresholds; player creation copies race vitality, speedFactor and willFactor onto the character.'
+    files:
+      - 'packages/rules-core/src/character.ts:194'
+      - 'packages/rules-core/src/character.ts:296'
+      - 'packages/rules-core/src/character.ts:324'
+      - 'packages/rules-core/src/character.ts:482'
+    tests:
+      - 'packages/rules-core/src/character.test.ts:18'
+      - 'packages/rules-core/src/character.test.ts:46'
+      - 'packages/rules-core/src/character.test.ts:153'
+      - 'packages/rules-core/src/character.test.ts:283'
+
+R-3.2:
+  ambiguity_ref: null
+  rules_core:
+    status: covered
+    evidence: 'validateAttributeDistribution enforces each creation attribute against race.attributeMax minus the configured creation offset.'
+    files:
+      - 'packages/rules-core/src/character.ts:194'
+      - 'packages/rules-core/src/character.ts:207'
+    tests:
+      - 'packages/rules-core/src/character.test.ts:18'
+      - 'packages/rules-core/src/character.test.ts:29'
+
+R-3.3:
+  ambiguity_ref: null
+  rules_core:
+    status: not_applicable
+    evidence: 'Rules-core implementation pending: racial atouts and handicaps are catalog content today, but character construction does not yet apply them automatically.'
+
+R-3.4:
+  ambiguity_ref: null
+  rules_core:
+    status: not_applicable
+    evidence: 'Rules-core implementation pending: race-conditioned level atouts are catalog/progression design inputs today, but no rules-core level-up choice engine applies them yet.'
+
+R-3.5:
+  ambiguity_ref: null
+  rules_core:
+    status: covered
+    evidence: 'RaceProfile models id, name, category, vitality, speedFactor, willFactor and per-attribute maximums used by character creation.'
+    files:
+      - 'packages/rules-core/src/character.ts:25'
+      - 'packages/rules-core/src/character.ts:126'
+    tests:
+      - 'packages/rules-core/src/character.test.ts:153'
+      - 'packages/rules-core/src/character.test.ts:471'
+  relational_db:
+    status: covered
+    evidence: 'apps/server/src/catalogs/read-models.ts imports every priority catalog, including races.yaml, into catalog_documents with a content hash and JSON document payload.'
+    files:
+      - 'apps/server/src/catalogs/read-models.ts:25'
+      - 'apps/server/src/catalogs/read-models.ts:51'
+    tests:
+      - 'apps/server/src/catalogs/read-models.test.ts:20'
+      - 'apps/server/src/catalogs/read-models.test.ts:39'
+  api:
+    status: covered
+    evidence: 'apps/server/src/routes/catalogs.ts exposes imported catalog read models through GET /catalogs and GET /catalogs/:catalogName; races.yaml is part of the priority catalog set.'
+    files:
+      - 'apps/server/src/routes/catalogs.ts:50'
+      - 'apps/server/src/routes/catalogs.ts:112'
+    tests:
+      - 'apps/server/src/routes/catalogs.test.ts:25'
+  ui:
+    status: covered
+    evidence: 'apps/game character creation loads races.yaml, maps entries to RaceProfile, renders race category/vitality/speed, and uses race attribute maxima for creation controls.'
+    files:
+      - 'apps/game/src/features/character-creation/read-models.ts:125'
+      - 'apps/game/src/features/character-creation/read-models.ts:209'
+      - 'apps/game/src/features/character-creation/CharacterCreationWizard.tsx:364'
+      - 'apps/game/src/features/character-creation/CharacterCreationWizard.tsx:397'
+  tests:
+    status: covered
+    evidence: 'Rules-core, catalog read-model, catalog route and character creation model tests cover RaceProfile fields, DB import, API listing and UI-facing race selection/preview behavior.'
+    tests:
+      - 'packages/rules-core/src/character.test.ts:153'
+      - 'packages/rules-core/src/character.test.ts:471'
+      - 'apps/server/src/catalogs/read-models.test.ts:20'
+      - 'apps/server/src/catalogs/read-models.test.ts:39'
+      - 'apps/server/src/routes/catalogs.test.ts:25'
+      - 'apps/game/src/features/character-creation/model.test.ts:20'
+      - 'apps/game/src/features/character-creation/model.test.ts:120'

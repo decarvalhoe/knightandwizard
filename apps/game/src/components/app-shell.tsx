@@ -7,8 +7,11 @@ import {
   FileArchive,
   LayoutDashboard,
   LibraryBig,
+  Map,
   Moon,
+  PawPrint,
   PenLine,
+  Scale,
   ScrollText,
   Sun,
   Swords,
@@ -34,12 +37,15 @@ const navIcons: Record<string, LucideIcon> = {
   '/': LayoutDashboard,
   '/character': BookUser,
   '/character/create': PenLine,
+  '/bestiaire': PawPrint,
   '/combat': Swords,
   '/session': ScrollText,
+  '/greffe': Scale,
   '/grimoire': WandSparkles,
   '/dice': Dices,
   '/rules': FileArchive,
   '/bibliotheque': LibraryBig,
+  '/cartulaire': Map,
   '/design-proto': BookOpen
 };
 

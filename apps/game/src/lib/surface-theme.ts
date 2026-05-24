@@ -27,12 +27,15 @@ export const surfaceNavItems: readonly SurfaceNavItem[] = [
   { href: '/atouts', label: 'Atouts', shortLabel: 'Atouts', skin: 'armorial' },
   { href: '/character', label: 'Personnage', shortLabel: 'Fiche', skin: 'armorial' },
   { href: '/character/create', label: 'Creation', shortLabel: 'Creer', skin: 'armorial' },
+  { href: '/bestiaire', label: 'Bestiaire', shortLabel: 'Betes', skin: 'armorial' },
   { href: '/combat', label: 'Combat', shortLabel: 'DT', skin: 'registre' },
   { href: '/session', label: 'Session', shortLabel: 'Journal', skin: 'gazette' },
+  { href: '/greffe', label: 'Greffe', shortLabel: 'Greffe', skin: 'archives' },
   { href: '/grimoire', label: 'Grimoire', shortLabel: 'Sorts', skin: 'grimoire' },
   { href: '/dice', label: 'Des', shortLabel: 'D10', skin: 'tripot' },
   { href: '/rules', label: 'Archives', shortLabel: 'D1-D13', skin: 'archives' },
   { href: '/bibliotheque', label: 'Bibliotheque', shortLabel: 'CMS', skin: 'bibliotheque' },
+  { href: '/cartulaire', label: 'Cartulaire', shortLabel: 'Carte', skin: 'armorial' },
   { href: '/design-proto', label: 'Lab', shortLabel: 'Skin', skin: 'moderne' }
 ] as const;
 
@@ -42,12 +45,15 @@ export const routeSkins: readonly [prefix: string, skin: KwSkin][] = [
   ['/atouts', 'armorial'],
   ['/character/create', 'armorial'],
   ['/character', 'armorial'],
+  ['/bestiaire', 'armorial'],
   ['/combat', 'registre'],
   ['/session', 'gazette'],
+  ['/greffe', 'archives'],
   ['/grimoire', 'grimoire'],
   ['/dice', 'tripot'],
   ['/rules', 'archives'],
   ['/bibliotheque', 'bibliotheque'],
+  ['/cartulaire', 'armorial'],
   ['/design-proto', 'moderne']
 ] as const;
 
