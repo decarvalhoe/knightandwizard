@@ -101,6 +101,7 @@ const generatedDir = 'docs/canonical';
 const sourceManifestPath = `${generatedDir}/source-manifest.yaml`;
 const canonicalMatrixPath = `${generatedDir}/canonical-matrix.yaml`;
 const coverageReportPath = `${generatedDir}/coverage-report.md`;
+const ruleEvidencePath = `${generatedDir}/rule-evidence.yaml`;
 const relationalReadModelCatalogPaths = new Set([
   'data/catalogs/armes.yaml',
   'data/catalogs/bestiaire.yaml',
@@ -142,6 +143,32 @@ const textExtensions = new Set([
   '.yaml',
   '.yml'
 ]);
+const evidenceLayerNames = [
+  'yaml',
+  'zod_schema',
+  'relational_db',
+  'vector_store',
+  'rules_core',
+  'api',
+  'ui',
+  'tests'
+] as const;
+const evidenceLayerNameSet = new Set<string>(evidenceLayerNames);
+
+type EvidenceLayerName = (typeof evidenceLayerNames)[number];
+type RuleEvidenceStatus = Extract<UnitStatus, 'covered' | 'not_applicable'>;
+
+interface RuleEvidenceLayer {
+  status: RuleEvidenceStatus;
+  evidence: string;
+  files: string[];
+  tests: string[];
+}
+
+interface RuleEvidenceEntry {
+  ambiguity_ref?: string | null;
+  layers: Partial<Record<EvidenceLayerName, RuleEvidenceLayer>>;
+}
 
 export async function buildSourceManifest(
   options: CanonicalBuildOptions = {}
@@ -224,10 +251,118 @@ export async function buildCanonicalMatrix(
     }
   }
 
+  const ruleEvidence = await loadRuleEvidence(options);
+  validateRuleEvidenceUnitIds(ruleEvidence, new Set(units.keys()));
+
   return {
     version: 1,
-    units: [...units.values()].sort((left, right) => left.unit_id.localeCompare(right.unit_id))
+    units: [...units.values()]
+      .map((unit) => applyRuleImplementationEvidence(unit, ruleEvidence))
+      .sort((left, right) => left.unit_id.localeCompare(right.unit_id))
   };
+}
+
+async function loadRuleEvidence(
+  options: CanonicalBuildOptions = {}
+): Promise<Map<string, RuleEvidenceEntry>> {
+  let text: string;
+  try {
+    text = await readFile(join(options.repoRoot ?? repoRoot, ruleEvidencePath), 'utf8');
+  } catch (error: unknown) {
+    if (isNodeError(error) && error.code === 'ENOENT') return new Map();
+    throw error;
+  }
+
+  const parsed = load(text);
+  if (parsed === null || parsed === undefined) return new Map();
+  if (!isRecord(parsed)) {
+    throw new Error(`${ruleEvidencePath} must be a mapping keyed by unit_id`);
+  }
+
+  return new Map(
+    Object.entries(parsed).map(([unitId, value]) => [unitId, parseRuleEvidenceEntry(unitId, value)])
+  );
+}
+
+function parseRuleEvidenceEntry(unitId: string, value: unknown): RuleEvidenceEntry {
+  if (!isRecord(value)) {
+    throw new Error(`${ruleEvidencePath} entry ${unitId} must be a mapping`);
+  }
+
+  const layers: Partial<Record<EvidenceLayerName, RuleEvidenceLayer>> = {};
+  let ambiguityRef: string | null | undefined;
+
+  for (const [key, rawValue] of Object.entries(value)) {
+    if (key === 'ambiguity_ref') {
+      if (rawValue !== null && rawValue !== undefined && typeof rawValue !== 'string') {
+        throw new Error(
+          `${ruleEvidencePath} entry ${unitId}.ambiguity_ref must be a string or null`
+        );
+      }
+      ambiguityRef = rawValue ?? null;
+      continue;
+    }
+
+    if (!evidenceLayerNameSet.has(key)) {
+      throw new Error(`${ruleEvidencePath} entry ${unitId}.${key} is not a known matrix layer`);
+    }
+
+    layers[key as EvidenceLayerName] = parseRuleEvidenceLayer(unitId, key, rawValue);
+  }
+
+  if (Object.keys(layers).length === 0) {
+    throw new Error(`${ruleEvidencePath} entry ${unitId} must declare at least one layer`);
+  }
+
+  return { ambiguity_ref: ambiguityRef, layers };
+}
+
+function parseRuleEvidenceLayer(
+  unitId: string,
+  layerName: string,
+  value: unknown
+): RuleEvidenceLayer {
+  if (!isRecord(value)) {
+    throw new Error(`${ruleEvidencePath} entry ${unitId}.${layerName} must be a mapping`);
+  }
+
+  for (const key of Object.keys(value)) {
+    if (!['status', 'evidence', 'files', 'tests'].includes(key)) {
+      throw new Error(
+        `${ruleEvidencePath} entry ${unitId}.${layerName}.${key} is not a supported evidence field`
+      );
+    }
+  }
+
+  const status = value.status;
+  if (status !== 'covered' && status !== 'not_applicable') {
+    throw new Error(
+      `${ruleEvidencePath} entry ${unitId}.${layerName}.status must be covered or not_applicable`
+    );
+  }
+
+  const evidence = value.evidence;
+  if (typeof evidence !== 'string' || evidence.trim().length === 0) {
+    throw new Error(`${ruleEvidencePath} entry ${unitId}.${layerName}.evidence must be a string`);
+  }
+
+  return {
+    evidence,
+    files: optionalStringArray(value.files, `${unitId}.${layerName}.files`),
+    status,
+    tests: optionalStringArray(value.tests, `${unitId}.${layerName}.tests`)
+  };
+}
+
+function validateRuleEvidenceUnitIds(
+  ruleEvidence: Map<string, RuleEvidenceEntry>,
+  unitIds: Set<string>
+): void {
+  for (const unitId of ruleEvidence.keys()) {
+    if (!unitIds.has(unitId)) {
+      throw new Error(`${ruleEvidencePath} references unknown unit_id ${unitId}`);
+    }
+  }
 }
 
 export async function findProductSampleImports(
@@ -683,54 +818,37 @@ function buildUnit(
     zod_schema: link('not_applicable', 'No Zod schema required.')
   };
 
-  return applyRuleImplementationEvidence(source, unit);
+  return unit;
 }
 
 function applyRuleImplementationEvidence(
-  source: SourceEntry,
-  unit: CanonicalMatrixUnit
+  unit: CanonicalMatrixUnit,
+  ruleEvidence: Map<string, RuleEvidenceEntry>
 ): CanonicalMatrixUnit {
-  if (source.path !== 'docs/rules/01-resolution.md') {
-    return unit;
+  const entry = ruleEvidence.get(unit.unit_id);
+  if (entry === undefined) return unit;
+
+  const next: CanonicalMatrixUnit = {
+    ...unit,
+    business_rule:
+      entry.ambiguity_ref === undefined
+        ? unit.business_rule
+        : { ...unit.business_rule, ambiguity_ref: entry.ambiguity_ref }
+  };
+
+  for (const layerName of evidenceLayerNames) {
+    const evidenceLayer = entry.layers[layerName];
+    if (evidenceLayer === undefined) continue;
+    next[layerName] = link(evidenceLayer.status, renderEvidenceLayer(evidenceLayer));
   }
 
-  if (unit.unit_id === 'R-1.6') {
-    return {
-      ...unit,
-      rules_core: link(
-        'covered',
-        'packages/rules-core/src/dice.ts returns 0 successes and no D100 for pool 0; apps/game/src/features/character-sheet/model.ts maps effective attribute 0 to pool 0.'
-      ),
-      tests: link(
-        'covered',
-        'packages/rules-core/src/dice.test.ts, apps/game/src/features/character-sheet/model.test.ts, and tests/e2e/app-features.spec.ts cover forced failure with no critical D100.'
-      ),
-      ui: link(
-        'covered',
-        'apps/game/src/features/character-sheet/CharacterSheet.tsx renders the attribute-0 forced-failure state; tests/e2e/app-features.spec.ts verifies it.'
-      )
-    };
-  }
+  const allResolved = evidenceLayerNames.every(
+    (layerName) =>
+      next[layerName].status === 'covered' || next[layerName].status === 'not_applicable'
+  );
+  next.status = allResolved ? 'covered' : 'partial';
 
-  if (unit.unit_id === 'R-1.17') {
-    return {
-      ...unit,
-      rules_core: link(
-        'covered',
-        'packages/rules-core/src/dice.ts marks critical failures when excess initial 1s remain and rolls one D100 severity.'
-      ),
-      tests: link(
-        'covered',
-        'packages/rules-core/src/dice.test.ts, apps/game/src/features/character-sheet/model.test.ts, apps/game/src/features/session-manager/model.test.ts, apps/server/src/llm/game-master.test.ts, and tests/e2e/app-features.spec.ts cover critical-failure severity display.'
-      ),
-      ui: link(
-        'covered',
-        'apps/game/src/features/character-sheet/CharacterSheet.tsx and apps/game/src/features/session-manager/SessionManager.tsx surface critical state and D100 severity.'
-      )
-    };
-  }
-
-  return unit;
+  return next;
 }
 
 function link(status: UnitStatus, evidence: string): MatrixLink {
@@ -1129,6 +1247,14 @@ function stringArray(value: unknown): string[] {
     : [];
 }
 
+function optionalStringArray(value: unknown, name: string): string[] {
+  if (value === undefined) return [];
+  if (!Array.isArray(value) || value.some((item) => typeof item !== 'string')) {
+    throw new Error(`${ruleEvidencePath} entry ${name} must be an array of strings`);
+  }
+  return value;
+}
+
 function requiredString(value: unknown, name: string): string {
   if (typeof value !== 'string') throw new Error(`Source manifest field ${name} must be a string`);
   return value;
@@ -1141,6 +1267,20 @@ function requiredNumber(value: unknown, name: string): number {
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function isNodeError(value: unknown): value is NodeJS.ErrnoException {
+  return value instanceof Error && 'code' in value;
+}
+
+function renderEvidenceLayer(layer: RuleEvidenceLayer): string {
+  return [
+    layer.evidence,
+    layer.files.length > 0 ? `Files: ${layer.files.join(', ')}.` : null,
+    layer.tests.length > 0 ? `Tests: ${layer.tests.join(', ')}.` : null
+  ]
+    .filter((part): part is string => part !== null)
+    .join(' ');
 }
 
 async function main(): Promise<void> {

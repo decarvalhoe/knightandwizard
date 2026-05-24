@@ -133837,7 +133837,7 @@ units:
     unit_type: "rule"
     domain: "D1-resolution"
     title: "**Les 1 sont résolus AVANT les réussites hors cascade**. Les 1 en excès (après avoir consommé toutes les réussites) causent l'échec critique (R-1.17)."
-    status: partial
+    status: covered
     sources:
       - path: "docs/rules/01-resolution.md"
         ref: "line 320"
@@ -133852,8 +133852,8 @@ units:
       status: not_applicable
       evidence: "No Zod schema required."
     relational_db:
-      status: partial
-      evidence: "Canonical relational tables/import evidence pending."
+      status: not_applicable
+      evidence: "Pure resolution behavior is computed by rules-core at runtime; there is no dedicated relational projection or table for critical-failure dice outcomes."
     vector_store:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
@@ -133861,8 +133861,8 @@ units:
       status: covered
       evidence: "packages/rules-core/src/dice.ts marks critical failures when excess initial 1s remain and rolls one D100 severity."
     api:
-      status: partial
-      evidence: "Downstream API evidence pending."
+      status: not_applicable
+      evidence: "Pure resolution behavior has no dedicated dice API endpoint; callers use rules-core directly or through higher-level GM/session flows."
     ui:
       status: covered
       evidence: "apps/game/src/features/character-sheet/CharacterSheet.tsx and apps/game/src/features/session-manager/SessionManager.tsx surface critical state and D100 severity."
@@ -136105,7 +136105,7 @@ units:
     unit_type: "rule"
     domain: "D1-resolution"
     title: "R-1.6 — Attribut nul → échec total automatique"
-    status: partial
+    status: covered
     sources:
       - path: "docs/rules/01-resolution.md"
         ref: "line 125"
@@ -136120,8 +136120,8 @@ units:
       status: not_applicable
       evidence: "No Zod schema required."
     relational_db:
-      status: partial
-      evidence: "Canonical relational tables/import evidence pending."
+      status: not_applicable
+      evidence: "Pure resolution behavior is computed by rules-core at runtime; there is no dedicated relational projection or table for forced-failure dice outcomes."
     vector_store:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
@@ -136129,8 +136129,8 @@ units:
       status: covered
       evidence: "packages/rules-core/src/dice.ts returns 0 successes and no D100 for pool 0; apps/game/src/features/character-sheet/model.ts maps effective attribute 0 to pool 0."
     api:
-      status: partial
-      evidence: "Downstream API evidence pending."
+      status: not_applicable
+      evidence: "Pure resolution behavior has no dedicated dice API endpoint; callers use rules-core directly or through higher-level GM/session flows."
     ui:
       status: covered
       evidence: "apps/game/src/features/character-sheet/CharacterSheet.tsx renders the attribute-0 forced-failure state; tests/e2e/app-features.spec.ts verifies it."
@@ -141310,8 +141310,8 @@ units:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: covered
+      evidence: "Race category is used for creation point validation and level thresholds; player creation copies race vitality, speedFactor and willFactor onto the character. Files: packages/rules-core/src/character.ts:194, packages/rules-core/src/character.ts:296, packages/rules-core/src/character.ts:324, packages/rules-core/src/character.ts:482. Tests: packages/rules-core/src/character.test.ts:18, packages/rules-core/src/character.test.ts:46, packages/rules-core/src/character.test.ts:153, packages/rules-core/src/character.test.ts:283."
     api:
       status: partial
       evidence: "Downstream API evidence pending."
@@ -141382,8 +141382,8 @@ units:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: covered
+      evidence: "validateAttributeDistribution enforces each creation attribute against race.attributeMax minus the configured creation offset. Files: packages/rules-core/src/character.ts:194, packages/rules-core/src/character.ts:207. Tests: packages/rules-core/src/character.test.ts:18, packages/rules-core/src/character.test.ts:29."
     api:
       status: partial
       evidence: "Downstream API evidence pending."
@@ -141418,8 +141418,8 @@ units:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: not_applicable
+      evidence: "Rules-core implementation pending: racial atouts and handicaps are catalog content today, but character construction does not yet apply them automatically."
     api:
       status: partial
       evidence: "Downstream API evidence pending."
@@ -141490,8 +141490,8 @@ units:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: not_applicable
+      evidence: "Rules-core implementation pending: race-conditioned level atouts are catalog/progression design inputs today, but no rules-core level-up choice engine applies them yet."
     api:
       status: partial
       evidence: "Downstream API evidence pending."
@@ -141577,7 +141577,7 @@ units:
     unit_type: "rule"
     domain: "D3-races"
     title: "R-3.5 — Modèle de données de la race"
-    status: partial
+    status: covered
     sources:
       - path: "docs/rules/03-races.md"
         ref: "line 88"
@@ -141592,23 +141592,23 @@ units:
       status: not_applicable
       evidence: "No Zod schema required."
     relational_db:
-      status: partial
-      evidence: "Canonical relational tables/import evidence pending."
+      status: covered
+      evidence: "apps/server/src/catalogs/read-models.ts imports every priority catalog, including races.yaml, into catalog_documents with a content hash and JSON document payload. Files: apps/server/src/catalogs/read-models.ts:25, apps/server/src/catalogs/read-models.ts:51. Tests: apps/server/src/catalogs/read-models.test.ts:20, apps/server/src/catalogs/read-models.test.ts:39."
     vector_store:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: covered
+      evidence: "RaceProfile models id, name, category, vitality, speedFactor, willFactor and per-attribute maximums used by character creation. Files: packages/rules-core/src/character.ts:25, packages/rules-core/src/character.ts:126. Tests: packages/rules-core/src/character.test.ts:153, packages/rules-core/src/character.test.ts:471."
     api:
-      status: partial
-      evidence: "Downstream API evidence pending."
+      status: covered
+      evidence: "apps/server/src/routes/catalogs.ts exposes imported catalog read models through GET /catalogs and GET /catalogs/:catalogName; races.yaml is part of the priority catalog set. Files: apps/server/src/routes/catalogs.ts:50, apps/server/src/routes/catalogs.ts:112. Tests: apps/server/src/routes/catalogs.test.ts:25."
     ui:
-      status: partial
-      evidence: "UI exposure evidence pending."
+      status: covered
+      evidence: "apps/game character creation loads races.yaml, maps entries to RaceProfile, renders race category/vitality/speed, and uses race attribute maxima for creation controls. Files: apps/game/src/features/character-creation/read-models.ts:125, apps/game/src/features/character-creation/read-models.ts:209, apps/game/src/features/character-creation/CharacterCreationWizard.tsx:364, apps/game/src/features/character-creation/CharacterCreationWizard.tsx:397."
     tests:
-      status: partial
-      evidence: "Automated coverage evidence pending."
+      status: covered
+      evidence: "Rules-core, catalog read-model, catalog route and character creation model tests cover RaceProfile fields, DB import, API listing and UI-facing race selection/preview behavior. Tests: packages/rules-core/src/character.test.ts:153, packages/rules-core/src/character.test.ts:471, apps/server/src/catalogs/read-models.test.ts:20, apps/server/src/catalogs/read-models.test.ts:39, apps/server/src/routes/catalogs.test.ts:25, apps/game/src/features/character-creation/model.test.ts:20, apps/game/src/features/character-creation/model.test.ts:120."
   - unit_id: "R-3.5#2"
     unit_type: "rule"
     domain: "D4-classes"
