@@ -275,6 +275,193 @@ a {
   color: var(--color-text-muted);
 }
 
+.kw-atouts-page,
+.kw-atouts-surface,
+.kw-atouts-stack,
+.kw-atouts-entry-list,
+.kw-atouts-meter-list,
+.kw-atouts-family-list {
+  display: grid;
+  gap: 16px;
+}
+
+.kw-atouts-page h1,
+.kw-atouts-page h2,
+.kw-atouts-page h3,
+.kw-atouts-page p {
+  margin: 0;
+}
+
+.kw-atouts-page h1,
+.kw-atouts-page h2,
+.kw-atouts-page h3 {
+  color: var(--color-text-ink);
+  font-family: var(--font-display);
+  line-height: var(--leading-tight);
+}
+
+.kw-atouts-page h1 {
+  font-size: var(--text-title-l);
+}
+
+.kw-atouts-page h2 {
+  font-size: var(--text-title-m);
+}
+
+.kw-atouts-page h3 {
+  font-size: var(--text-body-l);
+}
+
+.kw-atouts-page p {
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}
+
+.kw-atouts-page__header,
+.kw-atouts-hero,
+.kw-atouts-section-head,
+.kw-atouts-entry__head,
+.kw-atouts-family,
+.kw-atouts-meter {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.kw-atouts-page__header {
+  align-items: center;
+}
+
+.kw-atouts-surface {
+  border: var(--border-strong) solid var(--color-border-rule);
+  background: var(--color-bg-canvas);
+  color: var(--color-text-ink);
+  font-family: var(--font-body);
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.kw-atouts-hero {
+  align-items: flex-start;
+}
+
+.kw-atouts-hero__copy {
+  display: grid;
+  min-width: 0;
+  gap: 8px;
+}
+
+.kw-atouts-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.kw-atouts-badge-row .kw-badge {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.kw-atouts-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.kw-atouts-entry,
+.kw-atouts-skill,
+.kw-atouts-family {
+  border: var(--border-hairline) solid var(--color-border-hairline);
+  background: var(--color-bg-elevated);
+}
+
+.kw-atouts-entry {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+}
+
+.kw-atouts-entry__head {
+  align-items: center;
+}
+
+.kw-atouts-skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.kw-atouts-skill {
+  display: grid;
+  gap: 2px;
+  padding: 10px;
+}
+
+.kw-atouts-skill strong,
+.kw-atouts-family strong,
+.kw-atouts-meter strong {
+  color: var(--color-text-ink);
+  font-family: var(--font-display);
+}
+
+.kw-atouts-skill span,
+.kw-atouts-meter span {
+  color: var(--color-text-muted);
+}
+
+.kw-atouts-meter-list,
+.kw-atouts-family-list {
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.kw-atouts-meter {
+  display: grid;
+  grid-template-columns: minmax(78px, 1fr) minmax(90px, 2fr) auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.kw-atouts-meter__track {
+  height: 10px;
+  overflow: hidden;
+  border: var(--border-hairline) solid var(--color-border-hairline);
+  background: var(--color-bg-elevated);
+}
+
+.kw-atouts-meter__fill {
+  width: var(--meter-value);
+  height: 100%;
+  background: var(--color-accent);
+}
+
+.kw-atouts-family {
+  align-items: center;
+  padding: 8px 10px;
+}
+
+@media (max-width: 920px) {
+  .kw-atouts-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .kw-atouts-page__header,
+  .kw-atouts-hero,
+  .kw-atouts-section-head,
+  .kw-atouts-entry__head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .kw-atouts-page__header .kw-btn {
+    width: 100%;
+  }
+}
+
 .kw-combat,
 .kw-combat__stack,
 .kw-combat__log-list {

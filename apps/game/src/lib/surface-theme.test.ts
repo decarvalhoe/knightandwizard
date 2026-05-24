@@ -10,6 +10,7 @@ import {
 describe('surface theme contract', () => {
   it('maps the product routes to their in-world skins', () => {
     expect(resolveSkinForPath('/')).toBe('gazette');
+    expect(resolveSkinForPath('/atouts')).toBe('armorial');
     expect(resolveSkinForPath('/character')).toBe('armorial');
     expect(resolveSkinForPath('/character/create')).toBe('armorial');
     expect(resolveSkinForPath('/combat')).toBe('registre');
@@ -25,6 +26,15 @@ describe('surface theme contract', () => {
     const navSkins = new Set(surfaceNavItems.map((item) => item.skin));
 
     expect(navSkins).toEqual(new Set(KW_SKINS));
+  });
+
+  it('exposes the atouts carnet in the surface navigation', () => {
+    expect(surfaceNavItems).toContainEqual({
+      href: '/atouts',
+      label: 'Atouts',
+      shortLabel: 'Atouts',
+      skin: 'armorial'
+    });
   });
 
   it('normalizes the persisted Jour/Veillee preference', () => {
