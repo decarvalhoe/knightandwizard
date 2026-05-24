@@ -77,6 +77,97 @@ describe('canonical compliance artifacts', () => {
     }
   });
 
+  it('loads declarative rule evidence and applies it to matching units', async () => {
+    const fixture = await createFixtureRepo();
+
+    try {
+      await writeRuleEvidence(
+        fixture,
+        [
+          'R-1.17:',
+          '  ambiguity_ref: null',
+          '  rules_core:',
+          '    status: covered',
+          '    evidence: "Fixture evidence from rules-core."',
+          '    files:',
+          '      - "packages/rules-core/src/dice.ts"',
+          '    tests:',
+          '      - "packages/rules-core/src/dice.test.ts"',
+          '  tests:',
+          '    status: covered',
+          '    evidence: "Fixture automated coverage."',
+          '    tests:',
+          '      - "tools/canonical.test.ts"'
+        ].join('\n')
+      );
+
+      const manifest = await buildSourceManifest({ repoRoot: fixture });
+      const matrix = await buildCanonicalMatrix(manifest, { repoRoot: fixture });
+      const unit = matrix.units.find((candidate) => candidate.unit_id === 'R-1.17');
+
+      expect(unit?.status).toBe('covered');
+      expect(unit?.rules_core).toEqual({
+        status: 'covered',
+        evidence:
+          'Fixture evidence from rules-core. Files: packages/rules-core/src/dice.ts. Tests: packages/rules-core/src/dice.test.ts.'
+      });
+      expect(unit?.tests).toEqual({
+        status: 'covered',
+        evidence: 'Fixture automated coverage. Tests: tools/canonical.test.ts.'
+      });
+    } finally {
+      await rm(fixture, { force: true, recursive: true });
+    }
+  });
+
+  it('rejects malformed declarative rule evidence', async () => {
+    const fixture = await createFixtureRepo();
+
+    try {
+      await writeRuleEvidence(
+        fixture,
+        [
+          'R-1.17:',
+          '  rules_core:',
+          '    status: partial',
+          '    evidence: "Partial is not a declarative evidence status."'
+        ].join('\n')
+      );
+
+      const manifest = await buildSourceManifest({ repoRoot: fixture });
+
+      await expect(buildCanonicalMatrix(manifest, { repoRoot: fixture })).rejects.toThrow(
+        'docs/canonical/rule-evidence.yaml entry R-1.17.rules_core.status must be covered or not_applicable'
+      );
+    } finally {
+      await rm(fixture, { force: true, recursive: true });
+    }
+  });
+
+  it('rejects declarative rule evidence for unknown units', async () => {
+    const fixture = await createFixtureRepo();
+
+    try {
+      await writeRuleEvidence(
+        fixture,
+        [
+          'R-999.1:',
+          '  rules_core:',
+          '    status: covered',
+          '    evidence: "This unit does not exist."'
+        ].join('\n')
+      );
+
+      const manifest = await buildSourceManifest({ repoRoot: fixture });
+
+      await expect(buildCanonicalMatrix(manifest, { repoRoot: fixture })).rejects.toThrow(
+        'docs/canonical/rule-evidence.yaml references unknown unit_id R-999.1'
+      );
+    } finally {
+      await rm(fixture, { force: true, recursive: true });
+    }
+  });
+
   it('reports product sample imports as known blockers', async () => {
     const fixture = await createFixtureRepo();
 
@@ -146,4 +237,9 @@ async function createFixtureRepo(): Promise<string> {
   );
   await writeFile(join(root, 'apps/legacy-php-site/includes/PHPMailer/vendor.php'), '<?php');
   return root;
+}
+
+async function writeRuleEvidence(root: string, text: string): Promise<void> {
+  await mkdir(join(root, 'docs/canonical'), { recursive: true });
+  await writeFile(join(root, 'docs/canonical/rule-evidence.yaml'), `${text}\n`);
 }

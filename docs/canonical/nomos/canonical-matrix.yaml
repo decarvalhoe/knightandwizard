@@ -72332,6 +72332,7 @@ units:
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
       - 'api: Downstream API evidence pending.'
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: R-1-17-2
@@ -73641,6 +73642,7 @@ units:
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
       - 'api: Downstream API evidence pending.'
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: R-1-6-2
@@ -76456,10 +76458,10 @@ units:
     status: partial
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
-      - 'rules_core: Rules-core behavior evidence pending or must be linked.'
       - 'api: Downstream API evidence pending.'
       - 'ui: UI exposure evidence pending.'
       - 'tests: Automated coverage evidence pending.'
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: R-3-1-2
@@ -76500,10 +76502,10 @@ units:
     status: partial
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
-      - 'rules_core: Rules-core behavior evidence pending or must be linked.'
       - 'api: Downstream API evidence pending.'
       - 'ui: UI exposure evidence pending.'
       - 'tests: Automated coverage evidence pending.'
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: R-3-3
@@ -76519,7 +76521,6 @@ units:
     status: partial
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
-      - 'rules_core: Rules-core behavior evidence pending or must be linked.'
       - 'api: Downstream API evidence pending.'
       - 'ui: UI exposure evidence pending.'
       - 'tests: Automated coverage evidence pending.'
@@ -76563,7 +76564,6 @@ units:
     status: partial
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
-      - 'rules_core: Rules-core behavior evidence pending or must be linked.'
       - 'api: Downstream API evidence pending.'
       - 'ui: UI exposure evidence pending.'
       - 'tests: Automated coverage evidence pending.'
@@ -76622,10 +76622,10 @@ units:
     status: partial
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
-      - 'rules_core: Rules-core behavior evidence pending or must be linked.'
       - 'api: Downstream API evidence pending.'
       - 'ui: UI exposure evidence pending.'
       - 'tests: Automated coverage evidence pending.'
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: R-3-5-2

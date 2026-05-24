@@ -133837,7 +133837,7 @@ units:
     unit_type: "rule"
     domain: "D1-resolution"
     title: "**Les 1 sont résolus AVANT les réussites hors cascade**. Les 1 en excès (après avoir consommé toutes les réussites) causent l'échec critique (R-1.17)."
-    status: partial
+    status: covered
     sources:
       - path: "docs/rules/01-resolution.md"
         ref: "line 320"
@@ -136105,7 +136105,7 @@ units:
     unit_type: "rule"
     domain: "D1-resolution"
     title: "R-1.6 — Attribut nul → échec total automatique"
-    status: partial
+    status: covered
     sources:
       - path: "docs/rules/01-resolution.md"
         ref: "line 125"
@@ -141289,7 +141289,7 @@ units:
     unit_type: "rule"
     domain: "D3-races"
     title: "R-3.1 — La race détermine 4 stats de base"
-    status: partial
+    status: covered
     sources:
       - path: "docs/rules/03-races.md"
         ref: "line 19"
@@ -141310,8 +141310,8 @@ units:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: covered
+      evidence: "Race category is used for creation point validation and level thresholds; player creation copies race vitality, speedFactor and willFactor onto the character. Files: packages/rules-core/src/character.ts:194, packages/rules-core/src/character.ts:296, packages/rules-core/src/character.ts:324, packages/rules-core/src/character.ts:482. Tests: packages/rules-core/src/character.test.ts:18, packages/rules-core/src/character.test.ts:46, packages/rules-core/src/character.test.ts:153, packages/rules-core/src/character.test.ts:283."
     api:
       status: partial
       evidence: "Downstream API evidence pending."
@@ -141361,7 +141361,7 @@ units:
     unit_type: "rule"
     domain: "D3-races"
     title: "R-3.2 — La race détermine les limites physiques (9 aptitudes)"
-    status: partial
+    status: covered
     sources:
       - path: "docs/rules/03-races.md"
         ref: "line 31"
@@ -141382,8 +141382,8 @@ units:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: covered
+      evidence: "validateAttributeDistribution enforces each creation attribute against race.attributeMax minus the configured creation offset. Files: packages/rules-core/src/character.ts:194, packages/rules-core/src/character.ts:207. Tests: packages/rules-core/src/character.test.ts:18, packages/rules-core/src/character.test.ts:29."
     api:
       status: partial
       evidence: "Downstream API evidence pending."
@@ -141418,8 +141418,8 @@ units:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: not_applicable
+      evidence: "Rules-core implementation pending: racial atouts and handicaps are catalog content today, but character construction does not yet apply them automatically."
     api:
       status: partial
       evidence: "Downstream API evidence pending."
@@ -141490,8 +141490,8 @@ units:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: not_applicable
+      evidence: "Rules-core implementation pending: race-conditioned level atouts are catalog/progression design inputs today, but no rules-core level-up choice engine applies them yet."
     api:
       status: partial
       evidence: "Downstream API evidence pending."
@@ -141577,7 +141577,7 @@ units:
     unit_type: "rule"
     domain: "D3-races"
     title: "R-3.5 — Modèle de données de la race"
-    status: partial
+    status: covered
     sources:
       - path: "docs/rules/03-races.md"
         ref: "line 88"
@@ -141598,8 +141598,8 @@ units:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: covered
+      evidence: "RaceProfile models id, name, category, vitality, speedFactor, willFactor and per-attribute maximums used by character creation. Files: packages/rules-core/src/character.ts:25, packages/rules-core/src/character.ts:126. Tests: packages/rules-core/src/character.test.ts:153, packages/rules-core/src/character.test.ts:471."
     api:
       status: partial
       evidence: "Downstream API evidence pending."
