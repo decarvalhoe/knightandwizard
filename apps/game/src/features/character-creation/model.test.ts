@@ -37,6 +37,29 @@ describe('character creation wizard model', () => {
     ]);
   });
 
+  it('keeps catalog ambiguity notices visible in the creation view', () => {
+    const sourceCatalog = {
+      ...catalog(),
+      ambiguityNotices: [
+        {
+          catalogName: 'Armes',
+          count: 8,
+          sourcePath: 'data/catalogs/armes-ambiguites.md'
+        }
+      ]
+    } as CharacterCreationCatalog;
+    const view = buildCreationView(createCreationDraft(sourceCatalog), sourceCatalog);
+
+    expect(view.ambiguityNotices).toEqual([
+      {
+        catalogName: 'Armes',
+        count: 8,
+        sourcePath: 'data/catalogs/armes-ambiguites.md'
+      }
+    ]);
+    expect(view.canSubmit).toBe(false);
+  });
+
   it('validates magician spell conversion against the skill and spell budgets', () => {
     const draft = withAttributes(
       setSpellPoints(
@@ -272,6 +295,7 @@ function catalog(): CharacterCreationCatalog {
   const humanMax = Object.fromEntries(ATTRIBUTE_KEYS.map((key) => [key, 6])) as CharacterAttributes;
 
   return {
+    ambiguityNotices: [],
     assets: [
       {
         id: 'human-adaptability',

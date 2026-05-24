@@ -11,6 +11,7 @@ import { getCatalogDocument } from '@/lib/catalogs';
 
 import {
   createCreationDraft,
+  type CharacterCreationAmbiguityNotice,
   type CharacterCreationCatalog,
   type CharacterCreationDraft
 } from './model';
@@ -93,6 +94,10 @@ export interface SpellEntry {
   status?: string;
 }
 
+export interface CatalogMetadata {
+  ambiguities_count?: number;
+}
+
 export interface EquipmentCatalogEntryDocument {
   id?: string;
   name?: string;
@@ -102,15 +107,18 @@ export interface EquipmentCatalogEntryDocument {
 }
 
 export interface WeaponsCatalogDocument {
+  metadata?: CatalogMetadata;
   weapons?: EquipmentCatalogEntryDocument[];
 }
 
 export interface ProtectionsCatalogDocument {
   armor_pieces?: EquipmentCatalogEntryDocument[];
+  metadata?: CatalogMetadata;
   shields?: EquipmentCatalogEntryDocument[];
 }
 
 export interface PotionsCatalogDocument {
+  metadata?: CatalogMetadata;
   potions?: EquipmentCatalogEntryDocument[];
 }
 
@@ -155,6 +163,23 @@ export function buildCharacterCreationCatalogFromReadModels(input: {
   const races = toRaceProfiles(input.races);
 
   return {
+    ambiguityNotices: toAmbiguityNotices([
+      {
+        catalogName: 'Armes',
+        metadata: input.weapons.metadata,
+        sourcePath: 'data/catalogs/armes-ambiguites.md'
+      },
+      {
+        catalogName: 'Protections',
+        metadata: input.protections.metadata,
+        sourcePath: 'data/catalogs/protections.yaml'
+      },
+      {
+        catalogName: 'Potions',
+        metadata: input.potions.metadata,
+        sourcePath: 'data/catalogs/potions.yaml'
+      }
+    ]),
     assets: toRaceAssets(input.races),
     classes: toClassProfiles(input.classes),
     equipment: toEquipmentOptions(input.weapons, input.protections, input.potions),
@@ -247,6 +272,18 @@ export function toEquipmentOptions(
     ...(protections.armor_pieces ?? []).map((entry) => toEquipmentOption(entry)),
     ...(potions.potions ?? []).map((entry) => toEquipmentOption(entry))
   ].filter((entry): entry is { id: string; name: string } => entry !== null);
+}
+
+function toAmbiguityNotices(
+  sources: Array<{ catalogName: string; metadata?: CatalogMetadata; sourcePath: string }>
+): CharacterCreationAmbiguityNotice[] {
+  return sources.flatMap((source) => {
+    const count = source.metadata?.ambiguities_count ?? 0;
+
+    return count > 0
+      ? [{ catalogName: source.catalogName, count, sourcePath: source.sourcePath }]
+      : [];
+  });
 }
 
 function toRaceAssets(catalog: RacesCatalogDocument) {
