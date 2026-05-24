@@ -34,6 +34,7 @@ export const surfaceNavItems: readonly SurfaceNavItem[] = [
   { href: '/dice', label: 'Des', shortLabel: 'D10', skin: 'tripot' },
   { href: '/rules', label: 'Archives', shortLabel: 'D1-D13', skin: 'archives' },
   { href: '/bibliotheque', label: 'Bibliotheque', shortLabel: 'CMS', skin: 'bibliotheque' },
+  { href: '/cartulaire', label: 'Cartulaire', shortLabel: 'Carte', skin: 'armorial' },
   { href: '/design-proto', label: 'Lab', shortLabel: 'Skin', skin: 'moderne' }
 ] as const;
 
@@ -50,6 +51,7 @@ export const routeSkins: readonly [prefix: string, skin: KwSkin][] = [
   ['/dice', 'tripot'],
   ['/rules', 'archives'],
   ['/bibliotheque', 'bibliotheque'],
+  ['/cartulaire', 'armorial'],
   ['/design-proto', 'moderne']
 ] as const;
 

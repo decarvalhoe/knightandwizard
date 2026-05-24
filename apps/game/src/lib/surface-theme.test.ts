@@ -20,6 +20,7 @@ describe('surface theme contract', () => {
     expect(resolveSkinForPath('/rules')).toBe('archives');
     expect(resolveSkinForPath('/greffe')).toBe('archives');
     expect(resolveSkinForPath('/bibliotheque')).toBe('bibliotheque');
+    expect(resolveSkinForPath('/cartulaire')).toBe('armorial');
     expect(resolveSkinForPath('/design-proto')).toBe('moderne');
   });
 
