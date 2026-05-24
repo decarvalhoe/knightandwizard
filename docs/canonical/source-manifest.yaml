@@ -7906,7 +7906,7 @@ sources:
     notes: "Product catalog table."
   - id: "data-catalogs-atouts"
     path: "data/catalogs/atouts.yaml"
-    sha256: "309112ef179836b88a98802314f34124d762486103f810c4e8d4cd96136490d8"
+    sha256: "0414b6d7719a52fef25f36ed9d076e29682c54802cf3ec7f87bbf56ebe605b5d"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -8059,7 +8059,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-readme"
     path: "data/catalogs/README.md"
-    sha256: "50231e267bfd5e4643c39bc0afd563e1362e7633eade11a591c27cd421b59238"
+    sha256: "ab233e2a1f7b2a03e156d253222df8dacb57299d3d9ff262767ed34855b9b5ed"
     source_type: generated_doc
     priority: 85
     status: active
@@ -13160,9 +13160,45 @@ sources:
     domains: ["project-governance"]
     contains: ["project_documentation"]
     notes: "Project documentation source."
+  - id: "docs-product-cms-governance-workflow"
+    path: "docs/product/cms-governance-workflow.md"
+    sha256: "6b47d1a4a509819e19f5e3e8e2daeda980b3160032a179f5007322e47d38e525"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-product-episodic-memory-contract"
+    path: "docs/product/episodic-memory-contract.md"
+    sha256: "3759d88fd5cbb9eca0a7931c6202da40f651bbb88d2193a8eca0f8aa5e646b34"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-product-llm-tool-calling-contract"
+    path: "docs/product/llm-tool-calling-contract.md"
+    sha256: "c5fb658288aea0c0b2caef8e3220734414fdc900a59e51125f595233e963eb02"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-product-rag-citation-evaluation-contract"
+    path: "docs/product/rag-citation-evaluation-contract.md"
+    sha256: "d9bd517265bfeb7d9af0dfbbab3d6feb1f88835cec432cb381c3386d40f7efbb"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-product-readme"
     path: "docs/product/README.md"
-    sha256: "82d176cb1a2480aacf8828a3e2a70712521a1b61e7c8b1e8994158bbac049e57"
+    sha256: "89b72ccb0eb81c25e99d5a74b642df90218db4f2dec7e5facf30e339194a2eb3"
     source_type: generated_doc
     priority: 40
     status: active
@@ -13189,7 +13225,16 @@ sources:
     notes: "Project documentation source."
   - id: "docs-readme"
     path: "docs/README.md"
-    sha256: "b94537236bfae39fdc8e9b76c13b69cc5a5eb423ab29002a6867eb7c9eb3b2f8"
+    sha256: "f6f3abba3b04a9d6f28d4768b12bbeb0009395ff2b88ca4250b135bd148747e7"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-release-readme"
+    path: "docs/release/README.md"
+    sha256: "5319b131cf5c79ad31491f8a3187c4571af451c3e0ba34777c8360fcc212783b"
     source_type: generated_doc
     priority: 40
     status: active
@@ -13270,7 +13315,7 @@ sources:
     notes: "Canonical rule document."
   - id: "docs-rules-09-combat"
     path: "docs/rules/09-combat.md"
-    sha256: "f7b04fef1b88e34f8f16d9838ab945c8aeb98aad3164f5245c7921ae6e1ed2aa"
+    sha256: "8a5fc8414c35f70fbae0851ab5265498f02807086a75d883940e91265c4dfe9a"
     source_type: canonical_rule
     priority: 100
     status: active

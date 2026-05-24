@@ -43,6 +43,7 @@ describe('game master Mastra runtime', () => {
       pool: 3,
       reason: 'Tester la vigilance du guetteur',
       rolls: [7, 8, 2],
+      status: 'ok',
       successes: 2,
       total: 17
     });
@@ -78,6 +79,7 @@ describe('game master Mastra runtime', () => {
         },
         output: expect.objectContaining({
           rolls: [7, 8, 2],
+          status: 'ok',
           successes: 2
         }),
         tool: 'rollDice'
@@ -114,6 +116,25 @@ describe('game master Mastra runtime', () => {
       successes: 0
     });
     expect(result.narration).toContain('Echec critique D100 73.');
+  });
+
+  it('keeps invalid roll tool errors visible and recoverable', async () => {
+    const result = await describeSceneWithGameMaster({
+      sceneDescription: 'Le MJ demande un jet mal forme pendant un test outil.',
+      roll: {
+        difficulty: 7,
+        pool: 0,
+        reason: 'Contrat de recuperation tool calling'
+      } as never,
+      sessionId: 'session-roll-error'
+    });
+
+    expect(result.toolCalls[0]?.output).toMatchObject({
+      message: expect.stringContaining('pool'),
+      status: 'error'
+    });
+    expect(result.narration).toContain('Erreur outil rollDice');
+    expect(result.narration).toContain('attend une entree corrigee');
   });
 
   it('injects retrieved rules context and cites it in the deterministic narration', async () => {
@@ -161,6 +182,7 @@ describe('game master Mastra runtime', () => {
               kind: 'npc_encounter',
               occurredAt: '2026-04-29T20:00:00.000Z',
               payload: {},
+              provenanceType: 'session_fact',
               score: 2.5,
               sessionKey: 'session-rag',
               source: 'test',
@@ -183,6 +205,10 @@ describe('game master Mastra runtime', () => {
           score: 0.92
         }
       ],
+      grounding: {
+        catalogOverrideAllowed: false,
+        vectorRole: 'citation_and_arbitration_context'
+      },
       query: 'Comment resoudre un jet difficile pour crocheter une serrure ?'
     });
     expect(result.knowledge.context).toContain('[1] docs/rules/01-resolution.md > Jets difficiles');
@@ -194,7 +220,12 @@ describe('game master Mastra runtime', () => {
     expect(recorded).toEqual([
       expect.objectContaining({
         kind: 'scene_event',
-        sessionKey: 'session-rag'
+        payload: expect.objectContaining({
+          canonicalLoreMutable: false
+        }),
+        provenanceType: 'session_fact',
+        sessionKey: 'session-rag',
+        source: 'game-master'
       })
     ]);
   });

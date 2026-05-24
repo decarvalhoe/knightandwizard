@@ -8,6 +8,7 @@
 - [`product/`](product/) — Vision K&W active : assistant MJ/Joueur, moteur tabletop-first, LLM, architecture produit
 - [`rules/`](rules/) — Les **13 domaines de règles canoniques** (Phase 1 close 2026-04-25)
 - [`game/`](game/) — Cadrage du projet séparé `knightandwizard-game` (décisions distinctes)
+- [`release/`](release/) — Runbook release, promotion `main`, changelog, backup et rollback
 
 ## Phase 1 — 13 domaines de règles
 

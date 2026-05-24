@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { buildApp } from '../app.js';
+import { createSqlClient } from '../db/client.js';
 
 const app = buildApp({ logger: false });
 
@@ -230,6 +231,99 @@ describe('session routes', () => {
       'gm_decision_resolved',
       'rollback_requested'
     ]);
+  });
+
+  it('records canonical entity links on events, decisions and rollback markers', async () => {
+    const slug = `linked-session-${randomUUID()}`;
+    const links = {
+      characters: ['aveline'],
+      objects: ['relique-brisee'],
+      places: ['brumeval-gate'],
+      rules: [{ ref: 'R-13.9', sourcePath: 'docs/rules/13-roles-passation.md' }]
+    };
+
+    await app.inject({
+      method: 'POST',
+      payload: { slug, title: 'Linked API' },
+      url: '/sessions'
+    });
+
+    const eventResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'scene_opened',
+        links,
+        payload: { text: 'La relique apparait dans la brume.' }
+      },
+      url: `/sessions/${slug}/events`
+    });
+    const decisionResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        assignedTo: 'human_gm',
+        links,
+        payload: { options: ['examiner', 'ignorer'] },
+        requestedBy: 'llm',
+        title: 'Tracer la relique dans le journal'
+      },
+      url: `/sessions/${slug}/decisions`
+    });
+    const decisionId = decisionResponse.json().decision.id;
+    const resolveResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        links,
+        resolution: { ruling: 'examiner' },
+        status: 'approved'
+      },
+      url: `/sessions/${slug}/decisions/${decisionId}/resolve`
+    });
+    const rollbackResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        links,
+        reason: 'Retour avant decision',
+        targetSequence: 1
+      },
+      url: `/sessions/${slug}/rollback`
+    });
+    const readResponse = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+    const readBody = readResponse.json();
+    const sql = createSqlClient();
+    let auditRows: { action: string; payload: { links?: unknown } }[];
+
+    try {
+      auditRows = await sql<{ action: string; payload: { links?: unknown } }[]>`
+        SELECT action, payload
+        FROM audit_events
+        WHERE payload->>'sessionId' = ${readBody.id}
+        ORDER BY created_at ASC
+      `;
+    } finally {
+      await sql.end({ timeout: 5 });
+    }
+
+    expect(eventResponse.statusCode).toBe(201);
+    expect(decisionResponse.statusCode).toBe(201);
+    expect(resolveResponse.statusCode).toBe(200);
+    expect(rollbackResponse.statusCode).toBe(201);
+    expect(eventResponse.json().event.payload.links).toEqual(links);
+    expect(decisionResponse.json().decision.payload.links).toEqual(links);
+    expect(resolveResponse.json().decision.resolution.links).toEqual(links);
+    expect(rollbackResponse.json().event.payload.links).toEqual(links);
+    expect(
+      readBody.events.map((event: { payload: { links?: unknown } }) => event.payload.links)
+    ).toEqual([links, links, links, links]);
+    expect(auditRows.map((row) => row.action)).toEqual([
+      'session.event.appended',
+      'session.decision.queued',
+      'session.decision.resolved',
+      'session.rollback.requested'
+    ]);
+    expect(auditRows.map((row) => row.payload.links)).toEqual([links, links, links, links]);
   });
 
   it('rejects invalid session payloads', async () => {

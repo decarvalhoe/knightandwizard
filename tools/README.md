@@ -20,6 +20,21 @@ pnpm canonical:check:strict
 
 `canonical:check` est inclus dans `pnpm validate`. Les artefacts `docs/canonical/*` sont générés et comparés par ce gate ; ils ne doivent pas être édités à la main.
 
+### `import-catalogs.ts`
+
+Construit le plan d'import Payload depuis les catalogues canoniques P0 et les sources YAML et Markdown. Les documents importes conservent `status`, `source_refs.path`, `source_refs.ref` et `source_refs.sha256`, avec les donnees brutes en `metadata.raw` pour permettre un export round-trip controlable. Le plan couvre notamment races, orientations, classes, competences, ecoles de magie, sorts, atouts et atouts de niveau.
+
+Commandes :
+
+```bash
+pnpm cms:import:catalogs:dry-run
+pnpm cms:import:catalogs
+pnpm cms:verify:catalogs
+pnpm exec tsx tools/import-catalogs.ts --export-yaml-dir /tmp/kw-catalog-roundtrip
+```
+
+L'edition CMS passe par les roles Payload `catalog_editor` et `catalog_reviewer`; les imports automatises utilisent `overrideAccess` mais n'effacent pas la tracabilite YAML.
+
 ### `build-races-catalog.ts`
 
 Génère `data/catalogs/races.yaml` depuis `data/catalogs/bestiaire.yaml`, en conservant les `source_refs` web/paper de chaque entrée. Le catalogue contient les 31 races connues du domaine D3, avec `playable: true` pour les 25 races disponibles au wizard PJ et `playable: false` pour les races non proposées à la création.
@@ -64,7 +79,7 @@ pnpm catalogs:build:magic
 
 ### `build-atouts-catalog.ts`
 
-Génère `data/catalogs/atouts.yaml` à partir de `data/legacy/web-scraped/documents/atouts/index.md`. Extrait 416 atouts/handicaps avec activation (`permanent`/`ephemere`), scope (`classe`/`neutre`/`orientation`), valeur (négative pour les handicaps), effet et `source_refs`. Les atouts du même nom dans plusieurs scopes reçoivent un suffixe `-<scope>-<n>`.
+Génère `data/catalogs/atouts.yaml` à partir de `documents/atouts/index.md`, `documents/atouts-niveaux/index.md` et `data/catalogs/races.yaml`. Extrait 802 entrées : 416 atouts/handicaps de base, 347 atouts de niveau et 39 atouts/handicaps innés de races. Les scopes couverts sont `classe` / `neutre` / `orientation` / `race` / `niveau`; les relations de race portent `metadata.race_ids`, et les relations sans valeur explicite restent `raw_reference_only` avec `activation: unknown` / `value: null`.
 
 Commande :
 
@@ -104,6 +119,14 @@ pnpm knowledge:index
 ```
 
 Le RAG sert à citer, expliquer et retrouver le contexte. Il ne remplace pas les catalogues structurés ni les validations métier.
+
+### `evaluate-rag.ts`
+
+Execute les cas d'evaluation canoniques resolution, creation, magie et combat contre l'index RAG courant. Les resultats doivent citer les documents attendus et rester dans la politique `citation_and_arbitration_context`, sans override des donnees structurees.
+
+```bash
+pnpm rag:evaluate
+```
 
 ### `parse.py`
 

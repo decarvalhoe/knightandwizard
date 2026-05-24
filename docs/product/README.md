@@ -11,7 +11,11 @@ Le projet **K&W-game** est un projet separe, dans un autre depot, avec ses propr
 
 ## Documents
 
+- [CMS governance workflow](cms-governance-workflow.md) - workflow Payload pour ambiguites, decisions metier et artefacts regeneres.
 - [vision-assistant-mj-joueur.md](vision-assistant-mj-joueur.md) — vision tabletop-first de l'assistant MJ/Joueur.
 - [synthese-comprehension.md](synthese-comprehension.md) — synthese de comprehension du projet K&W.
 - [architecture-strategie-llm.md](architecture-strategie-llm.md) — analyse technique et strategie d'architecture pour K&W/LLM.
 - [api-catalog-read-models.md](api-catalog-read-models.md) — contrat API des catalogues canoniques exposes depuis PostgreSQL.
+- [llm-tool-calling-contract.md](llm-tool-calling-contract.md) — contrat de tool calling MJ: outils types, structured outputs et erreurs recuperables.
+- [rag-citation-evaluation-contract.md](rag-citation-evaluation-contract.md) — contrat RAG: citations canoniques, evaluations et separation DB/vector.
+- [episodic-memory-contract.md](episodic-memory-contract.md) — contrat memoire MJ: provenance, recall cite et protection du lore canonique.

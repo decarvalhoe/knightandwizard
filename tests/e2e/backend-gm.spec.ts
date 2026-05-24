@@ -1,4 +1,10 @@
-import { expect, type APIRequestContext, test } from '@playwright/test';
+import { expect, type APIRequestContext, test, type TestInfo } from '@playwright/test';
+
+import {
+  canonicalE2EFixtures,
+  formatCanonicalSourceRefs,
+  type CanonicalE2EScenario
+} from './fixtures/canonical';
 
 const apiBaseUrl = process.env.E2E_API_URL ?? 'http://127.0.0.1:3102';
 
@@ -7,11 +13,18 @@ type JsonObject = Record<string, unknown>;
 test.describe('K&W backend, RAG and GM runtime flows', () => {
   test('persists drafts, session events, GM decisions, RAG context and episodic memory', async ({
     request
-  }) => {
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'backendGm');
     const suffix = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
     const draftId = `e2e-draft-${suffix}`;
     const sessionSlug = `e2e-session-${suffix}`;
     const gmSessionId = `e2e-gm-${suffix}`;
+    const canonicalLinks = {
+      characters: ['aveline'],
+      objects: ['relique-brisee'],
+      places: ['porte-nord'],
+      rules: [{ ref: 'D13 arbitrage et rollback', sourcePath: 'docs/rules/13-roles-passation.md' }]
+    };
 
     await expectJson(request, 'GET', '/health', 200, (body) => {
       expect(body.status).toBe('ok');
@@ -21,6 +34,26 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
     await expectJson(request, 'GET', '/ready', 200, (body) => {
       expect(body.status).toBe('ready');
       expect(body.pgvector).toBe(true);
+    });
+
+    await expectJson(request, 'GET', '/catalogs/equipment', 200, (body) => {
+      const totals = asRecord(body.totals);
+      const equipment = records(body.equipment);
+
+      expect(body.status).toBe('ok');
+      expect(totals.total).toBe(183);
+      expect(equipment.find((entry) => entry.id === 'epee_batarde')).toMatchObject({
+        category: 'weapon',
+        sourceCatalog: 'armes.yaml'
+      });
+      expect(equipment.find((entry) => entry.id === 'bouclier_bois')).toMatchObject({
+        category: 'shield',
+        sourceCatalog: 'protections.yaml'
+      });
+      expect(equipment.find((entry) => entry.id === 'soin')).toMatchObject({
+        category: 'consumable',
+        sourceCatalog: 'potions.yaml'
+      });
     });
 
     await expectJson(
@@ -36,7 +69,7 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
       {
         currentStep: 'review',
         payload: {
-          name: 'E2E Aveline',
+          name: canonicalE2EFixtures.actors.avelineDraftName,
           rules: 'character creation draft persistence'
         },
         userId: 'e2e'
@@ -45,7 +78,7 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
 
     await expectJson(request, 'GET', `/character-drafts/${draftId}`, 200, (body) => {
       expect(body.status).toBe('found');
-      expect(asRecord(body.payload).name).toBe('E2E Aveline');
+      expect(asRecord(body.payload).name).toBe(canonicalE2EFixtures.actors.avelineDraftName);
     });
 
     await expectJson(
@@ -78,10 +111,12 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
         expect(body.status).toBe('created');
         expect(event.sequence).toBe(1);
         expect(event.eventType).toBe('scene_opened');
+        expect(asRecord(event.payload).links).toEqual(canonicalLinks);
       },
       {
         actorId: 'gm',
         eventType: 'scene_opened',
+        links: canonicalLinks,
         payload: { location: 'Porte nord' }
       }
     );
@@ -98,9 +133,12 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
         expect(body.status).toBe('created');
         expect(decisionBody.status).toBe('pending');
         expect(event.eventType).toBe('gm_decision_requested');
+        expect(asRecord(decisionBody.payload).links).toEqual(canonicalLinks);
+        expect(asRecord(event.payload).links).toEqual(canonicalLinks);
       },
       {
         assignedTo: 'human_gm',
+        links: canonicalLinks,
         payload: { options: ['negocier', 'combattre'] },
         priority: 'high',
         requestedBy: 'llm',
@@ -122,9 +160,12 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
         expect(body.status).toBe('resolved');
         expect(decisionBody.status).toBe('approved');
         expect(event.eventType).toBe('gm_decision_resolved');
+        expect(asRecord(decisionBody.resolution).links).toEqual(canonicalLinks);
+        expect(asRecord(event.payload).links).toEqual(canonicalLinks);
       },
       {
         actorId: 'gm',
+        links: canonicalLinks,
         resolution: { ruling: 'Reaction validee' },
         status: 'approved'
       }
@@ -140,20 +181,30 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
 
         expect(body.status).toBe('created');
         expect(event.eventType).toBe('rollback_requested');
+        expect(asRecord(event.payload).links).toEqual(canonicalLinks);
       },
       {
         actorId: 'gm',
+        links: canonicalLinks,
         reason: 'Correction E2E',
         targetSequence: 1
       }
     );
 
     await expectJson(request, 'GET', `/sessions/${sessionSlug}`, 200, (body) => {
-      expect(records(body.events).map((event) => event.eventType)).toEqual([
+      const events = records(body.events);
+
+      expect(events.map((event) => event.eventType)).toEqual([
         'scene_opened',
         'gm_decision_requested',
         'gm_decision_resolved',
         'rollback_requested'
+      ]);
+      expect(events.map((event) => asRecord(event.payload).links)).toEqual([
+        canonicalLinks,
+        canonicalLinks,
+        canonicalLinks,
+        canonicalLinks
       ]);
       expect(asRecord(records(body.decisions)[0]).status).toBe('approved');
     });
@@ -183,7 +234,7 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
           pool: 4,
           reason: 'jet de des difficile'
         },
-        sceneDescription: 'Aveline tente un jet de des difficile a la porte nord.',
+        sceneDescription: canonicalE2EFixtures.scenes.firstDifficultRoll,
         sessionId: gmSessionId
       }
     );
@@ -201,12 +252,21 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
         expect(body.narration).toContain('Memoire');
       },
       {
-        sceneDescription: 'Aveline repense au jet de des difficile avant de parler au guetteur.',
+        sceneDescription: canonicalE2EFixtures.scenes.memoryRecall,
         sessionId: gmSessionId
       }
     );
   });
 });
+
+function annotateCanonical(testInfo: TestInfo, scenario: CanonicalE2EScenario): void {
+  const fixture = canonicalE2EFixtures.scenarios[scenario];
+
+  testInfo.annotations.push({
+    description: formatCanonicalSourceRefs(fixture.sourceRefs),
+    type: 'canonical-sources'
+  });
+}
 
 async function expectJson(
   request: APIRequestContext,

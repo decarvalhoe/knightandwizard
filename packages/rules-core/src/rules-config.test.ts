@@ -1,6 +1,18 @@
 import { describe, expect, it } from 'vitest';
 
-import { addCombatant, createCombatState, resolveStaminaDamage } from './combat.js';
+import {
+  addCombatant,
+  applyDamage,
+  createCombatState,
+  getCyclicDT,
+  resolveStaminaDamage
+} from './combat.js';
+import {
+  ATTRIBUTE_KEYS,
+  calculateLevelProgression,
+  createPlayerCharacter,
+  type RaceProfile
+} from './character.js';
 import {
   calculateLearningPlan,
   skillImprovementCost,
@@ -34,6 +46,16 @@ function withCombat(overrides: Partial<RulesConfig['combat']>): RulesConfig {
   };
 }
 
+function withCreation(overrides: Partial<RulesConfig['creation']>): RulesConfig {
+  return {
+    ...DEFAULT_RULES_CONFIG,
+    creation: {
+      ...DEFAULT_RULES_CONFIG.creation,
+      ...overrides
+    }
+  };
+}
+
 function scriptedRolls(values: number[]) {
   let index = 0;
 
@@ -49,9 +71,113 @@ function scriptedRolls(values: number[]) {
   };
 }
 
+function targetCombatant() {
+  return {
+    id: 'target',
+    name: 'Target',
+    speedFactor: 5,
+    nextActionAt: 12,
+    reflexes: 3,
+    vitality: { current: 10, max: 10 },
+    attributes: { strength: 5, dexterity: 5, stamina: 3 },
+    baseAttributes: { strength: 5, dexterity: 5, stamina: 3 },
+    skills: {},
+    statuses: []
+  };
+}
+
+function humanRace(id = 'humain'): RaceProfile {
+  return {
+    id,
+    name: 'Human',
+    category: 20,
+    vitality: 24,
+    speedFactor: 8,
+    willFactor: 10,
+    attributeMax: Object.fromEntries(
+      ATTRIBUTE_KEYS.map((key) => [key, 6])
+    ) as RaceProfile['attributeMax']
+  };
+}
+
+function validAttributes() {
+  return {
+    strength: 3,
+    dexterity: 3,
+    stamina: 3,
+    reflexes: 2,
+    perception: 2,
+    intelligence: 2,
+    charisma: 2,
+    empathy: 2,
+    aestheticism: 1
+  };
+}
+
+function validSkills() {
+  return [
+    { id: 'epee', points: 4, isMain: true },
+    { id: 'course', points: 4 },
+    { id: 'chasse', points: 4 },
+    { id: 'histoire', points: 4 },
+    { id: 'medecine', points: 4 }
+  ];
+}
+
 describe('versioned rules-config', () => {
   it('exposes the canonical default ruleset version', () => {
     expect(DEFAULT_RULES_CONFIG.version).toBe(1);
+  });
+
+  it('drives combat round length from config.roundLengthDT', () => {
+    const custom = withCombat({ roundLengthDT: 12 });
+
+    expect(getCyclicDT(12, '+', custom)).toBe(1);
+    expect(getCyclicDT(1, '-', custom)).toBe(12);
+    expect(createCombatState(13, custom).round).toBe(2);
+  });
+
+  it('drives damage unconscious and vitality-malus thresholds from config ratios', () => {
+    const custom = withCombat({ unconsciousDamageRatio: 0.3, vitalityMalusRatio: 0.8 });
+    const state = addCombatant(createCombatState(1, custom), targetCombatant(), custom);
+
+    const result = applyDamage(state, 'target', 4, custom);
+    const target = result.timeline[0];
+
+    expect(target.vitality.current).toBe(6);
+    expect(target.statuses).toContainEqual({ id: 'unconscious', appliedAtDT: 1 });
+    expect(target.attributes).toMatchObject({ strength: 3, dexterity: 3, stamina: 1 });
+  });
+
+  it('drives magician and familiar identity from configured ids', () => {
+    const custom = withCreation({
+      magicianOrientationIds: ['custom-mage'],
+      familiarRaceIds: ['custom-familiar']
+    });
+
+    const mage = createPlayerCharacter(
+      {
+        id: 'pc-custom-mage',
+        name: 'Custom Mage',
+        race: humanRace(),
+        orientation: { id: 'custom-mage', name: 'Custom Mage' },
+        classProfile: { id: 'custom-class', name: 'Custom Class', orientationId: 'custom-mage' },
+        attributes: validAttributes(),
+        skills: validSkills(),
+        spells: [{ id: 'custom-spell', points: 2 }]
+      },
+      custom
+    );
+
+    expect(mage.energy).toEqual({ current: 60, max: 60 });
+
+    const familiar = { ...mage, race: humanRace('custom-familiar') };
+    expect(calculateLevelProgression(familiar, custom)).toEqual({
+      level: null,
+      levelPoints: null,
+      levelUpAt: null,
+      primarySkillIds: []
+    });
   });
 
   it('drives skill improvement cost from config.skillImprovementBaseCost', () => {
@@ -106,19 +232,7 @@ describe('versioned rules-config', () => {
   });
 
   it('drives the stamina endurance roll difficulty from config.staminaRollDifficulty', () => {
-    const makeState = () =>
-      addCombatant(createCombatState(1), {
-        id: 'target',
-        name: 'Target',
-        speedFactor: 5,
-        nextActionAt: 12,
-        reflexes: 3,
-        vitality: { current: 10, max: 10 },
-        attributes: { strength: 5, dexterity: 5, stamina: 3 },
-        baseAttributes: { strength: 5, dexterity: 5, stamina: 3 },
-        skills: {},
-        statuses: []
-      });
+    const makeState = () => addCombatant(createCombatState(1), targetCombatant());
 
     // Default difficulty 7: three dice showing 8 (>= 7) -> 3 successes -> 3 prevented.
     const defaultResult = resolveStaminaDamage(makeState(), 'target', 5, {

@@ -12,7 +12,8 @@
     "noEmit": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@knightandwizard/rules-core": ["../../packages/rules-core/src/index.ts"]
+      "@knightandwizard/rules-core": ["../../packages/rules-core/src/index.ts"],
+      "@knightandwizard/ui": ["../../packages/ui/src/index.ts"]
     },
     "plugins": [
       {

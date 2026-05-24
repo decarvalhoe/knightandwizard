@@ -1,7 +1,15 @@
-import { expect, type Page, test } from '@playwright/test';
+import { expect, type Page, test, type TestInfo } from '@playwright/test';
+
+import {
+  canonicalE2EFixtures,
+  formatCanonicalSourceRefs,
+  type CanonicalE2EScenario
+} from './fixtures/canonical';
 
 test.describe('K&W player and GM application flows', () => {
-  test('dashboard reports the API and links the main work surfaces', async ({ page }) => {
+  test('dashboard reports the API and links the main work surfaces', async ({ page }, testInfo) => {
+    annotateCanonical(testInfo, 'dashboard');
+
     await page.goto('/');
 
     await expect(page.getByRole('heading', { name: /Poste de table/ })).toBeVisible();
@@ -13,7 +21,9 @@ test.describe('K&W player and GM application flows', () => {
 
   test('character sheet exposes canonical attributes, nested skills and level budget', async ({
     page
-  }) => {
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'characterSheet');
+
     await page.goto('/character');
 
     await expect(page.getByRole('heading', { name: 'Fiche active' })).toBeVisible();
@@ -59,10 +69,14 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText(/Charge .* kg/)).toBeVisible();
   });
 
-  test('character creation validates fighter and magician creation budgets', async ({ page }) => {
+  test('character creation validates fighter and magician creation budgets', async ({
+    page
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'characterCreation');
+
     await page.goto('/character/create');
 
-    await page.getByLabel('Nom').fill('E2E Aveline');
+    await page.getByLabel('Nom').fill(canonicalE2EFixtures.actors.avelineDraftName);
     await openCreationStep(page, 'Aptitudes');
     await increaseStepper(page, 'Force', 4);
     await increaseStepper(page, 'Dextérité', 4);
@@ -86,7 +100,7 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('API synchronisee')).toBeVisible();
 
     await page.getByRole('button', { name: /Reset/ }).click();
-    await page.getByLabel('Nom').fill('E2E Magicien');
+    await page.getByLabel('Nom').fill(canonicalE2EFixtures.actors.magicianDraftName);
     await openCreationStep(page, 'Voie');
     await page.getByRole('button', { name: /Magicien/ }).click();
     await openCreationStep(page, 'Sorts');
@@ -100,7 +114,9 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('Convertis')).toBeVisible();
   });
 
-  test('combat tracker resolves DT actions and roster changes', async ({ page }) => {
+  test('combat tracker resolves DT actions and roster changes', async ({ page }, testInfo) => {
+    annotateCanonical(testInfo, 'combatTracker');
+
     await page.goto('/combat');
 
     await expect(page.getByRole('heading', { name: 'Tracker DT' })).toBeVisible();
@@ -114,7 +130,11 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByRole('heading', { name: 'Squelette' }).first()).toBeVisible();
   });
 
-  test('session manager records events, GM decisions and rollback requests', async ({ page }) => {
+  test('session manager records events, GM decisions and rollback requests', async ({
+    page
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'sessionManager');
+
     await page.goto('/session');
 
     await expect(page.getByRole('heading', { name: 'Brumeval' })).toBeVisible();
@@ -136,6 +156,15 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText(/Rollback demande/).first()).toBeVisible();
   });
 });
+
+function annotateCanonical(testInfo: TestInfo, scenario: CanonicalE2EScenario): void {
+  const fixture = canonicalE2EFixtures.scenarios[scenario];
+
+  testInfo.annotations.push({
+    description: formatCanonicalSourceRefs(fixture.sourceRefs),
+    type: 'canonical-sources'
+  });
+}
 
 async function openCreationStep(page: Page, stepName: string): Promise<void> {
   await page.getByRole('button', { name: new RegExp(stepName) }).click();

@@ -1,6 +1,7 @@
 import { Agent } from '@mastra/core/agent';
 import { Mastra } from '@mastra/core/mastra';
 import { type RandomInteger } from '@knightandwizard/rules-core';
+import { RAG_GROUNDING_POLICY, type RagGroundingPolicy } from '../knowledge/evaluations.js';
 import { buildRuleContext, searchRules, type RuleSearchResult } from '../knowledge/rules.js';
 import {
   buildEpisodicMemoryContext,
@@ -10,16 +11,19 @@ import {
 } from './episodic-memory.js';
 import {
   createGameMasterRulesTools,
+  normalizeRuleToolResult,
   type GameMasterRuleTools,
   type RollDiceToolInput,
-  type RollDiceToolResult
+  type RollDiceToolResult,
+  type RuleToolResult
 } from './rules-tools.js';
 
 export {
   executeRollDiceTool,
   validateRollDiceShape,
   type RollDiceToolInput,
-  type RollDiceToolResult
+  type RollDiceToolResult,
+  type RuleToolResult
 } from './rules-tools.js';
 
 export const DEFAULT_GAME_MASTER_MODEL = 'ollama/qwen2.5:7b';
@@ -35,7 +39,7 @@ export const GAME_MASTER_INSTRUCTIONS = [
 
 export interface GameMasterToolCall {
   input: RollDiceToolInput;
-  output: RollDiceToolResult;
+  output: RuleToolResult<RollDiceToolResult>;
   tool: 'rollDice';
 }
 
@@ -89,6 +93,7 @@ export interface GameMasterKnowledgeContext {
   citations: GameMasterKnowledgeCitation[];
   context: string;
   error?: string;
+  grounding: RagGroundingPolicy;
   query: string;
 }
 
@@ -203,16 +208,15 @@ export async function describeSceneWithGameMaster(
 
   if (input.roll) {
     const output = (await runtime.tools.rollDice.execute?.(input.roll, {} as never)) as
-      | RollDiceToolResult
+      | RuleToolResult<RollDiceToolResult>
       | undefined;
-
-    if (!output) {
-      throw new Error('rollDice tool did not return a result');
-    }
 
     toolCalls.push({
       input: input.roll,
-      output,
+      output: normalizeRuleToolResult<RollDiceToolResult>(
+        output,
+        'rollDice tool did not return a result'
+      ),
       tool: 'rollDice'
     });
   }
@@ -272,6 +276,11 @@ function buildDeterministicNarration(
 
   const rollFragments = toolCalls.map(({ input, output }) => {
     const reason = input.reason ? ` (${input.reason})` : '';
+
+    if (output.status === 'error') {
+      return `Erreur outil rollDice${reason}: ${output.message}. Le MJ attend une entree corrigee avant toute resolution mecanique.`;
+    }
+
     const critical = output.isCriticalSuccess
       ? ' Reussite critique.'
       : output.isCriticalFailure
@@ -303,6 +312,7 @@ async function retrieveKnowledgeContext(
         sourcePath: result.sourcePath
       })),
       context: buildRuleContext(results),
+      grounding: RAG_GROUNDING_POLICY,
       query
     };
   } catch (error) {
@@ -310,6 +320,7 @@ async function retrieveKnowledgeContext(
       citations: [],
       context: '',
       error: error instanceof Error ? error.message : 'Unknown knowledge retrieval error',
+      grounding: RAG_GROUNDING_POLICY,
       query
     };
   }
@@ -355,10 +366,13 @@ async function recordSceneMemory(
       importance: toolCalls.length > 0 ? 3 : 2,
       kind: 'scene_event',
       payload: {
+        canonicalLoreMutable: false,
         knowledgeCitations: knowledge.citations,
         toolCalls
       },
+      provenanceType: 'session_fact',
       sessionKey: input.sessionId,
+      source: 'game-master',
       subject: summarizeMemorySubject(input.sceneDescription),
       summary: `Scene: ${input.sceneDescription.trim()} Narration: ${narration}`
     });

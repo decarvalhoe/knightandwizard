@@ -76,7 +76,9 @@ describe('combat DT timeline', () => {
       type: 'action_resolved',
       actorId: 'actor',
       actionType: 'move',
-      atDT: 6
+      atDT: 6,
+      costDT: 3,
+      nextActionAt: 9
     });
   });
 });
@@ -204,6 +206,37 @@ describe('combat action resolution', () => {
       atDT: 6,
       successes: 1
     });
+  });
+
+  it('keeps critical attack failure severity in the combat log without applying damage', () => {
+    const attacker = combatant({
+      id: 'attacker',
+      speedFactor: 5,
+      pendingAction: {
+        type: 'attack',
+        targetId: 'defender',
+        attack: { pool: 3, difficulty: 7 },
+        damageOnHit: 4
+      }
+    });
+    const defender = combatant({ id: 'defender', speedFactor: 8 });
+    const state = addCombatant(addCombatant(createCombatState(1), defender), attacker);
+
+    const result = resolveNextAction(state, { randomInteger: scriptedRolls([1, 1, 7, 73]) });
+    const attackEvent = result.log.at(-1);
+    const target = result.timeline.find((entry) => entry.id === 'defender');
+
+    expect(attackEvent).toMatchObject({
+      type: 'attack_resolved',
+      actorId: 'attacker',
+      targetId: 'defender',
+      atDT: 6,
+      costDT: 5,
+      nextActionAt: 11,
+      successes: 0,
+      attackRoll: { isCriticalFailure: true, criticalFailureSeverity: 73 }
+    });
+    expect(target?.vitality.current).toBe(10);
   });
 
   it('can apply declared damage on a successful attack', () => {

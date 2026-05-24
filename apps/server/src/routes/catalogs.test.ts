@@ -39,6 +39,53 @@ describe('catalog routes', () => {
     expect(body.catalogs[0]?.importedAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
   });
 
+  it('returns inventory-ready equipment entries from canonical equipment catalogs', async () => {
+    const response = await app.inject({ method: 'GET', url: '/catalogs/equipment' });
+    const body = response.json() as EquipmentCatalogResponse;
+
+    expect(response.statusCode).toBe(200);
+    expect(body.status).toBe('ok');
+    expect(body.sourceCatalogs.map((catalog) => catalog.catalogName).sort()).toEqual([
+      'armes.yaml',
+      'potions.yaml',
+      'protections.yaml'
+    ]);
+    expect(body.totals).toEqual({
+      armor: 59,
+      consumables: 5,
+      shields: 12,
+      total: 183,
+      weapons: 107
+    });
+    expect(body.equipment.find((entry) => entry.id === 'epee_batarde')).toMatchObject({
+      category: 'weapon',
+      damageFormula: 'F+6',
+      difficulty: 8,
+      id: 'epee_batarde',
+      name: 'Épée bâtarde',
+      sourceCatalog: 'armes.yaml',
+      weightKg: 2.2
+    });
+    expect(body.equipment.find((entry) => entry.id === 'bouclier_bois')).toMatchObject({
+      category: 'shield',
+      id: 'bouclier_bois',
+      name: 'Bouclier (bois)',
+      passChancePct: 40,
+      protection: { C: 1, E: 2, P: 2, T: 3 },
+      sourceCatalog: 'protections.yaml',
+      weightKg: 3
+    });
+    expect(body.equipment.find((entry) => entry.id === 'soin')).toMatchObject({
+      category: 'consumable',
+      craftDifficulty: 9,
+      effect:
+        'Restaure autant de points de vitalité que de réussites obtenues lors de la fabrication',
+      id: 'soin',
+      name: 'Potion de Soin',
+      sourceCatalog: 'potions.yaml'
+    });
+  });
+
   it('returns a catalog document with canonical status and source refs intact', async () => {
     const response = await app.inject({ method: 'GET', url: '/catalogs/spells.yaml' });
     const body = response.json() as CatalogDocumentResponse<{ spells: CatalogEntry[] }>;
@@ -109,4 +156,31 @@ interface CatalogSummary {
 interface CatalogEntry {
   source_refs?: Array<{ path?: string }>;
   status?: string;
+}
+
+interface EquipmentCatalogResponse {
+  equipment: EquipmentEntry[];
+  sourceCatalogs: CatalogSummary[];
+  status: 'ok';
+  totals: {
+    armor: number;
+    consumables: number;
+    shields: number;
+    total: number;
+    weapons: number;
+  };
+}
+
+interface EquipmentEntry {
+  category: 'armor' | 'consumable' | 'shield' | 'weapon';
+  craftDifficulty?: number;
+  damageFormula?: string;
+  difficulty?: number;
+  effect?: string;
+  id: string;
+  name: string;
+  passChancePct?: number;
+  protection?: Record<string, number>;
+  sourceCatalog: string;
+  weightKg?: number;
 }

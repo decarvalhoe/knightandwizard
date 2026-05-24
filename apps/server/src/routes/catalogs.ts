@@ -1,6 +1,17 @@
-import { PRIORITY_CATALOG_NAMES, type PriorityCatalogName } from '@knightandwizard/catalogs';
+import {
+  PRIORITY_CATALOG_NAMES,
+  type PotionsCatalog,
+  type PriorityCatalogName,
+  type ProtectionsCatalog,
+  type WeaponsCatalog
+} from '@knightandwizard/catalogs';
 import type { FastifyInstance } from 'fastify';
 
+import {
+  EQUIPMENT_CATALOG_NAMES,
+  buildEquipmentInventoryReadModel,
+  summarizeEquipmentInventory
+} from '../catalogs/equipment.js';
 import { createSqlClient, type SqlClient } from '../db/client.js';
 
 const catalogNamePattern = /^[a-z0-9-]+\.yaml$/;
@@ -33,6 +44,7 @@ interface CatalogDocumentRow {
 
 export async function registerCatalogRoutes(app: FastifyInstance): Promise<void> {
   app.options('/catalogs', async (_request, reply) => reply.code(204).send());
+  app.options('/catalogs/equipment', async (_request, reply) => reply.code(204).send());
   app.options('/catalogs/:catalogName', async (_request, reply) => reply.code(204).send());
 
   app.get('/catalogs', async () => {
@@ -46,6 +58,51 @@ export async function registerCatalogRoutes(app: FastifyInstance): Promise<void>
           .filter((row) => isPriorityCatalogName(row.catalog_name))
           .map(toCatalogSummary),
         status: 'ok' as const
+      };
+    } finally {
+      await sql.end({ timeout: 5 });
+    }
+  });
+
+  app.get('/catalogs/equipment', async (_request, reply) => {
+    const sql = createSqlClient();
+
+    try {
+      const rows = await sql<CatalogDocumentRow[]>`
+        SELECT catalog_name, source_path, content_hash, document, imported_at, updated_at
+        FROM catalog_documents
+        WHERE catalog_name IN ('armes.yaml', 'protections.yaml', 'potions.yaml')
+        ORDER BY catalog_name ASC
+      `;
+      const rowByName = new Map(rows.map((row) => [row.catalog_name, row]));
+      const missingCatalogs = EQUIPMENT_CATALOG_NAMES.filter(
+        (catalogName) => !rowByName.has(catalogName)
+      );
+
+      if (missingCatalogs.length > 0) {
+        return reply.code(404).send({
+          error: {
+            catalogNames: missingCatalogs,
+            code: 'equipment_catalogs_not_imported',
+            message: 'Equipment catalog read models are not imported.'
+          },
+          status: 'not_found'
+        });
+      }
+
+      const equipment = buildEquipmentInventoryReadModel({
+        potions: rowByName.get('potions.yaml')!.document as PotionsCatalog,
+        protections: rowByName.get('protections.yaml')!.document as ProtectionsCatalog,
+        weapons: rowByName.get('armes.yaml')!.document as WeaponsCatalog
+      });
+
+      return {
+        equipment,
+        sourceCatalogs: EQUIPMENT_CATALOG_NAMES.map((catalogName) =>
+          toCatalogSummary(rowByName.get(catalogName)!)
+        ),
+        status: 'ok' as const,
+        totals: summarizeEquipmentInventory(equipment)
       };
     } finally {
       await sql.end({ timeout: 5 });
