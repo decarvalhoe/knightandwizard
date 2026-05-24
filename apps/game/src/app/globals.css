@@ -264,3 +264,13 @@ a {
     white-space: nowrap;
   }
 }
+
+.kw-ui-demo-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.kw-ui-demo-copy {
+  margin: 0;
+  color: var(--color-text-muted);
+}
