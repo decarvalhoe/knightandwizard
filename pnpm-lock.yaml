@@ -102,6 +102,9 @@ importers:
       '@knightandwizard/rules-core':
         specifier: workspace:*
         version: link:../../packages/rules-core
+      '@knightandwizard/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       lucide-react:
         specifier: ^1.14.0
         version: 1.14.0(react@19.2.5)
@@ -191,6 +194,17 @@ importers:
         version: 4.3.6
 
   packages/rules-core: {}
+
+  packages/tokens: {}
+
+  packages/ui:
+    devDependencies:
+      '@types/react':
+        specifier: ^19.2.14
+        version: 19.2.14
+      react:
+        specifier: ^19.2.5
+        version: 19.2.5
 
 packages:
 

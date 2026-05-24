@@ -1,0 +1,3 @@
+# Planches de référence Claude Design (~16 Mo chacune) : gardées en local, NON versionnées.
+# Le design est codifié dans packages/tokens/src/kw-system.ts + docs/design/DA-MATRICES.md.
+*.html

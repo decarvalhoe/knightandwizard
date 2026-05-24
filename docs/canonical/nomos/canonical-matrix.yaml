@@ -135556,6 +135556,51 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-DESIGN-CLAUDE-DESIGN-BRIEF
+    unit_type: catalog_entry
+    name: docs/design/CLAUDE-DESIGN-BRIEF.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-DESIGN-CLAUDE-DESIGN-BRIEF
+        locator: docs/design/CLAUDE-DESIGN-BRIEF.md
+        hash: sha256:e3e7c551839a324a1edde62a57c37c1849f9c1ef90734232a32f760fd0bd7712
+    business_rule: docs/design/CLAUDE-DESIGN-BRIEF.md from docs/design/CLAUDE-DESIGN-BRIEF.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-DESIGN-DA-MATRICES
+    unit_type: catalog_entry
+    name: docs/design/DA-MATRICES.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-DESIGN-DA-MATRICES
+        locator: docs/design/DA-MATRICES.md
+        hash: sha256:5421a48caea739823c0461abf0fcb2015c9578c21cec1c95dd5e9b5586d47c2c
+    business_rule: docs/design/DA-MATRICES.md from docs/design/DA-MATRICES.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-DESIGN-FRONTEND-FOUNDATIONS
+    unit_type: catalog_entry
+    name: docs/design/FRONTEND-FOUNDATIONS.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-DESIGN-FRONTEND-FOUNDATIONS
+        locator: docs/design/FRONTEND-FOUNDATIONS.md
+        hash: sha256:97b03a364da3a555fde7619e95fcd12db97dc441a81ea6828cdfebcd7082cf3f
+    business_rule: docs/design/FRONTEND-FOUNDATIONS.md from docs/design/FRONTEND-FOUNDATIONS.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-DOCS-GAME-KNIGHTANDWIZARD-GAME-FOUNDATION
     unit_type: catalog_entry
     name: docs/game/knightandwizard-game-foundation.md

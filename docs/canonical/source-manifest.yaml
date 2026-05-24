@@ -13043,6 +13043,33 @@ sources:
     domains: ["legacy-web"]
     contains: ["legacy_web_page"]
     notes: "Scraped legacy web source."
+  - id: "docs-design-claude-design-brief"
+    path: "docs/design/CLAUDE-DESIGN-BRIEF.md"
+    sha256: "e3e7c551839a324a1edde62a57c37c1849f9c1ef90734232a32f760fd0bd7712"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-design-da-matrices"
+    path: "docs/design/DA-MATRICES.md"
+    sha256: "5421a48caea739823c0461abf0fcb2015c9578c21cec1c95dd5e9b5586d47c2c"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-design-frontend-foundations"
+    path: "docs/design/FRONTEND-FOUNDATIONS.md"
+    sha256: "97b03a364da3a555fde7619e95fcd12db97dc441a81ea6828cdfebcd7082cf3f"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-game-knightandwizard-game-foundation"
     path: "docs/game/knightandwizard-game-foundation.md"
     sha256: "cc52d745479262566dd197e9b03d5af49978414569189cb2514632069b5b2979"
