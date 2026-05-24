@@ -120,6 +120,10 @@ const relationalReadModelCatalogPaths = new Set([
 ]);
 const apiReadModelCatalogPaths = relationalReadModelCatalogPaths;
 const ignoredDirectoryNames = new Set(['.git', '.next', '.turbo', 'dist', 'node_modules']);
+// Gitignored scratch directories that live under scanned roots. They are not
+// committed, so registering them would make canonical:check non-deterministic
+// between local (files present) and CI (files absent). Matched by repo-relative path.
+const ignoredRelativeDirectories = new Set(['docs/design/boards']);
 const textExtensions = new Set([
   '.css',
   '.csv',
@@ -761,8 +765,10 @@ async function walkFiles(directory: string, root: string): Promise<string[]> {
   for (const entry of entries) {
     if (entry.isDirectory() && ignoredDirectoryNames.has(entry.name)) continue;
     const absolute = join(directory, entry.name);
+    const relativePath = relative(root, absolute).split('\\').join('/');
+    if (entry.isDirectory() && ignoredRelativeDirectories.has(relativePath)) continue;
     if (entry.isDirectory()) files.push(...(await walkFiles(absolute, root)));
-    if (entry.isFile()) files.push(relative(root, absolute).split('\\').join('/'));
+    if (entry.isFile()) files.push(relativePath);
   }
   return files;
 }

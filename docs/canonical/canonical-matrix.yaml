@@ -217207,6 +217207,114 @@ units:
     tests:
       status: not_applicable
       evidence: "Source document only."
+  - unit_id: "source:docs-design-claude-design-brief"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/design/CLAUDE-DESIGN-BRIEF.md"
+    status: covered
+    sources:
+      - path: "docs/design/CLAUDE-DESIGN-BRIEF.md"
+        ref: "docs/design/CLAUDE-DESIGN-BRIEF.md"
+        sha256: "e3e7c551839a324a1edde62a57c37c1849f9c1ef90734232a32f760fd0bd7712"
+    business_rule:
+      summary: "docs/design/CLAUDE-DESIGN-BRIEF.md from docs/design/CLAUDE-DESIGN-BRIEF.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:docs-design-da-matrices"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/design/DA-MATRICES.md"
+    status: covered
+    sources:
+      - path: "docs/design/DA-MATRICES.md"
+        ref: "docs/design/DA-MATRICES.md"
+        sha256: "5421a48caea739823c0461abf0fcb2015c9578c21cec1c95dd5e9b5586d47c2c"
+    business_rule:
+      summary: "docs/design/DA-MATRICES.md from docs/design/DA-MATRICES.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:docs-design-frontend-foundations"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/design/FRONTEND-FOUNDATIONS.md"
+    status: covered
+    sources:
+      - path: "docs/design/FRONTEND-FOUNDATIONS.md"
+        ref: "docs/design/FRONTEND-FOUNDATIONS.md"
+        sha256: "97b03a364da3a555fde7619e95fcd12db97dc441a81ea6828cdfebcd7082cf3f"
+    business_rule:
+      summary: "docs/design/FRONTEND-FOUNDATIONS.md from docs/design/FRONTEND-FOUNDATIONS.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
   - unit_id: "source:docs-game-knightandwizard-game-foundation"
     unit_type: "source_document"
     domain: "project-governance"
