@@ -1,0 +1,137 @@
+# Moteurs rules-core — cadrage (moteur d'effets + dégâts/défense)
+
+> Cadrage des deux chantiers `rules-core` identifiés par la carte des moteurs
+> (voir `mecaniques-transversales.md`). **Principe directeur** : *données déclaratives +
+> moteur générique* — on ne code pas 2406 atouts ni 100 armes ; chaque effet/stat est une
+> **donnée** de catalogue que le moteur **interprète**. Aligné « règles vivantes » + NOMOS
+> (colonne `source → structuré → produit`).
+
+Statut : **brouillon de cadrage pour relecture** (auteur K&W = autorité).
+
+---
+
+## 1. Modèle d'effet — le pont prose ↔ déclaratif
+
+Un effet doit porter **3 représentations liées**, une seule source de vérité :
+
+```yaml
+EffectModel:
+  id: abordage
+  source:                 # ① AUTORITÉ — prose legacy, immuable, tracée (NOMOS)
+    prose: "Additionne le niveau au nombre de dés lors d'un combat sur un navire."
+    ref:   "lexique:… / R-x.y"          # span source
+  spec:                   # ② MOTEUR — structuré, typé, exécutable
+    target: pool
+    op: add
+    value: level
+    condition: { context: combat, env: naval }
+    activation: passive
+    duration: permanent
+  render:                 # ③ HUMAIN — généré AUTOMATIQUEMENT depuis spec
+    # "Ajoute votre niveau au pool de dés en combat naval."
+  fidelity: covered | ambiguous | pending     # fidélité prose ↔ spec
+  ambiguity_ref: null | "#57-…"
+```
+
+**Les 3 faces** :
+- ① **`source`** — la prose canonique + sa référence. L'autorité ; on n'y touche pas.
+- ② **`spec`** — ce que **le moteur consomme** (déterministe, typé).
+- ③ **`render`** — texte lisible **généré depuis `spec`** par un renderer générique → affiché en UI **et** support d'**audit** : comparer `render` vs `source.prose`.
+
+**Boucle de fidélité (le garde-fou honnêteté)** :
+- **prose → spec** = encodage (humain / LLM-assisté), **vérifié** par `render ≈ source.prose`. Tout écart → `fidelity ≠ covered` → ambiguïté `#57`. Pas d'invention silencieuse.
+- **spec → lisible** = automatique. Le texte UI **ne dérive jamais** du spec (pas de prose en double à maintenir).
+- **Règles vivantes** : on édite le `spec`, le `render` se régénère, la prose reste la référence d'autorité.
+
+Ce modèle est **générique** : il vaut pour toute règle prose→exécutable, pas que les atouts.
+
+---
+
+## 2. Format des valeurs, conditions et rendu
+
+### 2a. `value` (et formules)
+Grammaire **restreinte et déterministe** (pas de code arbitraire — sûr, versionnable) :
+
+| Forme | Exemple | Sens |
+|---|---|---|
+| littéral | `-1`, `+2`, `0` | constante |
+| variable perso (whitelist) | `level`, `force`, `stamina`, `vitalityMax`, `energyMax` | lue sur le perso au moment T |
+| expression simple | `level*2`, `level+1` | `+ - * /` + entiers + variables whitelist |
+| table | `{ table: gravite_d100, key: roll }` | lookup (ex. gravité d'échec critique) |
+
+Le moteur évalue `value` contre le perso + le contexte. Variables hors whitelist = erreur de validation.
+
+### 2b. `condition` (déclenchement)
+Vocabulaire de **prédicats whitelistés**, évalués contre le contexte d'action :
+
+| Clé | Exemples | Sens |
+|---|---|---|
+| `context` | `combat`, `exploration`, `social`, `rest` | scène en cours |
+| `env` | `naval`, `mounted`, `underwater` | environnement |
+| `action_type` | `attaque`, `defense`, `sort`, `esquive` | type d'action (R-1.12) |
+| `target_tag` | `undead`, `demon`, `magical` | nature de la cible |
+| `weapon` / `school` | `arc`, `abjuration` | outil/école |
+| `self_state` | `enraged`, `wounded` | état du porteur |
+
+Combinaison : `all_of` / `any_of`. Vocabulaire **extensible** (règles vivantes), versionné.
+
+### 2c. `render` (renderer générique)
+Génère une phrase FR depuis le `spec` : `gabarit[(target, op)] + value rendue + condition rendue`.
+
+| (target, op) | Gabarit |
+|---|---|
+| (pool, add) | « Ajoute {value} au pool de dés » |
+| (difficulty, sub) | « Réduit la difficulté de {value} » |
+| (aptitude, add) | « +{value} en {scope} » |
+| (status, grant) | « Inflige l'état {scope} » |
+| (vitality, add) | « Restaure {value} points de vitalité » |
+
++ condition : « … en combat naval », « … contre les morts-vivants ». Les clés de condition ont des **libellés FR**. Le `render` reste **toujours synchrone** avec le `spec`.
+
+---
+
+## 3. Moteur d'effets  *(priorité 1 — le plus rentable)*
+
+**Objectif** : appliquer les effets (atouts, sorts, potions, capacités) comme **modificateurs** (R-1.39, R-2.17) ou **états** (R-9.27).
+
+- **Entrées** : perso (attributs base, effets actifs) + contexte (action, cible). **Sortie** : modificateurs effectifs (aptitude / FV / difficulté / pool / énergie) + états.
+- **Mécaniques** : R-1.36→39 (empilement linéaire), R-2.17 (aptitude effective), R-2.11 (énergie extensible), **R-3.3 / R-3.4** (atouts raciaux/handicaps), R-9.27 (états).
+- **Intégration** : nouveau `effects.ts` → `computeEffectiveModifiers(char, activeEffects, ctx)` ; `character.ts` (aptitude effective) · `dice.ts` (pool/difficulté) · `combat.ts` (états) le consomment.
+- **Build** : (1) `EffectModel` + parseur/validation (value/condition) ; (2) renderer générique ; (3) `applyEffects` (calcul des modificateurs) ; (4) durée/activation ; (5) famille pilote ; (6) tests (dont `render ≈ prose`).
+
+> **⚠️ Le vrai coût n'est pas le moteur — c'est l'encodage.** Les effets du catalogue sont en
+> **prose** (~800 atouts + sorts). Les structurer en `spec` (avec fidélité auditée) est le gros
+> du travail, et **là vivent les ambiguïtés `#57`**. Le moteur lui-même est petit.
+
+---
+
+## 4. Moteur dégâts / défense  *(priorité 2)*
+
+**Objectif** : calculer les **dégâts finaux** d'une attaque (jet de dégâts + chaîne de défense ⑤) — produire le nombre que `combat.applyDamage` consomme aujourd'hui à l'aveugle.
+
+- **Entrées** : attaquant (Force, arme, réussites au toucher) + défenseur (boucliers, résistances %, armures P/E/C/T par zone/couche, endurance) + zone (Table des Touches/ciblée) + circonstances + RNG.
+  **Sortie** : dégâts finaux typés + **log par étape** (auditable).
+- **Mécaniques (ordre R-9.12)** : jet de dégâts R-9.9/9.10 → 4 types R-9.11 → bouclier R-9.7/8 → résistances % R-1.32/33 → circonstance R-9.13 → protections P/E/C/T par couche R-9.14 → **endurance R-9.16 (si la zone l'autorise)** → **×2 zone R-9.15 (en dernier)** → seuils R-9.17 *(déjà dans `applyDamage`)*.
+- **Intégration** : `combat.ts` — nouvelle `computeAttackDamage(attacker, defender, ctx)` **en amont** de `applyDamage` (inchangé : vitalité/mort/inconscient/malus/retard). Consomme **données armes/protections** (catalogues) + **résistances** (du moteur d'effets / race).
+- **Build** : chaque étape de la chaîne = **fonction pure testable** vs les **exemples canoniques** des règles.
+
+---
+
+## 5. Séquencement & dépendances
+
+> **Moteur d'effets d'abord**, puis dégâts/défense.
+
+La chaîne de défense consomme des **résistances**, souvent fournies par des **effets** (raciaux,
+atouts, équipement). Le moteur d'effets débloque donc **atouts + sorts** *et* alimente le combat.
+
+Dépendances de données (catalogues) :
+- armes / protections → valeurs P/E/C/T, dégâts, difficulté, couches, zones (pour ④/⑤).
+- atouts / sorts → `EffectModel.spec` encodé (pour le moteur d'effets).
+
+---
+
+## 6. À faire
+1. Valider ce cadrage + le modèle d'effet avec l'auteur (autorité K&W).
+2. Build moteur d'effets : `EffectModel` + `effects.ts` + renderer + **famille pilote** d'atouts (encodage prose→spec audité).
+3. Build moteur dégâts/défense : `computeAttackDamage` (chaîne ordonnée) en amont de `applyDamage`.
+4. Brancher sur NOMOS : `source` des effets = atomes canoniques tracés ; `spec` = contrat runtime.
