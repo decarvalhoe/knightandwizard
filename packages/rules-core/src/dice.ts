@@ -1,7 +1,16 @@
+import { effectiveValue, type EffectApplicationContext } from './effects.js';
+import { type EffectModel } from './effect-model.js';
+
 export type RandomInteger = (sides: number) => number;
 
 export interface RollDiceOptions {
   randomInteger?: RandomInteger;
+}
+
+export interface RollEffectScopes {
+  scope?: string;
+  pool?: string;
+  difficulty?: string;
 }
 
 export interface DiceRollResult {
@@ -11,6 +20,11 @@ export interface DiceRollResult {
   isCriticalFailure: boolean;
   total: number;
   criticalFailureSeverity?: number;
+}
+
+export interface DiceRollRequest {
+  pool: number;
+  difficulty: number;
 }
 
 interface InitialDie {
@@ -55,6 +69,32 @@ export function rollDice(
   }
 
   return resolveHighDifficulty(pool, difficulty, initialDice, randomInteger);
+}
+
+export function calculateEffectiveRollRequest(
+  request: DiceRollRequest,
+  effects: EffectModel[] = [],
+  ctx: EffectApplicationContext = {},
+  scopes: RollEffectScopes = {}
+): DiceRollRequest {
+  const poolScope = scopes.pool ?? scopes.scope;
+  const difficultyScope = scopes.difficulty ?? scopes.scope;
+  const pool = effectiveValue(request.pool, 'pool', poolScope, effects, ctx, { minimum: 0 });
+  const difficulty = effectiveValue(
+    request.difficulty,
+    'difficulty',
+    difficultyScope,
+    effects,
+    ctx,
+    {
+      minimum: 1
+    }
+  );
+
+  assertNonNegativeInteger('pool', pool);
+  assertPositiveInteger('difficulty', difficulty);
+
+  return { pool, difficulty };
 }
 
 function resolveStandardDifficulty(

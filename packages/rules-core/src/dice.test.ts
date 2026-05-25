@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { rollDice } from './dice.js';
+import { calculateEffectiveRollRequest, rollDice } from './dice.js';
+import { parseEffectModel } from './effect-model.js';
 
 describe('D10 resolution', () => {
   it('counts one success per die that reaches a standard difficulty', () => {
@@ -105,6 +106,44 @@ describe('D10 resolution', () => {
     expect(() => rollDice(1, 7, { randomInteger: () => 11 })).toThrow(
       'randomInteger(10) must return an integer between 1 and 10'
     );
+  });
+
+  it('calculates an effective roll request from pool and difficulty effects', () => {
+    const effects = [
+      parseEffectModel({
+        source: { prose: 'Aide au jet.', ref: 'fixture:pool' },
+        spec: {
+          target: 'pool',
+          scope: 'attack',
+          op: 'add',
+          value: 1,
+          activation: 'passive',
+          duration: 'permanent'
+        },
+        fidelity: 'covered'
+      }),
+      parseEffectModel({
+        source: { prose: 'Difficulte reduite.', ref: 'fixture:difficulty' },
+        spec: {
+          target: 'difficulty',
+          scope: 'attack',
+          op: 'sub',
+          value: 2,
+          activation: 'active',
+          duration: 'ephemeral'
+        },
+        fidelity: 'covered'
+      })
+    ];
+
+    expect(
+      calculateEffectiveRollRequest(
+        { pool: 2, difficulty: 7 },
+        effects,
+        { activations: ['active'] },
+        { scope: 'attack' }
+      )
+    ).toEqual({ pool: 3, difficulty: 5 });
   });
 
   it('can use the default random source', () => {

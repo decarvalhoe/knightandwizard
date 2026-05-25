@@ -13,6 +13,7 @@ import {
   validateSkillDistribution,
   validateSpellDistribution
 } from './character.js';
+import { parseEffectModel } from './effect-model.js';
 
 describe('character creation validation', () => {
   it('validates the canonical race-category attribute distribution', () => {
@@ -277,6 +278,44 @@ describe('character derived state', () => {
     expect(calculateEffectiveAttributes(character)).toMatchObject({
       strength: 2,
       aestheticism: 0
+    });
+  });
+
+  it('can include effect-model aptitude modifiers in effective attributes', () => {
+    const character = createPlayerCharacter({
+      id: 'pc-effect-model',
+      name: 'Jehan',
+      race: humanRace(),
+      orientation: { id: 'guerrier', name: 'Guerrier' },
+      classProfile: {
+        id: 'garde',
+        name: 'Garde',
+        orientationId: 'guerrier',
+        primarySkillIds: ['epee']
+      },
+      attributes: validAttributes(),
+      skills: validSkills()
+    });
+    const effects = [
+      parseEffectModel({
+        source: { prose: 'Bonus de niveau en force.', ref: 'fixture:strength-level' },
+        spec: {
+          target: 'aptitude',
+          scope: 'strength',
+          op: 'add',
+          value: 'level',
+          activation: 'active',
+          duration: 'ephemeral'
+        },
+        fidelity: 'covered'
+      })
+    ];
+
+    expect(
+      calculateEffectiveAttributes(character, effects, { activations: ['active'], level: 2 })
+    ).toMatchObject({
+      strength: 5,
+      dexterity: 3
     });
   });
 
