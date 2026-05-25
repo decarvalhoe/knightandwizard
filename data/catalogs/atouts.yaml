@@ -432,11 +432,10 @@ atouts:
       op: add
       value: level
       condition:
-        action_type: restauration
+        competence: restauration
       activation: passive
       duration: permanent
-    fidelity: ambiguous
-    ambiguity_ref: "E4: restauration sans competence canonique dediee"
+    fidelity: covered
   - id: art-de-la-vannerie
     name: Art de la vannerie
     status: active
@@ -893,11 +892,10 @@ atouts:
       op: add
       value: level
       condition:
-        action_type: orientation
+        competence: orientation
       activation: passive
       duration: permanent
-    fidelity: ambiguous
-    ambiguity_ref: "E4: orientation sans competence canonique dediee"
+    fidelity: covered
   - id: brulure-de-l-argent
     name: Brûlure de l’argent
     status: active
@@ -1370,11 +1368,10 @@ atouts:
       op: add
       value: level
       condition:
-        context: connaissance
+        competence: culture-generale
       activation: passive
       duration: permanent
-    fidelity: ambiguous
-    ambiguity_ref: "E4: famille connaissance non modelisee comme condition"
+    fidelity: covered
   - id: debordement-d-energie
     name: Débordement d’énergie
     status: active
@@ -1986,12 +1983,11 @@ atouts:
       op: add
       value: level
       condition:
-        intent: escroquer
+        competence: escroquerie
       activation: passive
       duration: permanent
       requires_mj_validation: true
-    fidelity: ambiguous
-    ambiguity_ref: "E4: escroquerie sans competence canonique dediee"
+    fidelity: covered
   - id: espionnage
     name: Espionnage
     status: active
@@ -2011,11 +2007,10 @@ atouts:
       op: add
       value: level
       condition:
-        action_type: espionnage
+        competence: espionnage
       activation: passive
       duration: permanent
-    fidelity: ambiguous
-    ambiguity_ref: "E4: espionnage absent du catalogue competences"
+    fidelity: covered
   - id: esprit-logique
     name: Esprit logique
     status: active
@@ -2667,11 +2662,11 @@ atouts:
       op: add
       value: level
       condition:
-        action_type: investigation_religieuse
+        competence: investigation
+        spec: investigation-religieuse
       activation: passive
       duration: permanent
-    fidelity: ambiguous
-    ambiguity_ref: "E4: investigation religieuse sans competence canonique dediee"
+    fidelity: covered
   - id: inversion-des-energies
     name: Inversion des énergies
     status: active
@@ -3243,8 +3238,7 @@ atouts:
       duration: ephemeral
       uses_per_day: 2
       requires_mj_validation: true
-    fidelity: ambiguous
-    ambiguity_ref: "E4: domaine de predilection artiste resolu par slot perso"
+    fidelity: covered
   - id: main-du-magicien
     name: Main du magicien
     status: active
@@ -3280,8 +3274,7 @@ atouts:
           - competence: agriculture
       activation: passive
       duration: permanent
-    fidelity: ambiguous
-    ambiguity_ref: "E4: entretien des vegetaux couvre jardinage/agriculture"
+    fidelity: covered
   - id: maitre-du-mensonge
     name: Maître du mensonge
     status: active
@@ -3451,11 +3444,11 @@ atouts:
       op: add
       value: level
       condition:
-        action_type: creation_parfum
+        competence: parfumerie
+        spec: composition-de-fragrances
       activation: passive
       duration: permanent
-    fidelity: ambiguous
-    ambiguity_ref: "E4: parfumerie absente du catalogue competences"
+    fidelity: covered
   - id: maitrise-equestre
     name: Maîtrise équestre
     status: active
@@ -3503,8 +3496,7 @@ atouts:
       activation: active
       duration: ephemeral
       uses_per_day: 2
-    fidelity: ambiguous
-    ambiguity_ref: "E4: domaine de predilection martial resolu par slot perso"
+    fidelity: covered
   - id: martyrisation
     name: Martyrisation
     status: active
@@ -3559,7 +3551,7 @@ atouts:
       uses_per_day: 2
       requires_mj_validation: true
     fidelity: ambiguous
-    ambiguity_ref: "E4: portee de l’intention nuire a reviser (#57 mefait)"
+    ambiguity_ref: "bornage différé au CMS communautaire (#57)"
   - id: memoire-photographique
     name: Mémoire photographique
     status: active
@@ -3812,11 +3804,10 @@ atouts:
       op: add
       value: level
       condition:
-        competence: bijouterie
+        competence: orfevrerie
       activation: passive
       duration: permanent
-    fidelity: ambiguous
-    ambiguity_ref: "E4: orfevrerie sans competence canonique dediee"
+    fidelity: covered
   - id: organisme-fragile
     name: Organisme fragile
     status: active
@@ -3892,8 +3883,7 @@ atouts:
       activation: active
       duration: ephemeral
       uses_per_day: 2
-    fidelity: ambiguous
-    ambiguity_ref: "E4: domaine de predilection ouvrier resolu par slot perso"
+    fidelity: covered
   - id: paluche
     name: Paluche
     status: active
@@ -3968,12 +3958,11 @@ atouts:
       op: add
       value: level
       condition:
-        intent: precher_bonne_parole
+        competence: predication
       activation: passive
       duration: permanent
       requires_mj_validation: true
-    fidelity: ambiguous
-    ambiguity_ref: "E4: predication sans competence canonique dediee"
+    fidelity: covered
   - id: partenaire-ideal
     name: Partenaire idéal
     status: active
@@ -4085,8 +4074,7 @@ atouts:
       activation: active
       duration: ephemeral
       uses_per_day: 2
-    fidelity: ambiguous
-    ambiguity_ref: "E4: domaine de predilection paysan resolu par slot perso"
+    fidelity: covered
   - id: pensee-profonde
     name: Pensée profonde
     status: active
@@ -4424,8 +4412,7 @@ atouts:
       activation: active
       duration: ephemeral
       uses_per_day: 2
-    fidelity: ambiguous
-    ambiguity_ref: "E4: domaine de predilection artisan resolu par slot perso"
+    fidelity: covered
   - id: projections-cauchemardesques
     name: Projections cauchemardesques
     status: active
@@ -5194,8 +5181,7 @@ atouts:
         competence: herbologie
       activation: passive
       duration: permanent
-    fidelity: ambiguous
-    ambiguity_ref: "E4: herboristerie normalisee vers herbologie"
+    fidelity: covered
   - id: secret-des-poignards-volants
     name: Secret des poignards volants
     status: active
@@ -5398,8 +5384,7 @@ atouts:
       activation: active
       duration: ephemeral
       uses_per_day: 2
-    fidelity: ambiguous
-    ambiguity_ref: "E4: domaine de predilection domestique resolu par slot perso"
+    fidelity: covered
   - id: servitude
     name: Servitude
     status: active
@@ -5583,12 +5568,11 @@ atouts:
       op: add
       value: level
       condition:
-        intent: voler
+        competence: larcin
       activation: passive
       duration: permanent
       requires_mj_validation: true
-    fidelity: ambiguous
-    ambiguity_ref: "E4: vol generique sans competence canonique dediee"
+    fidelity: covered
   - id: survie
     name: Survie
     status: active
@@ -5884,12 +5868,11 @@ atouts:
       value: level
       condition:
         any_of:
-          - competence: traque
-          - context: investigation_forestiere
+          - spec: pistage
+          - competence: investigation
       activation: passive
       duration: permanent
-    fidelity: ambiguous
-    ambiguity_ref: "E4: pistage couvert par traque; investigation forestiere plus large"
+    fidelity: covered
   - id: travail-de-la-peau
     name: Travail de la peau
     status: active

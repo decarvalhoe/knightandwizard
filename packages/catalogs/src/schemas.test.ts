@@ -21,7 +21,7 @@ const expectedCollections = [
   ['nations.yaml', 'regions', 29],
   ['organisations.yaml', 'factions', 7],
   ['religions.yaml', 'religions', 15],
-  ['competences.yaml', 'skills', 368],
+  ['competences.yaml', 'skills', 400],
   ['orientations.yaml', 'orientations', 13],
   ['classes.yaml', 'classes', 91],
   ['magic-schools.yaml', 'schools', 11],
@@ -125,6 +125,35 @@ describe('catalog Zod schemas', () => {
     expect(tirGorge).toBeDefined();
     expect(tirGorge?.parent_id).toBe('arc-long');
     expect(tirGorge?.family).toBe('combat');
+  });
+
+  it('merges native open-catalog competences with KW canon provenance', async () => {
+    const catalog = await loadValidatedCatalog('competences.yaml');
+    const byId = new Map(catalog.skills.map((skill) => [skill.id, skill]));
+
+    expect(byId.get('investigation')).toMatchObject({
+      name: 'Investigation',
+      family: 'savoir-faire',
+      parent_id: null,
+      metadata: expect.objectContaining({
+        source: 'native',
+        source_kind: 'kw-canon',
+        canon_ref: 'R-5.2'
+      })
+    });
+    expect(byId.get('detection')?.parent_id).toBe('investigation');
+    expect(byId.get('investigation-religieuse')?.parent_id).toBe('investigation');
+    expect(byId.get('espionnage')?.family).toBe('maitrise-de-soi');
+    expect(byId.get('furtivite')?.parent_id).toBe('espionnage');
+    expect(byId.get('camouflage')?.parent_id).toBe('espionnage');
+    expect(byId.get('orfevrerie')?.family).toBe('artisanat');
+    expect(byId.get('bijouterie')?.parent_id).toBe('orfevrerie');
+    expect(byId.get('gravure')).toMatchObject({ family: 'artisanat', parent_id: 'orfevrerie' });
+    expect(byId.get('parfumerie')?.family).toBe('savoir-faire');
+    expect(byId.get('herbologie-parfum')?.parent_id).toBe('parfumerie');
+    expect(byId.get('orientation')?.family).toBe('savoir-faire');
+    expect(byId.get('culture-generale')?.family).toBe('connaissance');
+    expect(byId.get('vol-a-la-tire')?.parent_id).toBe('larcin');
   });
 
   it('rejects demo orientation and class IDs in the canonical catalogs', async () => {

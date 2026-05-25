@@ -1,0 +1,151 @@
+# Native K&W open-catalog additions consumed by `pnpm catalogs:build:competences`.
+version: 1
+metadata:
+  source: native
+  source_kind: kw-canon
+  canon_ref: R-5.2
+  rule_path: docs/rules/05-competences.md
+  notes: >-
+    Additions natives au catalogue ouvert des competences. Le catalogue web reste un referentiel suggere non exhaustif;
+    R-5.2 autorise les competences et specialisations plausibles sous validation.
+skills:
+  - id: investigation
+    name: Investigation
+    family: savoir-faire
+    parent_id: null
+  - id: fouille
+    name: Fouille
+    family: savoir-faire
+    parent_id: investigation
+  - id: filature
+    name: Filature
+    family: savoir-faire
+    parent_id: investigation
+  - id: observation
+    name: Observation
+    family: savoir-faire
+    parent_id: investigation
+  - id: detection
+    name: Détection
+    family: savoir-faire
+    parent_id: investigation
+  - id: interrogatoire
+    name: Interrogatoire
+    family: savoir-faire
+    parent_id: investigation
+  - id: investigation-religieuse
+    name: Investigation religieuse
+    family: savoir-faire
+    parent_id: investigation
+  - id: pistage
+    name: Pistage
+    family: savoir-faire
+    parent_id: investigation
+  - id: espionnage
+    name: Espionnage
+    family: maitrise-de-soi
+    parent_id: null
+  - id: infiltration
+    name: Infiltration
+    family: maitrise-de-soi
+    parent_id: espionnage
+  - id: deguisement
+    name: Déguisement
+    family: maitrise-de-soi
+    parent_id: espionnage
+  - id: orfevrerie
+    name: Orfèvrerie
+    family: artisanat
+    parent_id: null
+  - id: sertissage
+    name: Sertissage
+    family: artisanat
+    parent_id: orfevrerie
+  - id: parfumerie
+    name: Parfumerie
+    family: savoir-faire
+    parent_id: null
+  - id: olfaction
+    name: Olfaction
+    family: savoir-faire
+    parent_id: parfumerie
+  - id: distillation
+    name: Distillation
+    family: savoir-faire
+    parent_id: parfumerie
+  - id: herbologie-parfum
+    name: Herbologie (parfum)
+    family: savoir-faire
+    parent_id: parfumerie
+  - id: composition-de-fragrances
+    name: Composition de fragrances
+    family: savoir-faire
+    parent_id: parfumerie
+  - id: restauration
+    name: Restauration
+    family: savoir-faire
+    parent_id: null
+  - id: service-en-salle
+    name: Service en salle
+    family: savoir-faire
+    parent_id: restauration
+  - id: dressage-de-table
+    name: Dressage de table
+    family: savoir-faire
+    parent_id: restauration
+  - id: gestion-de-salle
+    name: Gestion de salle
+    family: savoir-faire
+    parent_id: restauration
+  - id: service-des-boissons
+    name: Service des boissons
+    family: savoir-faire
+    parent_id: restauration
+  - id: orientation
+    name: Orientation
+    family: savoir-faire
+    parent_id: null
+  - id: lecture-de-carte
+    name: Lecture de carte
+    family: savoir-faire
+    parent_id: orientation
+  - id: orientation-aux-astres
+    name: Orientation aux astres
+    family: savoir-faire
+    parent_id: orientation
+  - id: orientation-en-milieu-naturel
+    name: Orientation en milieu naturel
+    family: savoir-faire
+    parent_id: orientation
+  - id: orientation-urbaine
+    name: Orientation urbaine
+    family: savoir-faire
+    parent_id: orientation
+  - id: culture-generale
+    name: Culture générale
+    family: connaissance
+    parent_id: null
+  - id: escroquerie
+    name: Escroquerie
+    family: social
+    parent_id: null
+  - id: predication
+    name: Prédication
+    family: social
+    parent_id: null
+  - id: larcin
+    name: Larcin
+    family: savoir-faire
+    parent_id: null
+existing_skill_updates:
+  - id: furtivite
+    parent_id: espionnage
+  - id: camouflage
+    parent_id: espionnage
+  - id: bijouterie
+    parent_id: orfevrerie
+  - id: gravure
+    family: artisanat
+    parent_id: orfevrerie
+  - id: vol-a-la-tire
+    parent_id: larcin

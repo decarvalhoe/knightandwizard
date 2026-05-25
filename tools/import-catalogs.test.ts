@@ -25,7 +25,7 @@ describe('catalog import plan', () => {
     expect(summary.religions).toBe(15);
     expect(summary.orientations).toBe(13);
     expect(summary['skill-families']).toBe(10);
-    expect(summary.skills).toBe(368);
+    expect(summary.skills).toBe(400);
     expect(summary['character-classes']).toBe(91);
     expect(summary['magic-schools']).toBe(11);
     expect(summary.spells).toBe(324);

@@ -3,14 +3,27 @@ version: 1
 metadata:
   source: data/legacy/web-scraped/documents/competences/index.md
   source_sha256: 3323d916b371f3a7dce92a12cc211191b390d66778aa321ed4258bbf61afbb93
-  imported_at: '2026-04-30'
-  total_entries: 368
+  sources:
+    - path: data/legacy/web-scraped/documents/competences/index.md
+      sha256: 3323d916b371f3a7dce92a12cc211191b390d66778aa321ed4258bbf61afbb93
+      kind: web-canonical
+    - path: data/catalogs/competences.native.yaml
+      sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+      kind: native-additions
+    - path: docs/rules/05-competences.md
+      sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+      kind: kw-canon-rule
+  imported_at: '2026-05-25'
+  total_entries: 400
   total_families: 10
+  native_entries: 32
+  native_updates: 5
   catalog_kind: open
   catalog_status: partial
   notes: >-
-    Compétences extraites de la liste web canonique. Hiérarchie parent_id explicite uniquement quand "(parent)" est
-    notée dans la source. Spécialisations implicites à raffiner ensuite (R-5.3, R-5.7).
+    Compétences extraites de la liste web canonique, complétées par data/catalogs/competences.native.yaml au titre du
+    catalogue ouvert R-5.2. Hiérarchie parent_id explicite uniquement quand "(parent)" est notée dans la source ou quand
+    une addition native la fixe. Spécialisations implicites à raffiner ensuite (R-5.3, R-5.7).
 skills:
   - id: calligraphie
     name: Calligraphie
@@ -183,15 +196,25 @@ skills:
   - id: gravure
     name: Gravure
     status: active
-    family: art
-    family_name: Art
-    parent_id: null
+    family: artisanat
+    family_name: Artisanat
+    parent_id: orfevrerie
     source_refs:
       - path: data/legacy/web-scraped/documents/competences/index.md
         sha256: 3323d916b371f3a7dce92a12cc211191b390d66778aa321ed4258bbf61afbb93
         ref: line:23
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: update:gravure
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
     metadata:
       source: web-canonical
+      native_update:
+        source: native
+        source_kind: kw-canon
+        canon_ref: R-5.2
   - id: guitare
     name: Guitare
     status: active
@@ -317,13 +340,23 @@ skills:
     status: active
     family: artisanat
     family_name: Artisanat
-    parent_id: null
+    parent_id: orfevrerie
     source_refs:
       - path: data/legacy/web-scraped/documents/competences/index.md
         sha256: 3323d916b371f3a7dce92a12cc211191b390d66778aa321ed4258bbf61afbb93
         ref: line:35
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: update:bijouterie
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
     metadata:
       source: web-canonical
+      native_update:
+        source: native
+        source_kind: kw-canon
+        canon_ref: R-5.2
   - id: charpenterie
     name: Charpenterie
     status: active
@@ -2933,25 +2966,45 @@ skills:
     status: active
     family: maitrise-de-soi
     family_name: Maîtrise de soi
-    parent_id: null
+    parent_id: espionnage
     source_refs:
       - path: data/legacy/web-scraped/documents/competences/index.md
         sha256: 3323d916b371f3a7dce92a12cc211191b390d66778aa321ed4258bbf61afbb93
         ref: line:257
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: update:furtivite
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
     metadata:
       source: web-canonical
+      native_update:
+        source: native
+        source_kind: kw-canon
+        canon_ref: R-5.2
   - id: camouflage
     name: Camouflage
     status: active
     family: maitrise-de-soi
     family_name: Maîtrise de soi
-    parent_id: null
+    parent_id: espionnage
     source_refs:
       - path: data/legacy/web-scraped/documents/competences/index.md
         sha256: 3323d916b371f3a7dce92a12cc211191b390d66778aa321ed4258bbf61afbb93
         ref: line:258
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: update:camouflage
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
     metadata:
       source: web-canonical
+      native_update:
+        source: native
+        source_kind: kw-canon
+        canon_ref: R-5.2
   - id: deplacement-silencieux
     name: Déplacement silencieux
     status: active
@@ -3821,13 +3874,23 @@ skills:
     status: active
     family: savoir-faire
     family_name: Savoir-faire
-    parent_id: null
+    parent_id: larcin
     source_refs:
       - path: data/legacy/web-scraped/documents/competences/index.md
         sha256: 3323d916b371f3a7dce92a12cc211191b390d66778aa321ed4258bbf61afbb93
         ref: line:332
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: update:vol-a-la-tire
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
     metadata:
       source: web-canonical
+      native_update:
+        source: native
+        source_kind: kw-canon
+        canon_ref: R-5.2
   - id: gout
     name: Goût
     status: active
@@ -4428,3 +4491,547 @@ skills:
         ref: line:385
     metadata:
       source: web-canonical
+  - id: investigation
+    name: Investigation
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: null
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:investigation
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: fouille
+    name: Fouille
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: investigation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:fouille
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: filature
+    name: Filature
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: investigation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:filature
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: observation
+    name: Observation
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: investigation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:observation
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: detection
+    name: Détection
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: investigation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:detection
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: interrogatoire
+    name: Interrogatoire
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: investigation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:interrogatoire
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: investigation-religieuse
+    name: Investigation religieuse
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: investigation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:investigation-religieuse
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: pistage
+    name: Pistage
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: investigation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:pistage
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: espionnage
+    name: Espionnage
+    status: active
+    family: maitrise-de-soi
+    family_name: Maîtrise de soi
+    parent_id: null
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:espionnage
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: infiltration
+    name: Infiltration
+    status: active
+    family: maitrise-de-soi
+    family_name: Maîtrise de soi
+    parent_id: espionnage
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:infiltration
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: deguisement
+    name: Déguisement
+    status: active
+    family: maitrise-de-soi
+    family_name: Maîtrise de soi
+    parent_id: espionnage
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:deguisement
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: orfevrerie
+    name: Orfèvrerie
+    status: active
+    family: artisanat
+    family_name: Artisanat
+    parent_id: null
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:orfevrerie
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: sertissage
+    name: Sertissage
+    status: active
+    family: artisanat
+    family_name: Artisanat
+    parent_id: orfevrerie
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:sertissage
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: parfumerie
+    name: Parfumerie
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: null
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:parfumerie
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: olfaction
+    name: Olfaction
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: parfumerie
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:olfaction
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: distillation
+    name: Distillation
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: parfumerie
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:distillation
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: herbologie-parfum
+    name: Herbologie (parfum)
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: parfumerie
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:herbologie-parfum
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: composition-de-fragrances
+    name: Composition de fragrances
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: parfumerie
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:composition-de-fragrances
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: restauration
+    name: Restauration
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: null
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:restauration
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: service-en-salle
+    name: Service en salle
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: restauration
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:service-en-salle
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: dressage-de-table
+    name: Dressage de table
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: restauration
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:dressage-de-table
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: gestion-de-salle
+    name: Gestion de salle
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: restauration
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:gestion-de-salle
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: service-des-boissons
+    name: Service des boissons
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: restauration
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:service-des-boissons
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: orientation
+    name: Orientation
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: null
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:orientation
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: lecture-de-carte
+    name: Lecture de carte
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: orientation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:lecture-de-carte
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: orientation-aux-astres
+    name: Orientation aux astres
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: orientation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:orientation-aux-astres
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: orientation-en-milieu-naturel
+    name: Orientation en milieu naturel
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: orientation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:orientation-en-milieu-naturel
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: orientation-urbaine
+    name: Orientation urbaine
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: orientation
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:orientation-urbaine
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: culture-generale
+    name: Culture générale
+    status: active
+    family: connaissance
+    family_name: Connaissance
+    parent_id: null
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:culture-generale
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: escroquerie
+    name: Escroquerie
+    status: active
+    family: social
+    family_name: Social
+    parent_id: null
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:escroquerie
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: predication
+    name: Prédication
+    status: active
+    family: social
+    family_name: Social
+    parent_id: null
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:predication
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
+  - id: larcin
+    name: Larcin
+    status: active
+    family: savoir-faire
+    family_name: Savoir-faire
+    parent_id: null
+    source_refs:
+      - path: data/catalogs/competences.native.yaml
+        sha256: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+        ref: entry:larcin
+      - path: docs/rules/05-competences.md
+        sha256: a0e4dff377a9474b043be3225fcb0b5cc522cf187df696220fe67035f331e49f
+        ref: R-5.2
+    metadata:
+      source: native
+      source_kind: kw-canon
+      canon_ref: R-5.2
