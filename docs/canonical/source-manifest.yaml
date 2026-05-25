@@ -7906,7 +7906,7 @@ sources:
     notes: "Product catalog table."
   - id: "data-catalogs-atouts"
     path: "data/catalogs/atouts.yaml"
-    sha256: "0414b6d7719a52fef25f36ed9d076e29682c54802cf3ec7f87bbf56ebe605b5d"
+    sha256: "23c96fe06201119cf5e1f217d12f9ce229718e3cd443d85a297d255393cfd9fd"
     source_type: catalog_yaml
     priority: 90
     status: active

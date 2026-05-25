@@ -108,6 +108,14 @@ const WEAPON_LABELS: Record<string, string> = {
   couteau: 'un couteau'
 };
 
+const TOOL_LABELS: Record<string, string> = {
+  arme_predilection: 'arme de prédilection',
+  instrument_predilection: 'instrument de prédilection',
+  animaux_predilection: 'animaux de prédilection',
+  moyen_locomotion_predilection: 'moyen de locomotion de prédilection',
+  domaine_predilection: 'domaine de prédilection'
+};
+
 const SCHOOL_LABELS: Record<string, string> = {
   abjuration: 'd’abjuration',
   necromancy: 'de nécromancie',
@@ -335,6 +343,7 @@ function renderFlatCondition(buckets: ConditionBuckets): string {
   appendConditionPart(parts, buckets.target_disposition, renderTargetDispositionPhrase);
   appendConditionPart(parts, buckets.target_ref, renderTargetReferencePhrase);
   appendConditionPart(parts, buckets.weapon, renderWeaponPhrase);
+  appendConditionPart(parts, buckets.tool, renderToolPhrase);
   appendConditionPart(parts, buckets.school, renderSchoolPhrase);
   appendConditionPart(parts, buckets.self_state, renderSelfStatePhrase);
   appendConditionPart(parts, buckets.intent, renderIntentPhrase);
@@ -451,6 +460,10 @@ function renderTargetReferencePhrase(value: string): string {
 
 function renderWeaponPhrase(value: string): string {
   return `avec ${WEAPON_LABELS[value] ?? humanize(value)}`;
+}
+
+function renderToolPhrase(value: string): string {
+  return `avec ${TOOL_LABELS[value] ?? humanize(value)}`;
 }
 
 function renderSchoolPhrase(value: string): string {

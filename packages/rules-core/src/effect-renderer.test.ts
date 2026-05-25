@@ -125,6 +125,7 @@ describe('renderEffect', () => {
         aptitude: 'perception',
         target_disposition: 'ally',
         target_ref: 'employeur',
+        tool: 'arme_predilection',
         intent: 'sauvegarder',
         directness: 'direct_only'
       },
@@ -133,7 +134,7 @@ describe('renderEffect', () => {
     });
 
     expect(renderEffect(model)).toBe(
-      'Ajoute 1 au pool de dés avec la compétence danse et avec la spécialisation alchimie mutagenes et avec l’aptitude Perception et sur un allié et visant employeur et avec l’intention sauvegarder et en action directe'
+      'Ajoute 1 au pool de dés avec la compétence danse et avec la spécialisation alchimie mutagenes et avec l’aptitude Perception et sur un allié et visant employeur et avec arme de prédilection et avec l’intention sauvegarder et en action directe'
     );
   });
 

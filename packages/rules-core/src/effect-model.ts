@@ -66,6 +66,7 @@ export const EFFECT_CONDITION_KEYS = [
   'target_disposition',
   'target_ref',
   'weapon',
+  'tool',
   'school',
   'self_state',
   'intent',

@@ -35,6 +35,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:abordage
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un combat sur un navire.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:abordage
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        context: combat
+        env: naval
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: accoutumance-a-la-douleur
     name: Accoutumance à la douleur
     status: active
@@ -94,6 +107,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:agilite
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet de danse.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:agilite
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: danse
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: agitateur
     name: Agitateur
     status: active
@@ -227,6 +252,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:anti-bluff
+    source:
+      prose: Additionne le niveau au nombre de dés pour déceler les mensonges.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:anti-bluff
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: detection-du-mensonge
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: anti-delivrance
     name: Anti-délivrance
     status: active
@@ -318,6 +355,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:art-de-la-charpente
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux de charpenterie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:art-de-la-charpente
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: charpenterie
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: art-de-la-chasse
     name: Art de la chasse
     status: active
@@ -329,6 +378,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:art-de-la-chasse
+    source:
+      prose: Additionne le niveau au nombre de dès lorsque le personnage chasse.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:art-de-la-chasse
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: chasse
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: art-de-la-peche
     name: Art de la pêche
     status: active
@@ -340,6 +401,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:art-de-la-peche
+    source:
+      prose: Cet atout additionne le niveau au nombre de dès lorsque le personnage pêche.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:art-de-la-peche
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: peche
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: art-de-la-table
     name: Art de la table
     status: active
@@ -351,6 +424,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:art-de-la-table
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux liés à la restauration.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:art-de-la-table
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        action_type: restauration
+      activation: passive
+      duration: permanent
+    fidelity: ambiguous
+    ambiguity_ref: "E4: restauration sans competence canonique dediee"
   - id: art-de-la-vannerie
     name: Art de la vannerie
     status: active
@@ -362,6 +448,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:art-de-la-vannerie
+    source:
+      prose: Cet atout additionne le niveau au nombre de dès lorsque le personnage fait un travail de vannerie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:art-de-la-vannerie
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: vannerie
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: art-de-recevoir
     name: Art de recevoir
     status: active
@@ -373,6 +471,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:art-de-recevoir
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux d'hôtellerie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:art-de-recevoir
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: hotellerie
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: art-du-tonneau
     name: Art du tonneau
     status: active
@@ -384,6 +494,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:art-du-tonneau
+    source:
+      prose: Cet atout additionne le niveau au nombre de dès lorsque le personnage confectionne un tonneau.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:art-du-tonneau
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: facture-de-tonneau
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: art-litteraire
     name: Art littéraire
     status: active
@@ -395,6 +517,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:art-litteraire
+    source:
+      prose: Additionne le niveau au nombre de dès lorsque le personnage écrit.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:art-litteraire
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: ecriture
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: art-occulte
     name: Art occulte
     status: active
@@ -434,6 +568,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:assassinat
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage assassine quelqu’un.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:assassinat
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        intent: assassiner
+      activation: passive
+      duration: permanent
+      requires_mj_validation: true
+    fidelity: covered
   - id: astre-regenerateur
     name: Astre régénérateur
     status: active
@@ -738,6 +885,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:boussole-interne
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet d’orientation.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:boussole-interne
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        action_type: orientation
+      activation: passive
+      duration: permanent
+    fidelity: ambiguous
+    ambiguity_ref: "E4: orientation sans competence canonique dediee"
   - id: brulure-de-l-argent
     name: Brûlure de l’argent
     status: active
@@ -802,6 +962,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:caresse-charnelle
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet de sexualité.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:caresse-charnelle
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: sexualite
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: cerebralite
     name: Cérébralité
     status: active
@@ -968,6 +1140,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:cordon-bleu
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage cuisine.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:cordon-bleu
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: cuisine
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: corne-aux-mains
     name: Corne aux mains
     status: active
@@ -990,6 +1174,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:coup-de-crayon
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage dessine.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:coup-de-crayon
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: dessin
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: coup-de-pinceau
     name: Coup de pinceau
     status: active
@@ -1001,6 +1197,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:coup-de-pinceau
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage peint.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:coup-de-pinceau
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: peinture
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: coup-decisif
     name: Coup décisif
     status: active
@@ -1012,6 +1220,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:coup-decisif
+    source:
+      prose: Additionne le niveau au nombre de dés pour toucher, lorsque le personnage utilise son arme de prédilection.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:coup-decisif
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        action_type: attaque
+        tool: arme_predilection
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: coup-du-bucheron
     name: Coup du bûcheron
     status: active
@@ -1047,6 +1268,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:coupe-du-bois
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage bûcheronne.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:coupe-du-bois
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: bucheronnage
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: coups-vicieux
     name: Coups vicieux
     status: active
@@ -1129,6 +1362,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:culture-generale
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet de connaissance.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:culture-generale
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        context: connaissance
+      activation: passive
+      duration: permanent
+    fidelity: ambiguous
+    ambiguity_ref: "E4: famille connaissance non modelisee comme condition"
   - id: debordement-d-energie
     name: Débordement d’énergie
     status: active
@@ -1153,6 +1399,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:defense
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un combat défensif avec l’arme de prédilection.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:defense
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        context: combat_defensif
+        tool: arme_predilection
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: dent-contre
     name: Dent contre
     status: active
@@ -1319,6 +1578,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:discretion
+    source:
+      prose: Diminue la difficulté de 5 sur un jet de furtivité.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:discretion
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        competence: furtivite
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+    fidelity: covered
   - id: disparition
     name: Disparition
     status: active
@@ -1343,6 +1615,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:dissimulation
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet basé sur le camouflage.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:dissimulation
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: camouflage
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: doigts-de-fee
     name: Doigts de fée
     status: active
@@ -1415,6 +1699,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:duel
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un duel.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:duel
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        context: duel
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: dulcinee
     name: Dulcinée
     status: active
@@ -1530,6 +1826,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:elevage
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage élève ses animaux de prédilections.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:elevage
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        tool: animaux_predilection
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: energie-a-l-honneur
     name: Energie à l’honneur
     status: active
@@ -1670,6 +1978,20 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:escroquerie
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’une tentative d'escroquerie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:escroquerie
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        intent: escroquer
+      activation: passive
+      duration: permanent
+      requires_mj_validation: true
+    fidelity: ambiguous
+    ambiguity_ref: "E4: escroquerie sans competence canonique dediee"
   - id: espionnage
     name: Espionnage
     status: active
@@ -1681,6 +2003,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:espionnage
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet d’espionnage.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:espionnage
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        action_type: espionnage
+      activation: passive
+      duration: permanent
+    fidelity: ambiguous
+    ambiguity_ref: "E4: espionnage absent du catalogue competences"
   - id: esprit-logique
     name: Esprit logique
     status: active
@@ -1705,6 +2040,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:esprit-mercatique
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet de marchandage.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:esprit-mercatique
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: marchandage
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: estimation
     name: Estimation
     status: active
@@ -1729,6 +2076,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:extermination
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un combat contre un ou plusieurs monstres.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:extermination
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        context: combat_vs_monstres
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: facture-d-arc
     name: Facture d'arc
     status: active
@@ -1740,6 +2099,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:facture-d-arc
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage construit un arc.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:facture-d-arc
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: facture-d-arc
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: familier
     name: Familier
     status: active
@@ -1765,6 +2136,32 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:familier
+    source:
+      prose: >-
+        Le personnage est aidé d’une créature qui peut prendre n’importe quelle forme. Ce suivant magique doit posséder une
+        feuille de personnage dans laquelle son possesseurs pourra dépenser son niveau x 100 en points d’expérience selon
+        les pondération du jeu (Attributs = NAx5, compétence = NAx3, Vitalité = 10, etc.) Les limites physique ne
+        s’appliquent pas aux familiers. Leurs facteurs de vitesse et de volonté de base sont de 8. Les familiers ne peuvent
+        avoir de points dans une connaissance (mathématique, géographie, etc.) que le magicien ne possède pas. Ils ne
+        possèdent ni race, ni catégorie (ils sont donc toujours considéré comme niveau 1), ni orientation, ni classe (et
+        n’ont donc pas accès aux atouts qui y sont relatifs.) Ils ont toutefois le droit d’avoir des atouts (considérés
+        comme atouts de race). Pour ajouter un atout à son familier, un magicien doit dépenser la valeur de l’atout choisit
+        divisé par 10. Par exemple, un familier hiboux ne pourra voler que si son magicien investit 200 points (valeur de
+        l’atout = 2000) dans cet atout. La prise d’handicap alloue la valeur de celui-ci divisé par 10 en points
+        supplémentaire au familier. Les familiers doivent impérativement avoir au minimum 1 point de vitalité. A chaque
+        passage de niveau, le familier renaît et ses nouveau points peuvent lui être attribués. Il peut décider de conserver
+        sa forme ou de la modifier pour une autre au choix du personnage, c’est aussi comme cela qu’il est possible de
+        récupérer un familier mort.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:familier
+    spec:
+      target: status
+      scope: familier
+      op: grant
+      value: 1
+      activation: passive
+      duration: permanent
+    fidelity: pending
+    ambiguity_ref: moteur propre (#familier)
   - id: familier-supplementaire
     name: Familier supplémentaire
     status: active
@@ -1837,6 +2234,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:foi
+    source:
+      prose: Diminue la difficulté d’un jet de volonté de 5.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:foi
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        aptitude: volonte
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+    fidelity: covered
   - id: folie-furieuse
     name: Folie furieuse
     status: active
@@ -1851,6 +2261,23 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:folie-furieuse
+    source:
+      prose: >-
+        Additionne le niveau au nombre de dés lors d’un jet de force et endurance, lorsque le personnage est fou furieux
+        (c’est à lui de décider d’activer ou non cet état) mais il réduit alors l’empathie, l’intelligence et la perception
+        à 1. Cet état dure 25 DT/niveau (non réductible).
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:folie-furieuse
+    spec:
+      target: status
+      scope: fou_furieux
+      op: grant
+      value: 1
+      activation: active
+      duration:
+        dt: 25*level
+        locked: true
+    fidelity: pending
+    ambiguity_ref: "statut composite (E3 #141)"
   - id: force-de-geant
     name: Force de géant
     status: active
@@ -1934,6 +2361,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:fureur-guerriere
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet de force, pendant un combat.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:fureur-guerriere
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        context: combat
+        aptitude: force
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: garde-rapprochee
     name: Garde rapprochée
     status: active
@@ -1945,6 +2385,21 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:garde-rapprochee
+    source:
+      prose: Additionne le niveau pour toute action visant la sauvegarde de son employeur.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:garde-rapprochee
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        intent: sauvegarder
+        target_disposition: ally
+        target_ref: employeur
+      activation: passive
+      duration: permanent
+      requires_mj_validation: true
+    fidelity: covered
   - id: generalisation
     name: Généralisation
     status: active
@@ -2023,6 +2478,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:guerison
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’une intervention médicale.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:guerison
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: medecine
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: humanothropie
     name: Humanothropie
     status: active
@@ -2192,6 +2659,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:inquisition
+    source:
+      prose: Ajoute son niveau en dès lors d'un jet d'investigation religieuse.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:inquisition
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        action_type: investigation_religieuse
+      activation: passive
+      duration: permanent
+    fidelity: ambiguous
+    ambiguity_ref: "E4: investigation religieuse sans competence canonique dediee"
   - id: inversion-des-energies
     name: Inversion des énergies
     status: active
@@ -2254,6 +2734,24 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:juste-cause
+    source:
+      prose: >-
+        Additionne le niveau au nombre de dés lorsque le personnage défend les faibles (directement). Par exemple sauver une
+        jeune dame en détresse comptera comme directe, alors que sauver le monde en détruisant un objet magique sera
+        indirecte.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:juste-cause
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        intent: defendre_les_faibles
+        target_disposition: ally
+        directness: direct_only
+      activation: passive
+      duration: permanent
+      requires_mj_validation: true
+    fidelity: covered
   - id: langage-aquatique
     name: Langage aquatique
     status: active
@@ -2433,6 +2931,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:loup-de-mer
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage dirige un bateau.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:loup-de-mer
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: navigation
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: lycanthropie
     name: Lycanthropie
     status: active
@@ -2455,6 +2965,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-banche
+    source:
+      prose: Diminue la difficulté de tous les sorts de magie blanche 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-banche
+    spec:
+      target: difficulty
+      scope: magie-blanche
+      op: sub
+      value: 1
+      condition:
+        school: blanc
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magie-bleue
     name: Magie bleue
     status: active
@@ -2466,6 +2989,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-bleue
+    source:
+      prose: Diminue la difficulté de tous les sorts élémentaux de 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-bleue
+    spec:
+      target: difficulty
+      scope: elementaire
+      op: sub
+      value: 1
+      condition:
+        school: bleu
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magie-brune
     name: Magie brune
     status: active
@@ -2477,6 +3013,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-brune
+    source:
+      prose: Diminue la difficulté de tous les sorts divinatoire de 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-brune
+    spec:
+      target: difficulty
+      scope: divination
+      op: sub
+      value: 1
+      condition:
+        school: brun
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magie-grise
     name: Magie grise
     status: active
@@ -2488,6 +3037,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-grise
+    source:
+      prose: Diminue la difficulté de tous les sorts nécromancienne de 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-grise
+    spec:
+      target: difficulty
+      scope: necromancie
+      op: sub
+      value: 1
+      condition:
+        school: gris
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magie-jaune
     name: Magie jaune
     status: active
@@ -2499,6 +3061,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-jaune
+    source:
+      prose: Diminue la difficulté de tous les sorts d'abjuration de 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-jaune
+    spec:
+      target: difficulty
+      scope: abjuration
+      op: sub
+      value: 1
+      condition:
+        school: jaune
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magie-noire
     name: Magie noire
     status: active
@@ -2510,6 +3085,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-noire
+    source:
+      prose: Diminue la difficulté de tous les sorts de magie noire de 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-noire
+    spec:
+      target: difficulty
+      scope: magie-noire
+      op: sub
+      value: 1
+      condition:
+        school: noir
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magie-orange
     name: Magie orange
     status: active
@@ -2521,6 +3109,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-orange
+    source:
+      prose: Diminue la difficulté de tous les sorts oranges de 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-orange
+    spec:
+      target: difficulty
+      scope: invocation
+      op: sub
+      value: 1
+      condition:
+        school: orange
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magie-rouge
     name: Magie rouge
     status: active
@@ -2532,6 +3133,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-rouge
+    source:
+      prose: Diminue la difficulté de tous les sorts d'altération de 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-rouge
+    spec:
+      target: difficulty
+      scope: alteration
+      op: sub
+      value: 1
+      condition:
+        school: rouge
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magie-turquoise
     name: Magie turquoise
     status: active
@@ -2543,6 +3157,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-turquoise
+    source:
+      prose: Diminue la difficulté de tous les sorts d'enchantement de 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-turquoise
+    spec:
+      target: difficulty
+      scope: enchantement
+      op: sub
+      value: 1
+      condition:
+        school: turquoise
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magie-verte
     name: Magie verte
     status: active
@@ -2554,6 +3181,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-verte
+    source:
+      prose: Diminue la difficulté de tous les sorts de magie verte de 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-verte
+    spec:
+      target: difficulty
+      scope: magie-naturelle
+      op: sub
+      value: 1
+      condition:
+        school: vert
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magie-violette
     name: Magie violette
     status: active
@@ -2565,6 +3205,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magie-violette
+    source:
+      prose: Diminue la difficulté de tous les sorts d'illusion de 1.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magie-violette
+    spec:
+      target: difficulty
+      scope: illusion
+      op: sub
+      value: 1
+      condition:
+        school: violet
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: magnetisme
     name: Magnétisme
     status: active
@@ -2576,6 +3229,22 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:magnetisme
+    source:
+      prose: Diminue la difficulté pour plaire, dans le domaine de prédilection, de 5.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:magnetisme
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        intent: plaire
+        tool: domaine_predilection
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+      requires_mj_validation: true
+    fidelity: ambiguous
+    ambiguity_ref: "E4: domaine de predilection artiste resolu par slot perso"
   - id: main-du-magicien
     name: Main du magicien
     status: active
@@ -2598,6 +3267,21 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:main-verte
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage entretien des végétaux.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:main-verte
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        any_of:
+          - competence: jardinage
+          - competence: agriculture
+      activation: passive
+      duration: permanent
+    fidelity: ambiguous
+    ambiguity_ref: "E4: entretien des vegetaux couvre jardinage/agriculture"
   - id: maitre-du-mensonge
     name: Maître du mensonge
     status: active
@@ -2759,6 +3443,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:maitrise-des-fragrances
+    source:
+      prose: Additionne le niveau au nombre de dés lors sur un jet de création de parfum.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:maitrise-des-fragrances
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        action_type: creation_parfum
+      activation: passive
+      duration: permanent
+    fidelity: ambiguous
+    ambiguity_ref: "E4: parfumerie absente du catalogue competences"
   - id: maitrise-equestre
     name: Maîtrise équestre
     status: active
@@ -2770,6 +3467,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:maitrise-equestre
+    source:
+      prose: Additionne le niveau au nombre de dés pour une manœuvre équestre.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:maitrise-equestre
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: equitation
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: maitrise-martiale
     name: Maîtrise martiale
     status: active
@@ -2781,6 +3490,21 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:maitrise-martiale
+    source:
+      prose: Diminue de 5 la difficulté d’un jet de combat dans le domaine de prédilection.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:maitrise-martiale
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        context: combat
+        tool: domaine_predilection
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+    fidelity: ambiguous
+    ambiguity_ref: "E4: domaine de predilection martial resolu par slot perso"
   - id: martyrisation
     name: Martyrisation
     status: active
@@ -2821,6 +3545,21 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:mefait
+    source:
+      prose: Diminue la difficulté de 5 lorsque le personnage nuit à un autre.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:mefait
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        intent: nuire
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+      requires_mj_validation: true
+    fidelity: ambiguous
+    ambiguity_ref: "E4: portee de l’intention nuire a reviser (#57 mefait)"
   - id: memoire-photographique
     name: Mémoire photographique
     status: active
@@ -2982,6 +3721,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:narration-palpitante
+    source:
+      prose: Additionne le niveau au nombre de dés pour raconter une histoire.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:narration-palpitante
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: conte
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: ne-pour-tuer
     name: Né pour tuer
     status: active
@@ -3053,6 +3804,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:orfevrerie
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux d’orfèvre.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:orfevrerie
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: bijouterie
+      activation: passive
+      duration: permanent
+    fidelity: ambiguous
+    ambiguity_ref: "E4: orfevrerie sans competence canonique dediee"
   - id: organisme-fragile
     name: Organisme fragile
     status: active
@@ -3115,6 +3879,21 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:ouvrage
+    source:
+      prose: Diminue de 5 la difficulté pour un ouvrage dans le domaine de prédilection.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:ouvrage
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        action_type: ouvrage
+        tool: domaine_predilection
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+    fidelity: ambiguous
+    ambiguity_ref: "E4: domaine de predilection ouvrier resolu par slot perso"
   - id: paluche
     name: Paluche
     status: active
@@ -3181,6 +3960,20 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:parole-divine
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage prêche la bonne parole.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:parole-divine
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        intent: precher_bonne_parole
+      activation: passive
+      duration: permanent
+      requires_mj_validation: true
+    fidelity: ambiguous
+    ambiguity_ref: "E4: predication sans competence canonique dediee"
   - id: partenaire-ideal
     name: Partenaire idéal
     status: active
@@ -3279,6 +4072,21 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:paysannerie
+    source:
+      prose: Diminue la difficulté de 5 lors d’un jet de paysannerie (dans le domaine de prédilection).
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:paysannerie
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        context: paysannerie
+        tool: domaine_predilection
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+    fidelity: ambiguous
+    ambiguity_ref: "E4: domaine de predilection paysan resolu par slot perso"
   - id: pensee-profonde
     name: Pensée profonde
     status: active
@@ -3290,6 +4098,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:pensee-profonde
+    source:
+      prose: Additionne le niveau aux dés lors d’un jet de philosophie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:pensee-profonde
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: philosophie
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: perception-des-energies
     name: Perception des énergies
     status: active
@@ -3325,6 +4145,20 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:periple
+    source:
+      prose: Diminue la difficulté de 5 pour un jet de déplacement (avec le moyen de locomotion de prédilection).
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:periple
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        action_type: deplacement
+        tool: moyen_locomotion_predilection
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+    fidelity: covered
   - id: persecution
     name: Persécution
     status: active
@@ -3496,6 +4330,23 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:pour-la-prime
+    source:
+      prose: >-
+        Additionne le niveau au nombre de dés pour permettant d'obtenir une prime directement. Arrêter un voleur pour une
+        récompense sera considérer comme directe. Se sauver d'un traquenard pour survire (et arrêter un voleur par la suite)
+        sera considéré comme indirect.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:pour-la-prime
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        intent: obtenir_prime
+        directness: direct_only
+      activation: passive
+      duration: permanent
+      requires_mj_validation: true
+    fidelity: covered
   - id: pouvoir-symbolique
     name: Pouvoir symbolique
     status: active
@@ -3521,6 +4372,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:precision
+    source:
+      prose: Additionne le niveau aux dés lors d’un jet de tir avec l’arme de prédilection.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:precision
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        action_type: tir
+        tool: arme_predilection
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: pressentiment-de-la-cible
     name: Pressentiment de la cible
     status: active
@@ -3547,6 +4411,21 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:production
+    source:
+      prose: Diminue la difficulté de 5 pour la construction d’un objet.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:production
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        action_type: construction_objet
+        tool: domaine_predilection
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+    fidelity: ambiguous
+    ambiguity_ref: "E4: domaine de predilection artisan resolu par slot perso"
   - id: projections-cauchemardesques
     name: Projections cauchemardesques
     status: active
@@ -3723,6 +4602,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:reflexion
+    source:
+      prose: Diminue la difficulté d’un d’intelligence de 5.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:reflexion
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        aptitude: intelligence
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+    fidelity: covered
   - id: regard-de-braise
     name: Regard de braise
     status: active
@@ -4268,6 +5160,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:science-de-la-vie
+    source:
+      prose: Additionne le niveau du personnage au nombre de dès lancés lors d’un jet d’alchimie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:science-de-la-vie
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: alchimie
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: science-des-plantes
     name: Science des plantes
     status: active
@@ -4279,6 +5183,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:science-des-plantes
+    source:
+      prose: Additionne le niveau du personnage au nombre de dès lancés lors d’un jet d’herboristerie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:science-des-plantes
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: herbologie
+      activation: passive
+      duration: permanent
+    fidelity: ambiguous
+    ambiguity_ref: "E4: herboristerie normalisee vers herbologie"
   - id: secret-des-poignards-volants
     name: Secret des poignards volants
     status: active
@@ -4314,6 +5231,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:sens-de-la-scene
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet de comédie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:sens-de-la-scene
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: comedie
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: sens-des-affaires
     name: Sens des affaires
     status: active
@@ -4325,6 +5254,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:sens-des-affaires
+    source:
+      prose: Diminue la difficulté de 5 lors d’un jet de commerce.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:sens-des-affaires
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        competence: commerce
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+    fidelity: covered
   - id: sens-du-danger
     name: Sens du danger
     status: active
@@ -4362,6 +5304,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:sens-en-eveil
+    source:
+      prose: Ajoute le niveau du personnage à ses dès lors d'un jet de perception.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:sens-en-eveil
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        aptitude: perception
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: sens-politique
     name: Sens politique
     status: active
@@ -4373,6 +5327,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:sens-politique
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet de politique.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:sens-politique
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: politique
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: sentir-la-mort
     name: Sentir la mort
     status: active
@@ -4419,6 +5385,21 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:service
+    source:
+      prose: Diminue la difficulté de 5 pour un jet de tâches domestiques (dans le domaine de prédilection).
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:service
+    spec:
+      target: difficulty
+      op: sub
+      value: 5
+      condition:
+        competence: service
+        tool: domaine_predilection
+      activation: active
+      duration: ephemeral
+      uses_per_day: 2
+    fidelity: ambiguous
+    ambiguity_ref: "E4: domaine de predilection domestique resolu par slot perso"
   - id: servitude
     name: Servitude
     status: active
@@ -4432,6 +5413,22 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:servitude
+    source:
+      prose: >-
+        Additionne le niveau au nombre de dés lorsque le personnage sert son maître. La tâche que le personnage effectue
+        doit être en rapport avec sa condition de domestique.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:servitude
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        intent: servir_maitre
+        target_ref: maitre
+      activation: passive
+      duration: permanent
+      requires_mj_validation: true
+    fidelity: covered
   - id: seul-contre-tous
     name: Seul contre tous
     status: active
@@ -4503,6 +5500,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:son-envoutant
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage joue de son instrument de prédilection.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:son-envoutant
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        tool: instrument_predilection
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: sonar
     name: Sonar
     status: active
@@ -4566,6 +5575,20 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:subtilisation
+    source:
+      prose: Additionne son niveau au nombre de dès lorsque le personnage effectue un vol.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:subtilisation
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        intent: voler
+      activation: passive
+      duration: permanent
+      requires_mj_validation: true
+    fidelity: ambiguous
+    ambiguity_ref: "E4: vol generique sans competence canonique dediee"
   - id: survie
     name: Survie
     status: active
@@ -4588,6 +5611,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:sus-aux-magiciens
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage nui à un magicien.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:sus-aux-magiciens
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        target_tag: magicien
+        target_disposition: enemy
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: telekinesie
     name: Télékinésie
     status: active
@@ -4727,6 +5763,19 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:touche-leger
+    source:
+      prose: Additionne le niveau au nombre de dés pour toucher quelqu’un sans que celui-ci ne le remarque.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:touche-leger
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        intent: toucher_sans_etre_remarque
+      activation: passive
+      duration: permanent
+      requires_mj_validation: true
+    fidelity: covered
   - id: toujours-sur-soi
     name: Toujours sur soi
     status: active
@@ -4751,6 +5800,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:tour-de-passe-passe
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un tour de passe-passe.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:tour-de-passe-passe
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: prestidigitation
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: tranchant
     name: Tranchant
     status: active
@@ -4814,6 +5875,21 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:traque
+    source:
+      prose: Additionne le niveau au nombre de dés, lors d’un jet de pistage ou autre investigation forestière.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:traque
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        any_of:
+          - competence: traque
+          - context: investigation_forestiere
+      activation: passive
+      duration: permanent
+    fidelity: ambiguous
+    ambiguity_ref: "E4: pistage couvert par traque; investigation forestiere plus large"
   - id: travail-de-la-peau
     name: Travail de la peau
     status: active
@@ -4825,6 +5901,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:travail-de-la-peau
+    source:
+      prose: Additionne le niveau au nombre de dès lorsque le personnage effectue un travail de tannerie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:travail-de-la-peau
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: tannage
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: travail-du-bois
     name: Travail du bois
     status: active
@@ -4836,6 +5924,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:travail-du-bois
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux de menuiserie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:travail-du-bois
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: menuiserie
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: travail-du-metal
     name: Travail du métal
     status: active
@@ -4847,6 +5947,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:travail-du-metal
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage forge.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:travail-du-metal
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: forge
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: travail-du-recipient
     name: Travail du récipient
     status: active
@@ -4858,6 +5970,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:travail-du-recipient
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage fait des travaux de poterie.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:travail-du-recipient
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: poterie
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: travail-du-textile
     name: Travail du textile
     status: active
@@ -4869,6 +5993,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:travail-du-textile
+    source:
+      prose: Additionne le niveau au nombre de dés lors d’un jet de couture.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:travail-du-textile
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: couture
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: trompe-la-mort
     name: Trompe la mort
     status: active
@@ -4932,6 +6068,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:vade-retro
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage effectue un exorcisme.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:vade-retro
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: exorcisme
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: vegothropie
     name: Vegothropie
     status: active
@@ -5067,6 +6215,18 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:voix-intense
+    source:
+      prose: Additionne le niveau au nombre de dés lorsque le personnage chante.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:voix-intense
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: chant
+      activation: passive
+      duration: permanent
+    fidelity: covered
   - id: voix-surnaturelle
     name: Voix surnaturelle
     status: active
