@@ -102,6 +102,41 @@ describe('renderEffect', () => {
     expect(renderEffect(factor)).toBe('Réduit le facteur volonté de 1');
   });
 
+  it('renders damage additions', () => {
+    const model = effectModel({
+      target: 'damage',
+      op: 'add',
+      value: 'level + 1',
+      activation: 'active',
+      duration: 'ephemeral'
+    });
+
+    expect(renderEffect(model)).toBe('Inflige niveau + 1 dégâts supplémentaires');
+  });
+
+  it('renders activity condition dimensions', () => {
+    const model = effectModel({
+      target: 'pool',
+      op: 'add',
+      value: 1,
+      condition: {
+        competence: 'danse',
+        spec: 'alchimie_mutagenes',
+        aptitude: 'perception',
+        target_disposition: 'ally',
+        target_ref: 'employeur',
+        intent: 'sauvegarder',
+        directness: 'direct_only'
+      },
+      activation: 'passive',
+      duration: 'permanent'
+    });
+
+    expect(renderEffect(model)).toBe(
+      'Ajoute 1 au pool de dés avec la compétence danse et avec la spécialisation alchimie mutagenes et avec l’aptitude Perception et sur un allié et visant employeur et avec l’intention sauvegarder et en action directe'
+    );
+  });
+
   it('uses a readable generic fallback for uncovered target-operation pairs', () => {
     const model = effectModel({
       target: 'status',

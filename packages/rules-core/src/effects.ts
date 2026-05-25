@@ -14,8 +14,17 @@ import {
 
 export const GLOBAL_EFFECT_SCOPE = '__global__';
 
-export type NumericEffectTarget = Exclude<EffectTarget, 'status'>;
+export type NumericEffectTarget = Exclude<EffectTarget, 'status' | 'damage'>;
 export type NumericEffectOperation = Extract<EffectOperation, 'add' | 'sub' | 'set' | 'multiply'>;
+
+const COMPUTED_NUMERIC_EFFECT_TARGETS = [
+  'aptitude',
+  'factor',
+  'difficulty',
+  'pool',
+  'energy',
+  'vitality'
+] as const satisfies readonly NumericEffectTarget[];
 
 export type EffectApplicationContext = EffectConditionContext &
   EffectValueContext & {
@@ -88,6 +97,12 @@ export function computeEffectiveModifiers(
 
     if (!isNumericOperation(effect.spec.op)) {
       throw new Error(`Effect operation "${effect.spec.op}" is only supported for status targets`);
+    }
+
+    if (!isComputedNumericEffectTarget(effect.spec.target)) {
+      throw new Error(
+        `Effect target "${effect.spec.target}" is not supported by computeEffectiveModifiers`
+      );
     }
 
     const value = evaluateValue(effect.spec.value, ctx);
@@ -180,11 +195,17 @@ function isDurationActive(duration: EffectDuration, ctx: EffectApplicationContex
     return ctx.includeEphemeral !== false;
   }
 
-  return ctx.elapsedDT === undefined || ctx.elapsedDT < duration.dt;
+  const dt = typeof duration.dt === 'number' ? duration.dt : evaluateValue(duration.dt, ctx);
+
+  return ctx.elapsedDT === undefined || ctx.elapsedDT < dt;
 }
 
 function isNumericOperation(op: EffectOperation): op is NumericEffectOperation {
   return op === 'add' || op === 'sub' || op === 'set' || op === 'multiply';
+}
+
+function isComputedNumericEffectTarget(target: EffectTarget): target is NumericEffectTarget {
+  return (COMPUTED_NUMERIC_EFFECT_TARGETS as readonly string[]).includes(target);
 }
 
 function getOrCreateModifierBucket(
