@@ -109,7 +109,9 @@ describe('effect modifier engine', () => {
   });
 });
 
-function effect(spec: Partial<EffectSpec> & Pick<EffectSpec, 'target' | 'op' | 'value'>): EffectModel {
+function effect(
+  spec: Partial<EffectSpec> & Pick<EffectSpec, 'target' | 'op' | 'value'>
+): EffectModel {
   return parseEffectModel({
     source: { prose: 'Fixture effect.', ref: 'fixture:effect' },
     spec: {

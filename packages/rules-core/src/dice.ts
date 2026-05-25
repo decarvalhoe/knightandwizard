@@ -80,9 +80,16 @@ export function calculateEffectiveRollRequest(
   const poolScope = scopes.pool ?? scopes.scope;
   const difficultyScope = scopes.difficulty ?? scopes.scope;
   const pool = effectiveValue(request.pool, 'pool', poolScope, effects, ctx, { minimum: 0 });
-  const difficulty = effectiveValue(request.difficulty, 'difficulty', difficultyScope, effects, ctx, {
-    minimum: 1
-  });
+  const difficulty = effectiveValue(
+    request.difficulty,
+    'difficulty',
+    difficultyScope,
+    effects,
+    ctx,
+    {
+      minimum: 1
+    }
+  );
 
   assertNonNegativeInteger('pool', pool);
   assertPositiveInteger('difficulty', difficulty);
