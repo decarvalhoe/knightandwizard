@@ -20420,6 +20420,20 @@ sources:
       - citation_internal
       - human_review_only
     notes: Scraped legacy web source.
+  - id: DOCS-ARCHITECTURE-REALTIME-MVP
+    path: docs/architecture/realtime-mvp.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 8c84708effb49ea9c413d82dd8e516fe5fd0766570204773fbb8b081354b9747
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-DESIGN-CLAUDE-DESIGN-BRIEF
     path: docs/design/CLAUDE-DESIGN-BRIEF.md
     type: markdown
