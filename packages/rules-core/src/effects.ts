@@ -11,6 +11,7 @@ import {
   type EffectTarget,
   type EffectValueContext
 } from './effect-model.js';
+import { type PredilectionSlots } from './predilection.js';
 
 export const GLOBAL_EFFECT_SCOPE = '__global__';
 
@@ -29,8 +30,10 @@ const COMPUTED_NUMERIC_EFFECT_TARGETS = [
 export type EffectApplicationContext = EffectConditionContext &
   EffectValueContext & {
     activations?: readonly EffectActivation[];
+    engagedTool?: string;
     elapsedDT?: number;
     includeEphemeral?: boolean;
+    predilection?: PredilectionSlots;
   };
 
 export interface EffectModifierApplication {

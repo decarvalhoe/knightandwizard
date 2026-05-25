@@ -86,7 +86,7 @@ describe('EffectModel parsing', () => {
       ['aptitude', ['perception', 'willpower'], 'force'],
       ['target_disposition', 'ally', 'enemy'],
       ['target_ref', 'employeur', 'inconnu'],
-      ['tool', 'arme_predilection', 'instrument_predilection'],
+      ['tool', 'luth', 'flute'],
       ['intent', 'sauvegarder', 'nuire'],
       ['directness', 'direct_only', 'indirect']
     ] as const satisfies readonly (readonly [string, EffectConditionValue, EffectConditionValue])[];

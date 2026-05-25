@@ -112,6 +112,7 @@ const TOOL_LABELS: Record<string, string> = {
   arme_predilection: 'arme de prédilection',
   instrument_predilection: 'instrument de prédilection',
   animaux_predilection: 'animaux de prédilection',
+  monture_predilection: 'monture de prédilection',
   moyen_locomotion_predilection: 'moyen de locomotion de prédilection',
   domaine_predilection: 'domaine de prédilection'
 };

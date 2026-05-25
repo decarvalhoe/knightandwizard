@@ -1,6 +1,7 @@
 import { type Combatant } from './combat.js';
 import { effectiveAttribute, type EffectApplicationContext } from './effects.js';
 import { type EffectModel } from './effect-model.js';
+import { copyPredilectionSlots, type PredilectionSlots } from './predilection.js';
 import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
 
 export const ATTRIBUTE_KEYS = [
@@ -109,6 +110,7 @@ export interface CharacterBase {
   spells: CharacterSpell[];
   equipment: CharacterEquipmentItem[];
   modifiers: CharacterModifier[];
+  predilection?: PredilectionSlots;
   progression: CharacterProgression;
   metadata: Record<string, unknown>;
 }
@@ -137,6 +139,7 @@ export interface CreatePlayerCharacterInput {
   spells?: CharacterSpell[];
   equipment?: CharacterEquipmentItem[];
   modifiers?: CharacterModifier[];
+  predilection?: PredilectionSlots;
   progression?: CharacterProgression;
   metadata?: Record<string, unknown>;
 }
@@ -157,6 +160,7 @@ export interface CreateNonPlayerCharacterInput {
   spells?: CharacterSpell[];
   equipment?: CharacterEquipmentItem[];
   modifiers?: CharacterModifier[];
+  predilection?: PredilectionSlots;
   progression?: CharacterProgression;
   metadata?: Record<string, unknown>;
 }
@@ -335,6 +339,9 @@ export function createPlayerCharacter(
     spells: spells.map(copySpell),
     equipment: (input.equipment ?? []).map((item) => ({ ...item })),
     modifiers: (input.modifiers ?? []).map((modifier) => ({ ...modifier })),
+    ...(input.predilection === undefined
+      ? {}
+      : { predilection: copyPredilectionSlots(input.predilection) }),
     progression: copyProgression(input.progression),
     metadata: { ...(input.metadata ?? {}) }
   };
@@ -372,6 +379,9 @@ export function createNonPlayerCharacter(
     spells: (input.spells ?? []).map(copySpell),
     equipment: (input.equipment ?? []).map((item) => ({ ...item })),
     modifiers: (input.modifiers ?? []).map((modifier) => ({ ...modifier })),
+    ...(input.predilection === undefined
+      ? {}
+      : { predilection: copyPredilectionSlots(input.predilection) }),
     progression: copyProgression(input.progression),
     metadata: { ...(input.metadata ?? {}) }
   };
