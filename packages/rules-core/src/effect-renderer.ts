@@ -158,8 +158,7 @@ const EFFECT_RENDER_TEMPLATES: Partial<Record<RenderTemplateKey, (spec: EffectSp
   'difficulty:multiply': (spec) => `Multiplie la difficulté par ${renderValue(spec.value)}`,
   'aptitude:add': (spec) => `+${renderValue(spec.value)} en ${renderScope(spec.scope)}`,
   'aptitude:sub': (spec) => `-${renderValue(spec.value)} en ${renderScope(spec.scope)}`,
-  'aptitude:set': (spec) =>
-    `Fixe ${renderScope(spec.scope)} à ${renderValue(spec.value)}`,
+  'aptitude:set': (spec) => `Fixe ${renderScope(spec.scope)} à ${renderValue(spec.value)}`,
   'aptitude:multiply': (spec) =>
     `Multiplie ${renderScope(spec.scope)} par ${renderValue(spec.value)}`,
   'aptitude:grant': (spec) => `Accorde ${renderScope(spec.scope)}`,
