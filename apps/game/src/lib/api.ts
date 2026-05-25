@@ -21,6 +21,10 @@ export function getApiBaseUrl(): string {
   return process.env.API_BASE_URL ?? process.env.NEXT_PUBLIC_API_BASE_URL ?? DEFAULT_API_BASE_URL;
 }
 
+export function getClientApiBaseUrl(): string {
+  return process.env.NEXT_PUBLIC_API_BASE_URL ?? DEFAULT_API_BASE_URL;
+}
+
 export async function getApiHealth(): Promise<ApiHealthStatus> {
   const baseUrl = getApiBaseUrl();
 
