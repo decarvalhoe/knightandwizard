@@ -1,5 +1,6 @@
 export * from './arbiter.js';
 export * from './character.js';
+export * from './combat-damage.js';
 export * from './combat.js';
 export * from './dice.js';
 export * from './effect-model.js';
