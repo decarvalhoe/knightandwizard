@@ -85,6 +85,7 @@ Génère une phrase FR depuis le `spec` : `gabarit[(target, op)] + value rendue 
 | (aptitude, add) | « +{value} en {scope} » |
 | (status, grant) | « Inflige l'état {scope} » |
 | (vitality, add) | « Restaure {value} points de vitalité » |
+| (damage, add) | « Inflige {value} dégâts supplémentaires » |
 
 + condition : « … en combat naval », « … contre les morts-vivants ». Les clés de condition ont des **libellés FR**. Le `render` reste **toujours synchrone** avec le `spec`.
 
@@ -114,6 +115,40 @@ Génère une phrase FR depuis le `spec` : `gabarit[(target, op)] + value rendue 
 - **Mécaniques (ordre R-9.12)** : jet de dégâts R-9.9/9.10 → 4 types R-9.11 → bouclier R-9.7/8 → résistances % R-1.32/33 → circonstance R-9.13 → protections P/E/C/T par couche R-9.14 → **endurance R-9.16 (si la zone l'autorise)** → **×2 zone R-9.15 (en dernier)** → seuils R-9.17 *(déjà dans `applyDamage`)*.
 - **Intégration** : `combat.ts` — nouvelle `computeAttackDamage(attacker, defender, ctx)` **en amont** de `applyDamage` (inchangé : vitalité/mort/inconscient/malus/retard). Consomme **données armes/protections** (catalogues) + **résistances** (du moteur d'effets / race).
 - **Build** : chaque étape de la chaîne = **fonction pure testable** vs les **exemples canoniques** des règles.
+
+---
+
+## 4bis. Résolution d'attaque d'arme & attribut par type d'action
+
+**Acté (autorité K&W, 2026-05-25).** Une attaque d'arme se résout en **deux phases couplées**, à **attributs imposés** (≠ action générale, où l'attribut est libre) :
+
+| Phase | Attribut | Pool / calcul | Modificateurs qui s'y appliquent |
+|---|---|---|---|
+| ① **Touche** | **Dextérité (toujours)** | Dex + Compétence(arme) + Σ Spés + dés ajoutés | tous les modificateurs de **difficulté** ; dés de **pool** (atout de classe « +niveau », effets, équipement) |
+| ② **Dégâts** *(si touche)* | **Force** *(si la formule de l'arme inclut `F`)* | jet de Force, difficulté `7 − réussites nettes de touche` (R-9.10) ; `dégâts = (réussites_force si F) + dégâts_arme + munition + Σ mods` | modificateurs de **dégâts** (atout / effet / sort) |
+
+- **Couplage** : les réussites **nettes** de touche (R-1.23 : après esquive/parade) fixent la difficulté du jet de Force (R-9.10). Les deux phases ne sont **pas** indépendantes.
+- **Inclusion de la Force = par arme** (token `F` de `damage_formula`), **pas** mêlée/distance (R-9.9 corrigé ; preuves Fronde `F+bille` vs Lance-pierres `2+bille`, couteau de lancer `F+1`).
+
+**Pattern général — l'attribut est fonction du type d'action** (au-delà du combat) :
+
+| `action_type` | Attribut imposé |
+|---|---|
+| `general` | **libre** (choisi par le joueur) |
+| `weapon_hit` | Dextérité |
+| `weapon_damage` | Force (si l'arme l'inclut) |
+| `sort` | Intelligence (D8) |
+| `endurance` | Endurance |
+| `esquive` / `parade` | contre-action (Réflexes + Gymnastique + Esquive / arme) |
+
+**Conséquence EffectModel** — les modificateurs sont **typés par `target`**, et `target` détermine **la phase** où ils atterrissent :
+
+| `target` | Phase |
+|---|---|
+| `difficulty`, `pool`, `aptitude` | ① touche |
+| **`damage`** *(à AJOUTER à l'enum)* | ② dégâts |
+
+L'enum actuel (`aptitude|factor|difficulty|pool|energy|vitality|status`) **n'a pas** `damage` → les adds de dégâts (atouts / effets / sorts) n'ont aujourd'hui aucune cible. **Ajout requis** (suite épic effets #122).
 
 ---
 

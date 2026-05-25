@@ -66,11 +66,13 @@ Donc : tirer à l'arbalète = 1) recharger (FV DT) + 2) viser (FV DT) + 3) tirer
 
 ## Partie B — Résolution du toucher (rappels)
 
-### R-9.5 — Jet pour toucher = jet d'action standard (rappel D1 R-1.2)
+### R-9.5 — Jet pour toucher = Dextérité + Compétence d'arme (rappel D1 R-1.2)
 
-Aptitude (souvent Dextérité ou Force) + Compétence (arme spécifique) + Σ Spécialisations, contre la difficulté convenue de l'arme (cf. Table des armes, colonne Difficulté).
+**Dextérité (toujours)** + Compétence (arme spécifique) + Σ Spécialisations engagées, contre la difficulté convenue de l'arme (cf. Table des armes, colonne Difficulté). Le pool de touche reçoit en plus les **dés ajoutés** par atouts / effets / équipement (atout de classe « +niveau », cf. `docs/canonical/moteurs-rules-core.md` §4bis).
 
-**Statut** : 🟢 acté (D1)
+**Correction d'autorité (2026-05-25)** : la phase de toucher se fait **systématiquement à la Dextérité**. La Force n'intervient **jamais** au toucher — elle est réservée au jet de dégâts (R-9.9). L'ancienne formulation « souvent Dextérité ou Force » était une scorie de lecture du cas général D1 R-1.2 ; elle est annulée pour le maniement d'armes.
+
+**Statut** : 🟢 acté (correction d'autorité)
 
 ### R-9.6 — Esquive = contre-action improvisée (rappel D1 R-1.12)
 
@@ -122,17 +124,25 @@ Les valeurs `P/E/C/T` du bouclier ne s'appliquent pas à cette déviation passiv
 
 ## Partie D — Résolution des dégâts (rappels et nouveautés)
 
-### R-9.9 — Jet de dégâts = Force seule (mêlée) ou arme seule (distance)
+### R-9.9 — Jet de dégâts = Force (si l'arme l'inclut) + dégâts d'arme
 
 **Énoncé legacy** ([regles:484-495](documents/regles/index.md)) :
 
 > Pour se faire, le personnage ayant touché fait un jet de force (il n'existe pas vraiment de compétence pour appuyer ses coups), donc les seul dés qui seront lancé seront ceux de la force. La difficulté sera toujours de 7 moins le nombre de réussites obtenues au toucher, mais n'oubliez pas qu'un 1 est toujours un échec. (...) Le nombre de dégâts infligé sera égal au nombre de réussites faites sur le jet de force additionné aux dégâts de l'arme utilisé. (...) Bien évidement, la force n'agit pas sur des armes telles que l'arc, l'arbalète,...
 
-**Mécanique** :
-- Mêlée : `dégâts = réussites_force + dégâts_arme` (où dégâts_arme = "F + N" dans la table)
-- Distance : `dégâts = dégâts_arme` seul (ex. arc long P: 4+flèche = 4 + bonus de la flèche)
+**Correction d'autorité (2026-05-25)** : l'inclusion de la Force dans les dégâts est une **propriété par arme**, déclarée par la `damage_formula` du catalogue (présence du token `F`), et **non** une distinction mêlée/distance. Les exemples legacy (« la force n'agit pas sur l'arc, l'arbalète ») sont des **cas**, pas une règle catégorielle.
 
-**Statut** : 🟢 claire
+**Mécanique (pilotée par la table des armes)** :
+- Si `damage_formula` contient `F` → `dégâts = réussites_force + N (+ munition) + Σ modificateurs`.
+- Sinon → `dégâts = N (+ munition) + Σ modificateurs` (pas de Force).
+- `Σ modificateurs` = adds de dégâts d'atouts / effets / sorts (cible `target:'damage'`, cf. `moteurs-rules-core.md` §4bis).
+
+**Preuves catalogue (`data/catalogs/armes.yaml`)** :
+- `couteau_de_lancer` (thrown) → `"F+1"` : arme **non-mêlée avec Force**.
+- `fronde` (ranged) → `"F+bille"` **vs** `lance_pierres` (ranged) → `"2+bille"` : deux frondes, une **avec** Force, une **sans** — la catégorie ne décide rien, seule la formule.
+- arc / arbalète → `"3+flèche"`, `"5+carreau"` : sans Force.
+
+**Statut** : 🟢 acté (correction d'autorité)
 
 ### R-9.10 — Difficulté du jet de force = 7 − réussites au toucher
 
