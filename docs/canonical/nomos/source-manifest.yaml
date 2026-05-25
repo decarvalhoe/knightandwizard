@@ -12398,7 +12398,7 @@ sources:
     domain: D4-assets
     priority: secondary
     status: active
-    hash: 23c96fe06201119cf5e1f217d12f9ce229718e3cd443d85a297d255393cfd9fd
+    hash: 5978c84645332d3dada9ede053908ee8f49b1518dcbe06b416c71407ba358fbe
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
@@ -12467,13 +12467,28 @@ sources:
       - vector_index
       - citation_internal
     notes: Product YAML catalog.
+  - id: DATA-CATALOGS-COMPETENCES-NATIVE
+    path: data/catalogs/competences.native.yaml
+    type: database_export
+    domain: catalogs
+    priority: secondary
+    status: active
+    hash: c801b17c8b07b6bc1e9dec3a527480410cabf88c0af31b8441f973f264e80987
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - structured_contract
+      - vector_index
+      - citation_internal
+    notes: Product YAML catalog.
   - id: DATA-CATALOGS-COMPETENCES
     path: data/catalogs/competences.yaml
     type: database_export
     domain: catalogs
     priority: secondary
     status: active
-    hash: c3f2bbf779626391287e720fa05ffc6cbf5506ab4b42d78ecaefeb6dd9f0cb07
+    hash: 29e83c3618853a5d3a58d97d3ec6797f1131992c6241475f83c2fc53237d170f
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
