@@ -1,0 +1,364 @@
+import {
+  loadValidatedCatalog,
+  type ClassesCatalog,
+  type OrientationsCatalog,
+  type PotionsCatalog,
+  type ProtectionsCatalog,
+  type RacesCatalog,
+  type WeaponsCatalog
+} from '@knightandwizard/catalogs';
+import {
+  ATTRIBUTE_KEYS,
+  createPlayerCharacter,
+  type AttributeKey,
+  type Character,
+  type CharacterAttributes,
+  type CharacterClassProfile,
+  type CharacterEquipmentItem,
+  type CharacterOrientationProfile,
+  type CharacterSkill,
+  type CharacterSpell,
+  type RaceProfile
+} from '@knightandwizard/rules-core';
+import { eq, sql as drizzleSql } from 'drizzle-orm';
+import { z } from 'zod';
+import { createDbClient, createSqlClient } from '../db/client.js';
+import { characterDrafts, characters } from '../db/schema.js';
+
+export class CharacterDraftNotFoundError extends Error {
+  constructor(draftId: string) {
+    super(`Character draft not found: ${draftId}`);
+    this.name = 'CharacterDraftNotFoundError';
+  }
+}
+
+export class CharacterNotFoundError extends Error {
+  constructor(characterId: string) {
+    super(`Character not found: ${characterId}`);
+    this.name = 'CharacterNotFoundError';
+  }
+}
+
+export interface CharacterPersistenceResult {
+  character: Character;
+}
+
+interface CharacterCreationCatalog {
+  classes: CharacterClassProfile[];
+  equipment: Array<{ id: string; name: string }>;
+  orientations: CharacterOrientationProfile[];
+  races: RaceProfile[];
+}
+
+interface CharacterCreationDraftSnapshot {
+  currentStep: CharacterCreationStepId;
+  id: string;
+  payload: CharacterCreationDraftPayload;
+}
+
+type CharacterCreationStepId =
+  | 'identity'
+  | 'attributes'
+  | 'path'
+  | 'spells'
+  | 'skills'
+  | 'assets'
+  | 'equipment'
+  | 'story'
+  | 'review';
+
+interface CharacterCreationDraftPayload {
+  attributes: CharacterAttributes;
+  background: string;
+  classId: string;
+  deity: string;
+  equipmentIds: string[];
+  extraSpellPoints: number;
+  genderId: string;
+  name: string;
+  orientationId: string;
+  psychology: string;
+  quote: string;
+  raceId: string;
+  skills: CharacterSkill[];
+  spells: CharacterSpell[];
+}
+
+const CharacterCreationStepIdSchema = z.enum([
+  'identity',
+  'attributes',
+  'path',
+  'spells',
+  'skills',
+  'assets',
+  'equipment',
+  'story',
+  'review'
+]);
+
+const CharacterAttributesSchema = z.object(
+  Object.fromEntries(ATTRIBUTE_KEYS.map((key) => [key, z.number().int().nonnegative()])) as Record<
+    AttributeKey,
+    z.ZodNumber
+  >
+) as z.ZodType<CharacterAttributes>;
+
+const CharacterSkillSchema: z.ZodType<CharacterSkill> = z.object({
+  id: z.string().min(1),
+  isMain: z.boolean().optional(),
+  parentId: z.string().min(1).nullable().optional(),
+  points: z.number().int().nonnegative()
+});
+
+const CharacterSpellSchema: z.ZodType<CharacterSpell> = z.object({
+  id: z.string().min(1),
+  points: z.number().int().nonnegative()
+});
+
+const CharacterCreationDraftPayloadSchema: z.ZodType<CharacterCreationDraftPayload> = z
+  .object({
+    attributes: CharacterAttributesSchema,
+    background: z.string(),
+    classId: z.string().min(1),
+    deity: z.string(),
+    equipmentIds: z.array(z.string().min(1)),
+    extraSpellPoints: z.number().int().nonnegative(),
+    genderId: z.string(),
+    name: z.string().min(1),
+    orientationId: z.string().min(1),
+    psychology: z.string(),
+    quote: z.string(),
+    raceId: z.string().min(1),
+    skills: z.array(CharacterSkillSchema),
+    spells: z.array(CharacterSpellSchema)
+  })
+  .passthrough();
+
+const CharacterCreationDraftSnapshotSchema: z.ZodType<CharacterCreationDraftSnapshot> = z.object({
+  currentStep: CharacterCreationStepIdSchema,
+  id: z.string().min(1),
+  payload: CharacterCreationDraftPayloadSchema
+});
+
+export async function finalizeCharacterDraft(draftId: string): Promise<CharacterPersistenceResult> {
+  const sql = createSqlClient();
+  const db = createDbClient(sql);
+
+  try {
+    const draftRows = await db
+      .select()
+      .from(characterDrafts)
+      .where(eq(characterDrafts.id, draftId))
+      .limit(1);
+    const row = draftRows[0];
+
+    if (row === undefined) {
+      throw new CharacterDraftNotFoundError(draftId);
+    }
+
+    const draft = CharacterCreationDraftSnapshotSchema.parse({
+      currentStep: row.currentStep,
+      id: row.id,
+      payload: row.payload
+    });
+    const catalog = await loadCharacterCreationCatalog();
+    const character = buildCharacterFromDraft(draft, catalog, row.userId);
+    const persistedRows = await db
+      .insert(characters)
+      .values({
+        draftId: draft.id,
+        id: character.id,
+        kind: character.kind,
+        name: character.name,
+        payload: character,
+        userId: row.userId
+      })
+      .onConflictDoUpdate({
+        set: {
+          draftId: draft.id,
+          kind: character.kind,
+          name: character.name,
+          payload: character,
+          updatedAt: drizzleSql`now()`,
+          userId: row.userId
+        },
+        target: characters.id
+      })
+      .returning({ character: characters.payload });
+
+    return {
+      character: persistedRows[0]!.character
+    };
+  } finally {
+    await sql.end({ timeout: 5 });
+  }
+}
+
+export async function getPersistedCharacter(id: string): Promise<CharacterPersistenceResult> {
+  const sql = createSqlClient();
+  const db = createDbClient(sql);
+
+  try {
+    const rows = await db
+      .select({ character: characters.payload })
+      .from(characters)
+      .where(eq(characters.id, id))
+      .limit(1);
+    const row = rows[0];
+
+    if (row === undefined) {
+      throw new CharacterNotFoundError(id);
+    }
+
+    return {
+      character: row.character
+    };
+  } finally {
+    await sql.end({ timeout: 5 });
+  }
+}
+
+async function loadCharacterCreationCatalog(): Promise<CharacterCreationCatalog> {
+  const [races, orientations, classes, weapons, protections, potions] = await Promise.all([
+    loadValidatedCatalog('races.yaml'),
+    loadValidatedCatalog('orientations.yaml'),
+    loadValidatedCatalog('classes.yaml'),
+    loadValidatedCatalog('armes.yaml'),
+    loadValidatedCatalog('protections.yaml'),
+    loadValidatedCatalog('potions.yaml')
+  ]);
+
+  return {
+    classes: toClassProfiles(classes),
+    equipment: toEquipmentOptions(weapons, protections, potions),
+    orientations: toOrientationProfiles(orientations),
+    races: toRaceProfiles(races)
+  };
+}
+
+function buildCharacterFromDraft(
+  draft: CharacterCreationDraftSnapshot,
+  catalog: CharacterCreationCatalog,
+  userId: string
+): Character {
+  const race = requireSelection(
+    catalog.races.find((entry) => entry.id === draft.payload.raceId),
+    'race'
+  );
+  const orientation = requireSelection(
+    catalog.orientations.find((entry) => entry.id === draft.payload.orientationId),
+    'orientation'
+  );
+  const classProfile = requireSelection(
+    catalog.classes.find((entry) => entry.id === draft.payload.classId),
+    'class'
+  );
+  const primarySkillIds = new Set(classProfile.primarySkillIds ?? []);
+  const equipment = draft.payload.equipmentIds.map((equipmentId): CharacterEquipmentItem => {
+    const option = catalog.equipment.find((entry) => entry.id === equipmentId);
+
+    return {
+      id: equipmentId,
+      name: option?.name,
+      quantity: 1
+    };
+  });
+
+  return createPlayerCharacter({
+    attributes: draft.payload.attributes,
+    classProfile,
+    equipment,
+    id: draft.id,
+    metadata: {
+      background: draft.payload.background,
+      deity: draft.payload.deity,
+      genderId: draft.payload.genderId,
+      psychology: draft.payload.psychology,
+      quote: draft.payload.quote
+    },
+    name: draft.payload.name.trim(),
+    orientation,
+    race,
+    skills: draft.payload.skills.map((skill) => ({
+      ...skill,
+      isMain: skill.isMain ?? primarySkillIds.has(skill.id)
+    })),
+    spells: draft.payload.spells.map((spell) => ({ ...spell })),
+    userId
+  });
+}
+
+function toRaceProfiles(catalog: RacesCatalog): RaceProfile[] {
+  return catalog.races
+    .filter(
+      (entry) => entry.status === 'active' && entry.playable === true && entry.id && entry.name
+    )
+    .map((entry) => ({
+      attributeMax: Object.fromEntries(
+        ATTRIBUTE_KEYS.map((key) => [key, Math.max(1, entry.attribute_max[key] ?? 5)])
+      ) as CharacterAttributes,
+      category: entry.xp_category,
+      id: entry.id,
+      name: cleanName(entry.name),
+      speedFactor: entry.speed_factor_base,
+      vitality: entry.vitality_base,
+      willFactor: entry.will_factor_base
+    }));
+}
+
+function toOrientationProfiles(catalog: OrientationsCatalog): CharacterOrientationProfile[] {
+  return catalog.orientations
+    .filter((entry) => entry.status === 'active' && entry.id && entry.name)
+    .map((entry) => ({
+      id: entry.id,
+      isMagical: entry.is_magical,
+      name: entry.name
+    }));
+}
+
+function toClassProfiles(catalog: ClassesCatalog): CharacterClassProfile[] {
+  return catalog.classes
+    .filter((entry) => entry.status === 'active' && entry.id && entry.name && entry.orientation_id)
+    .map((entry) => ({
+      id: entry.id,
+      name: entry.name,
+      orientationId: entry.orientation_id,
+      primarySkillIds: entry.primary_skill_id ? [entry.primary_skill_id] : []
+    }));
+}
+
+function toEquipmentOptions(
+  weapons: WeaponsCatalog,
+  protections: ProtectionsCatalog,
+  potions: PotionsCatalog
+): Array<{ id: string; name: string }> {
+  return [
+    ...weapons.weapons.map((entry) => toEquipmentOption(entry)),
+    ...protections.shields.map((entry) => toEquipmentOption(entry)),
+    ...protections.armor_pieces.map((entry) => toEquipmentOption(entry)),
+    ...potions.potions.map((entry) => toEquipmentOption(entry))
+  ].filter((entry): entry is { id: string; name: string } => entry !== null);
+}
+
+function toEquipmentOption(entry: { id?: string; name?: string; status?: string }) {
+  if (!entry.id || !entry.name || (entry.status !== undefined && entry.status !== 'active')) {
+    return null;
+  }
+
+  return { id: entry.id, name: entry.name };
+}
+
+function requireSelection<T>(value: T | undefined, label: string): T {
+  if (value === undefined) {
+    throw new Error(`Unknown character ${label} in draft`);
+  }
+
+  return value;
+}
+
+function cleanName(name: string): string {
+  return name
+    .replace(/,\s*-.*/, '')
+    .replace(/\s*\/.*$/, '')
+    .trim();
+}

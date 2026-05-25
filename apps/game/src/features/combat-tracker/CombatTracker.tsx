@@ -35,6 +35,7 @@ import {
   type ProgressTone,
   type ToastTone
 } from '@knightandwizard/ui';
+import { trpc } from '@/lib/trpc';
 
 import {
   addTrackerCombatant,
@@ -42,7 +43,6 @@ import {
   buildCombatTrackerView,
   queueTrackerAction,
   removeTrackerCombatant,
-  resolveTrackerNextAction,
   type CombatantTemplate,
   type CombatLogRow,
   type CombatRosterRow,
@@ -73,6 +73,8 @@ interface CombatTrackerProps {
 
 export function CombatTracker({ combatantTemplates, initialState }: Readonly<CombatTrackerProps>) {
   const [state, setState] = useState<CombatState>(() => initialState);
+  const [isResolving, setIsResolving] = useState(false);
+  const [resolveError, setResolveError] = useState<string | null>(null);
   const view = useMemo(() => buildCombatTrackerView(state), [state]);
   const activeCombatant = view.nextActor
     ? state.timeline.find((combatant) => combatant.id === view.nextActor?.id)
@@ -112,7 +114,24 @@ export function CombatTracker({ combatantTemplates, initialState }: Readonly<Com
   }
 
   function resolveNext() {
-    setState((current) => resolveTrackerNextAction(current));
+    if (isResolving) {
+      return;
+    }
+
+    setIsResolving(true);
+    setResolveError(null);
+
+    void trpc.combat.resolveAction
+      .mutate({ state })
+      .then((result) => {
+        setState(result.state);
+      })
+      .catch((error: unknown) => {
+        setResolveError(error instanceof Error ? error.message : 'Résolution impossible');
+      })
+      .finally(() => {
+        setIsResolving(false);
+      });
   }
 
   function damageTarget(damage: number) {
@@ -187,7 +206,9 @@ export function CombatTracker({ combatantTemplates, initialState }: Readonly<Com
           <ActionPanel
             activeCombatant={activeCombatant}
             effectiveTargetId={effectiveTargetId}
+            isResolving={isResolving}
             queueAction={queueAction}
+            resolveError={resolveError}
             resolveNext={resolveNext}
             setTargetId={setTargetId}
             targetId={targetId}
@@ -221,7 +242,9 @@ export function CombatTracker({ combatantTemplates, initialState }: Readonly<Com
 function ActionPanel({
   activeCombatant,
   effectiveTargetId,
+  isResolving,
   queueAction,
+  resolveError,
   resolveNext,
   setTargetId,
   targetId,
@@ -230,7 +253,9 @@ function ActionPanel({
 }: Readonly<{
   activeCombatant: Combatant | undefined;
   effectiveTargetId: string;
+  isResolving: boolean;
   queueAction: (type: CombatActionType) => void;
+  resolveError: string | null;
   resolveNext: () => void;
   setTargetId: (targetId: string) => void;
   targetId: string;
@@ -245,11 +270,16 @@ function ActionPanel({
           <h2>{viewNextActor?.name ?? 'NA'}</h2>
           <p>{viewNextActor?.intent ?? 'Timeline vide'}</p>
         </div>
-        <Button disabled={!activeCombatant} onClick={resolveNext}>
+        <Button disabled={!activeCombatant || isResolving} onClick={resolveNext}>
           <Activity aria-hidden="true" className="kw-combat__button-icon" />
           Résoudre
         </Button>
       </div>
+      {resolveError ? (
+        <Toast title="Résolution impossible" tone="danger">
+          {resolveError}
+        </Toast>
+      ) : null}
 
       <div className="kw-combat__action-grid">
         <SelectField

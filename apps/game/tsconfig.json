@@ -13,6 +13,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@knightandwizard/rules-core": ["../../packages/rules-core/src/index.ts"],
+      "@knightandwizard/server/trpc": ["../server/src/trpc/router.ts"],
       "@knightandwizard/ui": ["../../packages/ui/src/index.ts"]
     },
     "plugins": [

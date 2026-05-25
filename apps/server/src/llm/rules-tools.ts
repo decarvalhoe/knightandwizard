@@ -138,7 +138,7 @@ export function normalizeRuleToolResult<T extends object>(
   };
 }
 
-const RollDiceInputSchema = z.object({
+export const RollDiceInputSchema = z.object({
   pool: z.number().int().positive(),
   difficulty: z.number().int().positive(),
   reason: z.string().optional()
@@ -185,7 +185,7 @@ const CombatantSchema: z.ZodType<Combatant> = z
   })
   .passthrough() as z.ZodType<Combatant>;
 
-const CombatStateSchema: z.ZodType<CombatState> = z
+export const CombatStateSchema: z.ZodType<CombatState> = z
   .object({
     currentDT: z.number().int().positive(),
     log: z.array(z.unknown()),
@@ -331,7 +331,10 @@ export function createGameMasterRulesTools(
     advanceCombatTimeline: createTool({
       description:
         'Avance la timeline DT en resolvant la prochaine action planifiee avec le moteur combat rules-core.',
-      execute: async (inputData) => executeAdvanceCombatTimelineTool(inputData),
+      execute: async (inputData) =>
+        executeAdvanceCombatTimelineTool(inputData, {
+          randomInteger: options.randomInteger
+        }),
       id: 'advanceCombatTimeline',
       inputSchema: AdvanceCombatTimelineInputSchema
     }),
@@ -429,13 +432,16 @@ export async function executeGetCharacterStatusTool(
 }
 
 export async function executeAdvanceCombatTimelineTool(
-  input: unknown
+  input: unknown,
+  options: Pick<GameMasterRuleToolOptions, 'randomInteger'> = {}
 ): Promise<RuleToolResult<AdvanceCombatTimelineToolResult>> {
   return safeRuleToolExecution(() => {
     const normalizedInput = AdvanceCombatTimelineInputSchema.parse(input);
 
     return {
-      state: resolveNextAction(normalizedInput.state),
+      state: resolveNextAction(normalizedInput.state, {
+        randomInteger: options.randomInteger
+      }),
       status: 'ok'
     };
   });
