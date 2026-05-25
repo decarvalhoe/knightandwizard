@@ -1,3 +1,11 @@
+import {
+  computeAttackDamage,
+  type CombatDamageResult,
+  type DamageDefenseInput,
+  type DamageModifier,
+  type DamageZoneInput,
+  type WeaponDamageSpec
+} from './combat-damage.js';
 import { type DiceRollResult, type RandomInteger, rollDice } from './dice.js';
 import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
 
@@ -33,11 +41,20 @@ export interface CombatRollRequest {
   difficulty: number;
 }
 
+export interface AttackDamageInput {
+  attackerForce: number;
+  weaponDamage: WeaponDamageSpec;
+  damageModifiers?: DamageModifier[];
+  defense?: DamageDefenseInput;
+  zone?: DamageZoneInput;
+}
+
 export interface AttackAction {
   type: 'attack';
   targetId: string;
   attack: CombatRollRequest;
   defense?: CombatRollRequest;
+  damage?: AttackDamageInput;
   damageOnHit?: number;
   costDT?: number;
 }
@@ -63,6 +80,8 @@ export interface WaitAction {
 }
 
 export type CombatAction = AttackAction | DefenseAction | SpellAction | MoveAction | WaitAction;
+
+export type CombatDamageBreakdown = CombatDamageResult;
 
 export interface Combatant {
   id: string;
@@ -95,6 +114,7 @@ export interface CombatEvent {
   damage?: number;
   preventedDamage?: number;
   finalDamage?: number;
+  damageBreakdown?: CombatDamageBreakdown;
   successes?: number;
   attackRoll?: DiceRollResult;
   defenseRoll?: DiceRollResult;
@@ -357,12 +377,23 @@ function resolveAttack(
   options: CombatResolutionOptions,
   config: RulesConfig
 ): CombatState {
-  const attackRoll = rollDice(action.attack.pool, action.attack.difficulty, options);
+  const randomInteger = randomIntegerForResolution(options);
+  const rollOptions = { randomInteger };
+  const attackRoll = rollDice(action.attack.pool, action.attack.difficulty, rollOptions);
   const defenseRoll = action.defense
-    ? rollDice(action.defense.pool, action.defense.difficulty, options)
+    ? rollDice(action.defense.pool, action.defense.difficulty, rollOptions)
     : undefined;
   const defenseSuccesses = defenseRoll?.successes ?? 0;
   const successes = Math.max(0, attackRoll.successes - defenseSuccesses);
+  const damageBreakdown =
+    action.damage !== undefined && successes > 0
+      ? computeAttackDamage({
+          ...action.damage,
+          netToucheSuccesses: successes,
+          randomInteger,
+          config
+        })
+      : undefined;
   const event: CombatEvent = {
     type: 'attack_resolved',
     atDT: state.currentDT,
@@ -373,12 +404,17 @@ function resolveAttack(
     nextActionAt: timing.nextActionAt,
     successes,
     attackRoll,
-    defenseRoll
+    defenseRoll,
+    ...(damageBreakdown !== undefined ? { damageBreakdown } : {})
   };
   const withAttackLog = {
     ...state,
     log: [...state.log, event]
   };
+
+  if (damageBreakdown !== undefined) {
+    return applyDamage(withAttackLog, action.targetId, damageBreakdown.finalDamage, config);
+  }
 
   if (successes > 0 && action.damageOnHit !== undefined && action.damageOnHit > 0) {
     return applyDamage(withAttackLog, action.targetId, action.damageOnHit, config);
@@ -400,6 +436,14 @@ function rescheduleActor(state: CombatState, actorId: string, action: CombatActi
 
 function actionCostDT(actor: Combatant, action: CombatAction): number {
   return action.costDT ?? actor.speedFactor;
+}
+
+function randomIntegerForResolution(options: CombatResolutionOptions): RandomInteger {
+  return options.randomInteger ?? defaultRandomInteger;
+}
+
+function defaultRandomInteger(sides: number): number {
+  return Math.floor(Math.random() * sides) + 1;
 }
 
 function normalizeCombatant(

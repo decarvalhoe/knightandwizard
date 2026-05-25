@@ -7,7 +7,8 @@ import {
   createCombatState,
   getCyclicDT,
   resolveNextAction,
-  resolveStaminaDamage
+  resolveStaminaDamage,
+  type AttackAction
 } from './combat.js';
 
 describe('combat DT timeline', () => {
@@ -259,7 +260,181 @@ describe('combat action resolution', () => {
     expect(target?.vitality.current).toBe(7);
     expect(target?.nextActionAt).toBe(12);
   });
+
+  it('computes F+N weapon damage from net touche successes and applies it', () => {
+    const attacker = combatant({
+      id: 'attacker',
+      speedFactor: 5,
+      pendingAction: {
+        type: 'attack',
+        targetId: 'defender',
+        attack: { pool: 2, difficulty: 7 },
+        damage: {
+          attackerForce: 4,
+          weaponDamage: {
+            components: [{ type: 'C', includesForce: true, flat: 3 }]
+          }
+        }
+      }
+    });
+    const defender = combatant({ id: 'defender', speedFactor: 8 });
+    const state = addCombatant(addCombatant(createCombatState(1), defender), attacker);
+
+    const result = resolveNextAction(state, {
+      randomInteger: scriptedRolls([7, 8, 5, 6, 4, 2])
+    });
+    const target = result.timeline.find((entry) => entry.id === 'defender');
+    const attackEvent = result.log.find((event) => event.type === 'attack_resolved');
+
+    expect(target?.vitality.current).toBe(5);
+    expect(target?.nextActionAt).toBe(14);
+    expect(attackEvent).toMatchObject({
+      type: 'attack_resolved',
+      successes: 2,
+      damageBreakdown: {
+        finalDamage: 5,
+        components: [
+          expect.objectContaining({
+            type: 'C',
+            forceSuccesses: 2,
+            raw: 5,
+            final: 5
+          })
+        ],
+        log: expect.arrayContaining([
+          expect.objectContaining({
+            step: 'force_roll',
+            difficulty: 5,
+            successes: 2
+          })
+        ])
+      }
+    });
+    expect(result.log.at(-1)).toMatchObject({
+      type: 'damage_applied',
+      targetId: 'defender',
+      damage: 5,
+      finalDamage: 5
+    });
+  });
+
+  it('uses defended net touche successes to raise damage difficulty and reduce damage', () => {
+    const withoutDefense = resolveNextAction(
+      attackState({
+        attack: { pool: 3, difficulty: 7 },
+        damage: {
+          attackerForce: 3,
+          weaponDamage: {
+            components: [{ type: 'T', includesForce: true }]
+          }
+        }
+      }),
+      { randomInteger: scriptedRolls([7, 8, 9, 4, 4, 5]) }
+    );
+    const withDefense = resolveNextAction(
+      attackState({
+        attack: { pool: 3, difficulty: 7 },
+        defense: { pool: 2, difficulty: 7 },
+        damage: {
+          attackerForce: 3,
+          weaponDamage: {
+            components: [{ type: 'T', includesForce: true }]
+          }
+        }
+      }),
+      { randomInteger: scriptedRolls([7, 8, 9, 7, 2, 4, 4, 5]) }
+    );
+    const undefendedAttack = withoutDefense.log.find((event) => event.type === 'attack_resolved');
+    const defendedAttack = withDefense.log.find((event) => event.type === 'attack_resolved');
+
+    expect(undefendedAttack).toMatchObject({
+      successes: 3,
+      damageBreakdown: {
+        finalDamage: 3,
+        log: expect.arrayContaining([
+          expect.objectContaining({ step: 'force_roll', difficulty: 4, successes: 3 })
+        ])
+      }
+    });
+    expect(defendedAttack).toMatchObject({
+      successes: 2,
+      damageBreakdown: {
+        finalDamage: 1,
+        log: expect.arrayContaining([
+          expect.objectContaining({ step: 'force_roll', difficulty: 5, successes: 1 })
+        ])
+      }
+    });
+  });
+
+  it('applies x2 zone damage from the structured damage path', () => {
+    const result = resolveNextAction(
+      attackState({
+        attack: { pool: 1, difficulty: 7 },
+        damage: {
+          attackerForce: 0,
+          weaponDamage: {
+            components: [{ type: 'P', includesForce: false, flat: 4 }]
+          },
+          zone: { id: 'tete', damageMultiplier: 2, allowsEndurance: true }
+        }
+      }),
+      { randomInteger: scriptedRolls([7]) }
+    );
+    const target = result.timeline.find((entry) => entry.id === 'defender');
+    const attackEvent = result.log.find((event) => event.type === 'attack_resolved');
+
+    expect(target?.vitality.current).toBe(2);
+    expect(attackEvent).toMatchObject({
+      damageBreakdown: {
+        finalDamage: 8,
+        components: [
+          expect.objectContaining({
+            zoneMultiplier: 2,
+            final: 8
+          })
+        ]
+      }
+    });
+  });
+
+  it('keeps legacy damageOnHit behavior when structured damage is absent', () => {
+    const result = resolveNextAction(
+      attackState({
+        attack: { pool: 2, difficulty: 7 },
+        damageOnHit: 3
+      }),
+      { randomInteger: scriptedRolls([7, 8]) }
+    );
+    const target = result.timeline.find((entry) => entry.id === 'defender');
+    const attackEvent = result.log.find((event) => event.type === 'attack_resolved');
+
+    expect(target?.vitality.current).toBe(7);
+    expect(target?.nextActionAt).toBe(12);
+    expect(attackEvent).not.toHaveProperty('damageBreakdown');
+    expect(result.log.at(-1)).toMatchObject({
+      type: 'damage_applied',
+      targetId: 'defender',
+      damage: 3,
+      finalDamage: 3
+    });
+  });
 });
+
+function attackState(pendingAction: Omit<AttackAction, 'type' | 'targetId'>) {
+  const attacker = combatant({
+    id: 'attacker',
+    speedFactor: 5,
+    pendingAction: {
+      type: 'attack',
+      targetId: 'defender',
+      ...pendingAction
+    }
+  });
+  const defender = combatant({ id: 'defender', speedFactor: 8 });
+
+  return addCombatant(addCombatant(createCombatState(1), defender), attacker);
+}
 
 function combatant(overrides: Partial<ReturnType<typeof baseCombatant>> = {}) {
   return {
