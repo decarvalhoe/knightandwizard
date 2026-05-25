@@ -136020,6 +136020,21 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-ARCHITECTURE-REALTIME-MVP
+    unit_type: catalog_entry
+    name: docs/architecture/realtime-mvp.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-ARCHITECTURE-REALTIME-MVP
+        locator: docs/architecture/realtime-mvp.md
+        hash: sha256:8c84708effb49ea9c413d82dd8e516fe5fd0766570204773fbb8b081354b9747
+    business_rule: docs/architecture/realtime-mvp.md from docs/architecture/realtime-mvp.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-DOCS-DESIGN-CLAUDE-DESIGN-BRIEF
     unit_type: catalog_entry
     name: docs/design/CLAUDE-DESIGN-BRIEF.md

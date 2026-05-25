@@ -266869,6 +266869,42 @@ units:
     tests:
       status: not_applicable
       evidence: "Source document only."
+  - unit_id: "source:docs-architecture-realtime-mvp"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/architecture/realtime-mvp.md"
+    status: covered
+    sources:
+      - path: "docs/architecture/realtime-mvp.md"
+        ref: "docs/architecture/realtime-mvp.md"
+        sha256: "8c84708effb49ea9c413d82dd8e516fe5fd0766570204773fbb8b081354b9747"
+    business_rule:
+      summary: "docs/architecture/realtime-mvp.md from docs/architecture/realtime-mvp.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
   - unit_id: "source:docs-design-claude-design-brief"
     unit_type: "source_document"
     domain: "project-governance"

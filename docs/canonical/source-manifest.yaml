@@ -13052,6 +13052,15 @@ sources:
     domains: ["legacy-web"]
     contains: ["legacy_web_page"]
     notes: "Scraped legacy web source."
+  - id: "docs-architecture-realtime-mvp"
+    path: "docs/architecture/realtime-mvp.md"
+    sha256: "8c84708effb49ea9c413d82dd8e516fe5fd0766570204773fbb8b081354b9747"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-design-claude-design-brief"
     path: "docs/design/CLAUDE-DESIGN-BRIEF.md"
     sha256: "e3e7c551839a324a1edde62a57c37c1849f9c1ef90734232a32f760fd0bd7712"
