@@ -3,6 +3,7 @@ export const EFFECT_TARGETS = [
   'factor',
   'difficulty',
   'pool',
+  'damage',
   'energy',
   'vitality',
   'status'
@@ -18,7 +19,11 @@ export const EFFECT_ACTIVATIONS = ['passive', 'active', 'triggered'] as const;
 
 export type EffectActivation = (typeof EFFECT_ACTIVATIONS)[number];
 
-export type EffectDuration = 'permanent' | 'ephemeral' | { dt: number } | 'until_dispel';
+export type EffectDuration =
+  | 'permanent'
+  | 'ephemeral'
+  | { dt: number | string; locked?: boolean }
+  | 'until_dispel';
 
 export const EFFECT_FIDELITIES = ['covered', 'ambiguous', 'pending'] as const;
 
@@ -54,10 +59,17 @@ export const EFFECT_CONDITION_KEYS = [
   'context',
   'env',
   'action_type',
+  'competence',
+  'spec',
+  'aptitude',
   'target_tag',
+  'target_disposition',
+  'target_ref',
   'weapon',
   'school',
-  'self_state'
+  'self_state',
+  'intent',
+  'directness'
 ] as const;
 
 export type EffectConditionKey = (typeof EFFECT_CONDITION_KEYS)[number];
@@ -88,6 +100,8 @@ export interface EffectSpec {
   condition?: EffectCondition;
   activation: EffectActivation;
   duration: EffectDuration;
+  requires_mj_validation?: boolean;
+  uses_per_day?: number;
 }
 
 export interface EffectModel {
@@ -130,7 +144,17 @@ export function parseEffectModel(raw: unknown): EffectModel {
   const spec = requireRecord(raw, 'spec', 'EffectModel.spec');
   assertKnownKeys(
     spec,
-    ['target', 'scope', 'op', 'value', 'condition', 'activation', 'duration'],
+    [
+      'target',
+      'scope',
+      'op',
+      'value',
+      'condition',
+      'activation',
+      'duration',
+      'requires_mj_validation',
+      'uses_per_day'
+    ],
     'EffectModel.spec'
   );
   assertEnum(spec.target, EFFECT_TARGETS, 'effect target');
@@ -142,6 +166,8 @@ export function parseEffectModel(raw: unknown): EffectModel {
   }
   assertEnum(spec.activation, EFFECT_ACTIVATIONS, 'effect activation');
   validateEffectDuration(spec.duration);
+  assertOptionalBoolean(spec.requires_mj_validation, 'EffectModel.spec.requires_mj_validation');
+  assertOptionalPositiveInteger(spec.uses_per_day, 'EffectModel.spec.uses_per_day');
 
   if ('render' in raw) {
     assertString(raw.render, 'EffectModel.render');
@@ -224,10 +250,17 @@ function validateEffectDuration(duration: unknown): asserts duration is EffectDu
   }
 
   if (isRecord(duration)) {
-    assertKnownKeys(duration, ['dt'], 'effect duration');
-    if (typeof duration.dt !== 'number' || !Number.isInteger(duration.dt) || duration.dt <= 0) {
-      throw new Error('Effect duration dt must be a positive integer');
+    assertKnownKeys(duration, ['dt', 'locked'], 'effect duration');
+
+    if (typeof duration.dt === 'number') {
+      assertPositiveInteger(duration.dt, 'Effect duration dt');
+    } else if (typeof duration.dt === 'string') {
+      parseValueExpression(duration.dt);
+    } else {
+      throw new Error('Effect duration dt must be a positive integer or value expression');
     }
+
+    assertOptionalBoolean(duration.locked, 'Effect duration locked');
     return;
   }
 
@@ -585,6 +618,36 @@ function assertString(value: unknown, label: string): asserts value is string {
 function assertOptionalString(value: unknown, label: string): asserts value is string | undefined {
   if (value !== undefined) {
     assertString(value, label);
+  }
+}
+
+function assertOptionalBoolean(
+  value: unknown,
+  label: string
+): asserts value is boolean | undefined {
+  if (value !== undefined) {
+    assertBoolean(value, label);
+  }
+}
+
+function assertBoolean(value: unknown, label: string): asserts value is boolean {
+  if (typeof value !== 'boolean') {
+    throw new Error(`${label} must be a boolean`);
+  }
+}
+
+function assertOptionalPositiveInteger(
+  value: unknown,
+  label: string
+): asserts value is number | undefined {
+  if (value !== undefined) {
+    assertPositiveInteger(value, label);
+  }
+}
+
+function assertPositiveInteger(value: unknown, label: string): asserts value is number {
+  if (typeof value !== 'number' || !Number.isInteger(value) || value <= 0) {
+    throw new Error(`${label} must be a positive integer`);
   }
 }
 

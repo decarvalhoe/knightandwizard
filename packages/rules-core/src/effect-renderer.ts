@@ -47,6 +47,7 @@ const TARGET_LABELS: Record<EffectTarget, string> = {
   factor: 'facteur',
   difficulty: 'difficulté',
   pool: 'pool de dés',
+  damage: 'dégâts',
   energy: 'énergie',
   vitality: 'vitalité',
   status: 'état'
@@ -92,6 +93,11 @@ const TARGET_TAG_LABELS: Record<string, string> = {
   living: 'les vivants'
 };
 
+const TARGET_DISPOSITION_PHRASES: Record<string, string> = {
+  ally: 'sur un allié',
+  enemy: 'contre un ennemi'
+};
+
 const WEAPON_LABELS: Record<string, string> = {
   sword: 'une épée',
   epee: 'une épée',
@@ -114,6 +120,10 @@ const SELF_STATE_LABELS: Record<string, string> = {
   wounded: 'blessé',
   prone: 'à terre',
   hidden: 'caché'
+};
+
+const DIRECTNESS_PHRASES: Record<string, string> = {
+  direct_only: 'en action directe'
 };
 
 export const EFFECT_RENDER_TEMPLATE_KEYS = [
@@ -142,6 +152,7 @@ export const EFFECT_RENDER_TEMPLATE_KEYS = [
   'vitality:sub',
   'vitality:set',
   'vitality:multiply',
+  'damage:add',
   'status:grant',
   'status:sub',
   'status:set'
@@ -178,6 +189,7 @@ const EFFECT_RENDER_TEMPLATES: Partial<Record<RenderTemplateKey, (spec: EffectSp
   'vitality:sub': (spec) => `Retire ${renderValue(spec.value)} points de vitalité`,
   'vitality:set': (spec) => `Fixe la vitalité à ${renderValue(spec.value)}`,
   'vitality:multiply': (spec) => `Multiplie la vitalité par ${renderValue(spec.value)}`,
+  'damage:add': (spec) => `Inflige ${renderValue(spec.value)} dégâts supplémentaires`,
   'status:grant': (spec) => `Inflige l'état ${renderScope(spec.scope)}`,
   'status:sub': (spec) => `Retire l'état ${renderScope(spec.scope)}`,
   'status:set': (spec) => `Fixe l'état à ${renderScope(spec.scope)}`
@@ -316,10 +328,17 @@ function renderFlatCondition(buckets: ConditionBuckets): string {
   }
 
   appendConditionPart(parts, buckets.action_type, renderActionPhrase);
+  appendConditionPart(parts, buckets.competence, renderCompetencePhrase);
+  appendConditionPart(parts, buckets.spec, renderSpecializationPhrase);
+  appendConditionPart(parts, buckets.aptitude, renderAptitudeConditionPhrase);
   appendConditionPart(parts, buckets.target_tag, renderTargetTagPhrase);
+  appendConditionPart(parts, buckets.target_disposition, renderTargetDispositionPhrase);
+  appendConditionPart(parts, buckets.target_ref, renderTargetReferencePhrase);
   appendConditionPart(parts, buckets.weapon, renderWeaponPhrase);
   appendConditionPart(parts, buckets.school, renderSchoolPhrase);
   appendConditionPart(parts, buckets.self_state, renderSelfStatePhrase);
+  appendConditionPart(parts, buckets.intent, renderIntentPhrase);
+  appendConditionPart(parts, buckets.directness, renderDirectnessPhrase);
 
   return parts.join(' et ');
 }
@@ -406,8 +425,28 @@ function renderActionPhrase(value: string): string {
   return ACTION_PHRASES[value] ?? `lors de l'action ${humanize(value)}`;
 }
 
+function renderCompetencePhrase(value: string): string {
+  return `avec la compétence ${humanize(value)}`;
+}
+
+function renderSpecializationPhrase(value: string): string {
+  return `avec la spécialisation ${humanize(value)}`;
+}
+
+function renderAptitudeConditionPhrase(value: string): string {
+  return `avec l’aptitude ${renderScope(value)}`;
+}
+
 function renderTargetTagPhrase(value: string): string {
   return `contre ${TARGET_TAG_LABELS[value] ?? `les cibles ${humanize(value)}`}`;
+}
+
+function renderTargetDispositionPhrase(value: string): string {
+  return TARGET_DISPOSITION_PHRASES[value] ?? `sur une cible ${humanize(value)}`;
+}
+
+function renderTargetReferencePhrase(value: string): string {
+  return `visant ${humanize(value)}`;
 }
 
 function renderWeaponPhrase(value: string): string {
@@ -420,6 +459,14 @@ function renderSchoolPhrase(value: string): string {
 
 function renderSelfStatePhrase(value: string): string {
   return `si le porteur est ${SELF_STATE_LABELS[value] ?? humanize(value)}`;
+}
+
+function renderIntentPhrase(value: string): string {
+  return `avec l’intention ${humanize(value)}`;
+}
+
+function renderDirectnessPhrase(value: string): string {
+  return DIRECTNESS_PHRASES[value] ?? `avec une causalité ${humanize(value)}`;
 }
 
 function renderScope(scope: string | undefined): string {

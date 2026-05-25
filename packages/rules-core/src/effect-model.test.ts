@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
 import { evaluateValue, matchesCondition, parseEffectModel } from './effect-model.js';
+import type {
+  EffectCondition,
+  EffectConditionContext,
+  EffectConditionValue
+} from './effect-model.js';
 
 describe('EffectModel parsing', () => {
   it('parses a valid data-driven effect model', () => {
@@ -53,6 +58,172 @@ describe('EffectModel parsing', () => {
 
     expect(expressionEffect.spec.value).toBe('level * 2');
     expect(tableEffect.spec.value).toEqual({ table: 'energy_by_level', key: 'level' });
+  });
+
+  it('parses damage targets and activity governance fields', () => {
+    const raw = {
+      source: { prose: 'Inflige des degats supplementaires.', ref: 'fixture:damage' },
+      spec: {
+        target: 'damage',
+        op: 'add',
+        value: 2,
+        condition: { action_type: 'weapon_damage' },
+        activation: 'active',
+        duration: 'ephemeral',
+        requires_mj_validation: true,
+        uses_per_day: 1
+      },
+      fidelity: 'covered'
+    };
+
+    expect(parseEffectModel(raw)).toEqual(raw);
+  });
+
+  it('accepts activity condition keys in parsed models and condition matching', () => {
+    const cases = [
+      ['competence', 'danse', 'forge'],
+      ['spec', 'alchimie_mutagenes', 'pistage'],
+      ['aptitude', ['perception', 'willpower'], 'force'],
+      ['target_disposition', 'ally', 'enemy'],
+      ['target_ref', 'employeur', 'inconnu'],
+      ['intent', 'sauvegarder', 'nuire'],
+      ['directness', 'direct_only', 'indirect']
+    ] as const satisfies readonly (readonly [string, EffectConditionValue, EffectConditionValue])[];
+
+    for (const [key, matching, nonMatching] of cases) {
+      const condition = { [key]: matching };
+
+      const model = parseEffectModel({
+        source: { prose: `Condition ${key}.`, ref: `fixture:condition:${key}` },
+        spec: {
+          target: 'pool',
+          op: 'add',
+          value: 1,
+          condition,
+          activation: 'passive',
+          duration: 'permanent'
+        },
+        fidelity: 'pending'
+      });
+
+      expect(model.spec.condition).toEqual(condition);
+      expect(
+        matchesCondition(
+          condition as EffectCondition,
+          { [key]: matching } as EffectConditionContext
+        )
+      ).toBe(true);
+      expect(
+        matchesCondition(
+          condition as EffectCondition,
+          {
+            [key]: nonMatching
+          } as EffectConditionContext
+        )
+      ).toBe(false);
+    }
+  });
+
+  it('defaults optional activity governance fields by absence', () => {
+    const model = parseEffectModel({
+      source: { prose: 'No governance field.', ref: 'fixture:governance:absent' },
+      spec: {
+        target: 'pool',
+        op: 'add',
+        value: 1,
+        activation: 'passive',
+        duration: 'permanent'
+      },
+      fidelity: 'covered'
+    });
+
+    expect(model.spec.requires_mj_validation).toBeUndefined();
+    expect(model.spec.uses_per_day).toBeUndefined();
+  });
+
+  it('rejects non-boolean activity governance validation flags', () => {
+    expect(() =>
+      parseEffectModel({
+        source: { prose: 'Invalid MJ validation flag.', ref: 'fixture:governance:boolean' },
+        spec: {
+          target: 'pool',
+          op: 'add',
+          value: 1,
+          activation: 'passive',
+          duration: 'permanent',
+          requires_mj_validation: 'yes'
+        },
+        fidelity: 'pending'
+      })
+    ).toThrow(/EffectModel\.spec\.requires_mj_validation must be a boolean/);
+  });
+
+  it('rejects non-positive or non-integer uses per day limits', () => {
+    for (const uses_per_day of [0, -1, 1.5, '1']) {
+      expect(() =>
+        parseEffectModel({
+          source: { prose: 'Invalid uses per day.', ref: 'fixture:uses-per-day' },
+          spec: {
+            target: 'pool',
+            op: 'add',
+            value: 1,
+            activation: 'active',
+            duration: 'ephemeral',
+            uses_per_day
+          },
+          fidelity: 'pending'
+        })
+      ).toThrow(/EffectModel\.spec\.uses_per_day must be a positive integer/);
+    }
+  });
+
+  it('parses expression-based locked durations', () => {
+    const raw = {
+      source: { prose: 'Duree verrouillee par niveau.', ref: 'fixture:duration:locked' },
+      spec: {
+        target: 'status',
+        scope: 'fou_furieux',
+        op: 'grant',
+        value: 1,
+        activation: 'active',
+        duration: { dt: '25*level', locked: true }
+      },
+      fidelity: 'covered'
+    };
+
+    expect(parseEffectModel(raw)).toEqual(raw);
+  });
+
+  it('rejects invalid locked duration fields', () => {
+    expect(() =>
+      parseEffectModel({
+        source: { prose: 'Invalid duration expression.', ref: 'fixture:duration:expression' },
+        spec: {
+          target: 'status',
+          scope: 'fou_furieux',
+          op: 'grant',
+          value: 1,
+          activation: 'active',
+          duration: { dt: '25*unknown' }
+        },
+        fidelity: 'pending'
+      })
+    ).toThrow(/Unknown effect value variable "unknown"/);
+
+    expect(() =>
+      parseEffectModel({
+        source: { prose: 'Invalid duration lock.', ref: 'fixture:duration:lock' },
+        spec: {
+          target: 'status',
+          scope: 'fou_furieux',
+          op: 'grant',
+          value: 1,
+          activation: 'active',
+          duration: { dt: 25, locked: 'yes' }
+        },
+        fidelity: 'pending'
+      })
+    ).toThrow(/Effect duration locked must be a boolean/);
   });
 
   it('rejects unknown operations', () => {
