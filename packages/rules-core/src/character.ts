@@ -1,4 +1,6 @@
 import { type Combatant } from './combat.js';
+import { effectiveAttribute, type EffectApplicationContext } from './effects.js';
+import { type EffectModel } from './effect-model.js';
 import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
 
 export const ATTRIBUTE_KEYS = [
@@ -462,7 +464,11 @@ export function migrateCharacter<T extends Character>(
   return { character: migrated, changes, warnings };
 }
 
-export function calculateEffectiveAttributes(character: Character): CharacterAttributes {
+export function calculateEffectiveAttributes(
+  character: Character,
+  effects: EffectModel[] = [],
+  ctx: EffectApplicationContext = {}
+): CharacterAttributes {
   const effective = { ...character.attributes };
 
   for (const modifier of character.modifiers) {
@@ -474,6 +480,10 @@ export function calculateEffectiveAttributes(character: Character): CharacterAtt
     }
 
     effective[modifier.target] = clampMinZero(effective[modifier.target] + modifier.value);
+  }
+
+  for (const key of ATTRIBUTE_KEYS) {
+    effective[key] = effectiveAttribute(effective[key], key, effects, ctx);
   }
 
   return effective;
