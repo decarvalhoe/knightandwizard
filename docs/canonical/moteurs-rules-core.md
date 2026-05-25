@@ -152,6 +152,100 @@ L'enum actuel (`aptitude|factor|difficulty|pool|energy|vitality|status`) **n'a p
 
 ---
 
+## 4ter. Modèle activité / Domaine (atouts conditionnels)
+
+**Acté (autorité K&W, 2026-05-25).** Le `condition.activity` d'un `EffectModel` est un **prédicat de Domaine** : il décrit l'activité où l'effet s'applique. Origine : les **88 atouts de classe (75) + orientation (13)** suivent tous ce modèle. La majorité des Domaines s'**auto-infèrent** du jet ; une minorité **irréductible** exige une **intention déclarée et gouvernée**.
+
+### Dimensions de match
+
+| Dimension | Sens | Exemples |
+|---|---|---|
+| `competence` / `spec` | activité de compétence (cascade : une compétence matche ses spés filles) | danse, forge, alchimie, pistage |
+| `aptitude` | attribut engagé | perception, volonté, intelligence |
+| `context` | cadre situationnel | combat naval, duel, combat défensif, vs-monstres |
+| `tool` | objet « de prédilection » (→ slots) | arme, instrument, monture, animaux |
+| `school` | couleur / école de magie | 11 atouts « Magie [couleur] » = `−1 diff` tous sorts de l'école |
+| `target` | cible déclarée de l'action | allié (employeur), ennemi + tag magicien |
+| `intent` | but déclaré, irréductible | sauvegarder, nuire, défendre les faibles |
+
+Prédicat **composite** = AND intra-prédicat (ex. *défense* = `context: combat_defensif` + `tool: arme_predilection`). Le OR passe par `condition.any_of`.
+
+### Slots de prédilection *(généralise « arme de prédilection »)*
+
+Famille de slots liés au perso : `arme` (coup-décisif / défense / précision), `instrument` (son-envoûtant), `monture` / locomotion (périple), `animaux` (élevage), `domaine` d'orientation (magnétisme, maîtrise-martiale, ouvrage, paysannerie, service).
+
+Machine à états commune : **1** valeur par type à la création · **changement** via {passage de niveau \| validation MJ}, **journalisé** · **extension 1→N** via atouts de niveau · résolution : matche si l'objet engagé ∈ l'ensemble du slot.
+
+### Sélecteur de cible (`target`)
+
+Dimension **mécanique** sur la cible déclarée, réutilisable au-delà des atouts (tout effet lié à un allié / ennemi) :
+
+```yaml
+target: { disposition: ally|enemy, tag: [magicien, ...], ref: <cible nommée déclarée> }
+```
+
+- *sus-aux-magiciens* → `{ tag: magicien, disposition: enemy }` → **purement mécanique, sans validation**.
+- *garde-rapprochée* → `{ disposition: ally, ref: employeur }` → allié déclaré **+ validation MJ**.
+
+### Intention & gouvernance
+
+But déclaré, **validé selon le mode arbitre** : MJ humain (narratif) · MJ LLM (propose + valide) · MJ auto (flag explicite requis, sinon pas de bonus). Vocabulaire d'intents = **registre gouverné** versionné.
+
+Validation **par intent** (`requires_mj_validation`) + **override MJ global** (désactivable pour un jeu plus souple) :
+
+| Atout | Prédicat | Validation MJ |
+|---|---|---|
+| sus-aux-magiciens | `target: {tag: magicien, disposition: enemy}` | non |
+| garde-rapprochée | `target: {disposition: ally, ref: employeur}` | oui |
+| méfait | `action_type: offensive` (large) | oui — 🟡 **révision** (portée trop large, fuite) |
+| juste-cause / pour-la-prime | `target` sélectionné + `directness: direct_only` | oui |
+
+**direct / indirect** = proximité causale (l'action vise-t-elle la cible déclarée **directement** ?), non calculable → sélecteur de cible + validation MJ. Ex. juste-cause : « sauver une demoiselle = direct ; détruire un objet qui sauvera le monde = indirect ».
+
+### Statuts composites (effets activables)
+
+Un atout peut **accorder un `status`** (catalogue d'états R-9.27) portant un **faisceau d'EffectModels** — pas un modificateur unique. Ex. *folie-furieuse* :
+
+```yaml
+status: fou_furieux
+effects:
+  - { target: pool, op: add, value: level, condition: { aptitude: [force, endurance] } }
+  - { target: aptitude, op: set, value: 1, scope: empathie }   # + intelligence, perception
+duration: { dt: 25*level, locked: true }   # non réductible
+```
+
+Sources d'activation : `player_toggle` (folie-furieuse) \| `mj_validated` \| `mj_imposed` (le MJ l'impose **sans** accord du joueur). Supporte op `set` + durée **verrouillée**. Sert aussi aux futurs **buffs / potions**.
+
+### Distribution & sous-patterns des 88
+
+| Catégorie | ~N |
+|---|---|
+| compétence / spé | ~47 |
+| aptitude | 3 |
+| contexte | ~6 |
+| école de magie | 11 |
+| outil / prédilection | ~6 |
+| intention irréductible | ~9 |
+| spéciaux (folie-furieuse, familier) | 2 |
+
+*(recoupements pour les atouts composites)*
+
+**3 sous-patterns structurels** :
+- **classe permanent** (~64) : `target: pool, op: add, value: level` sur `[domain]`, `activation: passive`, `duration: permanent`.
+- **classe magie** (11) : `target: difficulty, op: sub, value: 1, scope: school`.
+- **orientation** (12) : `target: difficulty, op: sub, value: 5` sur `[domain]`, `activation: active`, `duration: ephemeral`, `uses_per_day` — **familier = exception (moteur propre)**.
+
+### Conséquences EffectModel (→ issues code)
+
+`condition.activity` (dimensions ci-dessus) · nouvelles dimensions `aptitude`, `target`, `intent` (+ `requires_mj_validation`, override MJ) · `tool` → slots de prédilection (état perso) · statuts composites (`set`, durée verrouillée, sources d'activation) · `uses_per_day` · (`target: damage` = #137).
+
+### 🟡 Ouvert
+
+- *méfait* : « action offensive » trop large → réviser le prédicat (ambiguïté gouvernée).
+- **Seed du registre** : mapper chaque `[domain]` compétence/spé → ID de `competences.yaml`, puis encoder les 88 specs.
+
+---
+
 ## 5. Séquencement & dépendances
 
 > **Moteur d'effets d'abord**, puis dégâts/défense.
