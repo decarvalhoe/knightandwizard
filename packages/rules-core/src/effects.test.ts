@@ -107,6 +107,63 @@ describe('effect modifier engine', () => {
       applications: [{ op: 'grant', sourceRef: 'fixture:effect' }]
     });
   });
+
+  it('matches predilection slot tool conditions against the engaged tool', () => {
+    const effects = [
+      effect({
+        target: 'pool',
+        scope: 'attaque',
+        op: 'add',
+        value: 1,
+        condition: { tool: 'arme_predilection' }
+      })
+    ];
+
+    const modifiers = computeEffectiveModifiers(effects, {
+      engagedTool: 'epee_longue',
+      predilection: { arme: ['epee_longue'] }
+    });
+
+    expect(modifiers.pool.attaque.add).toBe(1);
+  });
+
+  it('does not match predilection slot tool conditions outside the slot set', () => {
+    const effects = [
+      effect({
+        target: 'pool',
+        scope: 'attaque',
+        op: 'add',
+        value: 1,
+        condition: { tool: 'arme_predilection' }
+      })
+    ];
+
+    const modifiers = computeEffectiveModifiers(effects, {
+      engagedTool: 'arc_court',
+      predilection: { arme: ['epee_longue'] }
+    });
+
+    expect(modifiers.pool).toEqual({});
+  });
+
+  it('matches concrete tool conditions by engaged tool equality', () => {
+    const effects = [
+      effect({
+        target: 'pool',
+        scope: 'musique',
+        op: 'add',
+        value: 1,
+        condition: { tool: 'luth' }
+      })
+    ];
+
+    const modifiers = computeEffectiveModifiers(effects, {
+      engagedTool: 'luth',
+      predilection: { instrument: ['flute'] }
+    });
+
+    expect(modifiers.pool.musique.add).toBe(1);
+  });
 });
 
 function effect(

@@ -1,3 +1,5 @@
+import { predilectionKindForSlotName, type PredilectionSlots } from './predilection.js';
+
 export const EFFECT_TARGETS = [
   'aptitude',
   'factor',
@@ -82,7 +84,10 @@ export type EffectCondition = {
   any_of?: EffectCondition[];
 } & Partial<Record<EffectConditionKey, EffectConditionValue>>;
 
-export type EffectConditionContext = Partial<Record<EffectConditionKey, EffectConditionValue>>;
+export type EffectConditionContext = Partial<Record<EffectConditionKey, EffectConditionValue>> & {
+  engagedTool?: string;
+  predilection?: PredilectionSlots;
+};
 
 export type EffectValueContext = Partial<Record<EffectValueVariable, number>> & {
   tables?: Record<string, Record<string, number>>;
@@ -324,7 +329,19 @@ function validateConditionValue(value: unknown, key: string): void {
 function evaluateCondition(condition: EffectCondition, context: EffectConditionContext): boolean {
   for (const key of EFFECT_CONDITION_KEYS) {
     const expected = condition[key];
-    if (expected !== undefined && !matchesConditionValue(expected, context[key])) {
+
+    if (expected === undefined) {
+      continue;
+    }
+
+    if (key === 'tool') {
+      if (!matchesToolCondition(expected, context)) {
+        return false;
+      }
+      continue;
+    }
+
+    if (!matchesConditionValue(expected, context[key])) {
       return false;
     }
   }
@@ -344,6 +361,32 @@ function evaluateCondition(condition: EffectCondition, context: EffectConditionC
   }
 
   return true;
+}
+
+function matchesToolCondition(
+  expected: EffectConditionValue,
+  context: EffectConditionContext
+): boolean {
+  const expectedValues = Array.isArray(expected) ? expected : [expected];
+
+  return expectedValues.some((expectedValue) => matchesToolValue(expectedValue, context));
+}
+
+function matchesToolValue(expectedValue: string, context: EffectConditionContext): boolean {
+  const predilectionKind = predilectionKindForSlotName(expectedValue);
+
+  if (predilectionKind !== undefined) {
+    return (
+      context.engagedTool !== undefined &&
+      (context.predilection?.[predilectionKind]?.includes(context.engagedTool) ?? false)
+    );
+  }
+
+  if (context.engagedTool !== undefined) {
+    return context.engagedTool === expectedValue;
+  }
+
+  return matchesConditionValue(expectedValue, context.tool);
 }
 
 function matchesConditionValue(
