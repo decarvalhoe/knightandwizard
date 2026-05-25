@@ -12,6 +12,11 @@ import {
   type EffectValueContext
 } from './effect-model.js';
 import { type PredilectionSlots } from './predilection.js';
+import {
+  expandActiveStatuses,
+  type ActiveStatusEntry,
+  type CompositeStatusRegistry
+} from './status-effects.js';
 
 export const GLOBAL_EFFECT_SCOPE = '__global__';
 
@@ -34,6 +39,8 @@ export type EffectApplicationContext = EffectConditionContext &
     elapsedDT?: number;
     includeEphemeral?: boolean;
     predilection?: PredilectionSlots;
+    activeStatuses?: readonly ActiveStatusEntry[];
+    statusRegistry?: CompositeStatusRegistry;
   };
 
 export interface EffectModifierApplication {
@@ -85,8 +92,10 @@ export function computeEffectiveModifiers(
   ctx: EffectApplicationContext
 ): EffectiveModifiers {
   const modifiers = createEmptyModifiers();
+  const statusEffects = expandActiveStatuses(ctx.activeStatuses, ctx.statusRegistry, ctx);
+  const effects = statusEffects.length === 0 ? activeEffects : [...activeEffects, ...statusEffects];
 
-  for (const activeEffect of activeEffects) {
+  for (const activeEffect of effects) {
     const effect = parseEffectModel(activeEffect);
 
     if (!isEffectActive(effect.spec, ctx)) {
