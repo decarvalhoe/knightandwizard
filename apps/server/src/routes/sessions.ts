@@ -15,6 +15,7 @@ import {
 } from '@knightandwizard/rules-core';
 import type postgres from 'postgres';
 import { createSqlClient } from '../db/client.js';
+import { sessionHub } from '../sessions/hub.js';
 
 interface CreateSessionRequestBody {
   metadata?: unknown;
@@ -319,6 +320,12 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
           return reply.code(404).send({ status: 'not_found' });
         }
 
+        sessionHub.broadcast(request.params.slug, {
+          event: toEventResponse(result.event),
+          kind: 'session.event',
+          slug: request.params.slug
+        });
+
         return reply.code(201).send({
           event: toEventResponse(result.event),
           status: 'created'
@@ -460,6 +467,12 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
           return reply.code(404).send({ status: 'not_found' });
         }
 
+        sessionHub.broadcast(request.params.slug, {
+          event: toEventResponse(result.event),
+          kind: 'session.event',
+          slug: request.params.slug
+        });
+
         return reply.code(201).send({
           decision: toDecisionResponse(result.decision),
           event: toEventResponse(result.event),
@@ -599,6 +612,12 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
         if (result.status === 'decision_not_found') {
           return reply.code(404).send({ status: 'decision_not_found' });
         }
+
+        sessionHub.broadcast(request.params.slug, {
+          event: toEventResponse(result.event),
+          kind: 'session.event',
+          slug: request.params.slug
+        });
 
         return {
           decision: toDecisionResponse(result.decision),
@@ -770,6 +789,12 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
           result.decisionRows
         );
         const revertedState = revertSessionToSequence(priorState, result.targetSequence);
+
+        sessionHub.broadcast(request.params.slug, {
+          event: toEventResponse(result.event),
+          kind: 'session.event',
+          slug: request.params.slug
+        });
 
         return reply.code(201).send({
           event: toEventResponse(result.event),
