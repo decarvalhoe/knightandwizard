@@ -136155,6 +136155,21 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PLAN-COMBAT-IMPLEMENTATION
+    unit_type: catalog_entry
+    name: docs/plan/COMBAT-IMPLEMENTATION.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PLAN-COMBAT-IMPLEMENTATION
+        locator: docs/plan/COMBAT-IMPLEMENTATION.md
+        hash: sha256:07b1aaaa1eb88597b0d8915a000248919ed4412da59f09d6c8aec83d173432d4
+    business_rule: docs/plan/COMBAT-IMPLEMENTATION.md from docs/plan/COMBAT-IMPLEMENTATION.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-DOCS-PLAN-INFRA-DEVLAB-PLAN
     unit_type: catalog_entry
     name: docs/plan/INFRA-DEVLAB-PLAN.md
