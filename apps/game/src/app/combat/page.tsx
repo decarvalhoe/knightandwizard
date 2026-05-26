@@ -10,6 +10,7 @@ export default async function CombatPage() {
     <CombatTracker
       combatantTemplates={readModel.combatantTemplates}
       initialState={readModel.initialState}
+      sessionSlug="brumeval"
     />
   );
 }

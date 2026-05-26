@@ -2,6 +2,8 @@ import type { FastifyInstance } from 'fastify';
 import {
   type SessionDecision,
   type SessionEvent,
+  type SessionPlayer,
+  type SessionScene,
   type SessionState,
   SESSION_CONTROLLER_ROLES,
   SESSION_DECISION_PRIORITIES,
@@ -1065,6 +1067,8 @@ function toSessionResponse(
   events: SessionEventRow[],
   decisions: SessionDecisionRow[]
 ) {
+  const state = projectCurrentSessionState(buildSessionState(session, events, decisions));
+
   return {
     createdAt: serializeDate(session.created_at),
     decisions: decisions.map(toDecisionResponse),
@@ -1073,6 +1077,7 @@ function toSessionResponse(
     metadata: session.metadata,
     mode: session.mode,
     slug: session.slug,
+    state: toProjectedSessionStateResponse(state),
     status: session.status,
     title: session.title,
     updatedAt: serializeDate(session.updated_at)
@@ -1092,18 +1097,53 @@ function buildSessionState(
   events: SessionEventRow[],
   decisions: SessionDecisionRow[]
 ): SessionState {
+  const metadata = isRecord(session.metadata) ? session.metadata : {};
+
   return createSessionState({
     createdAt: serializeDate(session.created_at),
     decisions: decisions.map(toDecisionModel),
     events: events.map(toEventModel),
     id: session.id,
-    metadata: session.metadata,
+    metadata,
     mode: session.mode as SessionState['mode'],
+    players: toSessionPlayers(metadata.players),
+    scenes: toSessionScenes(metadata.scenes),
     slug: session.slug,
     status: session.status as SessionState['status'],
     title: session.title,
     updatedAt: serializeDate(session.updated_at)
   });
+}
+
+function projectCurrentSessionState(state: SessionState): SessionState {
+  const rollbackTargetSequence = getLatestRollbackTargetSequence(state.events);
+
+  if (rollbackTargetSequence === undefined) {
+    return state;
+  }
+
+  return revertSessionToSequence(state, rollbackTargetSequence);
+}
+
+function getLatestRollbackTargetSequence(events: SessionEvent[]): number | undefined {
+  const sortedEvents = [...events].sort((left, right) => right.sequence - left.sequence);
+
+  for (const event of sortedEvents) {
+    if (event.type !== 'rollback_requested') {
+      continue;
+    }
+
+    const targetSequence = event.payload.targetSequence;
+
+    if (
+      typeof targetSequence === 'number' &&
+      events.some((candidate) => candidate.sequence === targetSequence)
+    ) {
+      return targetSequence;
+    }
+  }
+
+  return undefined;
 }
 
 function toEventModel(row: SessionEventRow): SessionEvent {
@@ -1132,29 +1172,14 @@ function toDecisionModel(row: SessionDecisionRow): SessionDecision {
   };
 }
 
+/** Serializes the authoritative RSC snapshot in the rules-core `SessionState` shape. */
+function toProjectedSessionStateResponse(state: SessionState): SessionState {
+  return state;
+}
+
 /** Serializes a reverted {@link SessionState} projection for HTTP responses. */
-function toSessionStateResponse(state: SessionState) {
-  return {
-    createdAt: state.createdAt,
-    decisions: state.decisions,
-    events: state.events.map((event) => ({
-      actorId: event.actorId,
-      createdAt: event.createdAt,
-      eventType: event.type,
-      id: event.id,
-      payload: event.payload,
-      sequence: event.sequence,
-      sessionId: state.id
-    })),
-    id: state.id,
-    metadata: state.metadata,
-    mode: state.mode,
-    scenes: state.scenes,
-    slug: state.slug,
-    status: state.status,
-    title: state.title,
-    updatedAt: state.updatedAt
-  };
+function toSessionStateResponse(state: SessionState): SessionState {
+  return state;
 }
 
 function toEventResponse(row: SessionEventRow) {
@@ -1188,6 +1213,94 @@ function toDecisionResponse(row: SessionDecisionRow) {
 
 function serializeDate(value: Date | string): string {
   return value instanceof Date ? value.toISOString() : value;
+}
+
+function toSessionPlayers(value: unknown): SessionPlayer[] | undefined {
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  const players = value
+    .filter(isRecord)
+    .map((player) => {
+      if (!isNonEmptyString(player.id) || !isNonEmptyString(player.name)) {
+        return undefined;
+      }
+
+      const role = isNonEmptyString(player.role) ? player.role : 'player';
+
+      if (!validControllerRoles.has(role)) {
+        return undefined;
+      }
+
+      const normalized: SessionPlayer = {
+        id: player.id.trim(),
+        name: player.name.trim(),
+        role: role as SessionPlayer['role']
+      };
+
+      if (isNonEmptyString(player.characterId)) {
+        normalized.characterId = player.characterId.trim();
+      }
+
+      if (typeof player.connected === 'boolean') {
+        normalized.connected = player.connected;
+      }
+
+      if (isNonEmptyString(player.lastSeenAt)) {
+        normalized.lastSeenAt = player.lastSeenAt.trim();
+      }
+
+      return normalized;
+    })
+    .filter((player): player is SessionPlayer => player !== undefined);
+
+  return players.length > 0 ? players : undefined;
+}
+
+function toSessionScenes(value: unknown): SessionScene[] | undefined {
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  const scenes = value
+    .filter(isRecord)
+    .map((scene) => {
+      if (!isNonEmptyString(scene.id) || !isNonEmptyString(scene.location)) {
+        return undefined;
+      }
+
+      const normalized: SessionScene = {
+        id: scene.id.trim(),
+        location: scene.location.trim(),
+        status:
+          scene.status === 'active' || scene.status === 'closed' || scene.status === 'draft'
+            ? scene.status
+            : 'draft',
+        title: isNonEmptyString(scene.title) ? scene.title.trim() : scene.location.trim()
+      };
+
+      if (isNonEmptyString(scene.description)) {
+        normalized.description = scene.description.trim();
+      }
+
+      if (Array.isArray(scene.npcIds)) {
+        const npcIds = scene.npcIds.filter(isNonEmptyString).map((npcId) => npcId.trim());
+
+        if (npcIds.length > 0) {
+          normalized.npcIds = npcIds;
+        }
+      }
+
+      if (Number.isInteger(scene.openedAtSequence)) {
+        normalized.openedAtSequence = scene.openedAtSequence as number;
+      }
+
+      return normalized;
+    })
+    .filter((scene): scene is SessionScene => scene !== undefined);
+
+  return scenes.length > 0 ? scenes : undefined;
 }
 
 interface ValidationResult {

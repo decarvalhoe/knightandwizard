@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import type { SessionPlayer, SessionScene } from '@knightandwizard/rules-core';
 import {
   buildSessionManagerView,
   createSessionManagerState,
@@ -9,6 +10,15 @@ import {
 } from './model.js';
 
 describe('session manager model', () => {
+  it('creates an empty fallback state without seeded journal data', () => {
+    const state = createSessionManagerState();
+
+    expect(state.events).toEqual([]);
+    expect(state.decisions).toEqual([]);
+    expect(state.players).toEqual([]);
+    expect(state.scenes).toEqual([]);
+  });
+
   it('builds a session dashboard view from campaign, scene and event state', () => {
     const state = createSessionManagerState({
       decisions: [
@@ -40,7 +50,9 @@ describe('session manager model', () => {
           sequence: 2,
           type: 'player_action'
         }
-      ]
+      ],
+      players: samplePlayers(),
+      scenes: sampleScenes()
     });
     const view = buildSessionManagerView(state);
 
@@ -61,7 +73,10 @@ describe('session manager model', () => {
   });
 
   it('records events and exposes them as rollback targets', () => {
-    const state = createSessionManagerState();
+    const state = createSessionManagerState({
+      players: samplePlayers(),
+      scenes: []
+    });
     const withEvent = recordSessionEvent(
       state,
       {
@@ -109,7 +124,8 @@ describe('session manager model', () => {
           sequence: 2,
           type: 'dice_roll'
         }
-      ]
+      ],
+      players: samplePlayers()
     });
     const view = buildSessionManagerView(state);
 
@@ -147,3 +163,50 @@ describe('session manager model', () => {
     ]);
   });
 });
+
+function samplePlayers(): SessionPlayer[] {
+  return [
+    {
+      connected: true,
+      id: 'gm',
+      name: 'MJ',
+      role: 'human_gm'
+    },
+    {
+      characterId: 'aveline',
+      connected: true,
+      id: 'aveline',
+      name: 'Aveline',
+      role: 'player'
+    },
+    {
+      characterId: 'mire',
+      connected: false,
+      id: 'mire',
+      name: 'Mire',
+      role: 'player'
+    }
+  ];
+}
+
+function sampleScenes(): SessionScene[] {
+  return [
+    {
+      description: 'Arrivee sous la pluie, garde fatigue, tension basse.',
+      id: 'brumeval-gate',
+      location: 'Brumeval',
+      npcIds: ['guetteur', 'brigand-cache'],
+      openedAtSequence: 1,
+      status: 'active',
+      title: 'Porte nord'
+    },
+    {
+      description: 'Auberge dense, rumeurs et repos possible.',
+      id: 'auberge-corbeau',
+      location: 'Brumeval',
+      npcIds: ['aubergiste'],
+      status: 'draft',
+      title: 'Auberge du Corbeau'
+    }
+  ];
+}
