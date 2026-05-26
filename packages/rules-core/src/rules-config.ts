@@ -15,6 +15,12 @@ export interface CombatRulesConfig {
   unconsciousDamageRatio: number;
   /** Vitality malus = round(vitality.max * this ratio) - vitality.current (clamped >= 0). */
   vitalityMalusRatio: number;
+  /** R-2.18 — carrying capacity without speed penalty = strength * this (kg). */
+  encumbranceKgPerStrength: number;
+  /** R-2.18 — each full step of this many kg above capacity adds +1 to the speed factor. */
+  encumbranceKgPerStep: number;
+  /** R-1.38 — lower bound for the effective speed factor in DT (an action costs >= this). */
+  minSpeedFactor: number;
 }
 
 export interface CreationRulesConfig {
@@ -81,7 +87,10 @@ export const DEFAULT_RULES_CONFIG: RulesConfig = {
     roundLengthDT: 50,
     staminaRollDifficulty: 7,
     unconsciousDamageRatio: 0.5,
-    vitalityMalusRatio: 0.5
+    vitalityMalusRatio: 0.5,
+    encumbranceKgPerStrength: 5,
+    encumbranceKgPerStep: 5,
+    minSpeedFactor: 1
   },
   creation: {
     attributeMaxOffset: 1,

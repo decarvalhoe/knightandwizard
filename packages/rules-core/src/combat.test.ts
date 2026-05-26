@@ -5,12 +5,15 @@ import {
   applyDamage,
   applyStatus,
   createCombatState,
+  effectiveSpeedFactor,
   getCyclicDT,
   interruptCombatant,
   resolveNextAction,
   resolveStaminaDamage,
-  type AttackAction
+  type AttackAction,
+  type Combatant
 } from './combat.js';
+import { parseEffectModel, type EffectModel } from './effect-model.js';
 
 describe('combat DT timeline', () => {
   it('wraps the legacy 1-50 DT counter', () => {
@@ -529,3 +532,97 @@ describe('combat interruptions (R-9.4)', () => {
     expect(archer?.pendingAction).toEqual({ type: 'aim' });
   });
 });
+
+describe('effective speed factor (R-2.18 encumbrance / R-1.38 effects)', () => {
+  it('adds no penalty at or below the carrying capacity (Force x 5 kg)', () => {
+    expect(effectiveSpeedFactor(loaded({ speedFactor: 5, strength: 3, carriedWeightKg: 15 }))).toBe(
+      5
+    );
+  });
+
+  it('adds +1 speed factor per full 5 kg above the capacity', () => {
+    // Force 3 -> capacity 15 kg.
+    expect(
+      effectiveSpeedFactor(loaded({ speedFactor: 5, strength: 3, carriedWeightKg: 15.1 }))
+    ).toBe(6);
+    expect(effectiveSpeedFactor(loaded({ speedFactor: 5, strength: 3, carriedWeightKg: 20 }))).toBe(
+      6
+    );
+    expect(
+      effectiveSpeedFactor(loaded({ speedFactor: 5, strength: 3, carriedWeightKg: 20.1 }))
+    ).toBe(7);
+  });
+
+  it('shrinks carrying capacity when Force drops (R-2.18 edge case)', () => {
+    expect(effectiveSpeedFactor(loaded({ speedFactor: 5, strength: 5, carriedWeightKg: 22 }))).toBe(
+      5
+    );
+    expect(effectiveSpeedFactor(loaded({ speedFactor: 5, strength: 3, carriedWeightKg: 22 }))).toBe(
+      7
+    );
+  });
+
+  it('lets haste lower and slowness raise the effective factor (R-1.38)', () => {
+    expect(
+      effectiveSpeedFactor(loaded({ speedFactor: 7, activeEffects: [factorEffect('sub', 2)] }))
+    ).toBe(5);
+    expect(
+      effectiveSpeedFactor(loaded({ speedFactor: 5, activeEffects: [factorEffect('add', 3)] }))
+    ).toBe(8);
+  });
+
+  it('combines encumbrance with effects and floors at the minimum speed factor', () => {
+    expect(
+      effectiveSpeedFactor(
+        loaded({
+          speedFactor: 5,
+          strength: 3,
+          carriedWeightKg: 20.1,
+          activeEffects: [factorEffect('sub', 1)]
+        })
+      )
+    ).toBe(6);
+    expect(
+      effectiveSpeedFactor(loaded({ speedFactor: 5, activeEffects: [factorEffect('sub', 100)] }))
+    ).toBe(1);
+  });
+
+  it('schedules the first action by the effective (encumbered) speed factor', () => {
+    const state = addCombatant(
+      createCombatState(1),
+      loaded({ id: 'porter', speedFactor: 5, strength: 3, carriedWeightKg: 20.1 })
+    );
+
+    expect(state.timeline[0].nextActionAt).toBe(8);
+  });
+});
+
+function loaded(props: {
+  id?: string;
+  speedFactor?: number;
+  strength?: number;
+  carriedWeightKg?: number;
+  activeEffects?: EffectModel[];
+}): Combatant {
+  return {
+    id: props.id ?? 'loaded',
+    name: 'Loaded',
+    speedFactor: props.speedFactor ?? 5,
+    nextActionAt: 0,
+    reflexes: 3,
+    vitality: { current: 10, max: 10 },
+    attributes: { strength: props.strength ?? 5, dexterity: 5, stamina: 5 },
+    skills: {},
+    statuses: [],
+    ...(props.carriedWeightKg === undefined ? {} : { carriedWeightKg: props.carriedWeightKg }),
+    ...(props.activeEffects === undefined ? {} : { activeEffects: props.activeEffects })
+  };
+}
+
+function factorEffect(op: 'add' | 'sub', value: number): EffectModel {
+  return parseEffectModel({
+    source: { prose: 'Fixture speed-factor effect.', ref: 'fixture:factor' },
+    spec: { target: 'factor', op, value, activation: 'passive', duration: 'permanent' },
+    fidelity: 'covered'
+  });
+}

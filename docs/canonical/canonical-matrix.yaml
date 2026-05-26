@@ -136138,23 +136138,23 @@ units:
       status: not_applicable
       evidence: "No Zod schema required."
     relational_db:
-      status: partial
-      evidence: "Canonical relational tables/import evidence pending."
+      status: not_applicable
+      evidence: "Speed-factor modifiers are derived at runtime from a combatant active effects; there is no dedicated relational projection of the modifier."
     vector_store:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: covered
+      evidence: "packages/rules-core/src/combat.ts effectiveSpeedFactor feeds the loaded base speed factor through effects.ts computeEffectiveModifiers on the \"factor\" target, so magic (haste/slowness) and atouts modify the action delay; the result is rounded and floored at combat.minSpeedFactor. Files: packages/rules-core/src/combat.ts, packages/rules-core/src/effects.ts. Tests: packages/rules-core/src/combat.test.ts."
     api:
-      status: partial
-      evidence: "Downstream API evidence pending."
+      status: not_applicable
+      evidence: "No dedicated endpoint; effect-modified scheduling is computed by rules-core and surfaced through session/combat flows."
     ui:
       status: partial
       evidence: "UI exposure evidence pending."
     tests:
-      status: partial
-      evidence: "Automated coverage evidence pending."
+      status: covered
+      evidence: "packages/rules-core/src/combat.test.ts covers haste lowering and slowness raising the effective factor via factor-target effects, including the minimum floor."
   - unit_id: "R-1.39"
     unit_type: "rule"
     domain: "D1-resolution"
@@ -140890,23 +140890,23 @@ units:
       status: not_applicable
       evidence: "No Zod schema required."
     relational_db:
-      status: partial
-      evidence: "Canonical relational tables/import evidence pending."
+      status: not_applicable
+      evidence: "Encumbrance is a runtime scheduling computation; carried weight comes from character/equipment projections, there is no dedicated relational table for the speed-factor penalty."
     vector_store:
       status: covered
       evidence: "Indexed from source manifest by knowledge indexer."
     rules_core:
-      status: partial
-      evidence: "Rules-core behavior evidence pending or must be linked."
+      status: covered
+      evidence: "packages/rules-core/src/combat.ts encumbrancePenalty adds +1 DT per full combat.encumbranceKgPerStep kg carried above strength * combat.encumbranceKgPerStrength, using the current Force (so weakening shrinks capacity); effectiveSpeedFactor applies it to scheduling and initial timeline placement. Files: packages/rules-core/src/combat.ts, packages/rules-core/src/rules-config.ts. Tests: packages/rules-core/src/combat.test.ts."
     api:
-      status: partial
-      evidence: "Downstream API evidence pending."
+      status: not_applicable
+      evidence: "No dedicated endpoint; combat scheduling is computed by rules-core and surfaced through session/combat flows."
     ui:
       status: partial
       evidence: "UI exposure evidence pending."
     tests:
-      status: partial
-      evidence: "Automated coverage evidence pending."
+      status: covered
+      evidence: "packages/rules-core/src/combat.test.ts covers the +1-per-5kg-over-Force*5 penalty, the exact-threshold boundary, and Force loss shrinking capacity."
   - unit_id: "R-2.19"
     unit_type: "rule"
     domain: "D2-attributs"
@@ -267201,7 +267201,7 @@ units:
     sources:
       - path: "docs/plan/COMBAT-IMPLEMENTATION.md"
         ref: "docs/plan/COMBAT-IMPLEMENTATION.md"
-        sha256: "383fa562c8d9a2198836081c0f8054d33e1e5d6b68e52c25b594e905bb67d011"
+        sha256: "44189d3739a8bc526fa9f282cc1b8e36d448fccba9ccb9997fd4f3009180e693"
     business_rule:
       summary: "docs/plan/COMBAT-IMPLEMENTATION.md from docs/plan/COMBAT-IMPLEMENTATION.md."
       ambiguity_ref: null

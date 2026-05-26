@@ -40,20 +40,20 @@ surprise (R-9.39), désengagement (R-9.38), tactiques de groupe (R-9.40), encoda
 
 ### Timing / initiative
 
-| Règle                         | Objet                                               | Périmètre | Statut | Emplacement / écart                                                                                            |
-| ----------------------------- | --------------------------------------------------- | --------- | ------ | -------------------------------------------------------------------------------------------------------------- |
-| R-9.1                         | DT = 0,2 s, cycle 1→50                              | MVP       | ✅     | `combat.ts` `getCyclicDT`, `roundForDT`                                                                        |
-| R-9.2                         | FV = délai d'action (déclare→FV→résout)             | MVP       | ✅     | `combat.ts` `actionCostDT`, `nextActionAt`                                                                     |
-| R-9.22                        | Timeline dynamique (pas d'initiative fixe)          | MVP       | ✅     | `combat.ts` `sortTimeline`                                                                                     |
-| R-9.23                        | Tie-break DT (simultané/Réflexes/conservée/arbitre) | MVP       | 🟡     | Réflexes+id ok ; préemption action conservée ❌                                                                |
-| R-2.13                        | FV depuis la race                                   | MVP       | ✅     | attribut acteur                                                                                                |
-| R-2.18                        | Encombrement → +1 FV / 5 kg                         | MVP       | ❌     | non recomposé au scheduling (moteur consomme un FV fixe)                                                       |
-| R-1.38                        | Sources de modif du FV (magie/atouts)               | MVP       | ❌     | `effects.ts` `factor` non appelé par `combat.ts`                                                               |
-| R-9.4                         | Interruptions (DT perdus, 3 cas)                    | **MVP**   | 🟡     | `interruptCombatant` (restart/release, DT perdus) ; perte d'énergie de sort différée (pas de modèle d'énergie) |
-| R-9.18-bis                    | Dégâts repoussent l'action (+1 DT/pt)               | MVP       | ✅     | `combat.ts` `applyDamage` (+finalDamage)                                                                       |
-| R-1.24                        | Action conservée : +1 diff / pt subi                | V2        | ❌     | pas d'état temporel `damageDuringAction`                                                                       |
-| R-9.3                         | Recharge = viser/recharger/tirer (3 actions)        | **MVP**   | 🟡     | types d'action `reload`/`aim` (coût FV) ; séquence imposée + stock munitions à venir                           |
-| atout `frappe-affaiblissante` | +FV sur cible blessée (50 DT/niv)                   | V2        | ❌     | catalogue seulement                                                                                            |
+| Règle                         | Objet                                               | Périmètre | Statut | Emplacement / écart                                                                                                     |
+| ----------------------------- | --------------------------------------------------- | --------- | ------ | ----------------------------------------------------------------------------------------------------------------------- |
+| R-9.1                         | DT = 0,2 s, cycle 1→50                              | MVP       | ✅     | `combat.ts` `getCyclicDT`, `roundForDT`                                                                                 |
+| R-9.2                         | FV = délai d'action (déclare→FV→résout)             | MVP       | ✅     | `combat.ts` `actionCostDT`, `nextActionAt`                                                                              |
+| R-9.22                        | Timeline dynamique (pas d'initiative fixe)          | MVP       | ✅     | `combat.ts` `sortTimeline`                                                                                              |
+| R-9.23                        | Tie-break DT (simultané/Réflexes/conservée/arbitre) | MVP       | 🟡     | Réflexes+id ok ; préemption action conservée ❌                                                                         |
+| R-2.13                        | FV depuis la race                                   | MVP       | ✅     | attribut acteur                                                                                                         |
+| R-2.18                        | Encombrement → +1 FV / 5 kg                         | MVP       | ✅     | `combat.ts` `effectiveSpeedFactor`/`encumbrancePenalty` (+1 DT par 5 kg > Force×5, Force courante) ; `rules-config.ts`  |
+| R-1.38                        | Sources de modif du FV (magie/atouts)               | MVP       | ✅     | `combat.ts` `effectiveSpeedFactor` appelle `effects.ts` cible `factor` (hâte/lenteur/atouts), plancher `minSpeedFactor` |
+| R-9.4                         | Interruptions (DT perdus, 3 cas)                    | **MVP**   | 🟡     | `interruptCombatant` (restart/release, DT perdus) ; perte d'énergie de sort différée (pas de modèle d'énergie)          |
+| R-9.18-bis                    | Dégâts repoussent l'action (+1 DT/pt)               | MVP       | ✅     | `combat.ts` `applyDamage` (+finalDamage)                                                                                |
+| R-1.24                        | Action conservée : +1 diff / pt subi                | V2        | ❌     | pas d'état temporel `damageDuringAction`                                                                                |
+| R-9.3                         | Recharge = viser/recharger/tirer (3 actions)        | **MVP**   | 🟡     | types d'action `reload`/`aim` (coût FV) ; séquence imposée + stock munitions à venir                                    |
+| atout `frappe-affaiblissante` | +FV sur cible blessée (50 DT/niv)                   | V2        | ❌     | catalogue seulement                                                                                                     |
 
 ### Résolution touche / dégâts / atténuation
 

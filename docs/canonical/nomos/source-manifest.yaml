@@ -20552,7 +20552,7 @@ sources:
     domain: project-governance
     priority: derived
     status: active
-    hash: 383fa562c8d9a2198836081c0f8054d33e1e5d6b68e52c25b594e905bb67d011
+    hash: 44189d3739a8bc526fa9f282cc1b8e36d448fccba9ccb9997fd4f3009180e693
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal

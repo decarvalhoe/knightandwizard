@@ -8,6 +8,8 @@ import {
 } from './combat-damage.js';
 import { type DiceRollResult, type RandomInteger, rollDice } from './dice.js';
 import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
+import { type EffectModel } from './effect-model.js';
+import { effectiveValue } from './effects.js';
 
 export const COMBAT_ROUND_LENGTH_DT = DEFAULT_RULES_CONFIG.combat.roundLengthDT;
 
@@ -114,6 +116,10 @@ export interface Combatant {
   statuses: CombatStatus[];
   ignoresVitalityMalus?: boolean;
   pendingAction?: CombatAction;
+  /** R-2.18 — total carried equipment weight in kg; drives the encumbrance speed penalty. */
+  carriedWeightKg?: number;
+  /** R-1.38 — active effects that may modify the speed factor (haste, slowness, atouts). */
+  activeEffects?: EffectModel[];
 }
 
 export interface CombatEvent {
@@ -207,7 +213,7 @@ export function addCombatant(
       nextActionAt:
         combatant.nextActionAt > 0
           ? combatant.nextActionAt
-          : state.currentDT + combatant.speedFactor
+          : state.currentDT + effectiveSpeedFactor(combatant, config)
     },
     config
   );
@@ -233,7 +239,7 @@ export function resolveNextAction(
   const timeline = sortTimeline(state.timeline);
   const actor = timeline[0];
   const action = actor.pendingAction ?? { type: 'wait' };
-  const costDT = actionCostDT(actor, action);
+  const costDT = actionCostDT(actor, action, config);
   const currentDT = actor.nextActionAt;
   const nextActionAt = currentDT + costDT;
   const activeState: CombatState = {
@@ -247,7 +253,8 @@ export function resolveNextAction(
     return rescheduleActor(
       resolveAttack(activeState, actor, action, { costDT, nextActionAt }, options, config),
       actor.id,
-      action
+      action,
+      config
     );
   }
 
@@ -266,7 +273,8 @@ export function resolveNextAction(
       log: [...activeState.log, event]
     },
     actor.id,
-    action
+    action,
+    config
   );
 }
 
@@ -363,11 +371,12 @@ export type InterruptOutcome = 'restart' | 'release';
 export function interruptCombatant(
   state: CombatState,
   combatantId: string,
-  outcome: InterruptOutcome = 'release'
+  outcome: InterruptOutcome = 'release',
+  config: RulesConfig = DEFAULT_RULES_CONFIG
 ): CombatState {
   const target = findCombatant(state, combatantId);
   const interruptedAction = target.pendingAction;
-  const cost = interruptedAction ? actionCostDT(target, interruptedAction) : 0;
+  const cost = interruptedAction ? actionCostDT(target, interruptedAction, config) : 0;
   const remaining = Math.max(0, target.nextActionAt - state.currentDT);
   const lostDT = Math.max(0, cost - remaining);
   const restart = outcome === 'restart' && interruptedAction !== undefined;
@@ -487,9 +496,14 @@ function resolveAttack(
   return withAttackLog;
 }
 
-function rescheduleActor(state: CombatState, actorId: string, action: CombatAction): CombatState {
+function rescheduleActor(
+  state: CombatState,
+  actorId: string,
+  action: CombatAction,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): CombatState {
   const actor = findCombatant(state, actorId);
-  const delay = actionCostDT(actor, action);
+  const delay = actionCostDT(actor, action, config);
 
   return replaceCombatant(state, {
     ...actor,
@@ -498,8 +512,50 @@ function rescheduleActor(state: CombatState, actorId: string, action: CombatActi
   });
 }
 
-function actionCostDT(actor: Combatant, action: CombatAction): number {
-  return action.costDT ?? actor.speedFactor;
+function actionCostDT(
+  actor: Combatant,
+  action: CombatAction,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): number {
+  return action.costDT ?? effectiveSpeedFactor(actor, config);
+}
+
+/**
+ * R-2.18 / R-1.38 — Effective speed factor used to schedule a combatant's actions.
+ *
+ * Starts from the base (racial) speed factor, adds the encumbrance penalty (R-2.18:
+ * +1 DT per full `encumbranceKgPerStep` kg carried above `strength *
+ * encumbranceKgPerStrength`, using the CURRENT Force so weakening shrinks capacity),
+ * then applies magic/atout effects targeting `factor` (R-1.38: haste lowers, slowness
+ * raises). The result is rounded and floored at `minSpeedFactor`.
+ */
+export function effectiveSpeedFactor(
+  actor: Combatant,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): number {
+  const loadedBase = actor.speedFactor + encumbrancePenalty(actor, config);
+  const effects = actor.activeEffects ?? [];
+
+  if (effects.length === 0) {
+    return Math.max(config.combat.minSpeedFactor, loadedBase);
+  }
+
+  const modified = effectiveValue(loadedBase, 'factor', undefined, effects, {});
+
+  return Math.max(config.combat.minSpeedFactor, Math.round(modified));
+}
+
+function encumbrancePenalty(actor: Combatant, config: RulesConfig): number {
+  const carried = actor.carriedWeightKg;
+
+  if (carried === undefined || carried <= 0) {
+    return 0;
+  }
+
+  const capacity = actor.attributes.strength * config.combat.encumbranceKgPerStrength;
+  const excess = Math.max(0, carried - capacity);
+
+  return Math.ceil(excess / config.combat.encumbranceKgPerStep);
 }
 
 function randomIntegerForResolution(options: CombatResolutionOptions): RandomInteger {
