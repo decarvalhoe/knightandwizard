@@ -220,13 +220,15 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
               icon={<RotateCcw aria-hidden="true" className="size-4" />}
               label="Rollback"
               onClick={() => {
-                void runPersistedAction('rollback', async (slug) =>
-                  requestPersistedRollback(slug, {
+                void runPersistedAction('rollback', async (slug) => {
+                  await requestPersistedRollback(slug, {
                     actorId: 'gm',
                     reason: 'Correction demandee par le MJ',
                     targetSequence: effectiveRollbackSequence
-                  })
-                );
+                  });
+                  // On re-lit le snapshot complet : le journal doit afficher le
+                  // marqueur de rollback, pas la projection revertie qui le masque.
+                });
               }}
             />
           </div>

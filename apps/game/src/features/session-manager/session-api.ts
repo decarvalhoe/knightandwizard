@@ -55,6 +55,19 @@ export function createPersistedSessionPayload(slug: string): CreatePersistedSess
 
 export function toSessionManagerState(snapshot: PersistedSessionSnapshot): SessionManagerState {
   if (snapshot.state) {
+    // Le "Journal canonique" est le log d'evenements immuable. Apres un rollback,
+    // le serveur renvoie une projection revertie dans `state` (evenements tronques),
+    // mais le journal doit toujours montrer l'historique complet -- y compris le
+    // marqueur de rollback que la projection exclut justement. On conserve donc les
+    // scenes/decisions/statut projetes et on restaure le log complet depuis `events`.
+    const fullEvents = Array.isArray(snapshot.events)
+      ? snapshot.events.map(toSessionEvent)
+      : undefined;
+
+    if (fullEvents && fullEvents.length > snapshot.state.events.length) {
+      return { ...snapshot.state, events: fullEvents };
+    }
+
     return snapshot.state;
   }
 
