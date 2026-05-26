@@ -12,7 +12,7 @@ import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
 export const COMBAT_ROUND_LENGTH_DT = DEFAULT_RULES_CONFIG.combat.roundLengthDT;
 
 export type TimelineDirection = '+' | '-' | '';
-export type CombatActionType = 'attack' | 'defense' | 'spell' | 'move' | 'wait';
+export type CombatActionType = 'attack' | 'defense' | 'spell' | 'move' | 'wait' | 'reload' | 'aim';
 export type CombatStatusId = 'bleeding' | 'stunned' | 'unconscious' | 'dead' | string;
 
 export interface CombatAttributes {
@@ -79,7 +79,25 @@ export interface WaitAction {
   costDT?: number;
 }
 
-export type CombatAction = AttackAction | DefenseAction | SpellAction | MoveAction | WaitAction;
+/** R-9.3 — Ballistic preparation steps; each takes the actor's speed factor in DT. */
+export interface ReloadAction {
+  type: 'reload';
+  costDT?: number;
+}
+
+export interface AimAction {
+  type: 'aim';
+  costDT?: number;
+}
+
+export type CombatAction =
+  | AttackAction
+  | DefenseAction
+  | SpellAction
+  | MoveAction
+  | WaitAction
+  | ReloadAction
+  | AimAction;
 
 export type CombatDamageBreakdown = CombatDamageResult;
 
@@ -101,6 +119,7 @@ export interface Combatant {
 export interface CombatEvent {
   type:
     | 'action_resolved'
+    | 'action_interrupted'
     | 'attack_resolved'
     | 'damage_applied'
     | 'status_applied'
@@ -329,6 +348,51 @@ export function applyStatus(
       ]
     },
     nextTarget
+  );
+}
+
+export type InterruptOutcome = 'restart' | 'release';
+
+/**
+ * R-9.4 — Interrupts a combatant's in-progress action. The DT already invested
+ * since declaration are LOST (no partial benefit). With `release` the actor is
+ * freed at the current DT; with `restart` it re-attempts the same action and pays
+ * its full speed-factor cost again from now. Spell energy loss (R-9.31) applies
+ * once energy is modeled.
+ */
+export function interruptCombatant(
+  state: CombatState,
+  combatantId: string,
+  outcome: InterruptOutcome = 'release'
+): CombatState {
+  const target = findCombatant(state, combatantId);
+  const interruptedAction = target.pendingAction;
+  const cost = interruptedAction ? actionCostDT(target, interruptedAction) : 0;
+  const remaining = Math.max(0, target.nextActionAt - state.currentDT);
+  const lostDT = Math.max(0, cost - remaining);
+  const restart = outcome === 'restart' && interruptedAction !== undefined;
+  const next: Combatant = {
+    ...target,
+    nextActionAt: restart ? state.currentDT + cost : state.currentDT,
+    pendingAction: restart ? interruptedAction : undefined
+  };
+
+  return replaceCombatant(
+    {
+      ...state,
+      log: [
+        ...state.log,
+        {
+          type: 'action_interrupted',
+          atDT: state.currentDT,
+          actorId: combatantId,
+          actionType: interruptedAction?.type,
+          costDT: lostDT,
+          nextActionAt: next.nextActionAt
+        }
+      ]
+    },
+    next
   );
 }
 

@@ -7,9 +7,11 @@ import {
   Hourglass,
   Minus,
   Plus,
+  RotateCcw,
   Shield,
   Sparkles,
   Swords,
+  Target,
   Trash2,
   UserPlus
 } from 'lucide-react';
@@ -56,7 +58,9 @@ const actionIcons: Record<CombatActionType, typeof Swords> = {
   defense: Shield,
   move: Footprints,
   spell: Sparkles,
-  wait: Hourglass
+  wait: Hourglass,
+  reload: RotateCcw,
+  aim: Target
 };
 
 const actionLabels: Record<CombatActionType, string> = {
@@ -64,7 +68,9 @@ const actionLabels: Record<CombatActionType, string> = {
   defense: 'Défense',
   move: 'Mouvement',
   spell: 'Sort',
-  wait: 'Attente'
+  wait: 'Attente',
+  reload: 'Recharge',
+  aim: 'Visée'
 };
 
 interface CombatTrackerProps {

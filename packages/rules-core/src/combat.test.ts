@@ -6,6 +6,7 @@ import {
   applyStatus,
   createCombatState,
   getCyclicDT,
+  interruptCombatant,
   resolveNextAction,
   resolveStaminaDamage,
   type AttackAction
@@ -483,3 +484,48 @@ function scriptedRolls(values: number[]) {
     return value;
   };
 }
+
+describe('combat interruptions (R-9.4)', () => {
+  it('releases an interrupted actor at the current DT and loses the elapsed DT', () => {
+    const base = addCombatant(
+      createCombatState(1),
+      combatant({ id: 'archer', speedFactor: 7, reflexes: 3 })
+    );
+    const inProgress = {
+      ...base,
+      currentDT: 4,
+      timeline: base.timeline.map((entry) =>
+        entry.id === 'archer' ? { ...entry, pendingAction: { type: 'aim' as const } } : entry
+      )
+    };
+
+    const result = interruptCombatant(inProgress, 'archer', 'release');
+    const archer = result.timeline.find((entry) => entry.id === 'archer');
+
+    expect(archer?.nextActionAt).toBe(4);
+    expect(archer?.pendingAction).toBeUndefined();
+    const event = result.log.at(-1);
+    expect(event?.type).toBe('action_interrupted');
+    expect(event?.costDT).toBe(3);
+  });
+
+  it('restarts the same action paying the full speed factor again', () => {
+    const base = addCombatant(
+      createCombatState(1),
+      combatant({ id: 'archer', speedFactor: 7, reflexes: 3 })
+    );
+    const inProgress = {
+      ...base,
+      currentDT: 4,
+      timeline: base.timeline.map((entry) =>
+        entry.id === 'archer' ? { ...entry, pendingAction: { type: 'aim' as const } } : entry
+      )
+    };
+
+    const result = interruptCombatant(inProgress, 'archer', 'restart');
+    const archer = result.timeline.find((entry) => entry.id === 'archer');
+
+    expect(archer?.nextActionAt).toBe(11);
+    expect(archer?.pendingAction).toEqual({ type: 'aim' });
+  });
+});

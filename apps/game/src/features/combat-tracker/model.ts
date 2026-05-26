@@ -72,7 +72,9 @@ const actionLabels: Record<CombatActionType, string> = {
   defense: 'défense',
   move: 'déplacement',
   spell: 'sort',
-  wait: 'attente'
+  wait: 'attente',
+  reload: 'recharge',
+  aim: 'visée'
 };
 
 const statusLabels: Record<string, string> = {
