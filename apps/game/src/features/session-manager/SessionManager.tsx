@@ -65,7 +65,9 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
       if (outcome.kind === 'applied') {
         setState(outcome.state);
       } else if (outcome.kind === 'gap') {
-        void fetchPersistedSessionState(stateRef.current.slug).then(setState).catch(() => {});
+        void fetchPersistedSessionState(stateRef.current.slug)
+          .then(setState)
+          .catch(() => {});
       }
     }
   });
@@ -117,10 +119,7 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
             <p className="mt-2 text-sm font-medium text-ink/62">
               {modeLabel(state.mode)} · {statusLabel(state.status)}
             </p>
-            <p
-              className="mt-1 text-xs font-semibold text-forest"
-              data-testid="session-live-status"
-            >
+            <p className="mt-1 text-xs font-semibold text-forest" data-testid="session-live-status">
               {liveStatus === 'online'
                 ? `En direct · ${liveConnections} connecte${liveConnections > 1 ? 's' : ''}`
                 : 'Hors ligne'}

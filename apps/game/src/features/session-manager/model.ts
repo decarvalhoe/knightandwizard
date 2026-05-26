@@ -236,10 +236,7 @@ export function applyLiveSessionEvent(
   state: SessionManagerState,
   event: SessionEvent
 ): LiveSessionEventOutcome {
-  const maxSequence = state.events.reduce(
-    (max, current) => Math.max(max, current.sequence),
-    0
-  );
+  const maxSequence = state.events.reduce((max, current) => Math.max(max, current.sequence), 0);
 
   if (event.sequence <= maxSequence) {
     return { kind: 'duplicate' };
