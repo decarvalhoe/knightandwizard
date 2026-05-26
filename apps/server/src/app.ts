@@ -16,6 +16,10 @@ export function buildApp(options: FastifyServerOptions = {}): FastifyInstance {
     reply.header('access-control-allow-origin', origin);
     reply.header('access-control-allow-methods', 'GET,PUT,POST,OPTIONS');
     reply.header('access-control-allow-headers', 'content-type,authorization');
+
+    if (request.method === 'OPTIONS') {
+      return reply.code(204).send();
+    }
   });
 
   app.register(registerCatalogRoutes);
