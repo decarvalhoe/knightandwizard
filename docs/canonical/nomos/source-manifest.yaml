@@ -20602,6 +20602,20 @@ sources:
       - vector_index
       - citation_internal
     notes: Project documentation source.
+  - id: DOCS-PLAN-RESUME-COMBAT
+    path: docs/plan/RESUME-COMBAT.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: bfe0d7566d6870a4ca1e093a55f2c817cc5767cac35fd73f54f099851d5afd1b
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-PLAN-ROADMAP
     path: docs/plan/ROADMAP.md
     type: markdown

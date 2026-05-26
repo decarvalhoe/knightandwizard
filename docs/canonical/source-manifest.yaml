@@ -13169,6 +13169,15 @@ sources:
     domains: ["project-governance"]
     contains: ["project_documentation"]
     notes: "Project documentation source."
+  - id: "docs-plan-resume-combat"
+    path: "docs/plan/RESUME-COMBAT.md"
+    sha256: "bfe0d7566d6870a4ca1e093a55f2c817cc5767cac35fd73f54f099851d5afd1b"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-plan-roadmap"
     path: "docs/plan/ROADMAP.md"
     sha256: "8fd4b914b8dd497ba6744744b1a4f87a09c6528ab2bfefd44b8ae499eaa25d12"
