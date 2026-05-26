@@ -19,6 +19,7 @@
     "knowledge:dry-run": "tsx src/knowledge/dry-run.ts"
   },
   "dependencies": {
+    "@fastify/websocket": "^11.2.0",
     "@knightandwizard/catalogs": "workspace:*",
     "@knightandwizard/rules-core": "workspace:*",
     "@mastra/core": "^1.29.1",

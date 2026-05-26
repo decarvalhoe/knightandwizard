@@ -4,6 +4,7 @@ import { registerCharacterDraftRoutes } from './routes/character-drafts.js';
 import { registerGameMasterRoutes } from './routes/game-master.js';
 import { registerHealthRoute } from './routes/health.js';
 import { registerReadyRoute } from './routes/ready.js';
+import { registerSessionLiveRoutes } from './routes/sessions-live.js';
 import { registerSessionRoutes } from './routes/sessions.js';
 import { registerTrpcRoutes } from './trpc/fastify.js';
 
@@ -27,6 +28,7 @@ export function buildApp(options: FastifyServerOptions = {}): FastifyInstance {
   app.register(registerGameMasterRoutes);
   app.register(registerHealthRoute);
   app.register(registerReadyRoute);
+  app.register(registerSessionLiveRoutes);
   app.register(registerSessionRoutes);
   app.register(registerTrpcRoutes);
 
