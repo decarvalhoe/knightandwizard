@@ -140,3 +140,54 @@ surprise (R-9.39), désengagement (R-9.38), tactiques de groupe (R-9.40), encoda
 
 - `docs/canonical/mecaniques-transversales.md` déclare la chaîne dégâts/défense « ABSENT » → **faux**
   désormais (`combat-damage.ts` l'implémente). Resynchroniser.
+
+## Loi UX transverse — « sortie explicite + voix »
+
+> **Toute mécanique qui produit un résultat émet (1) une sortie explicite typée ET (2) une ligne
+> de voix in-world.** À appliquer **systématiquement** : jet de dé, zone touchée, critique/D100,
+> chaque étape d'atténuation, application de statut, etc. La donnée sert le moteur ; la voix sert
+> l'immersion. (Directive propriétaire — saisir toutes les opportunités de ce type.)
+
+## Règles provisoires 🟡 (validées propriétaire, à formaliser en canon)
+
+> Statut **🟡 à valider** : actées pour l'implémentation, mais **non figées en 🟢**. À formaliser en
+> unités canoniques **R-9.45 (allonge)** et **R-9.46 (table des touches provisoire)** dans
+> `docs/rules/09-combat.md` (avec `ambiguity_ref`), et — pour la table — à **remplacer/confirmer par
+> le scan du rulebook papier** (OCR). Tracées ici pour ne pas les perdre.
+
+### R-9.46 (provisoire) — Table des Touches reconstruite 🟡
+
+Reconstruction depuis R-9.15 (effets de zone) + les 15 zones de `protections.yaml`, règle R-9.21/R-1.35
+« plus le D100 est haut, plus la zone est vitale ». **Sortie explicite** `{zone, damage_multiplier, allows_endurance}` **+ voix** par entrée. Tri par létalité : `×2 non endurable` (gorge) > `endurance interdite` (parties) > `×2 endurable` (tête).
+
+| D100  | Zone                 | ×mult | Endurance | Voix                                                       |
+| ----- | -------------------- | ----- | --------- | ---------------------------------------------------------- |
+| 01–04 | pied                 | 1     | oui       | « Au pied. Humiliant, rarement décisif. »                  |
+| 05–11 | bas_jambe            | 1     | oui       | « Au tibia — il dansera moins. »                           |
+| 12–14 | genou                | 1     | oui       | « Au genou. Ça lâche. »                                    |
+| 15–24 | haut_jambe           | 1     | oui       | « À la cuisse ; s'il s'en tire, il boitera. »              |
+| 25–29 | main                 | 1     | oui       | « À la main. Tenir son arme devient une opinion. »         |
+| 30–36 | avant_bras           | 1     | oui       | « À l'avant-bras. La parade s'en souviendra. »             |
+| 37–39 | coude                | 1     | oui       | « Au coude. Articulation contrariée. »                     |
+| 40–47 | haut_bras            | 1     | oui       | « Au bras. Le geste perd de son ampleur. »                 |
+| 48–51 | epaule               | 1     | oui       | « À l'épaule. Lever le bras devient négociable. »          |
+| 52–63 | ventre_bas_dos       | 1     | oui       | « En plein ventre. Le genre de coup dont on se souvient. » |
+| 64–75 | thorax_dos           | 1     | oui       | « En pleine poitrine. »                                    |
+| 76–82 | haut_thorax_haut_dos | 1     | oui       | « Haut du buste, près de ce qui compte. »                  |
+| 83–88 | tete                 | 2     | oui       | « En plein crâne. »                                        |
+| 89–92 | parties_genitales    | 1     | **non**   | « …là. Pas un mot de plus. »                               |
+| 93–00 | gorge_nuque          | 2     | **non**   | « À la gorge. Le sang n'attend pas. »                      |
+
+> `yeux` (×2, endurance interdite) = sous-zone de **précision** (action précise R-1.12), hors tirage
+> aléatoire. Voix : « Dans l'œil. Il ne verra pas venir le suivant. »
+
+### R-9.45 (provisoire) — Allonge de mêlée 🟡
+
+Nouveau champ `reach` (allonge) dans `armes.yaml` : **0** corps-à-corps serré (dague, couteau, poing) ·
+**1** standard (épée, hache, masse) · **2** longue (lance, hallebarde, pique). Défaut = 1.
+
+**Règle** : attaquer un adversaire à allonge **supérieure** ajoute **+1 difficulté par cran d'écart**
+sur **l'action offensive choisie par l'assaillant** (l'action _est_ l'attaque décidée — **pas
+d'action perdue, pas de double peine**). L'arme la plus longue frappe à distance de mêlée sans malus.
+**Sortie explicite** : `reach_gap` + le delta de difficulté ; **voix** : « Trop court — il faut entrer
+dans la garde. »
