@@ -87,7 +87,7 @@ export function toSessionManagerState(snapshot: PersistedSessionSnapshot): Sessi
   });
 }
 
-function toSessionEvent(event: SessionEvent | PersistedSessionEvent): SessionEvent {
+export function toSessionEvent(event: SessionEvent | PersistedSessionEvent): SessionEvent {
   if ('type' in event) {
     return event;
   }

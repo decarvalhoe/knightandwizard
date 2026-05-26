@@ -221,6 +221,34 @@ export function requestRollbackFromEvent(
   );
 }
 
+export type LiveSessionEventOutcome =
+  | { kind: 'applied'; state: SessionManagerState }
+  | { kind: 'duplicate' }
+  | { kind: 'gap' };
+
+/**
+ * Applies a single live (broadcast) event to the local session state.
+ * The immutable journal grows strictly by `sequence`: an already-known sequence
+ * is a no-op (idempotent dedupe) and a forward gap signals the caller to
+ * resynchronise from the authoritative GET /sessions/:slug.
+ */
+export function applyLiveSessionEvent(
+  state: SessionManagerState,
+  event: SessionEvent
+): LiveSessionEventOutcome {
+  const maxSequence = state.events.reduce((max, current) => Math.max(max, current.sequence), 0);
+
+  if (event.sequence <= maxSequence) {
+    return { kind: 'duplicate' };
+  }
+
+  if (event.sequence === maxSequence + 1) {
+    return { kind: 'applied', state: { ...state, events: [...state.events, event] } };
+  }
+
+  return { kind: 'gap' };
+}
+
 function getActiveScene(state: SessionManagerState): SessionScene | undefined {
   return state.scenes.find((scene) => scene.status === 'active') ?? state.scenes[0];
 }
