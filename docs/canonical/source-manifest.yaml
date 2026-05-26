@@ -13133,6 +13133,15 @@ sources:
     domains: ["project-governance"]
     contains: ["project_documentation"]
     notes: "Project documentation source."
+  - id: "docs-plan-combat-implementation"
+    path: "docs/plan/COMBAT-IMPLEMENTATION.md"
+    sha256: "07b1aaaa1eb88597b0d8915a000248919ed4412da59f09d6c8aec83d173432d4"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-plan-infra-devlab-plan"
     path: "docs/plan/INFRA-DEVLAB-PLAN.md"
     sha256: "da2a8d62728f2e4fc83ff65f732b49ae3c06d234e3f7eb33f3e5b60899beb8d2"
