@@ -13,9 +13,9 @@ import {
   Users,
   XCircle
 } from 'lucide-react';
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { trpc } from '@/lib/trpc';
-import { buildSessionManagerView, type SessionManagerState } from './model';
+import { applyLiveSessionEvent, buildSessionManagerView, type SessionManagerState } from './model';
 import {
   appendDiceRollToSession,
   appendPersistedSessionEvent,
@@ -24,6 +24,8 @@ import {
   requestPersistedRollback,
   resolvePersistedGmDecision
 } from './persistence';
+import { toSessionEvent } from './session-api';
+import { useSessionLiveFeed } from './useSessionLiveFeed';
 
 const eventToneClasses = {
   audit: 'border-wine/25 bg-wine/8 text-wine',
@@ -52,6 +54,21 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
     view.rollbackTargets[0]?.sequence.toString() ?? ''
   );
   const busy = pendingAction !== null;
+
+  const stateRef = useRef(state);
+  stateRef.current = state;
+
+  const { connections: liveConnections, status: liveStatus } = useSessionLiveFeed(state.slug, {
+    onEvent: (persisted) => {
+      const outcome = applyLiveSessionEvent(stateRef.current, toSessionEvent(persisted));
+
+      if (outcome.kind === 'applied') {
+        setState(outcome.state);
+      } else if (outcome.kind === 'gap') {
+        void fetchPersistedSessionState(stateRef.current.slug).then(setState).catch(() => {});
+      }
+    }
+  });
 
   const effectiveRollbackSequence =
     rollbackSequence.length > 0
@@ -99,6 +116,14 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
             <h1 className="mt-1 text-3xl font-semibold text-ink">{state.title}</h1>
             <p className="mt-2 text-sm font-medium text-ink/62">
               {modeLabel(state.mode)} · {statusLabel(state.status)}
+            </p>
+            <p
+              className="mt-1 text-xs font-semibold text-forest"
+              data-testid="session-live-status"
+            >
+              {liveStatus === 'online'
+                ? `En direct · ${liveConnections} connecte${liveConnections > 1 ? 's' : ''}`
+                : 'Hors ligne'}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 xl:grid-cols-2">

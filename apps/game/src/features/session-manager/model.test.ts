@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { SessionPlayer, SessionScene } from '@knightandwizard/rules-core';
 import {
+  applyLiveSessionEvent,
   buildSessionManagerView,
   createSessionManagerState,
   recordSessionEvent,
@@ -210,3 +211,61 @@ function sampleScenes(): SessionScene[] {
     }
   ];
 }
+
+describe('applyLiveSessionEvent', () => {
+  const base = createSessionManagerState({
+    events: [
+      {
+        actorId: 'gm',
+        createdAt: '2026-04-30T10:00:00.000Z',
+        id: 'event-1',
+        payload: { location: 'Porte nord' },
+        sequence: 1,
+        type: 'scene_opened'
+      }
+    ]
+  });
+
+  it('appends the next sequential event to the immutable journal', () => {
+    const outcome = applyLiveSessionEvent(base, {
+      actorId: 'aveline',
+      createdAt: '2026-04-30T10:01:00.000Z',
+      id: 'event-2',
+      payload: { text: 'Aveline avance.' },
+      sequence: 2,
+      type: 'player_action'
+    });
+
+    expect(outcome.kind).toBe('applied');
+
+    if (outcome.kind === 'applied') {
+      expect(outcome.state.events.map((event) => event.sequence)).toEqual([1, 2]);
+    }
+  });
+
+  it('ignores an already-known sequence (idempotent dedupe)', () => {
+    const outcome = applyLiveSessionEvent(base, {
+      actorId: 'gm',
+      createdAt: '2026-04-30T10:00:00.000Z',
+      id: 'event-1',
+      payload: { location: 'Porte nord' },
+      sequence: 1,
+      type: 'scene_opened'
+    });
+
+    expect(outcome.kind).toBe('duplicate');
+  });
+
+  it('signals a gap when an event skips ahead, so the caller resyncs', () => {
+    const outcome = applyLiveSessionEvent(base, {
+      actorId: 'gm',
+      createdAt: '2026-04-30T10:05:00.000Z',
+      id: 'event-5',
+      payload: {},
+      sequence: 5,
+      type: 'dice_roll'
+    });
+
+    expect(outcome.kind).toBe('gap');
+  });
+});

@@ -25,6 +25,11 @@ export function getClientApiBaseUrl(): string {
   return process.env.NEXT_PUBLIC_API_BASE_URL ?? DEFAULT_API_BASE_URL;
 }
 
+/** Same origin as the REST API, but over the WebSocket scheme (ws/wss). */
+export function getClientWsBaseUrl(): string {
+  return getClientApiBaseUrl().replace(/^http/i, 'ws');
+}
+
 export async function getApiHealth(): Promise<ApiHealthStatus> {
   const baseUrl = getApiBaseUrl();
 
