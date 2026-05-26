@@ -20546,6 +20546,20 @@ sources:
       - vector_index
       - citation_internal
     notes: Project documentation source.
+  - id: DOCS-PLAN-COMBAT-IMPLEMENTATION
+    path: docs/plan/COMBAT-IMPLEMENTATION.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 07b1aaaa1eb88597b0d8915a000248919ed4412da59f09d6c8aec83d173432d4
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-PLAN-INFRA-DEVLAB-PLAN
     path: docs/plan/INFRA-DEVLAB-PLAN.md
     type: markdown

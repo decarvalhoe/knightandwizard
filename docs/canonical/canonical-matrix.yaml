@@ -267193,6 +267193,42 @@ units:
     tests:
       status: not_applicable
       evidence: "Source document only."
+  - unit_id: "source:docs-plan-combat-implementation"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/plan/COMBAT-IMPLEMENTATION.md"
+    status: covered
+    sources:
+      - path: "docs/plan/COMBAT-IMPLEMENTATION.md"
+        ref: "docs/plan/COMBAT-IMPLEMENTATION.md"
+        sha256: "07b1aaaa1eb88597b0d8915a000248919ed4412da59f09d6c8aec83d173432d4"
+    business_rule:
+      summary: "docs/plan/COMBAT-IMPLEMENTATION.md from docs/plan/COMBAT-IMPLEMENTATION.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
   - unit_id: "source:docs-plan-infra-devlab-plan"
     unit_type: "source_document"
     domain: "project-governance"
