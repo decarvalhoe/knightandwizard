@@ -129,12 +129,14 @@ export function CombatTracker({
 
     void trpc.combat.resolveAction
       .mutate({ state })
-      .then(async (result) => {
-        await appendCombatResolutionToSession(sessionSlug, {
+      .then((result) => {
+        setState(result.state);
+        void appendCombatResolutionToSession(sessionSlug, {
           actorId: 'gm',
           result: { ...result }
+        }).catch(() => {
+          // Journal append is best-effort; never block the authoritative result render.
         });
-        setState(result.state);
       })
       .catch((error: unknown) => {
         setResolveError(error instanceof Error ? error.message : 'Résolution impossible');
