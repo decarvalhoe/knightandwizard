@@ -72527,11 +72527,7 @@ units:
       docs/rules/01-resolution.md.
     status: partial
     gaps:
-      - 'relational_db: Canonical relational tables/import evidence pending.'
-      - 'rules_core: Rules-core behavior evidence pending or must be linked.'
-      - 'api: Downstream API evidence pending.'
       - 'ui: UI exposure evidence pending.'
-      - 'tests: Automated coverage evidence pending.'
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: R-1-39
@@ -75104,11 +75100,7 @@ units:
       docs/rules/02-attributs.md.
     status: partial
     gaps:
-      - 'relational_db: Canonical relational tables/import evidence pending.'
-      - 'rules_core: Rules-core behavior evidence pending or must be linked.'
-      - 'api: Downstream API evidence pending.'
       - 'ui: UI exposure evidence pending.'
-      - 'tests: Automated coverage evidence pending.'
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: R-2-19
@@ -136163,7 +136155,7 @@ units:
     source_refs:
       - source_id: DOCS-PLAN-COMBAT-IMPLEMENTATION
         locator: docs/plan/COMBAT-IMPLEMENTATION.md
-        hash: sha256:383fa562c8d9a2198836081c0f8054d33e1e5d6b68e52c25b594e905bb67d011
+        hash: sha256:44189d3739a8bc526fa9f282cc1b8e36d448fccba9ccb9997fd4f3009180e693
     business_rule: docs/plan/COMBAT-IMPLEMENTATION.md from docs/plan/COMBAT-IMPLEMENTATION.md.
     status: partial
     gaps:

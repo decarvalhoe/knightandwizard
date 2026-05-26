@@ -141,3 +141,43 @@ R-3.5:
       - 'apps/server/src/routes/catalogs.test.ts:25'
       - 'apps/game/src/features/character-creation/model.test.ts:20'
       - 'apps/game/src/features/character-creation/model.test.ts:120'
+
+R-1.38:
+  ambiguity_ref: null
+  rules_core:
+    status: covered
+    evidence: 'packages/rules-core/src/combat.ts effectiveSpeedFactor feeds the loaded base speed factor through effects.ts computeEffectiveModifiers on the "factor" target, so magic (haste/slowness) and atouts modify the action delay; the result is rounded and floored at combat.minSpeedFactor.'
+    files:
+      - 'packages/rules-core/src/combat.ts'
+      - 'packages/rules-core/src/effects.ts'
+    tests:
+      - 'packages/rules-core/src/combat.test.ts'
+  relational_db:
+    status: not_applicable
+    evidence: 'Speed-factor modifiers are derived at runtime from a combatant active effects; there is no dedicated relational projection of the modifier.'
+  api:
+    status: not_applicable
+    evidence: 'No dedicated endpoint; effect-modified scheduling is computed by rules-core and surfaced through session/combat flows.'
+  tests:
+    status: covered
+    evidence: 'packages/rules-core/src/combat.test.ts covers haste lowering and slowness raising the effective factor via factor-target effects, including the minimum floor.'
+
+R-2.18:
+  ambiguity_ref: null
+  rules_core:
+    status: covered
+    evidence: 'packages/rules-core/src/combat.ts encumbrancePenalty adds +1 DT per full combat.encumbranceKgPerStep kg carried above strength * combat.encumbranceKgPerStrength, using the current Force (so weakening shrinks capacity); effectiveSpeedFactor applies it to scheduling and initial timeline placement.'
+    files:
+      - 'packages/rules-core/src/combat.ts'
+      - 'packages/rules-core/src/rules-config.ts'
+    tests:
+      - 'packages/rules-core/src/combat.test.ts'
+  relational_db:
+    status: not_applicable
+    evidence: 'Encumbrance is a runtime scheduling computation; carried weight comes from character/equipment projections, there is no dedicated relational table for the speed-factor penalty.'
+  api:
+    status: not_applicable
+    evidence: 'No dedicated endpoint; combat scheduling is computed by rules-core and surfaced through session/combat flows.'
+  tests:
+    status: covered
+    evidence: 'packages/rules-core/src/combat.test.ts covers the +1-per-5kg-over-Force*5 penalty, the exact-threshold boundary, and Force loss shrinking capacity.'
