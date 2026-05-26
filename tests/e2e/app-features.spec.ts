@@ -262,7 +262,9 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('Aveline precise son intention.')).toBeVisible();
 
     await page.getByRole('button', { name: 'D10' }).click();
-    await expect(page.getByText('2 succes').first()).toBeVisible();
+    // Le de est resolu cote serveur (rng reel) : on verifie qu'un jet est journalise,
+    // pas un resultat aleatoire exact.
+    await expect(page.getByText(/Jet de d/).first()).toBeVisible();
 
     await page.getByRole('button', { name: 'MJ' }).click();
     await expect(page.getByText('Valider la consequence narrative').first()).toBeVisible();

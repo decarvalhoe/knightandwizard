@@ -13,15 +13,17 @@ import {
   Users,
   XCircle
 } from 'lucide-react';
-import { useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { trpc } from '@/lib/trpc';
+import { buildSessionManagerView, type SessionManagerState } from './model';
 import {
-  buildSessionManagerView,
-  recordSessionEvent,
-  requestRollbackFromEvent,
-  resolveNextPendingDecision,
-  submitGmDecisionRequest,
-  type SessionManagerState
-} from './model';
+  appendDiceRollToSession,
+  appendPersistedSessionEvent,
+  fetchPersistedSessionState,
+  queuePersistedGmDecision,
+  requestPersistedRollback,
+  resolvePersistedGmDecision
+} from './persistence';
 
 const eventToneClasses = {
   audit: 'border-wine/25 bg-wine/8 text-wine',
@@ -43,15 +45,50 @@ interface SessionManagerProps {
 
 export function SessionManager({ initialState }: Readonly<SessionManagerProps>) {
   const [state, setState] = useState(initialState);
+  const [pendingAction, setPendingAction] = useState<string | null>(null);
+  const [mutationError, setMutationError] = useState<string | null>(null);
   const view = useMemo(() => buildSessionManagerView(state), [state]);
   const [rollbackSequence, setRollbackSequence] = useState(
     view.rollbackTargets[0]?.sequence.toString() ?? ''
   );
+  const busy = pendingAction !== null;
 
   const effectiveRollbackSequence =
     rollbackSequence.length > 0
       ? Number.parseInt(rollbackSequence, 10)
       : (view.rollbackTargets[0]?.sequence ?? 0);
+
+  useEffect(() => {
+    const selectedTargetExists = view.rollbackTargets.some(
+      (target) => target.sequence.toString() === rollbackSequence
+    );
+
+    if (!selectedTargetExists) {
+      setRollbackSequence(view.rollbackTargets[0]?.sequence.toString() ?? '');
+    }
+  }, [rollbackSequence, view.rollbackTargets]);
+
+  async function runPersistedAction(
+    action: string,
+    mutation: (slug: string) => Promise<SessionManagerState | undefined | void>
+  ) {
+    if (pendingAction !== null) {
+      return;
+    }
+
+    const slug = state.slug;
+    setPendingAction(action);
+    setMutationError(null);
+
+    try {
+      const nextState = await mutation(slug);
+      setState(nextState ?? (await fetchPersistedSessionState(slug)));
+    } catch (error: unknown) {
+      setMutationError(error instanceof Error ? error.message : 'Journal de session indisponible');
+    } finally {
+      setPendingAction(null);
+    }
+  }
 
   return (
     <div className="grid gap-5 xl:grid-cols-[0.95fr_1.45fr]">
@@ -130,55 +167,76 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
           </div>
           <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
             <ActionButton
+              disabled={busy}
               icon={<ScrollText aria-hidden="true" className="size-4" />}
               label="RP"
-              onClick={() =>
-                setState((current) =>
-                  recordSessionEvent(current, {
+              onClick={() => {
+                void runPersistedAction('player-action', async (slug) => {
+                  await appendPersistedSessionEvent(slug, {
                     actorId: 'aveline',
-                    payload: { text: 'Aveline precise son intention.' },
-                    type: 'player_action'
-                  })
-                )
-              }
+                    eventType: 'player_action',
+                    payload: { text: 'Aveline precise son intention.' }
+                  });
+                });
+              }}
             />
             <ActionButton
+              disabled={busy}
               icon={<Dice5 aria-hidden="true" className="size-4" />}
               label="D10"
-              onClick={() =>
-                setState((current) =>
-                  recordSessionEvent(current, {
+              onClick={() => {
+                void runPersistedAction('dice-roll', async (slug) => {
+                  const result = await trpc.dice.roll.mutate({
+                    difficulty: 7,
+                    pool: 2,
+                    reason: 'session-manager'
+                  });
+
+                  await appendDiceRollToSession(slug, {
                     actorId: 'aveline',
-                    payload: { difficulty: 7, successes: 2 },
-                    type: 'dice_roll'
-                  })
-                )
-              }
+                    result: { ...result }
+                  });
+                });
+              }}
             />
             <ActionButton
+              disabled={busy}
               icon={<ShieldAlert aria-hidden="true" className="size-4" />}
               label="MJ"
-              onClick={() =>
-                setState((current) =>
-                  submitGmDecisionRequest(current, 'Valider la consequence narrative')
-                )
-              }
+              onClick={() => {
+                void runPersistedAction('gm-decision', async (slug) => {
+                  await queuePersistedGmDecision(slug, {
+                    assignedTo: 'human_gm',
+                    payload: { source: 'session-manager' },
+                    priority: 'high',
+                    requestedBy: 'llm',
+                    title: 'Valider la consequence narrative'
+                  });
+                });
+              }}
             />
             <ActionButton
-              disabled={view.rollbackTargets.length === 0}
+              disabled={busy || view.rollbackTargets.length === 0}
               icon={<RotateCcw aria-hidden="true" className="size-4" />}
               label="Rollback"
-              onClick={() =>
-                setState((current) =>
-                  requestRollbackFromEvent(
-                    current,
-                    effectiveRollbackSequence,
-                    'Correction demandee par le MJ'
-                  )
-                )
-              }
+              onClick={() => {
+                void runPersistedAction('rollback', async (slug) => {
+                  await requestPersistedRollback(slug, {
+                    actorId: 'gm',
+                    reason: 'Correction demandee par le MJ',
+                    targetSequence: effectiveRollbackSequence
+                  });
+                  // On re-lit le snapshot complet : le journal doit afficher le
+                  // marqueur de rollback, pas la projection revertie qui le masque.
+                });
+              }}
             />
           </div>
+          {mutationError ? (
+            <p className="mt-3 rounded-md border border-wine/20 bg-wine/8 px-3 py-2 text-sm font-semibold text-wine">
+              {mutationError}
+            </p>
+          ) : null}
         </section>
       </section>
 
@@ -191,28 +249,52 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
             </div>
             <div className="flex gap-2">
               <IconButton
-                disabled={view.decisionQueue.length === 0}
+                disabled={busy || view.decisionQueue.length === 0}
                 label="Approuver"
-                onClick={() =>
-                  setState((current) =>
-                    resolveNextPendingDecision(current, 'approved', {
-                      ruling: 'Decision validee par le MJ'
-                    })
-                  )
-                }
+                onClick={() => {
+                  void runPersistedAction('decision-approved', async (slug) => {
+                    const decisionId = view.decisionQueue[0]?.id;
+
+                    if (!decisionId) {
+                      return undefined;
+                    }
+
+                    await resolvePersistedGmDecision(slug, decisionId, {
+                      actorId: 'gm',
+                      resolution: {
+                        ruling: 'Decision validee par le MJ'
+                      },
+                      status: 'approved'
+                    });
+
+                    return undefined;
+                  });
+                }}
               >
                 <CheckCircle2 aria-hidden="true" className="size-4" />
               </IconButton>
               <IconButton
-                disabled={view.decisionQueue.length === 0}
+                disabled={busy || view.decisionQueue.length === 0}
                 label="Rejeter"
-                onClick={() =>
-                  setState((current) =>
-                    resolveNextPendingDecision(current, 'rejected', {
-                      ruling: 'Decision refusee par le MJ'
-                    })
-                  )
-                }
+                onClick={() => {
+                  void runPersistedAction('decision-rejected', async (slug) => {
+                    const decisionId = view.decisionQueue[0]?.id;
+
+                    if (!decisionId) {
+                      return undefined;
+                    }
+
+                    await resolvePersistedGmDecision(slug, decisionId, {
+                      actorId: 'gm',
+                      resolution: {
+                        ruling: 'Decision refusee par le MJ'
+                      },
+                      status: 'rejected'
+                    });
+
+                    return undefined;
+                  });
+                }}
               >
                 <XCircle aria-hidden="true" className="size-4" />
               </IconButton>

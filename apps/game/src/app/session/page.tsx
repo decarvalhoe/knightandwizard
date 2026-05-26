@@ -1,6 +1,10 @@
 import { SessionManager } from '@/features/session-manager/SessionManager';
-import { createInitialSessionManagerState } from '@/features/session-manager/initial-state';
+import { getSessionManagerReadModel } from '@/features/session-manager/read-models';
 
-export default function SessionPage() {
-  return <SessionManager initialState={createInitialSessionManagerState()} />;
+export const dynamic = 'force-dynamic';
+
+export default async function SessionPage() {
+  const readModel = await getSessionManagerReadModel();
+
+  return <SessionManager initialState={readModel.initialState} />;
 }

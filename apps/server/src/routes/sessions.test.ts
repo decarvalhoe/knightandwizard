@@ -71,6 +71,19 @@ describe('session routes', () => {
       status: 'planned',
       title: 'Session API'
     });
+    expect(readResponse.json().state).toMatchObject({
+      events: [
+        { actorId: 'gm', type: 'scene_opened', sequence: 1 },
+        { actorId: 'aveline', type: 'dice_roll', sequence: 2 }
+      ],
+      players: [
+        { id: 'gm', name: 'MJ', role: 'human_gm' },
+        { id: 'aveline', name: 'Aveline', role: 'player' }
+      ],
+      scenes: [{ id: 'brumeval-gate', location: 'Brumeval', title: 'Porte nord' }],
+      slug,
+      title: 'Session API'
+    });
   });
 
   it('queues and resolves GM decisions with audit-friendly events', async () => {
@@ -217,20 +230,27 @@ describe('session routes', () => {
     const reverted = rollbackResponse.json().revertedState;
     // The rollback marker (seq 4) and the resolution (seq 3) are excluded.
     expect(reverted.events.map((event: { sequence: number }) => event.sequence)).toEqual([1, 2]);
+    expect(reverted.events.map((event: { type: string }) => event.type)).toEqual([
+      'scene_opened',
+      'gm_decision_requested'
+    ]);
     expect(reverted.scenes).toMatchObject([{ id: 'gate', openedAtSequence: 1 }]);
     expect(reverted.decisions).toMatchObject([{ id: decisionId, status: 'pending' }]);
     expect(reverted.decisions[0].resolvedAt).toBeUndefined();
 
     // The persisted journal still preserves the full history including the marker.
     const readResponse = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
-    expect(
-      readResponse.json().events.map((event: { eventType: string }) => event.eventType)
-    ).toEqual([
+    const readBody = readResponse.json();
+    expect(readBody.events.map((event: { eventType: string }) => event.eventType)).toEqual([
       'scene_opened',
       'gm_decision_requested',
       'gm_decision_resolved',
       'rollback_requested'
     ]);
+    expect(readBody.state.events.map((event: { sequence: number }) => event.sequence)).toEqual([
+      1, 2
+    ]);
+    expect(readBody.state.decisions).toMatchObject([{ id: decisionId, status: 'pending' }]);
   });
 
   it('records canonical entity links on events, decisions and rollback markers', async () => {

@@ -36,6 +36,7 @@ import {
   type ToastTone
 } from '@knightandwizard/ui';
 import { trpc } from '@/lib/trpc';
+import { appendCombatResolutionToSession } from '@/features/session-manager/persistence';
 
 import {
   addTrackerCombatant,
@@ -69,9 +70,14 @@ const actionLabels: Record<CombatActionType, string> = {
 interface CombatTrackerProps {
   combatantTemplates: CombatantTemplate[];
   initialState: CombatState;
+  sessionSlug?: string;
 }
 
-export function CombatTracker({ combatantTemplates, initialState }: Readonly<CombatTrackerProps>) {
+export function CombatTracker({
+  combatantTemplates,
+  initialState,
+  sessionSlug = 'brumeval'
+}: Readonly<CombatTrackerProps>) {
   const [state, setState] = useState<CombatState>(() => initialState);
   const [isResolving, setIsResolving] = useState(false);
   const [resolveError, setResolveError] = useState<string | null>(null);
@@ -125,6 +131,12 @@ export function CombatTracker({ combatantTemplates, initialState }: Readonly<Com
       .mutate({ state })
       .then((result) => {
         setState(result.state);
+        void appendCombatResolutionToSession(sessionSlug, {
+          actorId: 'gm',
+          result: { ...result }
+        }).catch(() => {
+          // Journal append is best-effort; never block the authoritative result render.
+        });
       })
       .catch((error: unknown) => {
         setResolveError(error instanceof Error ? error.message : 'Résolution impossible');

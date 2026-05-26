@@ -6,6 +6,7 @@ import {
   requestSessionRollback,
   resolveGmDecision,
   type AppendSessionEventInput,
+  type SessionAuditEntry,
   type SessionDecision,
   type SessionDecisionStatus,
   type SessionEvent,
@@ -19,6 +20,8 @@ import {
 export type SessionManagerState = SessionState;
 
 export interface CreateSessionManagerStateInput {
+  audit?: SessionAuditEntry[];
+  createdAt?: string;
   decisions?: SessionDecision[];
   events?: SessionEvent[];
   id?: string;
@@ -29,6 +32,7 @@ export interface CreateSessionManagerStateInput {
   slug?: string;
   status?: SessionState['status'];
   title?: string;
+  updatedAt?: string;
 }
 
 export interface SessionManagerMetric {
@@ -89,19 +93,19 @@ export function createSessionManagerState(
   input: CreateSessionManagerStateInput = {}
 ): SessionManagerState {
   return createSessionState({
+    audit: input.audit,
+    createdAt: input.createdAt,
     decisions: input.decisions,
     events: input.events,
-    id: input.id ?? 'session-brumeval',
-    metadata: input.metadata ?? {
-      campaign: 'Les Brumes de Valombre',
-      cadence: 'async'
-    },
+    id: input.id ?? 'session-empty',
+    metadata: input.metadata ?? {},
     mode: input.mode ?? 'digital_human_gm',
-    players: input.players ?? defaultPlayers(),
-    scenes: input.scenes ?? defaultScenes(),
-    slug: input.slug ?? 'brumeval',
-    status: input.status ?? 'active',
-    title: input.title ?? 'Brumeval'
+    players: input.players ?? [],
+    scenes: input.scenes ?? [],
+    slug: input.slug ?? 'session-empty',
+    status: input.status ?? 'planned',
+    title: input.title ?? 'Session',
+    updatedAt: input.updatedAt
   });
 }
 
@@ -308,54 +312,4 @@ function roleLabel(role: SessionPlayer['role']): string {
   }
 
   return 'Joueur';
-}
-
-function defaultPlayers(): SessionPlayer[] {
-  return [
-    {
-      connected: true,
-      id: 'gm',
-      lastSeenAt: '2026-04-30T10:00:00.000Z',
-      name: 'MJ',
-      role: 'human_gm'
-    },
-    {
-      characterId: 'aveline',
-      connected: true,
-      id: 'aveline',
-      lastSeenAt: '2026-04-30T10:02:00.000Z',
-      name: 'Aveline',
-      role: 'player'
-    },
-    {
-      characterId: 'mire',
-      connected: false,
-      id: 'mire',
-      lastSeenAt: '2026-04-29T20:20:00.000Z',
-      name: 'Mire',
-      role: 'player'
-    }
-  ];
-}
-
-function defaultScenes(): SessionScene[] {
-  return [
-    {
-      description: 'Arrivee sous la pluie, garde fatigue, tension basse.',
-      id: 'brumeval-gate',
-      location: 'Brumeval',
-      npcIds: ['guetteur', 'brigand-cache'],
-      openedAtSequence: 1,
-      status: 'active',
-      title: 'Porte nord'
-    },
-    {
-      description: 'Auberge dense, rumeurs et repos possible.',
-      id: 'auberge-corbeau',
-      location: 'Brumeval',
-      npcIds: ['aubergiste'],
-      status: 'draft',
-      title: 'Auberge du Corbeau'
-    }
-  ];
 }

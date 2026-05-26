@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import type { SessionPlayer, SessionScene } from '@knightandwizard/rules-core';
 
 import { createSessionManagerState } from '../session-manager/model.js';
 
@@ -36,7 +37,9 @@ describe('session dashboard model', () => {
           sequence: 2,
           type: 'dice_roll'
         }
-      ]
+      ],
+      players: samplePlayers(),
+      scenes: sampleScenes()
     });
 
     const view = buildSessionDashboardView(state);
@@ -76,3 +79,50 @@ describe('session dashboard model', () => {
     ]);
   });
 });
+
+function samplePlayers(): SessionPlayer[] {
+  return [
+    {
+      connected: true,
+      id: 'gm',
+      name: 'MJ',
+      role: 'human_gm'
+    },
+    {
+      characterId: 'aveline',
+      connected: true,
+      id: 'aveline',
+      name: 'Aveline',
+      role: 'player'
+    },
+    {
+      characterId: 'mire',
+      connected: false,
+      id: 'mire',
+      name: 'Mire',
+      role: 'player'
+    }
+  ];
+}
+
+function sampleScenes(): SessionScene[] {
+  return [
+    {
+      description: 'Arrivee sous la pluie, garde fatigue, tension basse.',
+      id: 'brumeval-gate',
+      location: 'Brumeval',
+      npcIds: ['guetteur', 'brigand-cache'],
+      openedAtSequence: 1,
+      status: 'active',
+      title: 'Porte nord'
+    },
+    {
+      description: 'Auberge dense, rumeurs et repos possible.',
+      id: 'auberge-corbeau',
+      location: 'Brumeval',
+      npcIds: ['aubergiste'],
+      status: 'draft',
+      title: 'Auberge du Corbeau'
+    }
+  ];
+}
