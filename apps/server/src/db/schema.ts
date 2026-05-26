@@ -11,6 +11,7 @@ import {
   uuid,
   varchar
 } from 'drizzle-orm/pg-core';
+import type { Character } from '@knightandwizard/rules-core';
 
 const vector = customType<{ data: number[] | null; driverData: string | null }>({
   dataType() {
@@ -31,6 +32,7 @@ const updatedNow = () => timestamp('updated_at', { withTimezone: true }).notNull
 export const REQUIRED_APP_TABLES = [
   'catalog_documents',
   'character_drafts',
+  'characters',
   'game_sessions',
   'session_events',
   'session_decisions',
@@ -74,6 +76,26 @@ export const characterDrafts = pgTable(
   (table) => ({
     updatedAtIdx: index('character_drafts_updated_at_idx').on(table.updatedAt),
     userIdIdx: index('character_drafts_user_id_idx').on(table.userId)
+  })
+);
+
+export const characters = pgTable(
+  'characters',
+  {
+    id: text('id').primaryKey(),
+    userId: text('user_id').notNull().default('local-dev'),
+    draftId: text('draft_id').references(() => characterDrafts.id, { onDelete: 'set null' }),
+    kind: text('kind').notNull(),
+    name: text('name').notNull(),
+    payload: jsonb('payload').$type<Character>().notNull(),
+    createdAt: now(),
+    updatedAt: updatedNow()
+  },
+  (table) => ({
+    draftIdIdx: uniqueIndex('characters_draft_id_idx').on(table.draftId),
+    kindIdx: index('characters_kind_idx').on(table.kind),
+    updatedAtIdx: index('characters_updated_at_idx').on(table.updatedAt),
+    userIdIdx: index('characters_user_id_idx').on(table.userId)
   })
 );
 

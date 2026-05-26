@@ -5,6 +5,7 @@ import { registerGameMasterRoutes } from './routes/game-master.js';
 import { registerHealthRoute } from './routes/health.js';
 import { registerReadyRoute } from './routes/ready.js';
 import { registerSessionRoutes } from './routes/sessions.js';
+import { registerTrpcRoutes } from './trpc/fastify.js';
 
 export function buildApp(options: FastifyServerOptions = {}): FastifyInstance {
   const app = Fastify(options);
@@ -15,6 +16,10 @@ export function buildApp(options: FastifyServerOptions = {}): FastifyInstance {
     reply.header('access-control-allow-origin', origin);
     reply.header('access-control-allow-methods', 'GET,PUT,POST,OPTIONS');
     reply.header('access-control-allow-headers', 'content-type,authorization');
+
+    if (request.method === 'OPTIONS') {
+      return reply.code(204).send();
+    }
   });
 
   app.register(registerCatalogRoutes);
@@ -23,6 +28,7 @@ export function buildApp(options: FastifyServerOptions = {}): FastifyInstance {
   app.register(registerHealthRoute);
   app.register(registerReadyRoute);
   app.register(registerSessionRoutes);
+  app.register(registerTrpcRoutes);
 
   return app;
 }
