@@ -136230,7 +136230,7 @@ units:
     source_refs:
       - source_id: DOCS-PLAN-MAGIC-IMPLEMENTATION
         locator: docs/plan/MAGIC-IMPLEMENTATION.md
-        hash: sha256:e90732479d4214efe28153f9e8f557088583aa0d6f71c24737261d8d269a40e5
+        hash: sha256:a34045364f88b568765462213befccd3727610899dcb5911a10699133cb745fe
     business_rule: docs/plan/MAGIC-IMPLEMENTATION.md from docs/plan/MAGIC-IMPLEMENTATION.md.
     status: partial
     gaps:
@@ -136277,6 +136277,21 @@ units:
         locator: docs/plan/PHASE-v0.4-RC.md
         hash: sha256:087d61943fef32d9ac1f6201d021f8ec1a380843beffb1c11d2438144b38540a
     business_rule: docs/plan/PHASE-v0.4-RC.md from docs/plan/PHASE-v0.4-RC.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PLAN-PROSE-SOURCE-LINKAGE
+    unit_type: catalog_entry
+    name: docs/plan/PROSE-SOURCE-LINKAGE.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PLAN-PROSE-SOURCE-LINKAGE
+        locator: docs/plan/PROSE-SOURCE-LINKAGE.md
+        hash: sha256:8cac1ea1ea4d868e16ef995c70e72f68d15dc129281cfb951372b34c10bcbd0c
+    business_rule: docs/plan/PROSE-SOURCE-LINKAGE.md from docs/plan/PROSE-SOURCE-LINKAGE.md.
     status: partial
     gaps:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
