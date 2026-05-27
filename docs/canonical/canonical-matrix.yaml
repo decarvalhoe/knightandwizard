@@ -348503,7 +348503,7 @@ units:
     sources:
       - path: "docs/plan/MAGIC-IMPLEMENTATION.md"
         ref: "docs/plan/MAGIC-IMPLEMENTATION.md"
-        sha256: "a34045364f88b568765462213befccd3727610899dcb5911a10699133cb745fe"
+        sha256: "9d73bad266b83bc08d967c87b3f11f24cea097f258de72a6d86710e283139753"
     business_rule:
       summary: "docs/plan/MAGIC-IMPLEMENTATION.md from docs/plan/MAGIC-IMPLEMENTATION.md."
       ambiguity_ref: null

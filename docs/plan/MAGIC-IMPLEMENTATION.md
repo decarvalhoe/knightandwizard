@@ -1,14 +1,15 @@
 # Suivi d'implémentation — Magie K&W (D8)
 
 > **But** : registre **exhaustif** des règles de magie (R-8.x) pour **ne perdre aucune règle** pendant
-> le build du **moteur Magie**, dont le **cœur est désormais en place** dans `rules-core` (`magic.ts` +
-> intégration `combat.ts`) ; restent l'**effet du sort** et la résolution complète. Données existantes :
+> le build du **moteur Magie**, dont le **cœur + le moteur d'effet sont en place** dans `rules-core`
+> (`magic.ts` + intégration `combat.ts` + `effect-model.ts`) ; restent la **structuration des 324 sorts**
+> (E2), le **runtime temps-double** (E3) et la **résistance multi-couches** (E4). Données existantes :
 > `spells.yaml` 324 sorts, `magic-schools.yaml` 11 écoles. Même esprit que `COMBAT-IMPLEMENTATION.md`.
 >
 > Source d'autorité : `docs/rules/08-magie.md` (R-8.x, **10/10 tranché**) + D1 (jets) + D2 R-2.11 (énergie).
 > Légende : ✅ couvert · 🟡 partiel · ❌ absent · 🆕 nouveau. Périmètre : **MVP** · **V2** · **backlog**.
 >
-> **État global : données ✅ · cœur moteur ✅** (lancement + énergie + TI/réduction + interruption/concentration, **intégrés au combat live**) · **résolution d'effet ❌** (le sort réussit mais n'applique pas encore son effet).
+> **État global : données ✅ · cœur moteur ✅** (lancement + énergie + TI/réduction + interruption/concentration, **intégrés au combat live**) · **moteur d'effet ✅** (E1 : `EffectModel` étendu `successes`/R + durées narratives ; `resolveSpell` **applique** l'effet structuré scalé par réussite, **type de dégât porté** pour E4) · structuration des **324 sorts** (E2) + **runtime temps-double** (E3) + **résistance multi-couches** (E4) à venir.
 
 ## Décisions verrouillées
 
@@ -37,21 +38,22 @@ Le cœur MVP (décisions 3-4) étant livré, l'auteur tranche le périmètre cib
 - [x] **TI** (R-8.6) : temps d'incantation en DT. → `combat.ts` `castingTimeDT` (windup planifié par `declareSpellCast`).
 - [x] **Réduction de TI** (R-8.8) : 2 énergie / DT en moins, plancher = FV du magicien. → `combat.ts` `tiReductionDT`.
 - [x] **Concentration / interruption** (R-8.7) : annulation + énergie **perdue** (réutilise R-9.4) ; action conservée = +1 difficulté / point de dégât subi pendant le TI. → `combat.ts` `declareSpellCast` + `applyDamage` (`spellConcentrationDamage`).
-- [x] **Intégration Combat** : action de sort avec **TI dans la timeline DT** ; énergie décomptée au cast. → `combat.ts` `declareSpellCast` / `resolveNextAction` (events `spell_started` / `spell_resolved`). _Reste_ : sync vitalité/énergie fiche + **application de l'effet** du sort.
+- [x] **Intégration Combat** : action de sort avec **TI dans la timeline DT** ; énergie décomptée au cast. → `combat.ts` `declareSpellCast` / `resolveNextAction` (events `spell_started` / `spell_resolved`).
+- [x] **Application de l'effet** (E1, R-8.5/R-8.15) : `resolveSpell` évalue l'`EffectModel` du sort scalé par **réussites nettes** et l'applique à la cible (dégâts/soin), **type de dégât porté** (`spellEffect.scope`). → `combat.ts` `resolveSpell` + `effect-model.ts` (`successes`, durées narratives). _Reste_ : sync vitalité/énergie fiche ; structuration des 324 sorts (E2) ; cibles non-vitalité → E3/E4.
 
 ## Registre exhaustif
 
 ### Lancement / résolution
 
-| Règle  | Objet                                                             | Périmètre        | Statut | Emplacement / écart                                  |
-| ------ | ----------------------------------------------------------------- | ---------------- | ------ | ---------------------------------------------------- |
-| R-8.5  | Pool = Int + points de sort vs difficulté (pas de compétence)     | MVP              | ✅     | `magic.ts` `resolveSpellCast`                        |
-| R-8.1  | Définition de la magie                                            | —                | ✅     | doc                                                  |
-| R-8.2  | Voie magique = engagement à vie                                   | MVP              | 🟡     | gate création (R-6.3) ; pas de moteur magie          |
-| R-8.3  | 11 écoles (couleurs §14)                                          | MVP              | ✅     | `magic-schools.yaml`                                 |
-| R-8.4  | Schéma de sort (énergie/TI/diff/portée/durée/`direct_magic`/type) | MVP              | ✅     | `spells.yaml` (324) — vérifier complétude des champs |
-| R-8.15 | Résistance magique (tag `direct_magic`)                           | MVP-résolution\* | ❌     | jet de résistance non implémenté                     |
-| R-8.19 | Jet d'aptitude brute (résistances)                                | MVP-résolution\* | ❌     | type de jet absent                                   |
+| Règle  | Objet                                                             | Périmètre        | Statut | Emplacement / écart                                                  |
+| ------ | ----------------------------------------------------------------- | ---------------- | ------ | -------------------------------------------------------------------- |
+| R-8.5  | Pool = Int + points de sort vs difficulté (pas de compétence)     | MVP              | ✅     | `magic.ts` `resolveSpellCast`                                        |
+| R-8.1  | Définition de la magie                                            | —                | ✅     | doc                                                                  |
+| R-8.2  | Voie magique = engagement à vie                                   | MVP              | 🟡     | gate création (R-6.3) ; pas de moteur magie                          |
+| R-8.3  | 11 écoles (couleurs §14)                                          | MVP              | ✅     | `magic-schools.yaml`                                                 |
+| R-8.4  | Schéma de sort (énergie/TI/diff/portée/durée/`direct_magic`/type) | MVP              | ✅     | `spells.yaml` (324) — vérifier complétude des champs                 |
+| R-8.15 | Résistance magique (tag `direct_magic`)                           | MVP-résolution\* | 🟡     | type de dégât porté (`spellEffect.scope`, E1b) ; jet `D100 ≤ %` = E4 |
+| R-8.19 | Jet d'aptitude brute (résistances)                                | MVP-résolution\* | ❌     | type de jet absent                                                   |
 
 ### Énergie
 
@@ -71,12 +73,12 @@ Le cœur MVP (décisions 3-4) étant livré, l'auteur tranche le périmètre cib
 
 ### Variantes / développement / durées / cumul
 
-| Règle  | Objet                                                         | Périmètre        | Statut | Emplacement / écart      |
-| ------ | ------------------------------------------------------------- | ---------------- | ------ | ------------------------ |
-| R-8.11 | Variantes (mineur / majeur / masse / distance)                | V2               | ❌     | sorts distincts (Q-D8.5) |
-| R-8.12 | Développement de sort (atouts magicien)                       | V2               | ❌     | —                        |
-| R-8.20 | Système de temps double (durées narratif + DT, instanciation) | MVP-durées\*     | ❌     | **transversal moteur**   |
-| Q-D8.9 | Cumul par catégorie (max + refresh par défaut)                | MVP-résolution\* | ❌     | stacking d'effets        |
+| Règle  | Objet                                                         | Périmètre        | Statut | Emplacement / écart                                                      |
+| ------ | ------------------------------------------------------------- | ---------------- | ------ | ------------------------------------------------------------------------ |
+| R-8.11 | Variantes (mineur / majeur / masse / distance)                | V2               | ❌     | sorts distincts (Q-D8.5)                                                 |
+| R-8.12 | Développement de sort (atouts magicien)                       | V2               | ❌     | —                                                                        |
+| R-8.20 | Système de temps double (durées narratif + DT, instanciation) | MVP-durées\*     | 🟡     | durées narratives modélisées (`EffectModel`, E1a) ; runtime/horloge = E3 |
+| Q-D8.9 | Cumul par catégorie (max + refresh par défaut)                | MVP-résolution\* | ❌     | stacking d'effets                                                        |
 
 ### Familier (sous-système)
 
@@ -105,9 +107,11 @@ Le cœur MVP (décisions 3-4) étant livré, l'auteur tranche le périmètre cib
 
 > Ordre recommandé : **E0 → E1 → E2 (long, lancé tôt) ∥ E3 → E4**. Chaque épic en PRs gated comme le cœur M2. R-8.19 (jet d'aptitude brute, `rollWillpowerTest`) est déjà disponible.
 
-- **E0 — Liaison sources prose ↔ éléments** (fondation transverse — voir `PROSE-SOURCE-LINKAGE.md`) : parser le **lexique** (514 entrées) + les sources prose et **lier inconditionnellement** chaque élément (sort, atout…) à sa définition canonique ; réconcilier web↔paper + rapport d'orphelins. _Dépend de : —. **Prérequis de E1 et E2** (l'audit structure depuis la prose, pas la ligne terse du grimoire)._
-- **E1 — Moteur d'effets étendu + application au cast** (rules-core) : étend `EffectModel` (variable `successes`/R + durées narratives `min/hour/day`) ; définit la forme de l'effet structuré d'un sort ; `resolveSpell` **applique** l'effet (dégâts/statut/buff/énergie) **scalé par R** sur la cible ; ~8 sorts exemplaires écrits à la main + tests. _Dépend de : —. Démarre en 1er (dé-risque le schéma avant l'audit)._
-- **E2 — Audit/structuration des 324 sorts** (catalogs + gouvernance, méthode Q-D8.2) : effet structuré + `direct_magic` + `damage_type` + type élémentaire + catégorie de cumul (Q-D8.9), **depuis la prose du lexique (E0)** et non la ligne terse, un passage par sort. _Dépend de : E0 + E1. Sous-décision à son démarrage : outillage de validation (CMS Payload vs git-native YAML + revue de PR)._
+- **E0 — Liaison sources prose ↔ éléments** ✅ (fondation transverse — voir `PROSE-SOURCE-LINKAGE.md`, PR #198→#208) : lexique (513) + sources prose parsées en `catalog_yaml` atomisés ; **lien inconditionnel** sort/atout/créature/arme/protection → définition canonique ; réconciliation web↔paper read-only + gate `catalogs:audit:prose` (1669/1669 définies, 0 orphelin).
+- **E1 — Moteur d'effets étendu + application au cast** ✅ (rules-core, PR #209 + #210) : `EffectModel` étendu (variable `successes`/R + durées narratives `min/hour/day`, **E1a #209**) ; `resolveSpell` **applique** l'effet structuré **scalé par réussite** sur la cible (dégâts/soin), **type de dégât porté** (`spellEffect.scope`) pour E4, soin par **formule** (pas de `+R` naïf), cibles non-vitalité rapportées (E3/E4) ; tests exemplaires dégâts/soin/non-vitalité (**E1b #210**).
+- **E2 — Audit/structuration des 324 sorts** (catalogs + gouvernance, méthode Q-D8.2) : effet structuré + `direct_magic` + `damage_type` + type élémentaire + catégorie de cumul (Q-D8.9), **depuis la prose du lexique (E0)** et non la ligne terse, un passage par sort. _Dépend de : E0 ✅ + E1 ✅._
+  - **E2a — Outil d'audit des patterns** (entrée, autonome) : classer les 324 lignes `effect` par **famille de template** + confiance (couvert / templatable / arbitrage). Signal mesuré : **203/324 `/R`** (→ `successes`), **106 `/Niv`** (→ `level`), **98 durées narratives** → fortement factorable. Prépare l'arbitrage humain **par école**.
+  - **E2b+ — Authoring gouverné** : `EffectModel` par sort (`fidelity: pending` + `requires_mj_validation`), validé école par école. Sous-décision au démarrage : outillage (CMS Payload vs git-native YAML + revue de PR).
 - **E3 — Runtime temps-double (R-8.20)** (session/DB/cockpit) : horloge narrative + conversion combat↔narratif + suivi des sorts actifs (`character_active_spells`, expiration double-échelle) + renouvellement (R-8.7-bis) + contrôles MJ (passer la journée, multiplicateur de cadence). _Dépend de : E1 ; parallélisable avec E2._
 - **E4 — Résistance multi-couches (R-8.15 / R-1.33)** (rules-core + D9/D10) : moteur `D100 ≤ %` ; couches magique (`direct_magic`) / armure P/E/C/T / élémentaire ; routage par type d'agression ; magique = bouclier **et** fardeau. _Moteur démarrable tôt ; contenu dépend des tags de E2._
 - **E5 — Grimoire (surface)** : **reporté** (rôle fixé : browser 324 sorts × 11 écoles, lien _apprendre→Fiche_).
