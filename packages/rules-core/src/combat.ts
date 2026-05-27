@@ -94,6 +94,8 @@ export interface SpellAction {
   energyCost?: number;
   /** R-8.6 — incantation time in DT (the interruptible windup before the spell launches). */
   castingTimeDT?: number;
+  /** R-8.8 — DT shaved off the windup by spending 2 energy/DT; the TI floors at the speed factor. */
+  tiReductionDT?: number;
   /** Optional target of the spell (effect application is resolved by a later layer). */
   targetId?: string;
   /** Post-cast recovery in DT; defaults to the caster's effective speed factor. */
@@ -143,6 +145,8 @@ export interface Combatant {
   baseVitalityMax?: number;
   /** R-8.10 — spell energy pool ({ current, max }); required to declare a spell cast. */
   energy?: CombatVitality;
+  /** R-8.7 — damage suffered during the current incantation; raises the cast difficulty (+1/pt). */
+  spellConcentrationDamage?: number;
   attributes: CombatAttributes;
   baseAttributes?: CombatAttributes;
   skills: CombatSkillSet;
@@ -355,7 +359,11 @@ export function applyDamage(
         ...target.vitality,
         current: nextVitality
       },
-      nextActionAt: finalDamage > 0 ? target.nextActionAt + finalDamage : target.nextActionAt
+      nextActionAt: finalDamage > 0 ? target.nextActionAt + finalDamage : target.nextActionAt,
+      // R-8.7 — damage suffered mid-incantation accumulates and raises the eventual cast difficulty.
+      ...(target.pendingAction?.type === 'spell' && finalDamage > 0
+        ? { spellConcentrationDamage: (target.spellConcentrationDamage ?? 0) + finalDamage }
+        : {})
     },
     config
   );
@@ -450,7 +458,8 @@ export function interruptCombatant(
   const next: Combatant = {
     ...target,
     nextActionAt: restart ? state.currentDT + cost : state.currentDT,
-    pendingAction: restart ? interruptedAction : undefined
+    pendingAction: restart ? interruptedAction : undefined,
+    spellConcentrationDamage: undefined
   };
 
   return replaceCombatant(
@@ -484,7 +493,8 @@ export function interruptCombatant(
 export function declareSpellCast(
   state: CombatState,
   casterId: string,
-  action: SpellAction
+  action: SpellAction,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
 ): CombatState {
   const caster = findCombatant(state, casterId);
 
@@ -506,8 +516,20 @@ export function declareSpellCast(
 
   assertPositiveInteger('castingTimeDT', action.castingTimeDT);
 
-  const energy = spendEnergy(caster.energy, action.energyCost);
-  const nextActionAt = state.currentDT + action.castingTimeDT;
+  const reductionRequest = action.tiReductionDT ?? 0;
+  if (!Number.isInteger(reductionRequest) || reductionRequest < 0) {
+    throw new Error('tiReductionDT must be a non-negative integer');
+  }
+
+  // R-8.8 — spending 2 energy/DT shortens the windup, but never below the speed factor (web
+  // canonical floor) and never inflating an already-faster-than-FV spell.
+  const floor = Math.min(effectiveSpeedFactor(caster, config), action.castingTimeDT);
+  const effectiveTI = Math.max(floor, action.castingTimeDT - reductionRequest);
+  const actualReduction = action.castingTimeDT - effectiveTI;
+  const totalEnergyCost = action.energyCost + 2 * actualReduction;
+
+  const energy = spendEnergy(caster.energy, totalEnergyCost);
+  const nextActionAt = state.currentDT + effectiveTI;
   const next: Combatant = {
     ...caster,
     energy,
@@ -526,9 +548,9 @@ export function declareSpellCast(
           actorId: casterId,
           ...(action.targetId !== undefined ? { targetId: action.targetId } : {}),
           actionType: 'spell',
-          costDT: action.castingTimeDT,
+          costDT: effectiveTI,
           nextActionAt,
-          energySpent: action.energyCost
+          energySpent: totalEnergyCost
         }
       ]
     },
@@ -656,9 +678,15 @@ function resolveSpell(
   options: CombatResolutionOptions
 ): CombatState {
   const randomInteger = randomIntegerForResolution(options);
-  const spellCast = resolveSpellCast(action.intelligence, action.spellPoints, action.difficulty, {
-    randomInteger
-  });
+  // R-8.7 — the mage kept concentrating through the hits taken during the windup: the cast
+  // difficulty rises by +1 per damage point suffered during the incantation.
+  const concentrationPenalty = actor.spellConcentrationDamage ?? 0;
+  const spellCast = resolveSpellCast(
+    action.intelligence,
+    action.spellPoints,
+    action.difficulty + concentrationPenalty,
+    { randomInteger }
+  );
   const event: CombatEvent = {
     type: 'spell_resolved',
     atDT: state.currentDT,
@@ -689,7 +717,8 @@ function rescheduleActor(
   return replaceCombatant(state, {
     ...actor,
     nextActionAt: state.currentDT + delay,
-    pendingAction: undefined
+    pendingAction: undefined,
+    spellConcentrationDamage: undefined
   });
 }
 

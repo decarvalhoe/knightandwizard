@@ -715,7 +715,7 @@ describe('zone-based KO and death (R-9.17)', () => {
   });
 });
 
-describe('spell casting in combat (R-8.5 / R-8.6 / R-8.7)', () => {
+describe('spell casting in combat (R-8.5 / R-8.6 / R-8.7 / R-8.8)', () => {
   const spell = (overrides: Partial<SpellAction> = {}): SpellAction => ({
     type: 'spell',
     intelligence: 4,
@@ -800,5 +800,53 @@ describe('spell casting in combat (R-8.5 / R-8.6 / R-8.7)', () => {
     const state = addCombatant(createCombatState(1), combatant({ id: 'fighter', speedFactor: 7 }));
 
     expect(() => declareSpellCast(state, 'fighter', spell())).toThrow('no energy pool');
+  });
+
+  it('reduces the windup by spending 2 energy per DT, flooring at the speed factor (R-8.8)', () => {
+    const state = addCombatant(createCombatState(1), mageWithEnergy());
+
+    const declared = declareSpellCast(state, 'mage', spell({ tiReductionDT: 5 }));
+    const caster = declared.timeline.find((entry) => entry.id === 'mage');
+
+    // FV 7, TI 12 -> reduced to 7 (the floor): 5 DT removed at +2 energy/DT.
+    expect(caster?.nextActionAt).toBe(8); // currentDT 1 + effective TI 7
+    expect(caster?.energy).toEqual({ current: 40, max: 60 }); // 60 - (10 + 2 * 5)
+    expect(declared.log.at(-1)).toMatchObject({
+      type: 'spell_started',
+      costDT: 7,
+      energySpent: 20
+    });
+  });
+
+  it('never reduces below the speed factor and only charges DT actually removed (R-8.8)', () => {
+    const state = addCombatant(createCombatState(1), mageWithEnergy());
+
+    const declared = declareSpellCast(state, 'mage', spell({ tiReductionDT: 10 }));
+    const caster = declared.timeline.find((entry) => entry.id === 'mage');
+
+    expect(caster?.nextActionAt).toBe(8); // floored at FV 7, not 12 - 10
+    expect(caster?.energy).toEqual({ current: 40, max: 60 }); // charged for the 5 DT removed, not 10
+  });
+
+  it('raises the cast difficulty by damage taken during the incantation (R-8.7)', () => {
+    const declared = declareSpellCast(
+      addCombatant(createCombatState(1), mageWithEnergy()),
+      'mage',
+      spell()
+    );
+    const hit = applyDamage(declared, 'mage', 2); // 2 damage suffered mid-incantation
+    const casting = hit.timeline.find((entry) => entry.id === 'mage');
+    expect(casting?.spellConcentrationDamage).toBe(2);
+
+    // difficulty 7 + 2 damage = 9; three dice >= 9 succeed.
+    const resolved = resolveNextAction(hit, { randomInteger: scriptedRolls([9, 9, 9, 2, 2, 2]) });
+    const event = resolved.log.at(-1);
+
+    expect(event?.spellCast?.difficulty).toBe(9);
+    expect(event).toMatchObject({ type: 'spell_resolved', successes: 3 });
+    // the accumulator is cleared once the cast resolves.
+    expect(resolved.timeline.find((entry) => entry.id === 'mage')?.spellConcentrationDamage).toBe(
+      undefined
+    );
   });
 });
