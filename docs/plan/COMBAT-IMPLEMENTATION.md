@@ -33,8 +33,9 @@
 - [ ] **Allonge** (#3) — champ catalogue + modificateur d'engagement.
 - [ ] **Statuts R-9.27 de base** — catalogue (modificateurs/durée/immunités/interactions).
 
-**V2** : lutte/étreinte (R-9.41), monture (R-9.43), multi-cibles (R-9.36), sorts-en-combat (R-9.31),
+**V2** : lutte/étreinte (R-9.41), monture (R-9.43), multi-cibles (R-9.36),
 surprise (R-9.39), désengagement (R-9.38), tactiques de groupe (R-9.40), encodage des 88 atouts.
+_(Les sorts-en-combat (R-9.31) sont passés en MVP et livrés via M2 — voir `MAGIC-IMPLEMENTATION.md`.)_
 
 ## Registre exhaustif (toutes les règles de combat)
 
@@ -49,9 +50,9 @@ surprise (R-9.39), désengagement (R-9.38), tactiques de groupe (R-9.40), encoda
 | R-2.13                        | FV depuis la race                                   | MVP       | ✅     | attribut acteur                                                                                                         |
 | R-2.18                        | Encombrement → +1 FV / 5 kg                         | MVP       | ✅     | `combat.ts` `effectiveSpeedFactor`/`encumbrancePenalty` (+1 DT par 5 kg > Force×5, Force courante) ; `rules-config.ts`  |
 | R-1.38                        | Sources de modif du FV (magie/atouts)               | MVP       | ✅     | `combat.ts` `effectiveSpeedFactor` appelle `effects.ts` cible `factor` (hâte/lenteur/atouts), plancher `minSpeedFactor` |
-| R-9.4                         | Interruptions (DT perdus, 3 cas)                    | **MVP**   | 🟡     | `interruptCombatant` (restart/release, DT perdus) ; perte d'énergie de sort différée (pas de modèle d'énergie)          |
+| R-9.4                         | Interruptions (DT perdus, 3 cas)                    | **MVP**   | ✅     | `interruptCombatant` (restart/release, DT perdus) ; énergie de sort perdue (engagée au cast, `declareSpellCast`)        |
 | R-9.18-bis                    | Dégâts repoussent l'action (+1 DT/pt)               | MVP       | ✅     | `combat.ts` `applyDamage` (+finalDamage)                                                                                |
-| R-1.24                        | Action conservée : +1 diff / pt subi                | V2        | ❌     | pas d'état temporel `damageDuringAction`                                                                                |
+| R-1.24                        | Action conservée : +1 diff / pt subi                | V2        | 🟡     | implémenté pour la concentration de sort (`spellConcentrationDamage`, R-8.7) ; préemption générale ❌                   |
 | R-9.3                         | Recharge = viser/recharger/tirer (3 actions)        | **MVP**   | 🟡     | types d'action `reload`/`aim` (coût FV) ; séquence imposée + stock munitions à venir                                    |
 | atout `frappe-affaiblissante` | +FV sur cible blessée (50 DT/niv)                   | V2        | ❌     | catalogue seulement                                                                                                     |
 
@@ -89,7 +90,7 @@ surprise (R-9.39), désengagement (R-9.38), tactiques de groupe (R-9.40), encoda
 | ---------------------------------- | --------------------------- | -------------- | ------ | ------------------------------------------------------------------------------ |
 | EffectModel                        | cadre source/spec/render    | —              | ✅     | `effect-model.ts`, `effects.ts`, renderer                                      |
 | 88 specs atouts classe/orientation | modificateurs d'action      | V2             | ❌     | cadre prêt, **specs non encodées**                                             |
-| `target:'damage'`                  | bonus dégâts d'atout/sort   | MVP            | ❌     | enum présent, **non consommé** par le moteur (#137)                            |
+| `target:'damage'`                  | bonus dégâts d'atout/sort   | MVP            | ✅     | `combat.ts` `damageModifiersFromEffects` consomme `target:'damage'` (#137)     |
 | `requires_mj_validation`           | garde/juste-cause/méfait…   | MVP            | 🟡     | flag présent ; flux d'arbitrage ❌                                             |
 | prédilection (slots)               | arme/instrument/monture/…   | —              | ✅     | `predilection.ts`                                                              |
 | R-9.27                             | catalogue d'états tactiques | **MVP** (base) | 🟡     | 4 statuts nus ; `fou_furieux` ✅ ; **modificateurs/immunités/interactions ❌** |
@@ -116,7 +117,7 @@ surprise (R-9.39), désengagement (R-9.38), tactiques de groupe (R-9.40), encoda
 | R-9.41          | Lutte / étreinte (mains nues)                                                                                                | V2        | ❌                        |
 | R-9.43          | Combat monté                                                                                                                 | V2        | ❌                        |
 | R-9.44          | Coup de grâce / reddition / otage                                                                                            | V2        | ❌                        |
-| R-9.31          | Sorts en combat (incantation, interruption)                                                                                  | V2        | ❌                        |
+| R-9.31          | Sorts en combat (incantation, interruption)                                                                                  | MVP (M2)  | 🟡 (`declareSpellCast`)   |
 | R-9.29          | Transformation de race                                                                                                       | V2        | ❌                        |
 | R-9.28          | Apparition de PNJ / vagues / invocations                                                                                     | V2        | ❌                        |
 | R-9.32          | Déplacement / terrain / charge                                                                                               | V2        | ❌                        |
