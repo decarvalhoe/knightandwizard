@@ -47,6 +47,20 @@ export interface ProgressionRulesConfig {
   skillImprovementBaseCost: number;
   /** XP cost to raise a spell: 0 pts -> base, otherwise currentPoints * base. */
   spellImprovementBaseCost: number;
+  /** R-7.5 — XP per +1 on an attribute under its racial limit (NA * this). */
+  attributeImprovementBaseCost: number;
+  /** R-7.5 — XP per +1 on an attribute above its racial limit (NA * this). */
+  attributeAboveLimitCost: number;
+  /** R-7.5 — above-limit attribute cost with Anti-limites physiques / Force de geant (NA * this). */
+  attributeAboveLimitAntiLimitsCost: number;
+  /** R-7.5 — above-limit attribute cost with Depassement de soi (NA * this). */
+  attributeAboveLimitSelfTranscendCost: number;
+  /** R-7.5 — XP per -1 on a factor (speed/will): (NB - NA + 1) * this. */
+  factorImprovementBaseCost: number;
+  /** R-7.5 — flat XP per +1 on max vitality. */
+  vitalityImprovementCost: number;
+  /** R-7.5 — flat XP per +1 on max energy. */
+  energyImprovementCost: number;
   /** Base learning days per XP cost point. */
   learningDaysPerXP: number;
   /** Multiplier applied to learning time when self-taught (no mentor). */
@@ -105,6 +119,13 @@ export const DEFAULT_RULES_CONFIG: RulesConfig = {
   progression: {
     skillImprovementBaseCost: 3,
     spellImprovementBaseCost: 10,
+    attributeImprovementBaseCost: 5,
+    attributeAboveLimitCost: 20,
+    attributeAboveLimitAntiLimitsCost: 10,
+    attributeAboveLimitSelfTranscendCost: 15,
+    factorImprovementBaseCost: 25,
+    vitalityImprovementCost: 10,
+    energyImprovementCost: 3,
     learningDaysPerXP: 3,
     selfTaughtMultiplier: 2,
     learningFloors: {

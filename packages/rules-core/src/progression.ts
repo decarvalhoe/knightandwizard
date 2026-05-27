@@ -329,3 +329,67 @@ function copySkill(skill: CharacterSkill): CharacterSkill {
 function copySpell(spell: CharacterSpell): CharacterSpell {
   return { ...spell };
 }
+
+export type AttributeLimitModifier = 'none' | 'anti_limits' | 'self_transcend';
+
+export interface AttributeImprovementOptions {
+  /** True when raising the attribute above its racial limit (R-7.5). */
+  aboveLimit?: boolean;
+  /** Atout that reduces the above-limit cost. */
+  limitModifier?: AttributeLimitModifier;
+}
+
+/**
+ * R-7.5 — XP cost to raise an attribute by +1. `currentValue` is NA (the value
+ * before the increment). Under the racial limit: NA x base. Above the limit:
+ * NA x the (optionally atout-reduced) above-limit multiplier.
+ */
+export function attributeImprovementCost(
+  currentValue: number,
+  options: AttributeImprovementOptions = {},
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): number {
+  assertNonNegativeInteger('currentValue', currentValue);
+
+  if (options.aboveLimit !== true) {
+    return currentValue * config.progression.attributeImprovementBaseCost;
+  }
+
+  switch (options.limitModifier ?? 'none') {
+    case 'anti_limits':
+      return currentValue * config.progression.attributeAboveLimitAntiLimitsCost;
+    case 'self_transcend':
+      return currentValue * config.progression.attributeAboveLimitSelfTranscendCost;
+    default:
+      return currentValue * config.progression.attributeAboveLimitCost;
+  }
+}
+
+/**
+ * R-7.5 — XP cost to improve a factor (speed/will) by -1 (factors improve downward
+ * from their racial base). NB = `baseValue`, NA = `currentValue`; cost = (NB - NA + 1) x base.
+ */
+export function factorImprovementCost(
+  baseValue: number,
+  currentValue: number,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): number {
+  assertPositiveInteger('baseValue', baseValue);
+  assertPositiveInteger('currentValue', currentValue);
+
+  if (currentValue > baseValue) {
+    throw new ProgressionError('factor current value cannot exceed its base value');
+  }
+
+  return (baseValue - currentValue + 1) * config.progression.factorImprovementBaseCost;
+}
+
+/** R-7.5 — flat XP cost to raise max vitality by +1. */
+export function vitalityImprovementCost(config: RulesConfig = DEFAULT_RULES_CONFIG): number {
+  return config.progression.vitalityImprovementCost;
+}
+
+/** R-7.5 — flat XP cost to raise max energy by +1. */
+export function energyImprovementCost(config: RulesConfig = DEFAULT_RULES_CONFIG): number {
+  return config.progression.energyImprovementCost;
+}

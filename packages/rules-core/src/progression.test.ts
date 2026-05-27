@@ -8,13 +8,18 @@ import {
 } from './character.js';
 import {
   ProgressionError,
+  attributeImprovementCost,
   calculateLearningPlan,
   calculateSessionXPAward,
+  energyImprovementCost,
+  factorImprovementCost,
   finalizeDefinitiveDeath,
   gainXP,
   learnSkill,
-  learnSpell
+  learnSpell,
+  vitalityImprovementCost
 } from './progression.js';
+import { DEFAULT_RULES_CONFIG } from './rules-config.js';
 
 describe('session XP awards', () => {
   it('calculates the official 1-8 session XP scale plus separate quest point', () => {
@@ -241,3 +246,51 @@ function validAttributes() {
     aestheticism: 1
   };
 }
+
+describe('XP cost bareme (R-7.5)', () => {
+  it('costs an attribute under the racial limit at NA x 5', () => {
+    expect(attributeImprovementCost(1)).toBe(5);
+    expect(attributeImprovementCost(5)).toBe(25);
+  });
+
+  it('costs an attribute above the racial limit at NA x 20, reduced by atouts', () => {
+    expect(attributeImprovementCost(3, { aboveLimit: true })).toBe(60);
+    expect(attributeImprovementCost(3, { aboveLimit: true, limitModifier: 'anti_limits' })).toBe(
+      30
+    );
+    expect(attributeImprovementCost(3, { aboveLimit: true, limitModifier: 'self_transcend' })).toBe(
+      45
+    );
+  });
+
+  it('costs a factor improvement at (NB - NA + 1) x 25', () => {
+    expect(factorImprovementCost(8, 8)).toBe(25);
+    expect(factorImprovementCost(8, 7)).toBe(50);
+    expect(factorImprovementCost(8, 1)).toBe(200);
+  });
+
+  it('rejects a factor current value above its base', () => {
+    expect(() => factorImprovementCost(8, 9)).toThrow(ProgressionError);
+  });
+
+  it('costs max vitality at 10 flat and max energy at 3 flat', () => {
+    expect(vitalityImprovementCost()).toBe(10);
+    expect(energyImprovementCost()).toBe(3);
+  });
+
+  it('is data-driven by the rules config', () => {
+    const custom = {
+      ...DEFAULT_RULES_CONFIG,
+      progression: {
+        ...DEFAULT_RULES_CONFIG.progression,
+        attributeImprovementBaseCost: 7,
+        factorImprovementBaseCost: 30,
+        vitalityImprovementCost: 99
+      }
+    };
+
+    expect(attributeImprovementCost(2, {}, custom)).toBe(14);
+    expect(factorImprovementCost(8, 8, custom)).toBe(30);
+    expect(vitalityImprovementCost(custom)).toBe(99);
+  });
+});
