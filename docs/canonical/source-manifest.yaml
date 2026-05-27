@@ -8066,6 +8066,15 @@ sources:
     domains: ["D10-equipment"]
     contains: ["potions"]
     notes: "Product YAML catalog."
+  - id: "data-catalogs-protections-paper"
+    path: "data/catalogs/protections-paper.yaml"
+    sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["D10-equipment"]
+    contains: ["armor", "shields"]
+    notes: "Product YAML catalog."
   - id: "data-catalogs-protections"
     path: "data/catalogs/protections.yaml"
     sha256: "a48401f0e4590af7c93b502c2be5bc125eee85a971ad7c94f23515cbdbda8be6"

@@ -12662,6 +12662,21 @@ sources:
       - vector_index
       - citation_internal
     notes: Product YAML catalog.
+  - id: DATA-CATALOGS-PROTECTIONS-PAPER
+    path: data/catalogs/protections-paper.yaml
+    type: database_export
+    domain: D10-equipment
+    priority: secondary
+    status: active
+    hash: 58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - structured_contract
+      - vector_index
+      - citation_internal
+    notes: Product YAML catalog.
   - id: DATA-CATALOGS-PROTECTIONS
     path: data/catalogs/protections.yaml
     type: database_export
