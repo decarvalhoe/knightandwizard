@@ -1,15 +1,16 @@
 /**
- * E0.2 — Lie chaque sort de `spells.yaml` (grimoire web) à son entrée de définition prose dans
- * `lexique.yaml` (lexique paper), via `prose_refs`. Réconcilie web↔paper et signale les orphelins.
+ * E0.2 / E0.2b — Lie chaque sort de `spells.yaml` (grimoire web) au lexique paper (`lexique.yaml`).
  *
- * - Match direct : slug(nom du sort) == id d'une entrée lexique.
- * - Variante (de masse / mineur / majeur / de distance) : lien vers l'entrée de **base** + `derived_from`.
- * - Sinon : `prose_orphan: true` (sort web sans définition prose paper).
+ * Pour chaque sort, par ordre de confiance :
+ *  1. Match direct : slug(nom) == id d'une entrée lexique → `prose_refs`.
+ *  2. Variante / famille : base présente dans le lexique (de masse, mineur/majeur, changement,
+ *     guérison, création de membre, appel, renvoi, bouclier…) → `prose_refs` + `derived_from`.
+ *  3. Sinon — GÉNÉRATION ANCRÉE (E0.2b) : `generated_prose` = expansion lisible de la ligne `effect`
+ *     canonique du grimoire + contexte d'école (jamais d'invention libre), marquée
+ *     `prose_origin: templated`, `validation: pending`, `low_confidence` si l'école est peu ancrée
+ *     côté paper. Promue par arbitrage MJ (workflow Q-D8.2). Voir docs/plan/PROSE-SOURCE-LINKAGE.md.
  *
- * Idempotent (recalcule à chaque exécution). Chaîné après `build:magic`. Voir
- * docs/plan/PROSE-SOURCE-LINKAGE.md.
- *
- * Usage : `pnpm catalogs:link:lexique`
+ * Idempotent. Chaîné après `build:magic`.
  */
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -21,6 +22,21 @@ import { dump, load } from 'js-yaml';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SPELLS_PATH = join(ROOT, 'data/catalogs/spells.yaml');
 const LEXIQUE_PATH = join(ROOT, 'data/catalogs/lexique.yaml');
+const LOW_COVERAGE_THRESHOLD = 0.5;
+
+const SCHOOL_FR: Record<string, string> = {
+  abjuration: "d'abjuration",
+  alteration: "d'altération",
+  'magie-blanche': 'de magie blanche',
+  divination: 'de divination',
+  enchantement: "d'enchantement",
+  elementaire: 'élémentaire',
+  illusion: "d'illusion",
+  invocation: "d'invocation",
+  'magie-naturelle': 'de magie naturelle',
+  'magie-noire': 'de magie noire',
+  necromancie: 'de nécromancie'
+};
 
 interface ProseRef {
   catalog: 'lexique';
@@ -30,9 +46,15 @@ interface ProseRef {
 interface Spell {
   id: string;
   name: string;
+  school_id: string;
+  effect?: string;
   prose_refs?: ProseRef[];
   derived_from?: string;
   prose_orphan?: boolean;
+  generated_prose?: string;
+  prose_origin?: 'templated';
+  validation?: 'pending';
+  low_confidence?: boolean;
   [key: string]: unknown;
 }
 interface LexiqueEntry {
@@ -40,12 +62,15 @@ interface LexiqueEntry {
   term: string;
   kind: string;
 }
-interface Catalog<T> {
+interface SpellsDoc {
   version: number;
   metadata: Record<string, unknown>;
+  spells?: Spell[];
   [key: string]: unknown;
-  spells?: T[];
-  entries?: T[];
+}
+interface LexiqueDoc {
+  entries?: LexiqueEntry[];
+  [key: string]: unknown;
 }
 
 const VARIANT_SUFFIXES = [
@@ -66,58 +91,116 @@ function slugify(value: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
-function baseName(name: string): string | null {
-  for (const suffix of VARIANT_SUFFIXES) {
-    if (suffix.test(name)) return name.replace(suffix, '').trim();
+/** Returns a lexique base id for a variant/family spell name, or null. */
+function familyBase(name: string, has: (slug: string) => boolean): string | null {
+  for (const sfx of VARIANT_SUFFIXES) {
+    if (sfx.test(name)) {
+      const base = slugify(name.replace(sfx, '').trim());
+      if (has(base)) return base;
+    }
+  }
+  const families: Array<[RegExp, string]> = [
+    [/^changement /i, 'changement'],
+    [/^gu[eé]rison /i, 'guerison'],
+    [/^cr[eé]ation d/i, 'creation-de-membre'],
+    [/^appel d/i, 'appel'],
+    [/^renvoi d/i, 'renvoi-de-masse'],
+    [/^bouclier /i, 'bouclier']
+  ];
+  for (const [re, base] of families) {
+    if (re.test(name) && has(base)) return base;
   }
   return null;
 }
 
+/** Readable prose anchored on the canonical terse effect + school context. No free invention. */
+function generateProse(spell: Spell): string {
+  const school = SCHOOL_FR[spell.school_id] ?? `(${spell.school_id})`;
+  const effect = (spell.effect ?? '')
+    .trim()
+    .replace(/\s*\/\s*R\b/g, ' par réussite')
+    .replace(/\s*\/\s*Niv\.?/gi, ' par niveau du lanceur')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const body =
+    effect.length > 0 ? effect.replace(/\.*$/, '') : 'effet non détaillé dans le grimoire';
+  return `Sort ${school} : ${body}.`;
+}
+
+function clear(spell: Spell): void {
+  delete spell.prose_refs;
+  delete spell.derived_from;
+  delete spell.prose_orphan;
+  delete spell.generated_prose;
+  delete spell.prose_origin;
+  delete spell.validation;
+  delete spell.low_confidence;
+}
+
 function main(): void {
-  const spellsDoc = load(readFileSync(SPELLS_PATH, 'utf8')) as Catalog<Spell>;
-  const lexiqueDoc = load(readFileSync(LEXIQUE_PATH, 'utf8')) as Catalog<LexiqueEntry>;
+  const spellsDoc = load(readFileSync(SPELLS_PATH, 'utf8')) as SpellsDoc;
+  const lexiqueDoc = load(readFileSync(LEXIQUE_PATH, 'utf8')) as LexiqueDoc;
   const spells = spellsDoc.spells ?? [];
   const lexique = lexiqueDoc.entries ?? [];
 
-  // Index lexique by slug ; prefer a sort-kind entry when several share a slug.
   const bySlug = new Map<string, LexiqueEntry>();
   for (const entry of lexique) {
     const existing = bySlug.get(entry.id);
     if (!existing || (existing.kind !== 'sort' && entry.kind === 'sort'))
       bySlug.set(entry.id, entry);
   }
+  const has = (slug: string): boolean => bySlug.has(slug);
+  const link = (spell: Spell, entry: LexiqueEntry): void => {
+    spell.prose_refs = [{ catalog: 'lexique', entry_id: entry.id, term: entry.term }];
+  };
 
   const matchedLexiqueIds = new Set<string>();
   let direct = 0;
   let derived = 0;
-  let orphan = 0;
 
+  // Pass 1 — paper anchoring (direct + variant/family base).
   for (const spell of spells) {
-    delete spell.prose_refs;
-    delete spell.derived_from;
-    delete spell.prose_orphan;
-
-    const slug = slugify(spell.name);
-    const directEntry = bySlug.get(slug);
+    clear(spell);
+    const directEntry = bySlug.get(slugify(spell.name));
     if (directEntry) {
-      spell.prose_refs = [{ catalog: 'lexique', entry_id: directEntry.id, term: directEntry.term }];
+      link(spell, directEntry);
       matchedLexiqueIds.add(directEntry.id);
       direct += 1;
       continue;
     }
-
-    const base = baseName(spell.name);
-    const baseEntry = base ? bySlug.get(slugify(base)) : undefined;
-    if (baseEntry) {
-      spell.prose_refs = [{ catalog: 'lexique', entry_id: baseEntry.id, term: baseEntry.term }];
+    const base = familyBase(spell.name, has);
+    if (base) {
+      const baseEntry = bySlug.get(base)!;
+      link(spell, baseEntry);
       spell.derived_from = baseEntry.id;
       matchedLexiqueIds.add(baseEntry.id);
       derived += 1;
-      continue;
     }
+  }
 
-    spell.prose_orphan = true;
-    orphan += 1;
+  // Per-school paper-anchored coverage (drives low_confidence on generated entries).
+  const bySchool = new Map<string, { total: number; anchored: number }>();
+  for (const spell of spells) {
+    const e = bySchool.get(spell.school_id) ?? { total: 0, anchored: 0 };
+    e.total += 1;
+    if (spell.prose_refs) e.anchored += 1;
+    bySchool.set(spell.school_id, e);
+  }
+
+  // Pass 2 — generate anchored prose for the rest.
+  let generated = 0;
+  let lowConf = 0;
+  for (const spell of spells) {
+    if (spell.prose_refs) continue;
+    const sc = bySchool.get(spell.school_id)!;
+    spell.generated_prose = generateProse(spell);
+    spell.prose_origin = 'templated';
+    spell.validation = 'pending';
+    if (sc.anchored / sc.total < LOW_COVERAGE_THRESHOLD) {
+      spell.low_confidence = true;
+      lowConf += 1;
+    }
+    generated += 1;
   }
 
   const sortEntries = lexique.filter((entry) => entry.kind === 'sort');
@@ -137,18 +220,12 @@ function main(): void {
   });
 
   console.log(`link-spells-lexique: ${spells.length} sorts`);
-  console.log(`  direct        : ${direct}`);
-  console.log(`  derived (var) : ${derived}`);
-  console.log(`  prose_orphan  : ${orphan}`);
+  console.log(`  prose_refs paper : ${direct} direct + ${derived} derives = ${direct + derived}`);
+  console.log(
+    `  generated_prose  : ${generated} (dont low_confidence: ${lowConf}) -> validation pending`
+  );
+  console.log(`  prose_orphan     : 0 (chaque sort a une definition)`);
   console.log(`  lexique sorts non lies (sur ${sortEntries.length}) : ${lexiqueOrphans.length}`);
-  if (lexiqueOrphans.length > 0) {
-    console.log(
-      `  ex. orphelins lexique: ${lexiqueOrphans
-        .slice(0, 12)
-        .map((e) => e.id)
-        .join(', ')}`
-    );
-  }
 }
 
 main();

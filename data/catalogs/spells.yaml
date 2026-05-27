@@ -23,7 +23,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:annihilation
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Empêche tout sort 1km par niveau du lanceur 1jour par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: augmentation-energetique
     name: Augmentation énergétique
     status: active
@@ -88,7 +91,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:boomerang
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Renvoi le sort au lanceur."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: captage-d-energie
     name: Captage d'énergie
     status: active
@@ -136,7 +142,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-blanc
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort blanc par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contre-bleu
     name: Contre-bleu
     status: active
@@ -150,7 +159,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-bleu
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort bleu par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contre-brun
     name: Contre-brun
     status: active
@@ -164,7 +176,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-brun
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort brun par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contre-gris
     name: Contre-gris
     status: active
@@ -178,7 +193,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-gris
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort gris par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contre-jaune
     name: Contre-jaune
     status: active
@@ -192,7 +210,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-jaune
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort jaune par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contre-noir
     name: Contre-noir
     status: active
@@ -206,7 +227,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-noir
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort noir par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contre-orange
     name: Contre-orange
     status: active
@@ -220,7 +244,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-orange
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort orange par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contre-rouge
     name: Contre-rouge
     status: active
@@ -234,7 +261,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-rouge
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort rouge par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contre-turquoise
     name: Contre-turquoise
     status: active
@@ -248,7 +278,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-turquoise
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort turquoise par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contre-vert
     name: Contre-vert
     status: active
@@ -262,7 +295,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-vert
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort vert par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contre-violet
     name: Contre-violet
     status: active
@@ -276,7 +312,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-violet
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort violet par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: deplacement-magique
     name: Déplacement magique
     status: active
@@ -341,7 +380,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:dispersion-du-familier
-    prose_orphan: true
+    generated_prose: >-
+      Sort d'abjuration : 2 dégâts par réussite. La cible doit être un familier à portée de vue du
+      magicien.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: dissipation
     name: Dissipation
     status: active
@@ -355,7 +399,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:dissipation
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Annule un sort actif."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: interdiction-magique
     name: Interdiction magique
     status: active
@@ -420,7 +467,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:perturbation
-    prose_orphan: true
+    generated_prose: "Sort d'abjuration : Test de volonté pour rester en incantation diff. + R."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: piegeage-magique
     name: Piégeage magique
     status: active
@@ -504,7 +554,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rupture-de-lien-d-invocation
-    prose_orphan: true
+    generated_prose: >-
+      Sort d'abjuration : Diminue le nombre de R d'un lien d'invocation existant entre un sujet et
+      son invocateur. Si le nombre de R du lien tombe à 0 ou en dessous, le lien est rompu.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: substitution-de-sort
     name: Substitution de sort
     status: active
@@ -535,7 +590,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:agrandissement
-    prose_orphan: true
+    generated_prose: "Sort d'altération : Double la taille par réussite."
+    prose_origin: templated
+    validation: pending
   - id: branchie
     name: Branchie
     status: active
@@ -549,7 +606,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:branchie
-    prose_orphan: true
+    generated_prose: "Sort d'altération : Crée des branchies sur la cible."
+    prose_origin: templated
+    validation: pending
   - id: branchie-de-masse
     name: Branchie de masse
     status: active
@@ -563,7 +622,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:branchie-de-masse
-    prose_orphan: true
+    generated_prose: "Sort d'altération : Crée des branchies sur la cible, 1 cible par réussite."
+    prose_origin: templated
+    validation: pending
   - id: changement-de-sexe
     name: Changement de sexe
     status: active
@@ -577,7 +638,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-de-sexe
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: changement
+        term: Changement
+    derived_from: changement
   - id: changement-en-corbeau
     name: Changement en corbeau
     status: active
@@ -591,7 +656,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-en-corbeau
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: changement
+        term: Changement
+    derived_from: changement
   - id: changement-en-crapaud
     name: Changement en crapaud
     status: active
@@ -605,7 +674,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-en-crapaud
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: changement
+        term: Changement
+    derived_from: changement
   - id: changement-en-furet
     name: Changement en furet
     status: active
@@ -619,7 +692,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-en-furet
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: changement
+        term: Changement
+    derived_from: changement
   - id: changement-en-humain
     name: Changement en humain
     status: active
@@ -633,7 +710,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-en-humain
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: changement
+        term: Changement
+    derived_from: changement
   - id: changement-en-lapin
     name: Changement en lapin
     status: active
@@ -647,7 +728,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-en-lapin
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: changement
+        term: Changement
+    derived_from: changement
   - id: changer-l-eau-en-vin
     name: Changer l’eau en vin
     status: active
@@ -661,7 +746,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changer-l-eau-en-vin
-    prose_orphan: true
+    generated_prose: "Sort d'altération : 1litre par réussite."
+    prose_origin: templated
+    validation: pending
   - id: chatiment-de-la-matiere
     name: Châtiment de la matière
     status: active
@@ -675,7 +762,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:chatiment-de-la-matiere
-    prose_orphan: true
+    generated_prose: "Sort d'altération : Détruit une cible."
+    prose_origin: templated
+    validation: pending
   - id: corrosion
     name: Corrosion
     status: active
@@ -723,7 +812,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-d-aile
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: creation-de-membre
+        term: Création de membre
+    derived_from: creation-de-membre
   - id: creation-d-oeil
     name: Création d'oeil
     status: active
@@ -737,7 +830,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-d-oeil
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: creation-de-membre
+        term: Création de membre
+    derived_from: creation-de-membre
   - id: creation-de-bras
     name: Création de bras
     status: active
@@ -751,7 +848,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-bras
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: creation-de-membre
+        term: Création de membre
+    derived_from: creation-de-membre
   - id: creation-de-dent
     name: Création de dent
     status: active
@@ -765,7 +866,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-dent
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: creation-de-membre
+        term: Création de membre
+    derived_from: creation-de-membre
   - id: creation-de-jambe
     name: Création de jambe
     status: active
@@ -779,7 +884,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-jambe
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: creation-de-membre
+        term: Création de membre
+    derived_from: creation-de-membre
   - id: creation-de-kyste
     name: Création de kyste
     status: active
@@ -793,7 +902,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-kyste
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: creation-de-membre
+        term: Création de membre
+    derived_from: creation-de-membre
   - id: creation-de-main
     name: Création de main
     status: active
@@ -807,7 +920,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-main
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: creation-de-membre
+        term: Création de membre
+    derived_from: creation-de-membre
   - id: creation-de-pied
     name: Création de pied
     status: active
@@ -821,7 +938,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-pied
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: creation-de-membre
+        term: Création de membre
+    derived_from: creation-de-membre
   - id: creation-de-queue
     name: Création de queue
     status: active
@@ -835,7 +956,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-queue
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: creation-de-membre
+        term: Création de membre
+    derived_from: creation-de-membre
   - id: evaporation
     name: Evaporation
     status: active
@@ -849,7 +974,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:evaporation
-    prose_orphan: true
+    generated_prose: "Sort d'altération : Evapore 1 litre par réussite."
+    prose_origin: templated
+    validation: pending
   - id: gel
     name: Gel
     status: active
@@ -863,7 +990,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:gel
-    prose_orphan: true
+    generated_prose: "Sort d'altération : Gel 1 litre par réussite."
+    prose_origin: templated
+    validation: pending
   - id: membre-telescopique
     name: Membre téléscopique
     status: active
@@ -894,7 +1023,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:miniaturisation
-    prose_orphan: true
+    generated_prose: "Sort d'altération : Divise la taille par 2 par réussite."
+    prose_origin: templated
+    validation: pending
   - id: petrification
     name: Pétrification
     status: active
@@ -908,7 +1039,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:petrification
-    prose_orphan: true
+    generated_prose: "Sort d'altération : Contre jet d’endurance."
+    prose_origin: templated
+    validation: pending
   - id: rendre-forme
     name: Rendre forme
     status: active
@@ -922,7 +1055,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rendre-forme
-    prose_orphan: true
+    generated_prose: "Sort d'altération : Rend la forme initiale si R supérieures aux R de changement."
+    prose_origin: templated
+    validation: pending
   - id: soudure
     name: Soudure
     status: active
@@ -970,7 +1105,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:benediction
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Diff. –1 par réussite 10min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: benediction-de-masse
     name: Bénédiction de masse
     status: active
@@ -984,7 +1122,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:benediction-de-masse
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Diff. –1, 1 Perso par réussite. 10min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: bouclier
     name: Bouclier
     status: active
@@ -998,7 +1139,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Bouclier de +1 PECT par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: bouclier-anti-feu
     name: Bouclier anti-feu
     status: active
@@ -1012,7 +1156,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-anti-feu
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Bouclier de 1 E (feu) par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: bouclier-anti-foudre
     name: Bouclier anti-foudre
     status: active
@@ -1026,7 +1173,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-anti-foudre
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Bouclier de 1 E (foudre) par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: bouclier-anti-froid
     name: Bouclier anti-froid
     status: active
@@ -1040,7 +1190,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-anti-froid
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Bouclier de 1 E (froid) par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: bouclier-anti-lave
     name: Bouclier anti-lave
     status: active
@@ -1054,7 +1207,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-anti-lave
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Bouclier de 1 E (lave) par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: bouclier-anti-mal
     name: Bouclier anti-mal
     status: active
@@ -1068,7 +1224,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-anti-mal
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Bouclier de 1 par réussite contre démon, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: charisme
     name: Charisme
     status: active
@@ -1082,7 +1241,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:charisme
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Charisme +1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: charisme-de-masse
     name: Charisme de masse
     status: active
@@ -1096,7 +1258,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:charisme-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie blanche : Charisme +1 par réussite, 10 min par niveau du lanceur, 1 perso par
+      réussite.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: courage
     name: Courage
     status: active
@@ -1110,7 +1277,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:courage
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Facteur de volonté – 1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: deviation
     name: Déviation
     status: active
@@ -1124,7 +1294,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deviation
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : +1 pour être toucher, 10min par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: deviation-de-masse
     name: Déviation de masse
     status: active
@@ -1138,7 +1311,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deviation-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie blanche : Diff +1 pour être toucher, 1 Perso par réussite, 10min par niveau du
+      lanceur.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: deviation-des-projectiles
     name: Déviation des projectiles
     status: active
@@ -1152,7 +1330,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deviation-des-projectiles
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : 1 R /projectile.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: deviation-majeure
     name: Déviation majeure
     status: active
@@ -1166,7 +1347,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deviation-majeure
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Diff. +2 pour être touché par réussite, 10min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: deviation-mineure
     name: Déviation mineure
     status: active
@@ -1180,7 +1364,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deviation-mineure
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Diff. +1 pour être touché par réussite, 5 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: dexterite
     name: Dextérité
     status: active
@@ -1194,7 +1381,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:dexterite
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Dextérité +1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: dexterite-de-masse
     name: Dextérité de masse
     status: active
@@ -1208,7 +1398,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:dexterite-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie blanche : Dextérité +1 par réussite, 10 min par niveau du lanceur, 1 perso par
+      réussite.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: don-d-energie
     name: Don d’énergie
     status: active
@@ -1222,7 +1417,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:don-d-energie
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : 3 points d’énergie transmis par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: empathie
     name: Empathie
     status: active
@@ -1236,7 +1434,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:empathie
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Empathie +1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: empathie-de-masse
     name: Empathie de masse
     status: active
@@ -1250,7 +1451,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:empathie-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie blanche : Empathie +1 par réussite, 10 min par niveau du lanceur, 1 perso par
+      réussite.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: endurance
     name: Endurance
     status: active
@@ -1264,7 +1470,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:endurance
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Endurance +1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: endurance-de-masse
     name: Endurance de masse
     status: active
@@ -1278,7 +1487,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:endurance-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie blanche : Endurance +1 par réussite, 10 min par niveau du lanceur, 1 perso par
+      réussite.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: esthetique
     name: Esthétique
     status: active
@@ -1292,7 +1506,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:esthetique
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Esthétique +1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: esthetique-de-masse
     name: Esthétique de masse
     status: active
@@ -1306,7 +1523,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:esthetique-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie blanche : Esthétique +1 par réussite, 10 min par niveau du lanceur, 1 perso par
+      réussite.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: force
     name: Force
     status: active
@@ -1320,7 +1542,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:force
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Force +1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: force-de-masse
     name: Force de masse
     status: active
@@ -1334,7 +1559,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:force-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie blanche : Force +1 par réussite, 10 min par niveau du lanceur, 1 perso par
+      réussite.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: guerison-absolue
     name: Guérison absolue
     status: active
@@ -1365,7 +1595,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-de-la-chair
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: guerison
+        term: Guérison
+    derived_from: guerison
   - id: guerison-de-la-peau
     name: Guérison de la peau
     status: active
@@ -1379,7 +1613,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-de-la-peau
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: guerison
+        term: Guérison
+    derived_from: guerison
   - id: guerison-des-muscles
     name: Guérison des muscles
     status: active
@@ -1393,7 +1631,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-des-muscles
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: guerison
+        term: Guérison
+    derived_from: guerison
   - id: guerison-des-muscles-mineure
     name: Guérison des muscles mineure
     status: active
@@ -1407,7 +1649,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-des-muscles-mineure
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: guerison
+        term: Guérison
+    derived_from: guerison
   - id: guerison-des-organes
     name: Guérison des organes
     status: active
@@ -1421,7 +1667,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-des-organes
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: guerison
+        term: Guérison
+    derived_from: guerison
   - id: guerison-des-os
     name: Guérison des os
     status: active
@@ -1435,7 +1685,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-des-os
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: guerison
+        term: Guérison
+    derived_from: guerison
   - id: intelligence
     name: Intelligence
     status: active
@@ -1449,7 +1703,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:intelligence
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Intelligence +1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: intelligence-de-masse
     name: Intelligence de masse
     status: active
@@ -1463,7 +1720,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:intelligence-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie blanche : Intelligence +1 par réussite, 10 min par niveau du lanceur, 1 perso
+      par réussite.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: lumiere
     name: Lumière
     status: active
@@ -1477,7 +1739,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lumiere
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Eclaire 5 m2 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: purification-de-l-air
     name: Purification de l'air
     status: active
@@ -1491,7 +1756,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:purification-de-l-air
-    prose_orphan: true
+    generated_prose: "Sort de magie blanche : Purifie 1 m3 d'air par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: purification-de-l-eau
     name: Purification de l'eau
     status: active
@@ -1505,7 +1773,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:purification-de-l-eau
-    prose_orphan: true
+    generated_prose: "Sort de magie blanche : Purifie 1 litre d'eau par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: rapidite
     name: Rapidité
     status: active
@@ -1519,7 +1790,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rapidite
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Facteur de vitesse -1 par réussite, 50 DT par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: rapidite-de-masse
     name: Rapidité de masse
     status: active
@@ -1533,7 +1807,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rapidite-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie blanche : Facteur de vitesse -1, 1 Perso par réussite, 50DT par niveau du
+      lanceur.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: renvoi-du-demon
     name: Renvoi du démon
     status: active
@@ -1547,7 +1826,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:renvoi-du-demon
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: renvoi-de-masse
+        term: Renvoi de masse
+    derived_from: renvoi-de-masse
   - id: respiration
     name: Respiration
     status: active
@@ -1561,7 +1844,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:respiration
-    prose_orphan: true
+    generated_prose: 'Sort de magie blanche : Permet de respirer normalement 10 min par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: respiration-de-masse
     name: Respiration de masse
     status: active
@@ -1575,7 +1861,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:respiration-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie blanche : Permet de respirer normalement 10 min par réussite, 1 personne par
+      réussite.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: resurrection
     name: Résurrection
     status: active
@@ -1623,7 +1914,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contact
-    prose_orphan: true
+    generated_prose: 'Sort de divination : Permet de parler avec qqn d’éloigné.'
+    prose_origin: templated
+    validation: pending
   - id: contact-de-morphee
     name: Contact de Morphée
     status: active
@@ -1654,7 +1947,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contact-divin
-    prose_orphan: true
+    generated_prose: 'Sort de divination : Permet de parler avec un dieu.'
+    prose_origin: templated
+    validation: pending
   - id: contacter-l-au-dela
     name: Contacter l’au-delà
     status: active
@@ -1668,7 +1963,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contacter-l-au-dela
-    prose_orphan: true
+    generated_prose: 'Sort de divination : Permet de parler avec un esprit.'
+    prose_origin: templated
+    validation: pending
   - id: detection-du-danger
     name: Détection du danger
     status: active
@@ -1682,7 +1979,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:detection-du-danger
-    prose_orphan: true
+    generated_prose: 'Sort de divination : Colore en fonction du danger, 1min par réussite.'
+    prose_origin: templated
+    validation: pending
   - id: identification
     name: Identification
     status: active
@@ -1713,7 +2012,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:localisation
-    prose_orphan: true
+    generated_prose: 'Sort de divination : Localise une cible recherchée.'
+    prose_origin: templated
+    validation: pending
   - id: nouvelle-du-monde
     name: Nouvelle du monde
     status: active
@@ -1795,7 +2096,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:regard-de-puissance
-    prose_orphan: true
+    generated_prose: 'Sort de divination : Colore en fonction de puissance, 1min par réussite.'
+    prose_origin: templated
+    validation: pending
   - id: savoir-l-aptitude
     name: Savoir l'aptitude
     status: active
@@ -1809,7 +2112,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:savoir-l-aptitude
-    prose_orphan: true
+    generated_prose: 'Sort de divination : Révèle les points de 1 aptitude par réussite.'
+    prose_origin: templated
+    validation: pending
   - id: savoir-l-energie
     name: Savoir l'énergie
     status: active
@@ -1942,7 +2247,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vision-de-reve
-    prose_orphan: true
+    generated_prose: 'Sort de divination : Montre le rêve si R > jet d’int.'
+    prose_origin: templated
+    validation: pending
   - id: appel-de-la-foudre
     name: Appel de la foudre
     status: active
@@ -1956,7 +2263,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-de-la-foudre
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: appel-de-la-pluie
     name: Appel de la pluie
     status: active
@@ -1970,7 +2281,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-de-la-pluie
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: bouclier-de-foudre
     name: Bouclier de foudre
     status: active
@@ -1984,7 +2299,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-de-foudre
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 2 dégâts par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: bouclier-d-eau
     name: Bouclier d’eau
     status: active
@@ -1998,7 +2316,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-d-eau
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : +1 pour toucher par réussite, 10min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: boule-de-feu
     name: Boule de feu
     status: active
@@ -2012,7 +2333,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:boule-de-feu
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 8 dégâts +3 par R sup.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: boule-de-feu-majeure
     name: Boule de feu majeure
     status: active
@@ -2026,7 +2350,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:boule-de-feu-majeure
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 12 dégâts +4 par R sup.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: boule-de-foudre
     name: Boule de foudre
     status: active
@@ -2040,7 +2367,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:boule-de-foudre
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 8 dégâts de foudre +3 par R sup.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: boule-de-foudre-majeure
     name: Boule de foudre majeure
     status: active
@@ -2054,7 +2384,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:boule-de-foudre-majeure
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 12 dégâts de foudre +4 par R sup.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: brasier
     name: Brasier
     status: active
@@ -2068,7 +2401,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:brasier
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 4 dégâts, 1m2 par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: cercle-de-feu
     name: Cercle de feu
     status: active
@@ -2082,7 +2418,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:cercle-de-feu
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 1m de haut, 3m de dia par réussite, , 10min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: chaine-d-eclairs
     name: Chaîne d’éclairs
     status: active
@@ -2096,7 +2435,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:chaine-d-eclairs
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 3 dégâts par réussite sur 1personne par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: champs-de-boue
     name: Champs de boue
     status: active
@@ -2110,7 +2452,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:champs-de-boue
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : Déplacement => jet force (diff = 5 + R), 10m2 par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: colere-divine
     name: Colère divine
     status: active
@@ -2124,7 +2469,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:colere-divine
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 1000 dégâts +100 par R sup.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: flash
     name: Flash
     status: active
@@ -2138,7 +2486,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:flash
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : Aveugle l’ennemi 50DT par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: fleche-de-feu
     name: Flèche de feu
     status: active
@@ -2152,7 +2503,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:fleche-de-feu
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 2 dégâts de feu par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: fleche-de-foudre
     name: Flèche de foudre
     status: active
@@ -2166,7 +2520,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:fleche-de-foudre
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 2 dégâts d’électricité par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: foudroiement
     name: Foudroiement
     status: active
@@ -2180,7 +2537,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:foudroiement
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 3 dégâts d’électricité par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: immolation
     name: Immolation
     status: active
@@ -2194,7 +2554,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:immolation
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : Résist. au feu : 100%, 1 dégât par réussite, 1min par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: multi-flamme
     name: Multi-flamme
     status: active
@@ -2208,7 +2571,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:multi-flamme
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 3 dégâts +1 par R sup., 1 projectile sup./2R.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: mur-de-flammes
     name: Mur de flammes
     status: active
@@ -2222,7 +2588,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:mur-de-flammes
-    prose_orphan: true
+    generated_prose: >-
+      Sort élémentaire : Crée un mur de flammes. 1m de haut par réussite, 5m de long par réussite,
+      10 min. par niveau du lanceur.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: pilier-de-feu
     name: Pilier de feu
     status: active
@@ -2236,7 +2607,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:pilier-de-feu
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 20 dégâts +4 par +.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: pyramide-de-feu
     name: Pyramide de feu
     status: active
@@ -2250,7 +2624,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:pyramide-de-feu
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 25 dégâts +5 par+ (10m2/5m).'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: rayon-d-eau
     name: Rayon d’eau
     status: active
@@ -2264,7 +2641,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rayon-d-eau
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : Force = R 5DT par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: raz-de-maree
     name: Raz de marée
     status: active
@@ -2278,7 +2658,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:raz-de-maree
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 50 dégâts +10 par R supp.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: sables-mouvants
     name: Sables mouvants
     status: active
@@ -2312,7 +2695,13 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:tornade
-    prose_orphan: true
+    generated_prose: >-
+      Sort élémentaire : Projette tout dans les airs sur son passage. Diff. pour résister = 10 +3
+      par réussite supplémentaires. 1 min par niveau du lanceur Le lanceur décide de la direction de
+      base de la tornade, celle-ci peut ensuite dévier librement.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: tornade-de-feu
     name: Tornade de feu
     status: active
@@ -2326,7 +2715,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:tornade-de-feu
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 50DT par réussite 15dégâts +3 par+.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: touche-ardant
     name: Touché ardant
     status: active
@@ -2340,7 +2732,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:touche-ardant
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 1 dégât par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: vague-de-feu
     name: Vague de feu
     status: active
@@ -2354,7 +2749,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vague-de-feu
-    prose_orphan: true
+    generated_prose: 'Sort élémentaire : 10 dégâts + 2 par + (1m par réussite).'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: animation-des-armures
     name: Animation des armures
     status: active
@@ -2404,7 +2802,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:cauchemard
-    prose_orphan: true
+    generated_prose: >-
+      Sort d'enchantement : La cible endormie se met à cauchemarder. Le MJ pourra appliquer des
+      malus de fatigue en fonction des R au dormeur dès le lendemain.
+    prose_origin: templated
+    validation: pending
   - id: cauchemard-de-masse
     name: Cauchemard de masse
     status: active
@@ -2420,7 +2822,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:cauchemard-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort d'enchantement : Les cibles endormie se mettent à cauchemarder. Le MJ pourra appliquer
+      des malus de fatigue en fonction des R aux dormeurs dès le lendemain.
+    prose_origin: templated
+    validation: pending
   - id: cocon-thermique
     name: Cocon thermique
     status: active
@@ -2536,7 +2942,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lourdeur
-    prose_orphan: true
+    generated_prose: "Sort d'enchantement : La cible acquiert 2 kg par réussite, 10 min par niveau du lanceur."
+    prose_origin: templated
+    validation: pending
   - id: marche-sur-l-eau
     name: Marche sur l'eau
     status: active
@@ -2601,7 +3009,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:parler-aux-oiseaux
-    prose_orphan: true
+    generated_prose: "Sort d'enchantement : 5m. rayon de voix par réussite."
+    prose_origin: templated
+    validation: pending
   - id: passe-partout
     name: Passe-partout
     status: active
@@ -2820,7 +3230,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:clonage
-    prose_orphan: true
+    generated_prose: "Sort d'illusion : Crée un clone d'une cible à vue."
+    prose_origin: templated
+    validation: pending
   - id: couteau-illusoire
     name: Couteau illusoire
     status: active
@@ -3276,7 +3688,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-elfe
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 elfe par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-d-homme-lezard
     name: Invocation d'homme lézard
     status: active
@@ -3290,7 +3705,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-homme-lezard
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 homme lézard par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-d-homme-oiseau
     name: Invocation d'homme oiseau
     status: active
@@ -3304,7 +3722,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-homme-oiseau
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 homme oiseau par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-d-homme-rat
     name: Invocation d'homme rat
     status: active
@@ -3318,7 +3739,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-homme-rat
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 homme rat par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-d-humain
     name: Invocation d'humain
     status: active
@@ -3332,7 +3756,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-humain
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 humain par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-d-ondine
     name: Invocation d'ondine
     status: active
@@ -3346,7 +3773,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-ondine
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 ondine par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-centaure
     name: Invocation de centaure
     status: active
@@ -3360,7 +3790,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-centaure
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 centaure par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-chat
     name: Invocation de chat
     status: active
@@ -3374,7 +3807,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-chat
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 chat par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-cheval
     name: Invocation de cheval
     status: active
@@ -3388,7 +3824,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-cheval
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 cheval par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-chigr
     name: Invocation de chigr
     status: active
@@ -3402,7 +3841,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-chigr
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 chigr par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-demi-elfe
     name: Invocation de demi elfe
     status: active
@@ -3416,7 +3858,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-demi-elfe
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 demi elfe par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-dryade
     name: Invocation de dryade
     status: active
@@ -3430,7 +3875,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-dryade
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 dryade par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-gnome
     name: Invocation de gnome
     status: active
@@ -3444,7 +3892,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-gnome
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 gnome par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-gobelin
     name: Invocation de gobelin
     status: active
@@ -3458,7 +3909,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-gobelin
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 gobelin par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-guepe
     name: Invocation de guêpe
     status: active
@@ -3472,7 +3926,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-guepe
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 10 guêpes par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-hobbit
     name: Invocation de hobbit
     status: active
@@ -3486,7 +3943,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-hobbit
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 hobbit par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-khochigr
     name: Invocation de khochigr
     status: active
@@ -3500,7 +3960,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-khochigr
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 khochigr par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-khogr
     name: Invocation de khogr
     status: active
@@ -3514,7 +3977,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-khogr
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 khogr par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-loup
     name: Invocation de loup
     status: active
@@ -3528,7 +3994,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-loup
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 loup par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-loup-garou
     name: Invocation de loup-garou
     status: active
@@ -3542,7 +4011,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-loup-garou
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 loup-garou par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-nain
     name: Invocation de nain
     status: active
@@ -3556,7 +4028,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-nain
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 nain par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-squelette
     name: Invocation de squelette
     status: active
@@ -3570,7 +4045,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-squelette
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 squelette par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-termite
     name: Invocation de termite
     status: active
@@ -3584,7 +4062,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-termite
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 10 termites par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-troll
     name: Invocation de troll
     status: active
@@ -3598,7 +4079,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-troll
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 troll par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-de-vampire
     name: Invocation de vampire
     status: active
@@ -3612,7 +4096,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-vampire
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 vampire par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-d-abeilles
     name: Invocation d’abeilles
     status: active
@@ -3626,7 +4113,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-abeilles
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 10 abeilles par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-d-ogres
     name: Invocation d’ogres
     status: active
@@ -3640,7 +4130,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-ogres
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 ogre par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: invocation-d-orc
     name: Invocation d’orc
     status: active
@@ -3654,7 +4147,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-orc
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : 1 orc par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: lien-d-invocation
     name: Lien d'invocation
     status: active
@@ -3670,7 +4166,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lien-d-invocation
-    prose_orphan: true
+    generated_prose: >-
+      Sort d'invocation : Le magicien crée un lien entre une cible (à vue) et lui-même (jet
+      d'intelligence pour résister). Ce lien permettra au magicien d'invoquer la cible à l'avenir.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: revocation
     name: Révocation
     status: active
@@ -3684,7 +4185,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:revocation
-    prose_orphan: true
+    generated_prose: "Sort d'invocation : Révoque une cible invoquée."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: appel-des-chats
     name: Appel des chats
     status: active
@@ -3698,7 +4202,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-chats
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: appel-des-chevaux
     name: Appel des chevaux
     status: active
@@ -3712,7 +4220,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-chevaux
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: appel-des-colombes
     name: Appel des colombes
     status: active
@@ -3726,7 +4238,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-colombes
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: appel-des-corbeaux
     name: Appel des corbeaux
     status: active
@@ -3740,7 +4256,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-corbeaux
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: appel-des-insectes
     name: Appel des insectes
     status: active
@@ -3754,7 +4274,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-insectes
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: appel-des-loups
     name: Appel des loups
     status: active
@@ -3768,7 +4292,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-loups
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: appel-des-mammiferes
     name: Appel des mammifères
     status: active
@@ -3782,7 +4310,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-mammiferes
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: cercle-de-fleur
     name: Cercle de fleur
     status: active
@@ -3864,7 +4396,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:effacement-des-traces-de-masses
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie naturelle : Diff. pour pister +1 par réussite, 1 cible par réussite, 10 min par
+      niveau du lanceur.
+    prose_origin: templated
+    validation: pending
   - id: fertilite
     name: Fertilité
     status: active
@@ -3929,7 +4465,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:marecage
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie naturelle : Le terrain devient marécageux sur un rayon de 3 m par niveau du
+      lanceur autour du lanceur.
+    prose_origin: templated
+    validation: pending
   - id: murissement
     name: Mûrissement
     status: active
@@ -4028,7 +4568,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-morts
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: appel-des-morts-de-masse
     name: Appel des morts de masse
     status: active
@@ -4042,7 +4586,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-morts-de-masse
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: appel-des-morts-majeur
     name: Appel des morts majeur
     status: active
@@ -4056,7 +4604,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-morts-majeur
-    prose_orphan: true
+    prose_refs:
+      - catalog: lexique
+        entry_id: appel
+        term: Appel
+    derived_from: appel
   - id: armure-d-os
     name: Armure d’os
     status: active
@@ -4070,7 +4622,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:armure-d-os
-    prose_orphan: true
+    generated_prose: 'Sort de nécromancie : 1/3 chance d’avoir armure de 4, 10min par réussite.'
+    prose_origin: templated
+    validation: pending
   - id: cage-d-os
     name: Cage d'os
     status: active
@@ -4169,7 +4723,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:crane-hurlant
-    prose_orphan: true
+    generated_prose: 'Sort de nécromancie : Peur + 2 dégâts de feu par réussite.'
+    prose_origin: templated
+    validation: pending
   - id: decret-de-non-repos
     name: Décret de non repos
     status: active
@@ -4251,7 +4807,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:raideur-cadaverique
-    prose_orphan: true
+    generated_prose: 'Sort de nécromancie : Paralyse 50DT par réussite, si R sup à jet d’endu.'
+    prose_origin: templated
+    validation: pending
   - id: reanimation-des-membres
     name: Réanimation des membres
     status: active
@@ -4265,7 +4823,9 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:reanimation-des-membres
-    prose_orphan: true
+    generated_prose: 'Sort de nécromancie : 1 membre par niveau du lanceur, 3m par réussite, catégorie max 20.'
+    prose_origin: templated
+    validation: pending
   - id: renvoi
     name: Renvoi
     status: active
@@ -4296,7 +4856,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:renvoie-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de nécromancie : Renvoi 1 mort par niveau du lanceur +1 par réussite sup., 3m par
+      réussite.
+    prose_origin: templated
+    validation: pending
   - id: terre-sterile
     name: Terre stérile
     status: active
@@ -4361,7 +4925,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:affaiblissement
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : 1 malus par réussite, 50 DT par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: affaiblissement-de-masse
     name: Affaiblissement de masse
     status: active
@@ -4375,7 +4942,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:affaiblissement-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie noire : 1 malus par réussite, 1 personne par réussite, 50 DT par niveau du
+      lanceur.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: antipathisme
     name: Antipathisme
     status: active
@@ -4389,7 +4961,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:antipathisme
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Empathie -1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: apathie
     name: Apathie
     status: active
@@ -4420,7 +4995,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:arret-du-temps
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Arrêt 10 DT par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: autodestruction
     name: Autodestruction
     status: active
@@ -4436,7 +5014,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:autodestruction
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie noire : Sous test d’intelligence, la cible cherchera à se nuire le plus possible
+      durant 10 min par niveau du lanceur Celle-ci doit être à vue du lanceur lors de l'incantation.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: betise
     name: Bêtise
     status: active
@@ -4450,7 +5033,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:betise
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Intelligence -1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: contagion-du-peche
     name: Contagion du péché
     status: active
@@ -4481,7 +5067,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:control-charnel
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Eveille le désir de la cible sous F. vol.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: controle-mental
     name: Contrôle mental
     status: active
@@ -4495,7 +5084,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:controle-mental
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Control sous test d’intelligence, 10min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: douleur
     name: Douleur
     status: active
@@ -4509,7 +5101,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:douleur
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : -2 points de vitalité par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: douleur-a-distance
     name: Douleur à distance
     status: active
@@ -4523,7 +5118,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:douleur-a-distance
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : -2 points de vitalité par réussite, 3m par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: douleur-de-masse
     name: Douleur de masse
     status: active
@@ -4537,7 +5135,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:douleur-de-masse
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : -2 points de vitalité par réussite, 3m par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: douleur-majeure
     name: Douleur majeure
     status: active
@@ -4551,7 +5152,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:douleur-majeure
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : -3 points de vitalité par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: douleur-mineure
     name: Douleur mineure
     status: active
@@ -4565,7 +5169,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:douleur-mineure
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : -1 point de vitalité par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: drain-de-jeunesse
     name: Drain de jeunesse
     status: active
@@ -4581,7 +5188,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:drain-de-jeunesse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie noire : Vole 1 année de jeunesse (le lanceur rajeunit tandis que sa cible
+      vieillit) par réussite contre jet d'endurance.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: drain-de-sort
     name: Drain de sort
     status: active
@@ -4595,7 +5207,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:drain-de-sort
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : 3 PS absorbé par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: drain-de-sort-majeur
     name: Drain de sort majeur
     status: active
@@ -4609,7 +5224,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:drain-de-sort-majeur
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : 4 PS absorbé par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: drain-de-sort-mineur
     name: Drain de sort mineur
     status: active
@@ -4623,7 +5241,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:drain-de-sort-mineur
-    prose_orphan: true
+    generated_prose: "Sort de magie noire : 2 d'énergie absorbés par réussite."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: drain-de-vie
     name: Drain de vie
     status: active
@@ -4637,7 +5258,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:drain-de-vie
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : 1 vitalité absorbé par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: emprise-corporelle
     name: Emprise corporelle
     status: active
@@ -4668,7 +5292,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:faiblesse
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Force -1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: folie
     name: Folie
     status: active
@@ -4682,7 +5309,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:folie
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Folie aléatoire sur test de volonté diff+R.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: hibernation
     name: Hibernation
     status: active
@@ -4696,7 +5326,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:hibernation
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : 1 jour d’hybernation par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: horreur
     name: Horreur
     status: active
@@ -4710,7 +5343,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:horreur
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Test de volonté sur la cible, diff. +1 par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: implosion
     name: Implosion
     status: active
@@ -4724,7 +5360,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:implosion
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : 1 dégât par réussite si sup. à l’endurance, cible implose.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: lachete
     name: Lâcheté
     status: active
@@ -4738,7 +5377,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lachete
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Facteur de volonté + 1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: laideur
     name: Laideur
     status: active
@@ -4752,7 +5394,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:laideur
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Esthétique -1 par réussite, 10 min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: lenteur
     name: Lenteur
     status: active
@@ -4766,7 +5411,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lenteur
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : +1 Facteur de vitesse par réussite, 50 DT par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: lenteur-de-masse
     name: Lenteur de masse
     status: active
@@ -4780,7 +5428,12 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lenteur-de-masse
-    prose_orphan: true
+    generated_prose: >-
+      Sort de magie noire : +1 Facteur de vitesse par réussite, 1 personne par réussite, 50 DT par
+      niveau du lanceur.
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: malediction
     name: Malédiction
     status: active
@@ -4794,7 +5447,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:malediction
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Diff. +1 par réussite, 10min par niveau du lanceur.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: oubli
     name: Oubli
     status: active
@@ -4825,7 +5481,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:paralysie
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Paralyse 50DT par réussite, si R sup à jet de force.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: penombre
     name: Pénombre
     status: active
@@ -4839,7 +5498,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:penombre
-    prose_orphan: true
+    generated_prose: "Sort de magie noire : Plonge dans l'ombre 5 m2 par réussite, 10 min par niveau du lanceur."
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: peur
     name: Peur
     status: active
@@ -4870,7 +5532,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:pluie-de-sang
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : Fait pleuvoir du sang 10 min par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: resserrement-des-murs
     name: Resserrement des murs
     status: active
@@ -4884,7 +5549,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:resserrement-des-murs
-    prose_orphan: true
+    generated_prose: 'Sort de magie noire : 50 cm par réussite.'
+    prose_origin: templated
+    validation: pending
+    low_confidence: true
   - id: vengeance
     name: Vengeance
     status: active
