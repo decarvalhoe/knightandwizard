@@ -8095,7 +8095,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-spells"
     path: "data/catalogs/spells.yaml"
-    sha256: "9791f9f5706c718d0c85545f10177a5887817e868ee47cb1c3450b857c14b51e"
+    sha256: "75ba8466a6b0e44490f3aba2a59db1fa8a5745afe0bef95bcf6ada39181e730b"
     source_type: catalog_yaml
     priority: 90
     status: active
