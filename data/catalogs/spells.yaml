@@ -1121,8 +1121,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: benediction-de-masse
     name: Bénédiction de masse
@@ -1153,8 +1152,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: bouclier
     name: Bouclier
@@ -1288,8 +1286,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: charisme-de-masse
     name: Charisme de masse
@@ -1323,8 +1320,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: courage
     name: Courage
@@ -1346,8 +1342,8 @@ spells:
     effect_model:
       source:
         prose: >-
-          Facteur de volonté –1 par réussite, 10 minutes par niveau (sens du facteur à confirmer par
-          le MJ).
+          Facteur de volonté –1 par réussite, 10 minutes par niveau (un facteur de volonté plus bas
+          améliore la réussite du test, R-8.19 : effet bénéfique).
         ref: spells:courage
       spec:
         target: factor
@@ -1358,8 +1354,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: deviation
     name: Déviation
@@ -1478,8 +1473,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: dexterite-de-masse
     name: Dextérité de masse
@@ -1513,8 +1507,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: don-d-energie
     name: Don d’énergie
@@ -1563,8 +1556,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: empathie-de-masse
     name: Empathie de masse
@@ -1598,8 +1590,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: endurance
     name: Endurance
@@ -1631,8 +1622,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: endurance-de-masse
     name: Endurance de masse
@@ -1666,8 +1656,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: esthetique
     name: Esthétique
@@ -1699,8 +1688,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: esthetique-de-masse
     name: Esthétique de masse
@@ -1734,8 +1722,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: force
     name: Force
@@ -1767,8 +1754,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: force-de-masse
     name: Force de masse
@@ -1802,8 +1788,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: guerison-absolue
     name: Guérison absolue
@@ -1824,7 +1809,7 @@ spells:
         term: Guérison absolue
     effect_model:
       source:
-        prose: 2 points de vitalité par réussite.
+        prose: 2 points de vitalité par réussite (soin général).
         ref: spells:guerison-absolue
       spec:
         target: vitality
@@ -1832,8 +1817,7 @@ spells:
         value: 2 * successes
         activation: active
         duration: ephemeral
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: guerison-de-la-chair
     name: Guérison de la chair
@@ -1855,16 +1839,16 @@ spells:
     derived_from: guerison
     effect_model:
       source:
-        prose: 2 points de vitalité à la zone par réussite.
+        prose: 2 points de vitalité à la zone par réussite (soin par zone, hors combat).
         ref: spells:guerison-de-la-chair
       spec:
         target: vitality
+        scope: zone
         op: add
         value: 2 * successes
         activation: active
         duration: ephemeral
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: guerison-de-la-peau
     name: Guérison de la peau
@@ -1886,16 +1870,16 @@ spells:
     derived_from: guerison
     effect_model:
       source:
-        prose: 2 points de vitalité à la zone par réussite.
+        prose: 2 points de vitalité à la zone par réussite (soin par zone, hors combat).
         ref: spells:guerison-de-la-peau
       spec:
         target: vitality
+        scope: zone
         op: add
         value: 2 * successes
         activation: active
         duration: ephemeral
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: guerison-des-muscles
     name: Guérison des muscles
@@ -1917,16 +1901,16 @@ spells:
     derived_from: guerison
     effect_model:
       source:
-        prose: 2 points de vitalité à la zone par réussite.
+        prose: 2 points de vitalité à la zone par réussite (soin par zone, hors combat).
         ref: spells:guerison-des-muscles
       spec:
         target: vitality
+        scope: zone
         op: add
         value: 2 * successes
         activation: active
         duration: ephemeral
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: guerison-des-muscles-mineure
     name: Guérison des muscles mineure
@@ -1948,16 +1932,16 @@ spells:
     derived_from: guerison
     effect_model:
       source:
-        prose: 1 point de vitalité à la zone par réussite.
+        prose: 1 point de vitalité à la zone par réussite (soin par zone, hors combat).
         ref: spells:guerison-des-muscles-mineure
       spec:
         target: vitality
+        scope: zone
         op: add
         value: successes
         activation: active
         duration: ephemeral
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: guerison-des-organes
     name: Guérison des organes
@@ -1979,16 +1963,16 @@ spells:
     derived_from: guerison
     effect_model:
       source:
-        prose: 2 points de vitalité à la zone par réussite.
+        prose: 2 points de vitalité à la zone par réussite (soin par zone, hors combat).
         ref: spells:guerison-des-organes
       spec:
         target: vitality
+        scope: zone
         op: add
         value: 2 * successes
         activation: active
         duration: ephemeral
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: guerison-des-os
     name: Guérison des os
@@ -2010,16 +1994,16 @@ spells:
     derived_from: guerison
     effect_model:
       source:
-        prose: 2 points de vitalité à la zone par réussite.
+        prose: 2 points de vitalité à la zone par réussite (soin par zone, hors combat).
         ref: spells:guerison-des-os
       spec:
         target: vitality
+        scope: zone
         op: add
         value: 2 * successes
         activation: active
         duration: ephemeral
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: intelligence
     name: Intelligence
@@ -2051,8 +2035,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: intelligence-de-masse
     name: Intelligence de masse
@@ -2086,8 +2069,7 @@ spells:
         duration:
           amount: level * 10
           unit: minute
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: lumiere
     name: Lumière
@@ -2169,8 +2151,7 @@ spells:
         activation: active
         duration:
           dt: level * 50
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: rapidite-de-masse
     name: Rapidité de masse
@@ -2203,8 +2184,7 @@ spells:
         activation: active
         duration:
           dt: level * 50
-        requires_mj_validation: true
-      fidelity: pending
+      fidelity: covered
       ambiguity_ref: null
   - id: renvoi-du-demon
     name: Renvoi du démon
