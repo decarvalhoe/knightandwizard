@@ -13171,7 +13171,7 @@ sources:
     notes: "Project documentation source."
   - id: "docs-plan-issue-list"
     path: "docs/plan/ISSUE-LIST.md"
-    sha256: "cb92cfaebaed640432f8e650207073654daa63b2e9410163353ce239cc74f3f4"
+    sha256: "f2d1099f13b2ea3c9563e1ab289ee7c7340e3cb4664217d345fdc0b5ccd0e74a"
     source_type: generated_doc
     priority: 40
     status: active
@@ -13181,6 +13181,15 @@ sources:
   - id: "docs-plan-magic-implementation"
     path: "docs/plan/MAGIC-IMPLEMENTATION.md"
     sha256: "3fdc18f30a82936a8a83db4cbf75b340959ba00006c193f156174618d0ac9c8a"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-plan-master-plan"
+    path: "docs/plan/MASTER-PLAN.md"
+    sha256: "ef79803e954117e51f987f0d757617a73c9076dd84da6f59cb30806938184f47"
     source_type: generated_doc
     priority: 40
     status: active
@@ -13216,7 +13225,7 @@ sources:
     notes: "Project documentation source."
   - id: "docs-plan-roadmap"
     path: "docs/plan/ROADMAP.md"
-    sha256: "8fd4b914b8dd497ba6744744b1a4f87a09c6528ab2bfefd44b8ae499eaa25d12"
+    sha256: "87bed5af14406c62e00b44905056f05ac21c5938ac146fb8f2a3da6e5b657465"
     source_type: generated_doc
     priority: 40
     status: active

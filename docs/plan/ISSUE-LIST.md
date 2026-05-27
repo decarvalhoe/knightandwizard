@@ -1,5 +1,9 @@
 # Knight & Wizard Issue List
 
+> ⚠️ **Historique — campagne v0.3.1 (close).** Le plan **actif** est [`MASTER-PLAN.md`](./MASTER-PLAN.md)
+> (épics + séquencement, dérivé de `SURFACES.md` + registres moteur). Ce registre (#35–61, tous fermés)
+> est conservé pour mémoire.
+
 Generated/maintained as the planning register for the canonical-first roadmap.
 
 ## Summary

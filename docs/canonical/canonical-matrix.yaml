@@ -267345,7 +267345,7 @@ units:
     sources:
       - path: "docs/plan/ISSUE-LIST.md"
         ref: "docs/plan/ISSUE-LIST.md"
-        sha256: "cb92cfaebaed640432f8e650207073654daa63b2e9410163353ce239cc74f3f4"
+        sha256: "f2d1099f13b2ea3c9563e1ab289ee7c7340e3cb4664217d345fdc0b5ccd0e74a"
     business_rule:
       summary: "docs/plan/ISSUE-LIST.md from docs/plan/ISSUE-LIST.md."
       ambiguity_ref: null
@@ -267384,6 +267384,42 @@ units:
         sha256: "3fdc18f30a82936a8a83db4cbf75b340959ba00006c193f156174618d0ac9c8a"
     business_rule:
       summary: "docs/plan/MAGIC-IMPLEMENTATION.md from docs/plan/MAGIC-IMPLEMENTATION.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:docs-plan-master-plan"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/plan/MASTER-PLAN.md"
+    status: covered
+    sources:
+      - path: "docs/plan/MASTER-PLAN.md"
+        ref: "docs/plan/MASTER-PLAN.md"
+        sha256: "ef79803e954117e51f987f0d757617a73c9076dd84da6f59cb30806938184f47"
+    business_rule:
+      summary: "docs/plan/MASTER-PLAN.md from docs/plan/MASTER-PLAN.md."
       ambiguity_ref: null
     yaml:
       status: not_applicable
@@ -267525,7 +267561,7 @@ units:
     sources:
       - path: "docs/plan/ROADMAP.md"
         ref: "docs/plan/ROADMAP.md"
-        sha256: "8fd4b914b8dd497ba6744744b1a4f87a09c6528ab2bfefd44b8ae499eaa25d12"
+        sha256: "87bed5af14406c62e00b44905056f05ac21c5938ac146fb8f2a3da6e5b657465"
     business_rule:
       summary: "docs/plan/ROADMAP.md from docs/plan/ROADMAP.md."
       ambiguity_ref: null

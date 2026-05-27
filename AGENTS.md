@@ -80,7 +80,7 @@ Avant de modifier une règle, un catalogue ou une mécanique, lire les documents
 - `docs/HANDOVER.md` : état global et décisions structurantes.
 - `docs/product/` : direction active K&W tabletop-first, assistant MJ/Joueur, LLM.
 - `docs/plan/ROADMAP.md` : roadmap canonical-first (v0.3.1 → v1.0.0).
-- `docs/plan/ISSUE-LIST.md` : registre opérationnel des tickets P0→P4 avec dépendances et critères d'acceptation.
+- `docs/plan/MASTER-PLAN.md` : plan de dev **actif** (épics + séquencement + réconciliation), dérivé de `SURFACES.md` + registres moteur. `docs/plan/ISSUE-LIST.md` : registre **historique** v0.3.1 (clos).
 - `docs/plan/ADR-001-architecture-cible.md` : cible d'architecture.
 - `docs/canonical/source-manifest.yaml` : registre des sources canoniques scannées et statutées.
 - `docs/canonical/canonical-matrix.yaml` : matrice atomisée source → implémentation par unité.
@@ -111,7 +111,7 @@ Quand des sources, catalogues ou statuts canoniques bougent :
 pnpm canonical:write          # régénère docs/canonical/* — ne jamais éditer à la main
 ```
 
-`pnpm canonical:check:strict` est intentionnellement rouge tant que les imports `sample.ts` produit n'ont pas été retirés (issue P0-12). C'est la cible de conformité, pas du bruit.
+`pnpm canonical:check:strict` est **vert** depuis v0.3.1 (les imports `sample.ts` produit ont été retirés, P0-12 close). Le gate strict fait partie des 4 gates de release.
 
 Pour le devlab :
 
