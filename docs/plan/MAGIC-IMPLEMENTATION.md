@@ -1,13 +1,14 @@
 # Suivi d'implémentation — Magie K&W (D8)
 
 > **But** : registre **exhaustif** des règles de magie (R-8.x) pour **ne perdre aucune règle** pendant
-> le build du **moteur Magie** — aujourd'hui **ABSENT** de `rules-core` (seules les **données** existent :
-> `spells.yaml` 324 sorts, `magic-schools.yaml` 11 écoles). Même esprit que `COMBAT-IMPLEMENTATION.md`.
+> le build du **moteur Magie**, dont le **cœur est désormais en place** dans `rules-core` (`magic.ts` +
+> intégration `combat.ts`) ; restent l'**effet du sort** et la résolution complète. Données existantes :
+> `spells.yaml` 324 sorts, `magic-schools.yaml` 11 écoles. Même esprit que `COMBAT-IMPLEMENTATION.md`.
 >
 > Source d'autorité : `docs/rules/08-magie.md` (R-8.x, **10/10 tranché**) + D1 (jets) + D2 R-2.11 (énergie).
 > Légende : ✅ couvert · 🟡 partiel · ❌ absent · 🆕 nouveau. Périmètre : **MVP** · **V2** · **backlog**.
 >
-> **État global : données ✅ · moteur ❌ (rien ne résout un sort).**
+> **État global : données ✅ · cœur moteur ✅** (lancement + énergie + TI/réduction + interruption/concentration, **intégrés au combat live**) · **résolution d'effet ❌** (le sort réussit mais n'applique pas encore son effet).
 
 ## Décisions verrouillées
 
@@ -19,12 +20,12 @@
 
 ## Périmètre MVP (cœur jouable)
 
-- [ ] **Lancement** (R-8.5) : pool = **Intelligence + points dans le sort** vs difficulté convenue (>9 possible).
-- [ ] **Énergie** (R-8.10) : coût au lancement, récupération (repos 8 h = plein).
-- [ ] **TI** (R-8.6) : temps d'incantation en DT.
-- [ ] **Réduction de TI** (R-8.8) : 2 énergie / DT en moins, plancher = FV du magicien.
-- [ ] **Concentration / interruption** (R-8.7) : annulation + énergie **perdue** (réutilise R-9.4) ; action conservée = +1 difficulté / point de dégât subi pendant le TI.
-- [ ] **Intégration Combat** : action de sort avec **TI dans la timeline DT** ; énergie décomptée au cast ; sync vitalité/énergie fiche.
+- [x] **Lancement** (R-8.5) : pool = **Intelligence + points dans le sort** vs difficulté convenue (>9 possible). → `magic.ts` `resolveSpellCast`.
+- [x] **Énergie** (R-8.10) : coût au lancement, récupération (repos 8 h = plein). → `magic.ts` `spendEnergy` / `gainEnergy` / `restoreEnergyToFull`.
+- [x] **TI** (R-8.6) : temps d'incantation en DT. → `combat.ts` `castingTimeDT` (windup planifié par `declareSpellCast`).
+- [x] **Réduction de TI** (R-8.8) : 2 énergie / DT en moins, plancher = FV du magicien. → `combat.ts` `tiReductionDT`.
+- [x] **Concentration / interruption** (R-8.7) : annulation + énergie **perdue** (réutilise R-9.4) ; action conservée = +1 difficulté / point de dégât subi pendant le TI. → `combat.ts` `declareSpellCast` + `applyDamage` (`spellConcentrationDamage`).
+- [x] **Intégration Combat** : action de sort avec **TI dans la timeline DT** ; énergie décomptée au cast. → `combat.ts` `declareSpellCast` / `resolveNextAction` (events `spell_started` / `spell_resolved`). _Reste_ : sync vitalité/énergie fiche + **application de l'effet** du sort.
 
 ## Registre exhaustif
 
@@ -32,7 +33,7 @@
 
 | Règle  | Objet                                                             | Périmètre        | Statut | Emplacement / écart                                  |
 | ------ | ----------------------------------------------------------------- | ---------------- | ------ | ---------------------------------------------------- |
-| R-8.5  | Pool = Int + points de sort vs difficulté (pas de compétence)     | MVP              | ❌     | aucun moteur de cast                                 |
+| R-8.5  | Pool = Int + points de sort vs difficulté (pas de compétence)     | MVP              | ✅     | `magic.ts` `resolveSpellCast`                        |
 | R-8.1  | Définition de la magie                                            | —                | ✅     | doc                                                  |
 | R-8.2  | Voie magique = engagement à vie                                   | MVP              | 🟡     | gate création (R-6.3) ; pas de moteur magie          |
 | R-8.3  | 11 écoles (couleurs §14)                                          | MVP              | ✅     | `magic-schools.yaml`                                 |
@@ -42,19 +43,19 @@
 
 ### Énergie
 
-| Règle  | Objet                                                          | Périmètre        | Statut | Emplacement / écart     |
-| ------ | -------------------------------------------------------------- | ---------------- | ------ | ----------------------- |
-| R-8.10 | Modèle d'énergie (coût / récup / plafond)                      | MVP (coût+récup) | ❌     | `energy` = simple champ |
-| R-8.8  | Réduction de TI (2 énergie/DT, min = FV)                       | MVP              | ❌     | —                       |
-| R-8.14 | Drain / don / captage / sacrifice / inversion énergie↔vitalité | V2               | ❌     | transferts d'énergie    |
+| Règle  | Objet                                                          | Périmètre        | Statut | Emplacement / écart                              |
+| ------ | -------------------------------------------------------------- | ---------------- | ------ | ------------------------------------------------ |
+| R-8.10 | Modèle d'énergie (coût / récup / plafond)                      | MVP (coût+récup) | ✅     | `magic.ts` spend/gain/restoreEnergyToFull        |
+| R-8.8  | Réduction de TI (2 énergie/DT, min = FV)                       | MVP              | ✅     | `combat.ts` `declareSpellCast` (`tiReductionDT`) |
+| R-8.14 | Drain / don / captage / sacrifice / inversion énergie↔vitalité | V2               | ❌     | transferts d'énergie                             |
 
 ### Temps d'incantation / concentration
 
-| Règle | Objet                                                                                   | Périmètre | Statut | Emplacement / écart                                               |
-| ----- | --------------------------------------------------------------------------------------- | --------- | ------ | ----------------------------------------------------------------- |
-| R-8.6 | TI en DT (4 → 192 DT)                                                                   | MVP       | ❌     | —                                                                 |
-| R-8.7 | Concentration / interruption (annule + énergie perdue ; action conservée +1 diff/dégât) | MVP       | 🟡     | `interruptCombatant` (R-9.4) existe — brancher la perte d'énergie |
-| R-8.9 | Atouts TI/concentration (Anticipation, Incantation silencieuse/stoïque, Persistance)    | V2        | ❌     | catalogue                                                         |
+| Règle | Objet                                                                                   | Périmètre | Statut | Emplacement / écart                                            |
+| ----- | --------------------------------------------------------------------------------------- | --------- | ------ | -------------------------------------------------------------- |
+| R-8.6 | TI en DT (4 → 192 DT)                                                                   | MVP       | ✅     | `combat.ts` `castingTimeDT` (windup planifié)                  |
+| R-8.7 | Concentration / interruption (annule + énergie perdue ; action conservée +1 diff/dégât) | MVP       | ✅     | `combat.ts` `declareSpellCast` + `applyDamage` (concentration) |
+| R-8.9 | Atouts TI/concentration (Anticipation, Incantation silencieuse/stoïque, Persistance)    | V2        | ❌     | catalogue                                                      |
 
 ### Variantes / développement / durées / cumul
 
@@ -85,9 +86,9 @@
 ## Plan de vagues (chaque vague : code → évidence → registre, gate canonique)
 
 1. **Données** ✅ : `spells.yaml` (324) + `magic-schools.yaml` (11). → vérifier le schéma R-8.4 complet (`direct_magic`, `damage_type`, `range`, `duration`) et le Zod.
-2. **Moteur — cœur** : lancement (R-8.5) + énergie coût/récup (R-8.10) + TI (R-8.6) + réduction (R-8.8) + interruption (R-8.7, via R-9.4).
-3. **Intégration Combat** : action de sort + **TI dans la timeline DT** ; énergie ← cast ; sync vitalité/énergie fiche.
-4. **Résolution complète** : résistance (R-8.15) + jet brut (R-8.19) + durées (R-8.20) + cumul (Q-D8.9).
+2. **Moteur — cœur** ✅ : lancement (R-8.5) + énergie coût/récup (R-8.10) + TI (R-8.6) + réduction (R-8.8) + interruption/concentration (R-8.7, via R-9.4). → `magic.ts` + `combat.ts` (PR #181/#182/#183/#184).
+3. **Intégration Combat** 🟡 : action de sort + **TI dans la timeline DT** + énergie ← cast **faits** (`declareSpellCast` / `resolveNextAction`, events `spell_started` / `spell_resolved`) ; _restent_ l'**application de l'effet** du sort et la sync vitalité/énergie fiche.
+4. **Résolution complète** : résistance (R-8.15) + jet brut (R-8.19, `rollWillpowerTest` ✅) + durées (R-8.20) + cumul (Q-D8.9).
 5. **Grimoire (surface)** : browser 324 sorts × 11 écoles (couleurs), schéma, lien _apprendre→Fiche_.
 6. **Forum** : cast asynchrone (jet-dans-post) — **avec** le combat asynchrone.
 7. **V2** : variantes (R-8.11), développement (R-8.12), familier (R-8.13), transferts d'énergie (R-8.14), atouts magiciens (R-8.9/8.17).
