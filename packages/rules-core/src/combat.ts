@@ -18,6 +18,11 @@ import {
   evaluateValue
 } from './effect-model.js';
 import { applyEffectiveModifiers, computeEffectiveModifiers, effectiveValue } from './effects.js';
+import {
+  resolveSpellResistance,
+  type SpellResistanceResult,
+  type TargetResistanceProfile
+} from './resistance.js';
 
 export const COMBAT_ROUND_LENGTH_DT = DEFAULT_RULES_CONFIG.combat.roundLengthDT;
 
@@ -111,6 +116,13 @@ export interface SpellAction {
    * resolved outcome (`spellEffect.scope`) so the resistance layer (E4) can interpose.
    */
   effect?: EffectModel;
+  /**
+   * R-8.15 — whether the spell acts DIRECTLY on the living target (control, transformation, heal,
+   * blessing). Routes resistance: a direct spell is gated by magic resistance (shield offensively,
+   * burden on a beneficial spell); an indirect spell (e.g. a projected element) is gated by
+   * elemental resistance instead. Defaults to `false` (indirect). Provenance: spell `direct_magic`.
+   */
+  directMagic?: boolean;
   /** Post-cast recovery in DT; defaults to the caster's effective speed factor. */
   costDT?: number;
 }
@@ -170,6 +182,8 @@ export interface Combatant {
   carriedWeightKg?: number;
   /** R-1.38 — active effects that may modify the speed factor (haste, slowness, atouts). */
   activeEffects?: EffectModel[];
+  /** R-8.15 / R-1.33 — per-type resistance profile (magic %, elemental % by element). */
+  resistances?: TargetResistanceProfile;
 }
 
 export interface CombatEvent {
@@ -216,8 +230,15 @@ export interface SpellEffectOutcome {
   target: EffectTarget;
   op: EffectOperation;
   scope?: string;
+  /** Evaluated magnitude BEFORE resistance (successes-scaled). */
   value: number;
   applied: boolean;
+  /**
+   * E4b — resistance outcome (magic/elemental layers, R-8.15) when the effect is applied to a
+   * target. `resistance.amount` is the magnitude actually applied after the layers; `value` stays
+   * the pre-resistance magnitude. Absent when no target / not applied.
+   */
+  resistance?: SpellResistanceResult;
 }
 
 export interface CombatState {
@@ -721,10 +742,32 @@ function resolveSpell(
 
   // E1b — the spell takes effect only on a successful cast (≥1 net success, R-8.5). The structured
   // effect is then evaluated with `successes` = net successes (per-réussite scaling, R-8.15).
-  const spellEffect =
+  let spellEffect =
     action.effect !== undefined && spellCast.netSuccesses > 0
       ? evaluateSpellEffect(action.effect, actor, action, spellCast.netSuccesses)
       : undefined;
+
+  // E4b — interpose the magic/elemental resistance layers (R-8.15 / R-1.33) before applying the
+  // effect to the target. A direct spell is gated by magic resistance (shield, or burden on a
+  // beneficial spell); an indirect spell with an element is gated by elemental resistance. The
+  // applied magnitude is `resistance.amount` (0 if a layer fully resists).
+  let appliedDelta = 0;
+  if (spellEffect?.applied === true && action.targetId !== undefined) {
+    const target = findCombatant(state, action.targetId);
+    const beneficial = spellEffect.target === 'vitality' && spellEffect.op === 'add';
+    const resistance = resolveSpellResistance(
+      {
+        directMagic: action.directMagic ?? false,
+        beneficial,
+        ...(spellEffect.scope !== undefined ? { element: spellEffect.scope } : {}),
+        amount: spellEffect.value
+      },
+      target.resistances ?? {},
+      { randomInteger }
+    );
+    spellEffect = { ...spellEffect, resistance };
+    appliedDelta = spellEffectSign(spellEffect) * resistance.amount;
+  }
 
   const event: CombatEvent = {
     type: 'spell_resolved',
@@ -744,13 +787,8 @@ function resolveSpell(
     log: [...state.log, event]
   };
 
-  // Apply the vitality delta (positive = damage of type `scope`, negative = heal) to the target.
-  // The damage type is preserved on `spellEffect.scope`; resistance interposition is E4.
-  if (spellEffect?.applied === true && action.targetId !== undefined) {
-    const delta = spellVitalityDelta(spellEffect);
-    if (delta !== 0) {
-      return applyDamage(loggedState, action.targetId, delta, config);
-    }
+  if (appliedDelta !== 0 && action.targetId !== undefined) {
+    return applyDamage(loggedState, action.targetId, appliedDelta, config);
   }
 
   return loggedState;
@@ -806,15 +844,16 @@ function spellEffectContext(
 }
 
 /**
- * Signed vitality delta for `applyDamage` (positive = damage, negative = heal). `damage` and a
- * `vitality` reduction (`sub`) deal damage; a `vitality` increase (`add`) heals.
+ * Sign of the vitality delta for `applyDamage` (+1 = damage, -1 = heal). `damage` and a `vitality`
+ * reduction (`sub`) deal damage; a `vitality` increase (`add`) heals. Multiplied by the
+ * post-resistance magnitude to get the signed delta.
  */
-function spellVitalityDelta(outcome: SpellEffectOutcome): number {
+function spellEffectSign(outcome: SpellEffectOutcome): number {
   if (outcome.target === 'damage') {
-    return outcome.value;
+    return 1;
   }
   if (outcome.target === 'vitality') {
-    return outcome.op === 'add' ? -outcome.value : outcome.value;
+    return outcome.op === 'add' ? -1 : 1;
   }
   return 0;
 }
