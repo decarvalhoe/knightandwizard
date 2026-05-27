@@ -63,7 +63,8 @@
     "catalogs:build:legacy-characters": "tsx tools/build-legacy-characters-catalog.ts",
     "catalogs:build:atouts": "tsx tools/build-atouts-catalog.ts && tsx tools/link-atouts-lexique.ts",
     "catalogs:link:atouts": "tsx tools/link-atouts-lexique.ts",
-    "catalogs:build:lexique": "tsx tools/build-lexique-catalog.ts"
+    "catalogs:build:lexique": "tsx tools/build-lexique-catalog.ts",
+    "catalogs:build:bestiaire-paper": "tsx tools/build-bestiaire-paper-catalog.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

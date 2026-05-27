@@ -7913,6 +7913,15 @@ sources:
     domains: ["D4-assets"]
     contains: ["assets", "handicaps"]
     notes: "Product YAML catalog."
+  - id: "data-catalogs-bestiaire-paper"
+    path: "data/catalogs/bestiaire-paper.yaml"
+    sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["D3-races", "D11-creatures"]
+    contains: ["races", "creatures", "innate_assets", "innate_handicaps"]
+    notes: "Product YAML catalog."
   - id: "data-catalogs-bestiaire"
     path: "data/catalogs/bestiaire.yaml"
     sha256: "b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb"
