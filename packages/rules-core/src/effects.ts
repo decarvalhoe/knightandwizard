@@ -20,7 +20,7 @@ import {
 
 export const GLOBAL_EFFECT_SCOPE = '__global__';
 
-export type NumericEffectTarget = Exclude<EffectTarget, 'status' | 'damage'>;
+export type NumericEffectTarget = Exclude<EffectTarget, 'status'>;
 export type NumericEffectOperation = Extract<EffectOperation, 'add' | 'sub' | 'set' | 'multiply'>;
 
 const COMPUTED_NUMERIC_EFFECT_TARGETS = [
@@ -29,7 +29,8 @@ const COMPUTED_NUMERIC_EFFECT_TARGETS = [
   'difficulty',
   'pool',
   'energy',
-  'vitality'
+  'vitality',
+  'damage'
 ] as const satisfies readonly NumericEffectTarget[];
 
 export type EffectApplicationContext = EffectConditionContext &
@@ -80,6 +81,7 @@ export interface EffectiveModifiers {
   pool: Record<string, EffectModifierBucket>;
   energy: Record<string, EffectModifierBucket>;
   vitality: Record<string, EffectModifierBucket>;
+  damage: Record<string, EffectModifierBucket>;
   status: Record<string, EffectStatusBucket>;
 }
 
@@ -178,6 +180,7 @@ function createEmptyModifiers(): EffectiveModifiers {
     pool: {},
     energy: {},
     vitality: {},
+    damage: {},
     status: {}
   };
 }

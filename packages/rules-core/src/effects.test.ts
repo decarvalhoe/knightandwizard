@@ -179,3 +179,14 @@ function effect(
     fidelity: 'covered'
   });
 }
+
+describe('damage-target effects (#137)', () => {
+  it('computes per-type damage modifiers', () => {
+    const modifiers = computeEffectiveModifiers(
+      [effect({ target: 'damage', scope: 'C', op: 'add', value: 2 })],
+      {}
+    );
+
+    expect(modifiers.damage.C).toMatchObject({ target: 'damage', additive: 2 });
+  });
+});

@@ -3,13 +3,14 @@ import {
   type CombatDamageResult,
   type DamageDefenseInput,
   type DamageModifier,
+  type DamageType,
   type DamageZoneInput,
   type WeaponDamageSpec
 } from './combat-damage.js';
 import { type DiceRollResult, type RandomInteger, rollDice } from './dice.js';
 import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
 import { type EffectModel } from './effect-model.js';
-import { effectiveValue } from './effects.js';
+import { applyEffectiveModifiers, computeEffectiveModifiers, effectiveValue } from './effects.js';
 
 export const COMBAT_ROUND_LENGTH_DT = DEFAULT_RULES_CONFIG.combat.roundLengthDT;
 
@@ -462,6 +463,10 @@ function resolveAttack(
     action.damage !== undefined && successes > 0
       ? computeAttackDamage({
           ...action.damage,
+          damageModifiers: [
+            ...(action.damage.damageModifiers ?? []),
+            ...damageModifiersFromEffects(actor)
+          ],
           netToucheSuccesses: successes,
           randomInteger,
           config
@@ -556,6 +561,29 @@ function encumbrancePenalty(actor: Combatant, config: RulesConfig): number {
   const excess = Math.max(0, carried - capacity);
 
   return Math.ceil(excess / config.combat.encumbranceKgPerStep);
+}
+
+const DAMAGE_TYPES: DamageType[] = ['P', 'E', 'C', 'T'];
+
+/**
+ * #137 — Maps the actor's active EffectModel `damage`-target effects to per-type damage
+ * modifiers consumed by combat-damage. Scope = damage type (P/E/C/T) or global (all types).
+ * Only additive (add/sub) effects are mapped.
+ */
+function damageModifiersFromEffects(actor: Combatant): DamageModifier[] {
+  const effects = actor.activeEffects ?? [];
+
+  if (effects.length === 0) {
+    return [];
+  }
+
+  const modifiers = computeEffectiveModifiers(effects, {});
+
+  return DAMAGE_TYPES.flatMap((type) => {
+    const value = Math.round(applyEffectiveModifiers(0, 'damage', type, modifiers, {}));
+
+    return value === 0 ? [] : [{ type, value, source: 'effect' }];
+  });
 }
 
 function randomIntegerForResolution(options: CombatResolutionOptions): RandomInteger {
