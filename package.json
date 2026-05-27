@@ -66,7 +66,8 @@
     "catalogs:build:lexique": "tsx tools/build-lexique-catalog.ts",
     "catalogs:build:bestiaire-paper": "tsx tools/build-bestiaire-paper-catalog.ts",
     "catalogs:build:armes-paper": "tsx tools/build-armes-paper-catalog.ts",
-    "catalogs:build:protections-paper": "tsx tools/build-protections-paper-catalog.ts"
+    "catalogs:build:protections-paper": "tsx tools/build-protections-paper-catalog.ts",
+    "catalogs:reconcile:paper-web": "tsx tools/reconcile-paper-web.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
