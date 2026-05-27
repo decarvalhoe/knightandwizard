@@ -143,6 +143,12 @@ export function isStatusActive(
     return true;
   }
 
+  // Durée narrative (R-8.20) : hors de l'horloge DT du combat ; l'effet reste actif au regard de
+  // l'elapsedDT (son expiration relève du runtime double-horloge, E3).
+  if ('amount' in duration) {
+    return true;
+  }
+
   if (elapsedDT === undefined) {
     return true;
   }
@@ -247,7 +253,7 @@ function statusIdFor(activeStatus: ActiveStatusEntry): string {
 }
 
 function isLockedDuration(duration: EffectDuration | undefined): boolean {
-  return typeof duration === 'object' && duration.locked === true;
+  return typeof duration === 'object' && 'locked' in duration && duration.locked === true;
 }
 
 function isActivationSource(source: string): source is ActivationSource {

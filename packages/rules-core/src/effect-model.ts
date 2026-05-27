@@ -21,10 +21,19 @@ export const EFFECT_ACTIVATIONS = ['passive', 'active', 'triggered'] as const;
 
 export type EffectActivation = (typeof EFFECT_ACTIVATIONS)[number];
 
+export const NARRATIVE_DURATION_UNITS = ['minute', 'hour', 'day'] as const;
+
+export type NarrativeDurationUnit = (typeof NARRATIVE_DURATION_UNITS)[number];
+
+/**
+ * `{ dt }` = durée de combat (DT). `{ amount, unit }` = durée narrative (R-8.20, le système de temps
+ * double) — `amount` peut être une expression (ex. `'level * 10'` pour « 10 min/niveau »).
+ */
 export type EffectDuration =
   | 'permanent'
   | 'ephemeral'
   | { dt: number | string; locked?: boolean }
+  | { amount: number | string; unit: NarrativeDurationUnit }
   | 'until_dispel';
 
 export const EFFECT_FIDELITIES = ['covered', 'ambiguous', 'pending'] as const;
@@ -43,7 +52,8 @@ export const EFFECT_VALUE_VARIABLES = [
   'empathy',
   'aestheticism',
   'vitalityMax',
-  'energyMax'
+  'energyMax',
+  'successes'
 ] as const;
 
 export type EffectValueVariable = (typeof EFFECT_VALUE_VARIABLES)[number];
@@ -252,6 +262,21 @@ function validateEffectValue(value: unknown): asserts value is EffectValue {
 
 function validateEffectDuration(duration: unknown): asserts duration is EffectDuration {
   if (duration === 'permanent' || duration === 'ephemeral' || duration === 'until_dispel') {
+    return;
+  }
+
+  if (isRecord(duration) && ('amount' in duration || 'unit' in duration)) {
+    assertKnownKeys(duration, ['amount', 'unit'], 'effect duration');
+
+    if (typeof duration.amount === 'number') {
+      assertPositiveInteger(duration.amount, 'Effect duration amount');
+    } else if (typeof duration.amount === 'string') {
+      parseValueExpression(duration.amount);
+    } else {
+      throw new Error('Effect duration amount must be a positive integer or value expression');
+    }
+
+    assertEnum(duration.unit, NARRATIVE_DURATION_UNITS, 'effect duration unit');
     return;
   }
 
