@@ -20622,7 +20622,7 @@ sources:
     domain: project-governance
     priority: derived
     status: active
-    hash: e90732479d4214efe28153f9e8f557088583aa0d6f71c24737261d8d269a40e5
+    hash: a34045364f88b568765462213befccd3727610899dcb5911a10699133cb745fe
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
@@ -20665,6 +20665,20 @@ sources:
     priority: derived
     status: active
     hash: 087d61943fef32d9ac1f6201d021f8ec1a380843beffb1c11d2438144b38540a
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
+  - id: DOCS-PLAN-PROSE-SOURCE-LINKAGE
+    path: docs/plan/PROSE-SOURCE-LINKAGE.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 8cac1ea1ea4d868e16ef995c70e72f68d15dc129281cfb951372b34c10bcbd0c
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal

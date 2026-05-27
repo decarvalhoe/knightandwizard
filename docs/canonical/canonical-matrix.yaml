@@ -267381,7 +267381,7 @@ units:
     sources:
       - path: "docs/plan/MAGIC-IMPLEMENTATION.md"
         ref: "docs/plan/MAGIC-IMPLEMENTATION.md"
-        sha256: "e90732479d4214efe28153f9e8f557088583aa0d6f71c24737261d8d269a40e5"
+        sha256: "a34045364f88b568765462213befccd3727610899dcb5911a10699133cb745fe"
     business_rule:
       summary: "docs/plan/MAGIC-IMPLEMENTATION.md from docs/plan/MAGIC-IMPLEMENTATION.md."
       ambiguity_ref: null
@@ -267492,6 +267492,42 @@ units:
         sha256: "087d61943fef32d9ac1f6201d021f8ec1a380843beffb1c11d2438144b38540a"
     business_rule:
       summary: "docs/plan/PHASE-v0.4-RC.md from docs/plan/PHASE-v0.4-RC.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:docs-plan-prose-source-linkage"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/plan/PROSE-SOURCE-LINKAGE.md"
+    status: covered
+    sources:
+      - path: "docs/plan/PROSE-SOURCE-LINKAGE.md"
+        ref: "docs/plan/PROSE-SOURCE-LINKAGE.md"
+        sha256: "8cac1ea1ea4d868e16ef995c70e72f68d15dc129281cfb951372b34c10bcbd0c"
+    business_rule:
+      summary: "docs/plan/PROSE-SOURCE-LINKAGE.md from docs/plan/PROSE-SOURCE-LINKAGE.md."
       ambiguity_ref: null
     yaml:
       status: not_applicable
