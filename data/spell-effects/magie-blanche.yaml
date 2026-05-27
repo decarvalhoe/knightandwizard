@@ -1,0 +1,381 @@
+# E2c — Overlay d'effets structurés AUTHORÉS, école magie-blanche.
+#
+# Source autorité : la ligne `effect` du grimoire (spells.yaml) + la prose liée (lexique, E0).
+# PROPOSÉ par audit (E2a/E2c), **À VALIDER par le MJ** (méthode Q-D8.2) : `fidelity: pending` +
+# `spec.requires_mj_validation: true`. Tant que non validé, ce n'est PAS du canon autoritaire.
+#
+# Conventions (buffs templatables) :
+#   - "+N de vitalité/R"      → target vitality, op add, value "N * successes"   (soin instantané, ephemeral)
+#   - "Attribut +1/R, 10 min/niv" → target aptitude, scope <attr>, op add, value "successes",
+#       durée narrative { amount: "level * 10", unit: minute }
+#   - "Diff. –1/R, 10 min/niv" → target difficulty, op sub, value "successes"    (bénédiction, global)
+#   - "Facteur … -1/R"        → target factor, scope speed|will, op sub, value "successes"
+#   - Les variantes "-de-masse" portent le MÊME effet par cible ; le "1 perso/R" est un ciblage (à part).
+#
+# NON inclus (arbitrage / cible à décider) : bouclier* (buff d'armure P/E/C/T — cible EffectModel à
+# trancher), deviation* (ambigu), lumiere/purification*/respiration* (utilitaire narratif),
+# resurrection, don-d-energie, barriere-de-holn, renvoi-du-demon, deviation-des-projectiles.
+#
+# Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts` (catalogs:build:magic).
+version: 1
+school_id: magie-blanche
+effects:
+  # --- Soins (vitalité, instantané) ---
+  guerison-absolue:
+    source:
+      prose: '2 points de vitalité par réussite.'
+      ref: 'spells:guerison-absolue'
+    spec:
+      target: vitality
+      op: add
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  guerison-de-la-chair:
+    source:
+      prose: '2 points de vitalité à la zone par réussite.'
+      ref: 'spells:guerison-de-la-chair'
+    spec:
+      target: vitality
+      op: add
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  guerison-de-la-peau:
+    source:
+      prose: '2 points de vitalité à la zone par réussite.'
+      ref: 'spells:guerison-de-la-peau'
+    spec:
+      target: vitality
+      op: add
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  guerison-des-muscles:
+    source:
+      prose: '2 points de vitalité à la zone par réussite.'
+      ref: 'spells:guerison-des-muscles'
+    spec:
+      target: vitality
+      op: add
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  guerison-des-muscles-mineure:
+    source:
+      prose: '1 point de vitalité à la zone par réussite.'
+      ref: 'spells:guerison-des-muscles-mineure'
+    spec:
+      target: vitality
+      op: add
+      value: 'successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  guerison-des-organes:
+    source:
+      prose: '2 points de vitalité à la zone par réussite.'
+      ref: 'spells:guerison-des-organes'
+    spec:
+      target: vitality
+      op: add
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  guerison-des-os:
+    source:
+      prose: '2 points de vitalité à la zone par réussite.'
+      ref: 'spells:guerison-des-os'
+    spec:
+      target: vitality
+      op: add
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Buffs d'aptitude (+1/R, 10 min/niv) ---
+  force:
+    source:
+      prose: 'Force +1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:force'
+    spec:
+      target: aptitude
+      scope: force
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  force-de-masse:
+    source:
+      prose: 'Force +1 par réussite, 10 minutes par niveau (1 personne par réussite).'
+      ref: 'spells:force-de-masse'
+    spec:
+      target: aptitude
+      scope: force
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  dexterite:
+    source:
+      prose: 'Dextérité +1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:dexterite'
+    spec:
+      target: aptitude
+      scope: dexterity
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  dexterite-de-masse:
+    source:
+      prose: 'Dextérité +1 par réussite, 10 minutes par niveau (1 personne par réussite).'
+      ref: 'spells:dexterite-de-masse'
+    spec:
+      target: aptitude
+      scope: dexterity
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  endurance:
+    source:
+      prose: 'Endurance +1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:endurance'
+    spec:
+      target: aptitude
+      scope: stamina
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  endurance-de-masse:
+    source:
+      prose: 'Endurance +1 par réussite, 10 minutes par niveau (1 personne par réussite).'
+      ref: 'spells:endurance-de-masse'
+    spec:
+      target: aptitude
+      scope: stamina
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  esthetique:
+    source:
+      prose: 'Esthétique +1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:esthetique'
+    spec:
+      target: aptitude
+      scope: aestheticism
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  esthetique-de-masse:
+    source:
+      prose: 'Esthétique +1 par réussite, 10 minutes par niveau (1 personne par réussite).'
+      ref: 'spells:esthetique-de-masse'
+    spec:
+      target: aptitude
+      scope: aestheticism
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  empathie:
+    source:
+      prose: 'Empathie +1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:empathie'
+    spec:
+      target: aptitude
+      scope: empathy
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  empathie-de-masse:
+    source:
+      prose: 'Empathie +1 par réussite, 10 minutes par niveau (1 personne par réussite).'
+      ref: 'spells:empathie-de-masse'
+    spec:
+      target: aptitude
+      scope: empathy
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  charisme:
+    source:
+      prose: 'Charisme +1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:charisme'
+    spec:
+      target: aptitude
+      scope: charisma
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  charisme-de-masse:
+    source:
+      prose: 'Charisme +1 par réussite, 10 minutes par niveau (1 personne par réussite).'
+      ref: 'spells:charisme-de-masse'
+    spec:
+      target: aptitude
+      scope: charisma
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  intelligence:
+    source:
+      prose: 'Intelligence +1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:intelligence'
+    spec:
+      target: aptitude
+      scope: intelligence
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  intelligence-de-masse:
+    source:
+      prose: 'Intelligence +1 par réussite, 10 minutes par niveau (1 personne par réussite).'
+      ref: 'spells:intelligence-de-masse'
+    spec:
+      target: aptitude
+      scope: intelligence
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Bénédiction (difficulté, global) ---
+  benediction:
+    source:
+      prose: 'Difficulté –1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:benediction'
+    spec:
+      target: difficulty
+      op: sub
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  benediction-de-masse:
+    source:
+      prose: 'Difficulté –1 par réussite, 10 minutes par niveau (1 personne par réussite).'
+      ref: 'spells:benediction-de-masse'
+    spec:
+      target: difficulty
+      op: sub
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Facteurs (vitesse, volonté) ---
+  rapidite:
+    source:
+      prose: 'Facteur de vitesse –1 par réussite, 50 DT par niveau (hâte, R-1.38).'
+      ref: 'spells:rapidite'
+    spec:
+      target: factor
+      scope: speed
+      op: sub
+      value: 'successes'
+      activation: active
+      duration: { dt: 'level * 50' }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  rapidite-de-masse:
+    source:
+      prose: 'Facteur de vitesse –1 par réussite, 50 DT par niveau (1 personne par réussite).'
+      ref: 'spells:rapidite-de-masse'
+    spec:
+      target: factor
+      scope: speed
+      op: sub
+      value: 'successes'
+      activation: active
+      duration: { dt: 'level * 50' }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  courage:
+    source:
+      prose: 'Facteur de volonté –1 par réussite, 10 minutes par niveau (sens du facteur à confirmer par le MJ).'
+      ref: 'spells:courage'
+    spec:
+      target: factor
+      scope: will
+      op: sub
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null

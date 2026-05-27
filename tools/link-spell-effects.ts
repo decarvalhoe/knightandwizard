@@ -69,6 +69,8 @@ function main(): void {
   const overlays = readOverlays();
   const errors: string[] = [];
   let attached = 0;
+  let pending = 0;
+  let covered = 0;
   const perSchool = new Map<string, number>();
 
   for (const overlay of overlays) {
@@ -84,15 +86,18 @@ function main(): void {
         );
         continue;
       }
+      let model;
       try {
         // Valide contre le schéma EffectModel de rules-core (lève si invalide).
-        parseEffectModel(rawModel);
+        model = parseEffectModel(rawModel);
       } catch (error) {
         errors.push(`EffectModel invalide pour "${spellId}": ${(error as Error).message}`);
         continue;
       }
       spell.effect_model = rawModel;
       attached += 1;
+      if (model.fidelity === 'pending') pending += 1;
+      else covered += 1;
       perSchool.set(overlay.school_id, (perSchool.get(overlay.school_id) ?? 0) + 1);
     }
   }
@@ -116,9 +121,10 @@ function main(): void {
     stdio: 'ignore'
   });
 
-  console.log(`link-spell-effects: ${attached} effect_model attachés (fidelity: pending)`);
+  console.log(
+    `link-spell-effects: ${attached} effect_model attachés (${covered} validés/covered, ${pending} pending → arbitrage MJ)`
+  );
   for (const [school, n] of [...perSchool].sort()) console.log(`  ${school}: ${n}`);
-  console.log('  (à valider par le MJ — requires_mj_validation: true)');
 }
 
 main();
