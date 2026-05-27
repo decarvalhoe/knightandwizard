@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
 
-import { type InventoryItem, carriedWeightKg, setItemState, wornItems } from './inventory.js';
+import {
+  type InventoryItem,
+  carriedWeightKg,
+  equippedWeaponDamage,
+  loadoutProtections,
+  setItemState,
+  wornItems
+} from './inventory.js';
 
 function items(): InventoryItem[] {
   return [
@@ -47,5 +54,54 @@ describe('inventory — worn loadout & state changes', () => {
 
     expect(after.find((item) => item.id === 'armor')?.state).toBe('carried');
     expect(before.find((item) => item.id === 'armor')?.state).toBe('worn');
+  });
+});
+
+describe('inventory — loadout to combat bridge (M4)', () => {
+  function combatItems(): InventoryItem[] {
+    return [
+      {
+        id: 'sword',
+        typeId: 'epee',
+        weightKg: 1.5,
+        state: 'worn',
+        weaponDamage: { components: [{ type: 'C', includesForce: true, flat: 3 }] }
+      },
+      {
+        id: 'hauberk',
+        typeId: 'cuir-cloute-haubergeon',
+        weightKg: 8,
+        state: 'worn',
+        protection: { layer: 'cuir', zones: ['thorax_dos', 'ventre_bas_dos'], values: { C: 2 } }
+      },
+      {
+        id: 'spare-helm',
+        typeId: 'casque',
+        weightKg: 2,
+        state: 'carried',
+        protection: { layer: 'acier', zones: ['tete'], values: { C: 3 } }
+      }
+    ];
+  }
+
+  it('exposes the worn weapon damage spec', () => {
+    expect(equippedWeaponDamage(combatItems())).toEqual({
+      components: [{ type: 'C', includesForce: true, flat: 3 }]
+    });
+  });
+
+  it('returns undefined when no weapon is worn', () => {
+    expect(equippedWeaponDamage([])).toBeUndefined();
+  });
+
+  it('collects protection layers from worn armor only (not carried/stored)', () => {
+    const protections = loadoutProtections(combatItems());
+
+    expect(protections).toHaveLength(1);
+    expect(protections[0]).toMatchObject({
+      id: 'hauberk',
+      layer: 'cuir',
+      zones: ['thorax_dos', 'ventre_bas_dos']
+    });
   });
 });
