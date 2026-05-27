@@ -8,7 +8,7 @@ This roadmap supersedes the older phase-only roadmap. The project is now canonic
 - Local target: WSL checkout `/home/decarvalhoe/repos/knightandwizard`.
 - Canonical foundation exists: `docs/canonical/source-manifest.yaml`, `docs/canonical/canonical-matrix.yaml`, `docs/canonical/coverage-report.md`.
 - `pnpm validate` is the baseline dev gate.
-- `pnpm canonical:check:strict` is intentionally red until product `sample.ts` imports are removed.
+- `pnpm canonical:check:strict` is **green** since v0.3.1 (product `sample.ts` imports removed).
 - The knowledge base indexes active and raw-reference sources from the manifest, not a hardcoded source list.
 
 ## Non-Negotiable Gates
@@ -20,9 +20,9 @@ This roadmap supersedes the older phase-only roadmap. The project is now canonic
 5. Ambiguities are explicit data, not hidden implementation decisions.
 6. Release promotion requires `pnpm validate` and the strict canonical gate.
 
-## v0.3.1 - Canonical Product Truth
+## v0.3.1 - Canonical Product Truth — ✅ ATTEINTE
 
-Build missing character/magic catalogs with source metadata, enrich atomization, extend schemas/read-models/API, remove product samples, and correct dice/creation compliance gaps. Exit when `pnpm canonical:check:strict` passes.
+Build missing character/magic catalogs with source metadata, enrich atomization, extend schemas/read-models/API, remove product samples, and correct dice/creation compliance gaps. Exit when `pnpm canonical:check:strict` passes. **Exit atteint** : strict gate vert, `sample.ts` retiré, catalogues + read-models + API en place.
 
 ## v0.4.0 - Assistant Joueur/MJ Canonique
 
@@ -42,7 +42,7 @@ Harden release, docs, CI/CD, backups, rollback and PR-only promotion to `main`.
 
 ## Issue Register
 
-The tracked issue list is maintained in `docs/plan/ISSUE-LIST.md` and mirrored to GitHub issues.
+The **active** plan (épics + séquencement + réconciliation) is `docs/plan/MASTER-PLAN.md`, mirrored to GitHub issues. `docs/plan/ISSUE-LIST.md` is the **historical** v0.3.1 register (closed).
 
 ## Execution Plans
 

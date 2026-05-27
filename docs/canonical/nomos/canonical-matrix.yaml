@@ -136215,7 +136215,7 @@ units:
     source_refs:
       - source_id: DOCS-PLAN-ISSUE-LIST
         locator: docs/plan/ISSUE-LIST.md
-        hash: sha256:cb92cfaebaed640432f8e650207073654daa63b2e9410163353ce239cc74f3f4
+        hash: sha256:f2d1099f13b2ea3c9563e1ab289ee7c7340e3cb4664217d345fdc0b5ccd0e74a
     business_rule: docs/plan/ISSUE-LIST.md from docs/plan/ISSUE-LIST.md.
     status: partial
     gaps:
@@ -136232,6 +136232,21 @@ units:
         locator: docs/plan/MAGIC-IMPLEMENTATION.md
         hash: sha256:3fdc18f30a82936a8a83db4cbf75b340959ba00006c193f156174618d0ac9c8a
     business_rule: docs/plan/MAGIC-IMPLEMENTATION.md from docs/plan/MAGIC-IMPLEMENTATION.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PLAN-MASTER-PLAN
+    unit_type: catalog_entry
+    name: docs/plan/MASTER-PLAN.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PLAN-MASTER-PLAN
+        locator: docs/plan/MASTER-PLAN.md
+        hash: sha256:ef79803e954117e51f987f0d757617a73c9076dd84da6f59cb30806938184f47
+    business_rule: docs/plan/MASTER-PLAN.md from docs/plan/MASTER-PLAN.md.
     status: partial
     gaps:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
@@ -136290,7 +136305,7 @@ units:
     source_refs:
       - source_id: DOCS-PLAN-ROADMAP
         locator: docs/plan/ROADMAP.md
-        hash: sha256:8fd4b914b8dd497ba6744744b1a4f87a09c6528ab2bfefd44b8ae499eaa25d12
+        hash: sha256:87bed5af14406c62e00b44905056f05ac21c5938ac146fb8f2a3da6e5b657465
     business_rule: docs/plan/ROADMAP.md from docs/plan/ROADMAP.md.
     status: partial
     gaps:
