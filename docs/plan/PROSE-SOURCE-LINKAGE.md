@@ -81,15 +81,20 @@ est « 1 bloc ».** Balayage complet du manifeste :
 source de définition → atomisation **+** `prose_refs` gratuits via le pipeline existant. **Aucun
 atomiseur à écrire.** Le **lexique est paper-only** (pas de miroir web) → prioritaire.
 
-## Plan de correction (vagues priorisées)
+## Plan de correction — état d'avancement
 
-Chaque vague : build → `catalog_yaml` porteur de prose → liaison `prose_refs` → rapport d'orphelins → gate canonique.
+> **Gate `catalogs:audit:prose` : 1669/1669 entrées prose-bearing définies, 0 sans définition**
+> (atouts 802, spells 324, lexique 513, bestiaire-paper 30). Les catalogues **nominaux**
+> (competences, classes, nations, magic-schools…) où le nom EST la définition sont hors-périmètre
+> (pas de prose requise → pas un manque).
 
-1. **E0.1 — Lexique → `data/catalogs/lexique.yaml`** (514 entrées : `id, term, prose, kind, school|orientation|race|classe, duration, niveau, source_refs`). Auto-classé `catalog_yaml` → 514 unités. _Paper-only, le plus transverse, dé-risque tout._
-2. **E0.2 — Liaison sorts ↔ lexique + grimoire** : `prose_refs` sur `spells.yaml`, réconciliation web↔paper (324 ↔ 101), orphelins, dérivation des variantes. **Débloque E2.**
-3. **E0.3 — Liaison atouts ↔ lexique + atouts-de-niveaux** : `prose_refs` sur `atouts.yaml` (129 atouts).
-4. **E0.4 — Reste de la couche définition** : bestiaire, armes, protections, potions, orientations-classes, competences… (prose dans les catalogs + liaison ; web↔paper).
-5. **E0.5 — Monde/lore + gate de couverture + RAG** : nations/organisations/religions/lieux ; gate « 100 % définitions MVP liées ou `prose_orphan` » ; entrées parsées = unités citables RAG.
+1. **E0.1 — Lexique → `data/catalogs/lexique.yaml`** ✅ (#198) : 513 entrées parsées + atomisées (`catalog_yaml`).
+2. **E0.2 — Liaison sorts ↔ lexique** ✅ (#199) + **E0.2b génération ancrée** ✅ (#201) : 324 sorts = 153 paper-liés + 171 `generated_prose` (pending) ; **orphelins 0**.
+3. **E0.3 — Liaison atouts ↔ lexique** ✅ (#200) + **E0.3b génération** ✅ (#202) : 802 atouts = 692 paper-liés + 110 `generated_prose` ; **orphelins 0**.
+4. **E0.4 — Couche équipement/combat** ✅ : bestiaire-paper 30 stats (#203), armes-paper 107 (#204), protections-paper 10 matériaux (#205), réconciliation paper↔web read-only (#206). _Sources éparses restantes (potions 2 recettes PDF, monde/lore PDF mono-ligne) : faible ROI, en attente._
+5. **E0.5 — Gate de couverture** ✅ (#207) : `tools/audit-prose-coverage.ts` (`catalogs:audit:prose`). _Monde/lore + intégration RAG : en attente (lower-priority)._
+
+**Marquage gouverné (acté)** : `generated_prose` = expansion **ancrée** de l'effet/ligne canonique (jamais d'invention libre) + `prose_origin: templated` + `validation: pending`, promu par **arbitrage MJ** (Q-D8.2) ; **jamais confondu** avec le paper autoritaire (`prose_refs`). Reste optionnel : enrichissement LLM des `generated_prose`, monde/lore, RAG.
 
 ## Ce que E0 débloque (en aval)
 
