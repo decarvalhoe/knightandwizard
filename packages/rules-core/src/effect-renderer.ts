@@ -33,7 +33,8 @@ const VALUE_LABELS: Record<EffectValueVariable, string> = {
   empathy: 'Empathie',
   aestheticism: 'Esthétique',
   vitalityMax: 'vitalité maximale',
-  energyMax: 'énergie maximale'
+  energyMax: 'énergie maximale',
+  successes: 'réussite'
 };
 
 const SCOPE_LABELS: Record<string, string> = {

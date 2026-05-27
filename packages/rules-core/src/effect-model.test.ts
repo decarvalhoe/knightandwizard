@@ -329,6 +329,18 @@ describe('evaluateValue', () => {
   it('evaluates table lookups by whitelisted key variable', () => {
     expect(evaluateValue({ table: 'energy_by_level', key: 'level' }, context)).toBe(12);
   });
+
+  it('evaluates the successes variable (effet mis a l’echelle par reussite, R-8.x)', () => {
+    expect(evaluateValue('successes', { successes: 3 })).toBe(3);
+    expect(evaluateValue('successes * 2', { successes: 3 })).toBe(6);
+    expect(evaluateValue('level + successes', { level: 4, successes: 2 })).toBe(6);
+  });
+
+  it('throws when successes is required but absent from the context', () => {
+    expect(() => evaluateValue('successes', context)).toThrow(
+      /Missing effect value variable "successes"/
+    );
+  });
 });
 
 describe('matchesCondition', () => {
@@ -380,5 +392,53 @@ describe('matchesCondition', () => {
         context
       )
     ).toBe(false);
+  });
+});
+
+describe('EffectModel narrative duration (R-8.20, systeme de temps double)', () => {
+  const withDuration = (duration: unknown) => ({
+    source: { prose: 'Effet dont la duree narrative depend du niveau.', ref: 'lexique:0' },
+    spec: {
+      target: 'vitality',
+      op: 'add',
+      value: 1,
+      activation: 'active',
+      duration
+    },
+    fidelity: 'pending'
+  });
+
+  it('parses a numeric narrative duration', () => {
+    const model = parseEffectModel(withDuration({ amount: 30, unit: 'minute' }));
+    expect(model.spec.duration).toEqual({ amount: 30, unit: 'minute' });
+  });
+
+  it('parses a narrative duration whose amount is a value expression', () => {
+    const model = parseEffectModel(withDuration({ amount: 'level * 10', unit: 'hour' }));
+    expect(model.spec.duration).toEqual({ amount: 'level * 10', unit: 'hour' });
+  });
+
+  it('accepts each whitelisted narrative unit', () => {
+    for (const unit of ['minute', 'hour', 'day'] as const) {
+      expect(() => parseEffectModel(withDuration({ amount: 1, unit }))).not.toThrow();
+    }
+  });
+
+  it('rejects an unknown narrative unit', () => {
+    expect(() => parseEffectModel(withDuration({ amount: 1, unit: 'week' }))).toThrow(
+      /effect duration unit/
+    );
+  });
+
+  it('rejects a non-positive numeric amount', () => {
+    expect(() => parseEffectModel(withDuration({ amount: 0, unit: 'minute' }))).toThrow(
+      /Effect duration amount/
+    );
+  });
+
+  it('rejects an unknown key inside a narrative duration', () => {
+    expect(() => parseEffectModel(withDuration({ amount: 1, unit: 'day', locked: true }))).toThrow(
+      /effect duration/
+    );
   });
 });

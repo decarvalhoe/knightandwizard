@@ -210,6 +210,13 @@ function isDurationActive(duration: EffectDuration, ctx: EffectApplicationContex
     return ctx.includeEphemeral !== false;
   }
 
+  // Durée narrative (R-8.20, minutes/heures/jours) : hors de l'horloge DT du combat. Un tel effet
+  // reste actif pendant le combat ; son expiration relève du runtime double-horloge (E3), pas de
+  // l'agrégation de modificateurs ici.
+  if ('amount' in duration) {
+    return true;
+  }
+
   const dt = typeof duration.dt === 'number' ? duration.dt : evaluateValue(duration.dt, ctx);
 
   return ctx.elapsedDT === undefined || ctx.elapsedDT < dt;
