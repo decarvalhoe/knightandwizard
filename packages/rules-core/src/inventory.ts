@@ -108,3 +108,36 @@ export function loadoutProtections(items: readonly InventoryItem[]): DamageProte
       values: item.protection!.values
     }));
 }
+
+/**
+ * Consommables (potion bue, munition tiree, charge depensee) — consume `amount` units of an item.
+ * Decrements the stack; removes the item when it reaches 0. Throws if the item is missing or the
+ * stack is insufficient. Quantity is never edited by hand (R-9.25 / loi UX : decompte a l'usage).
+ */
+export function consumeItem(
+  items: readonly InventoryItem[],
+  itemId: string,
+  amount = 1
+): InventoryItem[] {
+  assertPositiveInteger('amount', amount);
+
+  const item = items.find((candidate) => candidate.id === itemId);
+
+  if (item === undefined) {
+    throw new Error(`unknown inventory item: ${itemId}`);
+  }
+
+  const quantity = item.quantity ?? 1;
+
+  if (amount > quantity) {
+    throw new Error(`cannot consume ${amount} of ${itemId}: only ${quantity} available`);
+  }
+
+  const remaining = quantity - amount;
+
+  return remaining === 0
+    ? items.filter((candidate) => candidate.id !== itemId)
+    : items.map((candidate) =>
+        candidate.id === itemId ? { ...candidate, quantity: remaining } : candidate
+      );
+}

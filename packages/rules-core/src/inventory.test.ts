@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   type InventoryItem,
   carriedWeightKg,
+  consumeItem,
   equippedWeaponDamage,
   loadoutProtections,
   setItemState,
@@ -103,5 +104,36 @@ describe('inventory — loadout to combat bridge (M4)', () => {
       layer: 'cuir',
       zones: ['thorax_dos', 'ventre_bas_dos']
     });
+  });
+});
+
+describe('inventory — consumables (M4)', () => {
+  function pouch(): InventoryItem[] {
+    return [
+      { id: 'arrows', typeId: 'fleche', weightKg: 0.05, state: 'carried', quantity: 20 },
+      { id: 'potion', typeId: 'soin-mineur', weightKg: 0.2, state: 'carried' }
+    ];
+  }
+
+  it('decrements a stack on use', () => {
+    const after = consumeItem(pouch(), 'arrows', 3);
+    expect(after.find((item) => item.id === 'arrows')?.quantity).toBe(17);
+  });
+
+  it('removes the item when the stack reaches 0', () => {
+    expect(consumeItem(pouch(), 'arrows', 20).some((item) => item.id === 'arrows')).toBe(false);
+    // implicit quantity 1
+    expect(consumeItem(pouch(), 'potion').some((item) => item.id === 'potion')).toBe(false);
+  });
+
+  it('rejects consuming more than available or an unknown item', () => {
+    expect(() => consumeItem(pouch(), 'arrows', 21)).toThrow();
+    expect(() => consumeItem(pouch(), 'ghost')).toThrow();
+  });
+
+  it('does not mutate the original inventory', () => {
+    const before = pouch();
+    consumeItem(before, 'arrows', 5);
+    expect(before.find((item) => item.id === 'arrows')?.quantity).toBe(20);
   });
 });
