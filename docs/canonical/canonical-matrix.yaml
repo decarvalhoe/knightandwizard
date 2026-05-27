@@ -140946,6 +140946,44 @@ units:
   - unit_id: "creature:canidae"
     unit_type: "creature"
     domain: "D3-races"
+    title: "Canidae,-"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Canidae,- from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "canidae"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:canidae#2"
+    unit_type: "creature"
+    domain: "D3-races"
     title: "Canidae"
     status: covered
     sources:
@@ -141019,6 +141057,44 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:centaure-sse"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Centaure, -sse"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.1"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Centaure, -sse from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "centaure-sse"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:chat"
     unit_type: "creature"
     domain: "D3-races"
@@ -141057,6 +141133,44 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:chat-te"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Chat, -te"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.2"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Chat, -te from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "chat-te"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:cheval"
     unit_type: "creature"
     domain: "D3-races"
@@ -141095,7 +141209,83 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:cheval-jument"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Cheval, Jument"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.3"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Cheval, Jument from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "cheval-jument"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:chigr"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Chigr, -"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.4"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Chigr, - from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "chigr"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:chigr#2"
     unit_type: "creature"
     domain: "D3-races"
     title: "Chigr"
@@ -141137,6 +141327,44 @@ units:
     unit_type: "creature"
     domain: "D3-races"
     title: "Demi-elfe"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.5"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Demi-elfe from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "demi-elfe"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:demi-elfe#2"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Demi-elfe"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -141172,6 +141400,44 @@ units:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
   - unit_id: "creature:dryade"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Dryade"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.6"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Dryade from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "dryade"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:dryade#2"
     unit_type: "creature"
     domain: "D3-races"
     title: "Dryade"
@@ -141212,6 +141478,44 @@ units:
   - unit_id: "creature:elfe-de-nacre"
     unit_type: "creature"
     domain: "D3-races"
+    title: "Elfe, - de Nacre"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.7"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Elfe, - de Nacre from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "elfe-de-nacre"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:elfe-de-nacre#2"
+    unit_type: "creature"
+    domain: "D3-races"
     title: "Elfe de Nacre"
     status: covered
     sources:
@@ -141248,6 +141552,44 @@ units:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
   - unit_id: "creature:elfe-des-bois"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Elfe, - des Bois"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.8"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Elfe, - des Bois from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "elfe-des-bois"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:elfe-des-bois#2"
     unit_type: "creature"
     domain: "D3-races"
     title: "Elfe des Bois"
@@ -141288,6 +141630,44 @@ units:
   - unit_id: "creature:elfe-sombre"
     unit_type: "creature"
     domain: "D3-races"
+    title: "Elfe Sombre, -"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.9"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Elfe Sombre, - from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "elfe-sombre"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:elfe-sombre#2"
+    unit_type: "creature"
+    domain: "D3-races"
     title: "Elfe Sombre"
     status: covered
     sources:
@@ -141326,6 +141706,44 @@ units:
   - unit_id: "creature:fantome"
     unit_type: "creature"
     domain: "D3-races"
+    title: "Fantôme, -"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.10"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Fantôme, - from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "fantome"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:fantome#2"
+    unit_type: "creature"
+    domain: "D3-races"
     title: "Fantôme"
     status: covered
     sources:
@@ -141362,6 +141780,44 @@ units:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
   - unit_id: "creature:gnome"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Gnome, -"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.11"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Gnome, - from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "gnome"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:gnome#2"
     unit_type: "creature"
     domain: "D3-races"
     title: "Gnome"
@@ -141437,7 +141893,83 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:gobelin-e"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Gobelin, -e"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.12"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Gobelin, -e from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "gobelin-e"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:haut-elfe"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Haut-elfe, -"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.13"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Haut-elfe, - from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "haut-elfe"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:haut-elfe#2"
     unit_type: "creature"
     domain: "D3-races"
     title: "Haut-elfe, -"
@@ -141476,6 +142008,44 @@ units:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
   - unit_id: "creature:hobbit"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Hobbit, -"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.14"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Hobbit, - from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "hobbit"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:hobbit#2"
     unit_type: "creature"
     domain: "D3-races"
     title: "Hobbit"
@@ -141551,6 +142121,44 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:homme-lezard-femme-lezard"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Homme Lézard, Femme Lézard"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.15"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Homme Lézard, Femme Lézard from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "homme-lezard-femme-lezard"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:homme-oiseau"
     unit_type: "creature"
     domain: "D3-races"
@@ -141589,6 +142197,44 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:homme-oiseau-femme-oiselle"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Homme Oiseau, Femme Oiselle"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.16"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Homme Oiseau, Femme Oiselle from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "homme-oiseau-femme-oiselle"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:homme-rat"
     unit_type: "creature"
     domain: "D3-races"
@@ -141627,6 +142273,44 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:homme-rat-femme-ratte"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Homme Rat, Femme Ratte"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.17"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Homme Rat, Femme Ratte from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "homme-rat-femme-ratte"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:humain"
     unit_type: "creature"
     domain: "D3-races"
@@ -141665,7 +142349,83 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:humain-e"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Humain, -e"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.18"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Humain, -e from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "humain-e"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:khochigr"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Khochigr, -"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.19"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Khochigr, - from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "khochigr"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:khochigr#2"
     unit_type: "creature"
     domain: "D3-races"
     title: "Khochigr"
@@ -141704,6 +142464,44 @@ units:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
   - unit_id: "creature:khogr"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Khogr, -"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.20"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Khogr, - from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "khogr"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:khogr#2"
     unit_type: "creature"
     domain: "D3-races"
     title: "Khogr"
@@ -141817,6 +142615,82 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:loup-garou-louve-garou"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Loup-garou, Louve-garou"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.22"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Loup-garou, Louve-garou from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "loup-garou-louve-garou"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:loup-louve"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Loup, Louve"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.21"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Loup, Louve from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "loup-louve"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:nain"
     unit_type: "creature"
     domain: "D3-races"
@@ -141855,6 +142729,44 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:nain-e"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Nain, -e"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.23"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Nain, -e from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "nain-e"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:ogre"
     unit_type: "creature"
     domain: "D3-races"
@@ -141893,7 +142805,83 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:ogre-sse"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Ogre, -sse"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.24"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Ogre, -sse from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "ogre-sse"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:ondine"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Ondine"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.25"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Ondine from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "ondine"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:ondine#2"
     unit_type: "creature"
     domain: "D3-races"
     title: "Ondine"
@@ -141934,6 +142922,44 @@ units:
   - unit_id: "creature:orc"
     unit_type: "creature"
     domain: "D3-races"
+    title: "Orc, -"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.26"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Orc, - from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "orc"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:orc#2"
+    unit_type: "creature"
+    domain: "D3-races"
     title: "Orc"
     status: covered
     sources:
@@ -141970,6 +142996,44 @@ units:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
   - unit_id: "creature:squelette"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Squelette, -"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.27"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Squelette, - from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "squelette"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "creature:squelette#2"
     unit_type: "creature"
     domain: "D3-races"
     title: "Squelette"
@@ -142045,6 +143109,44 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:troll-ope"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Troll, -ope"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.28"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Troll, -ope from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "troll-ope"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:vampire"
     unit_type: "creature"
     domain: "D3-races"
@@ -142083,6 +143185,44 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate bestiaire.yaml counts/source refs, and bestiaire model tests exercise the UI-facing read model. Tests: packages/catalogs/src/schemas.test.ts, apps/game/src/features/bestiaire/model.test.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "creature:vampire-sse"
+    unit_type: "creature"
+    domain: "D3-races"
+    title: "Vampire, sse"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.29"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "Vampire, sse from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "vampire-sse"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "creature:zombie"
     unit_type: "creature"
     domain: "D3-races"
@@ -231545,6 +232685,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-0-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.0.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-0-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-0-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-0-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-0-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -231618,6 +232796,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-1-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-1-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.1.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-1-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-1-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-1-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-1-source-refs-0"
@@ -231697,6 +232913,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-10-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.10.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-10-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-10-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-10-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-10-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -231770,6 +233024,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-11-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-11-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.11.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-11-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-11-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-11-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-11-source-refs-0"
@@ -231849,6 +233141,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-12-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.12.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-12-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-12-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-12-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-12-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -231922,6 +233252,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-13-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-13-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.13.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-13-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-13-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-13-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-13-source-refs-0"
@@ -232001,6 +233369,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-14-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.14.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-14-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-14-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-14-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-14-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -232074,6 +233480,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-15-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-15-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.15.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-15-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-15-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-15-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-15-source-refs-0"
@@ -232153,6 +233597,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-16-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.16.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-16-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-16-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-16-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-16-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -232226,6 +233708,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-17-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-17-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.17.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-17-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-17-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-17-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-17-source-refs-0"
@@ -232305,6 +233825,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-18-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.18.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-18-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-18-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-18-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-18-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -232378,6 +233936,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-19-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-19-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.19.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-19-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-19-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-19-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-19-source-refs-0"
@@ -232457,6 +234053,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-2-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.2.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-2-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-2-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-2-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-2-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -232530,6 +234164,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-20-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-20-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.20.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-20-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-20-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-20-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-20-source-refs-0"
@@ -232609,6 +234281,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-21-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.21.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-21-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-21-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-21-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-21-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -232682,6 +234392,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-22-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-22-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.22.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-22-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-22-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-22-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-22-source-refs-0"
@@ -232761,6 +234509,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-23-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.23.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-23-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-23-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-23-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-23-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -232834,6 +234620,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-24-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-24-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.24.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-24-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-24-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-24-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-24-source-refs-0"
@@ -232913,6 +234737,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-25-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.25.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-25-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-25-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-25-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-25-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -232986,6 +234848,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-26-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-26-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.26.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-26-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-26-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-26-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-26-source-refs-0"
@@ -233065,6 +234965,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-27-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.27.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-27-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-27-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-27-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-27-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -233138,6 +235076,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-28-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-28-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.28.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-28-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-28-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-28-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-28-source-refs-0"
@@ -233217,6 +235193,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-29-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.29.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-29-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-29-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-29-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-29-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -233290,6 +235304,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-3-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-3-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.3.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-3-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-3-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-3-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-3-source-refs-0"
@@ -233407,6 +235459,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-4-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.4.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-4-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-4-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-4-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-4-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -233480,6 +235570,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-5-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-5-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.5.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-5-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-5-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-5-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-5-source-refs-0"
@@ -233559,6 +235687,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-6-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.6.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-6-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-6-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-6-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-6-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -233632,6 +235798,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-7-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-7-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.7.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-7-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-7-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-7-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-7-source-refs-0"
@@ -233711,6 +235915,44 @@ units:
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-8-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.8.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-8-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-8-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-8-source-refs-0#2"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-8-source-refs-0"
     status: covered
     sources:
       - path: "data/catalogs/bestiaire.yaml"
@@ -233784,6 +236026,44 @@ units:
       status: covered
       evidence: "Catalog schema tests require bestiaire entries to carry source refs and validate them through loadValidatedCatalog. Tests: packages/catalogs/src/schemas.test.ts."
   - unit_id: "source_ref:creatures-9-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D3-races"
+    title: "creatures-9-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "creatures.9.source_refs.0"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "creatures-9-source-refs-0 from data/catalogs/bestiaire-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/bestiaire-paper.yaml"
+      entry_id: "creatures-9-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:creatures-9-source-refs-0#2"
     unit_type: "source_ref"
     domain: "D3-races"
     title: "creatures-9-source-refs-0"
@@ -317422,6 +319702,42 @@ units:
         sha256: "b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb"
     business_rule:
       summary: "data/catalogs/bestiaire.yaml from data/catalogs/bestiaire.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:data-catalogs-bestiaire-paper"
+    unit_type: "source_document"
+    domain: "D3-races"
+    title: "data/catalogs/bestiaire-paper.yaml"
+    status: covered
+    sources:
+      - path: "data/catalogs/bestiaire-paper.yaml"
+        ref: "data/catalogs/bestiaire-paper.yaml"
+        sha256: "8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1"
+    business_rule:
+      summary: "data/catalogs/bestiaire-paper.yaml from data/catalogs/bestiaire-paper.yaml."
       ambiguity_ref: null
     yaml:
       status: not_applicable

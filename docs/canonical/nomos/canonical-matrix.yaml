@@ -75016,6 +75016,29 @@ units:
       - collection: knowledge_chunks
   - unit_id: CREATURE-CANIDAE
     unit_type: catalog_entry
+    name: Canidae,-
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Canidae,- from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-CANIDAE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-CANIDAE-2
+    unit_type: catalog_entry
     name: Canidae
     domain: d3-races
     criticality: medium
@@ -75029,7 +75052,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-CANIDAE
+      object_id: CREATURE-CANIDAE-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -75052,6 +75075,29 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: CREATURE-CENTAURE-SSE
+    unit_type: catalog_entry
+    name: Centaure, -sse
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.1
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Centaure, -sse from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-CENTAURE-SSE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: CREATURE-CHAT
     unit_type: catalog_entry
     name: Chat, -te
@@ -75068,6 +75114,29 @@ units:
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
       object_id: CREATURE-CHAT
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-CHAT-TE
+    unit_type: catalog_entry
+    name: Chat, -te
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.2
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Chat, -te from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-CHAT-TE
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -75090,7 +75159,53 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: CREATURE-CHEVAL-JUMENT
+    unit_type: catalog_entry
+    name: Cheval, Jument
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.3
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Cheval, Jument from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-CHEVAL-JUMENT
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: CREATURE-CHIGR
+    unit_type: catalog_entry
+    name: Chigr, -
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.4
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Chigr, - from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-CHIGR
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-CHIGR-2
     unit_type: catalog_entry
     name: Chigr
     domain: d3-races
@@ -75105,11 +75220,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-CHIGR
+      object_id: CREATURE-CHIGR-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-DEMI-ELFE
+    unit_type: catalog_entry
+    name: Demi-elfe
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.5
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Demi-elfe from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-DEMI-ELFE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-DEMI-ELFE-2
     unit_type: catalog_entry
     name: Demi-elfe
     domain: d3-races
@@ -75124,11 +75262,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-DEMI-ELFE
+      object_id: CREATURE-DEMI-ELFE-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-DRYADE
+    unit_type: catalog_entry
+    name: Dryade
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.6
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Dryade from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-DRYADE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-DRYADE-2
     unit_type: catalog_entry
     name: Dryade
     domain: d3-races
@@ -75143,11 +75304,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-DRYADE
+      object_id: CREATURE-DRYADE-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-ELFE-DE-NACRE
+    unit_type: catalog_entry
+    name: Elfe, - de Nacre
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.7
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Elfe, - de Nacre from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-ELFE-DE-NACRE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-ELFE-DE-NACRE-2
     unit_type: catalog_entry
     name: Elfe de Nacre
     domain: d3-races
@@ -75162,11 +75346,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-ELFE-DE-NACRE
+      object_id: CREATURE-ELFE-DE-NACRE-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-ELFE-DES-BOIS
+    unit_type: catalog_entry
+    name: Elfe, - des Bois
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.8
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Elfe, - des Bois from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-ELFE-DES-BOIS
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-ELFE-DES-BOIS-2
     unit_type: catalog_entry
     name: Elfe des Bois
     domain: d3-races
@@ -75181,11 +75388,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-ELFE-DES-BOIS
+      object_id: CREATURE-ELFE-DES-BOIS-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-ELFE-SOMBRE
+    unit_type: catalog_entry
+    name: Elfe Sombre, -
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.9
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Elfe Sombre, - from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-ELFE-SOMBRE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-ELFE-SOMBRE-2
     unit_type: catalog_entry
     name: Elfe Sombre
     domain: d3-races
@@ -75200,11 +75430,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-ELFE-SOMBRE
+      object_id: CREATURE-ELFE-SOMBRE-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-FANTOME
+    unit_type: catalog_entry
+    name: Fantôme, -
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.10
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Fantôme, - from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-FANTOME
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-FANTOME-2
     unit_type: catalog_entry
     name: Fantôme
     domain: d3-races
@@ -75219,11 +75472,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-FANTOME
+      object_id: CREATURE-FANTOME-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-GNOME
+    unit_type: catalog_entry
+    name: Gnome, -
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.11
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Gnome, - from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-GNOME
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-GNOME-2
     unit_type: catalog_entry
     name: Gnome
     domain: d3-races
@@ -75238,7 +75514,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-GNOME
+      object_id: CREATURE-GNOME-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -75261,7 +75537,53 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: CREATURE-GOBELIN-E
+    unit_type: catalog_entry
+    name: Gobelin, -e
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.12
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Gobelin, -e from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-GOBELIN-E
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: CREATURE-HAUT-ELFE
+    unit_type: catalog_entry
+    name: Haut-elfe, -
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.13
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Haut-elfe, - from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-HAUT-ELFE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-HAUT-ELFE-2
     unit_type: catalog_entry
     name: Haut-elfe, -
     domain: d3-races
@@ -75276,11 +75598,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-HAUT-ELFE
+      object_id: CREATURE-HAUT-ELFE-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-HOBBIT
+    unit_type: catalog_entry
+    name: Hobbit, -
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.14
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Hobbit, - from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-HOBBIT
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-HOBBIT-2
     unit_type: catalog_entry
     name: Hobbit
     domain: d3-races
@@ -75295,7 +75640,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-HOBBIT
+      object_id: CREATURE-HOBBIT-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -75318,6 +75663,29 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: CREATURE-HOMME-LEZARD-FEMME-LEZARD
+    unit_type: catalog_entry
+    name: Homme Lézard, Femme Lézard
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.15
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Homme Lézard, Femme Lézard from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-HOMME-LEZARD-FEMME-LEZARD
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: CREATURE-HOMME-OISEAU
     unit_type: catalog_entry
     name: Homme Oiseau / Femme Oiselle
@@ -75334,6 +75702,29 @@ units:
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
       object_id: CREATURE-HOMME-OISEAU
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-HOMME-OISEAU-FEMME-OISELLE
+    unit_type: catalog_entry
+    name: Homme Oiseau, Femme Oiselle
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.16
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Homme Oiseau, Femme Oiselle from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-HOMME-OISEAU-FEMME-OISELLE
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -75356,6 +75747,29 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: CREATURE-HOMME-RAT-FEMME-RATTE
+    unit_type: catalog_entry
+    name: Homme Rat, Femme Ratte
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.17
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Homme Rat, Femme Ratte from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-HOMME-RAT-FEMME-RATTE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: CREATURE-HUMAIN
     unit_type: catalog_entry
     name: Humain, -e
@@ -75375,7 +75789,53 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: CREATURE-HUMAIN-E
+    unit_type: catalog_entry
+    name: Humain, -e
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.18
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Humain, -e from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-HUMAIN-E
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: CREATURE-KHOCHIGR
+    unit_type: catalog_entry
+    name: Khochigr, -
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.19
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Khochigr, - from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-KHOCHIGR
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-KHOCHIGR-2
     unit_type: catalog_entry
     name: Khochigr
     domain: d3-races
@@ -75390,11 +75850,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-KHOCHIGR
+      object_id: CREATURE-KHOCHIGR-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-KHOGR
+    unit_type: catalog_entry
+    name: Khogr, -
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.20
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Khogr, - from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-KHOGR
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-KHOGR-2
     unit_type: catalog_entry
     name: Khogr
     domain: d3-races
@@ -75409,7 +75892,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-KHOGR
+      object_id: CREATURE-KHOGR-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -75451,6 +75934,52 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: CREATURE-LOUP-GAROU-LOUVE-GAROU
+    unit_type: catalog_entry
+    name: Loup-garou, Louve-garou
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.22
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Loup-garou, Louve-garou from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-LOUP-GAROU-LOUVE-GAROU
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-LOUP-LOUVE
+    unit_type: catalog_entry
+    name: Loup, Louve
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.21
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Loup, Louve from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-LOUP-LOUVE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: CREATURE-NAIN
     unit_type: catalog_entry
     name: Nain, -e
@@ -75467,6 +75996,29 @@ units:
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
       object_id: CREATURE-NAIN
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-NAIN-E
+    unit_type: catalog_entry
+    name: Nain, -e
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.23
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Nain, -e from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-NAIN-E
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -75489,7 +76041,53 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: CREATURE-OGRE-SSE
+    unit_type: catalog_entry
+    name: Ogre, -sse
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.24
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Ogre, -sse from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-OGRE-SSE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: CREATURE-ONDINE
+    unit_type: catalog_entry
+    name: Ondine
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.25
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Ondine from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-ONDINE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-ONDINE-2
     unit_type: catalog_entry
     name: Ondine
     domain: d3-races
@@ -75504,11 +76102,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-ONDINE
+      object_id: CREATURE-ONDINE-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-ORC
+    unit_type: catalog_entry
+    name: Orc, -
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.26
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Orc, - from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-ORC
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-ORC-2
     unit_type: catalog_entry
     name: Orc
     domain: d3-races
@@ -75523,11 +76144,34 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-ORC
+      object_id: CREATURE-ORC-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
   - unit_id: CREATURE-SQUELETTE
+    unit_type: catalog_entry
+    name: Squelette, -
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.27
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Squelette, - from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-SQUELETTE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-SQUELETTE-2
     unit_type: catalog_entry
     name: Squelette
     domain: d3-races
@@ -75542,7 +76186,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: CREATURE-SQUELETTE
+      object_id: CREATURE-SQUELETTE-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -75565,6 +76209,29 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: CREATURE-TROLL-OPE
+    unit_type: catalog_entry
+    name: Troll, -ope
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.28
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Troll, -ope from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-TROLL-OPE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: CREATURE-VAMPIRE
     unit_type: catalog_entry
     name: Vampire, sse
@@ -75581,6 +76248,29 @@ units:
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
       object_id: CREATURE-VAMPIRE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: CREATURE-VAMPIRE-SSE
+    unit_type: catalog_entry
+    name: Vampire, sse
+    domain: d3-races
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.29
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: Vampire, sse from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: CREATURE-VAMPIRE-SSE
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124010,6 +124700,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.0.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-0-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-0-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-0-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-0-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.0.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124019,7 +124732,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-0-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-0-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124048,6 +124761,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.1.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-1-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-1-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-1-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-1-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.1.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124057,7 +124793,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-1-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-1-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124086,6 +124822,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.10.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-10-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-10-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-10-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-10-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.10.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124095,7 +124854,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-10-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-10-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124124,6 +124883,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.11.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-11-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-11-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-11-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-11-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.11.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124133,7 +124915,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-11-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-11-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124162,6 +124944,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.12.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-12-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-12-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-12-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-12-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.12.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124171,7 +124976,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-12-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-12-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124200,6 +125005,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.13.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-13-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-13-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-13-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-13-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.13.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124209,7 +125037,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-13-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-13-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124238,6 +125066,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.14.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-14-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-14-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-14-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-14-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.14.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124247,7 +125098,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-14-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-14-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124276,6 +125127,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.15.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-15-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-15-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-15-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-15-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.15.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124285,7 +125159,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-15-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-15-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124314,6 +125188,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.16.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-16-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-16-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-16-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-16-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.16.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124323,7 +125220,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-16-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-16-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124352,6 +125249,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.17.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-17-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-17-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-17-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-17-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.17.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124361,7 +125281,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-17-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-17-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124390,6 +125310,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.18.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-18-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-18-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-18-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-18-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.18.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124399,7 +125342,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-18-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-18-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124428,6 +125371,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.19.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-19-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-19-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-19-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-19-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.19.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124437,7 +125403,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-19-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-19-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124466,6 +125432,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.2.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-2-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-2-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-2-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-2-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.2.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124475,7 +125464,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-2-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-2-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124504,6 +125493,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.20.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-20-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-20-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-20-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-20-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.20.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124513,7 +125525,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-20-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-20-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124542,6 +125554,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.21.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-21-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-21-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-21-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-21-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.21.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124551,7 +125586,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-21-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-21-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124580,6 +125615,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.22.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-22-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-22-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-22-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-22-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.22.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124589,7 +125647,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-22-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-22-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124618,6 +125676,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.23.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-23-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-23-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-23-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-23-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.23.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124627,7 +125708,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-23-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-23-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124656,6 +125737,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.24.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-24-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-24-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-24-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-24-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.24.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124665,7 +125769,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-24-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-24-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124694,6 +125798,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.25.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-25-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-25-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-25-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-25-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.25.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124703,7 +125830,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-25-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-25-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124732,6 +125859,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.26.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-26-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-26-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-26-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-26-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.26.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124741,7 +125891,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-26-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-26-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124770,6 +125920,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.27.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-27-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-27-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-27-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-27-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.27.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124779,7 +125952,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-27-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-27-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124808,6 +125981,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.28.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-28-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-28-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-28-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-28-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.28.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124817,7 +126013,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-28-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-28-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124846,6 +126042,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.29.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-29-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-29-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-29-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-29-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.29.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124855,7 +126074,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-29-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-29-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124884,6 +126103,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.3.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-3-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-3-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-3-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-3-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.3.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124893,7 +126135,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-3-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-3-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124941,6 +126183,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.4.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-4-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-4-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-4-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-4-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.4.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124950,7 +126215,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-4-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-4-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -124979,6 +126244,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.5.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-5-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-5-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-5-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-5-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.5.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -124988,7 +126276,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-5-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-5-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -125017,6 +126305,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.6.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-6-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-6-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-6-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-6-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.6.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -125026,7 +126337,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-6-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-6-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -125055,6 +126366,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.7.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-7-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-7-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-7-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-7-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.7.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -125064,7 +126398,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-7-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-7-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -125093,6 +126427,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.8.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-8-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-8-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-8-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-8-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.8.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -125102,7 +126459,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-8-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-8-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -125131,6 +126488,29 @@ units:
     domain: d3-races
     criticality: low
     source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: creatures.9.source_refs.0
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: creatures-9-source-refs-0 from data/catalogs/bestiaire-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/bestiaire-paper.yaml
+      object_id: SOURCE-REF-CREATURES-9-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-CREATURES-9-SOURCE-REFS-0-2
+    unit_type: catalog_entry
+    name: creatures-9-source-refs-0
+    domain: d3-races
+    criticality: low
+    source_refs:
       - source_id: DATA-CATALOGS-BESTIAIRE
         locator: creatures.9.source_refs.0
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
@@ -125140,7 +126520,7 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     canonical_contract:
       path: data/catalogs/bestiaire.yaml
-      object_id: SOURCE-REF-CREATURES-9-SOURCE-REFS-0
+      object_id: SOURCE-REF-CREATURES-9-SOURCE-REFS-0-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -166985,6 +168365,21 @@ units:
         locator: data/catalogs/bestiaire.yaml
         hash: sha256:b9b6c96d0d1ecb282da949b14040be56b3d370d688f54b8bf500ff24491508cb
     business_rule: data/catalogs/bestiaire.yaml from data/catalogs/bestiaire.yaml.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DATA-CATALOGS-BESTIAIRE-PAPER
+    unit_type: catalog_entry
+    name: data/catalogs/bestiaire-paper.yaml
+    domain: d3-races
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-BESTIAIRE-PAPER
+        locator: data/catalogs/bestiaire-paper.yaml
+        hash: sha256:8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    business_rule: data/catalogs/bestiaire-paper.yaml from data/catalogs/bestiaire-paper.yaml.
     status: partial
     gaps:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).

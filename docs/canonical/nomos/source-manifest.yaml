@@ -12407,6 +12407,21 @@ sources:
       - vector_index
       - citation_internal
     notes: Product YAML catalog.
+  - id: DATA-CATALOGS-BESTIAIRE-PAPER
+    path: data/catalogs/bestiaire-paper.yaml
+    type: database_export
+    domain: D3-races
+    priority: secondary
+    status: active
+    hash: 8e60309c03458c67f03e8aa66b919c28dceec5dde8ef520c89e0a43e5931ebb1
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - structured_contract
+      - vector_index
+      - citation_internal
+    notes: Product YAML catalog.
   - id: DATA-CATALOGS-BESTIAIRE
     path: data/catalogs/bestiaire.yaml
     type: database_export
