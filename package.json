@@ -61,7 +61,8 @@
     "catalogs:build:magic": "tsx tools/build-spells-catalog.ts && tsx tools/link-spells-lexique.ts",
     "catalogs:link:lexique": "tsx tools/link-spells-lexique.ts",
     "catalogs:build:legacy-characters": "tsx tools/build-legacy-characters-catalog.ts",
-    "catalogs:build:atouts": "tsx tools/build-atouts-catalog.ts",
+    "catalogs:build:atouts": "tsx tools/build-atouts-catalog.ts && tsx tools/link-atouts-lexique.ts",
+    "catalogs:link:atouts": "tsx tools/link-atouts-lexique.ts",
     "catalogs:build:lexique": "tsx tools/build-lexique-catalog.ts"
   },
   "devDependencies": {
