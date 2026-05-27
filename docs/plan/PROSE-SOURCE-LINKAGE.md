@@ -57,14 +57,39 @@ lexique ; un atout ∈ lexique **et** atouts-de-niveaux).
   lier à l'entrée de **base** + règle de dérivation (cf. audit MAGIC, archétypes/familles).
 - **Gate** : 100 % des éléments MVP liés **ou** marqués `prose_orphan: true`.
 
-## Vagues E0 (chaque vague : parseur/lien → évidence → gate canonique)
+## Audit d'exhaustivité + mécanisme NOMOS (2026-05-27)
 
-1. **E0.1 — Parseur de sources prose** → entrées structurées. Commencer par le **lexique** (le plus
-   transverse : sorts + atouts + plus).
-2. **E0.2 — Liaison sorts ↔ lexique + grimoire** (+ réconciliation, rapport d'orphelins). **Débloque E2.**
-3. **E0.3 — Liaison atouts ↔ lexique + atouts-de-niveaux** (129 atouts). Débloque l'encodage des atouts (combat).
-4. **E0.4 — Liaison autres catalogs** ↔ leurs sources (bestiaire, races, classes, armes, protections, potions…).
-5. **E0.5 — Gate de couverture + intégration RAG** : les entrées parsées deviennent les **unités citables**.
+**Pourquoi NOMOS n'atomise pas la prose.** `tools/canonical.ts` route chaque source par
+`source_type` : `catalog_yaml` (`data/catalogs/*.yaml`) → `extractYamlCatalogUnits` = **1 unité par
+entrée** ; `canonical_rule` (`docs/rules/*.md`) → 1 par R-x.y ; **tout le reste**
+(`legacy_paper_extract`, `other`, `raw_source`…) → `extractLegacyObjectUnits` = **1 unité-bloc par
+fichier**. `nomos-export.ts` ne fait que **mapper** ces unités. **Prouvé empiriquement** : une sonde
+`data/catalogs/*.yaml` est auto-classée `catalog_yaml` et atomisée par entrée.
+
+**Conséquence : seuls les 21 catalogs chiffrés sont atomisés ; toute la couche prose de définition
+est « 1 bloc ».** Balayage complet du manifeste :
+
+| Rang | Couche                                     | type actuel                    | Sources                                                                                                                                                                                        | Action                                  |
+| ---- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| 1    | Prose paper `extracted/listes`+`infos`     | `legacy_paper_extract`         | lexique, grand-grimoire, bestiaire, armes, protections, rituels-et-potions, atouts-de-niveaux, orientations-et-classes, experience, table-des-touches, monnaie, poisons, champignons (**~13**) | → `catalog_yaml`                        |
+| 2    | Prose web `documents/*/index.md`           | `other`                        | armes, atouts, atouts-niveaux, bestiaire, classes, competences, grimoire, potions, cartes, regles (**~10**)                                                                                    | réconcilier ↔ paper                     |
+| 3    | Monde / lore                               | `legacy_paper_extract`+`other` | nations, organisations, cultes-et-religions, us-et-coutumes ; `monde/lieux`(17)/`villes`(9)/`regions`(5)                                                                                       | → enrichir catalogs monde               |
+| —    | Originaux binaires `.doc/.pdf/.xls`        | `raw_source`                   | Lexique.doc, Bestiaire.doc…                                                                                                                                                                    | **laisser** (le `.md` extrait fait foi) |
+| —    | Fiches perso (96), pages app, docs générés | `other`/`generated_doc`        | —                                                                                                                                                                                              | **hors scope** (couvert / bruit)        |
+
+**Correctif uniforme** : produire/enrichir un `catalog_yaml` porteur de la **prose** + `entry_id` par
+source de définition → atomisation **+** `prose_refs` gratuits via le pipeline existant. **Aucun
+atomiseur à écrire.** Le **lexique est paper-only** (pas de miroir web) → prioritaire.
+
+## Plan de correction (vagues priorisées)
+
+Chaque vague : build → `catalog_yaml` porteur de prose → liaison `prose_refs` → rapport d'orphelins → gate canonique.
+
+1. **E0.1 — Lexique → `data/catalogs/lexique.yaml`** (514 entrées : `id, term, prose, kind, school|orientation|race|classe, duration, niveau, source_refs`). Auto-classé `catalog_yaml` → 514 unités. _Paper-only, le plus transverse, dé-risque tout._
+2. **E0.2 — Liaison sorts ↔ lexique + grimoire** : `prose_refs` sur `spells.yaml`, réconciliation web↔paper (324 ↔ 101), orphelins, dérivation des variantes. **Débloque E2.**
+3. **E0.3 — Liaison atouts ↔ lexique + atouts-de-niveaux** : `prose_refs` sur `atouts.yaml` (129 atouts).
+4. **E0.4 — Reste de la couche définition** : bestiaire, armes, protections, potions, orientations-classes, competences… (prose dans les catalogs + liaison ; web↔paper).
+5. **E0.5 — Monde/lore + gate de couverture + RAG** : nations/organisations/religions/lieux ; gate « 100 % définitions MVP liées ou `prose_orphan` » ; entrées parsées = unités citables RAG.
 
 ## Ce que E0 débloque (en aval)
 

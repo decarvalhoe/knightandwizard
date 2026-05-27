@@ -267525,7 +267525,7 @@ units:
     sources:
       - path: "docs/plan/PROSE-SOURCE-LINKAGE.md"
         ref: "docs/plan/PROSE-SOURCE-LINKAGE.md"
-        sha256: "8cac1ea1ea4d868e16ef995c70e72f68d15dc129281cfb951372b34c10bcbd0c"
+        sha256: "81c79e849d7797dda12c3145a1ce6674ae50745522a67e8e662d0f184dbb10f5"
     business_rule:
       summary: "docs/plan/PROSE-SOURCE-LINKAGE.md from docs/plan/PROSE-SOURCE-LINKAGE.md."
       ambiguity_ref: null
