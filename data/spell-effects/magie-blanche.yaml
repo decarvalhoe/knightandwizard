@@ -1,11 +1,16 @@
-# E2c — Overlay d'effets structurés AUTHORÉS, école magie-blanche.
+# E2d — Overlay d'effets structurés AUTHORÉS, école magie-blanche.
 #
 # Source autorité : la ligne `effect` du grimoire (spells.yaml) + la prose liée (lexique, E0).
-# PROPOSÉ par audit (E2a/E2c), **À VALIDER par le MJ** (méthode Q-D8.2) : `fidelity: pending` +
-# `spec.requires_mj_validation: true`. Tant que non validé, ce n'est PAS du canon autoritaire.
+# **VALIDÉ par le MJ le 2026-05-28** (E2d, méthode Q-D8.2) : `fidelity: covered`,
+# `requires_mj_validation` retiré. C'est désormais du canon. Rulings de validation :
+#   - Buffs d'aptitude « +1/R » = `value: successes` (barème par réussite confirmé).
+#   - `courage` : le facteur de volonté **plus bas** = meilleure réussite au test ; donc « –1/R »
+#     (`op: sub`) est bien bénéfique (cf. R-8.19, sens du test confirmé par le MJ).
+#   - Soins `guerison-de-la-*` : **soins par zone, HORS combat** → `scope: zone` (gating combat =
+#     couche d'application, E3). `guerison-absolue` reste un soin général.
 #
 # Conventions (buffs templatables) :
-#   - "+N de vitalité/R"      → target vitality, op add, value "N * successes"   (soin instantané, ephemeral)
+#   - "+N de vitalité/R"      → target vitality, op add, value "N * successes"   (soin instantané)
 #   - "Attribut +1/R, 10 min/niv" → target aptitude, scope <attr>, op add, value "successes",
 #       durée narrative { amount: "level * 10", unit: minute }
 #   - "Diff. –1/R, 10 min/niv" → target difficulty, op sub, value "successes"    (bénédiction, global)
@@ -23,7 +28,7 @@ effects:
   # --- Soins (vitalité, instantané) ---
   guerison-absolue:
     source:
-      prose: '2 points de vitalité par réussite.'
+      prose: '2 points de vitalité par réussite (soin général).'
       ref: 'spells:guerison-absolue'
     spec:
       target: vitality
@@ -31,86 +36,85 @@ effects:
       value: '2 * successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   guerison-de-la-chair:
     source:
-      prose: '2 points de vitalité à la zone par réussite.'
+      prose: '2 points de vitalité à la zone par réussite (soin par zone, hors combat).'
       ref: 'spells:guerison-de-la-chair'
     spec:
       target: vitality
+      scope: zone
       op: add
       value: '2 * successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   guerison-de-la-peau:
     source:
-      prose: '2 points de vitalité à la zone par réussite.'
+      prose: '2 points de vitalité à la zone par réussite (soin par zone, hors combat).'
       ref: 'spells:guerison-de-la-peau'
     spec:
       target: vitality
+      scope: zone
       op: add
       value: '2 * successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   guerison-des-muscles:
     source:
-      prose: '2 points de vitalité à la zone par réussite.'
+      prose: '2 points de vitalité à la zone par réussite (soin par zone, hors combat).'
       ref: 'spells:guerison-des-muscles'
     spec:
       target: vitality
+      scope: zone
       op: add
       value: '2 * successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   guerison-des-muscles-mineure:
     source:
-      prose: '1 point de vitalité à la zone par réussite.'
+      prose: '1 point de vitalité à la zone par réussite (soin par zone, hors combat).'
       ref: 'spells:guerison-des-muscles-mineure'
     spec:
       target: vitality
+      scope: zone
       op: add
       value: 'successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   guerison-des-organes:
     source:
-      prose: '2 points de vitalité à la zone par réussite.'
+      prose: '2 points de vitalité à la zone par réussite (soin par zone, hors combat).'
       ref: 'spells:guerison-des-organes'
     spec:
       target: vitality
+      scope: zone
       op: add
       value: '2 * successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   guerison-des-os:
     source:
-      prose: '2 points de vitalité à la zone par réussite.'
+      prose: '2 points de vitalité à la zone par réussite (soin par zone, hors combat).'
       ref: 'spells:guerison-des-os'
     spec:
       target: vitality
+      scope: zone
       op: add
       value: '2 * successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   # --- Buffs d'aptitude (+1/R, 10 min/niv) ---
   force:
@@ -124,8 +128,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   force-de-masse:
     source:
@@ -138,8 +141,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   dexterite:
     source:
@@ -152,8 +154,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   dexterite-de-masse:
     source:
@@ -166,8 +167,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   endurance:
     source:
@@ -180,8 +180,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   endurance-de-masse:
     source:
@@ -194,8 +193,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   esthetique:
     source:
@@ -208,8 +206,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   esthetique-de-masse:
     source:
@@ -222,8 +219,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   empathie:
     source:
@@ -236,8 +232,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   empathie-de-masse:
     source:
@@ -250,8 +245,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   charisme:
     source:
@@ -264,8 +258,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   charisme-de-masse:
     source:
@@ -278,8 +271,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   intelligence:
     source:
@@ -292,8 +284,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   intelligence-de-masse:
     source:
@@ -306,8 +297,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   # --- Bénédiction (difficulté, global) ---
   benediction:
@@ -320,8 +310,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   benediction-de-masse:
     source:
@@ -333,8 +322,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   # --- Facteurs (vitesse, volonté) ---
   rapidite:
@@ -348,8 +336,7 @@ effects:
       value: 'successes'
       activation: active
       duration: { dt: 'level * 50' }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   rapidite-de-masse:
     source:
@@ -362,12 +349,11 @@ effects:
       value: 'successes'
       activation: active
       duration: { dt: 'level * 50' }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   courage:
     source:
-      prose: 'Facteur de volonté –1 par réussite, 10 minutes par niveau (sens du facteur à confirmer par le MJ).'
+      prose: 'Facteur de volonté –1 par réussite, 10 minutes par niveau (un facteur de volonté plus bas améliore la réussite du test, R-8.19 : effet bénéfique).'
       ref: 'spells:courage'
     spec:
       target: factor
@@ -376,6 +362,5 @@ effects:
       value: 'successes'
       activation: active
       duration: { amount: 'level * 10', unit: minute }
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
