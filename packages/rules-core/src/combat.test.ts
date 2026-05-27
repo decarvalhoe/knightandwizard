@@ -667,3 +667,48 @@ describe('damage-target effects in combat (#137)', () => {
     expect(target?.vitality.current).toBe(5);
   });
 });
+
+describe('zone-based KO and death (R-9.17)', () => {
+  it('knocks out on a head hit over a quarter of max vitality', () => {
+    const state = addCombatant(createCombatState(1), combatant({ id: 'target' }));
+    const target = applyDamage(state, 'target', 3, undefined, { zone: { id: 'tete' } }).timeline[0];
+
+    expect(target.vitality.current).toBe(7);
+    expect(target.statuses).toContainEqual({ id: 'unconscious', appliedAtDT: 1 });
+    expect(target.statuses).not.toContainEqual({ id: 'dead', appliedAtDT: 1 });
+  });
+
+  it('kills on a head or throat hit over half the base vitality', () => {
+    const head = addCombatant(createCombatState(1), combatant({ id: 'a' }));
+    expect(
+      applyDamage(head, 'a', 6, undefined, { zone: { id: 'tete' } }).timeline[0].statuses
+    ).toContainEqual({ id: 'dead', appliedAtDT: 1 });
+
+    const throat = addCombatant(createCombatState(1), combatant({ id: 'b' }));
+    expect(
+      applyDamage(throat, 'b', 6, undefined, { zone: { id: 'gorge_nuque' } }).timeline[0].statuses
+    ).toContainEqual({ id: 'dead', appliedAtDT: 1 });
+  });
+
+  it('does not apply zone death to a non-lethal zone', () => {
+    const state = addCombatant(createCombatState(1), combatant({ id: 'target' }));
+    const target = applyDamage(state, 'target', 6, undefined, {
+      zone: { id: 'haut_jambe' }
+    }).timeline[0];
+
+    expect(target.statuses).not.toContainEqual({ id: 'dead', appliedAtDT: 1 });
+    expect(target.vitality.current).toBe(4);
+  });
+
+  it('skips zone death for until-death combatants', () => {
+    const state = addCombatant(
+      createCombatState(1),
+      combatant({ id: 'skeleton', ignoresVitalityMalus: true })
+    );
+    const target = applyDamage(state, 'skeleton', 6, undefined, {
+      zone: { id: 'tete' }
+    }).timeline[0];
+
+    expect(target.statuses).not.toContainEqual({ id: 'dead', appliedAtDT: 1 });
+  });
+});
