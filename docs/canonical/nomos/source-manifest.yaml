@@ -12527,6 +12527,21 @@ sources:
       - vector_index
       - citation_internal
     notes: Product YAML catalog.
+  - id: DATA-CATALOGS-LEXIQUE
+    path: data/catalogs/lexique.yaml
+    type: database_export
+    domain: catalogs
+    priority: secondary
+    status: active
+    hash: 5af0407456938bef9152445b89947994f989ae5ff2e242600c1239c46592135b
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - structured_contract
+      - vector_index
+      - citation_internal
+    notes: Product YAML catalog.
   - id: DATA-CATALOGS-LORE-INDEX
     path: data/catalogs/lore-index.yaml
     type: database_export

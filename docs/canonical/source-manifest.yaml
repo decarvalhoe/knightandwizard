@@ -7985,6 +7985,15 @@ sources:
     domains: ["catalogs"]
     contains: ["catalog_entries"]
     notes: "Product YAML catalog."
+  - id: "data-catalogs-lexique"
+    path: "data/catalogs/lexique.yaml"
+    sha256: "5af0407456938bef9152445b89947994f989ae5ff2e242600c1239c46592135b"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["catalogs"]
+    contains: ["catalog_entries"]
+    notes: "Product YAML catalog."
   - id: "data-catalogs-lore-index"
     path: "data/catalogs/lore-index.yaml"
     sha256: "b7397f01de4810c91f5b8730ded7b0bc713af11920e0f7ed7897a81bdf85187d"
