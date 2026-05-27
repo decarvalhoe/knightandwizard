@@ -8,6 +8,7 @@ import {
   type WeaponDamageSpec
 } from './combat-damage.js';
 import { type DiceRollResult, type RandomInteger, rollDice } from './dice.js';
+import { resolveSpellCast, type SpellCastResult, spendEnergy } from './magic.js';
 import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
 import { type EffectModel } from './effect-model.js';
 import { applyEffectiveModifiers, computeEffectiveModifiers, effectiveValue } from './effects.js';
@@ -67,8 +68,35 @@ export interface DefenseAction {
   costDT?: number;
 }
 
+/**
+ * A spell action in the combat timeline. The casting fields are OPTIONAL so the same `'spell'`
+ * action type can also stand for a scheduled incantation placeholder (only a `costDT`), as the
+ * combat tracker UI uses it. A *resolvable cast* additionally carries the R-8.5 roll inputs
+ * (`intelligence` + `spellPoints` vs `difficulty`); `resolveNextAction` only rolls a cast when
+ * those are present, otherwise the action resolves as a generic timed action.
+ *
+ * The canonical entry point is `declareSpellCast`: it spends `energyCost` immediately (R-8.10) and
+ * schedules the caster `castingTimeDT` DT ahead (R-8.6 windup), so an interruption during that
+ * window loses the energy with no refund (R-8.7). `costDT` is the post-cast recovery (defaults to
+ * the effective speed factor).
+ */
 export interface SpellAction {
   type: 'spell';
+  /** Optional catalog id of the spell being cast (provenance / logging). */
+  spellId?: string;
+  /** R-8.5 — caster Intelligence (the cast pool is Intelligence + spellPoints). */
+  intelligence?: number;
+  /** R-8.5 — points invested in the spell (no skill, no specialisation). */
+  spellPoints?: number;
+  /** R-8.5 — agreed spell difficulty (may exceed 9, R-1.20). */
+  difficulty?: number;
+  /** R-8.10 — energy spent to cast, committed at declaration (lost if interrupted). */
+  energyCost?: number;
+  /** R-8.6 — incantation time in DT (the interruptible windup before the spell launches). */
+  castingTimeDT?: number;
+  /** Optional target of the spell (effect application is resolved by a later layer). */
+  targetId?: string;
+  /** Post-cast recovery in DT; defaults to the caster's effective speed factor. */
   costDT?: number;
 }
 
@@ -113,6 +141,8 @@ export interface Combatant {
   vitality: CombatVitality;
   /** R-9.17 — base (racial) max vitality for the lethal-zone death threshold; defaults to vitality.max. */
   baseVitalityMax?: number;
+  /** R-8.10 — spell energy pool ({ current, max }); required to declare a spell cast. */
+  energy?: CombatVitality;
   attributes: CombatAttributes;
   baseAttributes?: CombatAttributes;
   skills: CombatSkillSet;
@@ -130,6 +160,8 @@ export interface CombatEvent {
     | 'action_resolved'
     | 'action_interrupted'
     | 'attack_resolved'
+    | 'spell_started'
+    | 'spell_resolved'
     | 'damage_applied'
     | 'status_applied'
     | 'stamina_roll_resolved';
@@ -148,6 +180,10 @@ export interface CombatEvent {
   defenseRoll?: DiceRollResult;
   staminaRoll?: DiceRollResult;
   status?: CombatStatus;
+  /** R-8.5 — spell casting roll result (on `spell_resolved`). */
+  spellCast?: SpellCastResult;
+  /** R-8.10 — energy committed for a spell (on `spell_started`; lost if interrupted). */
+  energySpent?: number;
 }
 
 export interface CombatState {
@@ -255,6 +291,15 @@ export function resolveNextAction(
   if (action.type === 'attack') {
     return rescheduleActor(
       resolveAttack(activeState, actor, action, { costDT, nextActionAt }, options, config),
+      actor.id,
+      action,
+      config
+    );
+  }
+
+  if (action.type === 'spell' && isSpellCastReady(action)) {
+    return rescheduleActor(
+      resolveSpell(activeState, actor, action, { costDT, nextActionAt }, options),
       actor.id,
       action,
       config
@@ -387,8 +432,8 @@ export type InterruptOutcome = 'restart' | 'release';
  * R-9.4 — Interrupts a combatant's in-progress action. The DT already invested
  * since declaration are LOST (no partial benefit). With `release` the actor is
  * freed at the current DT; with `restart` it re-attempts the same action and pays
- * its full speed-factor cost again from now. Spell energy loss (R-9.31) applies
- * once energy is modeled.
+ * its full speed-factor cost again from now. A spell's energy is committed at
+ * `declareSpellCast`, so interrupting an in-progress cast loses it with no refund (R-8.7 / R-9.31).
  */
 export function interruptCombatant(
   state: CombatState,
@@ -420,6 +465,70 @@ export function interruptCombatant(
           actionType: interruptedAction?.type,
           costDT: lostDT,
           nextActionAt: next.nextActionAt
+        }
+      ]
+    },
+    next
+  );
+}
+
+/**
+ * R-8.5 / R-8.6 / R-8.7 — Commits a combatant to casting a spell from the current DT.
+ *
+ * The energy cost is spent immediately (R-8.10) and the caster is scheduled to resolve the cast
+ * `castingTimeDT` DT later (R-8.6): that window is the interruptible incantation. Because the
+ * energy is already committed, an `interruptCombatant` during the window loses it with no refund
+ * (R-8.7). Call this on the caster's turn, then advance the timeline with `resolveNextAction`,
+ * which resolves the casting roll when the caster reaches the front again.
+ */
+export function declareSpellCast(
+  state: CombatState,
+  casterId: string,
+  action: SpellAction
+): CombatState {
+  const caster = findCombatant(state, casterId);
+
+  if (caster.energy === undefined) {
+    throw new Error(`combatant ${casterId} has no energy pool and cannot cast spells`);
+  }
+
+  if (!isSpellCastReady(action)) {
+    throw new Error('declareSpellCast requires intelligence, spellPoints and difficulty (R-8.5)');
+  }
+
+  if (action.castingTimeDT === undefined) {
+    throw new Error('declareSpellCast requires castingTimeDT (R-8.6)');
+  }
+
+  if (action.energyCost === undefined) {
+    throw new Error('declareSpellCast requires energyCost (R-8.10)');
+  }
+
+  assertPositiveInteger('castingTimeDT', action.castingTimeDT);
+
+  const energy = spendEnergy(caster.energy, action.energyCost);
+  const nextActionAt = state.currentDT + action.castingTimeDT;
+  const next: Combatant = {
+    ...caster,
+    energy,
+    nextActionAt,
+    pendingAction: action
+  };
+
+  return replaceCombatant(
+    {
+      ...state,
+      log: [
+        ...state.log,
+        {
+          type: 'spell_started',
+          atDT: state.currentDT,
+          actorId: casterId,
+          ...(action.targetId !== undefined ? { targetId: action.targetId } : {}),
+          actionType: 'spell',
+          costDT: action.castingTimeDT,
+          nextActionAt,
+          energySpent: action.energyCost
         }
       ]
     },
@@ -522,6 +631,50 @@ function resolveAttack(
   }
 
   return withAttackLog;
+}
+
+/** A spell action that carries the R-8.5 roll inputs and can therefore be resolved as a cast. */
+type ResolvableSpellCast = SpellAction & {
+  intelligence: number;
+  spellPoints: number;
+  difficulty: number;
+};
+
+function isSpellCastReady(action: SpellAction): action is ResolvableSpellCast {
+  return (
+    action.intelligence !== undefined &&
+    action.spellPoints !== undefined &&
+    action.difficulty !== undefined
+  );
+}
+
+function resolveSpell(
+  state: CombatState,
+  actor: Combatant,
+  action: ResolvableSpellCast,
+  timing: { costDT: number; nextActionAt: number },
+  options: CombatResolutionOptions
+): CombatState {
+  const randomInteger = randomIntegerForResolution(options);
+  const spellCast = resolveSpellCast(action.intelligence, action.spellPoints, action.difficulty, {
+    randomInteger
+  });
+  const event: CombatEvent = {
+    type: 'spell_resolved',
+    atDT: state.currentDT,
+    actorId: actor.id,
+    ...(action.targetId !== undefined ? { targetId: action.targetId } : {}),
+    actionType: 'spell',
+    costDT: timing.costDT,
+    nextActionAt: timing.nextActionAt,
+    successes: spellCast.netSuccesses,
+    spellCast
+  };
+
+  return {
+    ...state,
+    log: [...state.log, event]
+  };
 }
 
 function rescheduleActor(
