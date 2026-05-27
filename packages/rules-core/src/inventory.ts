@@ -9,6 +9,12 @@
  * The carried weight feeds the encumbrance speed penalty (R-2.18, already in combat.ts via V2b).
  * Containers / extradimensional storage are out of scope for now.
  */
+import {
+  type DamageProtectionLayerInput,
+  type DamageProtectionValues,
+  type WeaponDamageSpec
+} from './combat-damage.js';
+
 export type ItemState = 'worn' | 'carried' | 'stored';
 
 export interface InventoryItem {
@@ -24,6 +30,10 @@ export interface InventoryItem {
   state: ItemState;
   /** Stack quantity (consumables, ammo, coins); defaults to 1. */
   quantity?: number;
+  /** R-10.19 — frozen combat snapshot for a worn weapon (drives attack damage). */
+  weaponDamage?: WeaponDamageSpec;
+  /** R-10.19 — frozen combat snapshot for a worn armor piece (protection by zone). */
+  protection?: { layer: string; zones: string[]; values: DamageProtectionValues };
 }
 
 const ON_PERSON_STATES: readonly ItemState[] = ['worn', 'carried'];
@@ -72,4 +82,29 @@ function assertPositiveInteger(name: string, value: number): void {
   if (!Number.isInteger(value) || value < 1) {
     throw new Error(`${name} must be a positive integer`);
   }
+}
+
+/**
+ * The active worn weapon's damage spec — the first worn item carrying a `weaponDamage` snapshot.
+ * (Dual-wielding / two-weapon rules R-9.42 are out of scope here.)
+ */
+export function equippedWeaponDamage(
+  items: readonly InventoryItem[]
+): WeaponDamageSpec | undefined {
+  return wornItems(items).find((item) => item.weaponDamage !== undefined)?.weaponDamage;
+}
+
+/**
+ * Protection layers contributed by all WORN armor — feeds `combat-damage` `defense.protections`
+ * (mitigation by zone, R-9.14). Carried/stored armor does not protect.
+ */
+export function loadoutProtections(items: readonly InventoryItem[]): DamageProtectionLayerInput[] {
+  return wornItems(items)
+    .filter((item) => item.protection !== undefined)
+    .map((item) => ({
+      id: item.id,
+      layer: item.protection!.layer,
+      zones: item.protection!.zones,
+      values: item.protection!.values
+    }));
 }
