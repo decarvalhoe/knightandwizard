@@ -1,0 +1,241 @@
+# E2b — Overlay d'effets structurés AUTHORÉS, école élémentaire.
+#
+# Source autorité : la ligne `effect` du grimoire (spells.yaml) + la prose liée (lexique, E0).
+# Chaque entrée est un EffectModel complet (rules-core), PROPOSÉ par audit (E2a) et **À VALIDER par
+# le MJ** (méthode Q-D8.2) : `fidelity: pending` + `spec.requires_mj_validation: true`. Tant que non
+# validé, ce n'est PAS du canon autoritaire — jamais confondu avec un effet validé.
+#
+# Convention de dégâts élémentaires (R-8.15, couche élémentaire ≠ P/E/C/T physique) :
+#   - `target: damage`, `scope` = élément (feu | foudre | eau) → routé par le moteur de résistance (E4).
+#   - "N dégâts/R"            → value: "N * successes"            (N par réussite)
+#   - "N dégâts +M par R sup" → value: "N + M * (successes - 1)"  (base N, +M par réussite au-delà de la 1re)
+#   - "foudre" normalise "foudre" ET "électricité" (même élément).
+#
+# Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts` (catalogs:build:magic).
+version: 1
+school_id: elementaire
+effects:
+  fleche-de-feu:
+    source:
+      prose: '2 dégâts de feu par réussite.'
+      ref: 'spells:fleche-de-feu'
+    spec:
+      target: damage
+      scope: feu
+      op: add
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  fleche-de-foudre:
+    source:
+      prose: "2 dégâts d'électricité (foudre) par réussite."
+      ref: 'spells:fleche-de-foudre'
+    spec:
+      target: damage
+      scope: foudre
+      op: add
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  foudroiement:
+    source:
+      prose: "3 dégâts d'électricité (foudre) par réussite."
+      ref: 'spells:foudroiement'
+    spec:
+      target: damage
+      scope: foudre
+      op: add
+      value: '3 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  touche-ardant:
+    source:
+      prose: '1 dégât de feu par réussite (toucher ardent).'
+      ref: 'spells:touche-ardant'
+    spec:
+      target: damage
+      scope: feu
+      op: add
+      value: 'successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  chaine-d-eclairs:
+    source:
+      prose: '3 dégâts de foudre par réussite (cible principale ; propagation 1 personne/R modélisée par le ciblage, à part).'
+      ref: 'spells:chaine-d-eclairs'
+    spec:
+      target: damage
+      scope: foudre
+      op: add
+      value: '3 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  boule-de-feu:
+    source:
+      prose: '8 dégâts de feu, +3 par réussite au-delà de la première.'
+      ref: 'spells:boule-de-feu'
+    spec:
+      target: damage
+      scope: feu
+      op: add
+      value: '8 + 3 * (successes - 1)'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  boule-de-feu-majeure:
+    source:
+      prose: '12 dégâts de feu, +4 par réussite au-delà de la première.'
+      ref: 'spells:boule-de-feu-majeure'
+    spec:
+      target: damage
+      scope: feu
+      op: add
+      value: '12 + 4 * (successes - 1)'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  boule-de-foudre:
+    source:
+      prose: '8 dégâts de foudre, +3 par réussite au-delà de la première.'
+      ref: 'spells:boule-de-foudre'
+    spec:
+      target: damage
+      scope: foudre
+      op: add
+      value: '8 + 3 * (successes - 1)'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  boule-de-foudre-majeure:
+    source:
+      prose: '12 dégâts de foudre, +4 par réussite au-delà de la première.'
+      ref: 'spells:boule-de-foudre-majeure'
+    spec:
+      target: damage
+      scope: foudre
+      op: add
+      value: '12 + 4 * (successes - 1)'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  multi-flamme:
+    source:
+      prose: '3 dégâts de feu, +1 par réussite au-delà de la première (projectiles additionnels 1/2R modélisés à part).'
+      ref: 'spells:multi-flamme'
+    spec:
+      target: damage
+      scope: feu
+      op: add
+      value: '3 + (successes - 1)'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  vague-de-feu:
+    source:
+      prose: '10 dégâts de feu, +2 par réussite au-delà de la première.'
+      ref: 'spells:vague-de-feu'
+    spec:
+      target: damage
+      scope: feu
+      op: add
+      value: '10 + 2 * (successes - 1)'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  raz-de-maree:
+    source:
+      prose: "50 dégâts d'eau, +10 par réussite au-delà de la première."
+      ref: 'spells:raz-de-maree'
+    spec:
+      target: damage
+      scope: eau
+      op: add
+      value: '50 + 10 * (successes - 1)'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  appel-de-la-foudre:
+    source:
+      prose: '20 dégâts de foudre, +4 par réussite au-delà de la première.'
+      ref: 'spells:appel-de-la-foudre'
+    spec:
+      target: damage
+      scope: foudre
+      op: add
+      value: '20 + 4 * (successes - 1)'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  pilier-de-feu:
+    source:
+      prose: '20 dégâts de feu, +4 par réussite au-delà de la première.'
+      ref: 'spells:pilier-de-feu'
+    spec:
+      target: damage
+      scope: feu
+      op: add
+      value: '20 + 4 * (successes - 1)'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  pyramide-de-feu:
+    source:
+      prose: '25 dégâts de feu, +5 par réussite au-delà de la première (zone 10m²/5m).'
+      ref: 'spells:pyramide-de-feu'
+    spec:
+      target: damage
+      scope: feu
+      op: add
+      value: '25 + 5 * (successes - 1)'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  brasier:
+    source:
+      prose: '4 dégâts de feu (zone 1m²/R modélisée par le ciblage).'
+      ref: 'spells:brasier'
+    spec:
+      target: damage
+      scope: feu
+      op: add
+      value: 4
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
