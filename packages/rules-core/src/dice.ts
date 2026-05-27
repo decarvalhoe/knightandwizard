@@ -334,3 +334,42 @@ function assertNonNegativeInteger(name: string, value: number): void {
     throw new Error(`${name} must be a non-negative integer`);
   }
 }
+
+export interface WillpowerTestResult {
+  /** The single D20 roll (1..20). */
+  roll: number;
+  /** F.Volonté + modifiers — the value the roll is tested against. */
+  target: number;
+  success: boolean;
+}
+
+/**
+ * R-8.19 — Test de volonté : un D20 opposé à (F.Volonté + modificateurs), pour les réactions
+ * émotionnelles (charme, peur, contrôle mental). C'est une catégorie de jet distincte du pool D10
+ * (jet d'action) et du jet d'aptitude brute.
+ *
+ * Convention (À CONFIRMER avec le propriétaire) : réussite si le D20 est <= la cible (roll-under ;
+ * une F.Volonté élevée résiste mieux). R-8.19 fixe la formule mais pas la direction du test.
+ */
+export function rollWillpowerTest(
+  willFactor: number,
+  modifiers = 0,
+  options: RollDiceOptions = {}
+): WillpowerTestResult {
+  assertNonNegativeInteger('willFactor', willFactor);
+
+  if (!Number.isInteger(modifiers)) {
+    throw new Error('modifiers must be an integer');
+  }
+
+  const randomInteger = options.randomInteger ?? defaultRandomInteger;
+  const roll = randomInteger(20);
+
+  if (!Number.isInteger(roll) || roll < 1 || roll > 20) {
+    throw new Error('randomInteger(20) must return an integer between 1 and 20');
+  }
+
+  const target = willFactor + modifiers;
+
+  return { roll, target, success: roll <= target };
+}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { calculateEffectiveRollRequest, rollDice } from './dice.js';
+import { calculateEffectiveRollRequest, rollDice, rollWillpowerTest } from './dice.js';
 import { parseEffectModel } from './effect-model.js';
 
 describe('D10 resolution', () => {
@@ -173,3 +173,28 @@ function scriptedRolls(values: number[]) {
     return value;
   };
 }
+
+describe('willpower test D20 (R-8.19)', () => {
+  it('succeeds when the D20 is at or under will factor + modifiers', () => {
+    expect(rollWillpowerTest(10, 0, { randomInteger: () => 10 })).toEqual({
+      roll: 10,
+      target: 10,
+      success: true
+    });
+    expect(rollWillpowerTest(10, 0, { randomInteger: () => 11 })).toEqual({
+      roll: 11,
+      target: 10,
+      success: false
+    });
+  });
+
+  it('applies modifiers to the target', () => {
+    expect(rollWillpowerTest(10, 5, { randomInteger: () => 14 }).success).toBe(true);
+    expect(rollWillpowerTest(10, -5, { randomInteger: () => 6 }).success).toBe(false);
+  });
+
+  it('rejects an out-of-range D20 value', () => {
+    expect(() => rollWillpowerTest(10, 0, { randomInteger: () => 21 })).toThrow();
+    expect(() => rollWillpowerTest(10, 0, { randomInteger: () => 0 })).toThrow();
+  });
+});
