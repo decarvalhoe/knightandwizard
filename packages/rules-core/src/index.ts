@@ -8,6 +8,7 @@ export * from './effect-renderer.js';
 export * from './effects.js';
 export * from './hit-table.js';
 export * from './inventory.js';
+export * from './magic.js';
 export * from './money.js';
 export * from './npc-control.js';
 export * from './predilection.js';
