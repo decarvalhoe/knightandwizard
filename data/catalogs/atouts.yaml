@@ -301,7 +301,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:anosmie
-    prose_orphan: true
+    generated_prose: "Atout permanent : Le personnage ne possède aucun sens de l'odorat."
+    prose_origin: templated
+    validation: pending
   - id: anti-bluff
     name: Anti-bluff
     status: active
@@ -378,7 +380,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:antilimite-physique
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le coût d’un point supplémentaire dans une aptitude, une fois la limite physique atteinte, est
+      de NA x 10.
+    prose_origin: templated
+    validation: pending
   - id: apaisement
     name: Apaisement
     status: active
@@ -453,7 +459,9 @@ atouts:
       activation: passive
       duration: permanent
     fidelity: covered
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Additionne le niveau au nombre de dés lorsque le personnage fait des travaux de charpenterie.'
+    prose_origin: templated
+    validation: pending
   - id: art-de-la-chasse
     name: Art de la chasse
     status: active
@@ -531,7 +539,11 @@ atouts:
       activation: passive
       duration: permanent
     fidelity: covered
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Additionne le niveau au nombre de dés lorsque le personnage fait des travaux liés à la
+      restauration.
+    prose_origin: templated
+    validation: pending
   - id: art-de-la-vannerie
     name: Art de la vannerie
     status: active
@@ -582,7 +594,9 @@ atouts:
       activation: passive
       duration: permanent
     fidelity: covered
-    prose_orphan: true
+    generated_prose: "Atout permanent : Additionne le niveau au nombre de dés lorsque le personnage fait des travaux d'hôtellerie."
+    prose_origin: templated
+    validation: pending
   - id: art-du-tonneau
     name: Art du tonneau
     status: active
@@ -778,7 +792,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:audition
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : L'audition est représentée en pourcentage, ce qui signifie qu’un homme en bonne forme possède
+      une audition de 100%. Un personnage ayant 200% d'audition entendra donc deux fois mieux.
+    prose_origin: templated
+    validation: pending
   - id: aura-benefique
     name: Aura bénéfique
     status: active
@@ -859,7 +877,12 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:autocombustion
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le corps du personnage se met subitement à brûler. Ces flammes infligent 1 point de dégâts par
+      point dans cet atout par DT au personnage ainsi qu'à tout ceux qui entrent en contact avec lui durant la durée de
+      son autocombustion. Cet état dure 1 minute par niveau.
+    prose_origin: templated
+    validation: pending
   - id: autodidacte
     name: Autodidacte
     status: active
@@ -891,7 +914,12 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:autoregeneration
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le corps du personnage se régénère de lui-même en permanence. Ses membres perdus repoussent et
+      ses plaies se referment à vue d’œil. Tout les 10 DT, le personnage récupère un point de vitalité. Cet atout prend
+      fin à la mort du personnage.
+    prose_origin: templated
+    validation: pending
   - id: aveugle
     name: Aveugle
     status: active
@@ -903,7 +931,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:aveugle
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Le personnage est incapable de voir.'
+    prose_origin: templated
+    validation: pending
   - id: baiser-de-la-nuit
     name: Baiser de la nuit
     status: active
@@ -1193,7 +1223,9 @@ atouts:
       activation: passive
       duration: permanent
     fidelity: covered
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Additionne le niveau au nombre de dés lors d’un jet de sexualité.'
+    prose_origin: templated
+    validation: pending
   - id: cerebralite
     name: Cérébralité
     status: active
@@ -1591,7 +1623,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:coups-vicieux
-    prose_orphan: true
+    generated_prose: 'Atout éphémère : Le personnage peut déduire son niveau à l’endurance de sa cible pour 1 action.'
+    prose_origin: templated
+    validation: pending
   - id: cours-toujours
     name: Cours toujours
     status: active
@@ -1807,7 +1841,13 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:deplacement-somnambule
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage peut continuer d'avancer tout en dormant. Un déplacement somnambule peu impliquer
+      des notions fort simples tel que suivre quelque chose ou se diriger droit dans dans une direction donnée. Les
+      opérations plus complexes comme éviter un obstacle ou choisir une nouvelle direction sont quant à elles
+      impossibles dans cet état.
+    prose_origin: templated
+    validation: pending
   - id: desactivation
     name: Désactivation
     status: active
@@ -1940,7 +1980,12 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:developpement-magique
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le magicien peut développer et apprendre un sort qu’il possède en sort mineur, majeur ou
+      standard. Le temps du développement dure le double du temps d’apprentissage du sort sur lequel travaille le
+      personnage (moins le jet de développement).
+    prose_origin: templated
+    validation: pending
   - id: discretion
     name: Discrétion
     status: active
@@ -2417,7 +2462,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:epuration
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Le personnage prend 1 dé supplémentaire pour toutes les actions visant à nuire à un sorcier.'
+    prose_origin: templated
+    validation: pending
   - id: equilibre-controle
     name: Equilibre contrôlé
     status: active
@@ -2474,7 +2521,9 @@ atouts:
       duration: permanent
       requires_mj_validation: true
     fidelity: covered
-    prose_orphan: true
+    generated_prose: "Atout permanent : Additionne le niveau au nombre de dés lors d’une tentative d'escroquerie."
+    prose_origin: templated
+    validation: pending
   - id: espionnage
     name: Espionnage
     status: active
@@ -2613,7 +2662,9 @@ atouts:
       activation: passive
       duration: permanent
     fidelity: covered
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Additionne le niveau au nombre de dés lorsque le personnage construit un arc.'
+    prose_origin: templated
+    validation: pending
   - id: familier
     name: Familier
     status: active
@@ -2697,7 +2748,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:familier-vigoureux
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Le familier du magicien augmente ses points de vitalités par le niveau de son propriétaire.'
+    prose_origin: templated
+    validation: pending
   - id: feinte-du-bucheron
     name: Feinte du bûcheron
     status: active
@@ -2960,7 +3013,9 @@ atouts:
       duration: permanent
       requires_mj_validation: true
     fidelity: covered
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Additionne le niveau pour toute action visant la sauvegarde de son employeur.'
+    prose_origin: templated
+    validation: pending
   - id: generalisation
     name: Généralisation
     status: active
@@ -2991,7 +3046,13 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:grace
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage peut accorder sa grâce à n'importe qui sauf lui-même. Celui-ci implique une
+      difficulté de +1 pour tout jet destiné à nuire au porteur de la grâce. Un même personnage peut scinder ses grâces
+      sur plusieurs personne en répartissant ses points s'il en possède plus d'un. La grace retombe dès que le donneur
+      le désire ou qu'il meure.
+    prose_origin: templated
+    validation: pending
   - id: grand-amour
     name: Grand amour
     status: active
@@ -3024,7 +3085,13 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:grele-de-fleches
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le personnage peut ajouter une flèche à son tir par point en "Grêle de flèches". S'il possède
+      plusieurs points dans cet atout, il pourra diviser ses flèche additionnelles comme bon lui semble (ex: un archer
+      ayant Grêle de flèches : 3 pourra faire un tir avec 2 flèches, suivit d'un autre avec 3 flèches). Les flèches
+      tirées ont toutes la même cible.
+    prose_origin: templated
+    validation: pending
   - id: griffes-acerees
     name: Griffes acérées
     status: active
@@ -3102,7 +3169,16 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:hybridation-du-familier
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Lors de l'acquisition de cet atout, le magicien doit choisir une partie du corps de son familier
+      (ex. un bras, les yeux, la peau, ...). Une fois le familier rappeler dans son magicien, ce dernier pourra modifier
+      sa propre forme en substituant la zone corporelle choisie par celle de son familier. Le nouveau membre peut être
+      un simple ajout (ex. un humain peut obtenir les ailes de son familier dragon). Le nouveau membre possède toutes
+      les atouts liés à cette zone du corps du familier mais ne modifie ni les points de vitalité, ni le facteur de
+      vitesse du magicien. Cet atout peut être cumulé avec des zones du corps diverses ou similaire. Le magicien ne peut
+      choisir de substituer sa propre tête.
+    prose_origin: templated
+    validation: pending
   - id: hypersensibilite
     name: Hypersensibilité
     status: active
@@ -3232,7 +3308,12 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:indestructible
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le personnage peut construire des objets (dans son domaine de prédilection) pratiquement
+      indestructible. Le seul moyen de les détruire est de le faire sur le lieux où celui-ci à été construit. Cet atout
+      demande 30 réussites de création (à cumuler en cas d'atout cumulé sur une même création).
+    prose_origin: templated
+    validation: pending
   - id: inesquivable
     name: Inesquivable
     status: active
@@ -3265,7 +3346,14 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:infiltration-arcanique
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le magicien est un tel spécialiste des flux arcaniques utilisés dans la magie qu'il est capable
+      d'injecter un sort dans l'énergie drainée par un autre magicien qui lance lui-même un sort. A la fin du TI du sort
+      infecté, les deux sorts sont automatiquement lancés en même temps (sans tenir compte du TI du sort parasite). Si
+      le sort clandestin est un sort d'abjuration, ce dernier possède la priorité dans la résolution (priorité au
+      défenseur).
+    prose_origin: templated
+    validation: pending
   - id: inquisition
     name: Inquisition
     status: active
@@ -4268,7 +4356,9 @@ atouts:
       activation: passive
       duration: permanent
     fidelity: covered
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Additionne le niveau au nombre de dés lors sur un jet de création de parfum.'
+    prose_origin: templated
+    validation: pending
   - id: maitrise-equestre
     name: Maîtrise équestre
     status: active
@@ -4569,7 +4659,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:muet
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Le personnage est incapable de parler.'
+    prose_origin: templated
+    validation: pending
   - id: musique-stimulante
     name: Musique stimulante
     status: active
@@ -4675,7 +4767,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:oeil-du-margoulin
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Le personnage voit naturellement scintiller les objets ayant de la valeur.'
+    prose_origin: templated
+    validation: pending
   - id: orateur-ideal
     name: Orateur idéal
     status: active
@@ -4687,7 +4781,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:orateur-ideal
-    prose_orphan: true
+    generated_prose: "Atout permanent : Ajoute le niveau du personnage à ses dès lors d'un jet de discours."
+    prose_origin: templated
+    validation: pending
   - id: orfevrerie
     name: Orfèvrerie
     status: active
@@ -4974,7 +5070,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:pasage-celeste
-    prose_orphan: true
+    generated_prose: 'Atout permanent : NA.'
+    prose_origin: templated
+    validation: pending
   - id: passage-a-l-ombre
     name: Passage à l’ombre
     status: active
@@ -5327,7 +5425,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:potion-d-energie
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le personnage est capable de confectionner des potions de d'énergie arcanique. Les points
+      restaurés sont égaux au nombre de réussites du jet d'alchimie (diff. 7).
+    prose_origin: templated
+    validation: pending
   - id: potion-de-vitalite
     name: Potion de vitalité
     status: active
@@ -5341,7 +5443,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:potion-de-vitalite
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le personnage est capable de confectionner des potions de vitalité. Les points restaurés sont
+      égaux au nombre de réussites du jet d'alchimie (diff. 9).
+    prose_origin: templated
+    validation: pending
   - id: pour-la-prime
     name: Pour la prime
     status: active
@@ -5373,7 +5479,12 @@ atouts:
       duration: permanent
       requires_mj_validation: true
     fidelity: covered
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Additionne le niveau au nombre de dés pour permettant d'obtenir une prime directement. Arrêter
+      un voleur pour une récompense sera considérer comme directe. Se sauver d'un traquenard pour survire (et arrêter un
+      voleur par la suite) sera considéré comme indirect.
+    prose_origin: templated
+    validation: pending
   - id: pouvoir-symbolique
     name: Pouvoir symbolique
     status: active
@@ -5513,7 +5624,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:purification-celeste
-    prose_orphan: true
+    generated_prose: 'Atout permanent : NA.'
+    prose_origin: templated
+    validation: pending
   - id: race-aquatique
     name: Race aquatique
     status: active
@@ -5771,7 +5884,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:renaissance-celeste
-    prose_orphan: true
+    generated_prose: 'Atout permanent : NA.'
+    prose_origin: templated
+    validation: pending
   - id: repondre-a-l-insulte
     name: Répondre à l’insulte
     status: active
@@ -5836,7 +5951,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resistance-a-la-chaleur
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément à la chaleur. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: resistance-a-la-fatigue
     name: Résistance à la fatigue
     status: active
@@ -5848,7 +5967,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resistance-a-la-fatigue
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément à la fatigue. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: resistance-a-la-fumee
     name: Résistance à la fumée
     status: active
@@ -5860,7 +5983,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resistance-a-la-fumee
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément à la fumée. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: resistance-a-la-magie
     name: Résistance à la magie
     status: active
@@ -5872,7 +5999,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resistance-a-la-magie
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément à la magie. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: resistance-a-l-alcool
     name: Résistance à l’alcool
     status: active
@@ -5884,7 +6015,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resistance-a-l-alcool
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément à l'alcool. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: resistance-au-feu
     name: Résistance au feu
     status: active
@@ -5896,7 +6031,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resistance-au-feu
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément au feu. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: resistance-au-froid
     name: Résistance au froid
     status: active
@@ -5908,7 +6047,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resistance-au-froid
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément au froid. Jet en dessous de la résistance sur un D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: resistance-aux-drogues
     name: Résistance aux drogues
     status: active
@@ -5920,7 +6063,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resistance-aux-drogues
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux drogues. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: resistance-aux-maladies
     name: Résistance aux maladies
     status: active
@@ -5932,7 +6079,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resistance-aux-maladies
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux maladies. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: resistance-aux-poisons
     name: Résistance aux poisons
     status: active
@@ -5944,7 +6095,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resistance-aux-poisons
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux poisons. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: resistance-selective
     name: Résistance sélective
     status: active
@@ -5977,7 +6132,14 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resonance
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le magicien peut utiliser son énergie pour entrer en résonance avec l'un de ses sorts et
+      augmenter la puissance de celui-ci. Moyennant 10 points d'énergie, le personnage peut, en un facteur de vitesse,
+      ajouter une réussite à l'un de ses propre sorts actif lancé précédemment. Si le personnage possède plusieurs
+      points en Résonance, il pourra réitéré son action mais devra à nouveau dépenser l'énergie ainsi que le facteur de
+      vitesse.
+    prose_origin: templated
+    validation: pending
   - id: resonance-avancee
     name: Résonance avancée
     status: active
@@ -5991,7 +6153,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:resonance-avancee
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : En plus de pouvoir utiliser son atout de résonance sur ses propres sorts, le magicien peut
+      l'utiliser sur n'importe quel sort de sa couleur magique peu importe le lanceur dudit sort.
+    prose_origin: templated
+    validation: pending
   - id: ressentir-la-magie
     name: Ressentir la magie
     status: active
@@ -6040,7 +6206,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:ressentir-le-bien
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Permet au personnage de ressentir la présence du bien, que se soit une personne, un acte ou
+      autre. Plus le bien est grand, et plus le personnage le ressentira fort au fond de lui.
+    prose_origin: templated
+    validation: pending
   - id: ressentir-le-magicien
     name: Ressentir le magicien
     status: active
@@ -6428,7 +6598,9 @@ atouts:
       activation: passive
       duration: permanent
     fidelity: covered
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Additionne le niveau du personnage au nombre de dès lancés lors d’un jet d’herboristerie.'
+    prose_origin: templated
+    validation: pending
   - id: secret-des-poignards-volants
     name: Secret des poignards volants
     status: active
@@ -6573,7 +6745,9 @@ atouts:
       activation: passive
       duration: permanent
     fidelity: covered
-    prose_orphan: true
+    generated_prose: "Atout permanent : Ajoute le niveau du personnage à ses dès lors d'un jet de perception."
+    prose_origin: templated
+    validation: pending
   - id: sens-politique
     name: Sens politique
     status: active
@@ -6771,7 +6945,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:soleil-petrificateur
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Les rayons du soleil change le personnage en pierre. Un personnage ainsi statufié ne reviens pas
+      à son état normal une fois la nuit venue.
+    prose_origin: templated
+    validation: pending
   - id: sommeil-leger
     name: Sommeil léger
     status: active
@@ -6827,7 +7005,12 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:sonar
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage est doté d'un sonar lui permettant de se repérer dans l'espace par retour
+      d'ultrasons qu'il émet. Ses jets de reconnaissance lié à son environnement passent par l'ouïe lorsqu'il utilise
+      cet atout.
+    prose_origin: templated
+    validation: pending
   - id: sourd
     name: Sourd
     status: active
@@ -6839,7 +7022,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:sourd
-    prose_orphan: true
+    generated_prose: "Atout permanent : Le personnage est incapable d'entendre."
+    prose_origin: templated
+    validation: pending
   - id: souvenir-de-la-bete
     name: Souvenir de la bête
     status: active
@@ -6872,7 +7057,13 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:sublimation
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Les objet créés par le personnage (dans son domaine de prédilection) octroient un bonus de +1 en
+      esthétisme à son porteur par points en Sublimation. Un objet offrant un bonus de X doit avoir un minimum de X * 5
+      réussites lors de sa création (ceci représentant une qualité supérieure). Les points de cet atout peuvent être
+      distribués dans la journée selon la volonté du joueur.
+    prose_origin: templated
+    validation: pending
   - id: subtilisation
     name: Subtilisation
     status: active
@@ -6940,7 +7131,9 @@ atouts:
       activation: passive
       duration: permanent
     fidelity: covered
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Additionne le niveau au nombre de dés lorsque le personnage nui à un magicien.'
+    prose_origin: templated
+    validation: pending
   - id: telekinesie
     name: Télékinésie
     status: active
@@ -6978,7 +7171,13 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:telekinesie-avancee
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage peut maintenant utiliser sa télékinésie sans forcément devoir utiliser ses mains.
+      Il peut également déplacer la matière quelle qu’elle soit (solide, liquide, gazeux, etc) ce qui signifie que
+      l'atout permet également d'utiliser l'air pour envoyé des déflagrations. La vitesse maximale des déplacement est
+      égale au niveau en m/s du personnage.
+    prose_origin: templated
+    validation: pending
   - id: telekinesie-lourde
     name: Télékinésie lourde
     status: active
@@ -6992,7 +7191,11 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:telekinesie-lourde
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le poids maximal déplacé par le personnage grace à sa télékinésie est maintenant égale à son
+      niveau en "Télékinésie lourde" + 1 kg par niveau du personnageeaux.
+    prose_origin: templated
+    validation: pending
   - id: telepathie
     name: Télépathie
     status: active
@@ -7189,7 +7392,12 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:tranchant
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Les armes tranchantes créés par le personnage inflige un dégât de +1 T. Un objet ayant un bonus
+      de X Tranchant supplémentaire doit avoir un minimum de X * 5 réussites lors de sa création (ceci représente une
+      qualité supérieure). Les points de cet atout peuvent être distribués dans la journée selon la volonté du joueur.
+    prose_origin: templated
+    validation: pending
   - id: transfert-de-vision
     name: Transfert de vision
     status: active
@@ -7201,7 +7409,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:transfert-de-vision
-    prose_orphan: true
+    generated_prose: 'Atout permanent : NA.'
+    prose_origin: templated
+    validation: pending
   - id: transfert-spatial
     name: Transfert spatial
     status: active
@@ -7289,7 +7499,9 @@ atouts:
       activation: passive
       duration: permanent
     fidelity: covered
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Additionne le niveau au nombre de dès lorsque le personnage effectue un travail de tannerie.'
+    prose_origin: templated
+    validation: pending
   - id: travail-du-bois
     name: Travail du bois
     status: active
@@ -7536,7 +7748,9 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:ventre-du-magicien
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Le familier peut, en se nourrissant, sustenter son magicien.'
+    prose_origin: templated
+    validation: pending
   - id: ventre-vide
     name: Ventre vide
     status: active
@@ -7731,7 +7945,13 @@ atouts:
       - path: data/legacy/web-scraped/documents/atouts/index.md
         sha256: b38cdafddc2e1503d7d139ced3dcbfa2455b15b5d7a0e5cf16584654b08e79cb
         ref: entry:vol-de-familier
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le magicien peut détourner le lien qui relie un autre magicien à son familier et rediriger ce
+      lien vers lui-même. De la sorte, le personnage peut avoir un familier supplémentaire. Ce nouveau familier reste
+      lié et au service du personnage aussi longtemps que l'atout est actif sur lui. La mort du familier entraîne un
+      retour de celui-ci à son propriétaire d'origine.
+    prose_origin: templated
+    validation: pending
   - id: vol-de-secret
     name: Vol de secret
     status: active
@@ -8224,7 +8444,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: audition
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : L'audition est représentée en pourcentage, ce qui signifie qu’un homme en bonne forme possède
+      une audition de 100%. Un personnage ayant 200% d'audition entendra donc deux fois mieux.
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-aura-magique-magicien
     name: Aura magique
     status: active
@@ -8500,7 +8724,9 @@ atouts:
       special_condition: 2 points dans la compétence "Médecine" au minimum.
       value_source: base_atouts
       matched_base_atout_id: coups-vicieux
-    prose_orphan: true
+    generated_prose: 'Atout éphémère : Le personnage peut déduire son niveau à l’endurance de sa cible pour 1 action.'
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-court-repit-guerrier
     name: Court répit
     status: active
@@ -10609,7 +10835,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: potion-d-energie
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le personnage est capable de confectionner des potions de d'énergie arcanique. Les points
+      restaurés sont égaux au nombre de réussites du jet d'alchimie (diff. 7).
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-potion-de-vitalite-intellectuel-alchimiste
     name: Potion de vitalité
     status: active
@@ -10638,7 +10868,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: potion-de-vitalite
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le personnage est capable de confectionner des potions de vitalité. Les points restaurés sont
+      égaux au nombre de réussites du jet d'alchimie (diff. 9).
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-protection-divine-guerrier-justicier
     name: Protection divine
     status: active
@@ -10971,7 +11205,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-au-feu
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément au feu. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-resistance-au-froid-ouvrier
     name: Résistance au froid
     status: active
@@ -10998,7 +11236,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-au-froid
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément au froid. Jet en dessous de la résistance sur un D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-resistance-au-froid-voyageur-barbare
     name: Résistance au froid
     status: active
@@ -11025,7 +11267,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-au-froid
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément au froid. Jet en dessous de la résistance sur un D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-drogues-elfe-de-nacre
     name: Résistance aux drogues
     status: active
@@ -11052,7 +11298,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-drogues
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux drogues. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-drogues-nain
     name: Résistance aux drogues
     status: active
@@ -11079,7 +11329,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-drogues
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux drogues. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-resistance-aux-maladies-ouvrier
     name: Résistance aux maladies
     status: active
@@ -11106,7 +11360,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-maladies
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux maladies. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-maladies-elfe-sombre
     name: Résistance aux maladies
     status: active
@@ -11133,7 +11391,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-maladies
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux maladies. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-maladies-elfe-de-nacre
     name: Résistance aux maladies
     status: active
@@ -11160,7 +11422,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-maladies
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux maladies. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-maladies-elfe-des-bois
     name: Résistance aux maladies
     status: active
@@ -11187,7 +11453,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-maladies
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux maladies. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-maladies-haut-elfe
     name: Résistance aux maladies
     status: active
@@ -11214,7 +11484,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-maladies
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux maladies. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-maladies-nain
     name: Résistance aux maladies
     status: active
@@ -11241,7 +11515,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-maladies
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux maladies. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-maladies-orc
     name: Résistance aux maladies
     status: active
@@ -11268,7 +11546,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-maladies
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux maladies. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-resistance-aux-poisons-hors-la-loi
     name: Résistance aux poisons
     status: active
@@ -11295,7 +11577,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-poisons
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux poisons. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-poisons-elfe-sombre
     name: Résistance aux poisons
     status: active
@@ -11322,7 +11608,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-poisons
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux poisons. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-poisons-elfe-de-nacre
     name: Résistance aux poisons
     status: active
@@ -11349,7 +11639,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-poisons
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux poisons. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-poisons-elfe-des-bois
     name: Résistance aux poisons
     status: active
@@ -11376,7 +11670,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-poisons
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux poisons. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-poisons-haut-elfe
     name: Résistance aux poisons
     status: active
@@ -11403,7 +11701,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-poisons
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux poisons. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-aux-poisons-nain
     name: Résistance aux poisons
     status: active
@@ -11430,7 +11732,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-aux-poisons
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément aux poisons. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-resistance-selective
     name: Résistance sélective
     status: active
@@ -11489,7 +11795,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-a-la-chaleur
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément à la chaleur. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-resistance-a-la-magie-magicien
     name: Résistance à la magie
     status: active
@@ -11516,7 +11826,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-a-la-magie
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément à la magie. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-a-la-magie-nain
     name: Résistance à la magie
     status: active
@@ -11543,7 +11857,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-a-la-magie
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément à la magie. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-resistance-a-l-alcool-ouvrier
     name: Résistance à l’alcool
     status: active
@@ -11570,7 +11888,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-a-l-alcool
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément à l'alcool. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: race-2-resistance-a-l-alcool-nain
     name: Résistance à l’alcool
     status: active
@@ -11597,7 +11919,11 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resistance-a-l-alcool
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage résiste plus aisément à l'alcool. Jet en dessous de la résistance sur D100 pour
+      résister.
+    prose_origin: templated
+    validation: pending
   - id: niveau-2-sante-de-fer-guerrier
     name: Santé de fer
     status: active
@@ -13106,7 +13432,9 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: oeil-du-margoulin
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Le personnage voit naturellement scintiller les objets ayant de la valeur.'
+    prose_origin: templated
+    validation: pending
   - id: niveau-3-par-dela-les-forets-voyageur
     name: Par-delà les forets
     status: active
@@ -13858,7 +14186,13 @@ atouts:
       special_condition: 5 en compétence Bijouterie, minimum.
       value_source: base_atouts
       matched_base_atout_id: sublimation
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Les objet créés par le personnage (dans son domaine de prédilection) octroient un bonus de +1 en
+      esthétisme à son porteur par points en Sublimation. Un objet offrant un bonus de X doit avoir un minimum de X * 5
+      réussites lors de sa création (ceci représentant une qualité supérieure). Les points de cet atout peuvent être
+      distribués dans la journée selon la volonté du joueur.
+    prose_origin: templated
+    validation: pending
   - id: niveau-3-sublimation-artisan-couturier
     name: Sublimation
     status: active
@@ -13889,7 +14223,13 @@ atouts:
       special_condition: 5 en compétence Couture, minimum.
       value_source: base_atouts
       matched_base_atout_id: sublimation
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Les objet créés par le personnage (dans son domaine de prédilection) octroient un bonus de +1 en
+      esthétisme à son porteur par points en Sublimation. Un objet offrant un bonus de X doit avoir un minimum de X * 5
+      réussites lors de sa création (ceci représentant une qualité supérieure). Les points de cet atout peuvent être
+      distribués dans la journée selon la volonté du joueur.
+    prose_origin: templated
+    validation: pending
   - id: niveau-3-survie-voyageur
     name: Survie
     status: active
@@ -13949,7 +14289,12 @@ atouts:
       special_condition: 'Forge minimum : 5'
       value_source: base_atouts
       matched_base_atout_id: tranchant
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Les armes tranchantes créés par le personnage inflige un dégât de +1 T. Un objet ayant un bonus
+      de X Tranchant supplémentaire doit avoir un minimum de X * 5 réussites lors de sa création (ceci représente une
+      qualité supérieure). Les points de cet atout peuvent être distribués dans la journée selon la volonté du joueur.
+    prose_origin: templated
+    validation: pending
   - id: niveau-3-trompe-la-mort-hors-la-loi
     name: Trompe la mort
     status: active
@@ -14363,7 +14708,12 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: developpement-magique
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le magicien peut développer et apprendre un sort qu’il possède en sort mineur, majeur ou
+      standard. Le temps du développement dure le double du temps d’apprentissage du sort sur lequel travaille le
+      personnage (moins le jet de développement).
+    prose_origin: templated
+    validation: pending
   - id: niveau-4-echappee-belle-hors-la-loi
     name: Echappée belle
     status: active
@@ -15544,7 +15894,9 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: ventre-du-magicien
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Le familier peut, en se nourrissant, sustenter son magicien.'
+    prose_origin: templated
+    validation: pending
   - id: niveau-4-vision-thermique-hors-la-loi
     name: Vision thermique
     status: active
@@ -15739,7 +16091,12 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: autocombustion
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le corps du personnage se met subitement à brûler. Ces flammes infligent 1 point de dégâts par
+      point dans cet atout par DT au personnage ainsi qu'à tout ceux qui entrent en contact avec lui durant la durée de
+      son autocombustion. Cet état dure 1 minute par niveau.
+    prose_origin: templated
+    validation: pending
   - id: niveau-5-connaissance-de-l-ennemi-guerrier-duelliste
     name: Connaissance de l’ennemi
     status: active
@@ -15970,7 +16327,13 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: grele-de-fleches
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le personnage peut ajouter une flèche à son tir par point en "Grêle de flèches". S'il possède
+      plusieurs points dans cet atout, il pourra diviser ses flèche additionnelles comme bon lui semble (ex: un archer
+      ayant Grêle de flèches : 3 pourra faire un tir avec 2 flèches, suivit d'un autre avec 3 flèches). Les flèches
+      tirées ont toutes la même cible.
+    prose_origin: templated
+    validation: pending
   - id: niveau-5-invisibilite-hors-la-loi
     name: Invisibilité
     status: active
@@ -16117,7 +16480,9 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: orateur-ideal
-    prose_orphan: true
+    generated_prose: "Atout permanent : Ajoute le niveau du personnage à ses dès lors d'un jet de discours."
+    prose_origin: templated
+    validation: pending
   - id: niveau-5-peur-du-noir-hors-la-loi
     name: Peur du noir
     status: active
@@ -16283,7 +16648,14 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: resonance
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le magicien peut utiliser son énergie pour entrer en résonance avec l'un de ses sorts et
+      augmenter la puissance de celui-ci. Moyennant 10 points d'énergie, le personnage peut, en un facteur de vitesse,
+      ajouter une réussite à l'un de ses propre sorts actif lancé précédemment. Si le personnage possède plusieurs
+      points en Résonance, il pourra réitéré son action mais devra à nouveau dépenser l'énergie ainsi que le facteur de
+      vitesse.
+    prose_origin: templated
+    validation: pending
   - id: niveau-5-seul-contre-tous-guerrier
     name: Seul contre tous
     status: active
@@ -16536,7 +16908,12 @@ atouts:
       special_condition: 'Bijouterie minimum : 6'
       value_source: base_atouts
       matched_base_atout_id: indestructible
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le personnage peut construire des objets (dans son domaine de prédilection) pratiquement
+      indestructible. Le seul moyen de les détruire est de le faire sur le lieux où celui-ci à été construit. Cet atout
+      demande 30 réussites de création (à cumuler en cas d'atout cumulé sur une même création).
+    prose_origin: templated
+    validation: pending
   - id: niveau-6-indestructible-artisan-forgeron
     name: Indestructible
     status: active
@@ -16566,7 +16943,12 @@ atouts:
       special_condition: 'Forge minimum : 6'
       value_source: base_atouts
       matched_base_atout_id: indestructible
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le personnage peut construire des objets (dans son domaine de prédilection) pratiquement
+      indestructible. Le seul moyen de les détruire est de le faire sur le lieux où celui-ci à été construit. Cet atout
+      demande 30 réussites de création (à cumuler en cas d'atout cumulé sur une même création).
+    prose_origin: templated
+    validation: pending
   - id: niveau-6-leurre-hors-la-loi-voleur
     name: Leurre
     status: active
@@ -16788,7 +17170,11 @@ atouts:
       special_condition: Avoir l'atout "Résonance".
       value_source: base_atouts
       matched_base_atout_id: resonance-avancee
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : En plus de pouvoir utiliser son atout de résonance sur ses propres sorts, le magicien peut
+      l'utiliser sur n'importe quel sort de sa couleur magique peu importe le lanceur dudit sort.
+    prose_origin: templated
+    validation: pending
   - id: niveau-6-telekinesie-intellectuel
     name: Télékinésie
     status: active
@@ -17475,7 +17861,9 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: familier-vigoureux
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Le familier du magicien augmente ses points de vitalités par le niveau de son propriétaire.'
+    prose_origin: templated
+    validation: pending
   - id: niveau-8-grace-religieux-pretre
     name: Grâce
     status: active
@@ -17506,7 +17894,13 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: grace
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage peut accorder sa grâce à n'importe qui sauf lui-même. Celui-ci implique une
+      difficulté de +1 pour tout jet destiné à nuire au porteur de la grâce. Un même personnage peut scinder ses grâces
+      sur plusieurs personne en répartissant ses points s'il en possède plus d'un. La grace retombe dès que le donneur
+      le désire ou qu'il meure.
+    prose_origin: templated
+    validation: pending
   - id: niveau-8-mon-precieux-hors-la-loi
     name: Mon précieux
     status: active
@@ -17599,7 +17993,11 @@ atouts:
       special_condition: Avoir l'atout "Télékinésie".
       value_source: base_atouts
       matched_base_atout_id: telekinesie-lourde
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le poids maximal déplacé par le personnage grace à sa télékinésie est maintenant égale à son
+      niveau en "Télékinésie lourde" + 1 kg par niveau du personnageeaux.
+    prose_origin: templated
+    validation: pending
   - id: niveau-8-telekinesie-lourde-magicien
     name: Télékinésie lourde
     status: active
@@ -17628,7 +18026,11 @@ atouts:
       special_condition: Avoir l'atout "Télékinésie".
       value_source: base_atouts
       matched_base_atout_id: telekinesie-lourde
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le poids maximal déplacé par le personnage grace à sa télékinésie est maintenant égale à son
+      niveau en "Télékinésie lourde" + 1 kg par niveau du personnageeaux.
+    prose_origin: templated
+    validation: pending
   - id: niveau-8-victime-hors-la-loi
     name: Victime
     status: active
@@ -17947,7 +18349,9 @@ atouts:
       special_condition: Chasseur de sorcière
       value_source: base_atouts
       matched_base_atout_id: epuration
-    prose_orphan: true
+    generated_prose: 'Atout permanent : Le personnage prend 1 dé supplémentaire pour toutes les actions visant à nuire à un sorcier.'
+    prose_origin: templated
+    validation: pending
   - id: niveau-10-familier-supplementaire-magicien
     name: Familier supplémentaire
     status: active
@@ -18254,7 +18658,13 @@ atouts:
       special_condition: Avoir l'atout "Télékinésie".
       value_source: base_atouts
       matched_base_atout_id: telekinesie-avancee
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage peut maintenant utiliser sa télékinésie sans forcément devoir utiliser ses mains.
+      Il peut également déplacer la matière quelle qu’elle soit (solide, liquide, gazeux, etc) ce qui signifie que
+      l'atout permet également d'utiliser l'air pour envoyé des déflagrations. La vitesse maximale des déplacement est
+      égale au niveau en m/s du personnage.
+    prose_origin: templated
+    validation: pending
   - id: niveau-10-telekinesie-avancee-magicien
     name: Télékinésie avancée
     status: active
@@ -18285,7 +18695,13 @@ atouts:
       special_condition: Avoir l'atout "Télékinésie".
       value_source: base_atouts
       matched_base_atout_id: telekinesie-avancee
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le personnage peut maintenant utiliser sa télékinésie sans forcément devoir utiliser ses mains.
+      Il peut également déplacer la matière quelle qu’elle soit (solide, liquide, gazeux, etc) ce qui signifie que
+      l'atout permet également d'utiliser l'air pour envoyé des déflagrations. La vitesse maximale des déplacement est
+      égale au niveau en m/s du personnage.
+    prose_origin: templated
+    validation: pending
   - id: niveau-11-maitre-en-sort-de-masse-magicien
     name: Maître en sort de masse
     status: active
@@ -18415,7 +18831,16 @@ atouts:
       special_condition: Avoir l'atout "Rappel du familier".
       value_source: base_atouts
       matched_base_atout_id: hybridation-du-familier
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Lors de l'acquisition de cet atout, le magicien doit choisir une partie du corps de son familier
+      (ex. un bras, les yeux, la peau, ...). Une fois le familier rappeler dans son magicien, ce dernier pourra modifier
+      sa propre forme en substituant la zone corporelle choisie par celle de son familier. Le nouveau membre peut être
+      un simple ajout (ex. un humain peut obtenir les ailes de son familier dragon). Le nouveau membre possède toutes
+      les atouts liés à cette zone du corps du familier mais ne modifie ni les points de vitalité, ni le facteur de
+      vitesse du magicien. Cet atout peut être cumulé avec des zones du corps diverses ou similaire. Le magicien ne peut
+      choisir de substituer sa propre tête.
+    prose_origin: templated
+    validation: pending
   - id: niveau-12-inversion-des-energies-magicien
     name: Inversion des énergies
     status: active
@@ -18517,7 +18942,14 @@ atouts:
       special_condition: Avoir l'atout "Perception des énergies".
       value_source: base_atouts
       matched_base_atout_id: infiltration-arcanique
-    prose_orphan: true
+    generated_prose: >-
+      Atout éphémère : Le magicien est un tel spécialiste des flux arcaniques utilisés dans la magie qu'il est capable
+      d'injecter un sort dans l'énergie drainée par un autre magicien qui lance lui-même un sort. A la fin du TI du sort
+      infecté, les deux sorts sont automatiquement lancés en même temps (sans tenir compte du TI du sort parasite). Si
+      le sort clandestin est un sort d'abjuration, ce dernier possède la priorité dans la résolution (priorité au
+      défenseur).
+    prose_origin: templated
+    validation: pending
   - id: niveau-18-baiser-salvateur
     name: Baiser salvateur
     status: active
@@ -18612,7 +19044,13 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: vol-de-familier
-    prose_orphan: true
+    generated_prose: >-
+      Atout permanent : Le magicien peut détourner le lien qui relie un autre magicien à son familier et rediriger ce
+      lien vers lui-même. De la sorte, le personnage peut avoir un familier supplémentaire. Ce nouveau familier reste
+      lié et au service du personnage aussi longtemps que l'atout est actif sur lui. La mort du familier entraîne un
+      retour de celui-ci à son propriétaire d'origine.
+    prose_origin: templated
+    validation: pending
   - id: race-innate-affinite-avec-les-illusions
     name: Affinité avec les illusions
     status: active

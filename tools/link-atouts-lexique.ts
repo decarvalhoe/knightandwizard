@@ -1,13 +1,13 @@
 /**
- * E0.3 — Lie chaque atout de `atouts.yaml` (web) à son entrée de définition prose dans
- * `lexique.yaml` (lexique paper), via `prose_refs`. Réconcilie web↔paper et signale les orphelins.
+ * E0.3 / E0.3b — Lie chaque atout de `atouts.yaml` (web) au lexique paper (`lexique.yaml`).
  *
- * - Match direct : slug(nom de l'atout) == id d'une entrée lexique (kind atout préféré).
- * - Sinon : `prose_orphan: true` (atout web sans définition prose paper).
+ *  1. Match direct : slug(nom) == id d'une entrée lexique (atout préféré) → `prose_refs`.
+ *  2. Sinon — GÉNÉRATION ANCRÉE (E0.3b) : `generated_prose` = expansion lisible de la ligne `effect`
+ *     du catalogue + cadre d'activation (jamais d'invention libre), marquée `prose_origin: templated`,
+ *     `validation: pending`, `low_confidence` si l'effet source est absent. Promue par arbitrage MJ
+ *     (Q-D8.2). Distincte de `prose_refs` (paper autoritaire). Voir docs/plan/PROSE-SOURCE-LINKAGE.md.
  *
- * Idempotent. Chaîné après `build:atouts`. Voir docs/plan/PROSE-SOURCE-LINKAGE.md.
- *
- * Usage : `pnpm catalogs:link:atouts`
+ * Idempotent. Chaîné après `build:atouts`.
  */
 import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -28,8 +28,14 @@ interface ProseRef {
 interface Atout {
   id: string;
   name: string;
+  effect?: string;
+  activation?: string;
   prose_refs?: ProseRef[];
   prose_orphan?: boolean;
+  generated_prose?: string;
+  prose_origin?: 'templated';
+  validation?: 'pending';
+  low_confidence?: boolean;
   [key: string]: unknown;
 }
 interface LexiqueEntry {
@@ -58,13 +64,41 @@ function slugify(value: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
+/** Readable prose anchored on the canonical effect line + activation frame. No free invention. */
+function generateProse(atout: Atout): { prose: string; lowConfidence: boolean } {
+  const effect = (atout.effect ?? '')
+    .trim()
+    .replace(/\s*\/\s*R\b/g, ' par réussite')
+    .replace(/\s*\/\s*Niv\.?/gi, ' par niveau du personnage')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const frame =
+    atout.activation === 'ephemere' || atout.activation === 'éphémère'
+      ? 'Atout éphémère'
+      : atout.activation === 'permanent'
+        ? 'Atout permanent'
+        : 'Atout';
+  if (effect.length === 0) {
+    return { prose: `${frame} : effet non détaillé dans le catalogue.`, lowConfidence: true };
+  }
+  return { prose: `${frame} : ${effect.replace(/\.*$/, '')}.`, lowConfidence: false };
+}
+
+function clear(atout: Atout): void {
+  delete atout.prose_refs;
+  delete atout.prose_orphan;
+  delete atout.generated_prose;
+  delete atout.prose_origin;
+  delete atout.validation;
+  delete atout.low_confidence;
+}
+
 function main(): void {
   const atoutsDoc = load(readFileSync(ATOUTS_PATH, 'utf8')) as AtoutsDoc;
   const lexiqueDoc = load(readFileSync(LEXIQUE_PATH, 'utf8')) as LexiqueDoc;
   const atouts = atoutsDoc.atouts ?? [];
   const lexique = lexiqueDoc.entries ?? [];
 
-  // Index lexique by slug ; prefer an atout-kind entry when several share a slug.
   const bySlug = new Map<string, LexiqueEntry>();
   for (const entry of lexique) {
     const existing = bySlug.get(entry.id);
@@ -75,21 +109,27 @@ function main(): void {
 
   const matchedLexiqueIds = new Set<string>();
   let direct = 0;
-  let orphan = 0;
+  let generated = 0;
+  let lowConf = 0;
 
   for (const atout of atouts) {
-    delete atout.prose_refs;
-    delete atout.prose_orphan;
-
+    clear(atout);
     const entry = bySlug.get(slugify(atout.name));
     if (entry) {
       atout.prose_refs = [{ catalog: 'lexique', entry_id: entry.id, term: entry.term }];
       matchedLexiqueIds.add(entry.id);
       direct += 1;
-    } else {
-      atout.prose_orphan = true;
-      orphan += 1;
+      continue;
     }
+    const { prose, lowConfidence } = generateProse(atout);
+    atout.generated_prose = prose;
+    atout.prose_origin = 'templated';
+    atout.validation = 'pending';
+    if (lowConfidence) {
+      atout.low_confidence = true;
+      lowConf += 1;
+    }
+    generated += 1;
   }
 
   const atoutEntries = lexique.filter((entry) => entry.kind === 'atout');
@@ -109,17 +149,12 @@ function main(): void {
   });
 
   console.log(`link-atouts-lexique: ${atouts.length} atouts`);
-  console.log(`  direct       : ${direct}`);
-  console.log(`  prose_orphan : ${orphan}`);
+  console.log(`  prose_refs paper : ${direct}`);
+  console.log(
+    `  generated_prose  : ${generated} (dont low_confidence: ${lowConf}) -> validation pending`
+  );
+  console.log(`  prose_orphan     : 0 (chaque atout a une definition)`);
   console.log(`  lexique atouts non lies (sur ${atoutEntries.length}) : ${lexiqueOrphans.length}`);
-  if (lexiqueOrphans.length > 0) {
-    console.log(
-      `  ex. orphelins lexique: ${lexiqueOrphans
-        .slice(0, 12)
-        .map((e) => e.id)
-        .join(', ')}`
-    );
-  }
 }
 
 main();
