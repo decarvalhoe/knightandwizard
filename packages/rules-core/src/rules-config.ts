@@ -21,6 +21,14 @@ export interface CombatRulesConfig {
   encumbranceKgPerStep: number;
   /** R-1.38 — lower bound for the effective speed factor in DT (an action costs >= this). */
   minSpeedFactor: number;
+  /** R-9.17 — head hit knocks out when final damage > vitality.max * this. */
+  headUnconsciousMaxRatio: number;
+  /** R-9.17 — a lethal-zone hit kills when final damage > base vitality max * this. */
+  lethalZoneBaseRatio: number;
+  /** R-9.17 — zone ids that trigger the head knockout threshold. */
+  headZoneIds: string[];
+  /** R-9.17 — zone ids that trigger the one-shot lethal threshold (head, throat). */
+  lethalZoneIds: string[];
 }
 
 export interface CreationRulesConfig {
@@ -104,7 +112,11 @@ export const DEFAULT_RULES_CONFIG: RulesConfig = {
     vitalityMalusRatio: 0.5,
     encumbranceKgPerStrength: 5,
     encumbranceKgPerStep: 5,
-    minSpeedFactor: 1
+    minSpeedFactor: 1,
+    headUnconsciousMaxRatio: 0.25,
+    lethalZoneBaseRatio: 0.5,
+    headZoneIds: ['tete'],
+    lethalZoneIds: ['tete', 'gorge_nuque']
   },
   creation: {
     attributeMaxOffset: 1,

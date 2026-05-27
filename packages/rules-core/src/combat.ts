@@ -111,6 +111,8 @@ export interface Combatant {
   nextActionAt: number;
   reflexes: number;
   vitality: CombatVitality;
+  /** R-9.17 — base (racial) max vitality for the lethal-zone death threshold; defaults to vitality.max. */
+  baseVitalityMax?: number;
   attributes: CombatAttributes;
   baseAttributes?: CombatAttributes;
   skills: CombatSkillSet;
@@ -284,11 +286,17 @@ export function resolveNextAction(
  *
  * Positive values are damage. Negative values are healing.
  */
+export interface ApplyDamageOptions {
+  /** R-9.17 — the zone struck, enabling head-knockout and lethal-zone thresholds. */
+  zone?: { id?: string };
+}
+
 export function applyDamage(
   state: CombatState,
   targetId: string,
   damage: number,
-  config: RulesConfig = DEFAULT_RULES_CONFIG
+  config: RulesConfig = DEFAULT_RULES_CONFIG,
+  options: ApplyDamageOptions = {}
 ): CombatState {
   const target = findCombatant(state, targetId);
   const previousVitality = target.vitality.current;
@@ -307,12 +315,25 @@ export function applyDamage(
     config
   );
 
-  const withDeath =
-    nextVitality === 0 ? withStatus(nextTarget, { id: 'dead' }, state.currentDT) : nextTarget;
+  // R-9.17 — zone thresholds use the blow's final damage in a single hit.
+  const blow = Math.max(0, damage);
+  const zoneId = options.zone?.id;
+  const survivesMalus = !target.ignoresVitalityMalus;
+  const zoneDeath =
+    survivesMalus &&
+    zoneId !== undefined &&
+    config.combat.lethalZoneIds.includes(zoneId) &&
+    blow > (target.baseVitalityMax ?? target.vitality.max) * config.combat.lethalZoneBaseRatio;
+  const headKnockout =
+    survivesMalus &&
+    zoneId !== undefined &&
+    config.combat.headZoneIds.includes(zoneId) &&
+    blow > target.vitality.max * config.combat.headUnconsciousMaxRatio;
+  const isDead = nextVitality === 0 || zoneDeath;
+  const withDeath = isDead ? withStatus(nextTarget, { id: 'dead' }, state.currentDT) : nextTarget;
+  const generalKnockout = finalDamage > previousVitality * config.combat.unconsciousDamageRatio;
   const withUnconscious =
-    finalDamage > previousVitality * config.combat.unconsciousDamageRatio &&
-    nextVitality > 0 &&
-    !target.ignoresVitalityMalus
+    !isDead && survivesMalus && (generalKnockout || headKnockout)
       ? withStatus(withDeath, { id: 'unconscious' }, state.currentDT)
       : withDeath;
 
@@ -491,7 +512,9 @@ function resolveAttack(
   };
 
   if (damageBreakdown !== undefined) {
-    return applyDamage(withAttackLog, action.targetId, damageBreakdown.finalDamage, config);
+    return applyDamage(withAttackLog, action.targetId, damageBreakdown.finalDamage, config, {
+      zone: action.damage?.zone
+    });
   }
 
   if (successes > 0 && action.damageOnHit !== undefined && action.damageOnHit > 0) {
