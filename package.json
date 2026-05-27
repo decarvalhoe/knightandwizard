@@ -68,7 +68,8 @@
     "catalogs:build:armes-paper": "tsx tools/build-armes-paper-catalog.ts",
     "catalogs:build:protections-paper": "tsx tools/build-protections-paper-catalog.ts",
     "catalogs:reconcile:paper-web": "tsx tools/reconcile-paper-web.ts",
-    "catalogs:audit:prose": "tsx tools/audit-prose-coverage.ts"
+    "catalogs:audit:prose": "tsx tools/audit-prose-coverage.ts",
+    "catalogs:audit:spell-effects": "tsx tools/audit-spell-effects.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
