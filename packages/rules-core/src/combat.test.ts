@@ -900,13 +900,15 @@ describe('structured spell effects applied on resolution (E1b, R-8.5)', () => {
 
     const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
     expect(spellEvent?.successes).toBe(3);
-    expect(spellEvent?.spellEffect).toEqual({
+    // Target carries no resistances: the elemental layer rolls nothing (percent 0) and passes through.
+    expect(spellEvent?.spellEffect).toMatchObject({
       target: 'damage',
       op: 'add',
       scope: 'C',
       value: 6,
       applied: true
     });
+    expect(spellEvent?.spellEffect?.resistance?.amount).toBe(6);
     // 10 vitality - (3 successes * 2) = 4
     expect(resolved.timeline.find((e) => e.id === 'orc')?.vitality.current).toBe(4);
   });
@@ -938,7 +940,7 @@ describe('structured spell effects applied on resolution (E1b, R-8.5)', () => {
     const resolved = resolveNextAction(declared, { randomInteger: threeSuccesses() });
 
     const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
-    expect(spellEvent?.spellEffect).toEqual({
+    expect(spellEvent?.spellEffect).toMatchObject({
       target: 'vitality',
       op: 'add',
       value: 3,
@@ -1010,6 +1012,180 @@ describe('structured spell effects applied on resolution (E1b, R-8.5)', () => {
     const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
     expect(spellEvent?.successes).toBe(3);
     expect(spellEvent?.spellEffect).toBeUndefined();
+    expect(resolved.timeline.find((e) => e.id === 'orc')?.vitality.current).toBe(10);
+  });
+});
+
+describe('spell resistance interposition (E4b, R-8.15 / R-1.33)', () => {
+  const spell = (overrides: Partial<SpellAction> = {}): SpellAction => ({
+    type: 'spell',
+    intelligence: 4,
+    spellPoints: 2,
+    difficulty: 7,
+    energyCost: 10,
+    castingTimeDT: 12,
+    ...overrides
+  });
+  const mage = () => ({
+    ...combatant({ id: 'mage', speedFactor: 7 }),
+    energy: { current: 60, max: 60 }
+  });
+  const target = (overrides: Partial<Combatant> = {}) =>
+    combatant({ id: 'orc', speedFactor: 6, nextActionAt: 999, ...overrides });
+
+  // Indirect elemental fire damage: 2/R -> 6 at 3 successes, scope feu.
+  const fireEffect = parseEffectModel({
+    source: { prose: '2 dégâts de feu par réussite.', ref: 'spells:fleche-de-feu' },
+    spec: {
+      target: 'damage',
+      scope: 'feu',
+      op: 'add',
+      value: '2 * successes',
+      activation: 'active',
+      duration: 'ephemeral'
+    },
+    fidelity: 'covered',
+    ambiguity_ref: null
+  });
+  // Cast: 3 successes from [7,8,9,2,3,4]; the trailing value is the resistance D100.
+  const cast = (d100: number) => scriptedRolls([7, 8, 9, 2, 3, 4, d100]);
+
+  it('elemental resistance fully blocks the damage on a successful D100 (R-1.32)', () => {
+    const state = addCombatant(
+      addCombatant(createCombatState(1), mage()),
+      target({ resistances: { elementalPercent: { feu: 50 } } })
+    );
+    const declared = declareSpellCast(
+      state,
+      'mage',
+      spell({ targetId: 'orc', effect: fireEffect })
+    );
+
+    // D100 30 <= 50 -> resisted.
+    const resolved = resolveNextAction(declared, { randomInteger: cast(30) });
+
+    const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
+    expect(spellEvent?.spellEffect?.resistance).toMatchObject({
+      amount: 0,
+      fullyResisted: true,
+      burden: false,
+      layers: [{ layer: 'elemental', percent: 50, roll: 30, resisted: true }]
+    });
+    // No damage applied: vitality intact.
+    expect(resolved.timeline.find((e) => e.id === 'orc')?.vitality.current).toBe(10);
+  });
+
+  it('elemental resistance lets the damage through when the D100 fails', () => {
+    const state = addCombatant(
+      addCombatant(createCombatState(1), mage()),
+      target({ resistances: { elementalPercent: { feu: 50 } } })
+    );
+    const declared = declareSpellCast(
+      state,
+      'mage',
+      spell({ targetId: 'orc', effect: fireEffect })
+    );
+
+    // D100 80 > 50 -> not resisted.
+    const resolved = resolveNextAction(declared, { randomInteger: cast(80) });
+
+    const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
+    expect(spellEvent?.spellEffect?.resistance).toMatchObject({ amount: 6, fullyResisted: false });
+    expect(resolved.timeline.find((e) => e.id === 'orc')?.vitality.current).toBe(4); // 10 - 6
+  });
+
+  it('routes by element: resistance to a different element does not block the damage', () => {
+    const state = addCombatant(
+      addCombatant(createCombatState(1), mage()),
+      target({ resistances: { elementalPercent: { foudre: 90 } } }) // resists lightning, not fire
+    );
+    const declared = declareSpellCast(
+      state,
+      'mage',
+      spell({ targetId: 'orc', effect: fireEffect })
+    );
+
+    // D100 1 would resist if lightning were checked; fire layer is percent 0 (no roll).
+    const resolved = resolveNextAction(declared, {
+      randomInteger: scriptedRolls([7, 8, 9, 2, 3, 4])
+    });
+
+    const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
+    expect(spellEvent?.spellEffect?.resistance?.amount).toBe(6);
+    expect(resolved.timeline.find((e) => e.id === 'orc')?.vitality.current).toBe(4);
+  });
+
+  it('magic resistance is a BURDEN: a direct beneficial heal can be blocked (R-8.15)', () => {
+    const healEffect = parseEffectModel({
+      source: { prose: '1 point de vitalité par réussite.', ref: 'spells:soin' },
+      spec: {
+        target: 'vitality',
+        op: 'add',
+        value: 'successes',
+        activation: 'active',
+        duration: 'ephemeral'
+      },
+      fidelity: 'covered',
+      ambiguity_ref: null
+    });
+    const state = addCombatant(
+      addCombatant(createCombatState(1), mage()),
+      target({ id: 'ally', vitality: { current: 4, max: 10 }, resistances: { magicPercent: 60 } })
+    );
+    const declared = declareSpellCast(
+      state,
+      'mage',
+      spell({ targetId: 'ally', effect: healEffect, directMagic: true })
+    );
+
+    // D100 20 <= 60 -> the magic resistance blocks the (beneficial) heal: burden.
+    const resolved = resolveNextAction(declared, { randomInteger: cast(20) });
+
+    const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
+    expect(spellEvent?.spellEffect?.resistance).toMatchObject({
+      amount: 0,
+      fullyResisted: true,
+      burden: true,
+      layers: [{ layer: 'magic', percent: 60, roll: 20, resisted: true }]
+    });
+    expect(resolved.timeline.find((e) => e.id === 'ally')?.vitality.current).toBe(4); // heal blocked
+  });
+
+  it('magic resistance is a SHIELD against a direct offensive spell', () => {
+    const mindCrush = parseEffectModel({
+      source: {
+        prose: '2 dégâts directs par réussite (contrôle mental).',
+        ref: 'spells:broiement'
+      },
+      spec: {
+        target: 'damage',
+        op: 'add',
+        value: '2 * successes',
+        activation: 'active',
+        duration: 'ephemeral'
+      },
+      fidelity: 'covered',
+      ambiguity_ref: null
+    });
+    const state = addCombatant(
+      addCombatant(createCombatState(1), mage()),
+      target({ resistances: { magicPercent: 50 } })
+    );
+    const declared = declareSpellCast(
+      state,
+      'mage',
+      spell({ targetId: 'orc', effect: mindCrush, directMagic: true })
+    );
+
+    const resolved = resolveNextAction(declared, { randomInteger: cast(30) }); // 30 <= 50 -> resisted
+
+    const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
+    expect(spellEvent?.spellEffect?.resistance).toMatchObject({
+      amount: 0,
+      fullyResisted: true,
+      burden: false,
+      layers: [{ layer: 'magic', percent: 50, roll: 30, resisted: true }]
+    });
     expect(resolved.timeline.find((e) => e.id === 'orc')?.vitality.current).toBe(10);
   });
 });
