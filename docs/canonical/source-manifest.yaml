@@ -7886,6 +7886,15 @@ sources:
     domains: ["D10-equipment"]
     contains: ["catalog_documentation"]
     notes: "Catalog documentation or ambiguity log."
+  - id: "data-catalogs-armes-paper"
+    path: "data/catalogs/armes-paper.yaml"
+    sha256: "775dc3853fad7fbad29fd34902769ea4d0330e5034d7caa03b73946e9b50d28d"
+    source_type: catalog_yaml
+    priority: 90
+    status: active
+    domains: ["D10-equipment"]
+    contains: ["weapons"]
+    notes: "Product YAML catalog."
   - id: "data-catalogs-armes"
     path: "data/catalogs/armes.yaml"
     sha256: "9be668ec470cf661cc0e150b891b3f019e092f97dec679918f363daeed1dc485"

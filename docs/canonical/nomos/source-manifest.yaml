@@ -12362,6 +12362,21 @@ sources:
       - vector_index
       - citation_internal
     notes: Catalog documentation or ambiguity log.
+  - id: DATA-CATALOGS-ARMES-PAPER
+    path: data/catalogs/armes-paper.yaml
+    type: database_export
+    domain: D10-equipment
+    priority: secondary
+    status: active
+    hash: 775dc3853fad7fbad29fd34902769ea4d0330e5034d7caa03b73946e9b50d28d
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - structured_contract
+      - vector_index
+      - citation_internal
+    notes: Product YAML catalog.
   - id: DATA-CATALOGS-ARMES
     path: data/catalogs/armes.yaml
     type: database_export
