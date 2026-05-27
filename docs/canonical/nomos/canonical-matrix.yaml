@@ -136162,6 +136162,36 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PLAN-EFFECTS-IMPLEMENTATION
+    unit_type: catalog_entry
+    name: docs/plan/EFFECTS-IMPLEMENTATION.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PLAN-EFFECTS-IMPLEMENTATION
+        locator: docs/plan/EFFECTS-IMPLEMENTATION.md
+        hash: sha256:36b522713d3c3d7addb7585b3e086dbb6e284d71e4f66395249b7dd3eaa785db
+    business_rule: docs/plan/EFFECTS-IMPLEMENTATION.md from docs/plan/EFFECTS-IMPLEMENTATION.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PLAN-GOVERNANCE-IMPLEMENTATION
+    unit_type: catalog_entry
+    name: docs/plan/GOVERNANCE-IMPLEMENTATION.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PLAN-GOVERNANCE-IMPLEMENTATION
+        locator: docs/plan/GOVERNANCE-IMPLEMENTATION.md
+        hash: sha256:ac1d416698b34fbb1ec9456e5ece9f64fed61b627ca894afd92d8e237e33f448
+    business_rule: docs/plan/GOVERNANCE-IMPLEMENTATION.md from docs/plan/GOVERNANCE-IMPLEMENTATION.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-DOCS-PLAN-INFRA-DEVLAB-PLAN
     unit_type: catalog_entry
     name: docs/plan/INFRA-DEVLAB-PLAN.md
@@ -136187,6 +136217,36 @@ units:
         locator: docs/plan/ISSUE-LIST.md
         hash: sha256:cb92cfaebaed640432f8e650207073654daa63b2e9410163353ce239cc74f3f4
     business_rule: docs/plan/ISSUE-LIST.md from docs/plan/ISSUE-LIST.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PLAN-MAGIC-IMPLEMENTATION
+    unit_type: catalog_entry
+    name: docs/plan/MAGIC-IMPLEMENTATION.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PLAN-MAGIC-IMPLEMENTATION
+        locator: docs/plan/MAGIC-IMPLEMENTATION.md
+        hash: sha256:3fdc18f30a82936a8a83db4cbf75b340959ba00006c193f156174618d0ac9c8a
+    business_rule: docs/plan/MAGIC-IMPLEMENTATION.md from docs/plan/MAGIC-IMPLEMENTATION.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PLAN-MJ-COCKPIT
+    unit_type: catalog_entry
+    name: docs/plan/MJ-COCKPIT.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PLAN-MJ-COCKPIT
+        locator: docs/plan/MJ-COCKPIT.md
+        hash: sha256:d8b41b7651d15303afabd4d9326c1d827b674e9cc76e5c3ccf9fa6cde9b15999
+    business_rule: docs/plan/MJ-COCKPIT.md from docs/plan/MJ-COCKPIT.md.
     status: partial
     gaps:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
@@ -136232,6 +136292,21 @@ units:
         locator: docs/plan/ROADMAP.md
         hash: sha256:8fd4b914b8dd497ba6744744b1a4f87a09c6528ab2bfefd44b8ae499eaa25d12
     business_rule: docs/plan/ROADMAP.md from docs/plan/ROADMAP.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PLAN-SURFACES
+    unit_type: catalog_entry
+    name: docs/plan/SURFACES.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PLAN-SURFACES
+        locator: docs/plan/SURFACES.md
+        hash: sha256:de5508e5148ff022082bfa3f03ed3335b4fd0b3032e7a00e39f49921dd183a82
+    business_rule: docs/plan/SURFACES.md from docs/plan/SURFACES.md.
     status: partial
     gaps:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).

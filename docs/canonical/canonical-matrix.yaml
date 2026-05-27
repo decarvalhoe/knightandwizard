@@ -267229,6 +267229,78 @@ units:
     tests:
       status: not_applicable
       evidence: "Source document only."
+  - unit_id: "source:docs-plan-effects-implementation"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/plan/EFFECTS-IMPLEMENTATION.md"
+    status: covered
+    sources:
+      - path: "docs/plan/EFFECTS-IMPLEMENTATION.md"
+        ref: "docs/plan/EFFECTS-IMPLEMENTATION.md"
+        sha256: "36b522713d3c3d7addb7585b3e086dbb6e284d71e4f66395249b7dd3eaa785db"
+    business_rule:
+      summary: "docs/plan/EFFECTS-IMPLEMENTATION.md from docs/plan/EFFECTS-IMPLEMENTATION.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:docs-plan-governance-implementation"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/plan/GOVERNANCE-IMPLEMENTATION.md"
+    status: covered
+    sources:
+      - path: "docs/plan/GOVERNANCE-IMPLEMENTATION.md"
+        ref: "docs/plan/GOVERNANCE-IMPLEMENTATION.md"
+        sha256: "ac1d416698b34fbb1ec9456e5ece9f64fed61b627ca894afd92d8e237e33f448"
+    business_rule:
+      summary: "docs/plan/GOVERNANCE-IMPLEMENTATION.md from docs/plan/GOVERNANCE-IMPLEMENTATION.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
   - unit_id: "source:docs-plan-infra-devlab-plan"
     unit_type: "source_document"
     domain: "project-governance"
@@ -267276,6 +267348,78 @@ units:
         sha256: "cb92cfaebaed640432f8e650207073654daa63b2e9410163353ce239cc74f3f4"
     business_rule:
       summary: "docs/plan/ISSUE-LIST.md from docs/plan/ISSUE-LIST.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:docs-plan-magic-implementation"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/plan/MAGIC-IMPLEMENTATION.md"
+    status: covered
+    sources:
+      - path: "docs/plan/MAGIC-IMPLEMENTATION.md"
+        ref: "docs/plan/MAGIC-IMPLEMENTATION.md"
+        sha256: "3fdc18f30a82936a8a83db4cbf75b340959ba00006c193f156174618d0ac9c8a"
+    business_rule:
+      summary: "docs/plan/MAGIC-IMPLEMENTATION.md from docs/plan/MAGIC-IMPLEMENTATION.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:docs-plan-mj-cockpit"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/plan/MJ-COCKPIT.md"
+    status: covered
+    sources:
+      - path: "docs/plan/MJ-COCKPIT.md"
+        ref: "docs/plan/MJ-COCKPIT.md"
+        sha256: "d8b41b7651d15303afabd4d9326c1d827b674e9cc76e5c3ccf9fa6cde9b15999"
+    business_rule:
+      summary: "docs/plan/MJ-COCKPIT.md from docs/plan/MJ-COCKPIT.md."
       ambiguity_ref: null
     yaml:
       status: not_applicable
@@ -267384,6 +267528,42 @@ units:
         sha256: "8fd4b914b8dd497ba6744744b1a4f87a09c6528ab2bfefd44b8ae499eaa25d12"
     business_rule:
       summary: "docs/plan/ROADMAP.md from docs/plan/ROADMAP.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:docs-plan-surfaces"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/plan/SURFACES.md"
+    status: covered
+    sources:
+      - path: "docs/plan/SURFACES.md"
+        ref: "docs/plan/SURFACES.md"
+        sha256: "de5508e5148ff022082bfa3f03ed3335b4fd0b3032e7a00e39f49921dd183a82"
+    business_rule:
+      summary: "docs/plan/SURFACES.md from docs/plan/SURFACES.md."
       ambiguity_ref: null
     yaml:
       status: not_applicable
