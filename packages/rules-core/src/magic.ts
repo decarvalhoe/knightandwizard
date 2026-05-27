@@ -1,3 +1,4 @@
+import type { CharacterResource } from './character.js';
 import { type DiceRollResult, type RollDiceOptions, rollDice } from './dice.js';
 
 /**
@@ -43,6 +44,42 @@ export function resolveSpellCast(
     netSuccesses: roll.successes,
     success: roll.successes > 0
   };
+}
+
+/**
+ * R-8.10 — Modèle d'énergie (MVP : coût + récupération + plafond).
+ *
+ * L'énergie est un pool `{ current, max }` (`CharacterResource`). `energyMax` provient de la
+ * création (magicien 60, non-magicien 0, R-8.10) ; il n'est donc PAS recalculé ici. La durée
+ * de repos (8 h, R-2.11) est gérée par l'action de repos (Fiche) : ce module ne fournit que les
+ * primitives numériques que la Fiche / le combat décrémentent automatiquement.
+ *
+ * Hors périmètre (V2) : inversion énergie↔vitalité (R-8.14) et dépassement du plafond
+ * ("Débordement d'énergie", R-8.14). En MVP, lancer sans énergie suffisante échoue.
+ */
+export function spendEnergy(energy: CharacterResource, cost: number): CharacterResource {
+  assertNonNegativeInteger('cost', cost);
+
+  if (cost > energy.current) {
+    throw new Error(`insufficient energy: ${cost} required, ${energy.current} available`);
+  }
+
+  return { current: energy.current - cost, max: energy.max };
+}
+
+/**
+ * R-8.10 — Regagne de l'énergie (potion, effet, récupération partielle), **plafonné** à `max`.
+ * Le dépassement du plafond ("Débordement d'énergie") est V2.
+ */
+export function gainEnergy(energy: CharacterResource, amount: number): CharacterResource {
+  assertNonNegativeInteger('amount', amount);
+
+  return { current: Math.min(energy.current + amount, energy.max), max: energy.max };
+}
+
+/** R-8.10 / R-2.11 — Un repos complet (8 h) restaure l'énergie à son maximum. */
+export function restoreEnergyToFull(energy: CharacterResource): CharacterResource {
+  return { current: energy.max, max: energy.max };
 }
 
 function assertNonNegativeInteger(name: string, value: number): void {
