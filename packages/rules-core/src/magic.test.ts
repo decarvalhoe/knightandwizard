@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { resolveSpellCast } from './magic.js';
+import { gainEnergy, resolveSpellCast, restoreEnergyToFull, spendEnergy } from './magic.js';
 
 function scriptedRolls(values: number[]) {
   let index = 0;
@@ -54,5 +54,29 @@ describe('spell casting roll (R-8.5)', () => {
   it('rejects negative inputs', () => {
     expect(() => resolveSpellCast(-1, 0, 7)).toThrow();
     expect(() => resolveSpellCast(4, -2, 7)).toThrow();
+  });
+});
+
+describe('spell energy (R-8.10)', () => {
+  it('spends the spell energy cost from the current pool', () => {
+    expect(spendEnergy({ current: 60, max: 60 }, 10)).toEqual({ current: 50, max: 60 });
+  });
+
+  it('rejects casting without enough energy (no vitality inversion in MVP)', () => {
+    expect(() => spendEnergy({ current: 5, max: 60 }, 6)).toThrow();
+  });
+
+  it('rejects negative or non-integer costs', () => {
+    expect(() => spendEnergy({ current: 60, max: 60 }, -1)).toThrow();
+    expect(() => spendEnergy({ current: 60, max: 60 }, 1.5)).toThrow();
+  });
+
+  it('gains energy but never exceeds the maximum (R-8.10 plafond)', () => {
+    expect(gainEnergy({ current: 50, max: 60 }, 5)).toEqual({ current: 55, max: 60 });
+    expect(gainEnergy({ current: 58, max: 60 }, 10)).toEqual({ current: 60, max: 60 });
+  });
+
+  it('restores energy to full on a complete (8h) rest', () => {
+    expect(restoreEnergyToFull({ current: 12, max: 60 })).toEqual({ current: 60, max: 60 });
   });
 });
