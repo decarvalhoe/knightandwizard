@@ -5,13 +5,15 @@ import {
   applyDamage,
   applyStatus,
   createCombatState,
+  declareSpellCast,
   effectiveSpeedFactor,
   getCyclicDT,
   interruptCombatant,
   resolveNextAction,
   resolveStaminaDamage,
   type AttackAction,
-  type Combatant
+  type Combatant,
+  type SpellAction
 } from './combat.js';
 import { parseEffectModel, type EffectModel } from './effect-model.js';
 
@@ -710,5 +712,93 @@ describe('zone-based KO and death (R-9.17)', () => {
     }).timeline[0];
 
     expect(target.statuses).not.toContainEqual({ id: 'dead', appliedAtDT: 1 });
+  });
+});
+
+describe('spell casting in combat (R-8.5 / R-8.6 / R-8.7)', () => {
+  const spell = (overrides: Partial<SpellAction> = {}): SpellAction => ({
+    type: 'spell',
+    intelligence: 4,
+    spellPoints: 2,
+    difficulty: 7,
+    energyCost: 10,
+    castingTimeDT: 12,
+    ...overrides
+  });
+
+  const mageWithEnergy = (current = 60) => ({
+    ...combatant({ id: 'mage', speedFactor: 7 }),
+    energy: { current, max: 60 }
+  });
+
+  it('commits the energy cost and schedules the casting-time windup (R-8.6 / R-8.10)', () => {
+    const state = addCombatant(createCombatState(1), mageWithEnergy());
+
+    const declared = declareSpellCast(state, 'mage', spell());
+    const caster = declared.timeline.find((entry) => entry.id === 'mage');
+
+    expect(caster?.energy).toEqual({ current: 50, max: 60 });
+    expect(caster?.nextActionAt).toBe(13); // currentDT 1 + TI 12
+    expect(caster?.pendingAction).toMatchObject({ type: 'spell', energyCost: 10 });
+    expect(declared.log.at(-1)).toMatchObject({
+      type: 'spell_started',
+      actorId: 'mage',
+      costDT: 12,
+      nextActionAt: 13,
+      energySpent: 10
+    });
+  });
+
+  it('resolves the casting roll when the caster reaches the front (R-8.5)', () => {
+    const declared = declareSpellCast(
+      addCombatant(createCombatState(1), mageWithEnergy()),
+      'mage',
+      spell()
+    );
+
+    // Pool 6 (Int 4 + 2 points) vs difficulty 7: three dice >= 7 succeed.
+    const resolved = resolveNextAction(declared, {
+      randomInteger: scriptedRolls([7, 8, 9, 2, 3, 4])
+    });
+    const event = resolved.log.at(-1);
+
+    expect(event).toMatchObject({
+      type: 'spell_resolved',
+      actorId: 'mage',
+      atDT: 13,
+      successes: 3
+    });
+    expect(event?.spellCast?.success).toBe(true);
+  });
+
+  it('loses the committed energy when the incantation is interrupted (R-8.7)', () => {
+    const state = addCombatant(
+      addCombatant(createCombatState(1), mageWithEnergy()),
+      combatant({ id: 'rogue', speedFactor: 5 })
+    );
+    const declared = declareSpellCast(state, 'mage', spell());
+
+    const interrupted = interruptCombatant(declared, 'mage', 'release');
+    const caster = interrupted.timeline.find((entry) => entry.id === 'mage');
+
+    expect(caster?.energy).toEqual({ current: 50, max: 60 }); // committed energy is NOT refunded
+    expect(caster?.pendingAction).toBeUndefined();
+    expect(interrupted.log.at(-1)).toMatchObject({
+      type: 'action_interrupted',
+      actorId: 'mage',
+      actionType: 'spell'
+    });
+  });
+
+  it('rejects a cast the caster cannot pay for', () => {
+    const state = addCombatant(createCombatState(1), mageWithEnergy(5));
+
+    expect(() => declareSpellCast(state, 'mage', spell())).toThrow();
+  });
+
+  it('rejects casting for a combatant without an energy pool', () => {
+    const state = addCombatant(createCombatState(1), combatant({ id: 'fighter', speedFactor: 7 }));
+
+    expect(() => declareSpellCast(state, 'fighter', spell())).toThrow('no energy pool');
   });
 });
