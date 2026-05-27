@@ -18,6 +18,18 @@
 4. **Intégration du cast : Combat (live, TI dans la timeline DT) au MVP.** Le **Forum** (jet-dans-post) viendra avec le **combat asynchrone**.
 5. **Variantes (R-8.11), développement (R-8.12), familier (R-8.13) → plus tard.**
 
+### Arbitrage 2026-05-27 — périmètre **canonique complet** (au-delà du cœur MVP)
+
+Le cœur MVP (décisions 3-4) étant livré, l'auteur tranche le périmètre cible du reste du moteur. Ces décisions **élargissent** le scope du MVP-court vers le moteur canonique complet :
+
+6. **Application de l'effet = structuration complète des 324 sorts.** Audit sort-par-sort (LLM propose + justification → validation humaine **par école**, méthode Q-D8.2) produisant un **effet machine-lisible** par sort. Pas de « texte narratif seulement ».
+7. **Schéma = étendre l'`EffectModel` existant** (un **seul** moteur d'effets pour atouts + sorts + combat). Ajouts : variable `successes` (R) et **durées narratives** (`unit: min/hour/day`). Pas de schéma d'effet dédié aux sorts.
+8. **Durées = runtime temps-double complet (R-8.20).** On construit l'horloge narrative + conversion combat↔narratif + suivi des sorts actifs (`character_active_spells`, expiration double-échelle) + renouvellement + contrôles MJ — pas seulement le stockage de la durée.
+9. **Résistance = multi-couches complète (R-8.15 / R-1.33).** Magique (`direct_magic`, `D100 ≤ %`, bouclier **et** fardeau) + armure P/E/C/T + élémentaire, avec routage par type d'agression. Déborde volontairement sur D9/D10.
+10. **Grimoire = reporté** hors de ce programme (rôle déjà fixé en décision 1 ; build ultérieur).
+
+> **Conséquence** : ce n'est plus « finir M2 » mais un **programme pluri-épics transverse** (D8 + D9/D10 + session/DB/cockpit + audit gouverné des 324 sorts). Découpage dans le plan de vagues ci-dessous.
+
 ## Périmètre MVP (cœur jouable)
 
 - [x] **Lancement** (R-8.5) : pool = **Intelligence + points dans le sort** vs difficulté convenue (>9 possible). → `magic.ts` `resolveSpellCast`.
@@ -87,8 +99,16 @@
 
 1. **Données** ✅ : `spells.yaml` (324) + `magic-schools.yaml` (11). → vérifier le schéma R-8.4 complet (`direct_magic`, `damage_type`, `range`, `duration`) et le Zod.
 2. **Moteur — cœur** ✅ : lancement (R-8.5) + énergie coût/récup (R-8.10) + TI (R-8.6) + réduction (R-8.8) + interruption/concentration (R-8.7, via R-9.4). → `magic.ts` + `combat.ts` (PR #181/#182/#183/#184).
-3. **Intégration Combat** 🟡 : action de sort + **TI dans la timeline DT** + énergie ← cast **faits** (`declareSpellCast` / `resolveNextAction`, events `spell_started` / `spell_resolved`) ; _restent_ l'**application de l'effet** du sort et la sync vitalité/énergie fiche.
-4. **Résolution complète** : résistance (R-8.15) + jet brut (R-8.19, `rollWillpowerTest` ✅) + durées (R-8.20) + cumul (Q-D8.9).
-5. **Grimoire (surface)** : browser 324 sorts × 11 écoles (couleurs), schéma, lien _apprendre→Fiche_.
-6. **Forum** : cast asynchrone (jet-dans-post) — **avec** le combat asynchrone.
-7. **V2** : variantes (R-8.11), développement (R-8.12), familier (R-8.13), transferts d'énergie (R-8.14), atouts magiciens (R-8.9/8.17).
+3. **Intégration Combat (cast)** ✅ : action de sort + **TI dans la timeline DT** + énergie ← cast (`declareSpellCast` / `resolveNextAction`, events `spell_started` / `spell_resolved`). _Reste l'application de l'effet → E1._
+
+### Programme « Magie canonique complète » (arbitrage 2026-05-27)
+
+> Ordre recommandé : **E1 → E2 (long, lancé tôt) ∥ E3 → E4**. Chaque épic en PRs gated comme le cœur M2. R-8.19 (jet d'aptitude brute, `rollWillpowerTest`) est déjà disponible.
+
+- **E1 — Moteur d'effets étendu + application au cast** (rules-core) : étend `EffectModel` (variable `successes`/R + durées narratives `min/hour/day`) ; définit la forme de l'effet structuré d'un sort ; `resolveSpell` **applique** l'effet (dégâts/statut/buff/énergie) **scalé par R** sur la cible ; ~8 sorts exemplaires écrits à la main + tests. _Dépend de : —. Démarre en 1er (dé-risque le schéma avant l'audit)._
+- **E2 — Audit/structuration des 324 sorts** (catalogs + gouvernance, méthode Q-D8.2) : effet structuré + `direct_magic` + `damage_type` + type élémentaire + catégorie de cumul (Q-D8.9), un passage par sort. _Dépend de : E1. Sous-décision à son démarrage : outillage de validation (CMS Payload vs git-native YAML + revue de PR)._
+- **E3 — Runtime temps-double (R-8.20)** (session/DB/cockpit) : horloge narrative + conversion combat↔narratif + suivi des sorts actifs (`character_active_spells`, expiration double-échelle) + renouvellement (R-8.7-bis) + contrôles MJ (passer la journée, multiplicateur de cadence). _Dépend de : E1 ; parallélisable avec E2._
+- **E4 — Résistance multi-couches (R-8.15 / R-1.33)** (rules-core + D9/D10) : moteur `D100 ≤ %` ; couches magique (`direct_magic`) / armure P/E/C/T / élémentaire ; routage par type d'agression ; magique = bouclier **et** fardeau. _Moteur démarrable tôt ; contenu dépend des tags de E2._
+- **E5 — Grimoire (surface)** : **reporté** (rôle fixé : browser 324 sorts × 11 écoles, lien _apprendre→Fiche_).
+- **Forum** : cast asynchrone (jet-dans-post) — **avec** le combat asynchrone.
+- **V2** : variantes (R-8.11), développement (R-8.12), familier (R-8.13), transferts d'énergie (R-8.14), atouts magiciens (R-8.9/8.17).
