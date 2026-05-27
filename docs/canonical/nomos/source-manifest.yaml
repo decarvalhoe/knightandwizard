@@ -12398,7 +12398,7 @@ sources:
     domain: D4-assets
     priority: secondary
     status: active
-    hash: 5978c84645332d3dada9ede053908ee8f49b1518dcbe06b416c71407ba358fbe
+    hash: ac936e731c3fbfcd160d236324d24caa83684c6bef2c2b11170e3f92047acc03
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
