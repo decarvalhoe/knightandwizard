@@ -13216,7 +13216,7 @@ sources:
     notes: "Project documentation source."
   - id: "docs-plan-magic-implementation"
     path: "docs/plan/MAGIC-IMPLEMENTATION.md"
-    sha256: "87d09eed09865f7842b3a4f845d126d0497425d3e82ed8bddff4d1d12370e151"
+    sha256: "a8477d048b9c008eff8dae643b891760e4d6bef59ef227373e82113e378ce74e"
     source_type: generated_doc
     priority: 40
     status: active
