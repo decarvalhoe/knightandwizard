@@ -7,8 +7,8 @@ metadata:
   total_entries: 324
   catalog_status: partial
   notes: >-
-    Sorts extraits du Grand Grimoire web. Champ school_id réfère magic-schools.yaml. Les sorts du même nom dans
-    plusieurs écoles reçoivent un suffixe -<school_id> sur leur ID.
+    Sorts extraits du Grand Grimoire web. Champ school_id réfère magic-schools.yaml. Les sorts du
+    même nom dans plusieurs écoles reçoivent un suffixe -<school_id> sur leur ID.
 spells:
   - id: annihilation
     name: Annihilation
@@ -23,6 +23,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:annihilation
+    prose_orphan: true
   - id: augmentation-energetique
     name: Augmentation énergétique
     status: active
@@ -36,6 +37,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:augmentation-energetique
+    prose_refs:
+      - catalog: lexique
+        entry_id: augmentation-energetique
+        term: Augmentation énergétique
   - id: barriere-psychique
     name: Barrière psychique
     status: active
@@ -49,6 +54,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:barriere-psychique
+    prose_refs:
+      - catalog: lexique
+        entry_id: barriere-psychique
+        term: Barrière psychique
   - id: barriere-psychique-de-masse
     name: Barrière psychique de masse
     status: active
@@ -62,6 +71,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:barriere-psychique-de-masse
+    prose_refs:
+      - catalog: lexique
+        entry_id: barriere-psychique-de-masse
+        term: Barrière psychique de masse
   - id: boomerang
     name: Boomerang
     status: active
@@ -75,6 +88,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:boomerang
+    prose_orphan: true
   - id: captage-d-energie
     name: Captage d'énergie
     status: active
@@ -88,6 +102,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:captage-d-energie
+    prose_refs:
+      - catalog: lexique
+        entry_id: captage-denergie
+        term: Captage d’énergie
   - id: complexite-magique
     name: Complexité magique
     status: active
@@ -101,6 +119,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:complexite-magique
+    prose_refs:
+      - catalog: lexique
+        entry_id: complexite-magique
+        term: Complexité magique
   - id: contre-blanc
     name: Contre-blanc
     status: active
@@ -114,6 +136,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-blanc
+    prose_orphan: true
   - id: contre-bleu
     name: Contre-bleu
     status: active
@@ -127,6 +150,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-bleu
+    prose_orphan: true
   - id: contre-brun
     name: Contre-brun
     status: active
@@ -140,6 +164,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-brun
+    prose_orphan: true
   - id: contre-gris
     name: Contre-gris
     status: active
@@ -153,6 +178,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-gris
+    prose_orphan: true
   - id: contre-jaune
     name: Contre-jaune
     status: active
@@ -166,6 +192,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-jaune
+    prose_orphan: true
   - id: contre-noir
     name: Contre-noir
     status: active
@@ -179,6 +206,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-noir
+    prose_orphan: true
   - id: contre-orange
     name: Contre-orange
     status: active
@@ -192,6 +220,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-orange
+    prose_orphan: true
   - id: contre-rouge
     name: Contre-rouge
     status: active
@@ -205,6 +234,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-rouge
+    prose_orphan: true
   - id: contre-turquoise
     name: Contre-turquoise
     status: active
@@ -218,6 +248,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-turquoise
+    prose_orphan: true
   - id: contre-vert
     name: Contre-vert
     status: active
@@ -231,6 +262,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-vert
+    prose_orphan: true
   - id: contre-violet
     name: Contre-violet
     status: active
@@ -244,6 +276,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contre-violet
+    prose_orphan: true
   - id: deplacement-magique
     name: Déplacement magique
     status: active
@@ -257,6 +290,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deplacement-magique
+    prose_refs:
+      - catalog: lexique
+        entry_id: deplacement-magique
+        term: Déplacement magique
   - id: deplacement-magique-de-masse
     name: Déplacement magique de masse
     status: active
@@ -270,6 +307,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deplacement-magique-de-masse
+    prose_refs:
+      - catalog: lexique
+        entry_id: deplacement-magique-de-masse
+        term: Déplacement magique de masse
   - id: detournement-du-lien-du-mort-vivant
     name: Détournement du lien du mort-vivant
     status: active
@@ -283,6 +324,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:detournement-du-lien-du-mort-vivant
+    prose_refs:
+      - catalog: lexique
+        entry_id: detournement-du-lien-du-mort-vivant
+        term: Détournement du lien du mort-vivant
   - id: dispersion-du-familier
     name: Dispersion du familier
     status: active
@@ -296,6 +341,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:dispersion-du-familier
+    prose_orphan: true
   - id: dissipation
     name: Dissipation
     status: active
@@ -309,6 +355,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:dissipation
+    prose_orphan: true
   - id: interdiction-magique
     name: Interdiction magique
     status: active
@@ -322,6 +369,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:interdiction-magique
+    prose_refs:
+      - catalog: lexique
+        entry_id: interdiction-magique
+        term: Interdiction magique
   - id: irreductibilite
     name: Irréductibilité
     status: active
@@ -335,6 +386,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:irreductibilite
+    prose_refs:
+      - catalog: lexique
+        entry_id: irreductibilite
+        term: Irréductibilité
   - id: irreductibilite-de-masse
     name: Irréductibilité de masse
     status: active
@@ -348,6 +403,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:irreductibilite-de-masse
+    prose_refs:
+      - catalog: lexique
+        entry_id: irreductibilite-de-masse
+        term: Irréductibilité de masse
   - id: perturbation
     name: Perturbation
     status: active
@@ -361,6 +420,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:perturbation
+    prose_orphan: true
   - id: piegeage-magique
     name: Piégeage magique
     status: active
@@ -374,6 +434,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:piegeage-magique
+    prose_refs:
+      - catalog: lexique
+        entry_id: piegeage-magique
+        term: Piégeage magique
   - id: ralentissement-magique
     name: Ralentissement magique
     status: active
@@ -387,6 +451,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:ralentissement-magique
+    prose_refs:
+      - catalog: lexique
+        entry_id: ralentissement-magique
+        term: Ralentissement magique
   - id: rets-des-ames
     name: Rets des âmes
     status: active
@@ -400,6 +468,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rets-des-ames
+    prose_refs:
+      - catalog: lexique
+        entry_id: rets-des-ames
+        term: Rets des âmes
   - id: rets-des-cadavres
     name: Rets des cadavres
     status: active
@@ -413,6 +485,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rets-des-cadavres
+    prose_refs:
+      - catalog: lexique
+        entry_id: rets-des-cadavres
+        term: Rets des cadavres
   - id: rupture-de-lien-d-invocation
     name: Rupture de lien d'invocation
     status: active
@@ -421,13 +497,14 @@ spells:
     incantation_time: 7
     difficulty: 7
     effect: >-
-      Diminue le nombre de R d'un lien d'invocation existant entre un sujet et son invocateur. Si le nombre de R du lien
-      tombe à 0 ou en dessous, le lien est rompu.
+      Diminue le nombre de R d'un lien d'invocation existant entre un sujet et son invocateur. Si le
+      nombre de R du lien tombe à 0 ou en dessous, le lien est rompu.
     value: 32
     source_refs:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rupture-de-lien-d-invocation
+    prose_orphan: true
   - id: substitution-de-sort
     name: Substitution de sort
     status: active
@@ -441,6 +518,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:substitution-de-sort
+    prose_refs:
+      - catalog: lexique
+        entry_id: substitution-de-sort
+        term: Substitution de sort
   - id: agrandissement
     name: Agrandissement
     status: active
@@ -454,6 +535,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:agrandissement
+    prose_orphan: true
   - id: branchie
     name: Branchie
     status: active
@@ -467,6 +549,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:branchie
+    prose_orphan: true
   - id: branchie-de-masse
     name: Branchie de masse
     status: active
@@ -480,6 +563,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:branchie-de-masse
+    prose_orphan: true
   - id: changement-de-sexe
     name: Changement de sexe
     status: active
@@ -493,6 +577,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-de-sexe
+    prose_orphan: true
   - id: changement-en-corbeau
     name: Changement en corbeau
     status: active
@@ -506,6 +591,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-en-corbeau
+    prose_orphan: true
   - id: changement-en-crapaud
     name: Changement en crapaud
     status: active
@@ -519,6 +605,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-en-crapaud
+    prose_orphan: true
   - id: changement-en-furet
     name: Changement en furet
     status: active
@@ -532,6 +619,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-en-furet
+    prose_orphan: true
   - id: changement-en-humain
     name: Changement en humain
     status: active
@@ -545,6 +633,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-en-humain
+    prose_orphan: true
   - id: changement-en-lapin
     name: Changement en lapin
     status: active
@@ -558,6 +647,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-en-lapin
+    prose_orphan: true
   - id: changer-l-eau-en-vin
     name: Changer l’eau en vin
     status: active
@@ -571,6 +661,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changer-l-eau-en-vin
+    prose_orphan: true
   - id: chatiment-de-la-matiere
     name: Châtiment de la matière
     status: active
@@ -584,6 +675,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:chatiment-de-la-matiere
+    prose_orphan: true
   - id: corrosion
     name: Corrosion
     status: active
@@ -597,6 +689,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:corrosion
+    prose_refs:
+      - catalog: lexique
+        entry_id: corrosion
+        term: Corrosion
   - id: corrosion-de-masse
     name: Corrosion de masse
     status: active
@@ -610,6 +706,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:corrosion-de-masse
+    prose_refs:
+      - catalog: lexique
+        entry_id: corrosion-de-masse
+        term: Corrosion de masse
   - id: creation-d-aile
     name: Création d'aile
     status: active
@@ -623,6 +723,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-d-aile
+    prose_orphan: true
   - id: creation-d-oeil
     name: Création d'oeil
     status: active
@@ -636,6 +737,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-d-oeil
+    prose_orphan: true
   - id: creation-de-bras
     name: Création de bras
     status: active
@@ -649,6 +751,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-bras
+    prose_orphan: true
   - id: creation-de-dent
     name: Création de dent
     status: active
@@ -662,6 +765,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-dent
+    prose_orphan: true
   - id: creation-de-jambe
     name: Création de jambe
     status: active
@@ -675,6 +779,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-jambe
+    prose_orphan: true
   - id: creation-de-kyste
     name: Création de kyste
     status: active
@@ -688,6 +793,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-kyste
+    prose_orphan: true
   - id: creation-de-main
     name: Création de main
     status: active
@@ -701,6 +807,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-main
+    prose_orphan: true
   - id: creation-de-pied
     name: Création de pied
     status: active
@@ -714,6 +821,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-pied
+    prose_orphan: true
   - id: creation-de-queue
     name: Création de queue
     status: active
@@ -727,6 +835,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:creation-de-queue
+    prose_orphan: true
   - id: evaporation
     name: Evaporation
     status: active
@@ -740,6 +849,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:evaporation
+    prose_orphan: true
   - id: gel
     name: Gel
     status: active
@@ -753,6 +863,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:gel
+    prose_orphan: true
   - id: membre-telescopique
     name: Membre téléscopique
     status: active
@@ -766,6 +877,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:membre-telescopique
+    prose_refs:
+      - catalog: lexique
+        entry_id: membre-telescopique
+        term: Membre télescopique
   - id: miniaturisation
     name: Miniaturisation
     status: active
@@ -779,6 +894,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:miniaturisation
+    prose_orphan: true
   - id: petrification
     name: Pétrification
     status: active
@@ -792,6 +908,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:petrification
+    prose_orphan: true
   - id: rendre-forme
     name: Rendre forme
     status: active
@@ -805,6 +922,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rendre-forme
+    prose_orphan: true
   - id: soudure
     name: Soudure
     status: active
@@ -818,6 +936,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:soudure
+    prose_refs:
+      - catalog: lexique
+        entry_id: soudure
+        term: Soudure
   - id: barriere-de-holn
     name: Barrière de Höln
     status: active
@@ -831,6 +953,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:barriere-de-holn
+    prose_refs:
+      - catalog: lexique
+        entry_id: barriere-de-holn
+        term: Barrière de Höln
   - id: benediction
     name: Bénédiction
     status: active
@@ -844,6 +970,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:benediction
+    prose_orphan: true
   - id: benediction-de-masse
     name: Bénédiction de masse
     status: active
@@ -857,6 +984,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:benediction-de-masse
+    prose_orphan: true
   - id: bouclier
     name: Bouclier
     status: active
@@ -870,6 +998,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier
+    prose_orphan: true
   - id: bouclier-anti-feu
     name: Bouclier anti-feu
     status: active
@@ -883,6 +1012,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-anti-feu
+    prose_orphan: true
   - id: bouclier-anti-foudre
     name: Bouclier anti-foudre
     status: active
@@ -896,6 +1026,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-anti-foudre
+    prose_orphan: true
   - id: bouclier-anti-froid
     name: Bouclier anti-froid
     status: active
@@ -909,6 +1040,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-anti-froid
+    prose_orphan: true
   - id: bouclier-anti-lave
     name: Bouclier anti-lave
     status: active
@@ -922,6 +1054,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-anti-lave
+    prose_orphan: true
   - id: bouclier-anti-mal
     name: Bouclier anti-mal
     status: active
@@ -935,6 +1068,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-anti-mal
+    prose_orphan: true
   - id: charisme
     name: Charisme
     status: active
@@ -948,6 +1082,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:charisme
+    prose_orphan: true
   - id: charisme-de-masse
     name: Charisme de masse
     status: active
@@ -961,6 +1096,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:charisme-de-masse
+    prose_orphan: true
   - id: courage
     name: Courage
     status: active
@@ -974,6 +1110,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:courage
+    prose_orphan: true
   - id: deviation
     name: Déviation
     status: active
@@ -987,6 +1124,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deviation
+    prose_orphan: true
   - id: deviation-de-masse
     name: Déviation de masse
     status: active
@@ -1000,6 +1138,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deviation-de-masse
+    prose_orphan: true
   - id: deviation-des-projectiles
     name: Déviation des projectiles
     status: active
@@ -1013,6 +1152,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deviation-des-projectiles
+    prose_orphan: true
   - id: deviation-majeure
     name: Déviation majeure
     status: active
@@ -1026,6 +1166,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deviation-majeure
+    prose_orphan: true
   - id: deviation-mineure
     name: Déviation mineure
     status: active
@@ -1039,6 +1180,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:deviation-mineure
+    prose_orphan: true
   - id: dexterite
     name: Dextérité
     status: active
@@ -1052,6 +1194,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:dexterite
+    prose_orphan: true
   - id: dexterite-de-masse
     name: Dextérité de masse
     status: active
@@ -1065,6 +1208,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:dexterite-de-masse
+    prose_orphan: true
   - id: don-d-energie
     name: Don d’énergie
     status: active
@@ -1078,6 +1222,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:don-d-energie
+    prose_orphan: true
   - id: empathie
     name: Empathie
     status: active
@@ -1091,6 +1236,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:empathie
+    prose_orphan: true
   - id: empathie-de-masse
     name: Empathie de masse
     status: active
@@ -1104,6 +1250,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:empathie-de-masse
+    prose_orphan: true
   - id: endurance
     name: Endurance
     status: active
@@ -1117,6 +1264,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:endurance
+    prose_orphan: true
   - id: endurance-de-masse
     name: Endurance de masse
     status: active
@@ -1130,6 +1278,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:endurance-de-masse
+    prose_orphan: true
   - id: esthetique
     name: Esthétique
     status: active
@@ -1143,6 +1292,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:esthetique
+    prose_orphan: true
   - id: esthetique-de-masse
     name: Esthétique de masse
     status: active
@@ -1156,6 +1306,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:esthetique-de-masse
+    prose_orphan: true
   - id: force
     name: Force
     status: active
@@ -1169,6 +1320,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:force
+    prose_orphan: true
   - id: force-de-masse
     name: Force de masse
     status: active
@@ -1182,6 +1334,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:force-de-masse
+    prose_orphan: true
   - id: guerison-absolue
     name: Guérison absolue
     status: active
@@ -1195,6 +1348,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-absolue
+    prose_refs:
+      - catalog: lexique
+        entry_id: guerison-absolue
+        term: Guérison absolue
   - id: guerison-de-la-chair
     name: Guérison de la chair
     status: active
@@ -1208,6 +1365,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-de-la-chair
+    prose_orphan: true
   - id: guerison-de-la-peau
     name: Guérison de la peau
     status: active
@@ -1221,6 +1379,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-de-la-peau
+    prose_orphan: true
   - id: guerison-des-muscles
     name: Guérison des muscles
     status: active
@@ -1234,6 +1393,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-des-muscles
+    prose_orphan: true
   - id: guerison-des-muscles-mineure
     name: Guérison des muscles mineure
     status: active
@@ -1247,6 +1407,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-des-muscles-mineure
+    prose_orphan: true
   - id: guerison-des-organes
     name: Guérison des organes
     status: active
@@ -1260,6 +1421,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-des-organes
+    prose_orphan: true
   - id: guerison-des-os
     name: Guérison des os
     status: active
@@ -1273,6 +1435,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:guerison-des-os
+    prose_orphan: true
   - id: intelligence
     name: Intelligence
     status: active
@@ -1286,6 +1449,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:intelligence
+    prose_orphan: true
   - id: intelligence-de-masse
     name: Intelligence de masse
     status: active
@@ -1299,6 +1463,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:intelligence-de-masse
+    prose_orphan: true
   - id: lumiere
     name: Lumière
     status: active
@@ -1312,6 +1477,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lumiere
+    prose_orphan: true
   - id: purification-de-l-air
     name: Purification de l'air
     status: active
@@ -1325,6 +1491,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:purification-de-l-air
+    prose_orphan: true
   - id: purification-de-l-eau
     name: Purification de l'eau
     status: active
@@ -1338,6 +1505,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:purification-de-l-eau
+    prose_orphan: true
   - id: rapidite
     name: Rapidité
     status: active
@@ -1351,6 +1519,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rapidite
+    prose_orphan: true
   - id: rapidite-de-masse
     name: Rapidité de masse
     status: active
@@ -1364,6 +1533,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rapidite-de-masse
+    prose_orphan: true
   - id: renvoi-du-demon
     name: Renvoi du démon
     status: active
@@ -1377,6 +1547,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:renvoi-du-demon
+    prose_orphan: true
   - id: respiration
     name: Respiration
     status: active
@@ -1390,6 +1561,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:respiration
+    prose_orphan: true
   - id: respiration-de-masse
     name: Respiration de masse
     status: active
@@ -1403,6 +1575,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:respiration-de-masse
+    prose_orphan: true
   - id: resurrection
     name: Résurrection
     status: active
@@ -1416,6 +1589,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:resurrection
+    prose_refs:
+      - catalog: lexique
+        entry_id: resurrection
+        term: Résurrection
   - id: connaitre-le-vice
     name: Connaître le vice
     status: active
@@ -1429,6 +1606,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:connaitre-le-vice
+    prose_refs:
+      - catalog: lexique
+        entry_id: connaitre-le-vice
+        term: Connaître le vice
   - id: contact
     name: Contact
     status: active
@@ -1442,6 +1623,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contact
+    prose_orphan: true
   - id: contact-de-morphee
     name: Contact de Morphée
     status: active
@@ -1455,6 +1637,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contact-de-morphee
+    prose_refs:
+      - catalog: lexique
+        entry_id: contact-de-morphee
+        term: Contact de Morphée
   - id: contact-divin
     name: Contact divin
     status: active
@@ -1468,6 +1654,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contact-divin
+    prose_orphan: true
   - id: contacter-l-au-dela
     name: Contacter l’au-delà
     status: active
@@ -1481,6 +1668,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contacter-l-au-dela
+    prose_orphan: true
   - id: detection-du-danger
     name: Détection du danger
     status: active
@@ -1494,6 +1682,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:detection-du-danger
+    prose_orphan: true
   - id: identification
     name: Identification
     status: active
@@ -1507,6 +1696,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:identification
+    prose_refs:
+      - catalog: lexique
+        entry_id: identification
+        term: Identification
   - id: localisation
     name: Localisation
     status: active
@@ -1520,6 +1713,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:localisation
+    prose_orphan: true
   - id: nouvelle-du-monde
     name: Nouvelle du monde
     status: active
@@ -1533,6 +1727,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:nouvelle-du-monde
+    prose_refs:
+      - catalog: lexique
+        entry_id: nouvelle-du-monde
+        term: Nouvelle du monde
   - id: nouvelle-nationale
     name: Nouvelle nationale
     status: active
@@ -1546,6 +1744,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:nouvelle-nationale
+    prose_refs:
+      - catalog: lexique
+        entry_id: nouvelle-nationale
+        term: Nouvelle nationale
   - id: nouvelle-regionale
     name: Nouvelle régionale
     status: active
@@ -1559,6 +1761,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:nouvelle-regionale
+    prose_refs:
+      - catalog: lexique
+        entry_id: nouvelle-regionale
+        term: Nouvelle régionale
   - id: premonition
     name: Prémonition
     status: active
@@ -1572,6 +1778,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:premonition
+    prose_refs:
+      - catalog: lexique
+        entry_id: premonition
+        term: Prémonition
   - id: regard-de-puissance
     name: Regard de puissance
     status: active
@@ -1585,6 +1795,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:regard-de-puissance
+    prose_orphan: true
   - id: savoir-l-aptitude
     name: Savoir l'aptitude
     status: active
@@ -1598,6 +1809,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:savoir-l-aptitude
+    prose_orphan: true
   - id: savoir-l-energie
     name: Savoir l'énergie
     status: active
@@ -1611,6 +1823,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:savoir-l-energie
+    prose_refs:
+      - catalog: lexique
+        entry_id: savoir-lenergie
+        term: Savoir l’énergie
   - id: savoir-la-vitalite
     name: Savoir la vitalité
     status: active
@@ -1624,6 +1840,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:savoir-la-vitalite
+    prose_refs:
+      - catalog: lexique
+        entry_id: savoir-la-vitalite
+        term: Savoir la vitalité
   - id: savoir-la-vitesse
     name: Savoir la vitesse
     status: active
@@ -1637,6 +1857,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:savoir-la-vitesse
+    prose_refs:
+      - catalog: lexique
+        entry_id: savoir-la-vitesse
+        term: Savoir la vitesse
   - id: savoir-la-volonte
     name: Savoir la volonté
     status: active
@@ -1650,6 +1874,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:savoir-la-volonte
+    prose_refs:
+      - catalog: lexique
+        entry_id: savoir-la-volonte
+        term: Savoir la volonté
   - id: savoir-le-nom
     name: Savoir le nom
     status: active
@@ -1663,6 +1891,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:savoir-le-nom
+    prose_refs:
+      - catalog: lexique
+        entry_id: savoir-le-nom
+        term: Savoir le nom
   - id: savoir-les-competences
     name: Savoir les compétences
     status: active
@@ -1676,6 +1908,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:savoir-les-competences
+    prose_refs:
+      - catalog: lexique
+        entry_id: savoir-les-competences
+        term: Savoir les compétences
   - id: vision-ante-mortem
     name: Vision ante mortem
     status: active
@@ -1689,6 +1925,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vision-ante-mortem
+    prose_refs:
+      - catalog: lexique
+        entry_id: vision-ante-mortem
+        term: Vision ante mortem
   - id: vision-de-reve
     name: Vision de rêve
     status: active
@@ -1702,6 +1942,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vision-de-reve
+    prose_orphan: true
   - id: appel-de-la-foudre
     name: Appel de la foudre
     status: active
@@ -1715,6 +1956,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-de-la-foudre
+    prose_orphan: true
   - id: appel-de-la-pluie
     name: Appel de la pluie
     status: active
@@ -1728,6 +1970,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-de-la-pluie
+    prose_orphan: true
   - id: bouclier-de-foudre
     name: Bouclier de foudre
     status: active
@@ -1741,6 +1984,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-de-foudre
+    prose_orphan: true
   - id: bouclier-d-eau
     name: Bouclier d’eau
     status: active
@@ -1754,6 +1998,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:bouclier-d-eau
+    prose_orphan: true
   - id: boule-de-feu
     name: Boule de feu
     status: active
@@ -1767,6 +2012,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:boule-de-feu
+    prose_orphan: true
   - id: boule-de-feu-majeure
     name: Boule de feu majeure
     status: active
@@ -1780,6 +2026,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:boule-de-feu-majeure
+    prose_orphan: true
   - id: boule-de-foudre
     name: Boule de foudre
     status: active
@@ -1793,6 +2040,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:boule-de-foudre
+    prose_orphan: true
   - id: boule-de-foudre-majeure
     name: Boule de foudre majeure
     status: active
@@ -1806,6 +2054,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:boule-de-foudre-majeure
+    prose_orphan: true
   - id: brasier
     name: Brasier
     status: active
@@ -1819,6 +2068,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:brasier
+    prose_orphan: true
   - id: cercle-de-feu
     name: Cercle de feu
     status: active
@@ -1832,6 +2082,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:cercle-de-feu
+    prose_orphan: true
   - id: chaine-d-eclairs
     name: Chaîne d’éclairs
     status: active
@@ -1845,6 +2096,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:chaine-d-eclairs
+    prose_orphan: true
   - id: champs-de-boue
     name: Champs de boue
     status: active
@@ -1858,6 +2110,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:champs-de-boue
+    prose_orphan: true
   - id: colere-divine
     name: Colère divine
     status: active
@@ -1871,6 +2124,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:colere-divine
+    prose_orphan: true
   - id: flash
     name: Flash
     status: active
@@ -1884,6 +2138,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:flash
+    prose_orphan: true
   - id: fleche-de-feu
     name: Flèche de feu
     status: active
@@ -1897,6 +2152,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:fleche-de-feu
+    prose_orphan: true
   - id: fleche-de-foudre
     name: Flèche de foudre
     status: active
@@ -1910,6 +2166,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:fleche-de-foudre
+    prose_orphan: true
   - id: foudroiement
     name: Foudroiement
     status: active
@@ -1923,6 +2180,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:foudroiement
+    prose_orphan: true
   - id: immolation
     name: Immolation
     status: active
@@ -1936,6 +2194,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:immolation
+    prose_orphan: true
   - id: multi-flamme
     name: Multi-flamme
     status: active
@@ -1949,6 +2208,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:multi-flamme
+    prose_orphan: true
   - id: mur-de-flammes
     name: Mur de flammes
     status: active
@@ -1962,6 +2222,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:mur-de-flammes
+    prose_orphan: true
   - id: pilier-de-feu
     name: Pilier de feu
     status: active
@@ -1975,6 +2236,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:pilier-de-feu
+    prose_orphan: true
   - id: pyramide-de-feu
     name: Pyramide de feu
     status: active
@@ -1988,6 +2250,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:pyramide-de-feu
+    prose_orphan: true
   - id: rayon-d-eau
     name: Rayon d’eau
     status: active
@@ -2001,6 +2264,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rayon-d-eau
+    prose_orphan: true
   - id: raz-de-maree
     name: Raz de marée
     status: active
@@ -2014,6 +2278,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:raz-de-maree
+    prose_orphan: true
   - id: sables-mouvants
     name: Sables mouvants
     status: active
@@ -2027,6 +2292,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:sables-mouvants
+    prose_refs:
+      - catalog: lexique
+        entry_id: sables-mouvants
+        term: Sables mouvants
   - id: tornade
     name: Tornade
     status: active
@@ -2035,13 +2304,15 @@ spells:
     incantation_time: 31
     difficulty: 14
     effect: >-
-      Projette tout dans les airs sur son passage. Diff. pour résister = 10 +3/R supplémentaires. 1 min/niv. Le lanceur
-      décide de la direction de base de la tornade, celle-ci peut ensuite dévier librement.
+      Projette tout dans les airs sur son passage. Diff. pour résister = 10 +3/R supplémentaires. 1
+      min/niv. Le lanceur décide de la direction de base de la tornade, celle-ci peut ensuite dévier
+      librement.
     value: 600
     source_refs:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:tornade
+    prose_orphan: true
   - id: tornade-de-feu
     name: Tornade de feu
     status: active
@@ -2055,6 +2326,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:tornade-de-feu
+    prose_orphan: true
   - id: touche-ardant
     name: Touché ardant
     status: active
@@ -2068,6 +2340,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:touche-ardant
+    prose_orphan: true
   - id: vague-de-feu
     name: Vague de feu
     status: active
@@ -2081,6 +2354,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vague-de-feu
+    prose_orphan: true
   - id: animation-des-armures
     name: Animation des armures
     status: active
@@ -2094,6 +2368,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:animation-des-armures
+    prose_refs:
+      - catalog: lexique
+        entry_id: animation-des-armures
+        term: Animation des armures
   - id: arc-en-ciel
     name: Arc-en-ciel
     status: active
@@ -2107,6 +2385,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:arc-en-ciel
+    prose_refs:
+      - catalog: lexique
+        entry_id: arc-en-ciel
+        term: Arc-en-ciel
   - id: cauchemard
     name: Cauchemard
     status: active
@@ -2115,13 +2397,14 @@ spells:
     incantation_time: 4
     difficulty: 5
     effect: >-
-      La cible endormie se met à cauchemarder. Le MJ pourra appliquer des malus de fatigue en fonction des R au dormeur
-      dès le lendemain.
+      La cible endormie se met à cauchemarder. Le MJ pourra appliquer des malus de fatigue en
+      fonction des R au dormeur dès le lendemain.
     value: 10
     source_refs:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:cauchemard
+    prose_orphan: true
   - id: cauchemard-de-masse
     name: Cauchemard de masse
     status: active
@@ -2130,13 +2413,14 @@ spells:
     incantation_time: 6
     difficulty: 6
     effect: >-
-      Les cibles endormie se mettent à cauchemarder. Le MJ pourra appliquer des malus de fatigue en fonction des R aux
-      dormeurs dès le lendemain.
+      Les cibles endormie se mettent à cauchemarder. Le MJ pourra appliquer des malus de fatigue en
+      fonction des R aux dormeurs dès le lendemain.
     value: 10
     source_refs:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:cauchemard-de-masse
+    prose_orphan: true
   - id: cocon-thermique
     name: Cocon thermique
     status: active
@@ -2150,6 +2434,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:cocon-thermique
+    prose_refs:
+      - catalog: lexique
+        entry_id: cocon-thermique
+        term: Cocon thermique
   - id: corde
     name: Corde
     status: active
@@ -2163,6 +2451,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:corde
+    prose_refs:
+      - catalog: lexique
+        entry_id: corde
+        term: Corde
   - id: enchantement-de-livre
     name: Enchantement de livre
     status: active
@@ -2176,6 +2468,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:enchantement-de-livre
+    prose_refs:
+      - catalog: lexique
+        entry_id: enchantement-de-livre
+        term: Enchantement de livre
   - id: extase
     name: Extase
     status: active
@@ -2189,6 +2485,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:extase
+    prose_refs:
+      - catalog: lexique
+        entry_id: extase
+        term: Extase
   - id: invisibilite
     name: Invisibilité
     status: active
@@ -2202,6 +2502,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invisibilite
+    prose_refs:
+      - catalog: lexique
+        entry_id: invisibilite
+        term: Invisibilité
   - id: legerete
     name: Légèreté
     status: active
@@ -2215,6 +2519,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:legerete
+    prose_refs:
+      - catalog: lexique
+        entry_id: legerete
+        term: Légèreté
   - id: lourdeur
     name: Lourdeur
     status: active
@@ -2228,6 +2536,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lourdeur
+    prose_orphan: true
   - id: marche-sur-l-eau
     name: Marche sur l'eau
     status: active
@@ -2241,6 +2550,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:marche-sur-l-eau
+    prose_refs:
+      - catalog: lexique
+        entry_id: marche-sur-leau
+        term: Marche sur l’eau
   - id: multilinguisme
     name: Multilinguisme
     status: active
@@ -2254,6 +2567,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:multilinguisme
+    prose_refs:
+      - catalog: lexique
+        entry_id: multilinguisme
+        term: Multilinguisme
   - id: nettoyage-magique
     name: Nettoyage magique
     status: active
@@ -2267,6 +2584,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:nettoyage-magique
+    prose_refs:
+      - catalog: lexique
+        entry_id: nettoyage-magique
+        term: Nettoyage magique
   - id: parler-aux-oiseaux
     name: Parler aux oiseaux
     status: active
@@ -2280,6 +2601,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:parler-aux-oiseaux
+    prose_orphan: true
   - id: passe-partout
     name: Passe-partout
     status: active
@@ -2293,6 +2615,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:passe-partout
+    prose_refs:
+      - catalog: lexique
+        entry_id: passe-partout
+        term: Passe-partout
   - id: porte-de-secours
     name: Porte de secours
     status: active
@@ -2306,6 +2632,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:porte-de-secours
+    prose_refs:
+      - catalog: lexique
+        entry_id: porte-de-secours
+        term: Porte de secours
   - id: rire
     name: Rire
     status: active
@@ -2319,6 +2649,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rire
+    prose_refs:
+      - catalog: lexique
+        entry_id: rire
+        term: Rire
   - id: rire-de-masse
     name: Rire de masse
     status: active
@@ -2332,6 +2666,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:rire-de-masse
+    prose_refs:
+      - catalog: lexique
+        entry_id: rire-de-masse
+        term: Rire de masse
   - id: sommeil
     name: Sommeil
     status: active
@@ -2345,6 +2683,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:sommeil
+    prose_refs:
+      - catalog: lexique
+        entry_id: sommeil
+        term: Sommeil
   - id: vol-de-masse
     name: Vol de masse
     status: active
@@ -2358,6 +2700,11 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vol-de-masse
+    prose_refs:
+      - catalog: lexique
+        entry_id: vol
+        term: Vol
+    derived_from: vol
   - id: vol-magique
     name: Vol magique
     status: active
@@ -2371,6 +2718,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vol-magique
+    prose_refs:
+      - catalog: lexique
+        entry_id: vol-magique
+        term: Vol magique
   - id: auto-clonage
     name: Auto clonage
     status: active
@@ -2384,6 +2735,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:auto-clonage
+    prose_refs:
+      - catalog: lexique
+        entry_id: auto-clonage
+        term: Auto clonage
   - id: centaure-illusoire
     name: Centaure illusoire
     status: active
@@ -2397,6 +2752,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:centaure-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: centaure-illusoire
+        term: Centaure illusoire
   - id: chat-illusoire
     name: Chat illusoire
     status: active
@@ -2410,6 +2769,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:chat-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: chat-illusoire
+        term: Chat illusoire
   - id: cheval-illusoire
     name: Cheval illusoire
     status: active
@@ -2423,6 +2786,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:cheval-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: cheval-illusoire
+        term: Cheval illusoire
   - id: chigr-illusoire
     name: Chigr Illusoire
     status: active
@@ -2436,6 +2803,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:chigr-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: chigr-illusoire
+        term: Chigr illusoire
   - id: clonage
     name: Clonage
     status: active
@@ -2449,6 +2820,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:clonage
+    prose_orphan: true
   - id: couteau-illusoire
     name: Couteau illusoire
     status: active
@@ -2462,6 +2834,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:couteau-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: couteau-illusoire
+        term: Couteau illusoire
   - id: demi-elfe-illusoire
     name: Demi-elfe illusoire
     status: active
@@ -2475,6 +2851,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:demi-elfe-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: demi-elfe-illusoire
+        term: Demi-elfe illusoire
   - id: dryade-illusoire
     name: Dryade illusoire
     status: active
@@ -2488,6 +2868,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:dryade-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: dryade-illusoire
+        term: Dryade illusoire
   - id: elfe-illusoire
     name: Elfe illusoire
     status: active
@@ -2501,6 +2885,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:elfe-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: elfe-illusoire
+        term: Elfe illusoire
   - id: fantome-illusoire
     name: Fantôme illusoire
     status: active
@@ -2514,6 +2902,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:fantome-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: fantome-illusoire
+        term: Fantôme illusoire
   - id: fortune-illusoire
     name: Fortune illusoire
     status: active
@@ -2527,6 +2919,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:fortune-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: fortune-illusoire
+        term: Fortune illusoire
   - id: gnome-illusoire
     name: Gnome illusoire
     status: active
@@ -2540,6 +2936,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:gnome-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: gnome-illusoire
+        term: Gnome illusoire
   - id: gobelin-illusoire
     name: Gobelin illusoire
     status: active
@@ -2553,6 +2953,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:gobelin-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: gobelin-illusoire
+        term: Gobelin illusoire
   - id: hobbit-illusoire
     name: Hobbit illusoire
     status: active
@@ -2566,6 +2970,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:hobbit-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: hobbit-illusoire
+        term: Hobbit illusoire
   - id: homme-lezard-illusoire
     name: Homme lézard illusoire
     status: active
@@ -2579,6 +2987,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:homme-lezard-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: homme-lezard-illusoire
+        term: Homme lézard illusoire
   - id: homme-oiseau-illusoire
     name: Homme oiseau illusoire
     status: active
@@ -2592,6 +3004,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:homme-oiseau-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: homme-oiseau-illusoire
+        term: Homme oiseau illusoire
   - id: homme-rat-illusoire
     name: Homme rat illusoire
     status: active
@@ -2605,6 +3021,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:homme-rat-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: homme-rat-illusoire
+        term: Homme rat illusoire
   - id: humain-illusoire
     name: Humain illusoire
     status: active
@@ -2618,6 +3038,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:humain-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: humain-illusoire
+        term: Humain illusoire
   - id: khochigr-illusoire
     name: Khochigr illusoire
     status: active
@@ -2631,6 +3055,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:khochigr-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: khochigr-illusoire
+        term: Khochigr illusoire
   - id: khogr-illusoire
     name: Khogr illusoire
     status: active
@@ -2644,6 +3072,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:khogr-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: khogr-illusoire
+        term: Khogr illusoire
   - id: loup-illusoire
     name: Loup illusoire
     status: active
@@ -2657,6 +3089,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:loup-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: loup-illusoire
+        term: Loup illusoire
   - id: loup-garou-illusoire
     name: Loup-garou illusoire
     status: active
@@ -2670,6 +3106,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:loup-garou-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: loup-garou-illusoire
+        term: Loup-garou illusoire
   - id: mur-illusoire
     name: Mur illusoire
     status: active
@@ -2683,6 +3123,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:mur-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: mur-illusoire
+        term: Mur illusoire
   - id: nain-illusoire
     name: Nain illusoire
     status: active
@@ -2696,6 +3140,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:nain-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: nain-illusoire
+        term: Nain illusoire
   - id: ogre-illusoire
     name: Ogre illusoire
     status: active
@@ -2709,6 +3157,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:ogre-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: ogre-illusoire
+        term: Ogre illusoire
   - id: ondine-illusoire
     name: Ondine illusoire
     status: active
@@ -2722,6 +3174,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:ondine-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: ondine-illusoire
+        term: Ondine illusoire
   - id: orc-illusoire
     name: Orc illusoire
     status: active
@@ -2735,6 +3191,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:orc-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: orc-illusoire
+        term: Orc illusoire
   - id: squelette-illusoire
     name: Squelette illusoire
     status: active
@@ -2748,6 +3208,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:squelette-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: squelette-illusoire
+        term: Squelette illusoire
   - id: troll-illusoire
     name: Troll illusoire
     status: active
@@ -2761,6 +3225,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:troll-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: troll-illusoire
+        term: Troll illusoire
   - id: vampire-illusoire
     name: Vampire illusoire
     status: active
@@ -2774,6 +3242,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vampire-illusoire
+    prose_refs:
+      - catalog: lexique
+        entry_id: vampire-illusoire
+        term: Vampire illusoire
   - id: vide-sideral
     name: Vide sidéral
     status: active
@@ -2787,6 +3259,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vide-sideral
+    prose_refs:
+      - catalog: lexique
+        entry_id: vide-sideral
+        term: Vide sidéral
   - id: invocation-d-elfe
     name: Invocation d'elfe
     status: active
@@ -2800,6 +3276,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-elfe
+    prose_orphan: true
   - id: invocation-d-homme-lezard
     name: Invocation d'homme lézard
     status: active
@@ -2813,6 +3290,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-homme-lezard
+    prose_orphan: true
   - id: invocation-d-homme-oiseau
     name: Invocation d'homme oiseau
     status: active
@@ -2826,6 +3304,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-homme-oiseau
+    prose_orphan: true
   - id: invocation-d-homme-rat
     name: Invocation d'homme rat
     status: active
@@ -2839,6 +3318,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-homme-rat
+    prose_orphan: true
   - id: invocation-d-humain
     name: Invocation d'humain
     status: active
@@ -2852,6 +3332,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-humain
+    prose_orphan: true
   - id: invocation-d-ondine
     name: Invocation d'ondine
     status: active
@@ -2865,6 +3346,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-ondine
+    prose_orphan: true
   - id: invocation-de-centaure
     name: Invocation de centaure
     status: active
@@ -2878,6 +3360,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-centaure
+    prose_orphan: true
   - id: invocation-de-chat
     name: Invocation de chat
     status: active
@@ -2891,6 +3374,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-chat
+    prose_orphan: true
   - id: invocation-de-cheval
     name: Invocation de cheval
     status: active
@@ -2904,6 +3388,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-cheval
+    prose_orphan: true
   - id: invocation-de-chigr
     name: Invocation de chigr
     status: active
@@ -2917,6 +3402,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-chigr
+    prose_orphan: true
   - id: invocation-de-demi-elfe
     name: Invocation de demi elfe
     status: active
@@ -2930,6 +3416,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-demi-elfe
+    prose_orphan: true
   - id: invocation-de-dryade
     name: Invocation de dryade
     status: active
@@ -2943,6 +3430,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-dryade
+    prose_orphan: true
   - id: invocation-de-gnome
     name: Invocation de gnome
     status: active
@@ -2956,6 +3444,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-gnome
+    prose_orphan: true
   - id: invocation-de-gobelin
     name: Invocation de gobelin
     status: active
@@ -2969,6 +3458,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-gobelin
+    prose_orphan: true
   - id: invocation-de-guepe
     name: Invocation de guêpe
     status: active
@@ -2982,6 +3472,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-guepe
+    prose_orphan: true
   - id: invocation-de-hobbit
     name: Invocation de hobbit
     status: active
@@ -2995,6 +3486,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-hobbit
+    prose_orphan: true
   - id: invocation-de-khochigr
     name: Invocation de khochigr
     status: active
@@ -3008,6 +3500,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-khochigr
+    prose_orphan: true
   - id: invocation-de-khogr
     name: Invocation de khogr
     status: active
@@ -3021,6 +3514,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-khogr
+    prose_orphan: true
   - id: invocation-de-loup
     name: Invocation de loup
     status: active
@@ -3034,6 +3528,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-loup
+    prose_orphan: true
   - id: invocation-de-loup-garou
     name: Invocation de loup-garou
     status: active
@@ -3047,6 +3542,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-loup-garou
+    prose_orphan: true
   - id: invocation-de-nain
     name: Invocation de nain
     status: active
@@ -3060,6 +3556,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-nain
+    prose_orphan: true
   - id: invocation-de-squelette
     name: Invocation de squelette
     status: active
@@ -3073,6 +3570,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-squelette
+    prose_orphan: true
   - id: invocation-de-termite
     name: Invocation de termite
     status: active
@@ -3086,6 +3584,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-termite
+    prose_orphan: true
   - id: invocation-de-troll
     name: Invocation de troll
     status: active
@@ -3099,6 +3598,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-troll
+    prose_orphan: true
   - id: invocation-de-vampire
     name: Invocation de vampire
     status: active
@@ -3112,6 +3612,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-de-vampire
+    prose_orphan: true
   - id: invocation-d-abeilles
     name: Invocation d’abeilles
     status: active
@@ -3125,6 +3626,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-abeilles
+    prose_orphan: true
   - id: invocation-d-ogres
     name: Invocation d’ogres
     status: active
@@ -3138,6 +3640,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-ogres
+    prose_orphan: true
   - id: invocation-d-orc
     name: Invocation d’orc
     status: active
@@ -3151,6 +3654,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:invocation-d-orc
+    prose_orphan: true
   - id: lien-d-invocation
     name: Lien d'invocation
     status: active
@@ -3159,13 +3663,14 @@ spells:
     incantation_time: 9
     difficulty: 7
     effect: >-
-      Le magicien crée un lien entre une cible (à vue) et lui-même (jet d'intelligence pour résister). Ce lien permettra
-      au magicien d'invoquer la cible à l'avenir.
+      Le magicien crée un lien entre une cible (à vue) et lui-même (jet d'intelligence pour
+      résister). Ce lien permettra au magicien d'invoquer la cible à l'avenir.
     value: 30
     source_refs:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lien-d-invocation
+    prose_orphan: true
   - id: revocation
     name: Révocation
     status: active
@@ -3179,6 +3684,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:revocation
+    prose_orphan: true
   - id: appel-des-chats
     name: Appel des chats
     status: active
@@ -3192,6 +3698,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-chats
+    prose_orphan: true
   - id: appel-des-chevaux
     name: Appel des chevaux
     status: active
@@ -3205,6 +3712,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-chevaux
+    prose_orphan: true
   - id: appel-des-colombes
     name: Appel des colombes
     status: active
@@ -3218,6 +3726,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-colombes
+    prose_orphan: true
   - id: appel-des-corbeaux
     name: Appel des corbeaux
     status: active
@@ -3231,6 +3740,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-corbeaux
+    prose_orphan: true
   - id: appel-des-insectes
     name: Appel des insectes
     status: active
@@ -3244,6 +3754,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-insectes
+    prose_orphan: true
   - id: appel-des-loups
     name: Appel des loups
     status: active
@@ -3257,6 +3768,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-loups
+    prose_orphan: true
   - id: appel-des-mammiferes
     name: Appel des mammifères
     status: active
@@ -3270,6 +3782,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-mammiferes
+    prose_orphan: true
   - id: cercle-de-fleur
     name: Cercle de fleur
     status: active
@@ -3283,6 +3796,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:cercle-de-fleur
+    prose_refs:
+      - catalog: lexique
+        entry_id: cercle-de-fleur
+        term: Cercle de fleur
   - id: croissance
     name: Croissance
     status: active
@@ -3296,6 +3813,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:croissance
+    prose_refs:
+      - catalog: lexique
+        entry_id: croissance
+        term: Croissance
   - id: eclosion
     name: Eclosion
     status: active
@@ -3309,6 +3830,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:eclosion
+    prose_refs:
+      - catalog: lexique
+        entry_id: eclosion
+        term: Eclosion
   - id: effacement-des-traces
     name: Effacement des traces
     status: active
@@ -3322,6 +3847,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:effacement-des-traces
+    prose_refs:
+      - catalog: lexique
+        entry_id: effacement-des-traces
+        term: Effacement des traces
   - id: effacement-des-traces-de-masses
     name: Effacement des traces de masses
     status: active
@@ -3335,6 +3864,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:effacement-des-traces-de-masses
+    prose_orphan: true
   - id: fertilite
     name: Fertilité
     status: active
@@ -3348,6 +3878,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:fertilite
+    prose_refs:
+      - catalog: lexique
+        entry_id: fertilite
+        term: Fertilité
   - id: instinct-de-reproduction
     name: Instinct de reproduction
     status: active
@@ -3361,6 +3895,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:instinct-de-reproduction
+    prose_refs:
+      - catalog: lexique
+        entry_id: instinct-de-reproduction
+        term: Instinct de reproduction
   - id: instinct-de-survie
     name: Instinct de survie
     status: active
@@ -3374,6 +3912,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:instinct-de-survie
+    prose_refs:
+      - catalog: lexique
+        entry_id: instinct-de-survie
+        term: Instinct de survie
   - id: marecage
     name: Marécage
     status: active
@@ -3387,6 +3929,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:marecage
+    prose_orphan: true
   - id: murissement
     name: Mûrissement
     status: active
@@ -3400,6 +3943,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:murissement
+    prose_refs:
+      - catalog: lexique
+        entry_id: murissement
+        term: Mûrissement
   - id: obstacles-vegetaux
     name: Obstacles végétaux
     status: active
@@ -3413,6 +3960,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:obstacles-vegetaux
+    prose_refs:
+      - catalog: lexique
+        entry_id: obstacles-vegetaux
+        term: Obstacles végétaux
   - id: reveil-de-la-bete
     name: Réveil de la bête
     status: active
@@ -3426,6 +3977,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:reveil-de-la-bete
+    prose_refs:
+      - catalog: lexique
+        entry_id: reveil-de-la-bete
+        term: Réveil de la bête
   - id: sol-fertile
     name: Sol fertile
     status: active
@@ -3439,6 +3994,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:sol-fertile
+    prose_refs:
+      - catalog: lexique
+        entry_id: sol-fertile
+        term: Sol fertile
   - id: torsion-du-bois
     name: Torsion du bois
     status: active
@@ -3452,6 +4011,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:torsion-du-bois
+    prose_refs:
+      - catalog: lexique
+        entry_id: torsion-du-bois
+        term: Torsion du bois
   - id: appel-des-morts
     name: Appel des morts
     status: active
@@ -3465,6 +4028,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-morts
+    prose_orphan: true
   - id: appel-des-morts-de-masse
     name: Appel des morts de masse
     status: active
@@ -3478,6 +4042,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-morts-de-masse
+    prose_orphan: true
   - id: appel-des-morts-majeur
     name: Appel des morts majeur
     status: active
@@ -3491,6 +4056,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:appel-des-morts-majeur
+    prose_orphan: true
   - id: armure-d-os
     name: Armure d’os
     status: active
@@ -3504,6 +4070,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:armure-d-os
+    prose_orphan: true
   - id: cage-d-os
     name: Cage d'os
     status: active
@@ -3517,6 +4084,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:cage-d-os
+    prose_refs:
+      - catalog: lexique
+        entry_id: cage-dos
+        term: Cage d’os
   - id: changement-spectral
     name: Changement spectral
     status: active
@@ -3530,6 +4101,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:changement-spectral
+    prose_refs:
+      - catalog: lexique
+        entry_id: changement-spectral
+        term: Changement spectral
   - id: corruption-de-l-air
     name: Corruption de l'air
     status: active
@@ -3543,6 +4118,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:corruption-de-l-air
+    prose_refs:
+      - catalog: lexique
+        entry_id: corruption-de-lair
+        term: Corruption de l’air
   - id: corruption-de-l-eau
     name: Corruption de l'eau
     status: active
@@ -3556,6 +4135,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:corruption-de-l-eau
+    prose_refs:
+      - catalog: lexique
+        entry_id: corruption-de-leau
+        term: Corruption de l’eau
   - id: corruption-vegetale
     name: Corruption végétale
     status: active
@@ -3569,6 +4152,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:corruption-vegetale
+    prose_refs:
+      - catalog: lexique
+        entry_id: corruption-vegetale
+        term: Corruption végétale
   - id: crane-hurlant
     name: Crâne hurlant
     status: active
@@ -3582,6 +4169,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:crane-hurlant
+    prose_orphan: true
   - id: decret-de-non-repos
     name: Décret de non repos
     status: active
@@ -3595,6 +4183,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:decret-de-non-repos
+    prose_refs:
+      - catalog: lexique
+        entry_id: decret-de-non-repos
+        term: Décret de non-repos
   - id: mort-temporaire
     name: Mort temporaire
     status: active
@@ -3608,6 +4200,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:mort-temporaire
+    prose_refs:
+      - catalog: lexique
+        entry_id: mort-temporaire
+        term: Mort temporaire
   - id: piege-d-os
     name: Piège d'os
     status: active
@@ -3621,6 +4217,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:piege-d-os
+    prose_refs:
+      - catalog: lexique
+        entry_id: piege-dos
+        term: Piège d’os
   - id: putrefaction
     name: Putréfaction
     status: active
@@ -3634,6 +4234,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:putrefaction
+    prose_refs:
+      - catalog: lexique
+        entry_id: putrefaction
+        term: Putréfaction
   - id: raideur-cadaverique
     name: Raideur cadavérique
     status: active
@@ -3647,6 +4251,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:raideur-cadaverique
+    prose_orphan: true
   - id: reanimation-des-membres
     name: Réanimation des membres
     status: active
@@ -3660,6 +4265,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:reanimation-des-membres
+    prose_orphan: true
   - id: renvoi
     name: Renvoi
     status: active
@@ -3673,6 +4279,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:renvoi
+    prose_refs:
+      - catalog: lexique
+        entry_id: renvoi
+        term: Renvoi
   - id: renvoie-de-masse
     name: Renvoie de masse
     status: active
@@ -3686,6 +4296,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:renvoie-de-masse
+    prose_orphan: true
   - id: terre-sterile
     name: Terre stérile
     status: active
@@ -3699,6 +4310,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:terre-sterile
+    prose_refs:
+      - catalog: lexique
+        entry_id: terre-sterile
+        term: Terre stérile
   - id: touche-mortel
     name: Touché mortel
     status: active
@@ -3712,6 +4327,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:touche-mortel
+    prose_refs:
+      - catalog: lexique
+        entry_id: touche-mortel
+        term: Touché mortel
   - id: vieillissement
     name: Vieillissement
     status: active
@@ -3725,6 +4344,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vieillissement
+    prose_refs:
+      - catalog: lexique
+        entry_id: vieillissement
+        term: Vieillissement
   - id: affaiblissement
     name: Affaiblissement
     status: active
@@ -3738,6 +4361,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:affaiblissement
+    prose_orphan: true
   - id: affaiblissement-de-masse
     name: Affaiblissement de masse
     status: active
@@ -3751,6 +4375,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:affaiblissement-de-masse
+    prose_orphan: true
   - id: antipathisme
     name: Antipathisme
     status: active
@@ -3764,6 +4389,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:antipathisme
+    prose_orphan: true
   - id: apathie
     name: Apathie
     status: active
@@ -3777,6 +4403,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:apathie
+    prose_refs:
+      - catalog: lexique
+        entry_id: apathie
+        term: Apathie
   - id: arret-du-temps
     name: Arrêt du temps
     status: active
@@ -3790,6 +4420,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:arret-du-temps
+    prose_orphan: true
   - id: autodestruction
     name: Autodestruction
     status: active
@@ -3798,13 +4429,14 @@ spells:
     incantation_time: 16
     difficulty: 10
     effect: >-
-      Sous test d’intelligence, la cible cherchera à se nuire le plus possible durant 10 min/niv. Celle-ci doit être à
-      vue du lanceur lors de l'incantation.
+      Sous test d’intelligence, la cible cherchera à se nuire le plus possible durant 10 min/niv.
+      Celle-ci doit être à vue du lanceur lors de l'incantation.
     value: 140
     source_refs:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:autodestruction
+    prose_orphan: true
   - id: betise
     name: Bêtise
     status: active
@@ -3818,6 +4450,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:betise
+    prose_orphan: true
   - id: contagion-du-peche
     name: Contagion du péché
     status: active
@@ -3831,6 +4464,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:contagion-du-peche
+    prose_refs:
+      - catalog: lexique
+        entry_id: contagion-du-peche
+        term: Contagion du péché
   - id: control-charnel
     name: Control charnel
     status: active
@@ -3844,6 +4481,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:control-charnel
+    prose_orphan: true
   - id: controle-mental
     name: Contrôle mental
     status: active
@@ -3857,6 +4495,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:controle-mental
+    prose_orphan: true
   - id: douleur
     name: Douleur
     status: active
@@ -3870,6 +4509,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:douleur
+    prose_orphan: true
   - id: douleur-a-distance
     name: Douleur à distance
     status: active
@@ -3883,6 +4523,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:douleur-a-distance
+    prose_orphan: true
   - id: douleur-de-masse
     name: Douleur de masse
     status: active
@@ -3896,6 +4537,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:douleur-de-masse
+    prose_orphan: true
   - id: douleur-majeure
     name: Douleur majeure
     status: active
@@ -3909,6 +4551,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:douleur-majeure
+    prose_orphan: true
   - id: douleur-mineure
     name: Douleur mineure
     status: active
@@ -3922,6 +4565,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:douleur-mineure
+    prose_orphan: true
   - id: drain-de-jeunesse
     name: Drain de jeunesse
     status: active
@@ -3929,12 +4573,15 @@ spells:
     energy: 67
     incantation_time: 60
     difficulty: 19
-    effect: Vole 1 année de jeunesse (le lanceur rajeunit tandis que sa cible vieillit) /R contre jet d'endurance.
+    effect: >-
+      Vole 1 année de jeunesse (le lanceur rajeunit tandis que sa cible vieillit) /R contre jet
+      d'endurance.
     value: 2000
     source_refs:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:drain-de-jeunesse
+    prose_orphan: true
   - id: drain-de-sort
     name: Drain de sort
     status: active
@@ -3948,6 +4595,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:drain-de-sort
+    prose_orphan: true
   - id: drain-de-sort-majeur
     name: Drain de sort majeur
     status: active
@@ -3961,6 +4609,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:drain-de-sort-majeur
+    prose_orphan: true
   - id: drain-de-sort-mineur
     name: Drain de sort mineur
     status: active
@@ -3974,6 +4623,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:drain-de-sort-mineur
+    prose_orphan: true
   - id: drain-de-vie
     name: Drain de vie
     status: active
@@ -3987,6 +4637,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:drain-de-vie
+    prose_orphan: true
   - id: emprise-corporelle
     name: Emprise corporelle
     status: active
@@ -4000,6 +4651,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:emprise-corporelle
+    prose_refs:
+      - catalog: lexique
+        entry_id: emprise-corporelle
+        term: Emprise corporelle
   - id: faiblesse
     name: Faiblesse
     status: active
@@ -4013,6 +4668,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:faiblesse
+    prose_orphan: true
   - id: folie
     name: Folie
     status: active
@@ -4026,6 +4682,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:folie
+    prose_orphan: true
   - id: hibernation
     name: Hibernation
     status: active
@@ -4039,6 +4696,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:hibernation
+    prose_orphan: true
   - id: horreur
     name: Horreur
     status: active
@@ -4052,6 +4710,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:horreur
+    prose_orphan: true
   - id: implosion
     name: Implosion
     status: active
@@ -4065,6 +4724,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:implosion
+    prose_orphan: true
   - id: lachete
     name: Lâcheté
     status: active
@@ -4078,6 +4738,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lachete
+    prose_orphan: true
   - id: laideur
     name: Laideur
     status: active
@@ -4091,6 +4752,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:laideur
+    prose_orphan: true
   - id: lenteur
     name: Lenteur
     status: active
@@ -4104,6 +4766,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lenteur
+    prose_orphan: true
   - id: lenteur-de-masse
     name: Lenteur de masse
     status: active
@@ -4117,6 +4780,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:lenteur-de-masse
+    prose_orphan: true
   - id: malediction
     name: Malédiction
     status: active
@@ -4130,6 +4794,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:malediction
+    prose_orphan: true
   - id: oubli
     name: Oubli
     status: active
@@ -4143,6 +4808,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:oubli
+    prose_refs:
+      - catalog: lexique
+        entry_id: oubli
+        term: Oubli
   - id: paralysie
     name: Paralysie
     status: active
@@ -4156,6 +4825,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:paralysie
+    prose_orphan: true
   - id: penombre
     name: Pénombre
     status: active
@@ -4169,6 +4839,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:penombre
+    prose_orphan: true
   - id: peur
     name: Peur
     status: active
@@ -4182,6 +4853,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:peur
+    prose_refs:
+      - catalog: lexique
+        entry_id: peur
+        term: Peur
   - id: pluie-de-sang
     name: Pluie de sang
     status: active
@@ -4195,6 +4870,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:pluie-de-sang
+    prose_orphan: true
   - id: resserrement-des-murs
     name: Resserrement des murs
     status: active
@@ -4208,6 +4884,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:resserrement-des-murs
+    prose_orphan: true
   - id: vengeance
     name: Vengeance
     status: active
@@ -4221,6 +4898,10 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vengeance
+    prose_refs:
+      - catalog: lexique
+        entry_id: vengeance
+        term: Vengeance
   - id: vengeance-en-masse
     name: Vengeance en masse
     status: active
@@ -4234,3 +4915,7 @@ spells:
       - path: data/legacy/web-scraped/documents/grimoire/index.md
         sha256: 46e9ee82c1f468eb68efabe8030828b9784fad4cda6cc3664a4564667e10a200
         ref: entry:vengeance-en-masse
+    prose_refs:
+      - catalog: lexique
+        entry_id: vengeance-en-masse
+        term: Vengeance en masse
