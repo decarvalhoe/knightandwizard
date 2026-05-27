@@ -11,6 +11,7 @@ import {
   attributeImprovementCost,
   calculateLearningPlan,
   calculateSessionXPAward,
+  convertQuestPoints,
   energyImprovementCost,
   factorImprovementCost,
   finalizeDefinitiveDeath,
@@ -292,5 +293,27 @@ describe('XP cost bareme (R-7.5)', () => {
     expect(attributeImprovementCost(2, {}, custom)).toBe(14);
     expect(factorImprovementCost(8, 8, custom)).toBe(30);
     expect(vitalityImprovementCost(custom)).toBe(99);
+  });
+});
+
+describe('quest points conversion (R-7.3)', () => {
+  it('converts accumulated quest points into usable XP on quest completion', () => {
+    const character = gainXP(fighter(), 5, { questPoints: 3 });
+    const converted = convertQuestPoints(character);
+
+    expect(converted.progression).toEqual({
+      experiencePoints: 8,
+      experienceTotal: 8,
+      questPoints: 0
+    });
+    // immutable
+    expect(character.progression.questPoints).toBe(3);
+  });
+
+  it('is a no-op when there are no quest points', () => {
+    const character = gainXP(fighter(), 4);
+    const converted = convertQuestPoints(character);
+
+    expect(converted).toBe(character);
   });
 });

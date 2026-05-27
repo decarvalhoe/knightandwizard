@@ -393,3 +393,25 @@ export function vitalityImprovementCost(config: RulesConfig = DEFAULT_RULES_CONF
 export function energyImprovementCost(config: RulesConfig = DEFAULT_RULES_CONFIG): number {
   return config.progression.energyImprovementCost;
 }
+
+/**
+ * R-7.3 — Once a quest is completed (and the character survives), accumulated quest points
+ * become usable experience points. They were earned but deferred, so they now count toward the
+ * spendable pool and the lifetime total; the quest-point gauge is reset.
+ */
+export function convertQuestPoints<TCharacter extends Character>(
+  character: TCharacter
+): TCharacter {
+  const questPoints = character.progression.questPoints;
+
+  if (questPoints <= 0) {
+    return character;
+  }
+
+  return withProgression(character, {
+    ...character.progression,
+    experiencePoints: character.progression.experiencePoints + questPoints,
+    experienceTotal: character.progression.experienceTotal + questPoints,
+    questPoints: 0
+  });
+}
