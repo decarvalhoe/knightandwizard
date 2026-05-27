@@ -1,9 +1,8 @@
 # E2b — Overlay d'effets structurés AUTHORÉS, école élémentaire.
 #
 # Source autorité : la ligne `effect` du grimoire (spells.yaml) + la prose liée (lexique, E0).
-# Chaque entrée est un EffectModel complet (rules-core), PROPOSÉ par audit (E2a) et **À VALIDER par
-# le MJ** (méthode Q-D8.2) : `fidelity: pending` + `spec.requires_mj_validation: true`. Tant que non
-# validé, ce n'est PAS du canon autoritaire — jamais confondu avec un effet validé.
+# Chaque entrée est un EffectModel complet (rules-core). **VALIDÉ par le MJ le 2026-05-27** (E2c,
+# méthode Q-D8.2) : `fidelity: covered`, `requires_mj_validation` retiré. C'est désormais du canon.
 #
 # Convention de dégâts élémentaires (R-8.15, couche élémentaire ≠ P/E/C/T physique) :
 #   - `target: damage`, `scope` = élément (feu | foudre | eau) → routé par le moteur de résistance (E4).
@@ -26,8 +25,7 @@ effects:
       value: '2 * successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   fleche-de-foudre:
     source:
@@ -40,8 +38,7 @@ effects:
       value: '2 * successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   foudroiement:
     source:
@@ -54,8 +51,7 @@ effects:
       value: '3 * successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   touche-ardant:
     source:
@@ -68,8 +64,7 @@ effects:
       value: 'successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   chaine-d-eclairs:
     source:
@@ -82,8 +77,7 @@ effects:
       value: '3 * successes'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   boule-de-feu:
     source:
@@ -96,8 +90,7 @@ effects:
       value: '8 + 3 * (successes - 1)'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   boule-de-feu-majeure:
     source:
@@ -110,8 +103,7 @@ effects:
       value: '12 + 4 * (successes - 1)'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   boule-de-foudre:
     source:
@@ -124,8 +116,7 @@ effects:
       value: '8 + 3 * (successes - 1)'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   boule-de-foudre-majeure:
     source:
@@ -138,8 +129,7 @@ effects:
       value: '12 + 4 * (successes - 1)'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   multi-flamme:
     source:
@@ -152,8 +142,7 @@ effects:
       value: '3 + (successes - 1)'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   vague-de-feu:
     source:
@@ -166,8 +155,7 @@ effects:
       value: '10 + 2 * (successes - 1)'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   raz-de-maree:
     source:
@@ -180,8 +168,7 @@ effects:
       value: '50 + 10 * (successes - 1)'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   appel-de-la-foudre:
     source:
@@ -194,8 +181,7 @@ effects:
       value: '20 + 4 * (successes - 1)'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   pilier-de-feu:
     source:
@@ -208,8 +194,7 @@ effects:
       value: '20 + 4 * (successes - 1)'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   pyramide-de-feu:
     source:
@@ -222,8 +207,7 @@ effects:
       value: '25 + 5 * (successes - 1)'
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
   brasier:
     source:
@@ -236,6 +220,5 @@ effects:
       value: 4
       activation: active
       duration: ephemeral
-      requires_mj_validation: true
-    fidelity: pending
+    fidelity: covered
     ambiguity_ref: null
