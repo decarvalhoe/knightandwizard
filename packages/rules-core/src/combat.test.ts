@@ -850,3 +850,166 @@ describe('spell casting in combat (R-8.5 / R-8.6 / R-8.7 / R-8.8)', () => {
     );
   });
 });
+
+describe('structured spell effects applied on resolution (E1b, R-8.5)', () => {
+  const spell = (overrides: Partial<SpellAction> = {}): SpellAction => ({
+    type: 'spell',
+    intelligence: 4,
+    spellPoints: 2,
+    difficulty: 7,
+    energyCost: 10,
+    castingTimeDT: 12,
+    ...overrides
+  });
+
+  const mage = () => ({
+    ...combatant({ id: 'mage', speedFactor: 7 }),
+    energy: { current: 60, max: 60 }
+  });
+
+  // Target parked far in the future so the mage's windup resolves first.
+  const target = (overrides: Partial<Combatant> = {}) =>
+    combatant({ id: 'orc', speedFactor: 6, nextActionAt: 999, ...overrides });
+
+  const damageEffect = parseEffectModel({
+    source: { prose: 'Inflige 2 points de degats de coupe par reussite.', ref: 'spells:exemple' },
+    spec: {
+      target: 'damage',
+      scope: 'C',
+      op: 'add',
+      value: 'successes * 2',
+      activation: 'active',
+      duration: 'ephemeral'
+    },
+    fidelity: 'covered',
+    ambiguity_ref: null
+  });
+
+  // Pool 6 (Int 4 + 2 points) vs difficulty 7: three dice >= 7 -> 3 net successes, no explosion/1s.
+  const threeSuccesses = () => scriptedRolls([7, 8, 9, 2, 3, 4]);
+
+  it('scales damage by net successes and carries the damage type for resistance (E1b)', () => {
+    const state = addCombatant(addCombatant(createCombatState(1), mage()), target());
+    const declared = declareSpellCast(
+      state,
+      'mage',
+      spell({ targetId: 'orc', effect: damageEffect })
+    );
+
+    const resolved = resolveNextAction(declared, { randomInteger: threeSuccesses() });
+
+    const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
+    expect(spellEvent?.successes).toBe(3);
+    expect(spellEvent?.spellEffect).toEqual({
+      target: 'damage',
+      op: 'add',
+      scope: 'C',
+      value: 6,
+      applied: true
+    });
+    // 10 vitality - (3 successes * 2) = 4
+    expect(resolved.timeline.find((e) => e.id === 'orc')?.vitality.current).toBe(4);
+  });
+
+  it('applies a heal using the structured formula, not a flat per-success heal (E1b)', () => {
+    // Apaisement-style: the prose formula governs the magnitude, not a naive +R.
+    const healEffect = parseEffectModel({
+      source: { prose: 'Restaure 1 point de vitalite par reussite.', ref: 'spells:soin' },
+      spec: {
+        target: 'vitality',
+        op: 'add',
+        value: 'successes',
+        activation: 'active',
+        duration: 'ephemeral'
+      },
+      fidelity: 'covered',
+      ambiguity_ref: null
+    });
+    const state = addCombatant(
+      addCombatant(createCombatState(1), mage()),
+      target({ id: 'ally', vitality: { current: 4, max: 10 } })
+    );
+    const declared = declareSpellCast(
+      state,
+      'mage',
+      spell({ targetId: 'ally', effect: healEffect })
+    );
+
+    const resolved = resolveNextAction(declared, { randomInteger: threeSuccesses() });
+
+    const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
+    expect(spellEvent?.spellEffect).toEqual({
+      target: 'vitality',
+      op: 'add',
+      value: 3,
+      applied: true
+    });
+    // 4 + 3 successes = 7 (heal is a negative vitality delta, capped at max)
+    expect(resolved.timeline.find((e) => e.id === 'ally')?.vitality.current).toBe(7);
+  });
+
+  it('does not apply the effect when the cast nets zero successes (R-8.5)', () => {
+    const state = addCombatant(addCombatant(createCombatState(1), mage()), target());
+    const declared = declareSpellCast(
+      state,
+      'mage',
+      spell({ targetId: 'orc', effect: damageEffect })
+    );
+
+    // No die >= 7 and no 1s: zero successes, no critical-failure D100.
+    const resolved = resolveNextAction(declared, {
+      randomInteger: scriptedRolls([2, 3, 4, 5, 6, 6])
+    });
+
+    const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
+    expect(spellEvent?.successes).toBe(0);
+    expect(spellEvent?.spellEffect).toBeUndefined();
+    expect(resolved.timeline.find((e) => e.id === 'orc')?.vitality.current).toBe(10);
+  });
+
+  it('reports a non-vitality effect without mutating the target (deferred to E3/E4)', () => {
+    const slowEffect = parseEffectModel({
+      source: { prose: 'Ralentit la cible (facteur de vitesse +2).', ref: 'spells:lenteur' },
+      spec: {
+        target: 'factor',
+        op: 'add',
+        value: 2,
+        activation: 'active',
+        duration: { dt: 20 }
+      },
+      fidelity: 'covered',
+      ambiguity_ref: null
+    });
+    const state = addCombatant(addCombatant(createCombatState(1), mage()), target());
+    const declared = declareSpellCast(
+      state,
+      'mage',
+      spell({ targetId: 'orc', effect: slowEffect })
+    );
+
+    const resolved = resolveNextAction(declared, { randomInteger: threeSuccesses() });
+
+    const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
+    expect(spellEvent?.spellEffect).toEqual({
+      target: 'factor',
+      op: 'add',
+      value: 2,
+      applied: false
+    });
+    // No damage_applied event and vitality intact: the modifier is left to its dedicated layer.
+    expect(resolved.log.some((e) => e.type === 'damage_applied')).toBe(false);
+    expect(resolved.timeline.find((e) => e.id === 'orc')?.vitality.current).toBe(10);
+  });
+
+  it('omits the effect outcome entirely when the spell carries no structured effect', () => {
+    const state = addCombatant(addCombatant(createCombatState(1), mage()), target());
+    const declared = declareSpellCast(state, 'mage', spell({ targetId: 'orc' }));
+
+    const resolved = resolveNextAction(declared, { randomInteger: threeSuccesses() });
+
+    const spellEvent = resolved.log.find((e) => e.type === 'spell_resolved');
+    expect(spellEvent?.successes).toBe(3);
+    expect(spellEvent?.spellEffect).toBeUndefined();
+    expect(resolved.timeline.find((e) => e.id === 'orc')?.vitality.current).toBe(10);
+  });
+});

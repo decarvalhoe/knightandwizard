@@ -10,7 +10,13 @@ import {
 import { type DiceRollResult, type RandomInteger, rollDice } from './dice.js';
 import { resolveSpellCast, type SpellCastResult, spendEnergy } from './magic.js';
 import { DEFAULT_RULES_CONFIG, type RulesConfig } from './rules-config.js';
-import { type EffectModel } from './effect-model.js';
+import {
+  type EffectModel,
+  type EffectOperation,
+  type EffectTarget,
+  type EffectValueContext,
+  evaluateValue
+} from './effect-model.js';
 import { applyEffectiveModifiers, computeEffectiveModifiers, effectiveValue } from './effects.js';
 
 export const COMBAT_ROUND_LENGTH_DT = DEFAULT_RULES_CONFIG.combat.roundLengthDT;
@@ -96,8 +102,15 @@ export interface SpellAction {
   castingTimeDT?: number;
   /** R-8.8 — DT shaved off the windup by spending 2 energy/DT; the TI floors at the speed factor. */
   tiReductionDT?: number;
-  /** Optional target of the spell (effect application is resolved by a later layer). */
+  /** Optional target of the spell. */
   targetId?: string;
+  /**
+   * E1b — structured effect of the spell (provenance: catalog `spells.yaml`). When present and the
+   * cast nets ≥1 success, `resolveSpell` evaluates it with `successes` = net successes (R-8.5) and,
+   * for `damage`/`vitality` targets, applies it to `targetId`. The damage type is carried on the
+   * resolved outcome (`spellEffect.scope`) so the resistance layer (E4) can interpose.
+   */
+  effect?: EffectModel;
   /** Post-cast recovery in DT; defaults to the caster's effective speed factor. */
   costDT?: number;
 }
@@ -186,8 +199,25 @@ export interface CombatEvent {
   status?: CombatStatus;
   /** R-8.5 — spell casting roll result (on `spell_resolved`). */
   spellCast?: SpellCastResult;
+  /** E1b — resolved structured spell effect, scaled by net successes (on `spell_resolved`). */
+  spellEffect?: SpellEffectOutcome;
   /** R-8.10 — energy committed for a spell (on `spell_started`; lost if interrupted). */
   energySpent?: number;
+}
+
+/**
+ * E1b — a spell's structured effect after evaluation, scaled by the cast's net successes (R-8.5).
+ * `value` is the resolved numeric magnitude; `scope` carries the damage type (P/E/C/T) for a
+ * `damage` target so the resistance layer (E4) can interpose. `applied` is true when the outcome
+ * mutated the target's vitality during this resolution (damage / heal); other targets (factor,
+ * difficulty, status, energy…) are reported but not auto-applied here.
+ */
+export interface SpellEffectOutcome {
+  target: EffectTarget;
+  op: EffectOperation;
+  scope?: string;
+  value: number;
+  applied: boolean;
 }
 
 export interface CombatState {
@@ -303,7 +333,7 @@ export function resolveNextAction(
 
   if (action.type === 'spell' && isSpellCastReady(action)) {
     return rescheduleActor(
-      resolveSpell(activeState, actor, action, { costDT, nextActionAt }, options),
+      resolveSpell(activeState, actor, action, { costDT, nextActionAt }, options, config),
       actor.id,
       action,
       config
@@ -675,7 +705,8 @@ function resolveSpell(
   actor: Combatant,
   action: ResolvableSpellCast,
   timing: { costDT: number; nextActionAt: number },
-  options: CombatResolutionOptions
+  options: CombatResolutionOptions,
+  config: RulesConfig = DEFAULT_RULES_CONFIG
 ): CombatState {
   const randomInteger = randomIntegerForResolution(options);
   // R-8.7 — the mage kept concentrating through the hits taken during the windup: the cast
@@ -687,6 +718,14 @@ function resolveSpell(
     action.difficulty + concentrationPenalty,
     { randomInteger }
   );
+
+  // E1b — the spell takes effect only on a successful cast (≥1 net success, R-8.5). The structured
+  // effect is then evaluated with `successes` = net successes (per-réussite scaling, R-8.15).
+  const spellEffect =
+    action.effect !== undefined && spellCast.netSuccesses > 0
+      ? evaluateSpellEffect(action.effect, actor, action, spellCast.netSuccesses)
+      : undefined;
+
   const event: CombatEvent = {
     type: 'spell_resolved',
     atDT: state.currentDT,
@@ -696,13 +735,88 @@ function resolveSpell(
     costDT: timing.costDT,
     nextActionAt: timing.nextActionAt,
     successes: spellCast.netSuccesses,
-    spellCast
+    spellCast,
+    ...(spellEffect !== undefined ? { spellEffect } : {})
   };
 
-  return {
+  const loggedState: CombatState = {
     ...state,
     log: [...state.log, event]
   };
+
+  // Apply the vitality delta (positive = damage of type `scope`, negative = heal) to the target.
+  // The damage type is preserved on `spellEffect.scope`; resistance interposition is E4.
+  if (spellEffect?.applied === true && action.targetId !== undefined) {
+    const delta = spellVitalityDelta(spellEffect);
+    if (delta !== 0) {
+      return applyDamage(loggedState, action.targetId, delta, config);
+    }
+  }
+
+  return loggedState;
+}
+
+/**
+ * E1b — evaluates a spell's structured effect, scaling per net successes. `damage` and `vitality`
+ * targets resolve to a vitality delta applied to the target; other targets (factor, difficulty,
+ * status, energy…) are reported (`applied: false`) and left to their dedicated layers (E3/E4).
+ */
+function evaluateSpellEffect(
+  effect: EffectModel,
+  actor: Combatant,
+  action: ResolvableSpellCast,
+  netSuccesses: number
+): SpellEffectOutcome {
+  const spec = effect.spec;
+  const value = Math.round(
+    evaluateValue(spec.value, spellEffectContext(actor, action, netSuccesses))
+  );
+  const mutatesVitality =
+    spec.target === 'damage' ||
+    (spec.target === 'vitality' && (spec.op === 'add' || spec.op === 'sub'));
+
+  return {
+    target: spec.target,
+    op: spec.op,
+    ...(spec.scope !== undefined ? { scope: spec.scope } : {}),
+    value,
+    applied: mutatesVitality && action.targetId !== undefined
+  };
+}
+
+/**
+ * Builds the evaluation context from the caster. Combat only tracks the three physical attributes
+ * plus the spell pool's Intelligence (R-8.5); effects referencing unavailable variables (e.g.
+ * `level`) throw explicitly rather than guessing.
+ */
+function spellEffectContext(
+  actor: Combatant,
+  action: ResolvableSpellCast,
+  netSuccesses: number
+): EffectValueContext {
+  return {
+    successes: netSuccesses,
+    force: actor.attributes.strength,
+    dexterity: actor.attributes.dexterity,
+    stamina: actor.attributes.stamina,
+    intelligence: action.intelligence,
+    vitalityMax: actor.vitality.max,
+    ...(actor.energy !== undefined ? { energyMax: actor.energy.max } : {})
+  };
+}
+
+/**
+ * Signed vitality delta for `applyDamage` (positive = damage, negative = heal). `damage` and a
+ * `vitality` reduction (`sub`) deal damage; a `vitality` increase (`add`) heals.
+ */
+function spellVitalityDelta(outcome: SpellEffectOutcome): number {
+  if (outcome.target === 'damage') {
+    return outcome.value;
+  }
+  if (outcome.target === 'vitality') {
+    return outcome.op === 'add' ? -outcome.value : outcome.value;
+  }
+  return 0;
 }
 
 function rescheduleActor(
