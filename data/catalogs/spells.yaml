@@ -2268,6 +2268,20 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: 20 dégâts de foudre, +4 par réussite au-delà de la première.
+        ref: spells:appel-de-la-foudre
+      spec:
+        target: damage
+        scope: foudre
+        op: add
+        value: 20 + 4 * (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: appel-de-la-pluie
     name: Appel de la pluie
     status: active
@@ -2337,6 +2351,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 8 dégâts de feu, +3 par réussite au-delà de la première.
+        ref: spells:boule-de-feu
+      spec:
+        target: damage
+        scope: feu
+        op: add
+        value: 8 + 3 * (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: boule-de-feu-majeure
     name: Boule de feu majeure
     status: active
@@ -2354,6 +2382,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 12 dégâts de feu, +4 par réussite au-delà de la première.
+        ref: spells:boule-de-feu-majeure
+      spec:
+        target: damage
+        scope: feu
+        op: add
+        value: 12 + 4 * (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: boule-de-foudre
     name: Boule de foudre
     status: active
@@ -2371,6 +2413,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 8 dégâts de foudre, +3 par réussite au-delà de la première.
+        ref: spells:boule-de-foudre
+      spec:
+        target: damage
+        scope: foudre
+        op: add
+        value: 8 + 3 * (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: boule-de-foudre-majeure
     name: Boule de foudre majeure
     status: active
@@ -2388,6 +2444,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 12 dégâts de foudre, +4 par réussite au-delà de la première.
+        ref: spells:boule-de-foudre-majeure
+      spec:
+        target: damage
+        scope: foudre
+        op: add
+        value: 12 + 4 * (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: brasier
     name: Brasier
     status: active
@@ -2405,6 +2475,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 4 dégâts de feu (zone 1m²/R modélisée par le ciblage).
+        ref: spells:brasier
+      spec:
+        target: damage
+        scope: feu
+        op: add
+        value: 4
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: cercle-de-feu
     name: Cercle de feu
     status: active
@@ -2439,6 +2523,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          3 dégâts de foudre par réussite (cible principale ; propagation 1 personne/R modélisée par
+          le ciblage, à part).
+        ref: spells:chaine-d-eclairs
+      spec:
+        target: damage
+        scope: foudre
+        op: add
+        value: 3 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: champs-de-boue
     name: Champs de boue
     status: active
@@ -2507,6 +2607,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 2 dégâts de feu par réussite.
+        ref: spells:fleche-de-feu
+      spec:
+        target: damage
+        scope: feu
+        op: add
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: fleche-de-foudre
     name: Flèche de foudre
     status: active
@@ -2524,6 +2638,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 2 dégâts d'électricité (foudre) par réussite.
+        ref: spells:fleche-de-foudre
+      spec:
+        target: damage
+        scope: foudre
+        op: add
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: foudroiement
     name: Foudroiement
     status: active
@@ -2541,6 +2669,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 3 dégâts d'électricité (foudre) par réussite.
+        ref: spells:foudroiement
+      spec:
+        target: damage
+        scope: foudre
+        op: add
+        value: 3 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: immolation
     name: Immolation
     status: active
@@ -2575,6 +2717,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          3 dégâts de feu, +1 par réussite au-delà de la première (projectiles additionnels 1/2R
+          modélisés à part).
+        ref: spells:multi-flamme
+      spec:
+        target: damage
+        scope: feu
+        op: add
+        value: 3 + (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: mur-de-flammes
     name: Mur de flammes
     status: active
@@ -2611,6 +2769,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 20 dégâts de feu, +4 par réussite au-delà de la première.
+        ref: spells:pilier-de-feu
+      spec:
+        target: damage
+        scope: feu
+        op: add
+        value: 20 + 4 * (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: pyramide-de-feu
     name: Pyramide de feu
     status: active
@@ -2628,6 +2800,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 25 dégâts de feu, +5 par réussite au-delà de la première (zone 10m²/5m).
+        ref: spells:pyramide-de-feu
+      spec:
+        target: damage
+        scope: feu
+        op: add
+        value: 25 + 5 * (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: rayon-d-eau
     name: Rayon d’eau
     status: active
@@ -2662,6 +2848,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 50 dégâts d'eau, +10 par réussite au-delà de la première.
+        ref: spells:raz-de-maree
+      spec:
+        target: damage
+        scope: eau
+        op: add
+        value: 50 + 10 * (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: sables-mouvants
     name: Sables mouvants
     status: active
@@ -2736,6 +2936,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 1 dégât de feu par réussite (toucher ardent).
+        ref: spells:touche-ardant
+      spec:
+        target: damage
+        scope: feu
+        op: add
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: vague-de-feu
     name: Vague de feu
     status: active
@@ -2753,6 +2967,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 10 dégâts de feu, +2 par réussite au-delà de la première.
+        ref: spells:vague-de-feu
+      spec:
+        target: damage
+        scope: feu
+        op: add
+        value: 10 + 2 * (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: animation-des-armures
     name: Animation des armures
     status: active
