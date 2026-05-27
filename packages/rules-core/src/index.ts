@@ -6,6 +6,7 @@ export * from './dice.js';
 export * from './effect-model.js';
 export * from './effect-renderer.js';
 export * from './effects.js';
+export * from './hit-table.js';
 export * from './npc-control.js';
 export * from './predilection.js';
 export * from './progression.js';
