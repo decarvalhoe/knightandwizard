@@ -136230,7 +136230,7 @@ units:
     source_refs:
       - source_id: DOCS-PLAN-MAGIC-IMPLEMENTATION
         locator: docs/plan/MAGIC-IMPLEMENTATION.md
-        hash: sha256:285c3ae9ce3da1b49464eb4918c412e6356a8c8c1ac80d205f209b5494c0aa41
+        hash: sha256:e90732479d4214efe28153f9e8f557088583aa0d6f71c24737261d8d269a40e5
     business_rule: docs/plan/MAGIC-IMPLEMENTATION.md from docs/plan/MAGIC-IMPLEMENTATION.md.
     status: partial
     gaps:
