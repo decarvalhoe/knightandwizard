@@ -20560,6 +20560,34 @@ sources:
       - vector_index
       - citation_internal
     notes: Project documentation source.
+  - id: DOCS-PLAN-EFFECTS-IMPLEMENTATION
+    path: docs/plan/EFFECTS-IMPLEMENTATION.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 36b522713d3c3d7addb7585b3e086dbb6e284d71e4f66395249b7dd3eaa785db
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
+  - id: DOCS-PLAN-GOVERNANCE-IMPLEMENTATION
+    path: docs/plan/GOVERNANCE-IMPLEMENTATION.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: ac1d416698b34fbb1ec9456e5ece9f64fed61b627ca894afd92d8e237e33f448
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-PLAN-INFRA-DEVLAB-PLAN
     path: docs/plan/INFRA-DEVLAB-PLAN.md
     type: markdown
@@ -20581,6 +20609,34 @@ sources:
     priority: derived
     status: active
     hash: cb92cfaebaed640432f8e650207073654daa63b2e9410163353ce239cc74f3f4
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
+  - id: DOCS-PLAN-MAGIC-IMPLEMENTATION
+    path: docs/plan/MAGIC-IMPLEMENTATION.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 3fdc18f30a82936a8a83db4cbf75b340959ba00006c193f156174618d0ac9c8a
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
+  - id: DOCS-PLAN-MJ-COCKPIT
+    path: docs/plan/MJ-COCKPIT.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: d8b41b7651d15303afabd4d9326c1d827b674e9cc76e5c3ccf9fa6cde9b15999
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
@@ -20623,6 +20679,20 @@ sources:
     priority: derived
     status: active
     hash: 8fd4b914b8dd497ba6744744b1a4f87a09c6528ab2bfefd44b8ae499eaa25d12
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
+  - id: DOCS-PLAN-SURFACES
+    path: docs/plan/SURFACES.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: de5508e5148ff022082bfa3f03ed3335b4fd0b3032e7a00e39f49921dd183a82
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal

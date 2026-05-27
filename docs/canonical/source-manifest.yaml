@@ -13142,6 +13142,24 @@ sources:
     domains: ["project-governance"]
     contains: ["project_documentation"]
     notes: "Project documentation source."
+  - id: "docs-plan-effects-implementation"
+    path: "docs/plan/EFFECTS-IMPLEMENTATION.md"
+    sha256: "36b522713d3c3d7addb7585b3e086dbb6e284d71e4f66395249b7dd3eaa785db"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-plan-governance-implementation"
+    path: "docs/plan/GOVERNANCE-IMPLEMENTATION.md"
+    sha256: "ac1d416698b34fbb1ec9456e5ece9f64fed61b627ca894afd92d8e237e33f448"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-plan-infra-devlab-plan"
     path: "docs/plan/INFRA-DEVLAB-PLAN.md"
     sha256: "da2a8d62728f2e4fc83ff65f732b49ae3c06d234e3f7eb33f3e5b60899beb8d2"
@@ -13154,6 +13172,24 @@ sources:
   - id: "docs-plan-issue-list"
     path: "docs/plan/ISSUE-LIST.md"
     sha256: "cb92cfaebaed640432f8e650207073654daa63b2e9410163353ce239cc74f3f4"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-plan-magic-implementation"
+    path: "docs/plan/MAGIC-IMPLEMENTATION.md"
+    sha256: "3fdc18f30a82936a8a83db4cbf75b340959ba00006c193f156174618d0ac9c8a"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-plan-mj-cockpit"
+    path: "docs/plan/MJ-COCKPIT.md"
+    sha256: "d8b41b7651d15303afabd4d9326c1d827b674e9cc76e5c3ccf9fa6cde9b15999"
     source_type: generated_doc
     priority: 40
     status: active
@@ -13181,6 +13217,15 @@ sources:
   - id: "docs-plan-roadmap"
     path: "docs/plan/ROADMAP.md"
     sha256: "8fd4b914b8dd497ba6744744b1a4f87a09c6528ab2bfefd44b8ae499eaa25d12"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
+  - id: "docs-plan-surfaces"
+    path: "docs/plan/SURFACES.md"
+    sha256: "de5508e5148ff022082bfa3f03ed3335b4fd0b3032e7a00e39f49921dd183a82"
     source_type: generated_doc
     priority: 40
     status: active
