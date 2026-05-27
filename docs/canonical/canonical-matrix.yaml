@@ -179009,6 +179009,386 @@ units:
     tests:
       status: partial
       evidence: "Automated coverage evidence pending."
+  - unit_id: "material:bois"
+    unit_type: "material"
+    domain: "D10-equipment"
+    title: "Bois"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.7"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Bois from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "bois"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "material:bronze"
+    unit_type: "material"
+    domain: "D10-equipment"
+    title: "Bronze"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.5"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Bronze from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "bronze"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "material:bronze-2"
+    unit_type: "material"
+    domain: "D10-equipment"
+    title: "Bronze"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.8"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Bronze from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "bronze-2"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "material:cotte-de-mailles-legere"
+    unit_type: "material"
+    domain: "D10-equipment"
+    title: "Cotte de mailles légère"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.3"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cotte de mailles légère from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cotte-de-mailles-legere"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "material:cotte-de-mailles-lourde"
+    unit_type: "material"
+    domain: "D10-equipment"
+    title: "Cotte de mailles lourde"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.4"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cotte de mailles lourde from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cotte-de-mailles-lourde"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "material:cuir-rigide"
+    unit_type: "material"
+    domain: "D10-equipment"
+    title: "Cuir rigide"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cuir rigide from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cuir-rigide"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "material:cuir-rigide-cloute"
+    unit_type: "material"
+    domain: "D10-equipment"
+    title: "Cuir rigide clouté"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cuir rigide clouté from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cuir-rigide-cloute"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "material:cuir-souples"
+    unit_type: "material"
+    domain: "D10-equipment"
+    title: "Cuir souples"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cuir souples from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cuir-souples"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "material:fer"
+    unit_type: "material"
+    domain: "D10-equipment"
+    title: "Fer"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.9"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Fer from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "fer"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "material:plates-fer"
+    unit_type: "material"
+    domain: "D10-equipment"
+    title: "Plates (fer)"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Plates (fer) from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "plates-fer"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "mushroom_syndrome:syndrome-coprinien"
     unit_type: "mushroom_syndrome"
     domain: "catalogs"
@@ -180339,6 +180719,2780 @@ units:
     tests:
       status: covered
       evidence: "Catalog schema tests validate orientations.yaml counts and magical flags, and character creation e2e exercises path controls. Tests: packages/catalogs/src/schemas.test.ts, tests/e2e/app-features.spec.ts, apps/server/src/catalogs/read-models.test.ts, apps/server/src/routes/catalogs.test.ts."
+  - unit_id: "piece:barbute"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Barbute"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Barbute from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "barbute"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:bonnet"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Bonnet"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.pieces.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Bonnet from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "bonnet"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:bonnet#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Bonnet"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Bonnet from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "bonnet"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:botte"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Botte"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.pieces.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Botte from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "botte"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:botte#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Botte"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Botte from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "botte"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:botte#3"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Botte"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.2.pieces.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Botte from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "botte"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:bouclier"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Bouclier"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.7.pieces.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Bouclier from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "bouclier"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:bouclier#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Bouclier"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.8.pieces.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Bouclier from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "bouclier"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:boucliers"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Boucliers"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.17"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Boucliers from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "boucliers"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:braconniere"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Braconnière"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Braconnière from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "braconniere"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:brassard"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Brassard"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.5.pieces.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Brassard from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "brassard"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:brassard#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Brassard"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Brassard from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "brassard"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:cagoule"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Cagoule"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.pieces.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cagoule from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cagoule"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:cagoule#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Cagoule"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cagoule from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cagoule"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:camail"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Camail"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.3.pieces.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Camail from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "camail"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:camail#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Camail"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.4.pieces.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Camail from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "camail"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:canon-d-avant-bras"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Canon d’avant-bras"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.3"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Canon d’avant-bras from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "canon-d-avant-bras"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:canon-d-avant-bras#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Canon d’avant-bras"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.2.pieces.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Canon d’avant-bras from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "canon-d-avant-bras"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:canon-d-avant-bras#3"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Canon d’avant-bras"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.5.pieces.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Canon d’avant-bras from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "canon-d-avant-bras"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:canon-d-avant-bras#4"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Canon d’avant-bras"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.3"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Canon d’avant-bras from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "canon-d-avant-bras"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:coquille"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Coquille"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.4"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Coquille from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "coquille"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:cubitiere"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Cubitière"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.5"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cubitière from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cubitiere"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:cuirasse"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Cuirasse"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.6"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cuirasse from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cuirasse"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:cuissot"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Cuissot"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.pieces.3"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cuissot from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cuissot"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:cuissot#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Cuissot"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.pieces.4"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cuissot from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cuissot"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:cuissot#3"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Cuissot"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.4"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cuissot from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cuissot"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:cuissot#4"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Cuissot"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.5.pieces.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cuissot from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cuissot"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:cuissot#5"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Cuissot"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.7"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Cuissot from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "cuissot"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:dossiere"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Dossière"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.8"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Dossière from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "dossiere"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:ecu-de-cavalerie"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Ecu de cavalerie"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.9.pieces.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Ecu de cavalerie from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "ecu-de-cavalerie"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:fer"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Fer"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.9.pieces.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Fer from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "fer"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:gant"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Gant"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.pieces.5"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Gant from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "gant"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:genouillere"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Genouillère"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.9"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Genouillère from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "genouillere"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:gorgerin"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Gorgerin"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.10"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Gorgerin from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "gorgerin"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:grand-ecu"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Grand écu"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.9.pieces.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Grand écu from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "grand-ecu"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:greve"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Grève"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.pieces.6"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Grève from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "greve"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:greve#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Grève"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.5"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Grève from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "greve"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:greve#3"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Grève"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.11"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Grève from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "greve"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:haubergeon"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Haubergeon"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.6"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Haubergeon from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "haubergeon"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:haubergeon#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Haubergeon"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.2.pieces.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Haubergeon from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "haubergeon"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:haubergeon#3"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Haubergeon"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.3.pieces.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Haubergeon from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "haubergeon"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:haubergeon#4"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Haubergeon"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.4.pieces.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Haubergeon from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "haubergeon"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:haubert"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Haubert"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.7"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Haubert from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "haubert"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:haubert#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Haubert"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.2.pieces.3"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Haubert from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "haubert"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:haubert#3"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Haubert"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.3.pieces.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Haubert from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "haubert"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:haubert#4"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Haubert"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.4.pieces.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Haubert from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "haubert"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:heaume-cylindrique"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Heaume cylindrique"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.12"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Heaume cylindrique from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "heaume-cylindrique"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:pansiere"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Pansière"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.13"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Pansière from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "pansiere"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:pantalon"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Pantalon"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.pieces.7"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Pantalon from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "pantalon"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:pantalon#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Pantalon"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.8"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Pantalon from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "pantalon"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:pantalon#3"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Pantalon"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.2.pieces.4"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Pantalon from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "pantalon"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:pantalon#4"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Pantalon"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.3.pieces.3"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Pantalon from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "pantalon"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:pantalon#5"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Pantalon"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.4.pieces.3"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Pantalon from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "pantalon"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:pavois"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Pavois"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.7.pieces.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Pavois from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "pavois"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:pavois#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Pavois"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.8.pieces.1"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Pavois from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "pavois"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:pavois#3"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Pavois"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.9.pieces.3"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Pavois from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "pavois"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:petit-ecu"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Petit écu"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.9.pieces.4"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Petit écu from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "petit-ecu"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:rondache"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Rondache"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.7.pieces.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Rondache from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "rondache"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:rondache#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Rondache"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.8.pieces.2"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Rondache from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "rondache"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:rondache#3"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Rondache"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.9.pieces.5"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Rondache from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "rondache"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:salade"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Salade"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.14"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Salade from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "salade"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:soleret"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Soleret"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.15"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Soleret from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "soleret"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:spaliere"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Spalière"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.9"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Spalière from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "spaliere"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:spaliere#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Spalière"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.5.pieces.3"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Spalière from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "spaliere"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:spaliere#3"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Spalière"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.pieces.16"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Spalière from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "spaliere"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:veste-avec-manche"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Veste (avec manche)"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.pieces.8"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Veste (avec manche) from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "veste-avec-manche"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:veste-avec-manche#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Veste (avec manche)"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.10"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Veste (avec manche) from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "veste-avec-manche"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:veste-avec-manches"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Veste (avec manches)"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.3.pieces.4"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Veste (avec manches) from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "veste-avec-manches"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:veste-avec-manches#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Veste (avec manches)"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.4.pieces.4"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Veste (avec manches) from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "veste-avec-manches"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:veste-sans-manche"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Veste (sans manche)"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.pieces.9"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Veste (sans manche) from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "veste-sans-manche"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:veste-sans-manche#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Veste (sans manche)"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.pieces.11"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Veste (sans manche) from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "veste-sans-manche"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:veste-sans-manches"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Veste (sans manches)"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.3.pieces.5"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Veste (sans manches) from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "veste-sans-manches"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "piece:veste-sans-manches#2"
+    unit_type: "piece"
+    domain: "D10-equipment"
+    title: "Veste (sans manches)"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.4.pieces.5"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "Veste (sans manches) from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "veste-sans-manches"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "potion:agrandissement"
     unit_type: "potion"
     domain: "D10-equipment"
@@ -255633,6 +258787,386 @@ units:
     tests:
       status: partial
       evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:materials-0-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D10-equipment"
+    title: "materials-0-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.0.source_refs.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "materials-0-source-refs-0 from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "materials-0-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:materials-1-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D10-equipment"
+    title: "materials-1-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.1.source_refs.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "materials-1-source-refs-0 from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "materials-1-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:materials-2-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D10-equipment"
+    title: "materials-2-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.2.source_refs.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "materials-2-source-refs-0 from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "materials-2-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:materials-3-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D10-equipment"
+    title: "materials-3-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.3.source_refs.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "materials-3-source-refs-0 from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "materials-3-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:materials-4-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D10-equipment"
+    title: "materials-4-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.4.source_refs.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "materials-4-source-refs-0 from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "materials-4-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:materials-5-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D10-equipment"
+    title: "materials-5-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.5.source_refs.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "materials-5-source-refs-0 from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "materials-5-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:materials-6-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D10-equipment"
+    title: "materials-6-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.6.source_refs.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "materials-6-source-refs-0 from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "materials-6-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:materials-7-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D10-equipment"
+    title: "materials-7-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.7.source_refs.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "materials-7-source-refs-0 from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "materials-7-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:materials-8-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D10-equipment"
+    title: "materials-8-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.8.source_refs.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "materials-8-source-refs-0 from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "materials-8-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
+  - unit_id: "source_ref:materials-9-source-refs-0"
+    unit_type: "source_ref"
+    domain: "D10-equipment"
+    title: "materials-9-source-refs-0"
+    status: partial
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "materials.9.source_refs.0"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "materials-9-source-refs-0 from data/catalogs/protections-paper.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: covered
+      evidence: "Catalog source entry exists."
+      path: "data/catalogs/protections-paper.yaml"
+      entry_id: "materials-9-source-refs-0"
+    zod_schema:
+      status: partial
+      evidence: "Zod schema coverage must be linked by domain implementation."
+    relational_db:
+      status: partial
+      evidence: "Canonical relational tables/import evidence pending."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: partial
+      evidence: "Downstream API evidence pending."
+    ui:
+      status: partial
+      evidence: "UI exposure evidence pending."
+    tests:
+      status: partial
+      evidence: "Automated coverage evidence pending."
   - unit_id: "source_ref:orientations-0-source-refs-0"
     unit_type: "source_ref"
     domain: "catalogs"
@@ -324380,6 +327914,42 @@ units:
         sha256: "a48401f0e4590af7c93b502c2be5bc125eee85a971ad7c94f23515cbdbda8be6"
     business_rule:
       summary: "data/catalogs/protections.yaml from data/catalogs/protections.yaml."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:data-catalogs-protections-paper"
+    unit_type: "source_document"
+    domain: "D10-equipment"
+    title: "data/catalogs/protections-paper.yaml"
+    status: covered
+    sources:
+      - path: "data/catalogs/protections-paper.yaml"
+        ref: "data/catalogs/protections-paper.yaml"
+        sha256: "58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393"
+    business_rule:
+      summary: "data/catalogs/protections-paper.yaml from data/catalogs/protections-paper.yaml."
       ambiguity_ref: null
     yaml:
       status: not_applicable

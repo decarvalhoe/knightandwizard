@@ -96591,6 +96591,236 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: MATERIAL-BOIS
+    unit_type: catalog_entry
+    name: Bois
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.7
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Bois from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: MATERIAL-BOIS
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: MATERIAL-BRONZE
+    unit_type: catalog_entry
+    name: Bronze
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.5
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Bronze from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: MATERIAL-BRONZE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: MATERIAL-BRONZE-2
+    unit_type: catalog_entry
+    name: Bronze
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.8
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Bronze from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: MATERIAL-BRONZE-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: MATERIAL-COTTE-DE-MAILLES-LEGERE
+    unit_type: catalog_entry
+    name: Cotte de mailles légère
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.3
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cotte de mailles légère from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: MATERIAL-COTTE-DE-MAILLES-LEGERE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: MATERIAL-COTTE-DE-MAILLES-LOURDE
+    unit_type: catalog_entry
+    name: Cotte de mailles lourde
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.4
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cotte de mailles lourde from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: MATERIAL-COTTE-DE-MAILLES-LOURDE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: MATERIAL-CUIR-RIGIDE
+    unit_type: catalog_entry
+    name: Cuir rigide
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cuir rigide from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: MATERIAL-CUIR-RIGIDE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: MATERIAL-CUIR-RIGIDE-CLOUTE
+    unit_type: catalog_entry
+    name: Cuir rigide clouté
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cuir rigide clouté from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: MATERIAL-CUIR-RIGIDE-CLOUTE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: MATERIAL-CUIR-SOUPLES
+    unit_type: catalog_entry
+    name: Cuir souples
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cuir souples from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: MATERIAL-CUIR-SOUPLES
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: MATERIAL-FER
+    unit_type: catalog_entry
+    name: Fer
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.9
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Fer from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: MATERIAL-FER
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: MATERIAL-PLATES-FER
+    unit_type: catalog_entry
+    name: Plates (fer)
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Plates (fer) from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: MATERIAL-PLATES-FER
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: MUSHROOM-SYNDROME-SYNDROME-COPRINIEN
     unit_type: catalog_entry
     name: Syndrome coprinien
@@ -97292,6 +97522,1685 @@ units:
     canonical_contract:
       path: data/catalogs/orientations.yaml
       object_id: ORIENTATION-VOYAGEUR
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BARBUTE
+    unit_type: catalog_entry
+    name: Barbute
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Barbute from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BARBUTE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BONNET
+    unit_type: catalog_entry
+    name: Bonnet
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.pieces.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Bonnet from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BONNET
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BONNET-2
+    unit_type: catalog_entry
+    name: Bonnet
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Bonnet from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BONNET-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BOTTE
+    unit_type: catalog_entry
+    name: Botte
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.pieces.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Botte from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BOTTE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BOTTE-2
+    unit_type: catalog_entry
+    name: Botte
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Botte from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BOTTE-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BOTTE-3
+    unit_type: catalog_entry
+    name: Botte
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.2.pieces.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Botte from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BOTTE-3
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BOUCLIER
+    unit_type: catalog_entry
+    name: Bouclier
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.7.pieces.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Bouclier from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BOUCLIER
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BOUCLIER-2
+    unit_type: catalog_entry
+    name: Bouclier
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.8.pieces.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Bouclier from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BOUCLIER-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BOUCLIERS
+    unit_type: catalog_entry
+    name: Boucliers
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.17
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Boucliers from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BOUCLIERS
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BRACONNIERE
+    unit_type: catalog_entry
+    name: Braconnière
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Braconnière from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BRACONNIERE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BRASSARD
+    unit_type: catalog_entry
+    name: Brassard
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.5.pieces.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Brassard from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BRASSARD
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-BRASSARD-2
+    unit_type: catalog_entry
+    name: Brassard
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Brassard from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-BRASSARD-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CAGOULE
+    unit_type: catalog_entry
+    name: Cagoule
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.pieces.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cagoule from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CAGOULE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CAGOULE-2
+    unit_type: catalog_entry
+    name: Cagoule
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cagoule from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CAGOULE-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CAMAIL
+    unit_type: catalog_entry
+    name: Camail
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.3.pieces.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Camail from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CAMAIL
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CAMAIL-2
+    unit_type: catalog_entry
+    name: Camail
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.4.pieces.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Camail from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CAMAIL-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CANON-D-AVANT-BRAS
+    unit_type: catalog_entry
+    name: Canon d’avant-bras
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.3
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Canon d’avant-bras from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CANON-D-AVANT-BRAS
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CANON-D-AVANT-BRAS-2
+    unit_type: catalog_entry
+    name: Canon d’avant-bras
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.2.pieces.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Canon d’avant-bras from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CANON-D-AVANT-BRAS-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CANON-D-AVANT-BRAS-3
+    unit_type: catalog_entry
+    name: Canon d’avant-bras
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.5.pieces.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Canon d’avant-bras from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CANON-D-AVANT-BRAS-3
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CANON-D-AVANT-BRAS-4
+    unit_type: catalog_entry
+    name: Canon d’avant-bras
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.3
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Canon d’avant-bras from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CANON-D-AVANT-BRAS-4
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-COQUILLE
+    unit_type: catalog_entry
+    name: Coquille
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.4
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Coquille from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-COQUILLE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CUBITIERE
+    unit_type: catalog_entry
+    name: Cubitière
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.5
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cubitière from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CUBITIERE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CUIRASSE
+    unit_type: catalog_entry
+    name: Cuirasse
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.6
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cuirasse from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CUIRASSE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CUISSOT
+    unit_type: catalog_entry
+    name: Cuissot
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.pieces.3
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cuissot from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CUISSOT
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CUISSOT-2
+    unit_type: catalog_entry
+    name: Cuissot
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.pieces.4
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cuissot from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CUISSOT-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CUISSOT-3
+    unit_type: catalog_entry
+    name: Cuissot
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.4
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cuissot from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CUISSOT-3
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CUISSOT-4
+    unit_type: catalog_entry
+    name: Cuissot
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.5.pieces.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cuissot from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CUISSOT-4
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-CUISSOT-5
+    unit_type: catalog_entry
+    name: Cuissot
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.7
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Cuissot from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-CUISSOT-5
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-DOSSIERE
+    unit_type: catalog_entry
+    name: Dossière
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.8
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Dossière from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-DOSSIERE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-ECU-DE-CAVALERIE
+    unit_type: catalog_entry
+    name: Ecu de cavalerie
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.9.pieces.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Ecu de cavalerie from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-ECU-DE-CAVALERIE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-FER
+    unit_type: catalog_entry
+    name: Fer
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.9.pieces.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Fer from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-FER
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-GANT
+    unit_type: catalog_entry
+    name: Gant
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.pieces.5
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Gant from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-GANT
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-GENOUILLERE
+    unit_type: catalog_entry
+    name: Genouillère
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.9
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Genouillère from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-GENOUILLERE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-GORGERIN
+    unit_type: catalog_entry
+    name: Gorgerin
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.10
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Gorgerin from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-GORGERIN
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-GRAND-ECU
+    unit_type: catalog_entry
+    name: Grand écu
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.9.pieces.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Grand écu from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-GRAND-ECU
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-GREVE
+    unit_type: catalog_entry
+    name: Grève
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.pieces.6
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Grève from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-GREVE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-GREVE-2
+    unit_type: catalog_entry
+    name: Grève
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.5
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Grève from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-GREVE-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-GREVE-3
+    unit_type: catalog_entry
+    name: Grève
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.11
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Grève from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-GREVE-3
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-HAUBERGEON
+    unit_type: catalog_entry
+    name: Haubergeon
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.6
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Haubergeon from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-HAUBERGEON
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-HAUBERGEON-2
+    unit_type: catalog_entry
+    name: Haubergeon
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.2.pieces.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Haubergeon from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-HAUBERGEON-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-HAUBERGEON-3
+    unit_type: catalog_entry
+    name: Haubergeon
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.3.pieces.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Haubergeon from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-HAUBERGEON-3
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-HAUBERGEON-4
+    unit_type: catalog_entry
+    name: Haubergeon
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.4.pieces.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Haubergeon from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-HAUBERGEON-4
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-HAUBERT
+    unit_type: catalog_entry
+    name: Haubert
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.7
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Haubert from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-HAUBERT
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-HAUBERT-2
+    unit_type: catalog_entry
+    name: Haubert
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.2.pieces.3
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Haubert from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-HAUBERT-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-HAUBERT-3
+    unit_type: catalog_entry
+    name: Haubert
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.3.pieces.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Haubert from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-HAUBERT-3
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-HAUBERT-4
+    unit_type: catalog_entry
+    name: Haubert
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.4.pieces.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Haubert from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-HAUBERT-4
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-HEAUME-CYLINDRIQUE
+    unit_type: catalog_entry
+    name: Heaume cylindrique
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.12
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Heaume cylindrique from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-HEAUME-CYLINDRIQUE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-PANSIERE
+    unit_type: catalog_entry
+    name: Pansière
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.13
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Pansière from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-PANSIERE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-PANTALON
+    unit_type: catalog_entry
+    name: Pantalon
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.pieces.7
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Pantalon from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-PANTALON
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-PANTALON-2
+    unit_type: catalog_entry
+    name: Pantalon
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.8
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Pantalon from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-PANTALON-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-PANTALON-3
+    unit_type: catalog_entry
+    name: Pantalon
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.2.pieces.4
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Pantalon from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-PANTALON-3
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-PANTALON-4
+    unit_type: catalog_entry
+    name: Pantalon
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.3.pieces.3
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Pantalon from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-PANTALON-4
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-PANTALON-5
+    unit_type: catalog_entry
+    name: Pantalon
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.4.pieces.3
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Pantalon from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-PANTALON-5
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-PAVOIS
+    unit_type: catalog_entry
+    name: Pavois
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.7.pieces.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Pavois from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-PAVOIS
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-PAVOIS-2
+    unit_type: catalog_entry
+    name: Pavois
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.8.pieces.1
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Pavois from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-PAVOIS-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-PAVOIS-3
+    unit_type: catalog_entry
+    name: Pavois
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.9.pieces.3
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Pavois from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-PAVOIS-3
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-PETIT-ECU
+    unit_type: catalog_entry
+    name: Petit écu
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.9.pieces.4
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Petit écu from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-PETIT-ECU
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-RONDACHE
+    unit_type: catalog_entry
+    name: Rondache
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.7.pieces.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Rondache from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-RONDACHE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-RONDACHE-2
+    unit_type: catalog_entry
+    name: Rondache
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.8.pieces.2
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Rondache from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-RONDACHE-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-RONDACHE-3
+    unit_type: catalog_entry
+    name: Rondache
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.9.pieces.5
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Rondache from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-RONDACHE-3
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-SALADE
+    unit_type: catalog_entry
+    name: Salade
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.14
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Salade from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-SALADE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-SOLERET
+    unit_type: catalog_entry
+    name: Soleret
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.15
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Soleret from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-SOLERET
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-SPALIERE
+    unit_type: catalog_entry
+    name: Spalière
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.9
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Spalière from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-SPALIERE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-SPALIERE-2
+    unit_type: catalog_entry
+    name: Spalière
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.5.pieces.3
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Spalière from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-SPALIERE-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-SPALIERE-3
+    unit_type: catalog_entry
+    name: Spalière
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.pieces.16
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Spalière from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-SPALIERE-3
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-VESTE-AVEC-MANCHE
+    unit_type: catalog_entry
+    name: Veste (avec manche)
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.pieces.8
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Veste (avec manche) from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-VESTE-AVEC-MANCHE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-VESTE-AVEC-MANCHE-2
+    unit_type: catalog_entry
+    name: Veste (avec manche)
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.10
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Veste (avec manche) from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-VESTE-AVEC-MANCHE-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-VESTE-AVEC-MANCHES
+    unit_type: catalog_entry
+    name: Veste (avec manches)
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.3.pieces.4
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Veste (avec manches) from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-VESTE-AVEC-MANCHES
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-VESTE-AVEC-MANCHES-2
+    unit_type: catalog_entry
+    name: Veste (avec manches)
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.4.pieces.4
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Veste (avec manches) from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-VESTE-AVEC-MANCHES-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-VESTE-SANS-MANCHE
+    unit_type: catalog_entry
+    name: Veste (sans manche)
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.pieces.9
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Veste (sans manche) from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-VESTE-SANS-MANCHE
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-VESTE-SANS-MANCHE-2
+    unit_type: catalog_entry
+    name: Veste (sans manche)
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.pieces.11
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Veste (sans manche) from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-VESTE-SANS-MANCHE-2
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-VESTE-SANS-MANCHES
+    unit_type: catalog_entry
+    name: Veste (sans manches)
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.3.pieces.5
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Veste (sans manches) from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-VESTE-SANS-MANCHES
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: PIECE-VESTE-SANS-MANCHES-2
+    unit_type: catalog_entry
+    name: Veste (sans manches)
+    domain: d10-equipment
+    criticality: medium
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.4.pieces.5
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: Veste (sans manches) from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: PIECE-VESTE-SANS-MANCHES-2
       status: present
     vector_refs:
       - collection: knowledge_chunks
@@ -138342,6 +140251,236 @@ units:
       status: present
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-MATERIALS-0-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: materials-0-source-refs-0
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.0.source_refs.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: materials-0-source-refs-0 from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: SOURCE-REF-MATERIALS-0-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-MATERIALS-1-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: materials-1-source-refs-0
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.1.source_refs.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: materials-1-source-refs-0 from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: SOURCE-REF-MATERIALS-1-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-MATERIALS-2-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: materials-2-source-refs-0
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.2.source_refs.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: materials-2-source-refs-0 from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: SOURCE-REF-MATERIALS-2-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-MATERIALS-3-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: materials-3-source-refs-0
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.3.source_refs.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: materials-3-source-refs-0 from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: SOURCE-REF-MATERIALS-3-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-MATERIALS-4-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: materials-4-source-refs-0
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.4.source_refs.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: materials-4-source-refs-0 from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: SOURCE-REF-MATERIALS-4-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-MATERIALS-5-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: materials-5-source-refs-0
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.5.source_refs.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: materials-5-source-refs-0 from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: SOURCE-REF-MATERIALS-5-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-MATERIALS-6-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: materials-6-source-refs-0
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.6.source_refs.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: materials-6-source-refs-0 from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: SOURCE-REF-MATERIALS-6-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-MATERIALS-7-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: materials-7-source-refs-0
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.7.source_refs.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: materials-7-source-refs-0 from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: SOURCE-REF-MATERIALS-7-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-MATERIALS-8-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: materials-8-source-refs-0
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.8.source_refs.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: materials-8-source-refs-0 from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: SOURCE-REF-MATERIALS-8-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-REF-MATERIALS-9-SOURCE-REFS-0
+    unit_type: catalog_entry
+    name: materials-9-source-refs-0
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: materials.9.source_refs.0
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: materials-9-source-refs-0 from data/catalogs/protections-paper.yaml.
+    status: partial
+    gaps:
+      - 'zod_schema: Zod schema coverage must be linked by domain implementation.'
+      - 'relational_db: Canonical relational tables/import evidence pending.'
+      - 'api: Downstream API evidence pending.'
+      - 'ui: UI exposure evidence pending.'
+      - 'tests: Automated coverage evidence pending.'
+    canonical_contract:
+      path: data/catalogs/protections-paper.yaml
+      object_id: SOURCE-REF-MATERIALS-9-SOURCE-REFS-0
+      status: present
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-REF-ORIENTATIONS-0-SOURCE-REFS-0
     unit_type: catalog_entry
     name: orientations-0-source-refs-0
@@ -171081,6 +173220,21 @@ units:
         locator: data/catalogs/protections.yaml
         hash: sha256:a48401f0e4590af7c93b502c2be5bc125eee85a971ad7c94f23515cbdbda8be6
     business_rule: data/catalogs/protections.yaml from data/catalogs/protections.yaml.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DATA-CATALOGS-PROTECTIONS-PAPER
+    unit_type: catalog_entry
+    name: data/catalogs/protections-paper.yaml
+    domain: d10-equipment
+    criticality: low
+    source_refs:
+      - source_id: DATA-CATALOGS-PROTECTIONS-PAPER
+        locator: data/catalogs/protections-paper.yaml
+        hash: sha256:58d304f9d7a9688aec07ff27cf539b5c58f5c3cd906e6990cf75aae3cba3c393
+    business_rule: data/catalogs/protections-paper.yaml from data/catalogs/protections-paper.yaml.
     status: partial
     gaps:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
