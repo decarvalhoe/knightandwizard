@@ -626,3 +626,44 @@ function factorEffect(op: 'add' | 'sub', value: number): EffectModel {
     fidelity: 'covered'
   });
 }
+
+describe('damage-target effects in combat (#137)', () => {
+  it('adds a damage-target effect bonus to the attack damage', () => {
+    const damageEffect = parseEffectModel({
+      source: { prose: 'Coup affute.', ref: 'fixture:dmg' },
+      spec: {
+        target: 'damage',
+        scope: 'C',
+        op: 'add',
+        value: 2,
+        activation: 'passive',
+        duration: 'permanent'
+      },
+      fidelity: 'covered'
+    });
+    const attacker = {
+      ...combatant({
+        id: 'attacker',
+        speedFactor: 5,
+        pendingAction: {
+          type: 'attack',
+          targetId: 'defender',
+          attack: { pool: 2, difficulty: 7 },
+          damage: {
+            attackerForce: 0,
+            weaponDamage: { components: [{ type: 'C', includesForce: false, flat: 3 }] }
+          }
+        }
+      }),
+      activeEffects: [damageEffect]
+    };
+    const defender = combatant({ id: 'defender', speedFactor: 8 });
+    const state = addCombatant(addCombatant(createCombatState(1), defender), attacker);
+
+    const result = resolveNextAction(state, { randomInteger: scriptedRolls([7, 8]) });
+    const target = result.timeline.find((entry) => entry.id === 'defender');
+
+    // flat 3 + damage-effect +2 (type C) = 5
+    expect(target?.vitality.current).toBe(5);
+  });
+});
