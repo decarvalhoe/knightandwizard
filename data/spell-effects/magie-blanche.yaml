@@ -1,25 +1,27 @@
 # E2d — Overlay d'effets structurés AUTHORÉS, école magie-blanche.
 #
 # Source autorité : la ligne `effect` du grimoire (spells.yaml) + la prose liée (lexique, E0).
-# **VALIDÉ par le MJ le 2026-05-28** (E2d, méthode Q-D8.2) : `fidelity: covered`,
-# `requires_mj_validation` retiré. C'est désormais du canon. Rulings de validation :
+# Buffs/soins/facteurs/bénédiction : **VALIDÉS par le MJ le 2026-05-28** (E2d) → `fidelity: covered`.
+# Famille `bouclier*` : **ajoutée en E2f** (target `protection`) → `fidelity: pending` +
+# `requires_mj_validation` (à valider plus tard via les règles vivantes). Rulings E2d :
 #   - Buffs d'aptitude « +1/R » = `value: successes` (barème par réussite confirmé).
 #   - `courage` : le facteur de volonté **plus bas** = meilleure réussite au test ; donc « –1/R »
 #     (`op: sub`) est bien bénéfique (cf. R-8.19, sens du test confirmé par le MJ).
 #   - Soins `guerison-de-la-*` : **soins par zone, HORS combat** → `scope: zone` (gating combat =
 #     couche d'application, E3). `guerison-absolue` reste un soin général.
 #
-# Conventions (buffs templatables) :
+# Conventions :
 #   - "+N de vitalité/R"      → target vitality, op add, value "N * successes"   (soin instantané)
 #   - "Attribut +1/R, 10 min/niv" → target aptitude, scope <attr>, op add, value "successes",
 #       durée narrative { amount: "level * 10", unit: minute }
 #   - "Diff. –1/R, 10 min/niv" → target difficulty, op sub, value "successes"    (bénédiction, global)
 #   - "Facteur … -1/R"        → target factor, scope speed|will, op sub, value "successes"
+#   - "Bouclier de +N <type>/R" → target protection, scope all|<élément>|demon, op add, "successes" (E2f)
 #   - Les variantes "-de-masse" portent le MÊME effet par cible ; le "1 perso/R" est un ciblage (à part).
 #
-# NON inclus (arbitrage / cible à décider) : bouclier* (buff d'armure P/E/C/T — cible EffectModel à
-# trancher), deviation* (ambigu), lumiere/purification*/respiration* (utilitaire narratif),
-# resurrection, don-d-energie, barriere-de-holn, renvoi-du-demon, deviation-des-projectiles.
+# NON inclus (arbitrage / cible à décider) : deviation* (ambigu), lumiere/purification*/respiration*
+# (utilitaire narratif), resurrection, don-d-energie, barriere-de-holn, renvoi-du-demon,
+# deviation-des-projectiles.
 #
 # Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts` (catalogs:build:magic).
 version: 1
@@ -363,4 +365,89 @@ effects:
       activation: active
       duration: { amount: 'level * 10', unit: minute }
     fidelity: covered
+    ambiguity_ref: null
+  # --- Boucliers (target protection, E2f, PENDING) ---
+  bouclier:
+    source:
+      prose: 'Bouclier : +1 de protection à P/E/C/T par réussite (durée 10 min/niveau présumée, ligne terse sans durée).'
+      ref: 'spells:bouclier'
+    spec:
+      target: protection
+      scope: all
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  bouclier-anti-feu:
+    source:
+      prose: '+1 de protection contre le feu par réussite, 10 minutes par niveau.'
+      ref: 'spells:bouclier-anti-feu'
+    spec:
+      target: protection
+      scope: feu
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  bouclier-anti-foudre:
+    source:
+      prose: '+1 de protection contre la foudre par réussite, 10 minutes par niveau.'
+      ref: 'spells:bouclier-anti-foudre'
+    spec:
+      target: protection
+      scope: foudre
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  bouclier-anti-froid:
+    source:
+      prose: '+1 de protection contre le froid par réussite, 10 minutes par niveau.'
+      ref: 'spells:bouclier-anti-froid'
+    spec:
+      target: protection
+      scope: froid
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  bouclier-anti-lave:
+    source:
+      prose: '+1 de protection contre la lave par réussite, 10 minutes par niveau.'
+      ref: 'spells:bouclier-anti-lave'
+    spec:
+      target: protection
+      scope: lave
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  bouclier-anti-mal:
+    source:
+      prose: '+1 de protection contre les démons par réussite, 10 minutes par niveau.'
+      ref: 'spells:bouclier-anti-mal'
+    spec:
+      target: protection
+      scope: demon
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
     ambiguity_ref: null

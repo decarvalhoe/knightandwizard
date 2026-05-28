@@ -8,7 +8,11 @@ export const EFFECT_TARGETS = [
   'damage',
   'energy',
   'vitality',
-  'status'
+  'status',
+  // E2f — buff/débuff d'armure (protection P/E/C/T ou élémentaire). Le `scope` porte le type
+  // protégé (`all` | `P`/`E`/`C`/`T` | élément). L'agrégation/consommation en combat est différée
+  // (pas encore dans COMPUTED_NUMERIC_EFFECT_TARGETS) ; la structuration des sorts `bouclier*` la précède.
+  'protection'
 ] as const;
 
 export type EffectTarget = (typeof EFFECT_TARGETS)[number];

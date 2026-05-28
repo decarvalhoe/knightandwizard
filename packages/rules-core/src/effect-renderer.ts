@@ -51,7 +51,8 @@ const TARGET_LABELS: Record<EffectTarget, string> = {
   damage: 'dégâts',
   energy: 'énergie',
   vitality: 'vitalité',
-  status: 'état'
+  status: 'état',
+  protection: 'protection'
 };
 
 const CONTEXT_LABELS: Record<string, string> = {
