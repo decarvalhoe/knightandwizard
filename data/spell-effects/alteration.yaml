@@ -1,0 +1,379 @@
+# E2n — Overlay d'effets structurés AUTHORÉS, école altération.
+#
+# Source autorité : la ligne `effect` du grimoire (spells.yaml). PROPOSÉ, **À VALIDER par le MJ**
+# (règles vivantes, Q-D8.2) : `fidelity: pending` + `spec.requires_mj_validation: true`.
+#
+# AXE TRANSFORM PROVISOIRE : polymorphes, pétrification, taille et augmentations corporelles sont
+# place-holdées via `target: status` (scope = forme/partie). C'est une approximation : un vrai
+# polymorphe REMPLACE la créature (stats/aptitudes) — un sous-système « transformation » dédié
+# reste à concevoir. Les jets de résistance (« Contre jet d'endurance ») sont notés en prose ;
+# enforcement différé. `value: 1` = application (placeholder requis).
+#
+# NON inclus (matière/destruction/narratif) : changer-l-eau-en-vin, chatiment-de-la-matiere,
+# corrosion(-de-masse), evaporation, gel, soudure (transmutation de matière, quantité/R) ;
+# membre-telescopique (allongement narratif) ; rendre-forme (dissipe une transformation = méta).
+#
+# Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts`.
+version: 1
+school_id: alteration
+effects:
+  # --- Polymorphes (transform via status ; résistance endurance) ---
+  changement-de-sexe:
+    source:
+      {
+        prose: 'Change le sexe de la cible. Résistance : contre jet d’endurance (enforcement différé).',
+        ref: 'spells:changement-de-sexe'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'transformed:sexe',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  changement-en-corbeau:
+    source:
+      {
+        prose: 'Transforme la cible en corbeau. Résistance : contre jet d’endurance (enforcement différé).',
+        ref: 'spells:changement-en-corbeau'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'transformed:corbeau',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  changement-en-crapaud:
+    source:
+      {
+        prose: 'Transforme la cible en crapaud. Résistance : contre jet d’endurance (enforcement différé).',
+        ref: 'spells:changement-en-crapaud'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'transformed:crapaud',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  changement-en-furet:
+    source:
+      {
+        prose: 'Transforme la cible en furet. Résistance : contre jet d’endurance (enforcement différé).',
+        ref: 'spells:changement-en-furet'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'transformed:furet',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  changement-en-humain:
+    source:
+      {
+        prose: 'Transforme la cible en humain. Résistance : contre jet d’endurance (enforcement différé).',
+        ref: 'spells:changement-en-humain'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'transformed:humain',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  changement-en-lapin:
+    source:
+      {
+        prose: 'Transforme la cible en lapin. Résistance : contre jet d’endurance (enforcement différé).',
+        ref: 'spells:changement-en-lapin'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'transformed:lapin',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  petrification:
+    source:
+      {
+        prose: 'Pétrifie la cible. Résistance : contre jet d’endurance (enforcement différé).',
+        ref: 'spells:petrification'
+      }
+    spec:
+      {
+        target: status,
+        scope: petrified,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Taille ---
+  agrandissement:
+    source:
+      {
+        prose: 'Double la taille de la cible par réussite (facteur d’agrandissement).',
+        ref: 'spells:agrandissement'
+      }
+    spec:
+      {
+        target: status,
+        scope: enlarged,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  miniaturisation:
+    source:
+      { prose: 'Divise la taille de la cible par 2 par réussite.', ref: 'spells:miniaturisation' }
+    spec:
+      {
+        target: status,
+        scope: shrunk,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Augmentations corporelles (création de membre/organe via status) ---
+  branchie:
+    source:
+      {
+        prose: 'Crée des branchies sur la cible (augmentation corporelle).',
+        ref: 'spells:branchie'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:branchies',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  branchie-de-masse:
+    source:
+      {
+        prose: 'Crée des branchies sur la cible (1 cible/R ; augmentation corporelle).',
+        ref: 'spells:branchie-de-masse'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:branchies',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  creation-d-aile:
+    source:
+      {
+        prose: 'Crée une aile sur la cible (augmentation corporelle).',
+        ref: 'spells:creation-d-aile'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:aile',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  creation-d-oeil:
+    source:
+      {
+        prose: 'Crée un œil sur la cible (augmentation corporelle).',
+        ref: 'spells:creation-d-oeil'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:oeil',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  creation-de-bras:
+    source:
+      {
+        prose: 'Crée un bras sur la cible (augmentation corporelle).',
+        ref: 'spells:creation-de-bras'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:bras',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  creation-de-dent:
+    source:
+      {
+        prose: 'Crée une dent sur la cible (augmentation corporelle).',
+        ref: 'spells:creation-de-dent'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:dent',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  creation-de-jambe:
+    source:
+      {
+        prose: 'Crée une jambe sur la cible (augmentation corporelle).',
+        ref: 'spells:creation-de-jambe'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:jambe',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  creation-de-kyste:
+    source:
+      {
+        prose: 'Crée un kyste sur la cible (augmentation corporelle).',
+        ref: 'spells:creation-de-kyste'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:kyste',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  creation-de-main:
+    source:
+      {
+        prose: 'Crée une main sur la cible (augmentation corporelle).',
+        ref: 'spells:creation-de-main'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:main',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  creation-de-pied:
+    source:
+      {
+        prose: 'Crée un pied sur la cible (augmentation corporelle).',
+        ref: 'spells:creation-de-pied'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:pied',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  creation-de-queue:
+    source:
+      {
+        prose: 'Crée une queue sur la cible (augmentation corporelle).',
+        ref: 'spells:creation-de-queue'
+      }
+    spec:
+      {
+        target: status,
+        scope: 'augment:queue',
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
