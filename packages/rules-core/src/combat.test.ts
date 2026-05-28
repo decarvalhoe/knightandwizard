@@ -11,6 +11,7 @@ import {
   interruptCombatant,
   resolveNextAction,
   resolveStaminaDamage,
+  summarizeEncumbrance,
   type AttackAction,
   type Combatant,
   type SpellAction
@@ -596,6 +597,45 @@ describe('effective speed factor (R-2.18 encumbrance / R-1.38 effects)', () => {
     );
 
     expect(state.timeline[0].nextActionAt).toBe(8);
+  });
+});
+
+describe('summarizeEncumbrance (R-2.18)', () => {
+  it('reports no overload at or below capacity (Force x 5 kg)', () => {
+    expect(summarizeEncumbrance({ carriedWeightKg: 15, strength: 3 })).toEqual({
+      capacityKg: 15,
+      carriedKg: 15,
+      excessKg: 0,
+      overloaded: false,
+      penaltyDT: 0
+    });
+  });
+
+  it('adds +1 DT per full 5 kg above capacity and flags overload', () => {
+    expect(summarizeEncumbrance({ carriedWeightKg: 20.1, strength: 3 })).toEqual({
+      capacityKg: 15,
+      carriedKg: 20.1,
+      excessKg: 5.1,
+      overloaded: true,
+      penaltyDT: 2
+    });
+  });
+
+  it('clamps negative carried weight to zero (no negative penalty)', () => {
+    expect(summarizeEncumbrance({ carriedWeightKg: -4, strength: 2 })).toMatchObject({
+      carriedKg: 0,
+      excessKg: 0,
+      penaltyDT: 0
+    });
+  });
+
+  it('shares its definition with effectiveSpeedFactor (penalty matches)', () => {
+    const penalty = summarizeEncumbrance({ carriedWeightKg: 22, strength: 3 }).penaltyDT;
+    const base = 5;
+
+    expect(
+      effectiveSpeedFactor(loaded({ speedFactor: base, strength: 3, carriedWeightKg: 22 }))
+    ).toBe(base + penalty);
   });
 });
 

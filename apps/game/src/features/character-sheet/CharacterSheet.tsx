@@ -344,7 +344,26 @@ export function CharacterSheet({
           }
           title="Inventaire"
         >
-          <p className="kw-sheet__muted">Charge {view.carriedWeightKg} kg</p>
+          <div className="kw-sheet__encumbrance" data-testid="encumbrance-summary">
+            <p className="kw-sheet__muted">
+              Charge {view.encumbrance.carriedKg} / {view.encumbrance.capacityKg} kg{' '}
+              {view.encumbrance.overloaded ? (
+                <Badge tone="danger">Surcharge +{view.encumbrance.penaltyDT} DT</Badge>
+              ) : (
+                <Badge tone="success">Dans la capacité</Badge>
+              )}
+            </p>
+            <StatBlock
+              items={[
+                { label: 'Capacité (Force×5)', value: `${view.encumbrance.capacityKg} kg` },
+                { label: 'Pénalité charge', value: `+${view.encumbrance.penaltyDT} DT` },
+                {
+                  label: 'Facteur vitesse effectif',
+                  value: view.encumbrance.effectiveSpeedFactor
+                }
+              ]}
+            />
+          </div>
           <div className="kw-sheet__row-list">
             {inventory.map((item) => (
               <InventoryRow
