@@ -1010,6 +1010,38 @@ function normalizeCombatant(
   );
 }
 
+/**
+ * R-9 — Derived vitality state: below the half-vitality threshold a character's
+ * physical attributes (Force / Dextérité / Endurance) take a progressive malus.
+ * Pure and config-driven so the combat malus recomputation and the character sheet
+ * share a single definition of the rule.
+ */
+export interface VitalityState {
+  /** True at 0 vitality (incapacitated / dead per combat). */
+  incapacitated: boolean;
+  /** Half-vitality threshold = round(max × `vitalityMalusRatio`). */
+  malusThreshold: number;
+  /** Malus applied to Force / Dextérité / Endurance (0 at or above the threshold). */
+  physicalMalus: number;
+  /** True once current vitality is below the malus threshold. */
+  weakened: boolean;
+}
+
+export function summarizeVitalityState(
+  vitality: { current: number; max: number },
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): VitalityState {
+  const malusThreshold = Math.round(vitality.max * config.combat.vitalityMalusRatio);
+  const physicalMalus = Math.max(0, malusThreshold - vitality.current);
+
+  return {
+    incapacitated: vitality.current <= 0,
+    malusThreshold,
+    physicalMalus,
+    weakened: physicalMalus > 0
+  };
+}
+
 function recomputeVitalityMalus(
   combatant: Combatant,
   config: RulesConfig = DEFAULT_RULES_CONFIG
@@ -1017,11 +1049,7 @@ function recomputeVitalityMalus(
   const baseAttributes = combatant.baseAttributes ?? combatant.attributes;
   const malus = combatant.ignoresVitalityMalus
     ? 0
-    : Math.max(
-        0,
-        Math.round(combatant.vitality.max * config.combat.vitalityMalusRatio) -
-          combatant.vitality.current
-      );
+    : summarizeVitalityState(combatant.vitality, config).physicalMalus;
 
   return {
     ...combatant,

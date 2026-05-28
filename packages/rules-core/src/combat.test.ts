@@ -12,6 +12,7 @@ import {
   resolveNextAction,
   resolveStaminaDamage,
   summarizeEncumbrance,
+  summarizeVitalityState,
   type AttackAction,
   type Combatant,
   type SpellAction
@@ -636,6 +637,49 @@ describe('summarizeEncumbrance (R-2.18)', () => {
     expect(
       effectiveSpeedFactor(loaded({ speedFactor: base, strength: 3, carriedWeightKg: 22 }))
     ).toBe(base + penalty);
+  });
+});
+
+describe('summarizeVitalityState (R-9 — vitality malus)', () => {
+  it('reports no malus at or above the half-vitality threshold', () => {
+    expect(summarizeVitalityState({ current: 24, max: 24 })).toEqual({
+      incapacitated: false,
+      malusThreshold: 12,
+      physicalMalus: 0,
+      weakened: false
+    });
+    // Exactly at the threshold is not yet weakened (malus = max(0, 12 - 12) = 0).
+    expect(summarizeVitalityState({ current: 12, max: 24 })).toMatchObject({
+      physicalMalus: 0,
+      weakened: false
+    });
+  });
+
+  it('applies a progressive malus below the threshold', () => {
+    expect(summarizeVitalityState({ current: 5, max: 24 })).toEqual({
+      incapacitated: false,
+      malusThreshold: 12,
+      physicalMalus: 7,
+      weakened: true
+    });
+  });
+
+  it('flags incapacitation at zero vitality', () => {
+    expect(summarizeVitalityState({ current: 0, max: 10 })).toEqual({
+      incapacitated: true,
+      malusThreshold: 5,
+      physicalMalus: 5,
+      weakened: true
+    });
+  });
+
+  it('matches the malus that applyDamage bakes into physical attributes', () => {
+    // Default combatant: vitality 10/10, strength 5. Drop to 3 -> threshold 5, malus 2.
+    const state = addCombatant(createCombatState(1), combatant({ id: 'hurt' }));
+    const hurt = applyDamage(state, 'hurt', 7).timeline[0]!;
+    const expectedMalus = summarizeVitalityState(hurt.vitality).physicalMalus;
+
+    expect(hurt.attributes.strength).toBe(5 - expectedMalus);
   });
 });
 

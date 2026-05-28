@@ -4,6 +4,7 @@ import {
   calculateEffectiveAttributes,
   rollDice,
   summarizeEncumbrance,
+  summarizeVitalityState,
   type AttributeKey,
   type Character,
   type CharacterAttributes,
@@ -11,7 +12,8 @@ import {
   type CharacterSkill,
   type DiceRollResult,
   type LevelProgression,
-  type RandomInteger
+  type RandomInteger,
+  type VitalityState
 } from '@knightandwizard/rules-core';
 
 export type CharacterSheetMode = 'combat' | 'complete' | 'gm' | 'social';
@@ -246,6 +248,7 @@ export interface CharacterSheetView {
   mode: CharacterSheetMode;
   sections: CharacterSheetSection[];
   spellSummary: SpellSlotSummary;
+  vitalityState: VitalityState;
 }
 
 export interface SpellSlotSummary {
@@ -326,7 +329,8 @@ export function buildCharacterSheetView(input: {
     levelProgression: calculateLevelProgression(input.character),
     mode: input.mode,
     sections: sectionsByMode[input.mode].map((id) => ({ id, label: sectionLabels[id] })),
-    spellSummary: summarizeSpellSlots(input.character, input.spells)
+    spellSummary: summarizeSpellSlots(input.character, input.spells),
+    vitalityState: summarizeVitalityState(input.character.vitality)
   };
 }
 
