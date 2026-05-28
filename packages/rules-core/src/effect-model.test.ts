@@ -442,3 +442,28 @@ describe('EffectModel narrative duration (R-8.20, systeme de temps double)', () 
     );
   });
 });
+
+describe('EffectModel protection target (E2f, buff/débuff d’armure)', () => {
+  const protectionModel = (scope: string) => ({
+    source: { prose: 'Bouclier de protection.', ref: 'spells:bouclier' },
+    spec: {
+      target: 'protection',
+      scope,
+      op: 'add',
+      value: 'successes',
+      activation: 'active',
+      duration: 'ephemeral'
+    },
+    fidelity: 'pending'
+  });
+
+  it('parses a protection-target effect (scope = type protégé)', () => {
+    const model = parseEffectModel(protectionModel('all'));
+    expect(model.spec.target).toBe('protection');
+    expect(model.spec.scope).toBe('all');
+  });
+
+  it('accepts an elemental protection scope', () => {
+    expect(() => parseEffectModel(protectionModel('feu'))).not.toThrow();
+  });
+});

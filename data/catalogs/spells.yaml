@@ -1171,6 +1171,24 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          Bouclier : +1 de protection à P/E/C/T par réussite (durée 10 min/niveau présumée, ligne
+          terse sans durée).
+        ref: spells:bouclier
+      spec:
+        target: protection
+        scope: all
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: bouclier-anti-feu
     name: Bouclier anti-feu
     status: active
@@ -1188,6 +1206,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: +1 de protection contre le feu par réussite, 10 minutes par niveau.
+        ref: spells:bouclier-anti-feu
+      spec:
+        target: protection
+        scope: feu
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: bouclier-anti-foudre
     name: Bouclier anti-foudre
     status: active
@@ -1205,6 +1239,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: +1 de protection contre la foudre par réussite, 10 minutes par niveau.
+        ref: spells:bouclier-anti-foudre
+      spec:
+        target: protection
+        scope: foudre
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: bouclier-anti-froid
     name: Bouclier anti-froid
     status: active
@@ -1222,6 +1272,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: +1 de protection contre le froid par réussite, 10 minutes par niveau.
+        ref: spells:bouclier-anti-froid
+      spec:
+        target: protection
+        scope: froid
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: bouclier-anti-lave
     name: Bouclier anti-lave
     status: active
@@ -1239,6 +1305,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: +1 de protection contre la lave par réussite, 10 minutes par niveau.
+        ref: spells:bouclier-anti-lave
+      spec:
+        target: protection
+        scope: lave
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: bouclier-anti-mal
     name: Bouclier anti-mal
     status: active
@@ -1256,6 +1338,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: +1 de protection contre les démons par réussite, 10 minutes par niveau.
+        ref: spells:bouclier-anti-mal
+      spec:
+        target: protection
+        scope: demon
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: charisme
     name: Charisme
     status: active
