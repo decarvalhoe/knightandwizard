@@ -12,7 +12,11 @@ export const EFFECT_TARGETS = [
   // E2f — buff/débuff d'armure (protection P/E/C/T ou élémentaire). Le `scope` porte le type
   // protégé (`all` | `P`/`E`/`C`/`T` | élément). L'agrégation/consommation en combat est différée
   // (pas encore dans COMPUTED_NUMERIC_EFFECT_TARGETS) ; la structuration des sorts `bouclier*` la précède.
-  'protection'
+  'protection',
+  // E2i — invocation/création d'entité (invocations, illusions, appels d'animaux). Le `scope` porte
+  // l'espèce/entité (slug bestiaire idéalement) ; `value` = nombre invoqué (ex. `successes`, `level`,
+  // `10 * successes`). L'instanciation (pioche dans le bestiaire) est différée à la couche d'application.
+  'summon'
 ] as const;
 
 export type EffectTarget = (typeof EFFECT_TARGETS)[number];
