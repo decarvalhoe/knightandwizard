@@ -6314,6 +6314,20 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: Relève 1 mort par niveau (portée 3 m/R ; catégorie max 20).
+        ref: spells:appel-des-morts
+      spec:
+        target: summon
+        scope: mort
+        op: grant
+        value: level
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: appel-des-morts-de-masse
     name: Appel des morts de masse
     status: active
@@ -6332,6 +6346,22 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: >-
+          Relève 1 mort par niveau, +1 par réussite au-delà de la première (portée 3 m/R ; catégorie
+          max 20).
+        ref: spells:appel-des-morts-de-masse
+      spec:
+        target: summon
+        scope: mort
+        op: grant
+        value: level + (successes - 1)
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: appel-des-morts-majeur
     name: Appel des morts majeur
     status: active
@@ -6350,6 +6380,20 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: Relève 1 mort par niveau (portée 3 m/R ; catégorie max 30).
+        ref: spells:appel-des-morts-majeur
+      spec:
+        target: summon
+        scope: mort
+        op: grant
+        value: level
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: armure-d-os
     name: Armure d’os
     status: active
@@ -6400,6 +6444,22 @@ spells:
       - catalog: lexique
         entry_id: changement-spectral
         term: Changement spectral
+    effect_model:
+      source:
+        prose: Forme spectrale, 10 minutes par réussite.
+        ref: spells:changement-spectral
+      spec:
+        target: status
+        scope: spectral
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          amount: successes * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: corruption-de-l-air
     name: Corruption de l'air
     status: active
@@ -6417,6 +6477,19 @@ spells:
       - catalog: lexique
         entry_id: corruption-de-lair
         term: Corruption de l’air
+    effect_model:
+      source:
+        prose: 'Empoisonne l’air (nuage 5 m³/R, 10 min/niv) : 2 dégâts par réussite.'
+        ref: spells:corruption-de-l-air
+      spec:
+        target: vitality
+        op: sub
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: corruption-de-l-eau
     name: Corruption de l'eau
     status: active
@@ -6434,6 +6507,19 @@ spells:
       - catalog: lexique
         entry_id: corruption-de-leau
         term: Corruption de l’eau
+    effect_model:
+      source:
+        prose: 'Empoisonne l’eau (5 m³/R, 10 min/niv) : 2 dégâts par réussite.'
+        ref: spells:corruption-de-l-eau
+      spec:
+        target: vitality
+        op: sub
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: corruption-vegetale
     name: Corruption végétale
     status: active
@@ -6451,6 +6537,19 @@ spells:
       - catalog: lexique
         entry_id: corruption-vegetale
         term: Corruption végétale
+    effect_model:
+      source:
+        prose: 2 dégâts par réussite aux plantes (portée 3 m/niv).
+        ref: spells:corruption-vegetale
+      spec:
+        target: vitality
+        op: sub
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: crane-hurlant
     name: Crâne hurlant
     status: active
@@ -6467,6 +6566,20 @@ spells:
     generated_prose: 'Sort de nécromancie : Peur + 2 dégâts de feu par réussite.'
     prose_origin: templated
     validation: pending
+    effect_model:
+      source:
+        prose: 2 dégâts de feu par réussite (+ effet de peur, noté à part).
+        ref: spells:crane-hurlant
+      spec:
+        target: damage
+        scope: feu
+        op: add
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: decret-de-non-repos
     name: Décret de non repos
     status: active
@@ -6518,6 +6631,22 @@ spells:
       - catalog: lexique
         entry_id: piege-dos
         term: Piège d’os
+    effect_model:
+      source:
+        prose: Immobilise 10 min/niveau (force du piège 1/R pour se libérer ; enforcement différé).
+        ref: spells:piege-d-os
+      spec:
+        target: status
+        scope: immobilized
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: putrefaction
     name: Putréfaction
     status: active
@@ -6535,6 +6664,23 @@ spells:
       - catalog: lexique
         entry_id: putrefaction
         term: Putréfaction
+    effect_model:
+      source:
+        prose: >-
+          Putréfaction : 1 dégât par réussite et par jour, pendant 1 jour par niveau (DoT ; tick
+          quotidien noté).
+        ref: spells:putrefaction
+      spec:
+        target: vitality
+        op: sub
+        value: successes
+        activation: active
+        duration:
+          amount: level
+          unit: day
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: raideur-cadaverique
     name: Raideur cadavérique
     status: active
@@ -6551,6 +6697,23 @@ spells:
     generated_prose: 'Sort de nécromancie : Paralyse 50DT par réussite, si R sup à jet d’endu.'
     prose_origin: templated
     validation: pending
+    effect_model:
+      source:
+        prose: >-
+          Paralysie 50 DT par réussite. Résistance : R supérieures au jet d’endurance (enforcement
+          différé).
+        ref: spells:raideur-cadaverique
+      spec:
+        target: status
+        scope: paralyzed
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          dt: successes * 50
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: reanimation-des-membres
     name: Réanimation des membres
     status: active
@@ -6567,6 +6730,20 @@ spells:
     generated_prose: 'Sort de nécromancie : 1 membre par niveau du lanceur, 3m par réussite, catégorie max 20.'
     prose_origin: templated
     validation: pending
+    effect_model:
+      source:
+        prose: Réanime 1 membre par niveau (portée 3 m/R ; catégorie max 20).
+        ref: spells:reanimation-des-membres
+      spec:
+        target: summon
+        scope: membre
+        op: grant
+        value: level
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: renvoi
     name: Renvoi
     status: active

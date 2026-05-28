@@ -1,0 +1,229 @@
+# E2k — Overlay d'effets structurés AUTHORÉS, école nécromancie.
+#
+# Source autorité : la ligne `effect` du grimoire (spells.yaml). PROPOSÉ, **À VALIDER par le MJ**
+# (règles vivantes, Q-D8.2) : `fidelity: pending` + `spec.requires_mj_validation: true`.
+#
+# Cibles utilisées : `summon` (mort/membre relevés), `status` (spectral, paralysie, immobilisation),
+# `damage`/`vitality` (corruptions, putréfaction DoT, crâne hurlant). Jets de résistance (endurance)
+# et contraintes (catégorie max, portée, aire) notés en PROSE ; enforcement différé (E3/E4).
+#
+# NON inclus (arbitrage) : renvoi/renvoie-de-masse (bannissement = anti-summon), armure-d-os (chance
+# 1/3), cage-d-os (objet), decret-de-non-repos / mort-temporaire / touche-mortel (mort/résurrection),
+# terre-sterile (narratif), vieillissement (malus générique ambigu + âge).
+#
+# Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts`.
+version: 1
+school_id: necromancie
+effects:
+  # --- Relèvement de morts (summon) ---
+  appel-des-morts:
+    source:
+      {
+        prose: 'Relève 1 mort par niveau (portée 3 m/R ; catégorie max 20).',
+        ref: 'spells:appel-des-morts'
+      }
+    spec:
+      {
+        target: summon,
+        scope: mort,
+        op: grant,
+        value: 'level',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  appel-des-morts-majeur:
+    source:
+      {
+        prose: 'Relève 1 mort par niveau (portée 3 m/R ; catégorie max 30).',
+        ref: 'spells:appel-des-morts-majeur'
+      }
+    spec:
+      {
+        target: summon,
+        scope: mort,
+        op: grant,
+        value: 'level',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  appel-des-morts-de-masse:
+    source:
+      {
+        prose: 'Relève 1 mort par niveau, +1 par réussite au-delà de la première (portée 3 m/R ; catégorie max 20).',
+        ref: 'spells:appel-des-morts-de-masse'
+      }
+    spec:
+      {
+        target: summon,
+        scope: mort,
+        op: grant,
+        value: 'level + (successes - 1)',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  reanimation-des-membres:
+    source:
+      {
+        prose: 'Réanime 1 membre par niveau (portée 3 m/R ; catégorie max 20).',
+        ref: 'spells:reanimation-des-membres'
+      }
+    spec:
+      {
+        target: summon,
+        scope: membre,
+        op: grant,
+        value: 'level',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Statuts ---
+  changement-spectral:
+    source:
+      { prose: 'Forme spectrale, 10 minutes par réussite.', ref: 'spells:changement-spectral' }
+    spec:
+      {
+        target: status,
+        scope: spectral,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: { amount: 'successes * 10', unit: minute },
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  raideur-cadaverique:
+    source:
+      {
+        prose: 'Paralysie 50 DT par réussite. Résistance : R supérieures au jet d’endurance (enforcement différé).',
+        ref: 'spells:raideur-cadaverique'
+      }
+    spec:
+      {
+        target: status,
+        scope: paralyzed,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: { dt: 'successes * 50' },
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  piege-d-os:
+    source:
+      {
+        prose: 'Immobilise 10 min/niveau (force du piège 1/R pour se libérer ; enforcement différé).',
+        ref: 'spells:piege-d-os'
+      }
+    spec:
+      {
+        target: status,
+        scope: immobilized,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: { amount: 'level * 10', unit: minute },
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Dégâts (poison / putréfaction / feu) ---
+  corruption-vegetale:
+    source:
+      {
+        prose: '2 dégâts par réussite aux plantes (portée 3 m/niv).',
+        ref: 'spells:corruption-vegetale'
+      }
+    spec:
+      {
+        target: vitality,
+        op: sub,
+        value: '2 * successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  corruption-de-l-air:
+    source:
+      {
+        prose: 'Empoisonne l’air (nuage 5 m³/R, 10 min/niv) : 2 dégâts par réussite.',
+        ref: 'spells:corruption-de-l-air'
+      }
+    spec:
+      {
+        target: vitality,
+        op: sub,
+        value: '2 * successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  corruption-de-l-eau:
+    source:
+      {
+        prose: 'Empoisonne l’eau (5 m³/R, 10 min/niv) : 2 dégâts par réussite.',
+        ref: 'spells:corruption-de-l-eau'
+      }
+    spec:
+      {
+        target: vitality,
+        op: sub,
+        value: '2 * successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  crane-hurlant:
+    source:
+      {
+        prose: '2 dégâts de feu par réussite (+ effet de peur, noté à part).',
+        ref: 'spells:crane-hurlant'
+      }
+    spec:
+      {
+        target: damage,
+        scope: feu,
+        op: add,
+        value: '2 * successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  putrefaction:
+    source:
+      {
+        prose: 'Putréfaction : 1 dégât par réussite et par jour, pendant 1 jour par niveau (DoT ; tick quotidien noté).',
+        ref: 'spells:putrefaction'
+      }
+    spec:
+      {
+        target: vitality,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: { amount: 'level', unit: day },
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
