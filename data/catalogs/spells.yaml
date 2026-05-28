@@ -3916,6 +3916,20 @@ spells:
       - catalog: lexique
         entry_id: auto-clonage
         term: Auto clonage
+    effect_model:
+      source:
+        prose: Crée un clone illusoire du lanceur par réussite.
+        ref: spells:auto-clonage
+      spec:
+        target: summon
+        scope: clone-lanceur
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: centaure-illusoire
     name: Centaure illusoire
     status: active
@@ -3933,6 +3947,20 @@ spells:
       - catalog: lexique
         entry_id: centaure-illusoire
         term: Centaure illusoire
+    effect_model:
+      source:
+        prose: Crée un centaure illusoire.
+        ref: spells:centaure-illusoire
+      spec:
+        target: summon
+        scope: centaure
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: chat-illusoire
     name: Chat illusoire
     status: active
@@ -3950,6 +3978,20 @@ spells:
       - catalog: lexique
         entry_id: chat-illusoire
         term: Chat illusoire
+    effect_model:
+      source:
+        prose: Crée un chat illusoire.
+        ref: spells:chat-illusoire
+      spec:
+        target: summon
+        scope: chat
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: cheval-illusoire
     name: Cheval illusoire
     status: active
@@ -3967,6 +4009,20 @@ spells:
       - catalog: lexique
         entry_id: cheval-illusoire
         term: Cheval illusoire
+    effect_model:
+      source:
+        prose: Crée un cheval illusoire.
+        ref: spells:cheval-illusoire
+      spec:
+        target: summon
+        scope: cheval
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: chigr-illusoire
     name: Chigr Illusoire
     status: active
@@ -3984,6 +4040,20 @@ spells:
       - catalog: lexique
         entry_id: chigr-illusoire
         term: Chigr illusoire
+    effect_model:
+      source:
+        prose: Crée un chigr illusoire.
+        ref: spells:chigr-illusoire
+      spec:
+        target: summon
+        scope: chigr
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: clonage
     name: Clonage
     status: active
@@ -4000,6 +4070,20 @@ spells:
     generated_prose: "Sort d'illusion : Crée un clone d'une cible à vue."
     prose_origin: templated
     validation: pending
+    effect_model:
+      source:
+        prose: Crée un clone illusoire d'une cible à vue.
+        ref: spells:clonage
+      spec:
+        target: summon
+        scope: clone-cible
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: couteau-illusoire
     name: Couteau illusoire
     status: active
@@ -4017,6 +4101,20 @@ spells:
       - catalog: lexique
         entry_id: couteau-illusoire
         term: Couteau illusoire
+    effect_model:
+      source:
+        prose: Crée un couteau illusoire.
+        ref: spells:couteau-illusoire
+      spec:
+        target: summon
+        scope: couteau
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: demi-elfe-illusoire
     name: Demi-elfe illusoire
     status: active
@@ -4034,6 +4132,20 @@ spells:
       - catalog: lexique
         entry_id: demi-elfe-illusoire
         term: Demi-elfe illusoire
+    effect_model:
+      source:
+        prose: Crée un demi-elfe illusoire.
+        ref: spells:demi-elfe-illusoire
+      spec:
+        target: summon
+        scope: demi-elfe
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: dryade-illusoire
     name: Dryade illusoire
     status: active
@@ -4051,6 +4163,20 @@ spells:
       - catalog: lexique
         entry_id: dryade-illusoire
         term: Dryade illusoire
+    effect_model:
+      source:
+        prose: Crée une dryade illusoire.
+        ref: spells:dryade-illusoire
+      spec:
+        target: summon
+        scope: dryade
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: elfe-illusoire
     name: Elfe illusoire
     status: active
@@ -4068,6 +4194,20 @@ spells:
       - catalog: lexique
         entry_id: elfe-illusoire
         term: Elfe illusoire
+    effect_model:
+      source:
+        prose: Crée un elfe illusoire.
+        ref: spells:elfe-illusoire
+      spec:
+        target: summon
+        scope: elfe
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: fantome-illusoire
     name: Fantôme illusoire
     status: active
@@ -4085,6 +4225,20 @@ spells:
       - catalog: lexique
         entry_id: fantome-illusoire
         term: Fantôme illusoire
+    effect_model:
+      source:
+        prose: Crée un fantôme illusoire.
+        ref: spells:fantome-illusoire
+      spec:
+        target: summon
+        scope: fantome
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: fortune-illusoire
     name: Fortune illusoire
     status: active
@@ -4102,6 +4256,20 @@ spells:
       - catalog: lexique
         entry_id: fortune-illusoire
         term: Fortune illusoire
+    effect_model:
+      source:
+        prose: Crée une pièce illusoire par réussite.
+        ref: spells:fortune-illusoire
+      spec:
+        target: summon
+        scope: piece
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: gnome-illusoire
     name: Gnome illusoire
     status: active
@@ -4119,6 +4287,20 @@ spells:
       - catalog: lexique
         entry_id: gnome-illusoire
         term: Gnome illusoire
+    effect_model:
+      source:
+        prose: Crée un gnome illusoire.
+        ref: spells:gnome-illusoire
+      spec:
+        target: summon
+        scope: gnome
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: gobelin-illusoire
     name: Gobelin illusoire
     status: active
@@ -4136,6 +4318,20 @@ spells:
       - catalog: lexique
         entry_id: gobelin-illusoire
         term: Gobelin illusoire
+    effect_model:
+      source:
+        prose: Crée un gobelin illusoire.
+        ref: spells:gobelin-illusoire
+      spec:
+        target: summon
+        scope: gobelin
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: hobbit-illusoire
     name: Hobbit illusoire
     status: active
@@ -4153,6 +4349,20 @@ spells:
       - catalog: lexique
         entry_id: hobbit-illusoire
         term: Hobbit illusoire
+    effect_model:
+      source:
+        prose: Crée un hobbit illusoire.
+        ref: spells:hobbit-illusoire
+      spec:
+        target: summon
+        scope: hobbit
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: homme-lezard-illusoire
     name: Homme lézard illusoire
     status: active
@@ -4170,6 +4380,20 @@ spells:
       - catalog: lexique
         entry_id: homme-lezard-illusoire
         term: Homme lézard illusoire
+    effect_model:
+      source:
+        prose: Crée un homme lézard illusoire.
+        ref: spells:homme-lezard-illusoire
+      spec:
+        target: summon
+        scope: homme-lezard
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: homme-oiseau-illusoire
     name: Homme oiseau illusoire
     status: active
@@ -4187,6 +4411,20 @@ spells:
       - catalog: lexique
         entry_id: homme-oiseau-illusoire
         term: Homme oiseau illusoire
+    effect_model:
+      source:
+        prose: Crée un homme oiseau illusoire.
+        ref: spells:homme-oiseau-illusoire
+      spec:
+        target: summon
+        scope: homme-oiseau
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: homme-rat-illusoire
     name: Homme rat illusoire
     status: active
@@ -4204,6 +4442,20 @@ spells:
       - catalog: lexique
         entry_id: homme-rat-illusoire
         term: Homme rat illusoire
+    effect_model:
+      source:
+        prose: Crée un homme rat illusoire.
+        ref: spells:homme-rat-illusoire
+      spec:
+        target: summon
+        scope: homme-rat
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: humain-illusoire
     name: Humain illusoire
     status: active
@@ -4221,6 +4473,20 @@ spells:
       - catalog: lexique
         entry_id: humain-illusoire
         term: Humain illusoire
+    effect_model:
+      source:
+        prose: Crée un humain illusoire.
+        ref: spells:humain-illusoire
+      spec:
+        target: summon
+        scope: humain
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: khochigr-illusoire
     name: Khochigr illusoire
     status: active
@@ -4238,6 +4504,20 @@ spells:
       - catalog: lexique
         entry_id: khochigr-illusoire
         term: Khochigr illusoire
+    effect_model:
+      source:
+        prose: Crée un khochigr illusoire.
+        ref: spells:khochigr-illusoire
+      spec:
+        target: summon
+        scope: khochigr
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: khogr-illusoire
     name: Khogr illusoire
     status: active
@@ -4255,6 +4535,20 @@ spells:
       - catalog: lexique
         entry_id: khogr-illusoire
         term: Khogr illusoire
+    effect_model:
+      source:
+        prose: Crée un khogr illusoire.
+        ref: spells:khogr-illusoire
+      spec:
+        target: summon
+        scope: khogr
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: loup-illusoire
     name: Loup illusoire
     status: active
@@ -4272,6 +4566,20 @@ spells:
       - catalog: lexique
         entry_id: loup-illusoire
         term: Loup illusoire
+    effect_model:
+      source:
+        prose: Crée un loup illusoire.
+        ref: spells:loup-illusoire
+      spec:
+        target: summon
+        scope: loup
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: loup-garou-illusoire
     name: Loup-garou illusoire
     status: active
@@ -4289,6 +4597,20 @@ spells:
       - catalog: lexique
         entry_id: loup-garou-illusoire
         term: Loup-garou illusoire
+    effect_model:
+      source:
+        prose: Crée un loup-garou illusoire.
+        ref: spells:loup-garou-illusoire
+      spec:
+        target: summon
+        scope: loup-garou
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: mur-illusoire
     name: Mur illusoire
     status: active
@@ -4306,6 +4628,20 @@ spells:
       - catalog: lexique
         entry_id: mur-illusoire
         term: Mur illusoire
+    effect_model:
+      source:
+        prose: Crée un mur illusoire (1 m de haut, 3 m de long par réussite).
+        ref: spells:mur-illusoire
+      spec:
+        target: summon
+        scope: mur
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: nain-illusoire
     name: Nain illusoire
     status: active
@@ -4323,6 +4659,20 @@ spells:
       - catalog: lexique
         entry_id: nain-illusoire
         term: Nain illusoire
+    effect_model:
+      source:
+        prose: Crée un nain illusoire.
+        ref: spells:nain-illusoire
+      spec:
+        target: summon
+        scope: nain
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: ogre-illusoire
     name: Ogre illusoire
     status: active
@@ -4340,6 +4690,20 @@ spells:
       - catalog: lexique
         entry_id: ogre-illusoire
         term: Ogre illusoire
+    effect_model:
+      source:
+        prose: Crée un ogre illusoire.
+        ref: spells:ogre-illusoire
+      spec:
+        target: summon
+        scope: ogre
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: ondine-illusoire
     name: Ondine illusoire
     status: active
@@ -4357,6 +4721,20 @@ spells:
       - catalog: lexique
         entry_id: ondine-illusoire
         term: Ondine illusoire
+    effect_model:
+      source:
+        prose: Crée une ondine illusoire.
+        ref: spells:ondine-illusoire
+      spec:
+        target: summon
+        scope: ondine
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: orc-illusoire
     name: Orc illusoire
     status: active
@@ -4374,6 +4752,20 @@ spells:
       - catalog: lexique
         entry_id: orc-illusoire
         term: Orc illusoire
+    effect_model:
+      source:
+        prose: Crée un orc illusoire.
+        ref: spells:orc-illusoire
+      spec:
+        target: summon
+        scope: orc
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: squelette-illusoire
     name: Squelette illusoire
     status: active
@@ -4391,6 +4783,20 @@ spells:
       - catalog: lexique
         entry_id: squelette-illusoire
         term: Squelette illusoire
+    effect_model:
+      source:
+        prose: Crée un squelette illusoire.
+        ref: spells:squelette-illusoire
+      spec:
+        target: summon
+        scope: squelette
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: troll-illusoire
     name: Troll illusoire
     status: active
@@ -4408,6 +4814,20 @@ spells:
       - catalog: lexique
         entry_id: troll-illusoire
         term: Troll illusoire
+    effect_model:
+      source:
+        prose: Crée un troll illusoire.
+        ref: spells:troll-illusoire
+      spec:
+        target: summon
+        scope: troll
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: vampire-illusoire
     name: Vampire illusoire
     status: active
@@ -4425,6 +4845,20 @@ spells:
       - catalog: lexique
         entry_id: vampire-illusoire
         term: Vampire illusoire
+    effect_model:
+      source:
+        prose: Crée un vampire illusoire.
+        ref: spells:vampire-illusoire
+      spec:
+        target: summon
+        scope: vampire
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: vide-sideral
     name: Vide sidéral
     status: active
@@ -5366,6 +5800,20 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: Appelle 1 chat par niveau (rayon 10 m/R).
+        ref: spells:appel-des-chats
+      spec:
+        target: summon
+        scope: chat
+        op: grant
+        value: level
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: appel-des-chevaux
     name: Appel des chevaux
     status: active
@@ -5384,6 +5832,20 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: Appelle 1 cheval par niveau (rayon 10 m/R).
+        ref: spells:appel-des-chevaux
+      spec:
+        target: summon
+        scope: cheval
+        op: grant
+        value: level
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: appel-des-colombes
     name: Appel des colombes
     status: active
@@ -5402,6 +5864,20 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: Appelle 1 colombe par niveau (rayon 10 m/R).
+        ref: spells:appel-des-colombes
+      spec:
+        target: summon
+        scope: colombe
+        op: grant
+        value: level
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: appel-des-corbeaux
     name: Appel des corbeaux
     status: active
@@ -5420,6 +5896,20 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: Appelle 1 corbeau par niveau (rayon 10 m/R).
+        ref: spells:appel-des-corbeaux
+      spec:
+        target: summon
+        scope: corbeau
+        op: grant
+        value: level
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: appel-des-insectes
     name: Appel des insectes
     status: active
@@ -5438,6 +5928,20 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: Appelle 10 insectes par niveau (rayon 10 m/R, nuée).
+        ref: spells:appel-des-insectes
+      spec:
+        target: summon
+        scope: insecte
+        op: grant
+        value: 10 * level
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: appel-des-loups
     name: Appel des loups
     status: active
@@ -5456,6 +5960,20 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: Appelle 1 loup par niveau (rayon 10 m/R).
+        ref: spells:appel-des-loups
+      spec:
+        target: summon
+        scope: loup
+        op: grant
+        value: level
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: appel-des-mammiferes
     name: Appel des mammifères
     status: active
@@ -5474,6 +5992,20 @@ spells:
         entry_id: appel
         term: Appel
     derived_from: appel
+    effect_model:
+      source:
+        prose: Appelle 1 mammifère par niveau (rayon 10 m/R).
+        ref: spells:appel-des-mammiferes
+      spec:
+        target: summon
+        scope: mammifere
+        op: grant
+        value: level
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: cercle-de-fleur
     name: Cercle de fleur
     status: active

@@ -58,3 +58,115 @@ effects:
       requires_mj_validation: true
     fidelity: pending
     ambiguity_ref: null
+  # --- Appels d'animaux (target summon, E2j, PENDING) ---
+  # "Appel N <animal>/niv, 10 m de rayon/R" → value = level (1/niv), nuée = 10 * level. Le rayon
+  # d'appel (10 m/R) est un paramètre de portée (à part). duration until_dispel.
+  appel-des-chats:
+    source: { prose: 'Appelle 1 chat par niveau (rayon 10 m/R).', ref: 'spells:appel-des-chats' }
+    spec:
+      {
+        target: summon,
+        scope: chat,
+        op: grant,
+        value: 'level',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  appel-des-chevaux:
+    source:
+      { prose: 'Appelle 1 cheval par niveau (rayon 10 m/R).', ref: 'spells:appel-des-chevaux' }
+    spec:
+      {
+        target: summon,
+        scope: cheval,
+        op: grant,
+        value: 'level',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  appel-des-colombes:
+    source:
+      { prose: 'Appelle 1 colombe par niveau (rayon 10 m/R).', ref: 'spells:appel-des-colombes' }
+    spec:
+      {
+        target: summon,
+        scope: colombe,
+        op: grant,
+        value: 'level',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  appel-des-corbeaux:
+    source:
+      { prose: 'Appelle 1 corbeau par niveau (rayon 10 m/R).', ref: 'spells:appel-des-corbeaux' }
+    spec:
+      {
+        target: summon,
+        scope: corbeau,
+        op: grant,
+        value: 'level',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  appel-des-insectes:
+    source:
+      {
+        prose: 'Appelle 10 insectes par niveau (rayon 10 m/R, nuée).',
+        ref: 'spells:appel-des-insectes'
+      }
+    spec:
+      {
+        target: summon,
+        scope: insecte,
+        op: grant,
+        value: '10 * level',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  appel-des-loups:
+    source: { prose: 'Appelle 1 loup par niveau (rayon 10 m/R).', ref: 'spells:appel-des-loups' }
+    spec:
+      {
+        target: summon,
+        scope: loup,
+        op: grant,
+        value: 'level',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  appel-des-mammiferes:
+    source:
+      {
+        prose: 'Appelle 1 mammifère par niveau (rayon 10 m/R).',
+        ref: 'spells:appel-des-mammiferes'
+      }
+    spec:
+      {
+        target: summon,
+        scope: mammifere,
+        op: grant,
+        value: 'level',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null

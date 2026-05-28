@@ -1,0 +1,455 @@
+# E2j — Overlay d'effets structurés AUTHORÉS, école illusion.
+#
+# Source autorité : la ligne `effect` du grimoire (spells.yaml). PROPOSÉ, **À VALIDER par le MJ**
+# (règles vivantes, Q-D8.2) : `fidelity: pending` + `spec.requires_mj_validation: true`.
+#
+# Convention : "Crée un <X> illusoire" → target summon, scope <slug>, op grant, value (1 par défaut ;
+# "successes" si /R). La nature ILLUSOIRE (pas de stats réelles, ne peut agir) est implicite à l'école
+# illusion — à distinguer des invocations réelles lors de la validation/application (E3+). duration
+# until_dispel (l'illusion persiste jusqu'à dissipation).
+#
+# NON inclus : vide-sideral (plonge la cible dans un vide illusoire = effet de contrôle/statut, à part).
+#
+# Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts`.
+version: 1
+school_id: illusion
+effects:
+  auto-clonage:
+    source:
+      { prose: 'Crée un clone illusoire du lanceur par réussite.', ref: 'spells:auto-clonage' }
+    spec:
+      {
+        target: summon,
+        scope: clone-lanceur,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  clonage:
+    source: { prose: "Crée un clone illusoire d'une cible à vue.", ref: 'spells:clonage' }
+    spec:
+      {
+        target: summon,
+        scope: clone-cible,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  centaure-illusoire:
+    source: { prose: 'Crée un centaure illusoire.', ref: 'spells:centaure-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: centaure,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  chat-illusoire:
+    source: { prose: 'Crée un chat illusoire.', ref: 'spells:chat-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: chat,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  cheval-illusoire:
+    source: { prose: 'Crée un cheval illusoire.', ref: 'spells:cheval-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: cheval,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  chigr-illusoire:
+    source: { prose: 'Crée un chigr illusoire.', ref: 'spells:chigr-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: chigr,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  couteau-illusoire:
+    source: { prose: 'Crée un couteau illusoire.', ref: 'spells:couteau-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: couteau,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  demi-elfe-illusoire:
+    source: { prose: 'Crée un demi-elfe illusoire.', ref: 'spells:demi-elfe-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: demi-elfe,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  dryade-illusoire:
+    source: { prose: 'Crée une dryade illusoire.', ref: 'spells:dryade-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: dryade,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  elfe-illusoire:
+    source: { prose: 'Crée un elfe illusoire.', ref: 'spells:elfe-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: elfe,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  fantome-illusoire:
+    source: { prose: 'Crée un fantôme illusoire.', ref: 'spells:fantome-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: fantome,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  fortune-illusoire:
+    source: { prose: 'Crée une pièce illusoire par réussite.', ref: 'spells:fortune-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: piece,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  gnome-illusoire:
+    source: { prose: 'Crée un gnome illusoire.', ref: 'spells:gnome-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: gnome,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  gobelin-illusoire:
+    source: { prose: 'Crée un gobelin illusoire.', ref: 'spells:gobelin-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: gobelin,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  hobbit-illusoire:
+    source: { prose: 'Crée un hobbit illusoire.', ref: 'spells:hobbit-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: hobbit,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  homme-lezard-illusoire:
+    source: { prose: 'Crée un homme lézard illusoire.', ref: 'spells:homme-lezard-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: homme-lezard,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  homme-oiseau-illusoire:
+    source: { prose: 'Crée un homme oiseau illusoire.', ref: 'spells:homme-oiseau-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: homme-oiseau,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  homme-rat-illusoire:
+    source: { prose: 'Crée un homme rat illusoire.', ref: 'spells:homme-rat-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: homme-rat,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  humain-illusoire:
+    source: { prose: 'Crée un humain illusoire.', ref: 'spells:humain-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: humain,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  khochigr-illusoire:
+    source: { prose: 'Crée un khochigr illusoire.', ref: 'spells:khochigr-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: khochigr,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  khogr-illusoire:
+    source: { prose: 'Crée un khogr illusoire.', ref: 'spells:khogr-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: khogr,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  loup-illusoire:
+    source: { prose: 'Crée un loup illusoire.', ref: 'spells:loup-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: loup,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  loup-garou-illusoire:
+    source: { prose: 'Crée un loup-garou illusoire.', ref: 'spells:loup-garou-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: loup-garou,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  mur-illusoire:
+    source:
+      {
+        prose: 'Crée un mur illusoire (1 m de haut, 3 m de long par réussite).',
+        ref: 'spells:mur-illusoire'
+      }
+    spec:
+      {
+        target: summon,
+        scope: mur,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  nain-illusoire:
+    source: { prose: 'Crée un nain illusoire.', ref: 'spells:nain-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: nain,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  ogre-illusoire:
+    source: { prose: 'Crée un ogre illusoire.', ref: 'spells:ogre-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: ogre,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  ondine-illusoire:
+    source: { prose: 'Crée une ondine illusoire.', ref: 'spells:ondine-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: ondine,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  orc-illusoire:
+    source: { prose: 'Crée un orc illusoire.', ref: 'spells:orc-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: orc,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  squelette-illusoire:
+    source: { prose: 'Crée un squelette illusoire.', ref: 'spells:squelette-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: squelette,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  troll-illusoire:
+    source: { prose: 'Crée un troll illusoire.', ref: 'spells:troll-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: troll,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  vampire-illusoire:
+    source: { prose: 'Crée un vampire illusoire.', ref: 'spells:vampire-illusoire' }
+    spec:
+      {
+        target: summon,
+        scope: vampire,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
