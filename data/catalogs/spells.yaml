@@ -5550,6 +5550,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Empathie –1 par réussite, 10 minutes par niveau.
+        ref: spells:antipathisme
+      spec:
+        target: aptitude
+        scope: empathy
+        op: sub
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: apathie
     name: Apathie
     status: active
@@ -5622,6 +5638,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Intelligence –1 par réussite, 10 minutes par niveau.
+        ref: spells:betise
+      spec:
+        target: aptitude
+        scope: intelligence
+        op: sub
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contagion-du-peche
     name: Contagion du péché
     status: active
@@ -5690,6 +5722,19 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 2 points de vitalité en moins par réussite (douleur).
+        ref: spells:douleur
+      spec:
+        target: vitality
+        op: sub
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: douleur-a-distance
     name: Douleur à distance
     status: active
@@ -5707,6 +5752,19 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 2 points de vitalité en moins par réussite, à distance (3 m/niveau ; portée = ciblage).
+        ref: spells:douleur-a-distance
+      spec:
+        target: vitality
+        op: sub
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: douleur-de-masse
     name: Douleur de masse
     status: active
@@ -5724,6 +5782,19 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 2 points de vitalité en moins par réussite (3 m/niveau, 1 personne/R ; portée = ciblage).
+        ref: spells:douleur-de-masse
+      spec:
+        target: vitality
+        op: sub
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: douleur-majeure
     name: Douleur majeure
     status: active
@@ -5741,6 +5812,19 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 3 points de vitalité en moins par réussite (douleur majeure).
+        ref: spells:douleur-majeure
+      spec:
+        target: vitality
+        op: sub
+        value: 3 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: douleur-mineure
     name: Douleur mineure
     status: active
@@ -5758,6 +5842,19 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 1 point de vitalité en moins par réussite (douleur mineure).
+        ref: spells:douleur-mineure
+      spec:
+        target: vitality
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: drain-de-jeunesse
     name: Drain de jeunesse
     status: active
@@ -5881,6 +5978,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Force –1 par réussite, 10 minutes par niveau.
+        ref: spells:faiblesse
+      spec:
+        target: aptitude
+        scope: force
+        op: sub
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: folie
     name: Folie
     status: active
@@ -5966,6 +6079,24 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          Facteur de volonté +1 par réussite, 10 minutes par niveau (FVol relevé = test de volonté
+          plus difficile, R-8.19).
+        ref: spells:lachete
+      spec:
+        target: factor
+        scope: will
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: laideur
     name: Laideur
     status: active
@@ -5983,6 +6114,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Esthétique –1 par réussite, 10 minutes par niveau.
+        ref: spells:laideur
+      spec:
+        target: aptitude
+        scope: aestheticism
+        op: sub
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: lenteur
     name: Lenteur
     status: active
@@ -6000,6 +6147,21 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Facteur de vitesse +1 par réussite, 50 DT par niveau (ralentissement, R-1.38).
+        ref: spells:lenteur
+      spec:
+        target: factor
+        scope: speed
+        op: add
+        value: successes
+        activation: active
+        duration:
+          dt: level * 50
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: lenteur-de-masse
     name: Lenteur de masse
     status: active
@@ -6019,6 +6181,21 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Facteur de vitesse +1 par réussite, 50 DT par niveau (1 personne par réussite).
+        ref: spells:lenteur-de-masse
+      spec:
+        target: factor
+        scope: speed
+        op: add
+        value: successes
+        activation: active
+        duration:
+          dt: level * 50
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: malediction
     name: Malédiction
     status: active
@@ -6036,6 +6213,21 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Difficulté +1 par réussite, 10 minutes par niveau.
+        ref: spells:malediction
+      spec:
+        target: difficulty
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: oubli
     name: Oubli
     status: active
