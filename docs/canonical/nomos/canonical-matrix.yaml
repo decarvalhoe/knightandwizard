@@ -102384,8 +102384,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 121
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 126
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: TI exprimé en DT (1 DT = 0,2 s, R-1 / R-2.13) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -102521,8 +102521,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 104
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 108
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: Modificateurs de circonstances habituels (R-1.11) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -102881,8 +102881,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 573
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 596
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: >-
       *Différence avec R-1.2** : ceci est une **exception au pattern standard** (pool = aptitude + compétence + spé).
       Les jets de résistance aux sorts utilisent l'aptitude **seule** parce qu'ils représentent la **résilience
@@ -102942,14 +102942,18 @@ units:
       - collection: knowledge_chunks
   - unit_id: R-1-20-2
     unit_type: rule
-    name: '| `difficulty` | Difficulté convenue du jet | int (peut > 9, R-1.20) |'
+    name: >-
+      | `difficulty`       | Difficulté convenue du jet                                                    | int (peut >
+      9, R-1.20) |
     domain: d8-magie
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 76
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
-    business_rule: '| `difficulty` | Difficulté convenue du jet | int (peut > 9, R-1.20) | from docs/rules/08-magie.md.'
+        locator: line 78
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
+    business_rule: >-
+      | `difficulty`       | Difficulté convenue du jet                                                    | int (peut >
+      9, R-1.20) | from docs/rules/08-magie.md.
     status: partial
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
@@ -103092,8 +103096,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 141
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 147
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: >-
       *Action conservée** (R-1.24) : un sort en cours **peut être conservé** si le magicien subit des dégâts — la
       difficulté du sort augmente alors de +1 par point de dégât subi pendant le TI (cf. règles d'action conservée, le
@@ -103196,8 +103200,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 578
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 602
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: Cible fait un **test de volonté D20** (R-1.26 à R-1.29) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -103234,8 +103238,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 580
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 604
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: 1 = échec auto, 20 = réussite auto (R-1.27) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -103302,8 +103306,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 579
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 603
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: Difficulté = `F.Volonté + réussites du sort attaquant` (R-1.28, le pont D10 → D20) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -103476,14 +103480,18 @@ units:
       - collection: knowledge_chunks
   - unit_id: R-1-32-3
     unit_type: rule
-    name: '| `damage_type` | Si dégâts : P/E/C/T (R-1.32) | enum nullable |'
+    name: >-
+      | `damage_type`      | Si dégâts : P/E/C/T (R-1.32)                                                  | enum
+      nullable          |
     domain: d8-magie
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 81
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
-    business_rule: '| `damage_type` | Si dégâts : P/E/C/T (R-1.32) | enum nullable | from docs/rules/08-magie.md.'
+        locator: line 83
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
+    business_rule: >-
+      | `damage_type`      | Si dégâts : P/E/C/T (R-1.32)                                                  | enum
+      nullable          | from docs/rules/08-magie.md.
     status: partial
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
@@ -103560,16 +103568,18 @@ units:
       - collection: knowledge_chunks
   - unit_id: R-1-33-3
     unit_type: rule
-    name: '| `direct_magic` | Booléen : cible vivante directement (oui/non), pour résistance magique R-1.33 | bool |'
+    name: >-
+      | `direct_magic`     | Booléen : cible vivante directement (oui/non), pour résistance magique R-1.33 |
+      bool                   |
     domain: d8-magie
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 80
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 82
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: >-
-      | `direct_magic` | Booléen : cible vivante directement (oui/non), pour résistance magique R-1.33 | bool | from
-      docs/rules/08-magie.md.
+      | `direct_magic`     | Booléen : cible vivante directement (oui/non), pour résistance magique R-1.33 |
+      bool                   | from docs/rules/08-magie.md.
     status: partial
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
@@ -103713,8 +103723,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 98
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 101
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: >-
       *Difficulté** : la difficulté convenue du sort, modifiable par les modificateurs habituels (D1 R-1.36) : from
       docs/rules/08-magie.md.
@@ -106216,8 +106226,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 182
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 190
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: Partie D — Énergie (rappel D2 R-2.11) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -106364,17 +106374,18 @@ units:
   - unit_id: R-2-17-2
     unit_type: rule
     name: >-
-      | **Jet d'aptitude brute** | Aptitude seule (D10s) | **Résistance naturelle** : encaissement (R-2.17 endurance),
-      résistance à un sort (« Contre jet d'X »), réflexe pur dans certains cas, etc. |
+      | **Jet d'aptitude brute**          | Aptitude seule (D10s)                     | **Résistance naturelle** :
+      encaissement (R-2.17 endurance), résistance à un sort (« Contre jet d'X »), réflexe pur dans certains cas, etc. |
     domain: d8-magie
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 591
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 615
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: >-
-      | **Jet d'aptitude brute** | Aptitude seule (D10s) | **Résistance naturelle** : encaissement (R-2.17 endurance),
-      résistance à un sort (« Contre jet d'X »), réflexe pur dans certains cas, etc. | from docs/rules/08-magie.md.
+      | **Jet d'aptitude brute**          | Aptitude seule (D10s)                     | **Résistance naturelle** :
+      encaissement (R-2.17 endurance), résistance à un sort (« Contre jet d'X »), réflexe pur dans certains cas, etc. |
+      from docs/rules/08-magie.md.
     status: partial
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
@@ -107410,7 +107421,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
         locator: line 3
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: >-
       > Système magique du jeu. 11 écoles, ~889 sorts catalogués (web), magicien comme orientation exclusive (sauf
       exceptions D4 R-4.9), familiers, mécanique de drain et de captage. Reprend les règles déjà actées en D1
@@ -107767,8 +107778,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 96
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 99
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: >-
       *Pas de compétence d'utilisation** — les sorts ne sont pas des compétences (cf. D5 R-5.6-bis). Pas de
       spécialisations sur les sorts. from docs/rules/08-magie.md.
@@ -107807,8 +107818,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 439
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 457
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: '*Durée d''apprentissage en jours** : règle D5 R-5.6-ter. from docs/rules/08-magie.md.'
     status: partial
     gaps:
@@ -108098,8 +108109,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 31
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 32
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: '*Statut** : 🟢 claire (cf. D6 R-6.3) from docs/rules/08-magie.md.'
     status: partial
     gaps:
@@ -108929,8 +108940,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 17
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 18
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.1 — Définition de la magie from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -108948,8 +108959,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 184
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 192
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.10 — Modèle d'énergie consolidé from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -108988,8 +108999,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 208
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 216
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.11 — Variantes de sort (mineur, majeur, masse, distance) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109007,8 +109018,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 228
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 238
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.12 — Développement de sort (atouts Magicien) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109049,8 +109060,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 258
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 270
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.13-a — Forme, taille et vitalité from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109068,8 +109079,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 269
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 281
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.13-b — Feuille et budget de création du familier from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109087,8 +109098,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 307
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 319
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.13-c — Restrictions propres au familier from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109106,8 +109117,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 316
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 328
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.13-d — Coût des atouts et handicaps du familier from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109125,8 +109136,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 337
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 349
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.13-e — Passage de niveau, mort et renaissance from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109144,8 +109155,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 354
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 366
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.13-f — Atouts liés au familier from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109163,8 +109174,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 369
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 381
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.13-g — Statut from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109205,8 +109216,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 242
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 253
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: 'R-8.13 — Familier : entité magique distincte des compagnons/montures from docs/rules/08-magie.md.'
     status: partial
     gaps:
@@ -109262,8 +109273,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 381
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 394
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.14 — Sorts et atouts de manipulation d'énergie / vie from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109281,8 +109292,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 402
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 415
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.15 — Résistance magique (rappel D1 R-1.33) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109300,8 +109311,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 416
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 430
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.16 — Spécificités de l'apprentissage de sorts from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109319,8 +109330,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 457
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 476
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.17 — Catalogue des atouts magiciens from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109338,8 +109349,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 502
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 521
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.18 — Tables et liaisons from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109357,8 +109368,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 584
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 608
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: 'R-8.19 — Nouveau type de jet : aptitude brute from docs/rules/08-magie.md.'
     status: partial
     gaps:
@@ -109397,8 +109408,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 25
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 26
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.2 — Engagement à vie de la voie magique from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109418,8 +109429,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 675
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 706
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: >-
       *Voir nouvelle règle structurante R-8.20 ci-dessous** — c'est un système qui dépasse la magie et structure tout le
       moteur de jeu. from docs/rules/08-magie.md.
@@ -109466,8 +109477,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 38
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 40
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.3 — Les 11 écoles de magie from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109485,8 +109496,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 66
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 68
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.4 — Schéma d'un sort from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109504,8 +109515,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 89
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 91
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.5 — Lancement d'un sort (rappel D1 R-1.4) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109541,14 +109552,18 @@ units:
       - collection: knowledge_chunks
   - unit_id: R-8-6
     unit_type: rule
-    name: '| `incantation_time` | TI — Temps d''Incantation en DT (R-8.6) | int ≥ 1 |'
+    name: >-
+      | `incantation_time` | TI — Temps d'Incantation en DT (R-8.6)                                        | int ≥
+      1                |
     domain: d8-magie
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 75
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
-    business_rule: '| `incantation_time` | TI — Temps d''Incantation en DT (R-8.6) | int ≥ 1 | from docs/rules/08-magie.md.'
+        locator: line 77
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
+    business_rule: >-
+      | `incantation_time` | TI — Temps d'Incantation en DT (R-8.6)                                        | int ≥
+      1                | from docs/rules/08-magie.md.
     status: partial
     gaps:
       - 'relational_db: Canonical relational tables/import evidence pending.'
@@ -109588,8 +109603,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 123
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 128
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: Pendant l'incantation, le magicien est **vulnérable** (concentration requise, R-8.7) from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109607,8 +109622,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 145
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 151
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.8 — Réduction du TI par dépense d'énergie from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -109626,8 +109641,8 @@ units:
     criticality: critical
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
-        locator: line 167
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        locator: line 175
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: R-8.9 — Atouts qui modifient le TI ou la concentration from docs/rules/08-magie.md.
     status: partial
     gaps:
@@ -183158,7 +183173,7 @@ units:
     source_refs:
       - source_id: DOCS-RULES-08-MAGIE
         locator: docs/rules/08-magie.md
-        hash: sha256:9073e72b6e899c8ea3d24033012c19dd86fe10bee71b914e51d17b33fad9d288
+        hash: sha256:54c877b72a39492cd81755470bb16dbe1bbe33b49bd78aaa31332902f266ead0
     business_rule: docs/rules/08-magie.md from docs/rules/08-magie.md.
     status: partial
     gaps:

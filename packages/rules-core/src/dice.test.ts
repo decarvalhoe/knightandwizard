@@ -174,23 +174,30 @@ function scriptedRolls(values: number[]) {
   };
 }
 
-describe('willpower test D20 (R-8.19)', () => {
-  it('succeeds when the D20 is at or under will factor + modifiers', () => {
+describe('willpower test D20 (R-8.19, MJ 2026-05-28: D20 >= cible)', () => {
+  it('succeeds when the D20 is at or above will factor + modifiers', () => {
     expect(rollWillpowerTest(10, 0, { randomInteger: () => 10 })).toEqual({
       roll: 10,
       target: 10,
       success: true
     });
-    expect(rollWillpowerTest(10, 0, { randomInteger: () => 11 })).toEqual({
-      roll: 11,
+    expect(rollWillpowerTest(10, 0, { randomInteger: () => 9 })).toEqual({
+      roll: 9,
       target: 10,
       success: false
     });
   });
 
-  it('applies modifiers to the target', () => {
-    expect(rollWillpowerTest(10, 5, { randomInteger: () => 14 }).success).toBe(true);
-    expect(rollWillpowerTest(10, -5, { randomInteger: () => 6 }).success).toBe(false);
+  it('a LOWER will factor succeeds more often (facteur bas = avantageux)', () => {
+    // Même D20 = 8 : FVol 5 réussit (8 >= 5), FVol 15 échoue (8 < 15).
+    expect(rollWillpowerTest(5, 0, { randomInteger: () => 8 }).success).toBe(true);
+    expect(rollWillpowerTest(15, 0, { randomInteger: () => 8 }).success).toBe(false);
+  });
+
+  it('positive modifier = harder (raises the threshold), negative = easier', () => {
+    // +5 → cible 15 : D20 14 échoue. -5 (ex. courage) → cible 5 : D20 6 réussit.
+    expect(rollWillpowerTest(10, 5, { randomInteger: () => 14 }).success).toBe(false);
+    expect(rollWillpowerTest(10, -5, { randomInteger: () => 6 }).success).toBe(true);
   });
 
   it('rejects an out-of-range D20 value', () => {
