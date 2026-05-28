@@ -1,0 +1,205 @@
+# E2e — Overlay d'effets structurés AUTHORÉS, école magie-noire.
+#
+# Source autorité : la ligne `effect` du grimoire (spells.yaml) + la prose liée (lexique, E0).
+# PROPOSÉ par audit (E2a/E2e), **À VALIDER par le MJ** (méthode Q-D8.2) : `fidelity: pending` +
+# `spec.requires_mj_validation: true`. Tant que non validé, ce n'est PAS du canon autoritaire.
+#
+# Conventions (miroir « négatif » de magie-blanche) :
+#   - "Attribut -1/R, 10 min/niv" → target aptitude, scope <attr>, op sub, value "successes"
+#   - "-N de vitalité/R"          → target vitality, op sub, value "N * successes" (dégâts, instantané)
+#   - "Diff. +1/R"                → target difficulty, op add, value "successes" (malédiction)
+#   - "Facteur de volonté +1/R"   → target factor, scope will, op add → RELÈVE le FVol = test de
+#       volonté plus DUR (R-8.19 : FVol haut = moins de réussite). Cohérent avec `lâcheté`.
+#   - "+1 Facteur de vitesse/R"   → target factor, scope speed, op add → ralentit (R-1.38).
+#   - "-de-masse" : même effet par cible ; "1 personne/R" = ciblage (à part).
+#
+# NON inclus (arbitrage) : drains (drain-de-vie/sort/jeunesse — bi-face cible+lanceur), contrôle/
+# charme (controle-mental, emprise-corporelle, apathie, folie, horreur, peur, oubli, paralysie,
+# autodestruction, control-charnel, contagion-du-peche), vengeance (réflexion), affaiblissement
+# ("1 malus/R" générique, cible ambiguë), arret-du-temps, hibernation, implosion, penombre,
+# pluie-de-sang, resserrement-des-murs.
+#
+# Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts` (catalogs:build:magic).
+version: 1
+school_id: magie-noire
+effects:
+  # --- Debuffs d'aptitude (-1/R, 10 min/niv) ---
+  faiblesse:
+    source:
+      prose: 'Force –1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:faiblesse'
+    spec:
+      target: aptitude
+      scope: force
+      op: sub
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  betise:
+    source:
+      prose: 'Intelligence –1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:betise'
+    spec:
+      target: aptitude
+      scope: intelligence
+      op: sub
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  antipathisme:
+    source:
+      prose: 'Empathie –1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:antipathisme'
+    spec:
+      target: aptitude
+      scope: empathy
+      op: sub
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  laideur:
+    source:
+      prose: 'Esthétique –1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:laideur'
+    spec:
+      target: aptitude
+      scope: aestheticism
+      op: sub
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Facteurs (volonté, vitesse) — op add = aggravant ---
+  lachete:
+    source:
+      prose: 'Facteur de volonté +1 par réussite, 10 minutes par niveau (FVol relevé = test de volonté plus difficile, R-8.19).'
+      ref: 'spells:lachete'
+    spec:
+      target: factor
+      scope: will
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  lenteur:
+    source:
+      prose: 'Facteur de vitesse +1 par réussite, 50 DT par niveau (ralentissement, R-1.38).'
+      ref: 'spells:lenteur'
+    spec:
+      target: factor
+      scope: speed
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { dt: 'level * 50' }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  lenteur-de-masse:
+    source:
+      prose: 'Facteur de vitesse +1 par réussite, 50 DT par niveau (1 personne par réussite).'
+      ref: 'spells:lenteur-de-masse'
+    spec:
+      target: factor
+      scope: speed
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { dt: 'level * 50' }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Malédiction (difficulté) ---
+  malediction:
+    source:
+      prose: 'Difficulté +1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:malediction'
+    spec:
+      target: difficulty
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Douleur (dégâts directs, vitalité) ---
+  douleur:
+    source:
+      prose: '2 points de vitalité en moins par réussite (douleur).'
+      ref: 'spells:douleur'
+    spec:
+      target: vitality
+      op: sub
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  douleur-majeure:
+    source:
+      prose: '3 points de vitalité en moins par réussite (douleur majeure).'
+      ref: 'spells:douleur-majeure'
+    spec:
+      target: vitality
+      op: sub
+      value: '3 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  douleur-mineure:
+    source:
+      prose: '1 point de vitalité en moins par réussite (douleur mineure).'
+      ref: 'spells:douleur-mineure'
+    spec:
+      target: vitality
+      op: sub
+      value: 'successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  douleur-a-distance:
+    source:
+      prose: '2 points de vitalité en moins par réussite, à distance (3 m/niveau ; portée = ciblage).'
+      ref: 'spells:douleur-a-distance'
+    spec:
+      target: vitality
+      op: sub
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  douleur-de-masse:
+    source:
+      prose: '2 points de vitalité en moins par réussite (3 m/niveau, 1 personne/R ; portée = ciblage).'
+      ref: 'spells:douleur-de-masse'
+    spec:
+      target: vitality
+      op: sub
+      value: '2 * successes'
+      activation: active
+      duration: ephemeral
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
