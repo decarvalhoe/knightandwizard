@@ -610,6 +610,12 @@ function magicSchoolEntry(
 }
 
 function spellEntry(spell: Spell, catalogMetadata: Record<string, unknown>): ImportEntry {
+  // `effect_model` (overlays `data/spell-effects/*.yaml`, mergé dans spells.yaml) n'est pas dans le
+  // type Zod (passthrough) : on l'extrait pour alimenter l'effet structuré + la file de validation MJ
+  // (champs dénormalisés `effectModelFidelity` / `effectModelPendingValidation`, filtrables dans l'admin).
+  const effectModel = (
+    spell as { effect_model?: { fidelity?: string; spec?: { requires_mj_validation?: boolean } } }
+  ).effect_model;
   return entry(
     'spells',
     spell,
@@ -621,7 +627,10 @@ function spellEntry(spell: Spell, catalogMetadata: Record<string, unknown>): Imp
       legacyTypeId: spell.school_id,
       magicSchoolCanonicalId: spell.school_id,
       magicType: magicTypeValue(spell.school_id),
-      value: spell.value
+      value: spell.value,
+      effectModel: effectModel ?? null,
+      effectModelFidelity: effectModel?.fidelity,
+      effectModelPendingValidation: effectModel?.spec?.requires_mj_validation === true
     },
     catalogMetadata,
     'spells.yaml'
