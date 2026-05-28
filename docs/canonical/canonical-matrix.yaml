@@ -348395,7 +348395,7 @@ units:
     sources:
       - path: "docs/plan/GOVERNANCE-IMPLEMENTATION.md"
         ref: "docs/plan/GOVERNANCE-IMPLEMENTATION.md"
-        sha256: "ac1d416698b34fbb1ec9456e5ece9f64fed61b627ca894afd92d8e237e33f448"
+        sha256: "2a22858d7d2731e25b412fe221d5b0757baa2ad4f861014381c04f00cb954a41"
     business_rule:
       summary: "docs/plan/GOVERNANCE-IMPLEMENTATION.md from docs/plan/GOVERNANCE-IMPLEMENTATION.md."
       ambiguity_ref: null
@@ -348902,6 +348902,42 @@ units:
         sha256: "3759d88fd5cbb9eca0a7931c6202da40f651bbb88d2193a8eca0f8aa5e646b34"
     business_rule:
       summary: "docs/product/episodic-memory-contract.md from docs/product/episodic-memory-contract.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
+  - unit_id: "source:docs-product-governance-validation-queue"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/product/governance-validation-queue.md"
+    status: covered
+    sources:
+      - path: "docs/product/governance-validation-queue.md"
+        ref: "docs/product/governance-validation-queue.md"
+        sha256: "6b98b476e7b02ee2c8ec73c324340a52cd902faed990aed77c263976cc67722e"
+    business_rule:
+      summary: "docs/product/governance-validation-queue.md from docs/product/governance-validation-queue.md."
       ambiguity_ref: null
     yaml:
       status: not_applicable

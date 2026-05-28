@@ -22,6 +22,7 @@
     "cms:verify:catalogs": "tsx tools/import-catalogs.ts --verify-only",
     "cms:generate:importmap": "pnpm --filter @knightandwizard/cms generate:importmap",
     "cms:generate:types": "pnpm --filter @knightandwizard/cms generate:types",
+    "cms:governance:regenerate": "tsx tools/governance-regenerate.ts",
     "dev:map": "pnpm --filter knight-and-wizard-interactive-map dev",
     "build:map": "pnpm --filter knight-and-wizard-interactive-map build",
     "yaml2geojson": "python3 apps/interactive-map/tools/yaml_to_geojson.py",

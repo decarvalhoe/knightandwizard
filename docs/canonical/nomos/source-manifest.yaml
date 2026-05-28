@@ -20640,7 +20640,7 @@ sources:
     domain: project-governance
     priority: derived
     status: active
-    hash: ac1d416698b34fbb1ec9456e5ece9f64fed61b627ca894afd92d8e237e33f448
+    hash: 2a22858d7d2731e25b412fe221d5b0757baa2ad4f861014381c04f00cb954a41
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
@@ -20837,6 +20837,20 @@ sources:
     priority: derived
     status: active
     hash: 3759d88fd5cbb9eca0a7931c6202da40f651bbb88d2193a8eca0f8aa5e646b34
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
+  - id: DOCS-PRODUCT-GOVERNANCE-VALIDATION-QUEUE
+    path: docs/product/governance-validation-queue.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 6b98b476e7b02ee2c8ec73c324340a52cd902faed990aed77c263976cc67722e
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal

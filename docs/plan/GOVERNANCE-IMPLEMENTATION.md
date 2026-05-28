@@ -42,18 +42,19 @@ avec **deux classes de cible** :
 
 ## Registre
 
-| Brique                          | Objet                                                                   | Statut    | Emplacement / écart                                         |
-| ------------------------------- | ----------------------------------------------------------------------- | --------- | ----------------------------------------------------------- |
-| Autorité multi-arbitre          | R-13.1 `human_gm>player>llm>auto`                                       | 🟡        | `arbiter.ts` (priorité) ; surfaçage partiel                 |
-| Décisions de jeu                | file + résolution (approuver/rejeter)                                   | 🟡        | API session (`session_decisions`) ; surface Greffe **stub** |
-| Rollback / cassation            | annuler un événement (non destructif)                                   | ✅ (back) | API session rollback                                        |
-| Audit                           | log permanent (R-13.11)                                                 | ✅ (back) | `audit_events`                                              |
-| Arbitrage de conflits           | R-13.12 (table→MJ→règles→dés→admin) + recours (re-roll/retcon/escalade) | ❌        | non implémenté                                              |
-| Changements de perso MJ-validés | prédilection #140 · cibles d'atout #139 · reclassement                  | ❌        | à **router** dans le pipeline A                             |
-| Ambiguïtés (canon)              | cycle `open→resolved` (#57)                                             | 🟡        | contrat écrit ; collections Payload **stub**                |
-| Décisions canon                 | cycle `proposed→applied` (#57)                                          | 🟡        | contrat écrit ; Payload **stub**                            |
-| Régénération canon              | `canonical:write` + `nomos:export`                                      | ✅        | pipeline existant                                           |
-| CMS Payload                     | éditer les catalogues (règles vivantes)                                 | 🟡        | Payload existe (#56), surface stub                          |
+| Brique                          | Objet                                                                   | Statut    | Emplacement / écart                                                                        |
+| ------------------------------- | ----------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------ |
+| Autorité multi-arbitre          | R-13.1 `human_gm>player>llm>auto`                                       | 🟡        | `arbiter.ts` (priorité) ; surfaçage partiel                                                |
+| Décisions de jeu                | file + résolution (approuver/rejeter)                                   | 🟡        | API session (`session_decisions`) ; surface Greffe **stub**                                |
+| Rollback / cassation            | annuler un événement (non destructif)                                   | ✅ (back) | API session rollback                                                                       |
+| Audit                           | log permanent (R-13.11)                                                 | ✅ (back) | `audit_events`                                                                             |
+| Arbitrage de conflits           | R-13.12 (table→MJ→règles→dés→admin) + recours (re-roll/retcon/escalade) | ❌        | non implémenté                                                                             |
+| Changements de perso MJ-validés | prédilection #140 · cibles d'atout #139 · reclassement                  | ❌        | à **router** dans le pipeline A                                                            |
+| Ambiguïtés (canon)              | cycle `open→resolved` (#57)                                             | ✅        | `governanceCollections.ts` (catalog-ambiguities) + **import G2** (#234, 13 chargées)       |
+| Décisions canon                 | cycle `proposed→applied` (#57)                                          | ✅        | `governanceCollections.ts` (catalog-decisions) + hook lifecycle + tests                    |
+| File de validation des sorts    | `effect_model` `pending`→`covered` (162)                                | ✅        | **G1** (#233) champs `effectModel*` filtrables ; doc `governance-validation-queue.md` (G4) |
+| Régénération canon              | `canonical:write` + `nomos:export`                                      | ✅        | pipeline + helper **G3** `cms:governance:regenerate` (trace les artefacts)                 |
+| CMS Payload                     | éditer les catalogues (règles vivantes)                                 | ✅        | Payload (#56) + collections gouvernance ; surface admin = file de validation (G1/G2/G4)    |
 
 ## Vues (surfaces) sur cette mécanique
 
