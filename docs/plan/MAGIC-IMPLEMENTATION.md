@@ -2,14 +2,15 @@
 
 > **But** : registre **exhaustif** des règles de magie (R-8.x) pour **ne perdre aucune règle** pendant
 > le build du **moteur Magie**, dont le **cœur + le moteur d'effet + la résistance sont en place** dans
-> `rules-core` (`magic.ts` + `combat.ts` + `effect-model.ts` + `resistance.ts`) ; restent la
-> **structuration des 324 sorts** (E2, école par école) et le **runtime temps-double** (E3). Données
+> `rules-core` (`magic.ts` + `combat.ts` + `effect-model.ts` + `resistance.ts`) ; le **runtime
+> temps-double** (E3) est **livré** (#236/#237/#238), reste la **structuration des 324 sorts** (E2, école
+> par école). Données
 > existantes : `spells.yaml` 324 sorts, `magic-schools.yaml` 11 écoles. Même esprit que `COMBAT-IMPLEMENTATION.md`.
 >
 > Source d'autorité : `docs/rules/08-magie.md` (R-8.x, **10/10 tranché**) + D1 (jets) + D2 R-2.11 (énergie).
 > Légende : ✅ couvert · 🟡 partiel · ❌ absent · 🆕 nouveau. Périmètre : **MVP** · **V2** · **backlog**.
 >
-> **État global : données ✅ · cœur moteur ✅** (lancement + énergie + TI/réduction + interruption/concentration, **intégrés au combat live**) · **moteur d'effet ✅** (E1 : `EffectModel` étendu `successes`/R + durées narratives ; `resolveSpell` **applique** l'effet structuré scalé par réussite) · **résistance ✅** (E4 : couches magique + élémentaire, `D100 ≤ %`, **câblées au cast** — bouclier/fardeau R-8.15, routage par élément) · **structuration des sorts 🟡** (E2 : **204/324 `effect_model`** sur 11 écoles, 42 validés + 162 `pending` ; 120 sorts narratifs restent prose-only) · reste : **runtime temps-double** (E3) + validation MJ des `pending` + application des targets différés (`protection`/`summon`/`spell`).
+> **État global : données ✅ · cœur moteur ✅** (lancement + énergie + TI/réduction + interruption/concentration, **intégrés au combat live**) · **moteur d'effet ✅** (E1 : `EffectModel` étendu `successes`/R + durées narratives ; `resolveSpell` **applique** l'effet structuré scalé par réussite) · **résistance ✅** (E4 : couches magique + élémentaire, `D100 ≤ %`, **câblées au cast** — bouclier/fardeau R-8.15, routage par élément) · **structuration des sorts 🟡** (E2 : **204/324 `effect_model`** sur 11 écoles, 42 validés + 162 `pending` ; 120 sorts narratifs restent prose-only) · **runtime temps-double ✅** (E3, #236/#237/#238 : horloge narrative event-sourced + sorts actifs double-échelle + panneau MJ) · reste : validation MJ des `pending` + application des targets différés (`protection`/`summon`/`spell`).
 
 ## Décisions verrouillées
 
@@ -73,12 +74,12 @@ Le cœur MVP (décisions 3-4) étant livré, l'auteur tranche le périmètre cib
 
 ### Variantes / développement / durées / cumul
 
-| Règle  | Objet                                                         | Périmètre        | Statut | Emplacement / écart                                                      |
-| ------ | ------------------------------------------------------------- | ---------------- | ------ | ------------------------------------------------------------------------ |
-| R-8.11 | Variantes (mineur / majeur / masse / distance)                | V2               | ❌     | sorts distincts (Q-D8.5)                                                 |
-| R-8.12 | Développement de sort (atouts magicien)                       | V2               | ❌     | —                                                                        |
-| R-8.20 | Système de temps double (durées narratif + DT, instanciation) | MVP-durées\*     | 🟡     | durées narratives modélisées (`EffectModel`, E1a) ; runtime/horloge = E3 |
-| Q-D8.9 | Cumul par catégorie (max + refresh par défaut)                | MVP-résolution\* | ❌     | stacking d'effets                                                        |
+| Règle  | Objet                                                         | Périmètre        | Statut | Emplacement / écart                                                                             |
+| ------ | ------------------------------------------------------------- | ---------------- | ------ | ----------------------------------------------------------------------------------------------- |
+| R-8.11 | Variantes (mineur / majeur / masse / distance)                | V2               | ❌     | sorts distincts (Q-D8.5)                                                                        |
+| R-8.12 | Développement de sort (atouts magicien)                       | V2               | ❌     | —                                                                                               |
+| R-8.20 | Système de temps double (durées narratif + DT, instanciation) | MVP-durées\*     | ✅     | horloge narrative + sorts actifs event-sourced (E3, #236/#237/#238) ; cadence/renouvellement V2 |
+| Q-D8.9 | Cumul par catégorie (max + refresh par défaut)                | MVP-résolution\* | ❌     | stacking d'effets                                                                               |
 
 ### Familier (sous-système)
 
@@ -116,7 +117,7 @@ Le cœur MVP (décisions 3-4) étant livré, l'auteur tranche le périmètre cib
     - **`pending`** (162) : magie-blanche `bouclier*` (6) ; magie-noire 30 (debuffs, douleur, contrôle/statut, drains, afflictions) ; invocation 28 + illusion 31 + appels 7 + nécromancie undead (summons) ; nécromancie 12 (statut/dégâts) ; abjuration 17 (anti-magie méta + dégâts) ; altération 20 (transform/augmentation) ; enchantement/magie-naturelle (difficulté).
     - **Extensions de schéma `EffectModel` (sur-stratégie « un seul moteur »)** : variable `successes` + durées narratives (E1a), targets `protection` (E2f), `summon` (E2i), `spell` méta-magie (E2m) — agrégation/consommation différée à la couche d'application.
     - **120 sorts restent prose-only** (avec `generated_prose`, donc non-orphelins) : pas de mécanique machine à inventer (divination/révélations, communication, terrain/aire, transmutation de matière, mort/résurrection, méta hétérogène, utilitaires narratifs). _Sous-systèmes dédiés à concevoir plus tard : **transformation** (polymorphe réel) et **enforcement méta-magie / jets opposés** (contrôle, anti-magie) ; les placeholders `status`/`spell` actuels les anticipent._
-- **E3 — Runtime temps-double (R-8.20)** (session/DB/cockpit) : horloge narrative + conversion combat↔narratif + suivi des sorts actifs (`character_active_spells`, expiration double-échelle) + renouvellement (R-8.7-bis) + contrôles MJ (passer la journée, multiplicateur de cadence). _Dépend de : E1 ✅ ; parallélisable avec E2. Durées narratives déjà modélisées (E1a) ; reste le runtime/DB._
+- **E3 — Runtime temps-double (R-8.20)** ✅ (rules-core + session/API + UI, #236 + #237 + #238) : **horloge narrative en secondes** + conversion combat↔narratif (1 DT = 0,2 s) + suivi des **sorts actifs event-sourced** dans le modèle de session (`narrativeSeconds` + `activeSpells` projetés du journal → un rollback **rembobine le temps** et ressuscite les sorts non expirés) + **contrôles MJ** « passer la journée / N heures » et **panneau « Horloge narrative »** sur la surface session (compte à rebours + dispel). Chaîne : **E3a** `narrative-time.ts` (primitives pures : conversion + expiration double-échelle) → **E3b** `session.ts` (projection event-sourced `narrative_time_advanced`/`combat_ended`/`spell_cast`/`spell_dispelled` + exposition API) → **E3c** surface MJ (`SessionManager`). _Reste (V2) : persistance `character_active_spells` par perso, renouvellement (R-8.7-bis), multiplicateur de cadence UI, unification Cockpit S4 (#168), application des cibles différées (`status`/`protection`/`summon`/`spell`)._
 - **E4 — Résistance multi-couches (R-8.15 / R-1.33)** ✅ (rules-core, #214 + #215) : moteur `D100 ≤ %` (`resolveSpellResistance`, E4a) ; couches **magique** (`direct_magic`, bouclier **et** fardeau) + **élémentaire** (routage par élément) ; **câblé `resolveSpell`** (E4b, `Combatant.resistances` + `SpellAction.directMagic`). _Reste (V2) : armure P/E/C/T déjà dans `combat-damage` ; tags `direct_magic`/élément par sort viennent de E2 (audit Q-D8.2)._
 - **E5 — Grimoire (surface)** : **reporté** (rôle fixé : browser 324 sorts × 11 écoles, lien _apprendre→Fiche_).
 - **Forum** : cast asynchrone (jet-dans-post) — **avec** le combat asynchrone.
