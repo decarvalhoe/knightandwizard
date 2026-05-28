@@ -222,3 +222,53 @@ effects:
       duration: ephemeral
     fidelity: covered
     ambiguity_ref: null
+  # --- Ajouts E2l (PENDING : status / difficulté / dégâts divins) ---
+  flash:
+    source: { prose: 'Aveugle l’ennemi 50 DT par réussite.', ref: 'spells:flash' }
+    spec:
+      {
+        target: status,
+        scope: blinded,
+        op: grant,
+        value: 1,
+        activation: active,
+        duration: { dt: 'successes * 50' },
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  bouclier-d-eau:
+    source:
+      {
+        prose: '+1 à la difficulté pour être touché par réussite, 10 minutes par niveau (bouclier d’eau défensif).',
+        ref: 'spells:bouclier-d-eau'
+      }
+    spec:
+      {
+        target: difficulty,
+        scope: to_be_hit,
+        op: add,
+        value: 'successes',
+        activation: active,
+        duration: { amount: 'level * 10', unit: minute },
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  colere-divine:
+    source:
+      {
+        prose: '1000 dégâts, +100 par réussite au-delà de la première (dégâts divins, sans type élémentaire).',
+        ref: 'spells:colere-divine'
+      }
+    spec:
+      {
+        target: damage,
+        op: add,
+        value: '1000 + 100 * (successes - 1)',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null

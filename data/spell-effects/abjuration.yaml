@@ -1,0 +1,47 @@
+# E2l/E2m — Overlay d'effets structurés AUTHORÉS, école abjuration.
+#
+# Source autorité : la ligne `effect` du grimoire (spells.yaml). PROPOSÉ, **À VALIDER par le MJ**
+# (règles vivantes, Q-D8.2) : `fidelity: pending` + `spec.requires_mj_validation: true`.
+#
+# E2l : les rares effets de DÉGÂTS d'abjuration (sur lanceurs/familiers). La famille ANTI-MAGIE
+# (annule/renvoi/contre/dissipe un autre sort) relève d'un axe « méta-magie » distinct (cible `spell`,
+# E2m) — non incluse ici.
+#
+# Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts`.
+version: 1
+school_id: abjuration
+effects:
+  dispersion-du-familier:
+    source:
+      {
+        prose: '2 dégâts par réussite à un familier (cible = familier à portée de vue).',
+        ref: 'spells:dispersion-du-familier'
+      }
+    spec:
+      {
+        target: vitality,
+        op: sub,
+        value: '2 * successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  piegeage-magique:
+    source:
+      {
+        prose: '2 dégâts par réussite si la cible lance un sort (piège déclenché ; déclencheur noté à part).',
+        ref: 'spells:piegeage-magique'
+      }
+    spec:
+      {
+        target: vitality,
+        op: sub,
+        value: '2 * successes',
+        activation: triggered,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
