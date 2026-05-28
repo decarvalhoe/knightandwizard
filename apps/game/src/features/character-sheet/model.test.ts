@@ -333,6 +333,39 @@ describe('character sheet model', () => {
       penaltyDT: 1
     });
   });
+
+  it('derives a healthy vitality state at full vitality (R-9)', () => {
+    const view = buildCharacterSheetView({
+      character: sampleCharacter(), // vitality 24/24 -> threshold 12
+      inventory: sampleInventory(),
+      mode: 'complete',
+      spells: sampleSpells()
+    });
+
+    expect(view.vitalityState).toEqual({
+      incapacitated: false,
+      malusThreshold: 12,
+      physicalMalus: 0,
+      weakened: false
+    });
+  });
+
+  it('surfaces the wounded physical-attribute malus below half vitality (R-9)', () => {
+    const wounded: Character = { ...sampleCharacter(), vitality: { current: 5, max: 24 } };
+    const view = buildCharacterSheetView({
+      character: wounded,
+      inventory: sampleInventory(),
+      mode: 'complete',
+      spells: sampleSpells()
+    });
+
+    expect(view.vitalityState).toEqual({
+      incapacitated: false,
+      malusThreshold: 12,
+      physicalMalus: 7,
+      weakened: true
+    });
+  });
 });
 
 function sampleCharacter(): Character {

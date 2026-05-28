@@ -294,6 +294,13 @@ export function CharacterSheet({
             tone="danger"
             value={character.vitality.current}
           />
+          {view.vitalityState.weakened ? (
+            <Badge tone="danger">
+              {view.vitalityState.incapacitated
+                ? 'Hors de combat · 0 vitalité'
+                : `Affaibli · −${view.vitalityState.physicalMalus} Force / Dextérité / Endurance`}
+            </Badge>
+          ) : null}
           <ProgressBar
             label="Énergie"
             max={character.energy.max}
