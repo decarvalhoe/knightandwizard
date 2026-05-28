@@ -366,6 +366,35 @@ describe('character sheet model', () => {
       weakened: true
     });
   });
+
+  it('lists no predilections when the character has none', () => {
+    const view = buildCharacterSheetView({
+      character: sampleCharacter(),
+      inventory: sampleInventory(),
+      mode: 'complete',
+      spells: sampleSpells()
+    });
+
+    expect(view.predilections).toEqual([]);
+  });
+
+  it('surfaces chosen predilection slots in canonical kind order (#140)', () => {
+    const character: Character = {
+      ...sampleCharacter(),
+      predilection: { domaine: ['nature'], arme: ['epee_batarde', 'dague'] }
+    };
+    const view = buildCharacterSheetView({
+      character,
+      inventory: sampleInventory(),
+      mode: 'complete',
+      spells: sampleSpells()
+    });
+
+    expect(view.predilections).toEqual([
+      { kind: 'arme', label: 'Arme de prédilection', values: ['epee_batarde', 'dague'] },
+      { kind: 'domaine', label: 'Domaine de prédilection', values: ['nature'] }
+    ]);
+  });
 });
 
 function sampleCharacter(): Character {
