@@ -8122,7 +8122,7 @@ sources:
     notes: "Product YAML catalog."
   - id: "data-catalogs-spells"
     path: "data/catalogs/spells.yaml"
-    sha256: "a49d331ac8c42f09ac3a0ee1501d551e104ac747cfd12fc54ee036c90c074ca6"
+    sha256: "624a7418044c37fa2a9258d745f275d2cfd46e42b311cd06852794ae2bb0dfac"
     source_type: catalog_yaml
     priority: 90
     status: active
