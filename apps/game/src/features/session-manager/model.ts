@@ -2,9 +2,12 @@ import {
   appendSessionEvent,
   createSessionState,
   getPendingDecisions,
+  projectSessionNarrativeClock,
   queueGmDecision,
   requestSessionRollback,
   resolveGmDecision,
+  spellExpiresAt,
+  type ActiveSpell,
   type AppendSessionEventInput,
   type SessionAuditEntry,
   type SessionDecision,
@@ -62,6 +65,21 @@ export interface RollbackTargetRow {
   sequence: number;
 }
 
+export interface ActiveSpellRow {
+  id: string;
+  label: string;
+  permanent: boolean;
+  remainingLabel: string;
+  target?: string;
+}
+
+export interface NarrativeClockView {
+  /** Instant narratif formaté (« Jour N · HH:MM:SS »). */
+  instantLabel: string;
+  narrativeSeconds: number;
+  activeSpells: ActiveSpellRow[];
+}
+
 export interface SessionManagerView {
   activeScene?: SessionScene;
   decisionQueue: SessionDecisionRow[];
@@ -71,6 +89,7 @@ export interface SessionManagerView {
     pendingDecisions: number;
     scenes: number;
   };
+  narrativeClock: NarrativeClockView;
   playerRows: Array<SessionPlayer & { statusLabel: string }>;
   recentEvents: SessionEventRow[];
   rollbackTargets: RollbackTargetRow[];
@@ -134,6 +153,7 @@ export function buildSessionManagerView(state: SessionManagerState): SessionMana
       title: decision.title
     })),
     metrics,
+    narrativeClock: buildNarrativeClockView(state),
     playerRows: state.players.map((player) => ({
       ...player,
       statusLabel: player.connected === false ? 'Hors ligne' : 'Connecte'
@@ -247,10 +267,80 @@ export function applyLiveSessionEvent(
   }
 
   if (event.sequence === maxSequence + 1) {
-    return { kind: 'applied', state: { ...state, events: [...state.events, event] } };
+    // Recompute only the narrative-clock projection so a live `narrative_time_advanced`
+    // (or spell) event keeps the displayed clock/active spells in sync without a refetch.
+    return {
+      kind: 'applied',
+      state: projectSessionNarrativeClock({ ...state, events: [...state.events, event] })
+    };
   }
 
   return { kind: 'gap' };
+}
+
+function buildNarrativeClockView(state: SessionManagerState): NarrativeClockView {
+  return {
+    activeSpells: state.activeSpells.map((spell) =>
+      toActiveSpellRow(spell, state.narrativeSeconds)
+    ),
+    instantLabel: formatNarrativeInstant(state.narrativeSeconds),
+    narrativeSeconds: state.narrativeSeconds
+  };
+}
+
+function toActiveSpellRow(spell: ActiveSpell, nowSeconds: number): ActiveSpellRow {
+  const expiresAt = spellExpiresAt(spell);
+  const permanent = expiresAt === null;
+
+  return {
+    id: spell.id,
+    label: spell.spellId ?? 'Sort actif',
+    permanent,
+    remainingLabel: permanent
+      ? 'Permanent (dissipation requise)'
+      : `Expire dans ${formatDuration(Math.max(0, expiresAt - nowSeconds))}`,
+    target: spell.targetId
+  };
+}
+
+/** Formate un instant narratif absolu en « Jour N · HH:MM:SS » (R-8.20). */
+export function formatNarrativeInstant(totalSeconds: number): string {
+  const dayLength = 86_400;
+  const safe = Number.isFinite(totalSeconds) && totalSeconds > 0 ? totalSeconds : 0;
+  const day = Math.floor(safe / dayLength) + 1;
+  const within = Math.floor(safe % dayLength);
+  const hours = Math.floor(within / 3_600);
+  const minutes = Math.floor((within % 3_600) / 60);
+  const seconds = within % 60;
+
+  return `Jour ${day} · ${pad2(hours)}:${pad2(minutes)}:${pad2(seconds)}`;
+}
+
+/** Formate une durée relative courte (« 2 j 3 h », « 8 min 12 s », « permanent »). */
+export function formatDuration(totalSeconds: number): string {
+  const safe = Number.isFinite(totalSeconds) && totalSeconds > 0 ? Math.round(totalSeconds) : 0;
+
+  if (safe <= 0) {
+    return "moins d'une seconde";
+  }
+
+  const days = Math.floor(safe / 86_400);
+  const hours = Math.floor((safe % 86_400) / 3_600);
+  const minutes = Math.floor((safe % 3_600) / 60);
+  const seconds = safe % 60;
+  const units: Array<[number, string]> = [
+    [days, 'j'],
+    [hours, 'h'],
+    [minutes, 'min'],
+    [seconds, 's']
+  ];
+  const significant = units.filter(([value]) => value > 0).slice(0, 2);
+
+  return significant.map(([value, unit]) => `${value} ${unit}`).join(' ');
+}
+
+function pad2(value: number): string {
+  return value.toString().padStart(2, '0');
 }
 
 function getActiveScene(state: SessionManagerState): SessionScene | undefined {

@@ -674,6 +674,16 @@ export function getActiveSpells(state: SessionState): ActiveSpell[] {
   return state.activeSpells;
 }
 
+/**
+ * Recalcule UNIQUEMENT la projection d'horloge narrative (`narrativeSeconds` +
+ * `activeSpells`) depuis le journal, en préservant les autres facettes (scenes,
+ * decisions…). Utile côté client après application d'un événement live, où les
+ * scènes proviennent des métadonnées et non du fold d'événements.
+ */
+export function projectSessionNarrativeClock(state: SessionState): SessionState {
+  return withNarrativeClock(state);
+}
+
 /** Recalcule les champs dérivés de l'horloge narrative à partir du journal. */
 function withNarrativeClock(state: SessionState): SessionState {
   const clock = foldNarrativeClock(state.events);

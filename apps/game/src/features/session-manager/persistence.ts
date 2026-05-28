@@ -97,6 +97,40 @@ export async function resolvePersistedGmDecision(
   );
 }
 
+export interface AdvancePersistedNarrativeInput {
+  actorId: string;
+  by: { days?: number; hours?: number; minutes?: number; seconds?: number };
+}
+
+export interface DispelPersistedSpellInput {
+  activeSpellId: string;
+  actorId: string;
+}
+
+/** Avance l'horloge narrative (MJ « passer la journée / N heures », R-8.20). */
+export async function advancePersistedNarrative(
+  slug: string,
+  input: AdvancePersistedNarrativeInput
+): Promise<void> {
+  await appendPersistedSessionEvent(slug, {
+    actorId: input.actorId,
+    eventType: 'narrative_time_advanced',
+    payload: { ...input.by }
+  });
+}
+
+/** Dissipe un sort actif (seul moyen de terminer un sort permanent). */
+export async function dispelPersistedSpell(
+  slug: string,
+  input: DispelPersistedSpellInput
+): Promise<void> {
+  await appendPersistedSessionEvent(slug, {
+    actorId: input.actorId,
+    eventType: 'spell_dispelled',
+    payload: { activeSpellId: input.activeSpellId }
+  });
+}
+
 export async function requestPersistedRollback(
   slug: string,
   input: RequestPersistedRollbackInput

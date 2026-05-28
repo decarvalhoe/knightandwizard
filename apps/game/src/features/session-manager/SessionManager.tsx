@@ -2,6 +2,7 @@
 
 import {
   CheckCircle2,
+  Clock,
   Dice5,
   History,
   ListChecks,
@@ -10,15 +11,19 @@ import {
   RotateCcw,
   ScrollText,
   ShieldAlert,
+  Sparkles,
   Users,
+  Wand2,
   XCircle
 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { trpc } from '@/lib/trpc';
 import { applyLiveSessionEvent, buildSessionManagerView, type SessionManagerState } from './model';
 import {
+  advancePersistedNarrative,
   appendDiceRollToSession,
   appendPersistedSessionEvent,
+  dispelPersistedSpell,
   fetchPersistedSessionState,
   queuePersistedGmDecision,
   requestPersistedRollback,
@@ -107,6 +112,12 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
     } finally {
       setPendingAction(null);
     }
+  }
+
+  function skipNarrativeTime(by: { days?: number; hours?: number; minutes?: number }) {
+    void runPersistedAction('narrative-advance', async (slug) => {
+      await advancePersistedNarrative(slug, { actorId: 'gm', by });
+    });
   }
 
   return (
@@ -261,6 +272,81 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
               {mutationError}
             </p>
           ) : null}
+        </section>
+
+        <section className="mt-5 rounded-md border border-ink/10 bg-white/72 p-4">
+          <div className="flex items-center gap-2">
+            <Clock aria-hidden="true" className="size-5 text-forest" />
+            <h2 className="text-lg font-semibold text-ink">Horloge narrative</h2>
+          </div>
+          <p
+            className="mt-3 font-mono text-2xl font-semibold text-ink"
+            data-testid="narrative-instant"
+          >
+            {view.narrativeClock.instantLabel}
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <TimeSkipButton
+              disabled={busy}
+              label="+10 min"
+              onClick={() => skipNarrativeTime({ minutes: 10 })}
+            />
+            <TimeSkipButton
+              disabled={busy}
+              label="+1 h"
+              onClick={() => skipNarrativeTime({ hours: 1 })}
+            />
+            <TimeSkipButton
+              disabled={busy}
+              label="Passer la journée"
+              onClick={() => skipNarrativeTime({ days: 1 })}
+            />
+          </div>
+
+          <div className="mt-4">
+            <div className="flex items-center gap-2">
+              <Sparkles aria-hidden="true" className="size-4 text-wine" />
+              <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-ink/62">
+                Sorts actifs
+              </h3>
+            </div>
+            {view.narrativeClock.activeSpells.length === 0 ? (
+              <p className="mt-2 rounded-md border border-ink/10 bg-paper px-3 py-2 text-sm font-semibold text-ink/55">
+                Aucun sort actif
+              </p>
+            ) : (
+              <ul className="mt-2 grid gap-2">
+                {view.narrativeClock.activeSpells.map((spell) => (
+                  <li
+                    className="grid grid-cols-[1fr_auto] items-center gap-3 rounded-md border border-ink/10 bg-paper px-3 py-2"
+                    key={spell.id}
+                  >
+                    <span>
+                      <span className="block text-sm font-semibold text-ink">{spell.label}</span>
+                      <span className="block text-xs font-medium text-ink/55">
+                        {spell.target ? `Cible : ${spell.target} · ` : ''}
+                        {spell.remainingLabel}
+                      </span>
+                    </span>
+                    <IconButton
+                      disabled={busy}
+                      label={`Dissiper ${spell.label}`}
+                      onClick={() => {
+                        void runPersistedAction('spell-dispel', async (slug) => {
+                          await dispelPersistedSpell(slug, {
+                            actorId: 'gm',
+                            activeSpellId: spell.id
+                          });
+                        });
+                      }}
+                    >
+                      <Wand2 aria-hidden="true" className="size-4" />
+                    </IconButton>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </section>
       </section>
 
@@ -426,6 +512,27 @@ function ActionButton({
       type="button"
     >
       {icon}
+      {label}
+    </button>
+  );
+}
+
+function TimeSkipButton({
+  disabled = false,
+  label,
+  onClick
+}: Readonly<{
+  disabled?: boolean;
+  label: string;
+  onClick: () => void;
+}>) {
+  return (
+    <button
+      className="inline-flex min-h-10 items-center justify-center rounded-md border border-ink/15 bg-vellum/70 px-3 py-2 text-sm font-semibold text-ink transition hover:border-forest hover:text-forest disabled:cursor-not-allowed disabled:opacity-40"
+      disabled={disabled}
+      onClick={onClick}
+      type="button"
+    >
       {label}
     </button>
   );
