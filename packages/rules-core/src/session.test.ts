@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import {
+  advanceSessionNarrative,
   appendSessionEvent,
+  castSessionSpell,
   createSessionState,
+  dispelSessionSpell,
+  endSessionCombat,
+  getActiveSpells,
   getPendingDecisions,
   queueGmDecision,
   rebuildSessionStateFromEvents,
@@ -275,5 +280,135 @@ describe('session state reconstruction', () => {
     expect(twice.events).toEqual(once.events);
     // The decision derived from events matches the one the queue helper recorded.
     expect(once.decisions).toEqual(journal.decisions);
+  });
+});
+
+describe('session narrative clock (R-8.20 — temps double)', () => {
+  function newSession() {
+    return createSessionState({
+      id: 'session-brumeval',
+      mode: 'digital_human_gm',
+      slug: 'brumeval',
+      title: 'Brumeval'
+    });
+  }
+
+  it('starts at instant zero with no active spells', () => {
+    const session = newSession();
+
+    expect(session.narrativeSeconds).toBe(0);
+    expect(session.activeSpells).toEqual([]);
+  });
+
+  it('advances the clock when the MJ skips time (« passer la journée »)', () => {
+    const session = newSession();
+    const later = advanceSessionNarrative(
+      session,
+      { actorId: 'gm', by: { days: 1, hours: 2 } },
+      { eventId: 'event-1', now: '2026-04-30T10:00:00.000Z' }
+    );
+
+    expect(later.narrativeSeconds).toBe(86_400 + 7_200);
+    expect(later.events.map((event) => event.type)).toEqual(['narrative_time_advanced']);
+  });
+
+  it('folds the elapsed combat DT back into the narrative clock at end of combat', () => {
+    const session = newSession();
+    // 50 DT of combat = 10 narrative seconds (1 DT = 0,2 s).
+    const after = endSessionCombat(session, { actorId: 'gm', elapsedDT: 50 });
+
+    expect(after.narrativeSeconds).toBeCloseTo(10);
+  });
+
+  it('records a cast spell at the current instant and keeps it active until it expires', () => {
+    const session = newSession();
+    const withTime = advanceSessionNarrative(session, { by: { hours: 1 } }); // 3600 s
+    const cast = castSessionSpell(withTime, {
+      activeSpellId: 'spell-aura',
+      durationAmount: 10,
+      durationUnit: 'minute',
+      spellId: 'aura-de-courage',
+      targetId: 'aveline'
+    });
+
+    expect(cast.activeSpells).toMatchObject([
+      { id: 'spell-aura', castAtSeconds: 3_600, durationAmount: 10, durationUnit: 'minute' }
+    ]);
+    expect(getActiveSpells(cast)).toHaveLength(1);
+
+    // 10 minutes later the buff has lapsed.
+    const muchLater = advanceSessionNarrative(cast, { by: { minutes: 10 } });
+    expect(muchLater.narrativeSeconds).toBe(3_600 + 600);
+    expect(muchLater.activeSpells).toEqual([]);
+  });
+
+  it('expires a combat-scale (DT) spell once the MJ skips a day (combat nests in narrative)', () => {
+    const session = newSession();
+    const cast = castSessionSpell(session, {
+      activeSpellId: 'spell-haste',
+      durationAmount: 10,
+      durationUnit: 'DT' // 2 s
+    });
+
+    expect(cast.activeSpells).toHaveLength(1);
+
+    const nextDay = advanceSessionNarrative(cast, { by: { days: 1 } });
+    expect(nextDay.activeSpells).toEqual([]);
+  });
+
+  it('keeps a permanent spell active until it is explicitly dispelled', () => {
+    const session = newSession();
+    const cast = castSessionSpell(session, {
+      activeSpellId: 'spell-ward',
+      durationAmount: 0,
+      durationUnit: 'permanent'
+    });
+    const farFuture = advanceSessionNarrative(cast, { by: { days: 365 } });
+
+    expect(farFuture.activeSpells.map((spell) => spell.id)).toEqual(['spell-ward']);
+
+    const dispelled = dispelSessionSpell(farFuture, { actorId: 'gm', activeSpellId: 'spell-ward' });
+    expect(dispelled.activeSpells).toEqual([]);
+  });
+
+  it('rewinds the clock and resurrects a lapsed spell when reverting (rollback rewinds time)', () => {
+    const session = newSession();
+    const cast = castSessionSpell(
+      session,
+      { activeSpellId: 'spell-aura', durationAmount: 10, durationUnit: 'minute' },
+      { eventId: 'event-1', now: '2026-04-30T10:00:00.000Z' }
+    );
+    const later = advanceSessionNarrative(
+      cast,
+      { by: { hours: 1 } },
+      { eventId: 'event-2', now: '2026-04-30T11:00:00.000Z' }
+    );
+
+    // After an hour the 10-minute buff is gone.
+    expect(later.narrativeSeconds).toBe(3_600);
+    expect(later.activeSpells).toEqual([]);
+
+    // Revert to just after the cast (sequence 1): the clock is back to 0 and the spell is active again.
+    const reverted = revertSessionToSequence(later, 1);
+    expect(reverted.narrativeSeconds).toBe(0);
+    expect(reverted.activeSpells.map((spell) => spell.id)).toEqual(['spell-aura']);
+  });
+
+  it('derives the clock purely from the journal (createSessionState folds events)', () => {
+    const session = newSession();
+    const built = advanceSessionNarrative(
+      session,
+      { by: { minutes: 30 } },
+      { eventId: 'event-1', now: '2026-04-30T10:00:00.000Z' }
+    );
+    // Rebuild a fresh state from the raw events alone — the clock must match.
+    const rehydrated = createSessionState({
+      events: built.events,
+      id: built.id,
+      slug: built.slug,
+      title: built.title
+    });
+
+    expect(rehydrated.narrativeSeconds).toBe(1_800);
   });
 });

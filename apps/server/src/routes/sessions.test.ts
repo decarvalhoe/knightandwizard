@@ -346,6 +346,58 @@ describe('session routes', () => {
     expect(auditRows.map((row) => row.payload.links)).toEqual([links, links, links, links]);
   });
 
+  it('projects the narrative clock and active spells from the event journal (R-8.20)', async () => {
+    const slug = `clock-session-${randomUUID()}`;
+
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, title: 'Clock API' },
+      url: '/sessions'
+    });
+    // Advance one hour of narrative time, then cast a 10-minute buff.
+    await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', eventType: 'narrative_time_advanced', payload: { hours: 1 } },
+      url: `/sessions/${slug}/events`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'spell_cast',
+        payload: {
+          activeSpellId: 'spell-aura',
+          durationAmount: 10,
+          durationUnit: 'minute',
+          spellId: 'aura-de-courage',
+          targetId: 'aveline'
+        }
+      },
+      url: `/sessions/${slug}/events`
+    });
+
+    const whileActive = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+    const activeState = whileActive.json().state;
+
+    expect(activeState.narrativeSeconds).toBe(3_600);
+    expect(activeState.activeSpells).toMatchObject([
+      { id: 'spell-aura', castAtSeconds: 3_600, durationUnit: 'minute' }
+    ]);
+
+    // Skip past the buff's lifetime — it must lapse on the shared narrative clock.
+    await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', eventType: 'narrative_time_advanced', payload: { minutes: 10 } },
+      url: `/sessions/${slug}/events`
+    });
+
+    const afterExpiry = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+    const expiredState = afterExpiry.json().state;
+
+    expect(expiredState.narrativeSeconds).toBe(4_200);
+    expect(expiredState.activeSpells).toEqual([]);
+  });
+
   it('rejects invalid session payloads', async () => {
     const response = await app.inject({
       method: 'POST',
