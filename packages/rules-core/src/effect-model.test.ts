@@ -492,3 +492,22 @@ describe('EffectModel summon target (E2i, invocation/création d’entité)', ()
     expect(() => parseEffectModel(summonModel('10 * successes'))).not.toThrow();
   });
 });
+
+describe('EffectModel spell target (E2m, méta-magie)', () => {
+  it('parses a meta-magic effect acting on another spell', () => {
+    const model = parseEffectModel({
+      source: { prose: 'Annule un sort blanc par réussite.', ref: 'spells:contre-blanc' },
+      spec: {
+        target: 'spell',
+        scope: 'magie-blanche',
+        op: 'sub',
+        value: 'successes',
+        activation: 'active',
+        duration: 'ephemeral'
+      },
+      fidelity: 'pending'
+    });
+    expect(model.spec.target).toBe('spell');
+    expect(model.spec.scope).toBe('magie-blanche');
+  });
+});

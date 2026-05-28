@@ -3,9 +3,18 @@
 # Source autorité : la ligne `effect` du grimoire (spells.yaml). PROPOSÉ, **À VALIDER par le MJ**
 # (règles vivantes, Q-D8.2) : `fidelity: pending` + `spec.requires_mj_validation: true`.
 #
-# E2l : les rares effets de DÉGÂTS d'abjuration (sur lanceurs/familiers). La famille ANTI-MAGIE
-# (annule/renvoi/contre/dissipe un autre sort) relève d'un axe « méta-magie » distinct (cible `spell`,
-# E2m) — non incluse ici.
+# E2l : les rares effets de DÉGÂTS d'abjuration (sur lanceurs/familiers).
+# E2m : famille ANTI-MAGIE (méta-magie) via la cible `spell` (axe PROVISOIRE) : `scope` = aspect visé
+#   (école/couleur ciblée pour `contre-*`, `difficulty`, `energy`, `active`) ; `op`/`value` = magnitude.
+#   « Annule un sort <couleur>/R » → target spell, scope = école ciblée, op sub, value successes.
+#   La résolution méta (interaction avec le moteur de sorts) est un sous-système à concevoir.
+#   Couleur→école (R-8.3) : blanc=magie-blanche, bleu=elementaire, brun=divination, gris=necromancie,
+#   jaune=abjuration, noir=magie-noire, orange=invocation, rouge=alteration, turquoise=enchantement,
+#   vert=magie-naturelle, violet=illusion.
+# NON inclus (méta hétérogène/narratif) : annihilation (champ anti-magie), boomerang (renvoi),
+#   deplacement-magique (change la cible), irreductibilite (empêche réduction TI), interdiction-magique
+#   (oubli de sort), perturbation (concentration), barriere-psychique (résistance mentale),
+#   detournement-du-lien-du-mort-vivant.
 #
 # Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts`.
 version: 1
@@ -40,6 +49,226 @@ effects:
         op: sub,
         value: '2 * successes',
         activation: triggered,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  # --- Anti-magie / méta-magie (target spell, E2m, PENDING — axe provisoire) ---
+  contre-blanc:
+    source: { prose: 'Annule un sort de magie blanche par réussite.', ref: 'spells:contre-blanc' }
+    spec:
+      {
+        target: spell,
+        scope: magie-blanche,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  contre-bleu:
+    source: { prose: 'Annule un sort élémentaire par réussite.', ref: 'spells:contre-bleu' }
+    spec:
+      {
+        target: spell,
+        scope: elementaire,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  contre-brun:
+    source: { prose: 'Annule un sort de divination par réussite.', ref: 'spells:contre-brun' }
+    spec:
+      {
+        target: spell,
+        scope: divination,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  contre-gris:
+    source: { prose: 'Annule un sort de nécromancie par réussite.', ref: 'spells:contre-gris' }
+    spec:
+      {
+        target: spell,
+        scope: necromancie,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  contre-jaune:
+    source: { prose: "Annule un sort d'abjuration par réussite.", ref: 'spells:contre-jaune' }
+    spec:
+      {
+        target: spell,
+        scope: abjuration,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  contre-noir:
+    source: { prose: 'Annule un sort de magie noire par réussite.', ref: 'spells:contre-noir' }
+    spec:
+      {
+        target: spell,
+        scope: magie-noire,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  contre-orange:
+    source: { prose: "Annule un sort d'invocation par réussite.", ref: 'spells:contre-orange' }
+    spec:
+      {
+        target: spell,
+        scope: invocation,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  contre-rouge:
+    source: { prose: "Annule un sort d'altération par réussite.", ref: 'spells:contre-rouge' }
+    spec:
+      {
+        target: spell,
+        scope: alteration,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  contre-turquoise:
+    source: { prose: "Annule un sort d'enchantement par réussite.", ref: 'spells:contre-turquoise' }
+    spec:
+      {
+        target: spell,
+        scope: enchantement,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  contre-vert:
+    source: { prose: 'Annule un sort de magie naturelle par réussite.', ref: 'spells:contre-vert' }
+    spec:
+      {
+        target: spell,
+        scope: magie-naturelle,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  contre-violet:
+    source: { prose: "Annule un sort d'illusion par réussite.", ref: 'spells:contre-violet' }
+    spec:
+      {
+        target: spell,
+        scope: illusion,
+        op: sub,
+        value: 'successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  dissipation:
+    source: { prose: 'Annule un sort actif.', ref: 'spells:dissipation' }
+    spec:
+      {
+        target: spell,
+        scope: active,
+        op: sub,
+        value: 1,
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  complexite-magique:
+    source:
+      {
+        prose: "Augmente la difficulté d'un sort de 2 par réussite.",
+        ref: 'spells:complexite-magique'
+      }
+    spec:
+      {
+        target: spell,
+        scope: difficulty,
+        op: add,
+        value: '2 * successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  augmentation-energetique:
+    source:
+      {
+        prose: "Augmente l'énergie d'un sort de 2 par réussite.",
+        ref: 'spells:augmentation-energetique'
+      }
+    spec:
+      {
+        target: spell,
+        scope: energy,
+        op: add,
+        value: '2 * successes',
+        activation: active,
+        duration: ephemeral,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  captage-d-energie:
+    source:
+      { prose: "Absorbe 3 d'énergie par réussite sur un sort.", ref: 'spells:captage-d-energie' }
+    spec:
+      {
+        target: spell,
+        scope: energy,
+        op: sub,
+        value: '3 * successes',
+        activation: active,
         duration: ephemeral,
         requires_mj_validation: true
       }
