@@ -3,6 +3,7 @@ import {
   calculateLevelProgression,
   calculateEffectiveAttributes,
   rollDice,
+  summarizeEncumbrance,
   type AttributeKey,
   type Character,
   type CharacterAttributes,
@@ -221,10 +222,25 @@ export interface CreationBudgetSummary {
   spellPoints: number;
 }
 
+export interface CharacterEncumbranceView {
+  /** Base (racial) speed factor before the load penalty. */
+  baseSpeedFactor: number;
+  /** Carrying capacity without penalty (kg) = Force × 5 (R-2.18). */
+  capacityKg: number;
+  carriedKg: number;
+  /** Speed factor once the encumbrance penalty is added. */
+  effectiveSpeedFactor: number;
+  excessKg: number;
+  overloaded: boolean;
+  /** Extra DT added to the speed factor by the load (R-2.18). */
+  penaltyDT: number;
+}
+
 export interface CharacterSheetView {
   attributes: CharacterAttributes;
   carriedWeightKg: number;
   creationBudget: CreationBudgetSummary;
+  encumbrance: CharacterEncumbranceView;
   equippedWeapons: InventoryItem[];
   levelProgression: LevelProgression;
   mode: CharacterSheetMode;
@@ -298,15 +314,42 @@ export function buildCharacterSheetView(input: {
   mode: CharacterSheetMode;
   spells: SpellEntry[];
 }): CharacterSheetView {
+  const attributes = calculateEffectiveAttributes(input.character);
+  const carriedWeightKg = totalInventoryWeight(input.inventory);
+
   return {
-    attributes: calculateEffectiveAttributes(input.character),
-    carriedWeightKg: totalInventoryWeight(input.inventory),
+    attributes,
+    carriedWeightKg,
     creationBudget: summarizeCreationBudget(input.character),
+    encumbrance: buildEncumbranceView(input.character, attributes, carriedWeightKg),
     equippedWeapons: input.inventory.filter((item) => item.category === 'weapon' && item.equipped),
     levelProgression: calculateLevelProgression(input.character),
     mode: input.mode,
     sections: sectionsByMode[input.mode].map((id) => ({ id, label: sectionLabels[id] })),
     spellSummary: summarizeSpellSlots(input.character, input.spells)
+  };
+}
+
+/**
+ * R-2.18 — Surfaces the equipment→encumbrance loop on the sheet: carried weight
+ * vs capacity (Force × 5 kg), the resulting speed-factor penalty and the effective
+ * speed factor. Uses the canonical rules-core helper so it never drifts from combat.
+ */
+function buildEncumbranceView(
+  character: Character,
+  attributes: CharacterAttributes,
+  carriedWeightKg: number
+): CharacterEncumbranceView {
+  const summary = summarizeEncumbrance({ carriedWeightKg, strength: attributes.strength });
+
+  return {
+    baseSpeedFactor: character.speedFactor,
+    capacityKg: summary.capacityKg,
+    carriedKg: summary.carriedKg,
+    effectiveSpeedFactor: character.speedFactor + summary.penaltyDT,
+    excessKg: summary.excessKg,
+    overloaded: summary.overloaded,
+    penaltyDT: summary.penaltyDT
   };
 }
 

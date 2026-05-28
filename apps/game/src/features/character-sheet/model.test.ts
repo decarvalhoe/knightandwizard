@@ -291,6 +291,48 @@ describe('character sheet model', () => {
     expect(summary.pointsCommitted).toBe(3);
     expect(summary.energyAvailable).toBe(60);
   });
+
+  it('surfaces the equipment→encumbrance loop within carrying capacity (R-2.18)', () => {
+    // sampleCharacter has effective Force 5 (base 3 + training +2) -> capacity 25 kg.
+    const view = buildCharacterSheetView({
+      character: sampleCharacter(),
+      inventory: sampleInventory(), // 1.4 + 0.5 = 1.9 kg
+      mode: 'complete',
+      spells: sampleSpells()
+    });
+
+    expect(view.encumbrance).toEqual({
+      baseSpeedFactor: 8,
+      capacityKg: 25,
+      carriedKg: 1.9,
+      effectiveSpeedFactor: 8,
+      excessKg: 0,
+      overloaded: false,
+      penaltyDT: 0
+    });
+  });
+
+  it('adds the load penalty to the effective speed factor when overloaded (R-2.18)', () => {
+    const heavy: InventoryItem[] = [
+      { category: 'gear', id: 'anvil', name: 'Enclume', quantity: 1, weightKg: 30 }
+    ];
+    const view = buildCharacterSheetView({
+      character: sampleCharacter(),
+      inventory: heavy,
+      mode: 'complete',
+      spells: sampleSpells()
+    });
+
+    expect(view.encumbrance).toEqual({
+      baseSpeedFactor: 8,
+      capacityKg: 25,
+      carriedKg: 30,
+      effectiveSpeedFactor: 9,
+      excessKg: 5,
+      overloaded: true,
+      penaltyDT: 1
+    });
+  });
 });
 
 function sampleCharacter(): Character {

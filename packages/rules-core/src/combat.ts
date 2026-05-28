@@ -884,6 +884,49 @@ function actionCostDT(
 }
 
 /**
+ * R-2.18 — Encumbrance summary for a carried load against a Force score.
+ *
+ * Carrying capacity is `strength * encumbranceKgPerStrength` kg; every full
+ * `encumbranceKgPerStep` kg above it adds +1 to the speed factor (a heavier load
+ * makes actions slower). Pure and config-driven so both the combat scheduler and
+ * the character sheet share one definition of the rule.
+ */
+export interface EncumbranceSummary {
+  /** Carrying capacity without penalty (kg) = Force × `encumbranceKgPerStrength`. */
+  capacityKg: number;
+  /** Total carried weight considered (kg, clamped to ≥ 0). */
+  carriedKg: number;
+  /** Weight above capacity (kg); 0 when within capacity. */
+  excessKg: number;
+  /** True when the carried weight exceeds the capacity. */
+  overloaded: boolean;
+  /** Speed-factor penalty in DT (+1 per full `encumbranceKgPerStep` above capacity). */
+  penaltyDT: number;
+}
+
+export function summarizeEncumbrance(
+  input: { carriedWeightKg: number; strength: number },
+  config: RulesConfig = DEFAULT_RULES_CONFIG
+): EncumbranceSummary {
+  const carriedKg = roundToTenthKg(Math.max(0, input.carriedWeightKg));
+  const capacityKg = Math.max(0, input.strength) * config.combat.encumbranceKgPerStrength;
+  const excessKg = roundToTenthKg(Math.max(0, carriedKg - capacityKg));
+  const penaltyDT = Math.ceil(excessKg / config.combat.encumbranceKgPerStep);
+
+  return {
+    capacityKg,
+    carriedKg,
+    excessKg,
+    overloaded: excessKg > 0,
+    penaltyDT
+  };
+}
+
+function roundToTenthKg(value: number): number {
+  return Math.round(value * 10) / 10;
+}
+
+/**
  * R-2.18 / R-1.38 — Effective speed factor used to schedule a combatant's actions.
  *
  * Starts from the base (racial) speed factor, adds the encumbrance penalty (R-2.18:
@@ -915,10 +958,10 @@ function encumbrancePenalty(actor: Combatant, config: RulesConfig): number {
     return 0;
   }
 
-  const capacity = actor.attributes.strength * config.combat.encumbranceKgPerStrength;
-  const excess = Math.max(0, carried - capacity);
-
-  return Math.ceil(excess / config.combat.encumbranceKgPerStep);
+  return summarizeEncumbrance(
+    { carriedWeightKg: carried, strength: actor.attributes.strength },
+    config
+  ).penaltyDT;
 }
 
 const DAMAGE_TYPES: DamageType[] = ['P', 'E', 'C', 'T'];
