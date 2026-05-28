@@ -1,0 +1,60 @@
+# E2g — Overlay d'effets structurés AUTHORÉS, école magie-naturelle.
+#
+# Source autorité : la ligne `effect` du grimoire (spells.yaml) + la prose liée (lexique, E0).
+# PROPOSÉ, **À VALIDER par le MJ** (règles vivantes, Q-D8.2) : `fidelity: pending` +
+# `spec.requires_mj_validation: true`. Pas du canon tant que non validé.
+#
+# Inclus (templatable, difficulté) :
+#   - "Diff. pour pister +1/R" → target difficulty, scope tracking, op add, value successes.
+#   - "Diff +1 pour avancer en foret" → target difficulty, scope movement_forest, op add, value 1 (plat).
+#
+# NON inclus (arbitrage narratif / création) : appel-des-* (invocation d'animaux), cercle-de-fleur,
+# croissance, eclosion, fertilite, instinct-de-*, marecage, murissement, reveil-de-la-bete,
+# sol-fertile, torsion-du-bois.
+#
+# Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts`.
+version: 1
+school_id: magie-naturelle
+effects:
+  effacement-des-traces:
+    source:
+      prose: 'Difficulté pour pister la cible +1 par réussite, 10 minutes par niveau.'
+      ref: 'spells:effacement-des-traces'
+    spec:
+      target: difficulty
+      scope: tracking
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  effacement-des-traces-de-masses:
+    source:
+      prose: 'Difficulté pour pister +1 par réussite, 10 minutes par niveau (1 cible par réussite).'
+      ref: 'spells:effacement-des-traces-de-masses'
+    spec:
+      target: difficulty
+      scope: tracking
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
+  obstacles-vegetaux:
+    source:
+      prose: 'Difficulté +1 pour avancer en forêt, 10 minutes par niveau (bonus fixe, pas de mise à l’échelle par réussite dans la ligne).'
+      ref: 'spells:obstacles-vegetaux'
+    spec:
+      target: difficulty
+      scope: movement_forest
+      op: add
+      value: 1
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null

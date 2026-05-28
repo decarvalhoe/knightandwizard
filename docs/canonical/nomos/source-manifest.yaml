@@ -12756,7 +12756,7 @@ sources:
     domain: catalogs
     priority: secondary
     status: active
-    hash: 0b6fe1f3b6a47400fd8569d3053820297cafc01d1cadfcd133c33d4bae2b75a7
+    hash: a49d331ac8c42f09ac3a0ee1501d551e104ac747cfd12fc54ee036c90c074ca6
     owner: decarvalhoe
     license: proprietary
     confidentiality: internal
