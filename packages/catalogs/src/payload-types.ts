@@ -892,6 +892,20 @@ export interface Spell {
   value?: number | null;
   directMagic?: boolean | null;
   legacyTypeId?: string | null;
+  effectModel?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * covered = validé (canon) ; pending = à valider ; ambiguous = en conflit.
+   */
+  effectModelFidelity?: ('covered' | 'pending' | 'ambiguous') | null;
+  effectModelPendingValidation?: boolean | null;
   /**
    * Source files, legacy tables or rules documents used to create this entry.
    */
@@ -2150,6 +2164,9 @@ export interface SpellsSelect<T extends boolean = true> {
   value?: T;
   directMagic?: T;
   legacyTypeId?: T;
+  effectModel?: T;
+  effectModelFidelity?: T;
+  effectModelPendingValidation?: T;
   sourceRefs?:
     | T
     | {

@@ -170,6 +170,9 @@ const magicTypes = [
   'legacy_type'
 ] as const;
 
+// EffectModel fidelity (rules-core EFFECT_FIDELITIES) — pilote la file de validation MJ.
+const effectFidelities = ['covered', 'pending', 'ambiguous'] as const;
+
 export const Weapons = catalogCollection({
   defaultColumns: ['canonicalId', 'name', 'category', 'damageFormula', 'difficulty'],
   fields: [
@@ -257,7 +260,14 @@ export const MagicSchools = catalogCollection({
 });
 
 export const Spells = catalogCollection({
-  defaultColumns: ['canonicalId', 'name', 'magicSchoolCanonicalId', 'energyCost', 'difficulty'],
+  defaultColumns: [
+    'canonicalId',
+    'name',
+    'magicSchoolCanonicalId',
+    'difficulty',
+    'effectModelFidelity',
+    'effectModelPendingValidation'
+  ],
   fields: [
     textField('magicSchoolCanonicalId', true),
     relationshipField('magicSchool', 'magic-schools'),
@@ -268,7 +278,17 @@ export const Spells = catalogCollection({
     numberField('difficulty', true),
     numberField('value'),
     checkboxField('directMagic'),
-    textField('legacyTypeId')
+    textField('legacyTypeId'),
+    // E2/gouvernance — effet structuré (EffectModel rules-core) + champs dénormalisés pour la
+    // FILE DE VALIDATION MJ (règles vivantes). `effectModelFidelity`/`effectModelPendingValidation`
+    // sont peuplés depuis `effect_model` à l'import et rendent la file filtrable dans l'admin.
+    jsonField('effectModel'),
+    selectField('effectModelFidelity', effectFidelities, false, {
+      admin: {
+        description: 'covered = validé (canon) ; pending = à valider ; ambiguous = en conflit.'
+      }
+    }),
+    checkboxField('effectModelPendingValidation')
   ],
   labels: { singular: 'Spell', plural: 'Spells' },
   slug: 'spells'
