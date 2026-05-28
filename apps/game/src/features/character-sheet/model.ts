@@ -5,6 +5,7 @@ import {
   rollDice,
   summarizeEncumbrance,
   summarizeVitalityState,
+  PREDILECTION_KINDS,
   type AttributeKey,
   type Character,
   type CharacterAttributes,
@@ -12,6 +13,7 @@ import {
   type CharacterSkill,
   type DiceRollResult,
   type LevelProgression,
+  type PredilectionKind,
   type RandomInteger,
   type VitalityState
 } from '@knightandwizard/rules-core';
@@ -238,6 +240,12 @@ export interface CharacterEncumbranceView {
   penaltyDT: number;
 }
 
+export interface PredilectionRow {
+  kind: PredilectionKind;
+  label: string;
+  values: string[];
+}
+
 export interface CharacterSheetView {
   attributes: CharacterAttributes;
   carriedWeightKg: number;
@@ -246,10 +254,19 @@ export interface CharacterSheetView {
   equippedWeapons: InventoryItem[];
   levelProgression: LevelProgression;
   mode: CharacterSheetMode;
+  predilections: PredilectionRow[];
   sections: CharacterSheetSection[];
   spellSummary: SpellSlotSummary;
   vitalityState: VitalityState;
 }
+
+const predilectionLabels: Record<PredilectionKind, string> = {
+  animaux: 'Animaux de prédilection',
+  arme: 'Arme de prédilection',
+  domaine: 'Domaine de prédilection',
+  instrument: 'Instrument de prédilection',
+  monture: 'Monture de prédilection'
+};
 
 export interface SpellSlotSummary {
   energyAvailable: number;
@@ -328,10 +345,34 @@ export function buildCharacterSheetView(input: {
     equippedWeapons: input.inventory.filter((item) => item.category === 'weapon' && item.equipped),
     levelProgression: calculateLevelProgression(input.character),
     mode: input.mode,
+    predilections: buildPredilectionRows(input.character),
     sections: sectionsByMode[input.mode].map((id) => ({ id, label: sectionLabels[id] })),
     spellSummary: summarizeSpellSlots(input.character, input.spells),
     vitalityState: summarizeVitalityState(input.character.vitality)
   };
+}
+
+/**
+ * Lists the character's predilection slots (R-6 / #140) for read-only display.
+ * Only kinds with at least one chosen value are surfaced; changing them is an
+ * MJ-validated action routed through the governance pipeline, not edited here.
+ */
+function buildPredilectionRows(character: Character): PredilectionRow[] {
+  const slots = character.predilection;
+
+  if (slots === undefined) {
+    return [];
+  }
+
+  return PREDILECTION_KINDS.flatMap((kind) => {
+    const values = slots[kind];
+
+    if (values === undefined || values.length === 0) {
+      return [];
+    }
+
+    return [{ kind, label: predilectionLabels[kind], values: [...values] }];
+  });
 }
 
 /**

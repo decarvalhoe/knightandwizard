@@ -408,6 +408,21 @@ export function CharacterSheet({
             ))}
           </div>
         </SectionCard>
+
+        <SectionCard title="Prédilections">
+          {view.predilections.length === 0 ? (
+            <p className="kw-sheet__muted">Aucune prédilection définie.</p>
+          ) : (
+            <div className="kw-sheet__row-list">
+              {view.predilections.map((predilection) => (
+                <div className="kw-sheet__info-line" key={predilection.kind}>
+                  <Badge tone="neutral">{predilection.label}</Badge>
+                  <p>{predilection.values.join(' · ')}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </SectionCard>
       </div>
     </div>
   );
