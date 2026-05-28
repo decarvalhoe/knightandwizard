@@ -348,8 +348,11 @@ export interface WillpowerTestResult {
  * émotionnelles (charme, peur, contrôle mental). C'est une catégorie de jet distincte du pool D10
  * (jet d'action) et du jet d'aptitude brute.
  *
- * Convention (À CONFIRMER avec le propriétaire) : réussite si le D20 est <= la cible (roll-under ;
- * une F.Volonté élevée résiste mieux). R-8.19 fixe la formule mais pas la direction du test.
+ * Direction du test (**actée par le MJ 2026-05-28**) : réussite si le **D20 ≥ la cible**. Un
+ * **Facteur de Volonté plus BAS réussit plus souvent** (FVol 5 → réussite sur 5..20 ; FVol 15 →
+ * 15..20). C'est cohérent avec les « facteurs » K&W (bas = avantageux, cf. facteur de vitesse).
+ * Convention de modificateur : un modificateur **positif** relève le seuil = situation **plus
+ * difficile** ; un modificateur **négatif** facilite (ex. le sort `courage`, « FVol –1/R »).
  */
 export function rollWillpowerTest(
   willFactor: number,
@@ -371,5 +374,5 @@ export function rollWillpowerTest(
 
   const target = willFactor + modifiers;
 
-  return { roll, target, success: roll <= target };
+  return { roll, target, success: roll >= target };
 }
