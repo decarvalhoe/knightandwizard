@@ -5815,6 +5815,24 @@ spells:
       - catalog: lexique
         entry_id: apathie
         term: Apathie
+    effect_model:
+      source:
+        prose: >-
+          Apathie, 10 min/niveau. Résistance : test de volonté (difficulté + R ; enforcement
+          différé).
+        ref: spells:apathie
+      spec:
+        target: status
+        scope: apathy
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: arret-du-temps
     name: Arrêt du temps
     status: active
@@ -5853,6 +5871,24 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          La cible cherche à se nuire, 10 min/niveau (cible à vue à l’incantation). Résistance :
+          test d’intelligence (enforcement différé).
+        ref: spells:autodestruction
+      spec:
+        target: status
+        scope: self_harm
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: betise
     name: Bêtise
     status: active
@@ -5920,6 +5956,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          Éveil du désir (durée non précisée → éphémère). Résistance : facteur/test de volonté
+          (enforcement différé).
+        ref: spells:control-charnel
+      spec:
+        target: status
+        scope: lust
+        op: grant
+        value: 1
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: controle-mental
     name: Contrôle mental
     status: active
@@ -5937,6 +5989,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 'Contrôle mental, 10 min/niveau. Résistance : test d’intelligence (enforcement différé).'
+        ref: spells:controle-mental
+      spec:
+        target: status
+        scope: controlled
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: douleur
     name: Douleur
     status: active
@@ -6193,6 +6261,24 @@ spells:
       - catalog: lexique
         entry_id: emprise-corporelle
         term: Emprise corporelle
+    effect_model:
+      source:
+        prose: >-
+          Possession du corps, 10 min/niveau. Résistance : test d’intelligence (enforcement
+          différé).
+        ref: spells:emprise-corporelle
+      spec:
+        target: status
+        scope: possessed
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: faiblesse
     name: Faiblesse
     status: active
@@ -6243,6 +6329,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          Folie aléatoire (durée non précisée → jusqu’à dissipation). Résistance : test de volonté
+          (diff + R ; enforcement différé).
+        ref: spells:folie
+      spec:
+        target: status
+        scope: madness
+        op: grant
+        value: 1
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: hibernation
     name: Hibernation
     status: active
@@ -6277,6 +6379,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          Horreur (réaction ; durée non précisée → éphémère). Résistance : test de volonté (diff +
+          1/R ; enforcement différé).
+        ref: spells:horreur
+      spec:
+        target: status
+        scope: horror
+        op: grant
+        value: 1
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: implosion
     name: Implosion
     status: active
@@ -6477,6 +6595,22 @@ spells:
       - catalog: lexique
         entry_id: oubli
         term: Oubli
+    effect_model:
+      source:
+        prose: >-
+          La cible oublie 10 min de souvenirs par réussite (perte mnésique instantanée). Résistance
+          : jet d’intelligence (enforcement différé).
+        ref: spells:oubli
+      spec:
+        target: status
+        scope: amnesia
+        op: grant
+        value: 1
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: paralysie
     name: Paralysie
     status: active
@@ -6494,6 +6628,23 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          Paralysie, 50 DT par réussite. Résistance : R supérieures au jet de force (enforcement
+          différé).
+        ref: spells:paralysie
+      spec:
+        target: status
+        scope: paralyzed
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          dt: successes * 50
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: penombre
     name: Pénombre
     status: active
@@ -6528,6 +6679,22 @@ spells:
       - catalog: lexique
         entry_id: peur
         term: Peur
+    effect_model:
+      source:
+        prose: >-
+          Peur (réaction ; durée non précisée → éphémère). Résistance : test de volonté pour ne pas
+          avoir peur (enforcement différé).
+        ref: spells:peur
+      spec:
+        target: status
+        scope: fear
+        op: grant
+        value: 1
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: pluie-de-sang
     name: Pluie de sang
     status: active
