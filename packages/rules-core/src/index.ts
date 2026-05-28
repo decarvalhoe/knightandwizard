@@ -10,6 +10,7 @@ export * from './hit-table.js';
 export * from './inventory.js';
 export * from './magic.js';
 export * from './money.js';
+export * from './narrative-time.js';
 export * from './npc-control.js';
 export * from './predilection.js';
 export * from './progression.js';
