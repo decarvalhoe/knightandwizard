@@ -182738,7 +182738,7 @@ units:
     source_refs:
       - source_id: DOCS-PLAN-GOVERNANCE-IMPLEMENTATION
         locator: docs/plan/GOVERNANCE-IMPLEMENTATION.md
-        hash: sha256:ac1d416698b34fbb1ec9456e5ece9f64fed61b627ca894afd92d8e237e33f448
+        hash: sha256:2a22858d7d2731e25b412fe221d5b0757baa2ad4f861014381c04f00cb954a41
     business_rule: docs/plan/GOVERNANCE-IMPLEMENTATION.md from docs/plan/GOVERNANCE-IMPLEMENTATION.md.
     status: partial
     gaps:
@@ -182950,6 +182950,21 @@ units:
         locator: docs/product/episodic-memory-contract.md
         hash: sha256:3759d88fd5cbb9eca0a7931c6202da40f651bbb88d2193a8eca0f8aa5e646b34
     business_rule: docs/product/episodic-memory-contract.md from docs/product/episodic-memory-contract.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PRODUCT-GOVERNANCE-VALIDATION-QUEUE
+    unit_type: catalog_entry
+    name: docs/product/governance-validation-queue.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PRODUCT-GOVERNANCE-VALIDATION-QUEUE
+        locator: docs/product/governance-validation-queue.md
+        hash: sha256:6b98b476e7b02ee2c8ec73c324340a52cd902faed990aed77c263976cc67722e
+    business_rule: docs/product/governance-validation-queue.md from docs/product/governance-validation-queue.md.
     status: partial
     gaps:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
