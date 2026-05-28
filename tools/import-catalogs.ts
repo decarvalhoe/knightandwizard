@@ -27,6 +27,7 @@ import {
 type ImportCollection =
   | 'assets'
   | 'bestiary'
+  | 'catalog-ambiguities'
   | 'character-classes'
   | 'images'
   | 'level-assets'
@@ -176,6 +177,9 @@ export async function buildCatalogImportPlan(
 
   entries.push(...(await extendedYamlEntries(catalogsDir)));
   entries.push(...(await ruleEntries(rulesDir)));
+  // G2 — gouvernance : importe les ambiguïtés `*-ambiguites.md` dans `catalog-ambiguities` (statut
+  // `open`), pour qu'elles soient visibles/triables dans la surface de gouvernance (règles vivantes).
+  entries.push(...(await governanceAmbiguityEntries(catalogsDir, ambiguityFiles)));
 
   return {
     ambiguityFiles,
@@ -1125,6 +1129,96 @@ function kindFromSourcePath(path: string, fallback: SourceRefKind): SourceRefKin
 async function findAmbiguityFiles(catalogsDir: string): Promise<string[]> {
   const files = await readdir(catalogsDir);
   return files.filter((file) => file.endsWith('-ambiguites.md')).sort();
+}
+
+// G2 — base de fichier d'ambiguïté -> slug de collection-catalogue gouvernée.
+const AMBIGUITY_COLLECTION_BY_BASE: Record<string, ImportCollection> = {
+  armes: 'weapons',
+  races: 'races'
+};
+
+function extractAmbiguityResolution(body: string): string {
+  const match = body.match(
+    /\*\*(?:Décision|Hypothèse retenue|Résolution)\*\*\s*:?\s*([\s\S]*?)(?:\n\n|$)/i
+  );
+  return (match ? match[1] : '').replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * Parse un fichier `*-ambiguites.md` en enregistrements `catalog-ambiguities` (statut `open`). Chaque
+ * section `## <titre>` devient une ambiguïté ; le bloc « Résumé exécutable » est ignoré. Une décision
+ * historique (« ✅ TRANCHÉ ») est conservée en `proposedResolution` + `metadata.legacyStatus` SANS
+ * passer en `resolved` (le cycle canonique exige une décision liée — re-validation via la surface).
+ */
+function parseAmbiguityFile(fileName: string, content: string): ImportEntry[] {
+  const base = parsePath(fileName).name.replace(/-ambiguites$/, '');
+  const collection = AMBIGUITY_COLLECTION_BY_BASE[base];
+  if (!collection) {
+    return [];
+  }
+
+  const entries: ImportEntry[] = [];
+  let heading: string | null = null;
+  let bodyLines: string[] = [];
+
+  const flush = (): void => {
+    if (heading === null) {
+      return;
+    }
+    const name = heading.split(/\s[—–]\s|\s*✅|\s*✓/u)[0].trim() || heading.trim();
+    const body = bodyLines.join('\n').trim();
+    heading = null;
+    bodyLines = [];
+    if (/r[ée]sum/i.test(name)) {
+      return; // skip "Résumé exécutable"
+    }
+    const codeMatch = name.match(/^(A\d+)\b/) ?? name.match(/^([A-Z0-9][A-Z0-9-]{2,})\b/);
+    const code = (codeMatch ? codeMatch[1] : name).toLowerCase();
+    const resolved = /✅|tranch|✓/iu.test(`${name} ${body}`) || /\*\*décision\*\*/i.test(body);
+    entries.push({
+      collection: 'catalog-ambiguities',
+      data: {
+        canonicalId: slugify(`${base}-${code}`),
+        name: name.slice(0, 120),
+        domain: base,
+        catalogCollection: collection,
+        catalogEntryCanonicalId: '(catalog-wide)',
+        conflictSummary: (body || name).slice(0, 1500),
+        proposedResolution: extractAmbiguityResolution(body).slice(0, 1500),
+        status: 'open',
+        severity: 'P2',
+        regenerationStatus: 'pending',
+        sourceRefs: [{ kind: 'manual', path: `data/catalogs/${fileName}` }],
+        metadata: { ambiguityCode: code, legacyStatus: resolved ? 'tranché' : 'à valider' }
+      }
+    });
+  };
+
+  for (const line of content.split('\n')) {
+    const match = line.match(/^##\s+(.+?)\s*$/);
+    if (match) {
+      flush();
+      heading = match[1];
+      continue;
+    }
+    if (heading !== null) {
+      bodyLines.push(line);
+    }
+  }
+  flush();
+  return entries;
+}
+
+async function governanceAmbiguityEntries(
+  catalogsDir: string,
+  ambiguityFiles: string[]
+): Promise<ImportEntry[]> {
+  const entries: ImportEntry[] = [];
+  for (const file of ambiguityFiles) {
+    const content = await readFile(resolve(catalogsDir, file), 'utf8');
+    entries.push(...parseAmbiguityFile(file, content));
+  }
+  return entries;
 }
 
 function sectionFromRuleFile(file: string): string {
