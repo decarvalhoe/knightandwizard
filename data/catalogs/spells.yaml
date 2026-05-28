@@ -1471,6 +1471,24 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          Difficulté +1 pour être touché, durée 10 min par réussite (ligne terse : bonus fixe, durée
+          à l’échelle par réussite — à confirmer).
+        ref: spells:deviation
+      spec:
+        target: difficulty
+        scope: to_be_hit
+        op: add
+        value: 1
+        activation: active
+        duration:
+          amount: successes * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: deviation-de-masse
     name: Déviation de masse
     status: active
@@ -1490,6 +1508,24 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          Difficulté +1 pour être touché, 10 minutes par niveau (1 personne par réussite ; bonus
+          fixe selon la ligne).
+        ref: spells:deviation-de-masse
+      spec:
+        target: difficulty
+        scope: to_be_hit
+        op: add
+        value: 1
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: deviation-des-projectiles
     name: Déviation des projectiles
     status: active
@@ -1524,6 +1560,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Difficulté +2 par réussite pour être touché, 10 minutes par niveau.
+        ref: spells:deviation-majeure
+      spec:
+        target: difficulty
+        scope: to_be_hit
+        op: add
+        value: 2 * successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: deviation-mineure
     name: Déviation mineure
     status: active
@@ -1541,6 +1593,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Difficulté +1 par réussite pour être touché, 5 minutes par niveau.
+        ref: spells:deviation-mineure
+      spec:
+        target: difficulty
+        scope: to_be_hit
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 5
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: dexterite
     name: Dextérité
     status: active
@@ -3595,6 +3663,22 @@ spells:
       - catalog: lexique
         entry_id: invisibilite
         term: Invisibilité
+    effect_model:
+      source:
+        prose: 'Invisibilité : +1 à la difficulté pour être vu par réussite, 10 minutes par niveau.'
+        ref: spells:invisibilite
+      spec:
+        target: difficulty
+        scope: to_be_seen
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: legerete
     name: Légèreté
     status: active
@@ -5066,6 +5150,22 @@ spells:
       - catalog: lexique
         entry_id: effacement-des-traces
         term: Effacement des traces
+    effect_model:
+      source:
+        prose: Difficulté pour pister la cible +1 par réussite, 10 minutes par niveau.
+        ref: spells:effacement-des-traces
+      spec:
+        target: difficulty
+        scope: tracking
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: effacement-des-traces-de-masses
     name: Effacement des traces de masses
     status: active
@@ -5084,6 +5184,22 @@ spells:
       niveau du lanceur.
     prose_origin: templated
     validation: pending
+    effect_model:
+      source:
+        prose: Difficulté pour pister +1 par réussite, 10 minutes par niveau (1 cible par réussite).
+        ref: spells:effacement-des-traces-de-masses
+      spec:
+        target: difficulty
+        scope: tracking
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: fertilite
     name: Fertilité
     status: active
@@ -5187,6 +5303,24 @@ spells:
       - catalog: lexique
         entry_id: obstacles-vegetaux
         term: Obstacles végétaux
+    effect_model:
+      source:
+        prose: >-
+          Difficulté +1 pour avancer en forêt, 10 minutes par niveau (bonus fixe, pas de mise à
+          l’échelle par réussite dans la ligne).
+        ref: spells:obstacles-vegetaux
+      spec:
+        target: difficulty
+        scope: movement_forest
+        op: add
+        value: 1
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: reveil-de-la-bete
     name: Réveil de la bête
     status: active

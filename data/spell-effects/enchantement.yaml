@@ -1,0 +1,32 @@
+# E2g — Overlay d'effets structurés AUTHORÉS, école enchantement.
+#
+# Source autorité : la ligne `effect` du grimoire (spells.yaml) + la prose liée (lexique, E0).
+# PROPOSÉ, **À VALIDER par le MJ** (règles vivantes, Q-D8.2) : `fidelity: pending` +
+# `spec.requires_mj_validation: true`. Pas du canon tant que non validé.
+#
+# Inclus (templatable) :
+#   - "Diff + 1/R pour être vu" → target difficulty, scope to_be_seen, op add, value successes.
+#
+# NON inclus (arbitrage) : animation-des-armures, arc-en-ciel, cauchemard*, cocon-thermique, corde,
+# enchantement-de-livre, extase, legerete/lourdeur (poids — pas de cible EffectModel), marche-sur-l-eau,
+# multilinguisme, nettoyage-magique, parler-aux-oiseaux, passe-partout, porte-de-secours, rire*
+# (échelle "+1/2R" non exprimable proprement), sommeil (test de volonté), vol*/vide narratifs.
+#
+# Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts`.
+version: 1
+school_id: enchantement
+effects:
+  invisibilite:
+    source:
+      prose: 'Invisibilité : +1 à la difficulté pour être vu par réussite, 10 minutes par niveau.'
+      ref: 'spells:invisibilite'
+    spec:
+      target: difficulty
+      scope: to_be_seen
+      op: add
+      value: 'successes'
+      activation: active
+      duration: { amount: 'level * 10', unit: minute }
+      requires_mj_validation: true
+    fidelity: pending
+    ambiguity_ref: null
