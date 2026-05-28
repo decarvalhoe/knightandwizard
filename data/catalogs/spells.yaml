@@ -386,6 +386,19 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 2 dégâts par réussite à un familier (cible = familier à portée de vue).
+        ref: spells:dispersion-du-familier
+      spec:
+        target: vitality
+        op: sub
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: dissipation
     name: Dissipation
     status: active
@@ -488,6 +501,21 @@ spells:
       - catalog: lexique
         entry_id: piegeage-magique
         term: Piégeage magique
+    effect_model:
+      source:
+        prose: >-
+          2 dégâts par réussite si la cible lance un sort (piège déclenché ; déclencheur noté à
+          part).
+        ref: spells:piegeage-magique
+      spec:
+        target: vitality
+        op: sub
+        value: 2 * successes
+        activation: triggered
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: ralentissement-magique
     name: Ralentissement magique
     status: active
@@ -2872,6 +2900,24 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          +1 à la difficulté pour être touché par réussite, 10 minutes par niveau (bouclier d’eau
+          défensif).
+        ref: spells:bouclier-d-eau
+      spec:
+        target: difficulty
+        scope: to_be_hit
+        op: add
+        value: successes
+        activation: active
+        duration:
+          amount: level * 10
+          unit: minute
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: boule-de-feu
     name: Boule de feu
     status: active
@@ -3105,6 +3151,21 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          1000 dégâts, +100 par réussite au-delà de la première (dégâts divins, sans type
+          élémentaire).
+        ref: spells:colere-divine
+      spec:
+        target: damage
+        op: add
+        value: 1000 + 100 * (successes - 1)
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: flash
     name: Flash
     status: active
@@ -3122,6 +3183,21 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Aveugle l’ennemi 50 DT par réussite.
+        ref: spells:flash
+      spec:
+        target: status
+        scope: blinded
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          dt: successes * 50
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: fleche-de-feu
     name: Flèche de feu
     status: active
@@ -6951,6 +7027,21 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Arrêt du temps sur la cible, 10 DT par réussite.
+        ref: spells:arret-du-temps
+      spec:
+        target: status
+        scope: time_stop
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          dt: successes * 10
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: autodestruction
     name: Autodestruction
     status: active
@@ -7294,6 +7385,19 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 3 points de sort/énergie absorbés par réussite (gain lanceur noté à part).
+        ref: spells:drain-de-sort
+      spec:
+        target: energy
+        op: sub
+        value: 3 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: drain-de-sort-majeur
     name: Drain de sort majeur
     status: active
@@ -7311,6 +7415,19 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 4 points de sort/énergie absorbés par réussite (gain lanceur noté à part).
+        ref: spells:drain-de-sort-majeur
+      spec:
+        target: energy
+        op: sub
+        value: 4 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: drain-de-sort-mineur
     name: Drain de sort mineur
     status: active
@@ -7328,6 +7445,19 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: 2 d'énergie absorbés par réussite (gain lanceur noté à part).
+        ref: spells:drain-de-sort-mineur
+      spec:
+        target: energy
+        op: sub
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: drain-de-vie
     name: Drain de vie
     status: active
@@ -7345,6 +7475,21 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          1 vitalité absorbée par réussite (la cible perd, le lanceur récupère — gain lanceur noté à
+          part).
+        ref: spells:drain-de-vie
+      spec:
+        target: vitality
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: emprise-corporelle
     name: Emprise corporelle
     status: active
@@ -7463,6 +7608,22 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Hibernation forcée, 1 jour par réussite.
+        ref: spells:hibernation
+      spec:
+        target: status
+        scope: hibernation
+        op: grant
+        value: 1
+        activation: active
+        duration:
+          amount: successes
+          unit: day
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: horreur
     name: Horreur
     status: active
@@ -7513,6 +7674,21 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: >-
+          1 dégât par réussite si supérieur à l’endurance (la cible implose). Résistance : endurance
+          (enforcement différé).
+        ref: spells:implosion
+      spec:
+        target: vitality
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: lachete
     name: Lâcheté
     status: active
