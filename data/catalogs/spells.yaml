@@ -4459,6 +4459,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 elfe par réussite.
+        ref: spells:invocation-d-elfe
+      spec:
+        target: summon
+        scope: elfe
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-d-homme-lezard
     name: Invocation d'homme lézard
     status: active
@@ -4476,6 +4490,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 homme lézard par réussite.
+        ref: spells:invocation-d-homme-lezard
+      spec:
+        target: summon
+        scope: homme-lezard
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-d-homme-oiseau
     name: Invocation d'homme oiseau
     status: active
@@ -4493,6 +4521,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 homme oiseau par réussite.
+        ref: spells:invocation-d-homme-oiseau
+      spec:
+        target: summon
+        scope: homme-oiseau
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-d-homme-rat
     name: Invocation d'homme rat
     status: active
@@ -4510,6 +4552,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 homme rat par réussite.
+        ref: spells:invocation-d-homme-rat
+      spec:
+        target: summon
+        scope: homme-rat
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-d-humain
     name: Invocation d'humain
     status: active
@@ -4527,6 +4583,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 humain par réussite.
+        ref: spells:invocation-d-humain
+      spec:
+        target: summon
+        scope: humain
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-d-ondine
     name: Invocation d'ondine
     status: active
@@ -4544,6 +4614,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 ondine par réussite.
+        ref: spells:invocation-d-ondine
+      spec:
+        target: summon
+        scope: ondine
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-centaure
     name: Invocation de centaure
     status: active
@@ -4561,6 +4645,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 centaure par réussite.
+        ref: spells:invocation-de-centaure
+      spec:
+        target: summon
+        scope: centaure
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-chat
     name: Invocation de chat
     status: active
@@ -4578,6 +4676,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 chat par réussite.
+        ref: spells:invocation-de-chat
+      spec:
+        target: summon
+        scope: chat
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-cheval
     name: Invocation de cheval
     status: active
@@ -4595,6 +4707,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 cheval par réussite.
+        ref: spells:invocation-de-cheval
+      spec:
+        target: summon
+        scope: cheval
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-chigr
     name: Invocation de chigr
     status: active
@@ -4612,6 +4738,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 chigr par réussite.
+        ref: spells:invocation-de-chigr
+      spec:
+        target: summon
+        scope: chigr
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-demi-elfe
     name: Invocation de demi elfe
     status: active
@@ -4629,6 +4769,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 demi-elfe par réussite.
+        ref: spells:invocation-de-demi-elfe
+      spec:
+        target: summon
+        scope: demi-elfe
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-dryade
     name: Invocation de dryade
     status: active
@@ -4646,6 +4800,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 dryade par réussite.
+        ref: spells:invocation-de-dryade
+      spec:
+        target: summon
+        scope: dryade
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-gnome
     name: Invocation de gnome
     status: active
@@ -4663,6 +4831,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 gnome par réussite.
+        ref: spells:invocation-de-gnome
+      spec:
+        target: summon
+        scope: gnome
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-gobelin
     name: Invocation de gobelin
     status: active
@@ -4680,6 +4862,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 gobelin par réussite.
+        ref: spells:invocation-de-gobelin
+      spec:
+        target: summon
+        scope: gobelin
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-guepe
     name: Invocation de guêpe
     status: active
@@ -4697,6 +4893,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 10 guêpes par réussite (nuée).
+        ref: spells:invocation-de-guepe
+      spec:
+        target: summon
+        scope: guepe
+        op: grant
+        value: 10 * successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-hobbit
     name: Invocation de hobbit
     status: active
@@ -4714,6 +4924,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 hobbit par réussite.
+        ref: spells:invocation-de-hobbit
+      spec:
+        target: summon
+        scope: hobbit
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-khochigr
     name: Invocation de khochigr
     status: active
@@ -4731,6 +4955,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 khochigr par réussite.
+        ref: spells:invocation-de-khochigr
+      spec:
+        target: summon
+        scope: khochigr
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-khogr
     name: Invocation de khogr
     status: active
@@ -4748,6 +4986,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 khogr par réussite.
+        ref: spells:invocation-de-khogr
+      spec:
+        target: summon
+        scope: khogr
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-loup
     name: Invocation de loup
     status: active
@@ -4765,6 +5017,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 loup par réussite.
+        ref: spells:invocation-de-loup
+      spec:
+        target: summon
+        scope: loup
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-loup-garou
     name: Invocation de loup-garou
     status: active
@@ -4782,6 +5048,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 loup-garou par réussite.
+        ref: spells:invocation-de-loup-garou
+      spec:
+        target: summon
+        scope: loup-garou
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-nain
     name: Invocation de nain
     status: active
@@ -4799,6 +5079,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 nain par réussite.
+        ref: spells:invocation-de-nain
+      spec:
+        target: summon
+        scope: nain
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-squelette
     name: Invocation de squelette
     status: active
@@ -4816,6 +5110,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 squelette par réussite.
+        ref: spells:invocation-de-squelette
+      spec:
+        target: summon
+        scope: squelette
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-termite
     name: Invocation de termite
     status: active
@@ -4833,6 +5141,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 10 termites par réussite (nuée).
+        ref: spells:invocation-de-termite
+      spec:
+        target: summon
+        scope: termite
+        op: grant
+        value: 10 * successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-troll
     name: Invocation de troll
     status: active
@@ -4850,6 +5172,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 troll par réussite.
+        ref: spells:invocation-de-troll
+      spec:
+        target: summon
+        scope: troll
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-de-vampire
     name: Invocation de vampire
     status: active
@@ -4867,6 +5203,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 vampire par réussite.
+        ref: spells:invocation-de-vampire
+      spec:
+        target: summon
+        scope: vampire
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-d-abeilles
     name: Invocation d’abeilles
     status: active
@@ -4884,6 +5234,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 10 abeilles par réussite (nuée).
+        ref: spells:invocation-d-abeilles
+      spec:
+        target: summon
+        scope: abeille
+        op: grant
+        value: 10 * successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-d-ogres
     name: Invocation d’ogres
     status: active
@@ -4901,6 +5265,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 ogre par réussite.
+        ref: spells:invocation-d-ogres
+      spec:
+        target: summon
+        scope: ogre
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: invocation-d-orc
     name: Invocation d’orc
     status: active
@@ -4918,6 +5296,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Invoque 1 orc par réussite.
+        ref: spells:invocation-d-orc
+      spec:
+        target: summon
+        scope: orc
+        op: grant
+        value: successes
+        activation: active
+        duration: until_dispel
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: lien-d-invocation
     name: Lien d'invocation
     status: active

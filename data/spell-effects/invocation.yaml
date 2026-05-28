@@ -1,0 +1,415 @@
+# E2i — Overlay d'effets structurés AUTHORÉS, école invocation.
+#
+# Source autorité : la ligne `effect` du grimoire (spells.yaml). PROPOSÉ, **À VALIDER par le MJ**
+# (règles vivantes, Q-D8.2) : `fidelity: pending` + `spec.requires_mj_validation: true`.
+#
+# Convention (invocation d'entité) :
+#   - "N <créature>/R" → target summon, scope <slug créature>, op grant, value "N * successes"
+#     (singles : "successes" ; nuées de 10 : "10 * successes"). duration until_dispel (persiste
+#     jusqu'à révocation ; cf. sort `revocation`). L'instanciation (stats depuis le bestiaire) est
+#     différée à la couche d'application.
+#   - `scope` vise un slug du bestiaire (à réconcilier lors de la validation).
+#
+# NON inclus (méta) : lien-d-invocation (crée un lien magicien↔cible, jet d'intelligence),
+# revocation (révoque une entité invoquée) — mécaniques méta-invocation, à modéliser à part.
+#
+# Mergé dans spells.yaml (champ `effect_model`) par `tools/link-spell-effects.ts`.
+version: 1
+school_id: invocation
+effects:
+  invocation-d-elfe:
+    source: { prose: 'Invoque 1 elfe par réussite.', ref: 'spells:invocation-d-elfe' }
+    spec:
+      {
+        target: summon,
+        scope: elfe,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-d-homme-lezard:
+    source:
+      { prose: 'Invoque 1 homme lézard par réussite.', ref: 'spells:invocation-d-homme-lezard' }
+    spec:
+      {
+        target: summon,
+        scope: homme-lezard,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-d-homme-oiseau:
+    source:
+      { prose: 'Invoque 1 homme oiseau par réussite.', ref: 'spells:invocation-d-homme-oiseau' }
+    spec:
+      {
+        target: summon,
+        scope: homme-oiseau,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-d-homme-rat:
+    source: { prose: 'Invoque 1 homme rat par réussite.', ref: 'spells:invocation-d-homme-rat' }
+    spec:
+      {
+        target: summon,
+        scope: homme-rat,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-d-humain:
+    source: { prose: 'Invoque 1 humain par réussite.', ref: 'spells:invocation-d-humain' }
+    spec:
+      {
+        target: summon,
+        scope: humain,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-d-ondine:
+    source: { prose: 'Invoque 1 ondine par réussite.', ref: 'spells:invocation-d-ondine' }
+    spec:
+      {
+        target: summon,
+        scope: ondine,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-centaure:
+    source: { prose: 'Invoque 1 centaure par réussite.', ref: 'spells:invocation-de-centaure' }
+    spec:
+      {
+        target: summon,
+        scope: centaure,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-chat:
+    source: { prose: 'Invoque 1 chat par réussite.', ref: 'spells:invocation-de-chat' }
+    spec:
+      {
+        target: summon,
+        scope: chat,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-cheval:
+    source: { prose: 'Invoque 1 cheval par réussite.', ref: 'spells:invocation-de-cheval' }
+    spec:
+      {
+        target: summon,
+        scope: cheval,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-chigr:
+    source: { prose: 'Invoque 1 chigr par réussite.', ref: 'spells:invocation-de-chigr' }
+    spec:
+      {
+        target: summon,
+        scope: chigr,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-demi-elfe:
+    source: { prose: 'Invoque 1 demi-elfe par réussite.', ref: 'spells:invocation-de-demi-elfe' }
+    spec:
+      {
+        target: summon,
+        scope: demi-elfe,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-dryade:
+    source: { prose: 'Invoque 1 dryade par réussite.', ref: 'spells:invocation-de-dryade' }
+    spec:
+      {
+        target: summon,
+        scope: dryade,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-gnome:
+    source: { prose: 'Invoque 1 gnome par réussite.', ref: 'spells:invocation-de-gnome' }
+    spec:
+      {
+        target: summon,
+        scope: gnome,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-gobelin:
+    source: { prose: 'Invoque 1 gobelin par réussite.', ref: 'spells:invocation-de-gobelin' }
+    spec:
+      {
+        target: summon,
+        scope: gobelin,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-guepe:
+    source: { prose: 'Invoque 10 guêpes par réussite (nuée).', ref: 'spells:invocation-de-guepe' }
+    spec:
+      {
+        target: summon,
+        scope: guepe,
+        op: grant,
+        value: '10 * successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-hobbit:
+    source: { prose: 'Invoque 1 hobbit par réussite.', ref: 'spells:invocation-de-hobbit' }
+    spec:
+      {
+        target: summon,
+        scope: hobbit,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-khochigr:
+    source: { prose: 'Invoque 1 khochigr par réussite.', ref: 'spells:invocation-de-khochigr' }
+    spec:
+      {
+        target: summon,
+        scope: khochigr,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-khogr:
+    source: { prose: 'Invoque 1 khogr par réussite.', ref: 'spells:invocation-de-khogr' }
+    spec:
+      {
+        target: summon,
+        scope: khogr,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-loup:
+    source: { prose: 'Invoque 1 loup par réussite.', ref: 'spells:invocation-de-loup' }
+    spec:
+      {
+        target: summon,
+        scope: loup,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-loup-garou:
+    source: { prose: 'Invoque 1 loup-garou par réussite.', ref: 'spells:invocation-de-loup-garou' }
+    spec:
+      {
+        target: summon,
+        scope: loup-garou,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-nain:
+    source: { prose: 'Invoque 1 nain par réussite.', ref: 'spells:invocation-de-nain' }
+    spec:
+      {
+        target: summon,
+        scope: nain,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-squelette:
+    source: { prose: 'Invoque 1 squelette par réussite.', ref: 'spells:invocation-de-squelette' }
+    spec:
+      {
+        target: summon,
+        scope: squelette,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-termite:
+    source:
+      { prose: 'Invoque 10 termites par réussite (nuée).', ref: 'spells:invocation-de-termite' }
+    spec:
+      {
+        target: summon,
+        scope: termite,
+        op: grant,
+        value: '10 * successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-troll:
+    source: { prose: 'Invoque 1 troll par réussite.', ref: 'spells:invocation-de-troll' }
+    spec:
+      {
+        target: summon,
+        scope: troll,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-de-vampire:
+    source: { prose: 'Invoque 1 vampire par réussite.', ref: 'spells:invocation-de-vampire' }
+    spec:
+      {
+        target: summon,
+        scope: vampire,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-d-abeilles:
+    source:
+      { prose: 'Invoque 10 abeilles par réussite (nuée).', ref: 'spells:invocation-d-abeilles' }
+    spec:
+      {
+        target: summon,
+        scope: abeille,
+        op: grant,
+        value: '10 * successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-d-ogres:
+    source: { prose: 'Invoque 1 ogre par réussite.', ref: 'spells:invocation-d-ogres' }
+    spec:
+      {
+        target: summon,
+        scope: ogre,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null
+  invocation-d-orc:
+    source: { prose: 'Invoque 1 orc par réussite.', ref: 'spells:invocation-d-orc' }
+    spec:
+      {
+        target: summon,
+        scope: orc,
+        op: grant,
+        value: 'successes',
+        activation: active,
+        duration: until_dispel,
+        requires_mj_validation: true
+      }
+    fidelity: pending
+    ambiguity_ref: null

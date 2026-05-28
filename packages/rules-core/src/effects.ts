@@ -20,10 +20,10 @@ import {
 
 export const GLOBAL_EFFECT_SCOPE = '__global__';
 
-// `protection` (E2f) est une cible numérique mais son agrégation/consommation en combat est encore
-// différée : on l'exclut donc de NumericEffectTarget (computeEffectiveModifiers la rejette
-// explicitement) jusqu'à ce que la couche d'application armure soit câblée.
-export type NumericEffectTarget = Exclude<EffectTarget, 'status' | 'protection'>;
+// `protection` (E2f) et `summon` (E2i) sont des cibles dont l'agrégation/consommation en combat est
+// différée : on les exclut de NumericEffectTarget (computeEffectiveModifiers les rejette
+// explicitement) jusqu'à ce que leur couche d'application (armure / instanciation) soit câblée.
+export type NumericEffectTarget = Exclude<EffectTarget, 'status' | 'protection' | 'summon'>;
 export type NumericEffectOperation = Extract<EffectOperation, 'add' | 'sub' | 'set' | 'multiply'>;
 
 const COMPUTED_NUMERIC_EFFECT_TARGETS = [

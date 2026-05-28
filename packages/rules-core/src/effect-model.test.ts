@@ -467,3 +467,28 @@ describe('EffectModel protection target (E2f, buff/débuff d’armure)', () => {
     expect(() => parseEffectModel(protectionModel('feu'))).not.toThrow();
   });
 });
+
+describe('EffectModel summon target (E2i, invocation/création d’entité)', () => {
+  const summonModel = (value: unknown) => ({
+    source: { prose: 'Invoque une créature.', ref: 'spells:invocation-de-loup' },
+    spec: {
+      target: 'summon',
+      scope: 'loup',
+      op: 'grant',
+      value,
+      activation: 'active',
+      duration: 'until_dispel'
+    },
+    fidelity: 'pending'
+  });
+
+  it('parses a summon effect (scope = espèce, value = nombre invoqué)', () => {
+    const model = parseEffectModel(summonModel('successes'));
+    expect(model.spec.target).toBe('summon');
+    expect(model.spec.scope).toBe('loup');
+  });
+
+  it('accepts a swarm count expression', () => {
+    expect(() => parseEffectModel(summonModel('10 * successes'))).not.toThrow();
+  });
+});
