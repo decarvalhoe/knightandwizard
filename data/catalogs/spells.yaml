@@ -44,6 +44,20 @@ spells:
       - catalog: lexique
         entry_id: augmentation-energetique
         term: Augmentation énergétique
+    effect_model:
+      source:
+        prose: Augmente l'énergie d'un sort de 2 par réussite.
+        ref: spells:augmentation-energetique
+      spec:
+        target: spell
+        scope: energy
+        op: add
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: barriere-psychique
     name: Barrière psychique
     status: active
@@ -112,6 +126,20 @@ spells:
       - catalog: lexique
         entry_id: captage-denergie
         term: Captage d’énergie
+    effect_model:
+      source:
+        prose: Absorbe 3 d'énergie par réussite sur un sort.
+        ref: spells:captage-d-energie
+      spec:
+        target: spell
+        scope: energy
+        op: sub
+        value: 3 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: complexite-magique
     name: Complexité magique
     status: active
@@ -129,6 +157,20 @@ spells:
       - catalog: lexique
         entry_id: complexite-magique
         term: Complexité magique
+    effect_model:
+      source:
+        prose: Augmente la difficulté d'un sort de 2 par réussite.
+        ref: spells:complexite-magique
+      spec:
+        target: spell
+        scope: difficulty
+        op: add
+        value: 2 * successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-blanc
     name: Contre-blanc
     status: active
@@ -146,6 +188,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort de magie blanche par réussite.
+        ref: spells:contre-blanc
+      spec:
+        target: spell
+        scope: magie-blanche
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-bleu
     name: Contre-bleu
     status: active
@@ -163,6 +219,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort élémentaire par réussite.
+        ref: spells:contre-bleu
+      spec:
+        target: spell
+        scope: elementaire
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-brun
     name: Contre-brun
     status: active
@@ -180,6 +250,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort de divination par réussite.
+        ref: spells:contre-brun
+      spec:
+        target: spell
+        scope: divination
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-gris
     name: Contre-gris
     status: active
@@ -197,6 +281,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort de nécromancie par réussite.
+        ref: spells:contre-gris
+      spec:
+        target: spell
+        scope: necromancie
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-jaune
     name: Contre-jaune
     status: active
@@ -214,6 +312,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort d'abjuration par réussite.
+        ref: spells:contre-jaune
+      spec:
+        target: spell
+        scope: abjuration
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-noir
     name: Contre-noir
     status: active
@@ -231,6 +343,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort de magie noire par réussite.
+        ref: spells:contre-noir
+      spec:
+        target: spell
+        scope: magie-noire
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-orange
     name: Contre-orange
     status: active
@@ -248,6 +374,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort d'invocation par réussite.
+        ref: spells:contre-orange
+      spec:
+        target: spell
+        scope: invocation
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-rouge
     name: Contre-rouge
     status: active
@@ -265,6 +405,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort d'altération par réussite.
+        ref: spells:contre-rouge
+      spec:
+        target: spell
+        scope: alteration
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-turquoise
     name: Contre-turquoise
     status: active
@@ -282,6 +436,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort d'enchantement par réussite.
+        ref: spells:contre-turquoise
+      spec:
+        target: spell
+        scope: enchantement
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-vert
     name: Contre-vert
     status: active
@@ -299,6 +467,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort de magie naturelle par réussite.
+        ref: spells:contre-vert
+      spec:
+        target: spell
+        scope: magie-naturelle
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: contre-violet
     name: Contre-violet
     status: active
@@ -316,6 +498,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort d'illusion par réussite.
+        ref: spells:contre-violet
+      spec:
+        target: spell
+        scope: illusion
+        op: sub
+        value: successes
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: deplacement-magique
     name: Déplacement magique
     status: active
@@ -416,6 +612,20 @@ spells:
     prose_origin: templated
     validation: pending
     low_confidence: true
+    effect_model:
+      source:
+        prose: Annule un sort actif.
+        ref: spells:dissipation
+      spec:
+        target: spell
+        scope: active
+        op: sub
+        value: 1
+        activation: active
+        duration: ephemeral
+        requires_mj_validation: true
+      fidelity: pending
+      ambiguity_ref: null
   - id: interdiction-magique
     name: Interdiction magique
     status: active

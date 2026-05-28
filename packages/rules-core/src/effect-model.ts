@@ -16,7 +16,12 @@ export const EFFECT_TARGETS = [
   // E2i — invocation/création d'entité (invocations, illusions, appels d'animaux). Le `scope` porte
   // l'espèce/entité (slug bestiaire idéalement) ; `value` = nombre invoqué (ex. `successes`, `level`,
   // `10 * successes`). L'instanciation (pioche dans le bestiaire) est différée à la couche d'application.
-  'summon'
+  'summon',
+  // E2m — méta-magie : effet agissant sur un AUTRE sort (anti-magie : annuler, dissiper, modifier
+  // difficulté/énergie). Axe PROVISOIRE : `scope` porte l'aspect visé (école/couleur ciblée,
+  // `difficulty`, `energy`, `active`) ; `op`/`value` la magnitude. La résolution méta (interaction
+  // avec le moteur de sorts) est un sous-système à concevoir — différée à la couche d'application.
+  'spell'
 ] as const;
 
 export type EffectTarget = (typeof EFFECT_TARGETS)[number];

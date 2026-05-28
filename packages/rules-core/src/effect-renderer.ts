@@ -53,7 +53,8 @@ const TARGET_LABELS: Record<EffectTarget, string> = {
   vitality: 'vitalité',
   status: 'état',
   protection: 'protection',
-  summon: 'invocation'
+  summon: 'invocation',
+  spell: 'sort (méta-magie)'
 };
 
 const CONTEXT_LABELS: Record<string, string> = {
