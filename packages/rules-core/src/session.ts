@@ -1,3 +1,13 @@
+import {
+  type ActiveSpell,
+  type NarrativeAdvance,
+  type SpellDurationUnit,
+  SPELL_DURATION_UNITS,
+  advanceNarrative,
+  endCombat,
+  expireActiveSpells
+} from './narrative-time.js';
+
 export const SESSION_MODES = [
   'classic_table',
   'digital_human_gm',
@@ -19,7 +29,11 @@ export const SESSION_EVENT_TYPES = [
   'gm_ruling',
   'gm_decision_requested',
   'gm_decision_resolved',
-  'rollback_requested'
+  'rollback_requested',
+  'narrative_time_advanced',
+  'combat_ended',
+  'spell_cast',
+  'spell_dispelled'
 ] as const;
 
 export const SESSION_DECISION_PRIORITIES = ['low', 'normal', 'high', 'urgent'] as const;
@@ -85,6 +99,8 @@ export interface SessionAuditEntry {
 }
 
 export interface SessionState {
+  /** Sorts encore actifs à l'instant narratif courant (R-8.20), dérivés du journal. */
+  activeSpells: ActiveSpell[];
   audit: SessionAuditEntry[];
   createdAt: string;
   decisions: SessionDecision[];
@@ -92,6 +108,8 @@ export interface SessionState {
   id: string;
   metadata: Record<string, unknown>;
   mode: SessionMode;
+  /** Horloge narrative en secondes (R-8.20), dérivée du journal d'événements. */
+  narrativeSeconds: number;
   players: SessionPlayer[];
   scenes: SessionScene[];
   slug: string;
@@ -158,15 +176,19 @@ const priorityRank: Record<SessionDecisionPriority, number> = {
 
 export function createSessionState(input: CreateSessionStateInput): SessionState {
   const now = input.createdAt ?? new Date().toISOString();
+  const events = sortEvents(input.events ?? []);
+  const clock = foldNarrativeClock(events);
 
   return {
+    activeSpells: activeSpellsAt(clock),
     audit: input.audit ? [...input.audit] : [],
     createdAt: now,
     decisions: input.decisions ? [...input.decisions] : [],
-    events: sortEvents(input.events ?? []),
+    events,
     id: input.id,
     metadata: normalizePayload(input.metadata),
     mode: input.mode ?? 'classic_table',
+    narrativeSeconds: clock.narrativeSeconds,
     players: input.players ? [...input.players] : [],
     scenes: input.scenes ? [...input.scenes] : [],
     slug: input.slug,
@@ -192,7 +214,7 @@ export function appendSessionEvent(
     type: input.type
   };
 
-  return {
+  return withNarrativeClock({
     ...state,
     audit: [
       ...state.audit,
@@ -212,7 +234,7 @@ export function appendSessionEvent(
     ],
     events: [...state.events, event],
     updatedAt: now
-  };
+  });
 }
 
 export function queueGmDecision(
@@ -449,12 +471,15 @@ export function rebuildSessionStateFromEvents(
     decisions: [],
     scenes: []
   });
+  const clock = foldNarrativeClock(retained);
   const lastEvent = retained.at(-1);
 
   return {
     ...state,
+    activeSpells: activeSpellsAt(clock),
     decisions: projection.decisions,
     events: retained,
+    narrativeSeconds: clock.narrativeSeconds,
     scenes: projection.scenes,
     updatedAt: options.now ?? lastEvent?.createdAt ?? state.createdAt
   };
@@ -538,6 +563,210 @@ function applyDecisionResolution(
         }
       : decision
   );
+}
+
+// --- Horloge narrative « temps double » (R-8.20) -----------------------------
+// La narrativeSeconds et les sorts actifs sont une projection pure du journal :
+// un rollback rembobine donc automatiquement le temps et l'état des sorts.
+
+export interface AdvanceSessionNarrativeInput {
+  actorId?: string;
+  by: NarrativeAdvance;
+}
+
+export interface EndSessionCombatInput {
+  actorId?: string;
+  /** DT cumulés de la scène de combat (R-8.20 : 1 DT = 0,2 s). */
+  elapsedDT: number;
+}
+
+export interface CastSessionSpellInput {
+  actorId?: string;
+  /** Identifiant stable de l'instance de sort (défaut : dérivé de la séquence). */
+  activeSpellId?: string;
+  /** Quantité de durée déjà résolue (mise à l'échelle par réussites le cas échéant). */
+  durationAmount: number;
+  durationUnit: SpellDurationUnit;
+  spellId?: string;
+  targetId?: string;
+}
+
+export interface DispelSessionSpellInput {
+  actorId?: string;
+  activeSpellId: string;
+}
+
+interface NarrativeClock {
+  /** Instant narratif courant en secondes (R-8.20). */
+  narrativeSeconds: number;
+  /** Tous les sorts lancés (chacun avec son castAtSeconds), moins ceux dissipés. */
+  spells: ActiveSpell[];
+}
+
+/** Avance l'horloge narrative (contrôle MJ « passer la journée / N heures », R-8.20). */
+export function advanceSessionNarrative(
+  state: SessionState,
+  input: AdvanceSessionNarrativeInput,
+  options: SessionMutationOptions = {}
+): SessionState {
+  return appendSessionEvent(
+    state,
+    { actorId: input.actorId, payload: { ...input.by }, type: 'narrative_time_advanced' },
+    options
+  );
+}
+
+/** Fin de combat (R-8.20) : replie les DT écoulés de la scène sur l'horloge narrative. */
+export function endSessionCombat(
+  state: SessionState,
+  input: EndSessionCombatInput,
+  options: SessionMutationOptions = {}
+): SessionState {
+  return appendSessionEvent(
+    state,
+    { actorId: input.actorId, payload: { elapsedDT: input.elapsedDT }, type: 'combat_ended' },
+    options
+  );
+}
+
+/** Inscrit un sort actif sur l'horloge narrative ; son castAtSeconds est l'instant courant. */
+export function castSessionSpell(
+  state: SessionState,
+  input: CastSessionSpellInput,
+  options: SessionMutationOptions = {}
+): SessionState {
+  return appendSessionEvent(
+    state,
+    {
+      actorId: input.actorId,
+      payload: {
+        activeSpellId: input.activeSpellId,
+        durationAmount: input.durationAmount,
+        durationUnit: input.durationUnit,
+        spellId: input.spellId,
+        targetId: input.targetId
+      },
+      type: 'spell_cast'
+    },
+    options
+  );
+}
+
+/** Dissipe un sort actif (seul moyen de terminer un sort `permanent`). */
+export function dispelSessionSpell(
+  state: SessionState,
+  input: DispelSessionSpellInput,
+  options: SessionMutationOptions = {}
+): SessionState {
+  return appendSessionEvent(
+    state,
+    {
+      actorId: input.actorId,
+      payload: { activeSpellId: input.activeSpellId },
+      type: 'spell_dispelled'
+    },
+    options
+  );
+}
+
+/** Sorts encore actifs à l'instant narratif courant de la session. */
+export function getActiveSpells(state: SessionState): ActiveSpell[] {
+  return state.activeSpells;
+}
+
+/** Recalcule les champs dérivés de l'horloge narrative à partir du journal. */
+function withNarrativeClock(state: SessionState): SessionState {
+  const clock = foldNarrativeClock(state.events);
+
+  return {
+    ...state,
+    activeSpells: activeSpellsAt(clock),
+    narrativeSeconds: clock.narrativeSeconds
+  };
+}
+
+function activeSpellsAt(clock: NarrativeClock): ActiveSpell[] {
+  return expireActiveSpells(clock.spells, clock.narrativeSeconds).active;
+}
+
+function foldNarrativeClock(events: SessionEvent[]): NarrativeClock {
+  return sortEvents(events).reduce<NarrativeClock>(reduceNarrativeEvent, {
+    narrativeSeconds: 0,
+    spells: []
+  });
+}
+
+function reduceNarrativeEvent(clock: NarrativeClock, event: SessionEvent): NarrativeClock {
+  switch (event.type) {
+    case 'narrative_time_advanced':
+      return {
+        ...clock,
+        narrativeSeconds: advanceNarrative(
+          clock.narrativeSeconds,
+          narrativeAdvanceFromPayload(event.payload)
+        )
+      };
+    case 'combat_ended':
+      return {
+        ...clock,
+        narrativeSeconds: endCombat(
+          clock.narrativeSeconds,
+          nonNegativeNumber(event.payload.elapsedDT)
+        )
+      };
+    case 'spell_cast': {
+      const spell = activeSpellFromEvent(event, clock.narrativeSeconds);
+
+      return spell === undefined ? clock : { ...clock, spells: [...clock.spells, spell] };
+    }
+    case 'spell_dispelled': {
+      const id = optionalString(event.payload.activeSpellId) ?? optionalString(event.payload.id);
+
+      return id === undefined
+        ? clock
+        : { ...clock, spells: clock.spells.filter((spell) => spell.id !== id) };
+    }
+    default:
+      return clock;
+  }
+}
+
+function narrativeAdvanceFromPayload(payload: Record<string, unknown>): NarrativeAdvance {
+  return {
+    days: nonNegativeNumber(payload.days),
+    hours: nonNegativeNumber(payload.hours),
+    minutes: nonNegativeNumber(payload.minutes),
+    seconds: nonNegativeNumber(payload.seconds)
+  };
+}
+
+function activeSpellFromEvent(event: SessionEvent, castAtSeconds: number): ActiveSpell | undefined {
+  const payload = event.payload;
+  const durationUnit = optionalString(payload.durationUnit);
+
+  if (!isSpellDurationUnit(durationUnit)) {
+    return undefined;
+  }
+
+  return {
+    castAtSeconds,
+    durationAmount: nonNegativeNumber(payload.durationAmount),
+    durationUnit,
+    id:
+      optionalString(payload.activeSpellId) ??
+      optionalString(payload.id) ??
+      `spell-${event.sequence}`,
+    spellId: optionalString(payload.spellId),
+    targetId: optionalString(payload.targetId)
+  };
+}
+
+function isSpellDurationUnit(value: string | undefined): value is SpellDurationUnit {
+  return value !== undefined && (SPELL_DURATION_UNITS as readonly string[]).includes(value);
+}
+
+function nonNegativeNumber(value: unknown): number {
+  return typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : 0;
 }
 
 function optionalString(value: unknown): string | undefined {

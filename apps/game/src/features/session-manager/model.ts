@@ -79,14 +79,18 @@ export interface SessionManagerView {
 
 const eventLabels: Record<SessionEventType, string> = {
   combat: 'Combat',
+  combat_ended: 'Fin de combat',
   dice_roll: 'Jet de des',
   gm_decision_requested: 'Decision MJ demandee',
   gm_decision_resolved: 'Decision MJ resolue',
   gm_ruling: 'Arbitrage MJ',
   narration: 'Narration',
+  narrative_time_advanced: 'Temps narratif avance',
   player_action: 'Action joueur',
   rollback_requested: 'Rollback demande',
-  scene_opened: 'Scene ouverte'
+  scene_opened: 'Scene ouverte',
+  spell_cast: 'Sort lance',
+  spell_dispelled: 'Sort dissipe'
 };
 
 export function createSessionManagerState(
