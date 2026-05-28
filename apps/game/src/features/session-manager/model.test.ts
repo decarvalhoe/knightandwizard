@@ -4,6 +4,8 @@ import {
   applyLiveSessionEvent,
   buildSessionManagerView,
   createSessionManagerState,
+  formatDuration,
+  formatNarrativeInstant,
   recordSessionEvent,
   requestRollbackFromEvent,
   resolveNextPendingDecision,
@@ -267,5 +269,108 @@ describe('applyLiveSessionEvent', () => {
     });
 
     expect(outcome.kind).toBe('gap');
+  });
+
+  it('recomputes the narrative clock when a live time-advance event is applied', () => {
+    const outcome = applyLiveSessionEvent(base, {
+      actorId: 'gm',
+      createdAt: '2026-04-30T12:00:00.000Z',
+      id: 'event-2',
+      payload: { hours: 2 },
+      sequence: 2,
+      type: 'narrative_time_advanced'
+    });
+
+    expect(outcome.kind).toBe('applied');
+
+    if (outcome.kind === 'applied') {
+      expect(outcome.state.narrativeSeconds).toBe(7_200);
+    }
+  });
+});
+
+describe('narrative clock view (R-8.20)', () => {
+  it('exposes the formatted instant and active spells in the manager view', () => {
+    const state = createSessionManagerState({
+      events: [
+        {
+          actorId: 'gm',
+          createdAt: '2026-04-30T10:00:00.000Z',
+          id: 'event-1',
+          payload: { hours: 1 },
+          sequence: 1,
+          type: 'narrative_time_advanced'
+        },
+        {
+          actorId: 'gm',
+          createdAt: '2026-04-30T10:01:00.000Z',
+          id: 'event-2',
+          payload: {
+            activeSpellId: 'spell-aura',
+            durationAmount: 10,
+            durationUnit: 'minute',
+            spellId: 'aura-de-courage',
+            targetId: 'aveline'
+          },
+          sequence: 2,
+          type: 'spell_cast'
+        }
+      ]
+    });
+    const view = buildSessionManagerView(state);
+
+    expect(view.narrativeClock.narrativeSeconds).toBe(3_600);
+    expect(view.narrativeClock.instantLabel).toBe('Jour 1 · 01:00:00');
+    expect(view.narrativeClock.activeSpells).toEqual([
+      {
+        id: 'spell-aura',
+        label: 'aura-de-courage',
+        permanent: false,
+        remainingLabel: 'Expire dans 10 min',
+        target: 'aveline'
+      }
+    ]);
+  });
+
+  it('marks a permanent spell as requiring an explicit dispel', () => {
+    const state = createSessionManagerState({
+      events: [
+        {
+          actorId: 'gm',
+          createdAt: '2026-04-30T10:00:00.000Z',
+          id: 'event-1',
+          payload: {
+            activeSpellId: 'spell-ward',
+            durationAmount: 0,
+            durationUnit: 'permanent',
+            spellId: 'bouclier'
+          },
+          sequence: 1,
+          type: 'spell_cast'
+        }
+      ]
+    });
+    const view = buildSessionManagerView(state);
+
+    expect(view.narrativeClock.activeSpells).toEqual([
+      {
+        id: 'spell-ward',
+        label: 'bouclier',
+        permanent: true,
+        remainingLabel: 'Permanent (dissipation requise)',
+        target: undefined
+      }
+    ]);
+  });
+
+  it('formats absolute instants across day boundaries', () => {
+    expect(formatNarrativeInstant(0)).toBe('Jour 1 · 00:00:00');
+    expect(formatNarrativeInstant(86_400 + 3_661)).toBe('Jour 2 · 01:01:01');
+  });
+
+  it('formats short relative durations with the two largest units', () => {
+    expect(formatDuration(7_200)).toBe('2 h');
+    expect(formatDuration(90)).toBe('1 min 30 s');
+    expect(formatDuration(86_400 + 3_600)).toBe('1 j 1 h');
   });
 });
