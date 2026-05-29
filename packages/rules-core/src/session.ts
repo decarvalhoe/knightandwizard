@@ -485,6 +485,57 @@ export function rebuildSessionStateFromEvents(
   };
 }
 
+/**
+ * Projects the current playable state from the immutable session journal.
+ *
+ * A rollback marker does not delete history. It invalidates the slice after its
+ * target up to the marker itself, while events appended after the marker are the
+ * new branch of play. The projected state therefore keeps:
+ * - events at or before the rollback target;
+ * - events appended after the latest rollback marker.
+ */
+export function projectSessionStateFromJournal(state: SessionState): SessionState {
+  const currentEvents = selectCurrentSessionEvents(state.events);
+
+  return rebuildSessionStateFromEvents({ ...state, events: currentEvents });
+}
+
+function selectCurrentSessionEvents(events: SessionEvent[]): SessionEvent[] {
+  const latestRollback = findLatestValidRollbackMarker(events);
+
+  if (!latestRollback) {
+    return sortEvents(events);
+  }
+
+  return sortEvents(events).filter(
+    (event) =>
+      event.sequence <= latestRollback.targetSequence || event.sequence > latestRollback.sequence
+  );
+}
+
+function findLatestValidRollbackMarker(
+  events: SessionEvent[]
+): { sequence: number; targetSequence: number } | undefined {
+  const sortedEvents = sortEvents(events).sort((left, right) => right.sequence - left.sequence);
+
+  for (const event of sortedEvents) {
+    if (event.type !== 'rollback_requested') {
+      continue;
+    }
+
+    const targetSequence = event.payload.targetSequence;
+
+    if (
+      typeof targetSequence === 'number' &&
+      events.some((candidate) => candidate.sequence === targetSequence)
+    ) {
+      return { sequence: event.sequence, targetSequence };
+    }
+  }
+
+  return undefined;
+}
+
 interface SessionProjection {
   decisions: SessionDecision[];
   scenes: SessionScene[];

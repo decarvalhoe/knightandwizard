@@ -13241,6 +13241,15 @@ sources:
     domains: ["project-governance"]
     contains: ["project_documentation"]
     notes: "Project documentation source."
+  - id: "docs-plan-mvp-cut"
+    path: "docs/plan/MVP-CUT.md"
+    sha256: "7d755b41e255c6b2393b8df0dca5146e9b9bcbef59d0c22303b7c3638d24754c"
+    source_type: generated_doc
+    priority: 40
+    status: active
+    domains: ["project-governance"]
+    contains: ["project_documentation"]
+    notes: "Project documentation source."
   - id: "docs-plan-phase-v0-4-rc"
     path: "docs/plan/PHASE-v0.4-RC.md"
     sha256: "087d61943fef32d9ac1f6201d021f8ec1a380843beffb1c11d2438144b38540a"
