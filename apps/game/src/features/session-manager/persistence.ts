@@ -58,6 +58,14 @@ export interface SyncCharacterCombatStateInput {
   vitality?: CombatVitality;
 }
 
+export interface AwardCharacterXpInput {
+  actorId?: string;
+  amount: number;
+  questPoints?: number;
+  reason?: string;
+  sessionSlug?: string;
+}
+
 export async function fetchPersistedSessionState(slug: string): Promise<SessionManagerState> {
   const snapshot = await getPersistedSessionSnapshot(slug);
 
@@ -137,6 +145,25 @@ export async function syncCharacterCombatState(
     throw new Error(
       `Unable to sync character combat state for ${characterId}: HTTP ${response.status}`
     );
+  }
+}
+
+export async function awardCharacterXp(
+  characterId: string,
+  input: AwardCharacterXpInput
+): Promise<void> {
+  const baseUrl = getClientApiBaseUrl();
+  const response = await fetch(
+    `${baseUrl}/characters/${encodeURIComponent(characterId)}/xp-awards`,
+    {
+      body: JSON.stringify(input),
+      headers: { 'content-type': 'application/json' },
+      method: 'POST'
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Unable to award XP to character ${characterId}: HTTP ${response.status}`);
   }
 }
 

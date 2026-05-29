@@ -7,6 +7,7 @@ import { ArrowUpRight, CheckCircle2, RotateCcw, ScrollText, Swords, Users } from
 import type { SessionManagerState } from '../session-manager/model';
 import {
   appendGmRulingToSession,
+  awardCharacterXp,
   fetchPersistedSessionState,
   requestPersistedRollback
 } from '../session-manager/persistence';
@@ -58,6 +59,12 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
     }
 
     void run('xp', async () => {
+      await awardCharacterXp(effectiveXpTarget.characterId, {
+        actorId: 'gm',
+        amount: 1,
+        reason: 'Fin de session',
+        sessionSlug: state.slug
+      });
       await appendGmRulingToSession(state.slug, {
         actorId: 'gm',
         payload: {

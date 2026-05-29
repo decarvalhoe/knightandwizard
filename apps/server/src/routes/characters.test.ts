@@ -99,6 +99,63 @@ describe('character routes', () => {
       { durationDT: 8, id: 'bleeding' }
     ]);
   });
+
+  it('awards persisted XP to a character for session-end GM rewards', async () => {
+    const draftId = `route-xp-character-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleDraft('Aveline Recompensee'),
+      url: `/character-drafts/${draftId}`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { draftId },
+      url: '/characters/finalize'
+    });
+    const awardResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        amount: 2,
+        reason: 'Fin de session',
+        sessionSlug: 'mvp-xp'
+      },
+      url: `/characters/${draftId}/xp-awards`
+    });
+    const readResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${draftId}`
+    });
+
+    expect(awardResponse.statusCode).toBe(200);
+    expect(awardResponse.json()).toMatchObject({
+      character: {
+        id: draftId,
+        metadata: {
+          xpAwards: [
+            {
+              actorId: 'gm',
+              amount: 2,
+              reason: 'Fin de session',
+              sessionSlug: 'mvp-xp'
+            }
+          ]
+        },
+        progression: {
+          experiencePoints: 2,
+          experienceTotal: 2,
+          questPoints: 0
+        }
+      },
+      status: 'updated'
+    });
+    expect(readResponse.json().character.progression).toEqual({
+      experiencePoints: 2,
+      experienceTotal: 2,
+      questPoints: 0
+    });
+  });
 });
 
 function sampleDraft(name: string) {
