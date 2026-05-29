@@ -27,6 +27,11 @@ export interface AppendThreadPostInput {
   text: string;
 }
 
+export interface AppendGmRulingInput {
+  actorId: string;
+  payload: Record<string, unknown>;
+}
+
 export interface QueuePersistedGmDecisionInput {
   assignedTo?: SessionControllerRole;
   payload?: Record<string, unknown>;
@@ -89,6 +94,17 @@ export async function appendThreadPostToSession(
     actorId: input.actorId,
     eventType: 'player_action',
     payload: { kind: 'table_post', text }
+  });
+}
+
+export async function appendGmRulingToSession(
+  slug: string,
+  input: AppendGmRulingInput
+): Promise<void> {
+  await appendPersistedSessionEvent(slug, {
+    actorId: input.actorId,
+    eventType: 'gm_ruling',
+    payload: input.payload
   });
 }
 

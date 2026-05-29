@@ -10,6 +10,7 @@ import {
 describe('surface theme contract', () => {
   it('maps the product routes to their in-world skins', () => {
     expect(resolveSkinForPath('/')).toBe('gazette');
+    expect(resolveSkinForPath('/mj')).toBe('gazette');
     expect(resolveSkinForPath('/atouts')).toBe('armorial');
     expect(resolveSkinForPath('/character')).toBe('armorial');
     expect(resolveSkinForPath('/character/create')).toBe('armorial');
@@ -31,6 +32,15 @@ describe('surface theme contract', () => {
       label: 'Greffe',
       shortLabel: 'Greffe',
       skin: 'archives'
+    });
+  });
+
+  it('exposes the GM cockpit in the surface navigation', () => {
+    expect(surfaceNavItems).toContainEqual({
+      href: '/mj',
+      label: 'Cockpit MJ',
+      shortLabel: 'MJ',
+      skin: 'gazette'
     });
   });
 

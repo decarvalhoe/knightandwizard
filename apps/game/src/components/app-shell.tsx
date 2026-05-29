@@ -3,6 +3,7 @@
 import {
   BookOpen,
   BookUser,
+  ClipboardList,
   Dices,
   FileArchive,
   LayoutDashboard,
@@ -35,6 +36,7 @@ const THEME_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;
 
 const navIcons: Record<string, LucideIcon> = {
   '/': LayoutDashboard,
+  '/mj': ClipboardList,
   '/character': BookUser,
   '/character/create': PenLine,
   '/bestiaire': PawPrint,

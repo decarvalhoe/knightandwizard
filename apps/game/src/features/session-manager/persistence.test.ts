@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   appendCombatResolutionToSession,
   appendDiceRollToSession,
+  appendGmRulingToSession,
   appendThreadPostToSession,
   queuePersistedGmDecision,
   requestPersistedRollback,
@@ -147,6 +148,27 @@ describe('session manager persistence', () => {
         method: 'PATCH'
       }
     );
+  });
+
+  it('appends a GM ruling event for cockpit actions', async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = 'http://browser-api.test';
+    const fetchMock = vi.fn().mockResolvedValue(okJson({ status: 'created' }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    await appendGmRulingToSession('brumeval', {
+      actorId: 'gm',
+      payload: { characterId: 'pc-aveline', kind: 'xp_award', xp: 1 }
+    });
+
+    expect(fetchMock).toHaveBeenCalledWith('http://browser-api.test/sessions/brumeval/events', {
+      body: JSON.stringify({
+        actorId: 'gm',
+        eventType: 'gm_ruling',
+        payload: { characterId: 'pc-aveline', kind: 'xp_award', xp: 1 }
+      }),
+      headers: { 'content-type': 'application/json' },
+      method: 'POST'
+    });
   });
 
   it('persists GM decision queue, resolution and rollback requests through journal routes', async () => {

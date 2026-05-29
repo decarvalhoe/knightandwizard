@@ -35,6 +35,7 @@ test.describe('K&W player and GM application flows', () => {
 
     const routeSkins = [
       ['/', 'gazette'],
+      ['/mj', 'gazette'],
       ['/character', 'armorial'],
       ['/combat', 'registre'],
       ['/session', 'gazette'],
@@ -210,6 +211,90 @@ test.describe('K&W player and GM application flows', () => {
     await page.goto(`/character?characterId=${draftId}`);
     await expect(page.getByRole('heading', { name: 'Aveline Identite' })).toBeVisible();
     await expect(page.getByText('Personnage API')).toBeVisible();
+  });
+
+  test('GM cockpit coordinates scene, queue, combat access and closing actions', async ({
+    page
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'sessionManager');
+
+    const suffix = Date.now().toString();
+    const draftId = `gm-cockpit-character-${suffix}`;
+    const slug = `gm-cockpit-${suffix}`;
+    const saveResponse = await page.request.put(`${e2eApiBaseUrl}/character-drafts/${draftId}`, {
+      data: savedCharacterDraftPayload('Aveline Cockpit')
+    });
+    const finalizeResponse = await page.request.post(`${e2eApiBaseUrl}/characters/finalize`, {
+      data: { draftId }
+    });
+    const sessionResponse = await page.request.post(`${e2eApiBaseUrl}/sessions`, {
+      data: {
+        metadata: {
+          players: [{ connected: true, id: 'gm', name: 'MJ', role: 'human_gm' }],
+          scenes: [
+            {
+              description: 'La serrure resiste et la brume monte.',
+              id: 'north-gate',
+              location: 'Brumeval',
+              status: 'active',
+              title: 'Porte nord'
+            }
+          ]
+        },
+        mode: 'digital_human_gm',
+        slug,
+        status: 'active',
+        title: 'Table Cockpit'
+      }
+    });
+    const joinResponse = await page.request.post(`${e2eApiBaseUrl}/sessions/${slug}/players`, {
+      data: {
+        characterId: draftId,
+        name: 'Aveline Cockpit',
+        playerId: 'player-aveline',
+        role: 'player'
+      }
+    });
+    const decisionResponse = await page.request.post(
+      `${e2eApiBaseUrl}/sessions/${slug}/decisions`,
+      {
+        data: {
+          assignedTo: 'human_gm',
+          priority: 'high',
+          requestedBy: 'player-aveline',
+          title: 'Valider le bruit de la serrure'
+        }
+      }
+    );
+
+    expect(saveResponse.ok()).toBe(true);
+    expect(finalizeResponse.ok()).toBe(true);
+    expect(sessionResponse.ok()).toBe(true);
+    expect(joinResponse.ok()).toBe(true);
+    expect(decisionResponse.ok()).toBe(true);
+
+    await page.goto(`/mj?slug=${slug}`);
+
+    await expect(page.locator('html')).toHaveAttribute('data-skin', 'gazette');
+    await expect(page.getByRole('heading', { name: 'Table Cockpit' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Scene active' })).toBeVisible();
+    await expect(page.getByText('Porte nord', { exact: true })).toBeVisible();
+    await expect(page.getByText('Brumeval', { exact: true })).toBeVisible();
+    await expect(page.getByText('Aveline Cockpit', { exact: true }).first()).toBeVisible();
+    await expect(page.getByText('Valider le bruit de la serrure').first()).toBeVisible();
+    await expect(page.locator('main').getByRole('link', { name: 'Combat' })).toHaveAttribute(
+      'href',
+      `/combat?slug=${slug}&characterId=${draftId}`
+    );
+
+    await page.getByRole('button', { name: 'Attribuer 1 XP' }).click();
+    await expect(page.getByText('XP attribue a Aveline Cockpit')).toBeVisible();
+
+    await page.getByRole('button', { name: 'PNJ rapide' }).click();
+    await expect(page.getByText('PNJ rapide ajoute au suivi MJ')).toBeVisible();
+
+    await page.getByRole('button', { name: 'Fin de session' }).click();
+    await expect(page.getByText('Fin de session marquee par le MJ')).toBeVisible();
   });
 
   test('character creation validates fighter and magician creation budgets', async ({

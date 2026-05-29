@@ -24,6 +24,7 @@ export type SurfaceNavItem = {
 
 export const surfaceNavItems: readonly SurfaceNavItem[] = [
   { href: '/', label: 'Dashboard', shortLabel: 'Poste', skin: 'gazette' },
+  { href: '/mj', label: 'Cockpit MJ', shortLabel: 'MJ', skin: 'gazette' },
   { href: '/atouts', label: 'Atouts', shortLabel: 'Atouts', skin: 'armorial' },
   { href: '/character', label: 'Personnage', shortLabel: 'Fiche', skin: 'armorial' },
   { href: '/character/create', label: 'Creation', shortLabel: 'Creer', skin: 'armorial' },
@@ -42,6 +43,7 @@ export const surfaceNavItems: readonly SurfaceNavItem[] = [
 export const routeSkins: readonly [prefix: string, skin: KwSkin][] = [
   ['/design-proto/registre', 'registre'],
   ['/design-proto/fiche', 'armorial'],
+  ['/mj', 'gazette'],
   ['/atouts', 'armorial'],
   ['/character/create', 'armorial'],
   ['/character', 'armorial'],
