@@ -282,6 +282,66 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByRole('heading', { name: 'Squelette' }).first()).toBeVisible();
   });
 
+  test('session combat starts from a persisted character and syncs vitality to the sheet', async ({
+    page
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'combatTracker');
+
+    const suffix = Date.now().toString();
+    const draftId = `combat-character-${suffix}`;
+    const slug = `combat-session-${suffix}`;
+    const saveResponse = await page.request.put(`${e2eApiBaseUrl}/character-drafts/${draftId}`, {
+      data: savedCharacterDraftPayload('Aveline Combattante')
+    });
+    const finalizeResponse = await page.request.post(`${e2eApiBaseUrl}/characters/finalize`, {
+      data: { draftId }
+    });
+
+    expect(saveResponse.ok()).toBe(true);
+    expect(finalizeResponse.ok()).toBe(true);
+
+    await page.goto(
+      `/session?slug=${slug}&player=player-aveline&name=Aveline%20Combattante&role=player&characterId=${draftId}`
+    );
+    await page.getByRole('link', { name: 'Ouvrir combat' }).click();
+
+    await expect(page.locator('html')).toHaveAttribute('data-skin', 'registre');
+    await expect(page.getByRole('heading', { name: 'Aveline Combattante' })).toBeVisible();
+    await expect(page.getByText('Épée bâtarde').first()).toBeVisible();
+    await page.waitForLoadState('networkidle');
+
+    const journalWrite = page.waitForResponse(
+      (response) =>
+        response.url().includes(`/sessions/${slug}/events`) &&
+        response.request().method() === 'POST'
+    );
+    const sheetSync = page.waitForResponse(
+      (response) =>
+        response.url().includes(`/characters/${draftId}/combat-state`) &&
+        response.request().method() === 'PATCH'
+    );
+    await page.getByLabel('Cible vitalité').selectOption(draftId);
+    await page.locator('.kw-combat__small-buttons button').first().click();
+    await journalWrite;
+    await sheetSync;
+
+    await expect(
+      page.getByRole('progressbar', { name: 'Vitalité Aveline Combattante' })
+    ).toHaveAttribute('aria-valuenow', '17');
+
+    await page.reload();
+    await expect(
+      page.getByRole('progressbar', { name: 'Vitalité Aveline Combattante' })
+    ).toHaveAttribute('aria-valuenow', '17');
+
+    await page.goto(`/character?characterId=${draftId}`);
+    await expect(page.getByRole('heading', { name: 'Aveline Combattante' })).toBeVisible();
+    await expect(page.getByRole('progressbar', { name: 'Vitalité' })).toHaveAttribute(
+      'aria-valuenow',
+      '17'
+    );
+  });
+
   test('session manager records events, GM decisions and rollback requests', async ({
     page
   }, testInfo) => {

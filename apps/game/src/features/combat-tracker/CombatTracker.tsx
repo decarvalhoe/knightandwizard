@@ -38,12 +38,16 @@ import {
   type ToastTone
 } from '@knightandwizard/ui';
 import { trpc } from '@/lib/trpc';
-import { appendCombatResolutionToSession } from '@/features/session-manager/persistence';
+import {
+  appendCombatResolutionToSession,
+  syncCharacterCombatState
+} from '@/features/session-manager/persistence';
 
 import {
   addTrackerCombatant,
   applyTrackerDamage,
   buildCombatTrackerView,
+  combatantMetadata,
   queueTrackerAction,
   removeTrackerCombatant,
   type CombatantTemplate,
@@ -75,12 +79,14 @@ const actionLabels: Record<CombatActionType, string> = {
 
 interface CombatTrackerProps {
   combatantTemplates: CombatantTemplate[];
+  currentCharacterId?: string;
   initialState: CombatState;
   sessionSlug?: string;
 }
 
 export function CombatTracker({
   combatantTemplates,
+  currentCharacterId,
   initialState,
   sessionSlug = 'brumeval'
 }: Readonly<CombatTrackerProps>) {
@@ -111,18 +117,60 @@ export function CombatTracker({
     ? damageTargetId
     : (state.timeline[0]?.id ?? '');
 
+  function persistCombatState(nextState: CombatState, summary: string) {
+    void appendCombatResolutionToSession(sessionSlug, {
+      actorId: 'gm',
+      result: {
+        kind: 'combat_state',
+        state: nextState,
+        summary
+      }
+    }).catch(() => {
+      // Combat can continue locally; the next explicit session reload will reveal persistence errors.
+    });
+    syncCurrentCharacter(nextState);
+  }
+
+  function syncCurrentCharacter(nextState: CombatState) {
+    if (!currentCharacterId) {
+      return;
+    }
+
+    const participant = nextState.timeline.find((combatant) => {
+      const metadata = combatantMetadata(combatant);
+
+      return metadata.characterId === currentCharacterId || combatant.id === currentCharacterId;
+    });
+
+    if (!participant) {
+      return;
+    }
+
+    void syncCharacterCombatState(currentCharacterId, {
+      sessionSlug,
+      statuses: participant.statuses,
+      vitality: participant.vitality
+    }).catch(() => {
+      // The combat journal remains the source of recovery if sheet sync is temporarily unavailable.
+    });
+  }
+
   function queueAction(type: CombatActionType) {
     if (!activeCombatant) {
       return;
     }
 
-    setState((current) =>
-      queueTrackerAction(
+    setState((current) => {
+      const nextState = queueTrackerAction(
         current,
         activeCombatant.id,
         buildAction(type, activeCombatant, effectiveTargetId)
-      )
-    );
+      );
+
+      persistCombatState(nextState, `${activeCombatant.name} declare ${actionLabels[type]}`);
+
+      return nextState;
+    });
   }
 
   function resolveNext() {
@@ -137,12 +185,7 @@ export function CombatTracker({
       .mutate({ state })
       .then((result) => {
         setState(result.state);
-        void appendCombatResolutionToSession(sessionSlug, {
-          actorId: 'gm',
-          result: { ...result }
-        }).catch(() => {
-          // Journal append is best-effort; never block the authoritative result render.
-        });
+        persistCombatState(result.state, 'Resolution combat');
       })
       .catch((error: unknown) => {
         setResolveError(error instanceof Error ? error.message : 'Résolution impossible');
@@ -157,7 +200,13 @@ export function CombatTracker({
       return;
     }
 
-    setState((current) => applyTrackerDamage(current, effectiveDamageTargetId, damage));
+    setState((current) => {
+      const nextState = applyTrackerDamage(current, effectiveDamageTargetId, damage);
+
+      persistCombatState(nextState, `Vitalite ajustee ${damage}`);
+
+      return nextState;
+    });
   }
 
   function addTemplate() {
@@ -167,11 +216,23 @@ export function CombatTracker({
       return;
     }
 
-    setState((current) => addTrackerCombatant(current, withUniqueId(template, current)));
+    setState((current) => {
+      const nextState = addTrackerCombatant(current, withUniqueId(template, current));
+
+      persistCombatState(nextState, `${template.name} rejoint le combat`);
+
+      return nextState;
+    });
   }
 
   function removeCombatant(combatantId: string) {
-    setState((current) => removeTrackerCombatant(current, combatantId));
+    setState((current) => {
+      const nextState = removeTrackerCombatant(current, combatantId);
+
+      persistCombatState(nextState, `${combatantId} quitte le combat`);
+
+      return nextState;
+    });
   }
 
   return (
@@ -469,6 +530,12 @@ function RosterCard({
           <HeartPulse aria-hidden="true" className="kw-combat__badge-icon" />
           {combatant.vitality.current}/{combatant.vitality.max}
         </Badge>
+        {combatant.sourceLabel ? <Badge tone="neutral">{combatant.sourceLabel}</Badge> : null}
+        {combatant.loadoutLabels.map((label) => (
+          <Badge key={label} tone="neutral">
+            {label}
+          </Badge>
+        ))}
         {combatant.statusLabels.map((status) => (
           <Badge key={status} tone={statusTone(status)}>
             {status}
@@ -544,13 +611,19 @@ function logTone(tone: CombatLogRow['tone']): ToastTone {
 }
 
 function buildAction(type: CombatActionType, actor: Combatant, targetId: string): CombatAction {
+  const metadata = combatantMetadata(actor);
+
   if (type === 'attack') {
+    const skillPoints = metadata.attackSkillId
+      ? (actor.skills[metadata.attackSkillId] ?? 0)
+      : strongestSkill(actor);
+
     return {
       attack: {
-        difficulty: 7,
-        pool: actor.attributes.dexterity + strongestSkill(actor)
+        difficulty: metadata.attackDifficulty ?? 7,
+        pool: actor.attributes.dexterity + skillPoints
       },
-      damageOnHit: Math.max(1, Math.round(actor.attributes.strength / 2)),
+      damageOnHit: metadata.damageOnHit ?? Math.max(1, Math.round(actor.attributes.strength / 2)),
       targetId,
       type
     };

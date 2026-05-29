@@ -228,13 +228,23 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
               <h2 className="text-lg font-semibold text-ink">Participants</h2>
             </div>
             {currentPlayer ? (
-              <p
+              <div
                 className="mt-3 rounded-md border border-forest/15 bg-forest/8 px-3 py-2 text-sm font-semibold text-forest"
                 data-testid="session-current-identity"
               >
-                Vous : {currentPlayer.name} · {roleLabel(currentPlayer.role)}
-                {currentPlayer.characterId ? ` · ${currentPlayer.characterId}` : ''}
-              </p>
+                <span>
+                  Vous : {currentPlayer.name} · {roleLabel(currentPlayer.role)}
+                  {currentPlayer.characterId ? ` · ${currentPlayer.characterId}` : ''}
+                </span>
+                {currentPlayer.characterId ? (
+                  <a
+                    className="ml-3 inline-flex rounded-sm bg-forest px-2 py-1 text-xs font-semibold text-white"
+                    href={combatHref(state.slug, currentPlayer.characterId)}
+                  >
+                    Ouvrir combat
+                  </a>
+                ) : null}
+              </div>
             ) : null}
             <ol className="mt-4 grid gap-2">
               {view.playerRows.map((player) => (
@@ -706,4 +716,8 @@ function roleLabel(role: string): string {
   }
 
   return 'Joueur';
+}
+
+function combatHref(slug: string, characterId: string): string {
+  return `/combat?slug=${encodeURIComponent(slug)}&characterId=${encodeURIComponent(characterId)}`;
 }

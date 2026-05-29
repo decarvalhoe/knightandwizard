@@ -1,4 +1,6 @@
 import type {
+  CombatStatus,
+  CombatVitality,
   SessionControllerRole,
   SessionDecisionPriority,
   SessionDecisionStatus,
@@ -43,6 +45,12 @@ export interface RequestPersistedRollbackInput {
   actorId: string;
   reason: string;
   targetSequence: number;
+}
+
+export interface SyncCharacterCombatStateInput {
+  sessionSlug?: string;
+  statuses?: CombatStatus[];
+  vitality?: CombatVitality;
 }
 
 export async function fetchPersistedSessionState(slug: string): Promise<SessionManagerState> {
@@ -93,6 +101,27 @@ export async function appendCombatResolutionToSession(
     eventType: 'combat',
     payload: input.result
   });
+}
+
+export async function syncCharacterCombatState(
+  characterId: string,
+  input: SyncCharacterCombatStateInput
+): Promise<void> {
+  const baseUrl = getClientApiBaseUrl();
+  const response = await fetch(
+    `${baseUrl}/characters/${encodeURIComponent(characterId)}/combat-state`,
+    {
+      body: JSON.stringify(input),
+      headers: { 'content-type': 'application/json' },
+      method: 'PATCH'
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(
+      `Unable to sync character combat state for ${characterId}: HTTP ${response.status}`
+    );
+  }
 }
 
 export async function appendPersistedSessionEvent(

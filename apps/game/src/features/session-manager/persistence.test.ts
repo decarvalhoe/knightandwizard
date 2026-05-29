@@ -6,7 +6,8 @@ import {
   appendThreadPostToSession,
   queuePersistedGmDecision,
   requestPersistedRollback,
-  resolvePersistedGmDecision
+  resolvePersistedGmDecision,
+  syncCharacterCombatState
 } from './persistence.js';
 
 const originalPublicApiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -121,6 +122,31 @@ describe('session manager persistence', () => {
       headers: { 'content-type': 'application/json' },
       method: 'POST'
     });
+  });
+
+  it('syncs a combat participant back to the persisted character sheet', async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = 'http://browser-api.test';
+    const fetchMock = vi.fn().mockResolvedValue(okJson({ status: 'updated' }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    await syncCharacterCombatState('pc-aveline', {
+      sessionSlug: 'brumeval',
+      statuses: [{ id: 'bleeding' }],
+      vitality: { current: 9, max: 20 }
+    });
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      'http://browser-api.test/characters/pc-aveline/combat-state',
+      {
+        body: JSON.stringify({
+          sessionSlug: 'brumeval',
+          statuses: [{ id: 'bleeding' }],
+          vitality: { current: 9, max: 20 }
+        }),
+        headers: { 'content-type': 'application/json' },
+        method: 'PATCH'
+      }
+    );
   });
 
   it('persists GM decision queue, resolution and rollback requests through journal routes', async () => {

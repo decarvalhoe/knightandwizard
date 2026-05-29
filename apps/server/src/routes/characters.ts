@@ -3,11 +3,19 @@ import {
   CharacterDraftNotFoundError,
   CharacterNotFoundError,
   finalizeCharacterDraft,
-  getPersistedCharacter
+  getPersistedCharacter,
+  updatePersistedCharacterCombatState,
+  type CharacterCombatStateUpdate
 } from '../characters/finalize.js';
 
 interface FinalizeCharacterRequestBody {
   draftId?: unknown;
+}
+
+interface UpdateCharacterCombatStateRequestBody {
+  sessionSlug?: unknown;
+  statuses?: unknown;
+  vitality?: unknown;
 }
 
 interface CharacterParams {
@@ -16,6 +24,7 @@ interface CharacterParams {
 
 export async function registerCharacterRoutes(app: FastifyInstance): Promise<void> {
   app.options('/characters/finalize', async (_request, reply) => reply.code(204).send());
+  app.options('/characters/:id/combat-state', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id', async (_request, reply) => reply.code(204).send());
 
   app.post<{ Body: FinalizeCharacterRequestBody }>(
@@ -55,6 +64,34 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
       return sendCharacterRouteError(error, reply);
     }
   });
+
+  app.patch<{ Body: UpdateCharacterCombatStateRequestBody; Params: CharacterParams }>(
+    '/characters/:id/combat-state',
+    async (request, reply) => {
+      const validation = validateCombatStateUpdate(request.body ?? {});
+
+      if (!validation.valid) {
+        return reply.code(400).send({
+          errors: validation.errors,
+          status: 'invalid'
+        });
+      }
+
+      try {
+        const result = await updatePersistedCharacterCombatState(
+          request.params.id,
+          validation.input
+        );
+
+        return {
+          character: result.character,
+          status: 'updated'
+        };
+      } catch (error) {
+        return sendCharacterRouteError(error, reply);
+      }
+    }
+  );
 }
 
 function normalizeOptionalString(value: unknown): string | undefined {
@@ -73,4 +110,98 @@ function sendCharacterRouteError(error: unknown, reply: FastifyReply) {
   }
 
   throw error;
+}
+
+function validateCombatStateUpdate(
+  body: UpdateCharacterCombatStateRequestBody
+): { input: CharacterCombatStateUpdate; valid: true } | { errors: string[]; valid: false } {
+  const errors: string[] = [];
+  const input: CharacterCombatStateUpdate = {};
+
+  if (body.sessionSlug !== undefined) {
+    if (typeof body.sessionSlug !== 'string' || body.sessionSlug.trim().length === 0) {
+      errors.push('sessionSlug must be a non-empty string');
+    } else {
+      input.sessionSlug = body.sessionSlug.trim();
+    }
+  }
+
+  if (body.vitality !== undefined) {
+    if (!isRecord(body.vitality)) {
+      errors.push('vitality must be an object');
+    } else {
+      const current = readOptionalNonNegativeInteger(body.vitality.current, 'vitality.current');
+      const max = readOptionalPositiveInteger(body.vitality.max, 'vitality.max');
+
+      errors.push(...current.errors, ...max.errors);
+      input.vitality = {
+        ...(current.value !== undefined ? { current: current.value } : {}),
+        ...(max.value !== undefined ? { max: max.value } : {})
+      };
+    }
+  }
+
+  if (body.statuses !== undefined) {
+    if (!Array.isArray(body.statuses)) {
+      errors.push('statuses must be an array');
+    } else {
+      input.statuses = body.statuses.map((status, index) => {
+        if (!isRecord(status) || typeof status.id !== 'string' || status.id.trim().length === 0) {
+          errors.push(`statuses[${index}].id must be a non-empty string`);
+          return { id: 'invalid' };
+        }
+
+        const duration = readOptionalNonNegativeInteger(
+          status.durationDT,
+          `statuses[${index}].durationDT`
+        );
+        const appliedAt = readOptionalNonNegativeInteger(
+          status.appliedAtDT,
+          `statuses[${index}].appliedAtDT`
+        );
+
+        errors.push(...duration.errors, ...appliedAt.errors);
+
+        return {
+          ...(appliedAt.value !== undefined ? { appliedAtDT: appliedAt.value } : {}),
+          ...(duration.value !== undefined ? { durationDT: duration.value } : {}),
+          id: status.id.trim()
+        };
+      });
+    }
+  }
+
+  if (errors.length > 0) {
+    return { errors, valid: false };
+  }
+
+  return { input, valid: true };
+}
+
+function readOptionalNonNegativeInteger(value: unknown, label: string) {
+  if (value === undefined) {
+    return { errors: [] as string[], value: undefined };
+  }
+
+  if (typeof value !== 'number' || !Number.isInteger(value) || value < 0) {
+    return { errors: [`${label} must be a non-negative integer`], value: undefined };
+  }
+
+  return { errors: [] as string[], value: value as number };
+}
+
+function readOptionalPositiveInteger(value: unknown, label: string) {
+  if (value === undefined) {
+    return { errors: [] as string[], value: undefined };
+  }
+
+  if (typeof value !== 'number' || !Number.isInteger(value) || value <= 0) {
+    return { errors: [`${label} must be a positive integer`], value: undefined };
+  }
+
+  return { errors: [] as string[], value: value as number };
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
