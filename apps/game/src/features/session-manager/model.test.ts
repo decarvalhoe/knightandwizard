@@ -204,6 +204,76 @@ describe('session manager model', () => {
     ]);
   });
 
+  it('builds a playable table thread with explicit actors, posts, rolls and GM decisions', () => {
+    const state = createSessionManagerState({
+      events: [
+        {
+          actorId: 'aveline',
+          createdAt: '2026-04-30T10:00:00.000Z',
+          id: 'event-post',
+          payload: { kind: 'table_post', text: 'Je fouille la porte.' },
+          sequence: 1,
+          type: 'player_action'
+        },
+        {
+          actorId: 'aveline',
+          createdAt: '2026-04-30T10:01:00.000Z',
+          id: 'event-roll',
+          payload: {
+            difficulty: 7,
+            kind: 'table_roll',
+            postText: 'Je force la serrure.',
+            rolls: [9, 3],
+            successes: 1
+          },
+          sequence: 2,
+          type: 'dice_roll'
+        },
+        {
+          actorId: 'gm',
+          createdAt: '2026-04-30T10:02:00.000Z',
+          id: 'event-decision',
+          payload: {
+            decisionId: 'decision-1',
+            kind: 'table_decision',
+            title: 'Valider le bruit de la serrure'
+          },
+          sequence: 3,
+          type: 'gm_decision_requested'
+        }
+      ],
+      players: samplePlayers()
+    });
+    const view = buildSessionManagerView(state);
+
+    expect(view.threadRows).toEqual([
+      {
+        actorName: 'Aveline',
+        createdAt: '2026-04-30T10:00:00.000Z',
+        detail: 'Je fouille la porte.',
+        id: 'event-post',
+        kind: 'post',
+        sequence: 1
+      },
+      {
+        actorName: 'Aveline',
+        createdAt: '2026-04-30T10:01:00.000Z',
+        detail: 'Je force la serrure. · 1 succes',
+        id: 'event-roll',
+        kind: 'roll',
+        sequence: 2
+      },
+      {
+        actorName: 'MJ',
+        createdAt: '2026-04-30T10:02:00.000Z',
+        detail: 'Valider le bruit de la serrure',
+        id: 'event-decision',
+        kind: 'decision',
+        sequence: 3
+      }
+    ]);
+  });
+
   it('queues and resolves the next GM decision', () => {
     const state = createSessionManagerState();
     const queued = submitGmDecisionRequest(state, 'Valider le discours du PNJ', {

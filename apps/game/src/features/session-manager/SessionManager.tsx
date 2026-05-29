@@ -22,7 +22,7 @@ import { applyLiveSessionEvent, buildSessionManagerView, type SessionManagerStat
 import {
   advancePersistedNarrative,
   appendDiceRollToSession,
-  appendPersistedSessionEvent,
+  appendThreadPostToSession,
   dispelPersistedSpell,
   fetchPersistedSessionState,
   queuePersistedGmDecision,
@@ -55,6 +55,7 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
   const [state, setState] = useState(initialState);
   const [pendingAction, setPendingAction] = useState<string | null>(null);
   const [mutationError, setMutationError] = useState<string | null>(null);
+  const [postText, setPostText] = useState('');
   const view = useMemo(() => buildSessionManagerView(state), [state]);
   const [rollbackSequence, setRollbackSequence] = useState(
     view.rollbackTargets[0]?.sequence.toString() ?? ''
@@ -64,6 +65,8 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
     () => state.players.find((player) => player.id === currentPlayerId),
     [currentPlayerId, state.players]
   );
+  const currentActorId = currentPlayer?.id ?? 'aveline';
+  const currentActorName = currentPlayer?.name ?? 'Aveline';
 
   const stateRef = useRef(state);
   stateRef.current = state;
@@ -122,6 +125,58 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
   function skipNarrativeTime(by: { days?: number; hours?: number; minutes?: number }) {
     void runPersistedAction('narrative-advance', async (slug) => {
       await advancePersistedNarrative(slug, { actorId: 'gm', by });
+    });
+  }
+
+  function resolvePostText(fallback: string) {
+    const normalized = postText.trim();
+
+    return normalized.length > 0 ? normalized : fallback;
+  }
+
+  function publishThreadPost() {
+    const text = resolvePostText('Aveline precise son intention.');
+
+    void runPersistedAction('thread-post', async (slug) => {
+      await appendThreadPostToSession(slug, {
+        actorId: currentActorId,
+        text
+      });
+      setPostText('');
+    });
+  }
+
+  function publishThreadRoll() {
+    const text = postText.trim();
+
+    void runPersistedAction('dice-roll', async (slug) => {
+      const result = await trpc.dice.roll.mutate({
+        difficulty: 7,
+        pool: 2,
+        reason: 'session-manager'
+      });
+
+      await appendDiceRollToSession(slug, {
+        actorId: currentActorId,
+        postText: text,
+        result: { ...result }
+      });
+      setPostText('');
+    });
+  }
+
+  function requestThreadDecision() {
+    const title = resolvePostText('Valider la consequence narrative');
+
+    void runPersistedAction('gm-decision', async (slug) => {
+      await queuePersistedGmDecision(slug, {
+        assignedTo: 'human_gm',
+        payload: { source: 'session-thread', text: title },
+        priority: 'high',
+        requestedBy: currentActorId,
+        title
+      });
+      setPostText('');
     });
   }
 
@@ -212,57 +267,36 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
         <section className="mt-5 rounded-md border border-ink/10 bg-white/72 p-4">
           <div className="flex items-center gap-2">
             <MessageSquarePlus aria-hidden="true" className="size-5 text-forest" />
-            <h2 className="text-lg font-semibold text-ink">Actions rapides</h2>
+            <h2 className="text-lg font-semibold text-ink">Fil de table</h2>
           </div>
-          <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <label className="mt-4 block text-sm font-semibold text-ink/62" htmlFor="session-post">
+            Message de table
+          </label>
+          <textarea
+            className="mt-2 min-h-24 w-full resize-y rounded-md border border-ink/12 bg-paper px-3 py-2 text-sm font-medium text-ink outline-none transition focus:border-forest"
+            id="session-post"
+            onChange={(event) => setPostText(event.target.value)}
+            placeholder={`${currentActorName} agit...`}
+            value={postText}
+          />
+          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
             <ActionButton
               disabled={busy}
               icon={<ScrollText aria-hidden="true" className="size-4" />}
-              label="RP"
-              onClick={() => {
-                void runPersistedAction('player-action', async (slug) => {
-                  await appendPersistedSessionEvent(slug, {
-                    actorId: 'aveline',
-                    eventType: 'player_action',
-                    payload: { text: 'Aveline precise son intention.' }
-                  });
-                });
-              }}
+              label="Publier"
+              onClick={publishThreadPost}
             />
             <ActionButton
               disabled={busy}
               icon={<Dice5 aria-hidden="true" className="size-4" />}
-              label="D10"
-              onClick={() => {
-                void runPersistedAction('dice-roll', async (slug) => {
-                  const result = await trpc.dice.roll.mutate({
-                    difficulty: 7,
-                    pool: 2,
-                    reason: 'session-manager'
-                  });
-
-                  await appendDiceRollToSession(slug, {
-                    actorId: 'aveline',
-                    result: { ...result }
-                  });
-                });
-              }}
+              label="Jeter D10"
+              onClick={publishThreadRoll}
             />
             <ActionButton
               disabled={busy}
               icon={<ShieldAlert aria-hidden="true" className="size-4" />}
-              label="MJ"
-              onClick={() => {
-                void runPersistedAction('gm-decision', async (slug) => {
-                  await queuePersistedGmDecision(slug, {
-                    assignedTo: 'human_gm',
-                    payload: { source: 'session-manager' },
-                    priority: 'high',
-                    requestedBy: 'llm',
-                    title: 'Valider la consequence narrative'
-                  });
-                });
-              }}
+              label="Décision MJ"
+              onClick={requestThreadDecision}
             />
             <ActionButton
               disabled={busy || view.rollbackTargets.length === 0}
@@ -365,6 +399,35 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
       </section>
 
       <div className="grid gap-5">
+        <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
+          <div className="flex items-center gap-2">
+            <ScrollText aria-hidden="true" className="size-5 text-forest" />
+            <h2 className="text-xl font-semibold text-ink">Fil jouable</h2>
+          </div>
+          <ol className="mt-4 grid gap-3">
+            {view.threadRows.length === 0 ? (
+              <li className="rounded-md border border-ink/10 bg-paper p-4 text-sm font-semibold text-ink/58">
+                Fil vide
+              </li>
+            ) : (
+              view.threadRows.map((row) => (
+                <li
+                  className="grid gap-2 rounded-md border border-ink/10 bg-paper p-3"
+                  key={row.id}
+                >
+                  <span className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm font-semibold text-ink">{row.actorName}</span>
+                    <span className="rounded-sm bg-ink/6 px-2 py-1 text-xs font-semibold uppercase text-ink/52">
+                      {threadKindLabel(row.kind)}
+                    </span>
+                  </span>
+                  <span className="text-sm font-medium leading-6 text-ink/72">{row.detail}</span>
+                </li>
+              ))
+            )}
+          </ol>
+        </section>
+
         <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-2">
@@ -611,6 +674,22 @@ function statusLabel(status: string): string {
   }
 
   return 'Planifiee';
+}
+
+function threadKindLabel(kind: string): string {
+  if (kind === 'roll') {
+    return 'Jet';
+  }
+
+  if (kind === 'decision') {
+    return 'Decision';
+  }
+
+  if (kind === 'rollback') {
+    return 'Rollback';
+  }
+
+  return 'Post';
 }
 
 function roleLabel(role: string): string {

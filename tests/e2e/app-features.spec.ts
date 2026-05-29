@@ -294,15 +294,18 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByRole('heading', { name: /Session Flow/ })).toBeVisible();
     await expect(page.getByText('Decisions MJ')).toBeVisible();
 
-    await page.getByRole('button', { name: 'RP' }).click();
-    await expect(page.getByText('Aveline precise son intention.')).toBeVisible();
+    await page.getByLabel('Message de table').fill('Aveline precise son intention.');
+    await page.getByRole('button', { name: 'Publier' }).click();
+    await expect(page.getByText('Aveline precise son intention.').first()).toBeVisible();
 
-    await page.getByRole('button', { name: 'D10' }).click();
+    await page.getByLabel('Message de table').fill('Aveline tente un jet.');
+    await page.getByRole('button', { name: 'Jeter D10' }).click();
     // Le de est resolu cote serveur (rng reel) : on verifie qu'un jet est journalise,
     // pas un resultat aleatoire exact.
     await expect(page.getByText(/Jet de d/).first()).toBeVisible();
 
-    await page.getByRole('button', { name: 'MJ' }).click();
+    await page.getByLabel('Message de table').fill('Valider la consequence narrative');
+    await page.getByRole('button', { name: 'Décision MJ' }).click();
     await expect(page.getByText('Valider la consequence narrative').first()).toBeVisible();
 
     await page.getByLabel('Approuver').click();
