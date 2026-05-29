@@ -108,6 +108,7 @@ export function CharacterSheet({
   );
   const skills = skillTreeRows(character.skills, skillCatalog);
   const trainedSkillCount = skills.filter((skill) => !skill.isImplicitZero).length;
+  const combatStatuses = combatStatusesFromMetadata(character.metadata.combat);
 
   function roll(attribute: AttributeKey) {
     const result = rollAttributeCheck(
@@ -301,6 +302,11 @@ export function CharacterSheet({
                 : `Affaibli · −${view.vitalityState.physicalMalus} Force / Dextérité / Endurance`}
             </Badge>
           ) : null}
+          {combatStatuses.map((status) => (
+            <Badge key={status} tone="warn">
+              {status}
+            </Badge>
+          ))}
           <ProgressBar
             label="Énergie"
             max={character.energy.max}
@@ -635,6 +641,20 @@ function rollTone(result: AttributeRollResult): ToastTone {
   }
 
   return result.isCriticalSuccess ? 'success' : 'info';
+}
+
+function combatStatusesFromMetadata(value: unknown): string[] {
+  if (!isRecord(value) || !Array.isArray(value.statuses)) {
+    return [];
+  }
+
+  return value.statuses
+    .map((status) => (isRecord(status) && typeof status.id === 'string' ? status.id : undefined))
+    .filter((status): status is string => Boolean(status));
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
 function dieKindForRoll(value: number, difficulty: number) {

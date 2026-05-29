@@ -18,6 +18,7 @@ import {
   type CharacterOrientationProfile,
   type CharacterSkill,
   type CharacterSpell,
+  type CombatStatus,
   type RaceProfile
 } from '@knightandwizard/rules-core';
 import { eq, sql as drizzleSql } from 'drizzle-orm';
@@ -41,6 +42,15 @@ export class CharacterNotFoundError extends Error {
 
 export interface CharacterPersistenceResult {
   character: Character;
+}
+
+export interface CharacterCombatStateUpdate {
+  sessionSlug?: string;
+  statuses?: CombatStatus[];
+  vitality?: {
+    current?: number;
+    max?: number;
+  };
 }
 
 interface CharacterCreationCatalog {
@@ -218,6 +228,65 @@ export async function getPersistedCharacter(id: string): Promise<CharacterPersis
   }
 }
 
+export async function updatePersistedCharacterCombatState(
+  id: string,
+  input: CharacterCombatStateUpdate
+): Promise<CharacterPersistenceResult> {
+  const sql = createSqlClient();
+  const db = createDbClient(sql);
+
+  try {
+    const rows = await db
+      .select({ character: characters.payload })
+      .from(characters)
+      .where(eq(characters.id, id))
+      .limit(1);
+    const row = rows[0];
+
+    if (row === undefined) {
+      throw new CharacterNotFoundError(id);
+    }
+
+    const now = new Date().toISOString();
+    const vitality = input.vitality
+      ? {
+          current: clampResource(
+            input.vitality.current ?? row.character.vitality.current,
+            input.vitality.max ?? row.character.vitality.max
+          ),
+          max: Math.max(1, input.vitality.max ?? row.character.vitality.max)
+        }
+      : row.character.vitality;
+    const character: Character = {
+      ...row.character,
+      metadata: {
+        ...row.character.metadata,
+        combat: {
+          ...(isRecord(row.character.metadata.combat) ? row.character.metadata.combat : {}),
+          ...(input.sessionSlug ? { sessionSlug: input.sessionSlug } : {}),
+          ...(input.statuses ? { statuses: input.statuses.map((status) => ({ ...status })) } : {}),
+          updatedAt: now
+        }
+      },
+      vitality
+    };
+    const updatedRows = await db
+      .update(characters)
+      .set({
+        payload: character,
+        updatedAt: drizzleSql`now()`
+      })
+      .where(eq(characters.id, id))
+      .returning({ character: characters.payload });
+
+    return {
+      character: updatedRows[0]!.character
+    };
+  } finally {
+    await sql.end({ timeout: 5 });
+  }
+}
+
 async function loadCharacterCreationCatalog(): Promise<CharacterCreationCatalog> {
   const [races, orientations, classes, weapons, protections, potions] = await Promise.all([
     loadValidatedCatalog('races.yaml'),
@@ -234,6 +303,14 @@ async function loadCharacterCreationCatalog(): Promise<CharacterCreationCatalog>
     orientations: toOrientationProfiles(orientations),
     races: toRaceProfiles(races)
   };
+}
+
+function clampResource(current: number, max: number): number {
+  return Math.min(Math.max(0, current), Math.max(1, max));
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
 function buildCharacterFromDraft(

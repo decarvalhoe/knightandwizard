@@ -15,7 +15,19 @@ import {
 export type VitalityState = 'critical' | 'dead' | 'healthy' | 'wounded';
 export type CombatLogTone = 'danger' | 'neutral' | 'success' | 'warning';
 
-export interface CombatantTemplate extends Omit<Combatant, 'baseAttributes'> {
+export interface CombatantRuntimeMetadata {
+  attackDifficulty?: number;
+  attackSkillId?: string;
+  characterId?: string;
+  damageOnHit?: number;
+  loadoutLabels?: string[];
+  sourceLabel?: string;
+}
+
+export type TrackedCombatant = Combatant & CombatantRuntimeMetadata;
+
+export interface CombatantTemplate
+  extends Omit<Combatant, 'baseAttributes'>, CombatantRuntimeMetadata {
   baseAttributes?: Combatant['baseAttributes'];
 }
 
@@ -40,7 +52,10 @@ export interface CombatTimelineRow {
 }
 
 export interface CombatRosterRow extends CombatTimelineRow {
+  characterId?: string;
+  loadoutLabels: string[];
   reflexes: number;
+  sourceLabel?: string;
   speedFactor: number;
   vitality: {
     current: number;
@@ -91,7 +106,7 @@ export function createCombatTrackerState(input: CombatTrackerStateInput = {}): C
   );
 }
 
-export function createTrackerCombatant(template: CombatantTemplate): Combatant {
+export function createTrackerCombatant(template: CombatantTemplate): TrackedCombatant {
   const baseAttributes = template.baseAttributes ?? template.attributes;
 
   return {
@@ -168,7 +183,10 @@ export function buildCombatTrackerView(state: CombatState): CombatTrackerView {
     nextActor: timeline[0],
     roster: sortRoster(state.timeline).map((combatant) => ({
       ...toTimelineRow(combatant, state, timeline[0]?.id === combatant.id),
+      characterId: combatantMetadata(combatant).characterId,
+      loadoutLabels: combatantMetadata(combatant).loadoutLabels ?? [],
       reflexes: combatant.reflexes,
+      sourceLabel: combatantMetadata(combatant).sourceLabel,
       speedFactor: combatant.speedFactor,
       vitality: { ...combatant.vitality }
     })),
@@ -258,6 +276,10 @@ function toTimelineRow(
     vitalityPercent: vitalityPercent(combatant),
     vitalityState: vitalityState(combatant)
   };
+}
+
+export function combatantMetadata(combatant: Combatant): CombatantRuntimeMetadata {
+  return combatant as TrackedCombatant;
 }
 
 function actionIntent(action: CombatAction | undefined): string {

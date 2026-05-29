@@ -47,6 +47,58 @@ describe('character routes', () => {
       status: 'found'
     });
   });
+
+  it('updates persisted combat vitality and statuses for the character sheet', async () => {
+    const draftId = `route-combat-character-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleDraft('Aveline Combattante'),
+      url: `/character-drafts/${draftId}`
+    });
+    const finalizeResponse = await app.inject({
+      method: 'POST',
+      payload: { draftId },
+      url: '/characters/finalize'
+    });
+    const finalizedCharacter = finalizeResponse.json().character;
+    const nextVitality = finalizedCharacter.vitality.max - 5;
+    const updateResponse = await app.inject({
+      method: 'PATCH',
+      payload: {
+        sessionSlug: 'mvp-combat',
+        statuses: [{ durationDT: 8, id: 'bleeding' }],
+        vitality: { current: nextVitality }
+      },
+      url: `/characters/${draftId}/combat-state`
+    });
+    const readResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${draftId}`
+    });
+
+    expect(updateResponse.statusCode).toBe(200);
+    expect(updateResponse.json()).toMatchObject({
+      character: {
+        id: draftId,
+        metadata: {
+          combat: {
+            sessionSlug: 'mvp-combat',
+            statuses: [{ durationDT: 8, id: 'bleeding' }]
+          }
+        },
+        vitality: {
+          current: nextVitality,
+          max: finalizedCharacter.vitality.max
+        }
+      },
+      status: 'updated'
+    });
+    expect(readResponse.json().character.vitality.current).toBe(nextVitality);
+    expect(readResponse.json().character.metadata.combat.statuses).toEqual([
+      { durationDT: 8, id: 'bleeding' }
+    ]);
+  });
 });
 
 function sampleDraft(name: string) {
