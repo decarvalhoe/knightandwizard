@@ -141,13 +141,13 @@ export interface CharacterCreationView {
 }
 
 export const CREATION_STEPS: CharacterCreationStep[] = [
-  { id: 'identity', label: 'Identite' },
+  { id: 'identity', label: 'Identité' },
   { id: 'attributes', label: 'Aptitudes' },
   { id: 'path', label: 'Voie' },
   { id: 'spells', label: 'Sorts' },
-  { id: 'skills', label: 'Competences' },
+  { id: 'skills', label: 'Compétences' },
   { id: 'assets', label: 'Atouts' },
-  { id: 'equipment', label: 'Equipement' },
+  { id: 'equipment', label: 'Équipement' },
   { id: 'story', label: 'Historique' },
   { id: 'review', label: 'Validation' }
 ];

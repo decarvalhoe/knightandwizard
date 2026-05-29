@@ -71,7 +71,7 @@ describe('session manager model', () => {
     });
     expect(view.recentEvents.map((event) => event.label)).toEqual([
       'Aveline · Action joueur',
-      'MJ · Scene ouverte'
+      'MJ · Scène ouverte'
     ]);
   });
 
@@ -195,12 +195,12 @@ describe('session manager model', () => {
     const view = buildSessionManagerView(state);
 
     expect(view.recentEvents.map((event) => event.label)).toEqual([
-      'Aveline · Jet de des',
-      'Aveline · Jet de des'
+      'Aveline · Jet de dés',
+      'Aveline · Jet de dés'
     ]);
     expect(view.recentEvents.map((event) => event.detail)).toEqual([
-      '4 succes · reussite critique',
-      '0 succes · echec critique D100 73'
+      '4 succès · réussite critique',
+      '0 succès · échec critique D100 73'
     ]);
   });
 
@@ -258,7 +258,7 @@ describe('session manager model', () => {
       {
         actorName: 'Aveline',
         createdAt: '2026-04-30T10:01:00.000Z',
-        detail: 'Je force la serrure. · 1 succes',
+        detail: 'Je force la serrure. · 1 succès',
         id: 'event-roll',
         kind: 'roll',
         sequence: 2

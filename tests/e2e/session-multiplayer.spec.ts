@@ -49,7 +49,7 @@ test('two networked players see each other journal actions live', async ({ brows
     // A player dice roll stays attached to the post and also propagates live.
     await guest.getByLabel('Message de table').fill('Je force la serrure.');
     await guest.getByRole('button', { name: 'Jeter D10' }).click();
-    await expect(host.getByText(/Je force la serrure\..*succes/).first()).toBeVisible();
+    await expect(host.getByText(/Je force la serrure\..*succès/).first()).toBeVisible();
 
     // A GM decision created from the thread is visible to the other client and survives reload.
     await host.getByLabel('Message de table').fill('Valider le bruit de la serrure');

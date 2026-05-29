@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: 'Compagnon de table digital pour les joueurs et le MJ Knight & Wizard.'
 };
 
-// Polices des skins du design system (pack Terres Oubliees + pack moderne).
+// Polices des skins du design system (pack Terres Oubliées + pack moderne).
 const FONTS_HREF =
   'https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=Bitter:ital,wght@0,400;0,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cormorant+SC:wght@400;600&family=Courier+Prime&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono&family=Inter:wght@400;500;600;700&family=Libre+Caslon+Display&family=Playfair+Display:wght@400;700;900&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@400;600&family=Special+Elite&display=swap';
 

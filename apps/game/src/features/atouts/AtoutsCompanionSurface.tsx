@@ -26,7 +26,7 @@ export function AtoutsCompanionSurface({ view }: Readonly<{ view: AtoutsCompanio
   const catalogStats = [
     { label: 'Atouts', value: formatNumber(view.stats.atoutTotal) },
     { label: 'Actifs', value: formatNumber(view.stats.activeAtouts) },
-    { label: 'Competences', value: formatNumber(view.stats.skillTotal) },
+    { label: 'Compétences', value: formatNumber(view.stats.skillTotal) },
     { label: 'Familles', value: formatNumber(view.stats.families) }
   ];
 
@@ -42,7 +42,7 @@ export function AtoutsCompanionSurface({ view }: Readonly<{ view: AtoutsCompanio
           onClick={() => setNight((current) => !current)}
           variant="secondary"
         >
-          Mode : {night ? 'Veillee' : 'Jour'}
+          Mode : {night ? 'Veillée' : 'Jour'}
         </Button>
       </Card>
 
@@ -79,7 +79,7 @@ export function AtoutsCompanionSurface({ view }: Readonly<{ view: AtoutsCompanio
               <div className="kw-atouts-section-head">
                 <div>
                   <Label>Atouts en vue</Label>
-                  <h2>Privileges, handicaps et dons</h2>
+                  <h2>Privilèges, handicaps et dons</h2>
                 </div>
                 <Badge tone="success">{formatNumber(view.stats.permanentAtouts)} permanents</Badge>
               </div>
@@ -93,10 +93,10 @@ export function AtoutsCompanionSurface({ view }: Readonly<{ view: AtoutsCompanio
             <Card>
               <div className="kw-atouts-section-head">
                 <div>
-                  <Label>Competences pivots</Label>
-                  <h2>Reperes de feuille</h2>
+                  <Label>Compétences pivots</Label>
+                  <h2>Repères de feuille</h2>
                 </div>
-                <Badge tone="info">{formatNumber(view.stats.skillTotal)} entrees</Badge>
+                <Badge tone="info">{formatNumber(view.stats.skillTotal)} entrées</Badge>
               </div>
               <div className="kw-atouts-skill-grid">
                 {view.focusSkills.map((skill) => (

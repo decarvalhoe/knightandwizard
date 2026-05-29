@@ -91,14 +91,14 @@ export function AppShell({
           </Link>
 
           <button
-            aria-label={nextTheme === 'night' ? 'Passer en mode Veillee' : 'Passer en mode Jour'}
+            aria-label={nextTheme === 'night' ? 'Passer en mode Veillée' : 'Passer en mode Jour'}
             className="app-shell__theme-button"
             onClick={() => setTheme(nextTheme)}
-            title={nextTheme === 'night' ? 'Passer en mode Veillee' : 'Passer en mode Jour'}
+            title={nextTheme === 'night' ? 'Passer en mode Veillée' : 'Passer en mode Jour'}
             type="button"
           >
             <ThemeIcon aria-hidden="true" className="app-shell__theme-icon" />
-            <span>{theme === 'night' ? 'Veillee' : 'Jour'}</span>
+            <span>{theme === 'night' ? 'Veillée' : 'Jour'}</span>
           </button>
         </div>
 

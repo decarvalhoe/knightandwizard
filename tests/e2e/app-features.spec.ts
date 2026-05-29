@@ -22,7 +22,7 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByRole('link', { name: /Session/ })).toBeVisible();
   });
 
-  test('application shell applies surface skins and persists Veillee', async ({
+  test('application shell applies surface skins and persists Veillée', async ({
     page
   }, testInfo) => {
     annotateCanonical(testInfo, 'dashboard');
@@ -42,6 +42,7 @@ test.describe('K&W player and GM application flows', () => {
       ['/grimoire', 'grimoire'],
       ['/dice', 'tripot'],
       ['/rules', 'archives'],
+      ['/greffe', 'archives'],
       ['/bibliotheque', 'bibliotheque'],
       ['/design-proto', 'moderne']
     ] as const;
@@ -52,7 +53,7 @@ test.describe('K&W player and GM application flows', () => {
     }
 
     await page.goto('/');
-    await page.getByRole('button', { name: 'Passer en mode Veillee' }).click();
+    await page.getByRole('button', { name: 'Passer en mode Veillée' }).click();
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'night');
     await page.reload();
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'night');
@@ -60,6 +61,28 @@ test.describe('K&W player and GM application flows', () => {
     await page.getByRole('link', { name: /^Combat/ }).click();
     await expect(page.locator('html')).toHaveAttribute('data-skin', 'registre');
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'night');
+  });
+
+  test('mobile shell keeps core surfaces inside the viewport', async ({ page }, testInfo) => {
+    annotateCanonical(testInfo, 'dashboard');
+
+    await page.setViewportSize({ width: 390, height: 844 });
+
+    for (const route of [
+      '/character',
+      '/character/create',
+      '/atouts',
+      '/bestiaire',
+      '/cartulaire',
+      '/greffe'
+    ]) {
+      await page.goto(route);
+      const overflowX = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+      );
+
+      expect(overflowX, route + ' should not create horizontal scroll').toBeLessThanOrEqual(1);
+    }
   });
 
   test('character sheet exposes canonical attributes, nested skills and level budget', async ({
@@ -281,7 +304,7 @@ test.describe('K&W player and GM application flows', () => {
 
     await expect(page.locator('html')).toHaveAttribute('data-skin', 'gazette');
     await expect(page.getByRole('heading', { name: 'Table Cockpit' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Scene active' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Scène active' })).toBeVisible();
     await expect(page.getByText('Porte nord', { exact: true })).toBeVisible();
     await expect(page.getByText('Brumeval', { exact: true })).toBeVisible();
     await expect(page.getByText('Aveline Cockpit', { exact: true }).first()).toBeVisible();
@@ -326,7 +349,7 @@ test.describe('K&W player and GM application flows', () => {
     await increaseStepper(page, 'Perception', 4);
     await expect(page.getByText('20/20').first()).toBeVisible();
 
-    await openCreationStep(page, 'Competences');
+    await openCreationStep(page, 'Compétences');
     await increaseStepper(page, 'Arcanologie', 4);
     await increaseStepper(page, 'Epée bâtarde', 4);
     await increaseStepper(page, 'Chasse', 4);
@@ -350,7 +373,7 @@ test.describe('K&W player and GM application flows', () => {
     await increaseStepper(page, 'Bouclier', 2);
     await expect(page.getByText('4/4').first()).toBeVisible();
 
-    await openCreationStep(page, 'Competences');
+    await openCreationStep(page, 'Compétences');
     await expect(page.getByText('0/0').first()).toBeVisible();
     await expect(page.getByText('Convertis')).toBeVisible();
   });
@@ -446,7 +469,7 @@ test.describe('K&W player and GM application flows', () => {
     await page.goto(`/session?slug=${slug}`);
 
     await expect(page.getByRole('heading', { name: /Session Flow/ })).toBeVisible();
-    await expect(page.getByText('Decisions MJ')).toBeVisible();
+    await expect(page.getByText('Décisions MJ')).toBeVisible();
 
     await page.getByLabel('Message de table').fill('Aveline precise son intention.');
     await page.getByRole('button', { name: 'Publier' }).click();
@@ -463,10 +486,10 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('Valider la consequence narrative').first()).toBeVisible();
 
     await page.getByLabel('Approuver').click();
-    await expect(page.getByText(/Decision MJ resolue/).first()).toBeVisible();
+    await expect(page.getByText(/Décision MJ résolue/).first()).toBeVisible();
 
-    await page.getByRole('button', { name: 'Rollback' }).click();
-    await expect(page.getByText(/Rollback demande/).first()).toBeVisible();
+    await page.getByRole('button', { name: 'Renvoi' }).click();
+    await expect(page.getByText(/Renvoi demandé/).first()).toBeVisible();
   });
 });
 

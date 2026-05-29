@@ -16,7 +16,7 @@ export default function DicePage() {
       </Card>
 
       <Card>
-        <div className="flex flex-wrap gap-2" aria-label="Des de reference">
+        <div className="flex flex-wrap gap-2" aria-label="Dés de référence">
           {dice.map((die) => (
             <Die key={die.value} kind={die.kind} value={die.value} />
           ))}

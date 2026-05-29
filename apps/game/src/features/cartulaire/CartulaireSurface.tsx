@@ -54,7 +54,7 @@ export function CartulaireSurface({ readModel }: Readonly<{ readModel: Cartulair
           ) : (
             <Sun aria-hidden="true" className="kw-cartulaire__button-icon" />
           )}
-          <span>{night ? 'Veillee' : 'Jour'}</span>
+          <span>{night ? 'Veillée' : 'Jour'}</span>
         </Button>
       </div>
 
@@ -62,7 +62,7 @@ export function CartulaireSurface({ readModel }: Readonly<{ readModel: Cartulair
         <Card className="kw-cartulaire__hero">
           <div className="kw-cartulaire__hero-copy">
             <Label>Cartulaire royal · emaux et marches</Label>
-            <h1>Terres Oubliees</h1>
+            <h1>Terres Oubliées</h1>
             <div className="kw-cartulaire__badge-row">
               <Badge tone="info">Skin armorial</Badge>
               <Badge tone="neutral">Source nations.yaml</Badge>
@@ -77,7 +77,7 @@ export function CartulaireSurface({ readModel }: Readonly<{ readModel: Cartulair
             <div className="kw-cartulaire__panel-head">
               <div>
                 <Label>Carte vectorisee</Label>
-                <h2>Frontieres canoniques</h2>
+                <h2>Frontières canoniques</h2>
               </div>
               <Badge tone="neutral">{selectedRegion?.category ?? 'region'}</Badge>
             </div>

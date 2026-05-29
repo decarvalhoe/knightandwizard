@@ -63,12 +63,12 @@ describe('surface theme contract', () => {
     expect(surfaceNavItems).toContainEqual({
       href: '/bestiaire',
       label: 'Bestiaire',
-      shortLabel: 'Betes',
+      shortLabel: 'Bêtes',
       skin: 'armorial'
     });
   });
 
-  it('normalizes the persisted Jour/Veillee preference', () => {
+  it('normalizes the persisted Jour/Veillée preference', () => {
     expect(resolveThemePreference('night')).toBe('night');
     expect(resolveThemePreference('day')).toBe('day');
     expect(resolveThemePreference(undefined)).toBe('day');

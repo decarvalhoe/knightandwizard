@@ -6,7 +6,7 @@ export default function BibliothequePage() {
   return (
     <div className="kw-surface-page">
       <Card>
-        <Label>Bibliotheque</Label>
+        <Label>Bibliothèque</Label>
         <h1>La chancellerie classe avant de contredire.</h1>
         <Badge tone="neutral">Skin bibliotheque</Badge>
       </Card>

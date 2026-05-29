@@ -253,7 +253,7 @@ export function CombatTracker({
           <Seal>DT {view.current.cyclicDT}</Seal>
         </div>
 
-        <div className="kw-combat__metrics" aria-label="Etat du combat">
+        <div className="kw-combat__metrics" aria-label="État du combat">
           <Metric label="DT" value={view.current.cyclicDT} />
           <Metric label="Absolu" value={view.current.absoluteDT} />
           <Metric label="Acteurs" value={view.roster.length} />

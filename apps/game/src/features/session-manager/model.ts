@@ -109,17 +109,17 @@ export interface SessionManagerView {
 const eventLabels: Record<SessionEventType, string> = {
   combat: 'Combat',
   combat_ended: 'Fin de combat',
-  dice_roll: 'Jet de des',
-  gm_decision_requested: 'Decision MJ demandee',
-  gm_decision_resolved: 'Decision MJ resolue',
+  dice_roll: 'Jet de dés',
+  gm_decision_requested: 'Décision MJ demandée',
+  gm_decision_resolved: 'Décision MJ résolue',
   gm_ruling: 'Arbitrage MJ',
   narration: 'Narration',
-  narrative_time_advanced: 'Temps narratif avance',
+  narrative_time_advanced: 'Temps narratif avancé',
   player_action: 'Action joueur',
-  rollback_requested: 'Rollback demande',
-  scene_opened: 'Scene ouverte',
-  spell_cast: 'Sort lance',
-  spell_dispelled: 'Sort dissipe'
+  rollback_requested: 'Renvoi demandé',
+  scene_opened: 'Scène ouverte',
+  spell_cast: 'Sort lancé',
+  spell_dispelled: 'Sort dissipé'
 };
 
 export function createSessionManagerState(
@@ -166,7 +166,7 @@ export function buildSessionManagerView(state: SessionManagerState): SessionMana
     narrativeClock: buildNarrativeClockView(state),
     playerRows: state.players.map((player) => ({
       ...player,
-      statusLabel: player.connected === false ? 'Hors ligne' : 'Connecte'
+      statusLabel: player.connected === false ? 'Hors ligne' : 'Connecté'
     })),
     recentEvents: [...state.events]
       .sort((left, right) => right.sequence - left.sequence)
@@ -181,9 +181,9 @@ export function buildSessionManagerView(state: SessionManagerState): SessionMana
       })),
     summaryMetrics: [
       { label: 'Joueurs actifs', value: metrics.activePlayers },
-      { label: 'Scenes', value: metrics.scenes },
-      { label: 'Evenements', value: metrics.events },
-      { label: 'Decisions MJ', value: metrics.pendingDecisions }
+      { label: 'Scènes', value: metrics.scenes },
+      { label: 'Événements', value: metrics.events },
+      { label: 'Décisions MJ', value: metrics.pendingDecisions }
     ],
     threadRows: buildSessionThreadRows(state)
   };
@@ -475,18 +475,18 @@ function eventDetail(event: SessionEvent): string {
 
 function diceEventDetail(event: SessionEvent): string {
   if (typeof event.payload.successes !== 'number') {
-    return 'Jet de des';
+    return 'Jet de dés';
   }
 
-  const parts = [`${event.payload.successes} succes`];
+  const parts = [`${event.payload.successes} succès`];
 
   if (event.payload.isCriticalSuccess === true) {
-    parts.push('reussite critique');
+    parts.push('réussite critique');
   }
 
   if (event.payload.isCriticalFailure === true) {
     const severity = event.payload.criticalFailureSeverity;
-    parts.push(typeof severity === 'number' ? `echec critique D100 ${severity}` : 'echec critique');
+    parts.push(typeof severity === 'number' ? `échec critique D100 ${severity}` : 'échec critique');
   }
 
   return parts.join(' · ');
@@ -494,7 +494,7 @@ function diceEventDetail(event: SessionEvent): string {
 
 function actorName(state: SessionManagerState, actorId: string | undefined): string {
   if (!actorId) {
-    return 'Systeme';
+    return 'Système';
   }
 
   return state.players.find((player) => player.id === actorId)?.name ?? actorId;

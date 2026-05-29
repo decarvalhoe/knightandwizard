@@ -207,17 +207,17 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
           <section className="rounded-md border border-ink/10 bg-vellum/60 p-4">
             <div className="flex items-center gap-2">
               <MapPin aria-hidden="true" className="size-5 text-forest" />
-              <h2 className="text-lg font-semibold text-ink">Scene active</h2>
+              <h2 className="text-lg font-semibold text-ink">Scène active</h2>
             </div>
             <div className="mt-4">
               <p className="text-xl font-semibold text-ink">
-                {view.activeScene?.title ?? 'Aucune scene'}
+                {view.activeScene?.title ?? 'Aucune scène'}
               </p>
               <p className="mt-1 text-sm font-semibold text-forest">
-                {view.activeScene?.location ?? 'Hors scene'}
+                {view.activeScene?.location ?? 'Hors scène'}
               </p>
               <p className="mt-3 text-sm leading-6 text-ink/70">
-                {view.activeScene?.description ?? 'Scene non initialisee.'}
+                {view.activeScene?.description ?? 'Scène non initialisée.'}
               </p>
             </div>
           </section>
@@ -311,12 +311,12 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
             <ActionButton
               disabled={busy || view.rollbackTargets.length === 0}
               icon={<RotateCcw aria-hidden="true" className="size-4" />}
-              label="Rollback"
+              label="Renvoi"
               onClick={() => {
                 void runPersistedAction('rollback', async (slug) => {
                   await requestPersistedRollback(slug, {
                     actorId: 'gm',
-                    reason: 'Correction demandee par le MJ',
+                    reason: 'Correction demandée par le MJ',
                     targetSequence: effectiveRollbackSequence
                   });
                   // On re-lit le snapshot complet : le journal doit afficher le
@@ -692,11 +692,11 @@ function threadKindLabel(kind: string): string {
   }
 
   if (kind === 'decision') {
-    return 'Decision';
+    return 'Décision';
   }
 
   if (kind === 'rollback') {
-    return 'Rollback';
+    return 'Renvoi';
   }
 
   return 'Post';
