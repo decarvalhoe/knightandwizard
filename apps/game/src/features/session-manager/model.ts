@@ -51,6 +51,15 @@ export interface SessionEventRow {
   tone: 'audit' | 'decision' | 'neutral' | 'rules';
 }
 
+export interface SessionThreadRow {
+  actorName: string;
+  createdAt: string;
+  detail: string;
+  id: string;
+  kind: 'decision' | 'post' | 'roll' | 'rollback';
+  sequence: number;
+}
+
 export interface SessionDecisionRow {
   assignedTo: string;
   createdAt: string;
@@ -94,6 +103,7 @@ export interface SessionManagerView {
   recentEvents: SessionEventRow[];
   rollbackTargets: RollbackTargetRow[];
   summaryMetrics: SessionManagerMetric[];
+  threadRows: SessionThreadRow[];
 }
 
 const eventLabels: Record<SessionEventType, string> = {
@@ -174,7 +184,8 @@ export function buildSessionManagerView(state: SessionManagerState): SessionMana
       { label: 'Scenes', value: metrics.scenes },
       { label: 'Evenements', value: metrics.events },
       { label: 'Decisions MJ', value: metrics.pendingDecisions }
-    ]
+    ],
+    threadRows: buildSessionThreadRows(state)
   };
 }
 
@@ -361,6 +372,67 @@ function toEventRow(state: SessionManagerState, event: SessionEvent): SessionEve
   };
 }
 
+function buildSessionThreadRows(state: SessionManagerState): SessionThreadRow[] {
+  return [...state.events]
+    .sort((left, right) => left.sequence - right.sequence)
+    .map((event) => toThreadRow(state, event))
+    .filter((row): row is SessionThreadRow => row !== undefined);
+}
+
+function toThreadRow(
+  state: SessionManagerState,
+  event: SessionEvent
+): SessionThreadRow | undefined {
+  const kind = threadKind(event.type);
+
+  if (!kind) {
+    return undefined;
+  }
+
+  return {
+    actorName: actorName(state, event.actorId),
+    createdAt: event.createdAt,
+    detail: threadDetail(event),
+    id: event.id,
+    kind,
+    sequence: event.sequence
+  };
+}
+
+function threadKind(type: SessionEventType): SessionThreadRow['kind'] | undefined {
+  if (type === 'player_action' || type === 'narration') {
+    return 'post';
+  }
+
+  if (type === 'dice_roll') {
+    return 'roll';
+  }
+
+  if (type === 'gm_decision_requested' || type === 'gm_decision_resolved') {
+    return 'decision';
+  }
+
+  if (type === 'rollback_requested') {
+    return 'rollback';
+  }
+
+  return undefined;
+}
+
+function threadDetail(event: SessionEvent): string {
+  if (event.type === 'dice_roll') {
+    const rollDetail = diceEventDetail(event);
+    const postText =
+      typeof event.payload.postText === 'string' && event.payload.postText.trim().length > 0
+        ? event.payload.postText.trim()
+        : undefined;
+
+    return postText ? `${postText} · ${rollDetail}` : rollDetail;
+  }
+
+  return eventDetail(event);
+}
+
 function eventTone(type: SessionEventType): SessionEventRow['tone'] {
   if (type === 'dice_roll' || type === 'combat' || type === 'gm_ruling') {
     return 'rules';
@@ -395,23 +467,29 @@ function eventDetail(event: SessionEvent): string {
   }
 
   if (typeof event.payload.successes === 'number') {
-    const parts = [`${event.payload.successes} succes`];
-
-    if (event.payload.isCriticalSuccess === true) {
-      parts.push('reussite critique');
-    }
-
-    if (event.payload.isCriticalFailure === true) {
-      const severity = event.payload.criticalFailureSeverity;
-      parts.push(
-        typeof severity === 'number' ? `echec critique D100 ${severity}` : 'echec critique'
-      );
-    }
-
-    return parts.join(' · ');
+    return diceEventDetail(event);
   }
 
   return 'Entree canonique';
+}
+
+function diceEventDetail(event: SessionEvent): string {
+  if (typeof event.payload.successes !== 'number') {
+    return 'Jet de des';
+  }
+
+  const parts = [`${event.payload.successes} succes`];
+
+  if (event.payload.isCriticalSuccess === true) {
+    parts.push('reussite critique');
+  }
+
+  if (event.payload.isCriticalFailure === true) {
+    const severity = event.payload.criticalFailureSeverity;
+    parts.push(typeof severity === 'number' ? `echec critique D100 ${severity}` : 'echec critique');
+  }
+
+  return parts.join(' · ');
 }
 
 function actorName(state: SessionManagerState, actorId: string | undefined): string {

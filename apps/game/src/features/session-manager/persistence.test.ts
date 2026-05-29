@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
   appendCombatResolutionToSession,
   appendDiceRollToSession,
+  appendThreadPostToSession,
   queuePersistedGmDecision,
   requestPersistedRollback,
   resolvePersistedGmDecision
@@ -16,6 +17,30 @@ afterEach(() => {
 });
 
 describe('session manager persistence', () => {
+  it('appends a table post with an explicit actor', async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = 'http://browser-api.test';
+    const fetchMock = vi.fn().mockResolvedValue(okJson({ status: 'created' }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    await appendThreadPostToSession('brumeval', {
+      actorId: 'player-aveline',
+      text: 'Je fouille la porte.'
+    });
+
+    expect(fetchMock).toHaveBeenCalledWith('http://browser-api.test/sessions/brumeval/events', {
+      body: JSON.stringify({
+        actorId: 'player-aveline',
+        eventType: 'player_action',
+        payload: {
+          kind: 'table_post',
+          text: 'Je fouille la porte.'
+        }
+      }),
+      headers: { 'content-type': 'application/json' },
+      method: 'POST'
+    });
+  });
+
   it('appends a resolved dice roll as a typed persisted session event', async () => {
     process.env.NEXT_PUBLIC_API_BASE_URL = 'http://browser-api.test';
     const fetchMock = vi.fn().mockResolvedValue(okJson({ status: 'created' }));
@@ -23,6 +48,7 @@ describe('session manager persistence', () => {
 
     await appendDiceRollToSession('brumeval', {
       actorId: 'aveline',
+      postText: 'Je force la serrure.',
       result: {
         difficulty: 7,
         isCriticalFailure: false,
@@ -35,21 +61,26 @@ describe('session manager persistence', () => {
       }
     });
 
-    expect(fetchMock).toHaveBeenCalledWith('http://browser-api.test/sessions/brumeval/events', {
-      body: JSON.stringify({
-        actorId: 'aveline',
-        eventType: 'dice_roll',
-        payload: {
-          difficulty: 7,
-          isCriticalFailure: false,
-          isCriticalSuccess: false,
-          pool: 2,
-          reason: 'session-manager',
-          rolls: [9, 3],
-          status: 'ok',
-          successes: 1
-        }
-      }),
+    const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+
+    expect(url).toBe('http://browser-api.test/sessions/brumeval/events');
+    expect(JSON.parse(init.body as string)).toEqual({
+      actorId: 'aveline',
+      eventType: 'dice_roll',
+      payload: {
+        difficulty: 7,
+        isCriticalFailure: false,
+        isCriticalSuccess: false,
+        kind: 'table_roll',
+        pool: 2,
+        postText: 'Je force la serrure.',
+        reason: 'session-manager',
+        rolls: [9, 3],
+        status: 'ok',
+        successes: 1
+      }
+    });
+    expect(init).toMatchObject({
       headers: { 'content-type': 'application/json' },
       method: 'POST'
     });

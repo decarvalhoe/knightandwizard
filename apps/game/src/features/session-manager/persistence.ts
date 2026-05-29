@@ -16,7 +16,13 @@ import type { SessionManagerState } from './model';
 
 export interface AppendResolvedEventInput {
   actorId: string;
+  postText?: string;
   result: Record<string, unknown>;
+}
+
+export interface AppendThreadPostInput {
+  actorId: string;
+  text: string;
 }
 
 export interface QueuePersistedGmDecisionInput {
@@ -49,10 +55,32 @@ export async function appendDiceRollToSession(
   slug: string,
   input: AppendResolvedEventInput
 ): Promise<void> {
+  const postText = normalizeOptionalText(input.postText);
+
   await appendPersistedSessionEvent(slug, {
     actorId: input.actorId,
     eventType: 'dice_roll',
-    payload: input.result
+    payload: {
+      ...(postText ? { kind: 'table_roll', postText } : {}),
+      ...input.result
+    }
+  });
+}
+
+export async function appendThreadPostToSession(
+  slug: string,
+  input: AppendThreadPostInput
+): Promise<void> {
+  const text = normalizeOptionalText(input.text);
+
+  if (!text) {
+    return;
+  }
+
+  await appendPersistedSessionEvent(slug, {
+    actorId: input.actorId,
+    eventType: 'player_action',
+    payload: { kind: 'table_post', text }
   });
 }
 
@@ -203,4 +231,10 @@ async function createPersistedSessionSnapshot(slug: string): Promise<PersistedSe
   }
 
   return (await response.json()) as PersistedSessionSnapshot;
+}
+
+function normalizeOptionalText(value: string | undefined): string | undefined {
+  const normalized = value?.trim();
+
+  return normalized && normalized.length > 0 ? normalized : undefined;
 }
