@@ -166,6 +166,11 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
             <h2 className="text-lg font-semibold text-ink">Participants</h2>
           </div>
           <ol className="mt-4 grid gap-2">
+            {view.participants.length === 0 ? (
+              <li className="rounded-md bg-forest/8 px-3 py-2 text-sm font-semibold text-forest">
+                Aucun participant connecté pour l&apos;instant.
+              </li>
+            ) : null}
             {view.participants.map((participant) => (
               <li
                 className="grid grid-cols-[1fr_auto] gap-3 rounded-md bg-paper px-3 py-2"
