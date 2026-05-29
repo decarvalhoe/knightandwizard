@@ -9,13 +9,14 @@ import { getCharacterSheetReadModel } from '@/features/character-sheet/read-mode
 export const dynamic = 'force-dynamic';
 
 interface CharacterPageProps {
-  searchParams?: Promise<{ draftId?: string | string[] }>;
+  searchParams?: Promise<{ characterId?: string | string[]; draftId?: string | string[] }>;
 }
 
 export default async function CharacterPage({ searchParams }: Readonly<CharacterPageProps>) {
   const params = await searchParams;
+  const characterId = normalizeSearchParam(params?.characterId);
   const draftId = normalizeSearchParam(params?.draftId);
-  const sheet = await getCharacterSheetReadModel({ draftId });
+  const sheet = await getCharacterSheetReadModel({ characterId, draftId });
 
   return (
     <div className="kw-character-page">

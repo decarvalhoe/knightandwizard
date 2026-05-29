@@ -1,6 +1,7 @@
 import Fastify, { type FastifyServerOptions, type FastifyInstance } from 'fastify';
 import { registerCatalogRoutes } from './routes/catalogs.js';
 import { registerCharacterDraftRoutes } from './routes/character-drafts.js';
+import { registerCharacterRoutes } from './routes/characters.js';
 import { registerGameMasterRoutes } from './routes/game-master.js';
 import { registerHealthRoute } from './routes/health.js';
 import { registerReadyRoute } from './routes/ready.js';
@@ -25,6 +26,7 @@ export function buildApp(options: FastifyServerOptions = {}): FastifyInstance {
 
   app.register(registerCatalogRoutes);
   app.register(registerCharacterDraftRoutes);
+  app.register(registerCharacterRoutes);
   app.register(registerGameMasterRoutes);
   app.register(registerHealthRoute);
   app.register(registerReadyRoute);

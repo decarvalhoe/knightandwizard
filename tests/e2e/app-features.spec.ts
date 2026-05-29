@@ -178,6 +178,40 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('Niveau 0 · 16 / 20 points')).toBeVisible();
   });
 
+  test('session identity survives reload and opens the persisted current character', async ({
+    page
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'sessionManager');
+
+    const suffix = Date.now().toString();
+    const draftId = `identity-character-${suffix}`;
+    const slug = `identity-session-${suffix}`;
+    const saveResponse = await page.request.put(`${e2eApiBaseUrl}/character-drafts/${draftId}`, {
+      data: savedCharacterDraftPayload('Aveline Identite')
+    });
+    const finalizeResponse = await page.request.post(`${e2eApiBaseUrl}/characters/finalize`, {
+      data: { draftId }
+    });
+
+    expect(saveResponse.ok()).toBe(true);
+    expect(finalizeResponse.ok()).toBe(true);
+
+    await page.goto(
+      `/session?slug=${slug}&player=player-aveline&name=Aveline%20Identite&role=player&characterId=${draftId}`
+    );
+    await expect(page.getByTestId('session-current-identity')).toContainText('Aveline Identite');
+    await expect(page.getByTestId('session-current-identity')).toContainText(draftId);
+    await expect(page.getByText('Aveline Identite', { exact: true })).toBeVisible();
+
+    await page.reload();
+    await expect(page.getByTestId('session-current-identity')).toContainText('Aveline Identite');
+    await expect(page.getByTestId('session-current-identity')).toContainText(draftId);
+
+    await page.goto(`/character?characterId=${draftId}`);
+    await expect(page.getByRole('heading', { name: 'Aveline Identite' })).toBeVisible();
+    await expect(page.getByText('Personnage API')).toBeVisible();
+  });
+
   test('character creation validates fighter and magician creation budgets', async ({
     page
   }, testInfo) => {
@@ -253,9 +287,11 @@ test.describe('K&W player and GM application flows', () => {
   }, testInfo) => {
     annotateCanonical(testInfo, 'sessionManager');
 
-    await page.goto('/session');
+    const slug = `session-flow-${Date.now()}`;
 
-    await expect(page.getByRole('heading', { name: 'Brumeval' })).toBeVisible();
+    await page.goto(`/session?slug=${slug}`);
+
+    await expect(page.getByRole('heading', { name: /Session Flow/ })).toBeVisible();
     await expect(page.getByText('Decisions MJ')).toBeVisible();
 
     await page.getByRole('button', { name: 'RP' }).click();
@@ -294,4 +330,42 @@ async function increaseStepper(page: Page, label: string, times: number): Promis
   for (let index = 0; index < times; index += 1) {
     await page.getByTitle(`Augmenter ${label}`, { exact: true }).click();
   }
+}
+
+function savedCharacterDraftPayload(name: string) {
+  return {
+    currentStep: 'review',
+    payload: {
+      attributes: {
+        aestheticism: 1,
+        charisma: 2,
+        dexterity: 3,
+        empathy: 1,
+        intelligence: 2,
+        perception: 2,
+        reflexes: 2,
+        stamina: 3,
+        strength: 4
+      },
+      background: 'Garde de la porte nord.',
+      classId: 'garde',
+      deity: 'Les Trois Flammes',
+      equipmentIds: ['epee_batarde'],
+      extraSpellPoints: 0,
+      genderId: 'unspecified',
+      name,
+      orientationId: 'guerrier',
+      psychology: 'calme',
+      quote: 'La lame engage.',
+      raceId: 'humain',
+      skills: [
+        { id: 'epee-a-une-main', points: 4 },
+        { id: 'stoicisme', points: 4 },
+        { id: 'commandement', points: 4 },
+        { id: 'observation-du-terrain', points: 4 },
+        { id: 'bouclier', points: 4 }
+      ],
+      spells: []
+    }
+  };
 }

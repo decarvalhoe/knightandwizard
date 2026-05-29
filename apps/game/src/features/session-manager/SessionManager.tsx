@@ -47,10 +47,11 @@ const priorityClasses = {
 };
 
 interface SessionManagerProps {
+  currentPlayerId?: string;
   initialState: SessionManagerState;
 }
 
-export function SessionManager({ initialState }: Readonly<SessionManagerProps>) {
+export function SessionManager({ currentPlayerId, initialState }: Readonly<SessionManagerProps>) {
   const [state, setState] = useState(initialState);
   const [pendingAction, setPendingAction] = useState<string | null>(null);
   const [mutationError, setMutationError] = useState<string | null>(null);
@@ -59,6 +60,10 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
     view.rollbackTargets[0]?.sequence.toString() ?? ''
   );
   const busy = pendingAction !== null;
+  const currentPlayer = useMemo(
+    () => state.players.find((player) => player.id === currentPlayerId),
+    [currentPlayerId, state.players]
+  );
 
   const stateRef = useRef(state);
   stateRef.current = state;
@@ -167,6 +172,15 @@ export function SessionManager({ initialState }: Readonly<SessionManagerProps>) 
               <Users aria-hidden="true" className="size-5 text-wine" />
               <h2 className="text-lg font-semibold text-ink">Participants</h2>
             </div>
+            {currentPlayer ? (
+              <p
+                className="mt-3 rounded-md border border-forest/15 bg-forest/8 px-3 py-2 text-sm font-semibold text-forest"
+                data-testid="session-current-identity"
+              >
+                Vous : {currentPlayer.name} · {roleLabel(currentPlayer.role)}
+                {currentPlayer.characterId ? ` · ${currentPlayer.characterId}` : ''}
+              </p>
+            ) : null}
             <ol className="mt-4 grid gap-2">
               {view.playerRows.map((player) => (
                 <li

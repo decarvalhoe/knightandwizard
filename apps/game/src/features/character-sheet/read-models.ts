@@ -52,6 +52,7 @@ export interface CharacterSheetReadModel {
 }
 
 export interface CharacterSheetReadModelOptions {
+  characterId?: string;
   draftId?: string;
 }
 
@@ -69,7 +70,10 @@ export async function getCharacterSheetReadModel(
       getCatalogDocument<ProtectionsCatalogDocument>('protections.yaml'),
       getCatalogDocument<PotionsCatalogDocument>('potions.yaml')
     ]);
-  const draftSnapshot = options.draftId ? await getCharacterDraftSnapshot(options.draftId) : null;
+  const [draftSnapshot, persistedCharacter] = await Promise.all([
+    options.draftId ? getCharacterDraftSnapshot(options.draftId) : null,
+    options.characterId ? getPersistedCharacterSnapshot(options.characterId) : null
+  ]);
   const creationCatalog = buildCharacterCreationCatalogFromReadModels({
     classes,
     orientations,
@@ -80,25 +84,32 @@ export async function getCharacterSheetReadModel(
     spells,
     weapons
   });
-  const character = draftSnapshot
-    ? previewCharacter(fromDraftSnapshot(draftSnapshot), creationCatalog)
-    : buildActiveCharacter({ classes, orientations, races });
+  const character =
+    persistedCharacter ??
+    (draftSnapshot
+      ? previewCharacter(fromDraftSnapshot(draftSnapshot), creationCatalog)
+      : buildActiveCharacter({ classes, orientations, races }));
   const equipmentCatalog = buildEquipmentCatalog({ potions, protections, weapons });
   const skillCatalog = toSkillOptions(skills);
   const skillLabels = Object.fromEntries(skillCatalog.map((skill) => [skill.id, skill.label]));
+  const apiBackedCharacter = persistedCharacter !== null || draftSnapshot !== null;
 
   return {
     attributeLabels,
     attributeOrder: [...ATTRIBUTE_KEYS],
     character,
-    dataSourceLabel: draftSnapshot ? 'Brouillon API' : 'Catalogues API',
+    dataSourceLabel: persistedCharacter
+      ? 'Personnage API'
+      : draftSnapshot
+        ? 'Brouillon API'
+        : 'Catalogues API',
     equipmentCatalog,
-    initialInventory: draftSnapshot
+    initialInventory: apiBackedCharacter
       ? buildInventoryFromCharacterEquipment(character.equipment, equipmentCatalog)
       : buildInventory({ potions, protections, weapons }),
     skillCatalog,
     skillLabels,
-    spells: draftSnapshot ? buildCharacterSpells(character, spells) : buildSpells(spells)
+    spells: apiBackedCharacter ? buildCharacterSpells(character, spells) : buildSpells(spells)
   };
 }
 
@@ -129,6 +140,29 @@ async function getCharacterDraftSnapshot(draftId: string): Promise<DraftSnapshot
 interface CharacterDraftEnvelope extends DraftSnapshot {
   status?: 'found';
   userId?: string;
+}
+
+interface CharacterEnvelope {
+  character: Character;
+  status?: 'found';
+}
+
+async function getPersistedCharacterSnapshot(characterId: string): Promise<Character> {
+  const response = await fetch(`${getApiBaseUrl()}/characters/${encodeURIComponent(characterId)}`, {
+    cache: 'no-store'
+  });
+
+  if (response.status === 404) {
+    throw new Error(`Persisted character ${characterId} not found`);
+  }
+
+  if (!response.ok) {
+    throw new Error(`Unable to load persisted character ${characterId}: HTTP ${response.status}`);
+  }
+
+  const body = (await response.json()) as CharacterEnvelope;
+
+  return body.character;
 }
 
 function buildActiveCharacter(input: {

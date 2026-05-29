@@ -86,6 +86,67 @@ describe('session routes', () => {
     });
   });
 
+  it('joins a player to a session with a persisted current character and capability link', async () => {
+    const slug = `join-session-${randomUUID()}`;
+    const draftId = `join-character-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleCharacterDraft('Aveline Join'),
+      url: `/character-drafts/${draftId}`
+    });
+    const finalizeResponse = await app.inject({
+      method: 'POST',
+      payload: { draftId },
+      url: '/characters/finalize'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, status: 'active', title: 'Join API' },
+      url: '/sessions'
+    });
+
+    const joinResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        characterId: finalizeResponse.json().character.id,
+        name: 'Aveline Join',
+        playerId: 'player-aveline',
+        role: 'player'
+      },
+      url: `/sessions/${slug}/players`
+    });
+    const readResponse = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+
+    expect(joinResponse.statusCode).toBe(200);
+    expect(joinResponse.json()).toMatchObject({
+      join: {
+        playerId: 'player-aveline'
+      },
+      player: {
+        characterId: draftId,
+        connected: true,
+        id: 'player-aveline',
+        name: 'Aveline Join',
+        role: 'player'
+      },
+      status: 'joined'
+    });
+    expect(joinResponse.json().join.href).toEqual(
+      expect.stringContaining(`/session?slug=${slug}&player=player-aveline`)
+    );
+    expect(joinResponse.json().join.capability).toEqual(expect.any(String));
+    expect(readResponse.json().state.players).toMatchObject([
+      {
+        characterId: draftId,
+        connected: true,
+        id: 'player-aveline',
+        name: 'Aveline Join',
+        role: 'player'
+      }
+    ]);
+  });
+
   it('queues and resolves GM decisions with audit-friendly events', async () => {
     const slug = `decision-session-${randomUUID()}`;
 
@@ -481,3 +542,41 @@ describe('session routes', () => {
     });
   });
 });
+
+function sampleCharacterDraft(name: string) {
+  return {
+    currentStep: 'review',
+    payload: {
+      attributes: {
+        aestheticism: 1,
+        charisma: 2,
+        dexterity: 3,
+        empathy: 1,
+        intelligence: 2,
+        perception: 2,
+        reflexes: 2,
+        stamina: 3,
+        strength: 4
+      },
+      background: 'Garde de la porte nord.',
+      classId: 'garde',
+      deity: 'Les Trois Flammes',
+      equipmentIds: ['epee_batarde'],
+      extraSpellPoints: 0,
+      genderId: 'unspecified',
+      name,
+      orientationId: 'guerrier',
+      psychology: 'calme',
+      quote: 'La lame engage.',
+      raceId: 'humain',
+      skills: [
+        { id: 'epee-a-une-main', points: 4 },
+        { id: 'stoicisme', points: 4 },
+        { id: 'commandement', points: 4 },
+        { id: 'observation-du-terrain', points: 4 },
+        { id: 'bouclier', points: 4 }
+      ],
+      spells: []
+    }
+  };
+}
