@@ -9,6 +9,7 @@ import {
   Button,
   Card,
   Die,
+  Field,
   Label,
   ProgressBar,
   Seal,
@@ -23,10 +24,13 @@ import {
   addInventoryItem,
   attributeRollOutcomeLabels,
   buildCharacterSheetView,
+  filterEquipmentCatalog,
   removeInventoryItem,
   rollAttributeCheck,
+  shouldShowGrimoire,
   skillTreeRows,
   socialAttributeKeys,
+  visibleSkillTreeRows,
   type AttributeRollResult,
   type CharacterSheetMode,
   type EquipmentCatalogEntry,
@@ -76,6 +80,7 @@ export function CharacterSheet({
   const [mode, setMode] = useState<CharacterSheetMode>('complete');
   const [inventory, setInventory] = useState(initialInventory);
   const [lastRoll, setLastRoll] = useState<AttributeRollResult | null>(null);
+  const [equipmentSearch, setEquipmentSearch] = useState('');
   const [rollHistory, setRollHistory] = useState<AttributeRollResult[]>([]);
   const [selectedEquipmentId, setSelectedEquipmentId] = useState<string>(
     () => equipmentCatalog[0]?.id ?? ''
@@ -106,9 +111,18 @@ export function CharacterSheet({
     (total, key) => total + character.attributes[key],
     0
   );
-  const skills = skillTreeRows(character.skills, skillCatalog);
-  const trainedSkillCount = skills.filter((skill) => !skill.isImplicitZero).length;
+  const allSkillRows = skillTreeRows(character.skills, skillCatalog);
+  const skills = visibleSkillTreeRows(allSkillRows);
+  const trainedSkillCount = skills.length;
   const combatStatuses = combatStatusesFromMetadata(character.metadata.combat);
+  const showGrimoire = shouldShowGrimoire(character, spells);
+  const filteredEquipmentCatalog = useMemo(
+    () => filterEquipmentCatalog(equipmentCatalog, equipmentSearch),
+    [equipmentCatalog, equipmentSearch]
+  );
+  const selectedEquipment =
+    filteredEquipmentCatalog.find((entry) => entry.id === selectedEquipmentId) ??
+    filteredEquipmentCatalog[0];
 
   function roll(attribute: AttributeKey) {
     const result = rollAttributeCheck(
@@ -251,15 +265,19 @@ export function CharacterSheet({
                   ` · ${view.creationBudget.convertedSkillPoints} convertis en sorts`}
               </p>
               <p className="kw-sheet__muted">
-                Catalogue implicite : {skills.length} entrées, {trainedSkillCount} notées sur la
-                fiche.
+                {trainedSkillCount} compétence{trainedSkillCount > 1 ? 's' : ''} ou spécialisation
+                {trainedSkillCount > 1 ? 's' : ''} notée{trainedSkillCount > 1 ? 's' : ''}.
               </p>
               {character.orientation.isMagical && (
                 <Toast title="Magicien" tone="info">
                   Pas de compétence primaire mécanique, les sorts comptent double en progression.
                 </Toast>
               )}
-              <SkillTreeRows skills={skills} skillLabels={skillLabels} />
+              {skills.length > 0 ? (
+                <SkillTreeRows skills={skills} skillLabels={skillLabels} />
+              ) : (
+                <p className="kw-sheet__muted">Aucune compétence notée.</p>
+              )}
             </SectionCard>
           </div>
         );
@@ -310,12 +328,14 @@ export function CharacterSheet({
               {status}
             </Badge>
           ))}
-          <ProgressBar
-            label="Énergie"
-            max={character.energy.max}
-            tone="info"
-            value={character.energy.current}
-          />
+          {character.energy.max > 0 || character.energy.current > 0 ? (
+            <ProgressBar
+              label="Énergie"
+              max={character.energy.max}
+              tone="info"
+              value={character.energy.current}
+            />
+          ) : null}
           <StatBlock
             items={[
               { label: 'Facteur vitesse', value: character.speedFactor },
@@ -337,19 +357,32 @@ export function CharacterSheet({
           action={
             equipmentCatalog.length > 0 ? (
               <div className="kw-sheet__inventory-tools">
+                <Field
+                  id="equipment-search"
+                  label="Recherche"
+                  onChange={(event) => setEquipmentSearch(event.target.value)}
+                  placeholder="Épée, potion, bouclier..."
+                  type="search"
+                  value={equipmentSearch}
+                />
                 <SelectField
                   id="equipment-picker"
-                  label="Équipement du catalogue"
+                  label="Équipement"
                   onChange={(event) => setSelectedEquipmentId(event.target.value)}
-                  options={equipmentCatalog.map((option) => ({
-                    label: option.name,
-                    value: option.id
-                  }))}
-                  value={selectedEquipmentId}
+                  options={
+                    filteredEquipmentCatalog.length > 0
+                      ? filteredEquipmentCatalog.map((option) => ({
+                          label: option.name,
+                          value: option.id
+                        }))
+                      : [{ disabled: true, label: 'Aucun résultat', value: '' }]
+                  }
+                  value={selectedEquipment?.id ?? ''}
                 />
                 <Button
                   className="kw-sheet__add-button"
-                  onClick={() => addEquipment(selectedEquipmentId)}
+                  disabled={!selectedEquipment}
+                  onClick={() => selectedEquipment && addEquipment(selectedEquipment.id)}
                   type="button"
                 >
                   <PackagePlus aria-hidden="true" className="kw-sheet__button-icon" />
@@ -391,32 +424,34 @@ export function CharacterSheet({
           </div>
         </SectionCard>
 
-        <SectionCard title="Grimoire">
-          <StatBlock
-            items={[
-              { label: 'Sorts', value: view.spellSummary.knownSpells },
-              { label: 'Points', value: view.spellSummary.pointsCommitted },
-              { label: 'Énergie', value: view.spellSummary.energyAvailable }
-            ]}
-          />
-          {character.orientation.isMagical && (
-            <InfoLine
-              label="Création"
-              value={`${view.creationBudget.spellPoints} points de sort = ${view.creationBudget.freeSpellPoints} gratuits + ${view.creationBudget.extraSpellPoints} achetés.`}
+        {showGrimoire ? (
+          <SectionCard title="Grimoire">
+            <StatBlock
+              items={[
+                { label: 'Sorts', value: view.spellSummary.knownSpells },
+                { label: 'Points', value: view.spellSummary.pointsCommitted },
+                { label: 'Énergie', value: view.spellSummary.energyAvailable }
+              ]}
             />
-          )}
-          <div className="kw-sheet__row-list">
-            {spells.map((spell) => (
-              <div className="kw-sheet__spell-row" key={spell.id}>
-                <div>
-                  <h3>{spell.name}</h3>
-                  <p>{spell.active ? 'Actif' : 'Disponible'}</p>
+            {character.orientation.isMagical && (
+              <InfoLine
+                label="Création"
+                value={`${view.creationBudget.spellPoints} points de sort = ${view.creationBudget.freeSpellPoints} gratuits + ${view.creationBudget.extraSpellPoints} achetés.`}
+              />
+            )}
+            <div className="kw-sheet__row-list">
+              {spells.map((spell) => (
+                <div className="kw-sheet__spell-row" key={spell.id}>
+                  <div>
+                    <h3>{spell.name}</h3>
+                    <p>{spell.active ? 'Actif' : 'Disponible'}</p>
+                  </div>
+                  <Badge tone={spell.active ? 'info' : 'neutral'}>{spell.points} pt</Badge>
                 </div>
-                <Badge tone={spell.active ? 'info' : 'neutral'}>{spell.points} pt</Badge>
-              </div>
-            ))}
-          </div>
-        </SectionCard>
+              ))}
+            </div>
+          </SectionCard>
+        ) : null}
 
         <SectionCard title="Prédilections">
           {view.predilections.length === 0 ? (
@@ -575,7 +610,7 @@ function SkillTreeRows({
               {skill.depth > 0 && <span aria-hidden="true">↪ </span>}
               {skill.label ?? skillLabels[skill.id] ?? skill.id}
             </h3>
-            <p>{skillDescription(skill)}</p>
+            <p>{skillDescription(skill, skillLabels)}</p>
           </div>
           <Badge tone={skill.isImplicitZero ? 'neutral' : 'success'}>
             {skill.points} {skill.points > 1 ? 'pts' : 'pt'}
@@ -592,7 +627,8 @@ function InventoryRow({ item, onRemove }: Readonly<{ item: InventoryItem; onRemo
       <div>
         <h3>{item.name}</h3>
         <p>
-          {item.equipped ? 'Équipé' : item.category} · {item.weightKg ?? 0} kg
+          {item.equipped ? 'Équipé' : inventoryCategoryLabel(item.category)} · {item.weightKg ?? 0}{' '}
+          kg
         </p>
       </div>
       <Badge tone={item.equipped ? 'info' : 'neutral'}>x{item.quantity}</Badge>
@@ -618,7 +654,7 @@ function InfoLine({ label, value }: Readonly<{ label: string; value: string }>) 
   );
 }
 
-function skillDescription(skill: SkillTreeRow): string {
+function skillDescription(skill: SkillTreeRow, skillLabels: Record<string, string>): string {
   if (skill.isImplicitZero) {
     return skill.parentId ? 'Spécialisation implicite à 0' : 'Compétence implicite à 0';
   }
@@ -632,10 +668,29 @@ function skillDescription(skill: SkillTreeRow): string {
   }
 
   if (skill.implicitParentId) {
-    return `Spécialisation, parent implicite à 0 (${skill.implicitParentId})`;
+    const parentLabel = skillLabels[skill.implicitParentId];
+
+    return parentLabel
+      ? `Spécialisation, parent non noté : ${parentLabel}`
+      : 'Spécialisation, parent non noté';
   }
 
   return skill.parentId ? 'Spécialisation' : 'Compétence';
+}
+
+function inventoryCategoryLabel(category: InventoryItem['category']): string {
+  switch (category) {
+    case 'armor':
+      return 'Armure';
+    case 'consumable':
+      return 'Consommable';
+    case 'gear':
+      return 'Équipement';
+    case 'shield':
+      return 'Bouclier';
+    case 'weapon':
+      return 'Arme';
+  }
 }
 
 function rollTone(result: AttributeRollResult): ToastTone {

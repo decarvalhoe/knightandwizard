@@ -1059,6 +1059,16 @@ a {
   min-width: 0;
 }
 
+.kw-sheet__hero {
+  flex-direction: column;
+}
+
+.kw-sheet__hero-head,
+.kw-sheet__resources {
+  width: 100%;
+  min-width: 0;
+}
+
 .kw-sheet__title-lockup {
   min-width: 0;
   align-items: center;
@@ -1074,7 +1084,7 @@ a {
 
 .kw-sheet__resources {
   display: grid;
-  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr) minmax(240px, 0.9fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.9fr);
   gap: 12px;
 }
 
