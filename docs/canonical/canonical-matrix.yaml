@@ -348603,6 +348603,42 @@ units:
     tests:
       status: not_applicable
       evidence: "Source document only."
+  - unit_id: "source:docs-plan-mvp-cut"
+    unit_type: "source_document"
+    domain: "project-governance"
+    title: "docs/plan/MVP-CUT.md"
+    status: covered
+    sources:
+      - path: "docs/plan/MVP-CUT.md"
+        ref: "docs/plan/MVP-CUT.md"
+        sha256: "7d755b41e255c6b2393b8df0dca5146e9b9bcbef59d0c22303b7c3638d24754c"
+    business_rule:
+      summary: "docs/plan/MVP-CUT.md from docs/plan/MVP-CUT.md."
+      ambiguity_ref: null
+    yaml:
+      status: not_applicable
+      evidence: "No YAML projection required at source-document layer."
+    zod_schema:
+      status: not_applicable
+      evidence: "No Zod schema required."
+    relational_db:
+      status: not_applicable
+      evidence: "Source document only."
+    vector_store:
+      status: covered
+      evidence: "Indexed from source manifest by knowledge indexer."
+    rules_core:
+      status: not_applicable
+      evidence: "Content/lore unit; no direct rules-core behavior required by default."
+    api:
+      status: not_applicable
+      evidence: "Source document only."
+    ui:
+      status: not_applicable
+      evidence: "Source document only."
+    tests:
+      status: not_applicable
+      evidence: "Source document only."
   - unit_id: "source:docs-plan-phase-v0-4-rc"
     unit_type: "source_document"
     domain: "project-governance"

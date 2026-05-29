@@ -182820,6 +182820,21 @@ units:
       - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
     vector_refs:
       - collection: knowledge_chunks
+  - unit_id: SOURCE-DOCS-PLAN-MVP-CUT
+    unit_type: catalog_entry
+    name: docs/plan/MVP-CUT.md
+    domain: project-governance
+    criticality: low
+    source_refs:
+      - source_id: DOCS-PLAN-MVP-CUT
+        locator: docs/plan/MVP-CUT.md
+        hash: sha256:7d755b41e255c6b2393b8df0dca5146e9b9bcbef59d0c22303b7c3638d24754c
+    business_rule: docs/plan/MVP-CUT.md from docs/plan/MVP-CUT.md.
+    status: partial
+    gaps:
+      - End-to-end test_refs not yet linked (K&W-covered at foundation layer only).
+    vector_refs:
+      - collection: knowledge_chunks
   - unit_id: SOURCE-DOCS-PLAN-PHASE-V0-4-RC
     unit_type: catalog_entry
     name: docs/plan/PHASE-v0.4-RC.md

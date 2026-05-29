@@ -253,6 +253,72 @@ describe('session routes', () => {
     expect(readBody.state.decisions).toMatchObject([{ id: decisionId, status: 'pending' }]);
   });
 
+  it('keeps play continuable when new decisions are queued after a rollback marker', async () => {
+    const slug = `continued-session-${randomUUID()}`;
+
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, title: 'Continued API' },
+      url: '/sessions'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'scene_opened',
+        payload: { location: 'Brumeval', sceneId: 'gate', title: 'Porte nord' }
+      },
+      url: `/sessions/${slug}/events`
+    });
+    const staleDecisionResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        assignedTo: 'human_gm',
+        requestedBy: 'llm',
+        title: 'Ancienne decision'
+      },
+      url: `/sessions/${slug}/decisions`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', resolution: { ruling: 'annulee' }, status: 'approved' },
+      url: `/sessions/${slug}/decisions/${staleDecisionResponse.json().decision.id}/resolve`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', reason: 'Reprendre avant arbitrage', targetSequence: 1 },
+      url: `/sessions/${slug}/rollback`
+    });
+    const nextDecisionResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        assignedTo: 'human_gm',
+        priority: 'high',
+        requestedBy: 'llm',
+        title: 'Nouvelle decision apres rollback'
+      },
+      url: `/sessions/${slug}/decisions`
+    });
+    const nextDecisionId = nextDecisionResponse.json().decision.id;
+
+    const readResponse = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+    const readBody = readResponse.json();
+
+    expect(readBody.events.map((event: { sequence: number }) => event.sequence)).toEqual([
+      1, 2, 3, 4, 5
+    ]);
+    expect(readBody.state.events.map((event: { sequence: number }) => event.sequence)).toEqual([
+      1, 5
+    ]);
+    expect(readBody.state.decisions).toMatchObject([
+      {
+        id: nextDecisionId,
+        status: 'pending',
+        title: 'Nouvelle decision apres rollback'
+      }
+    ]);
+  });
+
   it('records canonical entity links on events, decisions and rollback markers', async () => {
     const slug = `linked-session-${randomUUID()}`;
     const links = {

@@ -11,6 +11,8 @@ export default tseslint.config(
       '**/coverage/**',
       '**/.turbo/**',
       '**/.next/**',
+      'playwright-report/**',
+      'test-results/**',
       'apps/legacy-php-site/**',
       'data/legacy/**',
       'apps/interactive-map/qgis/**'

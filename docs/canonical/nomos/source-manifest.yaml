@@ -20718,6 +20718,20 @@ sources:
       - vector_index
       - citation_internal
     notes: Project documentation source.
+  - id: DOCS-PLAN-MVP-CUT
+    path: docs/plan/MVP-CUT.md
+    type: markdown
+    domain: project-governance
+    priority: derived
+    status: active
+    hash: 7d755b41e255c6b2393b8df0dca5146e9b9bcbef59d0c22303b7c3638d24754c
+    owner: decarvalhoe
+    license: proprietary
+    confidentiality: internal
+    allowed_uses:
+      - vector_index
+      - citation_internal
+    notes: Project documentation source.
   - id: DOCS-PLAN-PHASE-V0-4-RC
     path: docs/plan/PHASE-v0.4-RC.md
     type: markdown

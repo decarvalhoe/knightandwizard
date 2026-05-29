@@ -103,6 +103,68 @@ describe('session manager model', () => {
     expect(rollback.events.map((event) => event.type)).toEqual(['narration', 'rollback_requested']);
   });
 
+  it('projects live GM decisions into the queue while preserving the journal', () => {
+    const state = createSessionManagerState({
+      decisions: [],
+      events: [
+        {
+          actorId: 'gm',
+          createdAt: '2026-04-30T10:00:00.000Z',
+          id: 'event-1',
+          payload: { location: 'Porte nord', sceneId: 'gate', title: 'Porte nord' },
+          sequence: 1,
+          type: 'scene_opened'
+        },
+        {
+          actorId: 'llm',
+          createdAt: '2026-04-30T10:01:00.000Z',
+          id: 'event-2',
+          payload: { decisionId: 'decision-stale', requestedBy: 'llm', title: 'Ancienne' },
+          sequence: 2,
+          type: 'gm_decision_requested'
+        },
+        {
+          actorId: 'gm',
+          createdAt: '2026-04-30T10:02:00.000Z',
+          id: 'event-3',
+          payload: { reason: 'Reprendre', targetSequence: 1 },
+          sequence: 3,
+          type: 'rollback_requested'
+        }
+      ],
+      players: samplePlayers()
+    });
+    const outcome = applyLiveSessionEvent(state, {
+      actorId: 'llm',
+      createdAt: '2026-04-30T10:03:00.000Z',
+      id: 'event-4',
+      payload: {
+        assignedTo: 'human_gm',
+        decisionId: 'decision-live',
+        priority: 'high',
+        requestedBy: 'llm',
+        title: 'Valider la consequence narrative'
+      },
+      sequence: 4,
+      type: 'gm_decision_requested'
+    });
+
+    expect(outcome.kind).toBe('applied');
+
+    if (outcome.kind !== 'applied') {
+      return;
+    }
+
+    expect(outcome.state.events.map((event) => event.sequence)).toEqual([1, 2, 3, 4]);
+    expect(buildSessionManagerView(outcome.state).decisionQueue).toMatchObject([
+      {
+        id: 'decision-live',
+        priority: 'high',
+        title: 'Valider la consequence narrative'
+      }
+    ]);
+  });
+
   it('surfaces critical state and D100 severity in dice_roll event labels', () => {
     const state = createSessionManagerState({
       events: [
@@ -286,6 +348,44 @@ describe('applyLiveSessionEvent', () => {
     if (outcome.kind === 'applied') {
       expect(outcome.state.narrativeSeconds).toBe(7_200);
     }
+  });
+
+  it('preserves seeded scenes when a live decision arrives before scene events', () => {
+    const state = createSessionManagerState({
+      decisions: [],
+      events: [],
+      players: samplePlayers(),
+      scenes: sampleScenes()
+    });
+    const outcome = applyLiveSessionEvent(state, {
+      actorId: 'llm',
+      createdAt: '2026-04-30T10:03:00.000Z',
+      id: 'event-1',
+      payload: {
+        assignedTo: 'human_gm',
+        decisionId: 'decision-live',
+        priority: 'high',
+        requestedBy: 'llm',
+        title: 'Valider la consequence narrative'
+      },
+      sequence: 1,
+      type: 'gm_decision_requested'
+    });
+
+    expect(outcome.kind).toBe('applied');
+
+    if (outcome.kind !== 'applied') {
+      return;
+    }
+
+    const view = buildSessionManagerView(outcome.state);
+    expect(view.activeScene).toMatchObject({ id: 'brumeval-gate', title: 'Porte nord' });
+    expect(view.decisionQueue).toMatchObject([
+      {
+        id: 'decision-live',
+        title: 'Valider la consequence narrative'
+      }
+    ]);
   });
 });
 

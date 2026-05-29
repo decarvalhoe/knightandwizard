@@ -2,7 +2,7 @@ import {
   appendSessionEvent,
   createSessionState,
   getPendingDecisions,
-  projectSessionNarrativeClock,
+  projectSessionStateFromJournal,
   queueGmDecision,
   requestSessionRollback,
   resolveGmDecision,
@@ -267,11 +267,13 @@ export function applyLiveSessionEvent(
   }
 
   if (event.sequence === maxSequence + 1) {
-    // Recompute only the narrative-clock projection so a live `narrative_time_advanced`
-    // (or spell) event keeps the displayed clock/active spells in sync without a refetch.
+    const events = [...state.events, event];
+    const projected = projectSessionStateFromJournal({ ...state, events });
+    const scenes = projected.scenes.length > 0 ? projected.scenes : state.scenes;
+
     return {
       kind: 'applied',
-      state: projectSessionNarrativeClock({ ...state, events: [...state.events, event] })
+      state: { ...projected, events, scenes }
     };
   }
 

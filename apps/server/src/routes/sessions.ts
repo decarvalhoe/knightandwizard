@@ -11,6 +11,7 @@ import {
   SESSION_MODES,
   SESSION_STATUSES,
   createSessionState,
+  projectSessionStateFromJournal,
   revertSessionToSequence
 } from '@knightandwizard/rules-core';
 import type postgres from 'postgres';
@@ -1092,7 +1093,10 @@ function toSessionResponse(
   events: SessionEventRow[],
   decisions: SessionDecisionRow[]
 ) {
-  const state = projectCurrentSessionState(buildSessionState(session, events, decisions));
+  const rawState = buildSessionState(session, events, decisions);
+  const state = rawState.events.some((event) => event.type === 'rollback_requested')
+    ? projectSessionStateFromJournal(rawState)
+    : rawState;
 
   return {
     createdAt: serializeDate(session.created_at),
@@ -1138,37 +1142,6 @@ function buildSessionState(
     title: session.title,
     updatedAt: serializeDate(session.updated_at)
   });
-}
-
-function projectCurrentSessionState(state: SessionState): SessionState {
-  const rollbackTargetSequence = getLatestRollbackTargetSequence(state.events);
-
-  if (rollbackTargetSequence === undefined) {
-    return state;
-  }
-
-  return revertSessionToSequence(state, rollbackTargetSequence);
-}
-
-function getLatestRollbackTargetSequence(events: SessionEvent[]): number | undefined {
-  const sortedEvents = [...events].sort((left, right) => right.sequence - left.sequence);
-
-  for (const event of sortedEvents) {
-    if (event.type !== 'rollback_requested') {
-      continue;
-    }
-
-    const targetSequence = event.payload.targetSequence;
-
-    if (
-      typeof targetSequence === 'number' &&
-      events.some((candidate) => candidate.sequence === targetSequence)
-    ) {
-      return targetSequence;
-    }
-  }
-
-  return undefined;
 }
 
 function toEventModel(row: SessionEventRow): SessionEvent {

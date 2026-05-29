@@ -8,6 +8,7 @@ import {
   endSessionCombat,
   getActiveSpells,
   getPendingDecisions,
+  projectSessionStateFromJournal,
   queueGmDecision,
   rebuildSessionStateFromEvents,
   requestSessionRollback,
@@ -250,6 +251,38 @@ describe('session state reconstruction', () => {
     expect(reverted.events.map((event) => event.sequence)).toEqual([1]);
     expect(reverted.decisions).toEqual([]);
     expect(reverted.scenes).toHaveLength(1);
+  });
+
+  it('projects a playable branch after rollback without deleting later journal history', () => {
+    const journal = buildJournal();
+    const rollback = requestSessionRollback(
+      journal,
+      { actorId: 'gm', reason: 'Retour avant arbitrage', targetSequence: 1 },
+      { eventId: 'event-4', now: '2026-04-30T10:03:00.000Z' }
+    );
+    const replayed = queueGmDecision(
+      rollback,
+      {
+        assignedTo: 'human_gm',
+        payload: { options: ['parley', 'ambush'] },
+        priority: 'normal',
+        requestedBy: 'llm',
+        title: 'Nouvelle decision apres rollback'
+      },
+      { decisionId: 'decision-2', eventId: 'event-5', now: '2026-04-30T10:04:00.000Z' }
+    );
+    const projected = projectSessionStateFromJournal(replayed);
+
+    expect(replayed.events.map((event) => event.sequence)).toEqual([1, 2, 3, 4, 5]);
+    expect(projected.events.map((event) => event.sequence)).toEqual([1, 5]);
+    expect(projected.decisions).toMatchObject([
+      {
+        id: 'decision-2',
+        status: 'pending',
+        title: 'Nouvelle decision apres rollback'
+      }
+    ]);
+    expect(projected.scenes).toMatchObject([{ id: 'gate', openedAtSequence: 1 }]);
   });
 
   it('preserves session-level facts and the audit trail when reverting', () => {
