@@ -285,6 +285,9 @@ export function CharacterSheet({
             <Badge tone={dataSourceLabel === 'Brouillon API' ? 'info' : 'neutral'}>
               {dataSourceLabel}
             </Badge>
+            <Badge tone="success">
+              XP {character.progression.experiencePoints} / {character.progression.experienceTotal}
+            </Badge>
           </div>
         </div>
 

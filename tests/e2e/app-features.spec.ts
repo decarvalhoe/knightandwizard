@@ -290,6 +290,11 @@ test.describe('K&W player and GM application flows', () => {
     await page.getByRole('button', { name: 'Attribuer 1 XP' }).click();
     await expect(page.getByText('XP attribue a Aveline Cockpit')).toBeVisible();
 
+    await page.goto(`/character?characterId=${draftId}`);
+    await expect(page.getByRole('heading', { name: 'Aveline Cockpit' })).toBeVisible();
+    await expect(page.getByText('XP 1 / 1')).toBeVisible();
+
+    await page.goto(`/mj?slug=${slug}`);
     await page.getByRole('button', { name: 'PNJ rapide' }).click();
     await expect(page.getByText('PNJ rapide ajoute au suivi MJ')).toBeVisible();
 

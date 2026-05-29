@@ -2,10 +2,12 @@ import type { FastifyInstance, FastifyReply } from 'fastify';
 import {
   CharacterDraftNotFoundError,
   CharacterNotFoundError,
+  awardPersistedCharacterXp,
   finalizeCharacterDraft,
   getPersistedCharacter,
   updatePersistedCharacterCombatState,
-  type CharacterCombatStateUpdate
+  type CharacterCombatStateUpdate,
+  type CharacterXpAwardUpdate
 } from '../characters/finalize.js';
 
 interface FinalizeCharacterRequestBody {
@@ -18,6 +20,14 @@ interface UpdateCharacterCombatStateRequestBody {
   vitality?: unknown;
 }
 
+interface AwardCharacterXpRequestBody {
+  actorId?: unknown;
+  amount?: unknown;
+  questPoints?: unknown;
+  reason?: unknown;
+  sessionSlug?: unknown;
+}
+
 interface CharacterParams {
   id: string;
 }
@@ -25,6 +35,7 @@ interface CharacterParams {
 export async function registerCharacterRoutes(app: FastifyInstance): Promise<void> {
   app.options('/characters/finalize', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id/combat-state', async (_request, reply) => reply.code(204).send());
+  app.options('/characters/:id/xp-awards', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id', async (_request, reply) => reply.code(204).send());
 
   app.post<{ Body: FinalizeCharacterRequestBody }>(
@@ -82,6 +93,31 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
           request.params.id,
           validation.input
         );
+
+        return {
+          character: result.character,
+          status: 'updated'
+        };
+      } catch (error) {
+        return sendCharacterRouteError(error, reply);
+      }
+    }
+  );
+
+  app.post<{ Body: AwardCharacterXpRequestBody; Params: CharacterParams }>(
+    '/characters/:id/xp-awards',
+    async (request, reply) => {
+      const validation = validateXpAward(request.body ?? {});
+
+      if (!validation.valid) {
+        return reply.code(400).send({
+          errors: validation.errors,
+          status: 'invalid'
+        });
+      }
+
+      try {
+        const result = await awardPersistedCharacterXp(request.params.id, validation.input);
 
         return {
           character: result.character,
@@ -176,6 +212,40 @@ function validateCombatStateUpdate(
   }
 
   return { input, valid: true };
+}
+
+function validateXpAward(
+  body: AwardCharacterXpRequestBody
+): { input: CharacterXpAwardUpdate; valid: true } | { errors: string[]; valid: false } {
+  const errors: string[] = [];
+  const amount = readOptionalPositiveInteger(body.amount, 'amount');
+  const questPoints = readOptionalNonNegativeInteger(body.questPoints, 'questPoints');
+  const actorId = normalizeOptionalString(body.actorId);
+  const reason = normalizeOptionalString(body.reason);
+  const sessionSlug = normalizeOptionalString(body.sessionSlug);
+
+  errors.push(...amount.errors, ...questPoints.errors);
+
+  const amountValue = amount.value;
+
+  if (amountValue === undefined) {
+    errors.push('amount is required');
+  }
+
+  if (errors.length > 0 || amountValue === undefined) {
+    return { errors, valid: false };
+  }
+
+  return {
+    input: {
+      ...(actorId ? { actorId } : {}),
+      amount: amountValue,
+      ...(questPoints.value !== undefined ? { questPoints: questPoints.value } : {}),
+      ...(reason ? { reason } : {}),
+      ...(sessionSlug ? { sessionSlug } : {})
+    },
+    valid: true
+  };
 }
 
 function readOptionalNonNegativeInteger(value: unknown, label: string) {

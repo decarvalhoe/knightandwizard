@@ -19,7 +19,8 @@ import {
   type CharacterSkill,
   type CharacterSpell,
   type CombatStatus,
-  type RaceProfile
+  type RaceProfile,
+  gainXP
 } from '@knightandwizard/rules-core';
 import { eq, sql as drizzleSql } from 'drizzle-orm';
 import { z } from 'zod';
@@ -51,6 +52,14 @@ export interface CharacterCombatStateUpdate {
     current?: number;
     max?: number;
   };
+}
+
+export interface CharacterXpAwardUpdate {
+  actorId?: string;
+  amount: number;
+  questPoints?: number;
+  reason?: string;
+  sessionSlug?: string;
 }
 
 interface CharacterCreationCatalog {
@@ -287,6 +296,61 @@ export async function updatePersistedCharacterCombatState(
   }
 }
 
+export async function awardPersistedCharacterXp(
+  id: string,
+  input: CharacterXpAwardUpdate
+): Promise<CharacterPersistenceResult> {
+  const sql = createSqlClient();
+  const db = createDbClient(sql);
+
+  try {
+    const rows = await db
+      .select({ character: characters.payload })
+      .from(characters)
+      .where(eq(characters.id, id))
+      .limit(1);
+    const row = rows[0];
+
+    if (row === undefined) {
+      throw new CharacterNotFoundError(id);
+    }
+
+    const now = new Date().toISOString();
+    const awarded = gainXP(row.character, input.amount, {
+      questPoints: input.questPoints ?? 0
+    });
+    const awardRecord = {
+      ...(input.actorId ? { actorId: input.actorId } : {}),
+      amount: input.amount,
+      awardedAt: now,
+      ...(input.questPoints !== undefined ? { questPoints: input.questPoints } : {}),
+      ...(input.reason ? { reason: input.reason } : {}),
+      ...(input.sessionSlug ? { sessionSlug: input.sessionSlug } : {})
+    };
+    const character: Character = {
+      ...awarded,
+      metadata: {
+        ...awarded.metadata,
+        xpAwards: [...readXpAwardRecords(awarded.metadata.xpAwards), awardRecord]
+      }
+    };
+    const updatedRows = await db
+      .update(characters)
+      .set({
+        payload: character,
+        updatedAt: drizzleSql`now()`
+      })
+      .where(eq(characters.id, id))
+      .returning({ character: characters.payload });
+
+    return {
+      character: updatedRows[0]!.character
+    };
+  } finally {
+    await sql.end({ timeout: 5 });
+  }
+}
+
 async function loadCharacterCreationCatalog(): Promise<CharacterCreationCatalog> {
   const [races, orientations, classes, weapons, protections, potions] = await Promise.all([
     loadValidatedCatalog('races.yaml'),
@@ -311,6 +375,14 @@ function clampResource(current: number, max: number): number {
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function readXpAwardRecords(value: unknown): Record<string, unknown>[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value.filter(isRecord);
 }
 
 function buildCharacterFromDraft(

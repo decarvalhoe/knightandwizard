@@ -5,6 +5,7 @@ import {
   appendDiceRollToSession,
   appendGmRulingToSession,
   appendThreadPostToSession,
+  awardCharacterXp,
   queuePersistedGmDecision,
   requestPersistedRollback,
   resolvePersistedGmDecision,
@@ -169,6 +170,33 @@ describe('session manager persistence', () => {
       headers: { 'content-type': 'application/json' },
       method: 'POST'
     });
+  });
+
+  it('awards character XP through the persisted character API', async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = 'http://browser-api.test';
+    const fetchMock = vi.fn().mockResolvedValue(okJson({ status: 'updated' }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    await awardCharacterXp('pc-aveline', {
+      actorId: 'gm',
+      amount: 1,
+      reason: 'Fin de session',
+      sessionSlug: 'brumeval'
+    });
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      'http://browser-api.test/characters/pc-aveline/xp-awards',
+      {
+        body: JSON.stringify({
+          actorId: 'gm',
+          amount: 1,
+          reason: 'Fin de session',
+          sessionSlug: 'brumeval'
+        }),
+        headers: { 'content-type': 'application/json' },
+        method: 'POST'
+      }
+    );
   });
 
   it('persists GM decision queue, resolution and rollback requests through journal routes', async () => {
