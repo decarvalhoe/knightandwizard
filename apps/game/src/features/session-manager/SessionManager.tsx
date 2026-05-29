@@ -521,7 +521,7 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
                       priorityClasses[decision.priority]
                     ].join(' ')}
                   >
-                    {decision.priority}
+                    {decision.priorityLabel}
                   </span>
                 </li>
               ))

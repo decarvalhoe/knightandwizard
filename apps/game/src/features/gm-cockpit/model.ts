@@ -19,6 +19,7 @@ export interface GmCockpitDecision {
   assignedTo: string;
   id: string;
   priority: string;
+  priorityLabel: string;
   requestedBy: string;
   title: string;
 }
@@ -78,6 +79,7 @@ export function buildGmCockpitView(state: SessionManagerState): GmCockpitView {
       assignedTo: decision.assignedTo,
       id: decision.id,
       priority: decision.priority,
+      priorityLabel: decision.priorityLabel,
       requestedBy: decision.requestedBy,
       title: decision.title
     })),

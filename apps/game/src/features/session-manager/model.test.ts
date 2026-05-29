@@ -453,6 +453,8 @@ describe('applyLiveSessionEvent', () => {
     expect(view.decisionQueue).toMatchObject([
       {
         id: 'decision-live',
+        priority: 'high',
+        priorityLabel: 'Haute',
         title: 'Valider la consequence narrative'
       }
     ]);

@@ -67,6 +67,7 @@ describe('GM cockpit model', () => {
         assignedTo: 'MJ humain',
         id: 'decision-1',
         priority: 'high',
+        priorityLabel: 'Haute',
         requestedBy: 'Aveline',
         title: 'Valider le bruit de la serrure'
       }
