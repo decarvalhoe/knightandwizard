@@ -57,7 +57,11 @@ const surfaceStyle: CSSProperties = {
   display: 'grid',
   fontFamily: 'var(--font-body)',
   gap: 16,
-  padding: 24
+  maxWidth: '100%',
+  minWidth: 0,
+  overflow: 'hidden',
+  padding: 24,
+  width: '100%'
 };
 
 const heroStyle: CSSProperties = {
@@ -65,7 +69,8 @@ const heroStyle: CSSProperties = {
   display: 'flex',
   flexWrap: 'wrap',
   gap: 16,
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
+  minWidth: 0
 };
 
 const titleStyle: CSSProperties = {
@@ -90,19 +95,23 @@ const panelTitleStyle: CSSProperties = {
 const cardGridStyle: CSSProperties = {
   display: 'grid',
   gap: 16,
-  gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))'
+  gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+  minWidth: 0
 };
 
 const stackStyle: CSSProperties = {
   display: 'grid',
-  gap: 12
+  gap: 12,
+  minWidth: 0
 };
 
 const inlineStackStyle: CSSProperties = {
   alignItems: 'center',
   display: 'flex',
   flexWrap: 'wrap',
-  gap: 8
+  gap: 8,
+  maxWidth: '100%',
+  minWidth: 0
 };
 
 const buttonIconStyle: CSSProperties = {
@@ -129,11 +138,13 @@ const eventRowStyle: CSSProperties = {
   display: 'grid',
   gap: 8,
   gridTemplateColumns: 'auto minmax(0, 1fr)',
+  minWidth: 0,
   padding: 10
 };
 
 const mutedStyle: CSSProperties = {
-  color: 'var(--color-text-muted)'
+  color: 'var(--color-text-muted)',
+  overflowWrap: 'anywhere'
 };
 
 const actorNames: Record<string, string> = {
@@ -156,6 +167,13 @@ const priorityTones: Record<SessionDecision['priority'], BadgeTone> = {
   low: 'neutral',
   normal: 'info',
   urgent: 'danger'
+};
+
+const priorityLabels: Record<SessionDecision['priority'], string> = {
+  high: 'haute',
+  low: 'basse',
+  normal: 'normale',
+  urgent: 'urgente'
 };
 
 const statusTones: Record<SessionDecisionStatus, BadgeTone> = {
@@ -187,7 +205,7 @@ const decisionColumns: readonly TableColumn<DecisionRow>[] = [
     id: 'assignedTo'
   },
   {
-    cell: (row) => <Badge tone={priorityTones[row.priority]}>{row.priority}</Badge>,
+    cell: (row) => <Badge tone={priorityTones[row.priority]}>{priorityLabels[row.priority]}</Badge>,
     header: 'Priorité',
     id: 'priority'
   },
@@ -290,9 +308,9 @@ export default function GreffePage() {
             cassation.
           </p>
           <div style={inlineStackStyle}>
-            <Badge tone="danger">Skin archives</Badge>
-            <Badge tone="info">Issue #107</Badge>
-            <Badge tone="neutral">Lié #57 · Epic #96</Badge>
+            <Badge tone="danger">D13</Badge>
+            <Badge tone="info">Renvoi</Badge>
+            <Badge tone="neutral">Cassation</Badge>
           </div>
         </div>
         <div style={inlineStackStyle}>
@@ -305,7 +323,7 @@ export default function GreffePage() {
 
       <Card>
         <StatBlock
-          title="Etat du greffe"
+          title="État du greffe"
           items={[
             { label: 'Causes', value: state.decisions.length },
             { label: 'En instance', value: pendingDecisions.length },
@@ -322,8 +340,8 @@ export default function GreffePage() {
               <Label>Multi-arbitrage</Label>
               <h2 style={panelTitleStyle}>Ordre d'autorité</h2>
               <p style={subtitleStyle}>
-                La hiérarchie provient de <code>ARBITER_PRECEDENCE</code> et les surclasses de{' '}
-                <code>hasArbiterAuthorityOver</code>.
+                La règle D13 donne la main au MJ humain, puis au joueur, au LLM et à l'automate.
+                Chaque rang peut casser les rangs inférieurs.
               </p>
             </div>
             <Seal>
@@ -341,7 +359,7 @@ export default function GreffePage() {
                     </strong>
                     <div style={mutedStyle}>Peut casser : {row.overrides}</div>
                   </div>
-                  <Badge tone={row.rank === 1 ? 'success' : 'neutral'}>{row.arbiter}</Badge>
+                  <Badge tone={row.rank === 1 ? 'success' : 'neutral'}>Rang {row.rank}</Badge>
                 </div>
                 <ProgressBar
                   label={`Autorité ${row.label}`}

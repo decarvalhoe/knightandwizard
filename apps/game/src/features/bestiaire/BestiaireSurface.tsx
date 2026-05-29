@@ -28,7 +28,7 @@ export function BestiaireSurface({ view }: Readonly<BestiaireSurfaceProps>) {
           <p>Fiches especes chargees depuis le catalogue canonique bestiaire.yaml.</p>
         </div>
         <Button variant="secondary" onClick={() => setNight((current) => !current)}>
-          Mode : {night ? 'Veillee (nuit)' : 'Jour'}
+          Mode : {night ? 'Veillée (nuit)' : 'Jour'}
         </Button>
       </div>
 
@@ -61,7 +61,7 @@ export function BestiaireSurface({ view }: Readonly<BestiaireSurfaceProps>) {
         <div className="kw-bestiary__overview">
           <Card>
             <StatBlock
-              title="Etat du catalogue"
+              title="État du catalogue"
               items={[
                 { label: 'Fiches actives', value: view.metrics.activeEntries },
                 { label: 'Races jouables', value: view.metrics.playableEntries },
@@ -139,7 +139,7 @@ function BestiaryDetail({ entry }: Readonly<{ entry: BestiaryEntryView | undefin
       </div>
 
       <p className="kw-bestiary__lore">
-        {entry.lore ?? 'Description non renseignee dans le catalogue.'}
+        {entry.lore ?? 'Description non renseignée dans le catalogue.'}
       </p>
 
       <div className="kw-bestiary__detail-grid">

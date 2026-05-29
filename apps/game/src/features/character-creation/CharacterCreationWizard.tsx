@@ -159,7 +159,7 @@ export function CharacterCreationWizard({
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-wine">
-              Creation PJ
+              Création PJ
             </p>
             <h1 className="mt-1 text-3xl font-semibold text-ink">Nouveau personnage</h1>
             <p className="mt-2 text-sm text-ink/62">
@@ -527,7 +527,7 @@ function SkillsStep({
     <div className="grid gap-4">
       <BudgetStrip
         items={[
-          ['Competences', `${view.skillBudget.spent}/${view.skillBudget.limit}`],
+          ['Compétences', `${view.skillBudget.spent}/${view.skillBudget.limit}`],
           ['Convertis', String(view.skillBudget.convertedToSpells)]
         ]}
       />
@@ -709,7 +709,7 @@ function PreviewPanel({
   return (
     <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
       <div className="flex items-center justify-between gap-3">
-        <h2 className="text-xl font-semibold text-ink">Apercu</h2>
+        <h2 className="text-xl font-semibold text-ink">Aperçu</h2>
         <UserPlus aria-hidden="true" className="size-5 text-wine" />
       </div>
       <dl className="mt-4 grid gap-3 text-sm">
@@ -717,7 +717,7 @@ function PreviewPanel({
         <PreviewRow label="Race" value={view.selectedRace?.name ?? 'NA'} />
         <PreviewRow label="Classe" value={view.selectedClass?.name ?? 'NA'} />
         <PreviewRow label="Atouts" value={String(view.grantedAssets.length)} />
-        <PreviewRow label="Equipement" value={String(draft.equipmentIds.length)} />
+        <PreviewRow label="Équipement" value={String(draft.equipmentIds.length)} />
         {preview && (
           <PreviewRow
             label="Ressources"
@@ -748,7 +748,7 @@ function BudgetPanel({
           limit={view.attributeBudget.limit}
           value={view.attributeBudget.spent}
         />
-        <Meter label="Competences" limit={view.skillBudget.limit} value={view.skillBudget.spent} />
+        <Meter label="Compétences" limit={view.skillBudget.limit} value={view.skillBudget.spent} />
         <Meter
           label="Sorts"
           limit={view.spellBudget.requiredPoints}

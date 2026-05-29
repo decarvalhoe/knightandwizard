@@ -110,7 +110,7 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
     void run('rollback', async () =>
       requestPersistedRollback(state.slug, {
         actorId: 'gm',
-        reason: 'Rollback depuis cockpit MJ',
+        reason: 'Renvoi depuis cockpit MJ',
         targetSequence: effectiveRollbackSequence
       })
     );
@@ -126,9 +126,9 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
             </p>
             <h1 className="mt-2 text-3xl font-semibold text-ink">{view.title}</h1>
             <p className="mt-2 text-sm leading-6 text-ink/68">
-              {view.activeScene?.title ?? 'Aucune scene active'} ·{' '}
-              {view.activeScene?.location ?? 'Hors scene'} · {view.metrics.pendingDecisions}{' '}
-              decision(s) MJ
+              {view.activeScene?.title ?? 'Aucune scène active'} ·{' '}
+              {view.activeScene?.location ?? 'Hors scène'} · {view.metrics.pendingDecisions}{' '}
+              décision(s) MJ
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -147,13 +147,13 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
         <article className="rounded-md border border-ink/10 bg-white/72 p-4 shadow-sm">
           <div className="flex items-center gap-2">
             <ScrollText aria-hidden="true" className="size-5 text-forest" />
-            <h2 className="text-lg font-semibold text-ink">Scene active</h2>
+            <h2 className="text-lg font-semibold text-ink">Scène active</h2>
           </div>
           <p className="mt-4 text-xl font-semibold text-ink">
-            {view.activeScene?.title ?? 'Aucune scene'}
+            {view.activeScene?.title ?? 'Aucune scène'}
           </p>
           <p className="mt-1 text-sm font-semibold text-forest">
-            {view.activeScene?.location ?? 'Hors scene'}
+            {view.activeScene?.location ?? 'Hors scène'}
           </p>
           <p className="mt-3 text-sm leading-6 text-ink/70">
             {view.activeScene?.description ?? 'Le MJ peut reprendre depuis le journal de session.'}
@@ -215,7 +215,7 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
         </article>
 
         <article className="rounded-md border border-ink/10 bg-white/72 p-4 shadow-sm">
-          <h2 className="text-lg font-semibold text-ink">Rollback</h2>
+          <h2 className="text-lg font-semibold text-ink">Renvoi</h2>
           <label className="mt-4 block text-sm font-semibold text-ink/70" htmlFor="gm-rollback">
             Point de reprise
           </label>
@@ -238,7 +238,7 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
             type="button"
           >
             <RotateCcw aria-hidden="true" className="size-4" />
-            Rollback
+            Renvoi
           </button>
         </article>
 
@@ -293,7 +293,7 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
       <section className="rounded-md border border-ink/10 bg-white/72 p-4 shadow-sm">
         <div className="flex items-center gap-2">
           <Swords aria-hidden="true" className="size-5 text-forest" />
-          <h2 className="text-lg font-semibold text-ink">Journal recent</h2>
+          <h2 className="text-lg font-semibold text-ink">Journal récent</h2>
         </div>
         <ol className="mt-4 grid gap-2">
           {view.recentEvents.map((event) => (

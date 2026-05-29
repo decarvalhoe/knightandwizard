@@ -29,6 +29,10 @@ a {
   text-decoration: none;
 }
 
+code {
+  overflow-wrap: anywhere;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
@@ -189,18 +193,21 @@ a {
 }
 
 .app-shell__main {
+  min-width: 0;
   padding: 24px 0 32px;
 }
 
 .kw-surface-page {
   display: grid;
   gap: 16px;
+  min-width: 0;
 }
 
 .kw-surface-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
+  min-width: 0;
 }
 
 .kw-swatch-row {

@@ -37,6 +37,7 @@
   border: var(--border-hairline) solid var(--color-border-rule);
   border-radius: var(--radius-rect);
   box-shadow: var(--shadow-card) color-mix(in oklab, var(--color-text-ink) 18%, transparent);
+  min-width: 0;
   padding: 20px;
 }
 
@@ -50,9 +51,11 @@
 
 .kw-badge {
   display: inline-block;
+  max-width: 100%;
   font-family: var(--font-label);
   font-size: var(--text-label-sm);
   letter-spacing: var(--tracking-label);
+  overflow-wrap: anywhere;
   text-transform: uppercase;
   border: var(--border-hairline) solid currentColor;
   border-radius: var(--radius-rect);
@@ -125,13 +128,15 @@
 }
 .kw-statblock__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 120px), 1fr));
   gap: 8px;
+  min-width: 0;
 }
 .kw-statblock__item {
   display: flex;
   flex-direction: column;
   border: var(--border-hairline) solid var(--color-border-hairline);
+  min-width: 0;
   padding: 6px 10px;
 }
 .kw-statblock__label {

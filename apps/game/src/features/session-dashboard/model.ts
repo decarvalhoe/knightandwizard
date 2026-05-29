@@ -41,12 +41,12 @@ const shortcuts: SessionDashboardShortcut[] = [
     label: 'Fiche'
   },
   {
-    detail: 'Ouvrir le registre DT pour resoudre la prochaine passe.',
+    detail: 'Ouvrir le registre DT pour résoudre la prochaine passe.',
     href: '/combat',
     label: 'Combat'
   },
   {
-    detail: 'Verifier les ecoles, sorts et pistes de preparation.',
+    detail: 'Vérifier les écoles, sorts et pistes de préparation.',
     href: '/grimoire',
     label: 'Grimoire'
   }
@@ -67,9 +67,9 @@ function buildNextActions(session: SessionManagerView): SessionDashboardAction[]
   if (session.decisionQueue.length === 0) {
     return [
       {
-        detail: session.activeScene?.location ?? 'Hors scene',
+        detail: session.activeScene?.location ?? 'Hors scène',
         id: 'scene-watch',
-        label: session.activeScene?.title ?? 'Ouvrir la prochaine scene',
+        label: session.activeScene?.title ?? 'Ouvrir la prochaine scène',
         tone: 'info'
       }
     ];

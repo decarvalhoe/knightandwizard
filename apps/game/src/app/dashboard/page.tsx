@@ -57,14 +57,14 @@ export default function DashboardPage() {
           <h1 style={titleStyle}>Poste de table · {sessionState.title}</h1>
           <p style={dekStyle}>
             {modeLabel(sessionState.mode)} · {statusLabel(sessionState.status)} · scene active :{' '}
-            {activeScene?.title ?? 'hors scene'}
+            {activeScene?.title ?? 'hors scène'}
           </p>
           <div style={badgeRowStyle}>
             <Badge tone="info">{session.metrics.activePlayers} joueurs actifs</Badge>
             <Badge tone={session.metrics.pendingDecisions > 0 ? 'warn' : 'success'}>
-              {session.metrics.pendingDecisions} decisions MJ
+              {session.metrics.pendingDecisions} décisions MJ
             </Badge>
-            <Badge tone="neutral">{session.metrics.events} entrees au journal</Badge>
+            <Badge tone="neutral">{session.metrics.events} entrées au journal</Badge>
           </div>
         </div>
 
@@ -76,16 +76,16 @@ export default function DashboardPage() {
             variant="secondary"
           >
             <ThemeIcon aria-hidden="true" style={iconStyle} />
-            {night ? 'Veillee' : 'Jour'}
+            {night ? 'Veillée' : 'Jour'}
           </Button>
           <Seal>Poste</Seal>
         </div>
       </header>
 
-      <section style={summaryGridStyle} aria-label="Etat de session">
+      <section style={summaryGridStyle} aria-label="État de session">
         <Card>
           <StatBlock
-            title="Etat de session"
+            title="État de session"
             items={session.summaryMetrics.map((metric) => ({
               label: metric.label,
               value: metric.value
@@ -168,11 +168,11 @@ export default function DashboardPage() {
         <Card>
           <div style={labelIconStyle}>
             <ScrollText aria-hidden="true" style={iconStyle} />
-            <Label>Scene active</Label>
+            <Label>Scène active</Label>
           </div>
-          <h2 style={sectionTitleStyle}>{activeScene?.title ?? 'Aucune scene ouverte'}</h2>
-          <p style={bodyCopyStyle}>{activeScene?.description ?? 'La session attend une scene.'}</p>
-          <p style={metaStyle}>{activeScene?.location ?? 'Hors scene'}</p>
+          <h2 style={sectionTitleStyle}>{activeScene?.title ?? 'Aucune scène ouverte'}</h2>
+          <p style={bodyCopyStyle}>{activeScene?.description ?? 'La session attend une scène.'}</p>
+          <p style={metaStyle}>{activeScene?.location ?? 'Hors scène'}</p>
         </Card>
 
         <Card>
@@ -189,7 +189,7 @@ export default function DashboardPage() {
         <div style={panelHeadStyle}>
           <div style={labelIconStyle}>
             <Newspaper aria-hidden="true" style={iconStyle} />
-            <Label>Journal recent</Label>
+            <Label>Journal récent</Label>
           </div>
           <Badge tone="neutral">#{session.recentEvents[0]?.sequence ?? 0}</Badge>
         </div>
