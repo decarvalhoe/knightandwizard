@@ -52,7 +52,7 @@ describe('session dashboard model', () => {
     });
     expect(view.nextActions).toEqual([
       {
-        detail: 'llm -> MJ humain',
+        detail: 'LLM -> MJ humain',
         id: 'decision-1',
         label: 'Valider la reaction du guetteur',
         tone: 'warn'

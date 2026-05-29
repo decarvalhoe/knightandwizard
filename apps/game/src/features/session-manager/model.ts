@@ -496,12 +496,23 @@ function diceEventDetail(event: SessionEvent): string {
   return parts.join(' · ');
 }
 
+// System actor ids that are not session players; humanised so the journal /
+// decision queue never shows a raw identifier (#257).
+const systemActorLabels: Record<string, string> = {
+  auto: 'Auto',
+  gm: 'MJ',
+  llm: 'LLM',
+  system: 'Système'
+};
+
 function actorName(state: SessionManagerState, actorId: string | undefined): string {
   if (!actorId) {
     return 'Système';
   }
 
-  return state.players.find((player) => player.id === actorId)?.name ?? actorId;
+  const player = state.players.find((candidate) => candidate.id === actorId);
+
+  return player?.name ?? systemActorLabels[actorId] ?? actorId;
 }
 
 function roleLabel(role: SessionPlayer['role']): string {

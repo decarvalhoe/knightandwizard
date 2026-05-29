@@ -160,6 +160,8 @@ describe('session manager model', () => {
       {
         id: 'decision-live',
         priority: 'high',
+        // The 'llm' actor is not a session player: it must be humanised, not raw.
+        requestedBy: 'LLM',
         title: 'Valider la consequence narrative'
       }
     ]);
