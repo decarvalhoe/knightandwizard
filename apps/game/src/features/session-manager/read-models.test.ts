@@ -96,6 +96,59 @@ describe('session manager read models', () => {
     expect(readModel.initialState.slug).toBe('brumeval');
     expect(readModel.initialState.events).toEqual([]);
   });
+
+  it('joins the current player identity before rendering the session', async () => {
+    process.env.API_BASE_URL = 'http://api.test';
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(jsonResponse(sessionSnapshot({ players: [] })))
+      .mockResolvedValueOnce(
+        jsonResponse({
+          session: sessionSnapshot({
+            players: [
+              {
+                characterId: 'pc-aveline',
+                connected: true,
+                id: 'player-aveline',
+                name: 'Aveline API',
+                role: 'player'
+              }
+            ]
+          }),
+          status: 'joined'
+        })
+      );
+    vi.stubGlobal('fetch', fetchMock);
+
+    const readModel = await getSessionManagerReadModel('brumeval', {
+      characterId: 'pc-aveline',
+      name: 'Aveline API',
+      playerId: 'player-aveline',
+      role: 'player'
+    });
+
+    expect(fetchMock).toHaveBeenNthCalledWith(2, 'http://api.test/sessions/brumeval/players', {
+      body: JSON.stringify({
+        characterId: 'pc-aveline',
+        name: 'Aveline API',
+        playerId: 'player-aveline',
+        role: 'player'
+      }),
+      cache: 'no-store',
+      headers: { 'content-type': 'application/json' },
+      method: 'POST'
+    });
+    expect(readModel.currentPlayerId).toBe('player-aveline');
+    expect(readModel.initialState.players).toEqual([
+      {
+        characterId: 'pc-aveline',
+        connected: true,
+        id: 'player-aveline',
+        name: 'Aveline API',
+        role: 'player'
+      }
+    ]);
+  });
 });
 
 function jsonResponse(body: unknown): Response {
@@ -103,6 +156,26 @@ function jsonResponse(body: unknown): Response {
     headers: { 'content-type': 'application/json' },
     status: 200
   });
+}
+
+function sessionSnapshot(input: { players: unknown[] }) {
+  return {
+    state: {
+      audit: [],
+      createdAt: '2026-05-26T10:00:00.000Z',
+      decisions: [],
+      events: [],
+      id: 'session-1',
+      metadata: {},
+      mode: 'digital_human_gm',
+      players: input.players,
+      scenes: [],
+      slug: 'brumeval',
+      status: 'active',
+      title: 'Brumeval',
+      updatedAt: '2026-05-26T10:00:00.000Z'
+    }
+  };
 }
 
 function restoreEnv(name: 'API_BASE_URL' | 'NEXT_PUBLIC_API_BASE_URL', value: string | undefined) {

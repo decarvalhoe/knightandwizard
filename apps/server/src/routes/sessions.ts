@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import type { FastifyInstance } from 'fastify';
 import {
   type SessionDecision,
@@ -56,6 +57,14 @@ interface RollbackRequestBody {
   targetSequence?: unknown;
 }
 
+interface JoinSessionPlayerRequestBody {
+  capability?: unknown;
+  characterId?: unknown;
+  name?: unknown;
+  playerId?: unknown;
+  role?: unknown;
+}
+
 interface SessionParams {
   slug: string;
 }
@@ -92,6 +101,7 @@ const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 export async function registerSessionRoutes(app: FastifyInstance): Promise<void> {
   app.options('/sessions', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug', async (_request, reply) => reply.code(204).send());
+  app.options('/sessions/:slug/players', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug/events', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug/decisions', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug/decisions/:decisionId/resolve', async (_request, reply) =>
@@ -234,6 +244,146 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
       await sql.end({ timeout: 5 });
     }
   });
+
+  app.post<{ Body: JoinSessionPlayerRequestBody; Params: SessionParams }>(
+    '/sessions/:slug/players',
+    async (request, reply) => {
+      const body = request.body ?? {};
+      const validation = validateJoinSessionPlayerBody(body);
+
+      if (!validation.valid) {
+        return reply.code(400).send({
+          errors: validation.errors,
+          status: 'invalid'
+        });
+      }
+
+      const sql = createSqlClient();
+      const playerId = (body.playerId as string).trim();
+      const name = (body.name as string).trim();
+      const role = (body.role as SessionPlayer['role']).trim() as SessionPlayer['role'];
+      const characterId = isNonEmptyString(body.characterId) ? body.characterId.trim() : undefined;
+      const capability = isNonEmptyString(body.capability) ? body.capability.trim() : randomUUID();
+      const now = new Date().toISOString();
+
+      try {
+        const result = await sql.begin(async (tx) => {
+          const sessionRows = await tx<SessionRow[]>`
+            SELECT id, slug, title, mode, status, metadata, created_at, updated_at
+            FROM game_sessions
+            WHERE slug = ${request.params.slug}
+            FOR UPDATE
+          `;
+          const session = sessionRows[0];
+
+          if (!session) {
+            return { status: 'not_found' as const };
+          }
+
+          if (characterId !== undefined) {
+            const characterRows = await tx<{ id: string }[]>`
+              SELECT id
+              FROM characters
+              WHERE id = ${characterId}
+            `;
+
+            if (characterRows.length === 0) {
+              return { status: 'character_not_found' as const };
+            }
+          }
+
+          const metadata = isRecord(session.metadata) ? { ...session.metadata } : {};
+          const player: SessionPlayer = {
+            connected: true,
+            id: playerId,
+            lastSeenAt: now,
+            name,
+            role
+          };
+
+          if (characterId !== undefined) {
+            player.characterId = characterId;
+          }
+
+          metadata.players = upsertSessionPlayer(toSessionPlayers(metadata.players) ?? [], player);
+          metadata.capabilities = {
+            ...toCapabilityMap(metadata.capabilities),
+            [playerId]: capability
+          };
+
+          const updatedRows = await tx<SessionRow[]>`
+            UPDATE game_sessions
+            SET
+              metadata = ${tx.json(metadata as postgres.JSONValue)}::jsonb,
+              updated_at = now()
+            WHERE id = ${session.id}
+            RETURNING id, slug, title, mode, status, metadata, created_at, updated_at
+          `;
+          const eventRows = await tx<SessionEventRow[]>`
+            SELECT id, session_id, sequence, event_type, actor_id, payload, created_at
+            FROM session_events
+            WHERE session_id = ${session.id}
+            ORDER BY sequence ASC
+          `;
+          const decisionRows = await tx<SessionDecisionRow[]>`
+            SELECT
+              id,
+              session_id,
+              title,
+              requested_by,
+              assigned_to,
+              priority,
+              status,
+              payload,
+              resolution,
+              created_at,
+              resolved_at,
+              updated_at
+            FROM session_decisions
+            WHERE session_id = ${session.id}
+            ORDER BY
+              CASE priority
+                WHEN 'urgent' THEN 4
+                WHEN 'high' THEN 3
+                WHEN 'normal' THEN 2
+                ELSE 1
+              END DESC,
+              created_at ASC
+          `;
+
+          return {
+            capability,
+            decisions: decisionRows,
+            events: eventRows,
+            player,
+            session: updatedRows[0]!,
+            status: 'joined' as const
+          };
+        });
+
+        if (result.status === 'not_found') {
+          return reply.code(404).send({ status: 'not_found' });
+        }
+
+        if (result.status === 'character_not_found') {
+          return reply.code(404).send({ status: 'character_not_found' });
+        }
+
+        return {
+          join: {
+            capability: result.capability,
+            href: buildJoinHref(request.params.slug, result.player.id, result.capability),
+            playerId: result.player.id
+          },
+          player: result.player,
+          session: toSessionResponse(result.session, result.events, result.decisions),
+          status: 'joined'
+        };
+      } finally {
+        await sql.end({ timeout: 5 });
+      }
+    }
+  );
 
   app.post<{ Body: AppendEventRequestBody; Params: SessionParams }>(
     '/sessions/:slug/events',
@@ -879,6 +1029,37 @@ function validateCreateSessionBody(body: CreateSessionRequestBody): ValidationRe
   return { errors, valid: errors.length === 0 };
 }
 
+function validateJoinSessionPlayerBody(body: JoinSessionPlayerRequestBody): ValidationResult {
+  const errors: string[] = [];
+  const role = isNonEmptyString(body.role) ? body.role.trim() : undefined;
+
+  if (!isNonEmptyString(body.playerId)) {
+    errors.push('playerId is required');
+  }
+
+  if (!isNonEmptyString(body.name)) {
+    errors.push('name is required');
+  }
+
+  if (role === undefined || !validControllerRoles.has(role)) {
+    errors.push('role is invalid');
+  }
+
+  if (role === 'player' && !isNonEmptyString(body.characterId)) {
+    errors.push('characterId is required for player role');
+  }
+
+  if (body.characterId !== undefined && !isNonEmptyString(body.characterId)) {
+    errors.push('characterId must be a non-empty string');
+  }
+
+  if (body.capability !== undefined && !isNonEmptyString(body.capability)) {
+    errors.push('capability must be a non-empty string');
+  }
+
+  return { errors, valid: errors.length === 0 };
+}
+
 function validateEventBody(body: AppendEventRequestBody): ValidationResult {
   const errors: string[] = [];
 
@@ -1086,6 +1267,34 @@ function attachLinks(
 
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0;
+}
+
+function upsertSessionPlayer(players: SessionPlayer[], player: SessionPlayer): SessionPlayer[] {
+  const existingIndex = players.findIndex((entry) => entry.id === player.id);
+
+  if (existingIndex === -1) {
+    return [...players, player];
+  }
+
+  return players.map((entry, index) => (index === existingIndex ? { ...entry, ...player } : entry));
+}
+
+function toCapabilityMap(value: unknown): Record<string, string> {
+  if (!isRecord(value)) {
+    return {};
+  }
+
+  return Object.fromEntries(
+    Object.entries(value).filter(
+      (entry): entry is [string, string] => isNonEmptyString(entry[0]) && isNonEmptyString(entry[1])
+    )
+  );
+}
+
+function buildJoinHref(slug: string, playerId: string, capability: string): string {
+  return `/session?slug=${encodeURIComponent(slug)}&player=${encodeURIComponent(
+    playerId
+  )}&capability=${encodeURIComponent(capability)}`;
 }
 
 function toSessionResponse(
