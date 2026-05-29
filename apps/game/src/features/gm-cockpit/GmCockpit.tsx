@@ -211,7 +211,7 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
                   <span className="block text-xs font-medium text-ink/55">
                     {decision.requestedBy}
                     {' -> '}
-                    {decision.assignedTo} · {decision.priority}
+                    {decision.assignedTo} · {decision.priorityLabel}
                   </span>
                 </li>
               ))

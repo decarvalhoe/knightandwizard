@@ -64,7 +64,10 @@ export interface SessionDecisionRow {
   assignedTo: string;
   createdAt: string;
   id: string;
+  /** Raw priority enum — kept for styling/sorting; never shown to users directly. */
   priority: SessionDecision['priority'];
+  /** Humanised priority shown in the UI (#257: no raw enum in visible copy). */
+  priorityLabel: string;
   requestedBy: string;
   title: string;
 }
@@ -159,6 +162,7 @@ export function buildSessionManagerView(state: SessionManagerState): SessionMana
       createdAt: decision.createdAt,
       id: decision.id,
       priority: decision.priority,
+      priorityLabel: priorityLabel(decision.priority),
       requestedBy: actorName(state, decision.requestedBy),
       title: decision.title
     })),
@@ -514,4 +518,15 @@ function roleLabel(role: SessionPlayer['role']): string {
   }
 
   return 'Joueur';
+}
+
+const priorityLabels: Record<SessionDecision['priority'], string> = {
+  high: 'Haute',
+  low: 'Basse',
+  normal: 'Normale',
+  urgent: 'Urgente'
+};
+
+function priorityLabel(priority: SessionDecision['priority']): string {
+  return priorityLabels[priority];
 }
