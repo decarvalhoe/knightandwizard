@@ -63,16 +63,24 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'night');
   });
 
-  test('mobile shell keeps core surfaces inside the viewport', async ({ page }, testInfo) => {
+  test('mobile shell keeps MVP surfaces inside the viewport', async ({ page }, testInfo) => {
     annotateCanonical(testInfo, 'dashboard');
 
     await page.setViewportSize({ width: 390, height: 844 });
 
+    // Every MVP surface (#257) must stay inside a 390px-wide phone viewport:
+    // the playable table loop (Poste, Session, Cockpit MJ, Combat) alongside the
+    // reference/character surfaces. No surface may force horizontal scroll.
     for (const route of [
+      '/',
       '/character',
       '/character/create',
+      '/session',
+      '/mj',
+      '/combat',
       '/atouts',
       '/bestiaire',
+      '/grimoire',
       '/cartulaire',
       '/greffe'
     ]) {
@@ -82,6 +90,45 @@ test.describe('K&W player and GM application flows', () => {
       );
 
       expect(overflowX, route + ' should not create horizontal scroll').toBeLessThanOrEqual(1);
+    }
+  });
+
+  test('MVP surfaces never leak internal enum tokens into visible copy', async ({
+    page
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'dashboard');
+
+    // Internal snake_case identifiers (session event types, session modes, the
+    // human_gm controller role) must always be humanised before display (#257:
+    // "aucun token interne visible hors logs/audit"). snake_case never appears in
+    // legitimate French UI copy, so any occurrence in visible text is a leak.
+    const forbiddenTokens = [
+      'scene_opened',
+      'player_action',
+      'dice_roll',
+      'gm_ruling',
+      'gm_decision_requested',
+      'gm_decision_resolved',
+      'rollback_requested',
+      'narrative_time_advanced',
+      'combat_ended',
+      'spell_cast',
+      'spell_dispelled',
+      'classic_table',
+      'digital_human_gm',
+      'digital_llm_gm',
+      'digital_auto_gm',
+      'multiplayer_no_gm',
+      'human_gm'
+    ];
+
+    for (const route of ['/', '/session', '/mj', '/combat', '/character']) {
+      await page.goto(route);
+      // Visible rendered text only (innerText excludes data-* attributes / aria).
+      const visibleText = await page.evaluate(() => document.body.innerText);
+      const leaked = forbiddenTokens.filter((token) => visibleText.includes(token));
+
+      expect(leaked, route + ' leaks internal tokens: ' + leaked.join(', ')).toEqual([]);
     }
   });
 
