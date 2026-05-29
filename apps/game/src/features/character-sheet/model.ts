@@ -156,6 +156,21 @@ export function buildInventory(input: {
   return items.filter((item): item is InventoryItem => item !== undefined);
 }
 
+export function filterEquipmentCatalog(
+  catalog: EquipmentCatalogEntry[],
+  query: string,
+  limit = 40
+): EquipmentCatalogEntry[] {
+  const normalizedQuery = normalizeSearchText(query);
+  const source = normalizedQuery
+    ? catalog.filter((entry) =>
+        normalizeSearchText(`${entry.name} ${entry.category}`).includes(normalizedQuery)
+      )
+    : catalog;
+
+  return source.slice(0, limit);
+}
+
 export function buildInventoryFromCharacterEquipment(
   equipment: CharacterEquipmentItem[],
   catalog: EquipmentCatalogEntry[]
@@ -346,7 +361,9 @@ export function buildCharacterSheetView(input: {
     levelProgression: calculateLevelProgression(input.character),
     mode: input.mode,
     predilections: buildPredilectionRows(input.character),
-    sections: sectionsByMode[input.mode].map((id) => ({ id, label: sectionLabels[id] })),
+    sections: sectionsByMode[input.mode]
+      .filter((id) => id !== 'grimoire' || shouldShowGrimoire(input.character, input.spells))
+      .map((id) => ({ id, label: sectionLabels[id] })),
     spellSummary: summarizeSpellSlots(input.character, input.spells),
     vitalityState: summarizeVitalityState(input.character.vitality)
   };
@@ -490,6 +507,10 @@ export function summarizeSpellSlots(character: Character, spells: SpellEntry[]):
   };
 }
 
+export function shouldShowGrimoire(character: Character, spells: SpellEntry[]): boolean {
+  return isMagicianCharacter(character) || spells.length > 0;
+}
+
 export function summarizeCreationBudget(character: Character): CreationBudgetSummary {
   const skillPointsSpent = sumEntryPoints(character.skills);
   const spellPoints = sumEntryPoints(character.spells);
@@ -548,6 +569,68 @@ export function skillTreeRows(
   return rows;
 }
 
+export function visibleSkillTreeRows(rows: SkillTreeRow[]): SkillTreeRow[] {
+  const rowsById = new Map(rows.map((row) => [row.id, row]));
+  const visibleIds = new Set(rows.filter((row) => row.points > 0).map((row) => row.id));
+
+  function visibleDepthFor(row: SkillTreeRow): number {
+    let depth = 0;
+    let parentId = row.parentId;
+    const visited = new Set<string>();
+
+    while (parentId && !visited.has(parentId)) {
+      visited.add(parentId);
+      const parent = rowsById.get(parentId);
+
+      if (!parent) {
+        break;
+      }
+
+      if (visibleIds.has(parent.id)) {
+        depth += 1;
+      }
+
+      parentId = parent.parentId;
+    }
+
+    return depth;
+  }
+
+  function implicitParentIdFor(row: SkillTreeRow): string | undefined {
+    if (row.implicitParentId) {
+      return row.implicitParentId;
+    }
+
+    let parentId = row.parentId;
+    const visited = new Set<string>();
+
+    while (parentId && !visited.has(parentId)) {
+      visited.add(parentId);
+      const parent = rowsById.get(parentId);
+
+      if (!parent) {
+        return parentId;
+      }
+
+      if (!visibleIds.has(parent.id)) {
+        return parent.id;
+      }
+
+      parentId = parent.parentId;
+    }
+
+    return undefined;
+  }
+
+  return rows
+    .filter((row) => visibleIds.has(row.id))
+    .map((row) => ({
+      ...row,
+      depth: visibleDepthFor(row),
+      implicitParentId: implicitParentIdFor(row)
+    }));
+}
+
 export function totalInventoryWeight(inventory: InventoryItem[]): number {
   return roundToTenth(
     inventory.reduce((total, item) => total + (item.weightKg ?? 0) * item.quantity, 0)
@@ -559,6 +642,14 @@ function normalizeInventoryItem(item: InventoryItem): InventoryItem {
     ...item,
     quantity: Math.max(1, item.quantity)
   };
+}
+
+function normalizeSearchText(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+    .trim();
 }
 
 function roundToTenth(value: number): number {

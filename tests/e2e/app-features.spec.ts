@@ -77,10 +77,14 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByRole('heading', { name: '9 aptitudes' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Compétences' })).toBeVisible();
     await expect(page.getByText('Niveau 1 · 24 / 40 points')).toBeVisible();
-    await expect(page.getByText('Cuisine', { exact: true })).toBeVisible();
-    await expect(page.getByText('Compétence implicite à 0').first()).toBeVisible();
+    await expect(page.getByText('7 compétences ou spécialisations notées.')).toBeVisible();
+    await expect(page.getByText('Cuisine', { exact: true })).toHaveCount(0);
+    await expect(page.getByText('Compétence implicite à 0')).toHaveCount(0);
+    await expect(page.getByText('Catalogue implicite')).toHaveCount(0);
     await expect(page.getByText('Cuisine corteganne')).toBeVisible();
-    await expect(page.getByText(/Catalogue implicite : \d+ entrées, 7 notées/)).toBeVisible();
+    await expect(page.getByText('Spécialisation, parent non noté : Cuisine')).toBeVisible();
+    await expect(page.getByText('consumable')).toHaveCount(0);
+    await expect(page.getByText('Consommable · 0 kg')).toBeVisible();
 
     await page.getByRole('button', { name: /Esthétisme/ }).click();
     await expect(page.getByTestId('last-roll-forced-failure')).toHaveText(

@@ -11,11 +11,14 @@ import {
   attributeRollOutcomeLabels,
   buildCharacterSheetView,
   buildInventoryFromCharacterEquipment,
+  filterEquipmentCatalog,
   removeInventoryItem,
   rollAttributeCheck,
+  shouldShowGrimoire,
   skillPoints,
   skillTreeRows,
   summarizeSpellSlots,
+  visibleSkillTreeRows,
   type InventoryItem,
   type SpellEntry
 } from './model.js';
@@ -46,6 +49,26 @@ describe('character sheet model', () => {
         (section) => section.id
       )
     ).toEqual(['identity', 'full-audit', 'gm-notes', 'gm-controls']);
+  });
+
+  it('hides the grimoire for non-magicians without known spells', () => {
+    const view = buildCharacterSheetView({
+      character: sampleCharacter(),
+      inventory: sampleInventory(),
+      mode: 'complete',
+      spells: []
+    });
+
+    expect(view.sections.map((section) => section.id)).toEqual([
+      'identity',
+      'resources',
+      'attributes',
+      'skills',
+      'inventory'
+    ]);
+    expect(shouldShowGrimoire(sampleCharacter(), [])).toBe(false);
+    expect(shouldShowGrimoire(sampleMagicianCharacter(), [])).toBe(true);
+    expect(shouldShowGrimoire(sampleCharacter(), sampleSpells())).toBe(true);
   });
 
   it('exposes level-point progression separately from creation skill distribution', () => {
@@ -215,6 +238,26 @@ describe('character sheet model', () => {
     ]);
   });
 
+  it('filters the equipment picker without rendering the full catalog at once', () => {
+    const catalog = [
+      { category: 'weapon' as const, id: 'epee_batarde', name: 'Épée bâtarde' },
+      { category: 'weapon' as const, id: 'arc_long', name: 'Arc long' },
+      { category: 'shield' as const, id: 'bouclier_bois', name: 'Bouclier (bois)' },
+      { category: 'consumable' as const, id: 'potion_soin', name: 'Potion de Soin' }
+    ];
+
+    expect(filterEquipmentCatalog(catalog, '', 2).map((entry) => entry.id)).toEqual([
+      'epee_batarde',
+      'arc_long'
+    ]);
+    expect(filterEquipmentCatalog(catalog, 'epee').map((entry) => entry.id)).toEqual([
+      'epee_batarde'
+    ]);
+    expect(filterEquipmentCatalog(catalog, 'potion').map((entry) => entry.id)).toEqual([
+      'potion_soin'
+    ]);
+  });
+
   it('adds and removes inventory quantities without duplicating item rows', () => {
     const inventory = sampleInventory();
     const next = addInventoryItem(inventory, {
@@ -281,6 +324,31 @@ describe('character sheet model', () => {
       ['cuisine', 0, 0, true, 'Cuisine'],
       ['cuisine-corteganne', 2, 1, false, 'Cuisine corteganne'],
       ['cuisine-alterienne', 0, 1, true, 'Cuisine altérienne']
+    ]);
+  });
+
+  it('hides zero score skills from sheet display while preserving orphan specializations', () => {
+    const rows = skillTreeRows(
+      [
+        { id: 'combat', isMain: true, points: 4 },
+        { id: 'combat-parade', parentId: 'combat', points: 2 },
+        { id: 'cuisine-corteganne', parentId: 'cuisine', points: 2 }
+      ],
+      [
+        { id: 'combat', label: 'Combat' },
+        { id: 'combat-parade', label: 'Parade', parentId: 'combat' },
+        { id: 'cuisine', label: 'Cuisine' },
+        { id: 'cuisine-corteganne', label: 'Cuisine corteganne', parentId: 'cuisine' },
+        { id: 'cuisine-alterienne', label: 'Cuisine altérienne', parentId: 'cuisine' }
+      ]
+    );
+
+    expect(
+      visibleSkillTreeRows(rows).map((row) => [row.id, row.points, row.depth, row.implicitParentId])
+    ).toEqual([
+      ['combat', 4, 0, undefined],
+      ['combat-parade', 2, 1, undefined],
+      ['cuisine-corteganne', 2, 0, 'cuisine']
     ]);
   });
 
