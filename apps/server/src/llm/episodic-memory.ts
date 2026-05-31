@@ -1,5 +1,10 @@
 import type { SqlClient } from '../db/client.js';
 import { createSqlClient } from '../db/client.js';
+import {
+  createDefaultEmbeddingProvider,
+  toVectorLiteral,
+  type EmbeddingProvider
+} from '../knowledge/repository.js';
 import type postgres from 'postgres';
 
 export type GmMemoryProvenanceType = 'canonical_lore' | 'hypothesis' | 'session_fact';
@@ -43,6 +48,10 @@ export interface EpisodicMemoryStore {
   record(input: GmMemoryInput): Promise<GmMemoryEntry | undefined>;
 }
 
+export interface GmMemoryPersistenceOptions {
+  embeddingProvider?: EmbeddingProvider;
+}
+
 interface GmMemoryRow {
   id: string;
   importance: number;
@@ -56,13 +65,23 @@ interface GmMemoryRow {
   summary: string;
 }
 
+interface GmMemoryVectorRow extends GmMemoryRow {
+  score: number | string;
+}
+
 const DEFAULT_RECALL_LIMIT = 5;
 
-export async function recordGmMemory(sql: SqlClient, input: GmMemoryInput): Promise<GmMemoryEntry> {
+export async function recordGmMemory(
+  sql: SqlClient,
+  input: GmMemoryInput,
+  options: GmMemoryPersistenceOptions = {}
+): Promise<GmMemoryEntry> {
   const provenanceType = input.provenanceType ?? 'session_fact';
   const source = input.source ?? 'game-master';
 
   assertMemoryProvenance({ provenanceType, source });
+
+  const embedding = await buildMemoryVectorLiteral(input, options);
 
   const rows = await sql<GmMemoryRow[]>`
     INSERT INTO gm_memories (
@@ -74,6 +93,7 @@ export async function recordGmMemory(sql: SqlClient, input: GmMemoryInput): Prom
       importance,
       source,
       payload,
+      embedding,
       occurred_at
     )
     VALUES (
@@ -85,6 +105,7 @@ export async function recordGmMemory(sql: SqlClient, input: GmMemoryInput): Prom
       ${input.importance ?? 1},
       ${source},
       ${sql.json((input.payload ?? {}) as postgres.JSONValue)}::jsonb,
+      ${embedding}::vector,
       ${input.occurredAt ?? new Date()}
     )
     RETURNING id, session_key, memory_kind, provenance_type, subject, summary, importance, source, payload, occurred_at
@@ -100,12 +121,22 @@ export async function recordGmMemory(sql: SqlClient, input: GmMemoryInput): Prom
 
 export async function searchGmMemories(
   sql: SqlClient,
-  input: GmMemoryRecallInput
+  input: GmMemoryRecallInput,
+  options: GmMemoryPersistenceOptions = {}
 ): Promise<GmMemoryEntry[]> {
   const limit = input.limit ?? DEFAULT_RECALL_LIMIT;
   const tokens = significantTokens(input.query);
   const provenanceTypes =
     input.provenanceTypes === undefined ? undefined : new Set(input.provenanceTypes);
+
+  if (input.query.trim().length > 0) {
+    const vectorMatches = await searchVectorGmMemories(sql, input, options, provenanceTypes, limit);
+
+    if (vectorMatches.length > 0) {
+      return vectorMatches;
+    }
+  }
+
   const rows = await sql<GmMemoryRow[]>`
     SELECT id, session_key, memory_kind, provenance_type, subject, summary, importance, source, payload, occurred_at
     FROM gm_memories
@@ -148,7 +179,10 @@ export async function searchGmMemories(
     .slice(0, limit);
 }
 
-export function createDatabaseEpisodicMemoryStore(sql?: SqlClient): EpisodicMemoryStore {
+export function createDatabaseEpisodicMemoryStore(
+  sql?: SqlClient,
+  options: GmMemoryPersistenceOptions = {}
+): EpisodicMemoryStore {
   const client = sql ?? createSqlClient();
   const shouldCloseClient = sql === undefined;
 
@@ -159,10 +193,10 @@ export function createDatabaseEpisodicMemoryStore(sql?: SqlClient): EpisodicMemo
       }
     },
     recall(input) {
-      return searchGmMemories(client, input);
+      return searchGmMemories(client, input, options);
     },
     record(input) {
-      return recordGmMemory(client, input);
+      return recordGmMemory(client, input, options);
     }
   };
 }
@@ -197,6 +231,79 @@ function isCanonicalMemorySource(source: string): boolean {
     source.startsWith('rule:') ||
     source.startsWith('source:')
   );
+}
+
+async function searchVectorGmMemories(
+  sql: SqlClient,
+  input: GmMemoryRecallInput,
+  options: GmMemoryPersistenceOptions,
+  provenanceTypes: Set<GmMemoryProvenanceType> | undefined,
+  limit: number
+): Promise<GmMemoryEntry[]> {
+  const vector = await buildQueryVectorLiteral(input.query, options);
+
+  if (vector === undefined) {
+    return [];
+  }
+
+  const rows = await sql<GmMemoryVectorRow[]>`
+    SELECT
+      id,
+      session_key,
+      memory_kind,
+      provenance_type,
+      subject,
+      summary,
+      importance,
+      source,
+      payload,
+      occurred_at,
+      1 - (embedding <=> ${vector}::vector) AS score
+    FROM gm_memories
+    WHERE session_key = ${input.sessionKey}
+      AND embedding IS NOT NULL
+    ORDER BY embedding <=> ${vector}::vector
+    LIMIT 200
+  `;
+  const scopedRows =
+    provenanceTypes === undefined
+      ? rows
+      : rows.filter((row) => provenanceTypes.has(row.provenance_type));
+
+  return scopedRows.slice(0, limit).map((row) => ({
+    ...toMemoryEntry(row),
+    score: Number(row.score)
+  }));
+}
+
+async function buildMemoryVectorLiteral(
+  input: GmMemoryInput,
+  options: GmMemoryPersistenceOptions
+): Promise<string | null> {
+  return (
+    (await buildVectorLiteral(`${input.subject}\n${input.summary}`, options.embeddingProvider)) ??
+    null
+  );
+}
+
+async function buildQueryVectorLiteral(
+  query: string,
+  options: GmMemoryPersistenceOptions
+): Promise<string | undefined> {
+  return buildVectorLiteral(query, options.embeddingProvider);
+}
+
+async function buildVectorLiteral(
+  text: string,
+  embeddingProvider: EmbeddingProvider | undefined
+): Promise<string | undefined> {
+  const provider = embeddingProvider ?? createDefaultEmbeddingProvider();
+
+  try {
+    return toVectorLiteral(await provider.embed(text));
+  } catch {
+    return undefined;
+  }
 }
 
 function toMemoryEntry(row: GmMemoryRow): GmMemoryEntry {

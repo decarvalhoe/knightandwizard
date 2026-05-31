@@ -325,6 +325,7 @@ export const gmMemories = pgTable(
       .$type<Record<string, unknown>>()
       .notNull()
       .default(sql`'{}'::jsonb`),
+    embedding: vector('embedding'),
     occurredAt: timestamp('occurred_at', { withTimezone: true }).notNull().defaultNow(),
     createdAt: now(),
     updatedAt: updatedNow()

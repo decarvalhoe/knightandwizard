@@ -35,16 +35,16 @@ describe('database schema', () => {
     }
   });
 
-  it('stores GM memory provenance columns', async () => {
+  it('stores GM memory provenance and embedding columns', async () => {
     const rows = await sql<{ column_name: string }[]>`
       SELECT column_name
       FROM information_schema.columns
       WHERE table_schema = 'public'
         AND table_name = 'gm_memories'
-        AND column_name = 'provenance_type'
+        AND column_name IN ('embedding', 'provenance_type')
     `;
 
-    expect(rows).toEqual([{ column_name: 'provenance_type' }]);
+    expect(rows.map((row) => row.column_name).sort()).toEqual(['embedding', 'provenance_type']);
   });
 
   it('stores knowledge source metadata columns', async () => {
