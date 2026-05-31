@@ -229,6 +229,116 @@ describe('game master Mastra runtime', () => {
       })
     ]);
   });
+
+  it('delegates narration to agent.generate when the Mastra provider is enabled', async () => {
+    const prompts: string[] = [];
+    const result = await describeSceneWithGameMaster(
+      {
+        sceneDescription: 'Aveline negocie avec le capitaine a la porte nord.',
+        sessionId: 'session-agent-generate',
+        roll: {
+          difficulty: 7,
+          pool: 2,
+          reason: 'Convaincre le capitaine'
+        }
+      },
+      {
+        agentInvoker: {
+          generate: async (_agent, prompt) => {
+            prompts.push(prompt);
+            return 'Le capitaine hesite, puis laisse Aveline parler sous condition. [1]';
+          }
+        },
+        episodicMemoryStore: {
+          recall: async () => [
+            {
+              id: 'memory-captain',
+              importance: 3,
+              kind: 'npc_encounter',
+              occurredAt: '2026-04-30T19:00:00.000Z',
+              payload: {},
+              provenanceType: 'session_fact',
+              score: 1.8,
+              sessionKey: 'session-agent-generate',
+              source: 'test',
+              subject: 'Capitaine Orlan',
+              summary: 'Le capitaine Orlan se mefie des voyageurs armes.'
+            }
+          ],
+          record: async () => undefined
+        },
+        knowledgeRetriever: {
+          searchRules: async () => [
+            {
+              citation: 'docs/rules/13-arbitrage.md > Autorite MJ',
+              heading: 'Autorite MJ',
+              id: 'chunk-authority',
+              rank: 1,
+              score: 0.88,
+              sourceKind: 'rule_markdown',
+              sourcePath: 'docs/rules/13-arbitrage.md',
+              metadata: {
+                catalog_ids: [],
+                chunk_hash: 'c'.repeat(64),
+                chunk_index: 0,
+                contains: [],
+                domain: 'D13-arbitrage',
+                domains: ['D13-arbitrage'],
+                ingested_at: 'test',
+                priority: 100,
+                source_hash: 'd'.repeat(64),
+                source_path: 'docs/rules/13-arbitrage.md',
+                source_status: 'active',
+                source_type: 'canonical_rule',
+                unit_ids: []
+              },
+              text: 'Le MJ humain conserve l autorite finale sur les decisions de table.'
+            }
+          ]
+        },
+        provider: 'mastra-agent',
+        randomInteger: scriptedRolls([7, 9])
+      }
+    );
+
+    expect(result.provider).toBe('mastra-agent');
+    expect(result.narration).toBe(
+      'Le capitaine hesite, puis laisse Aveline parler sous condition. [1]'
+    );
+    expect(prompts).toHaveLength(1);
+    expect(prompts[0]).toContain('Aveline negocie avec le capitaine');
+    expect(prompts[0]).toContain('docs/rules/13-arbitrage.md > Autorite MJ');
+    expect(prompts[0]).toContain('Capitaine Orlan');
+    expect(prompts[0]).toContain('2 succes');
+  });
+
+  it('falls back to deterministic narration when agent.generate fails', async () => {
+    const result = await describeSceneWithGameMaster(
+      {
+        sceneDescription: 'La patrouille ferme la herse.',
+        sessionId: 'session-agent-fallback'
+      },
+      {
+        agentInvoker: {
+          generate: async () => {
+            throw new Error('model unavailable');
+          }
+        },
+        episodicMemoryStore: {
+          recall: async () => [],
+          record: async () => undefined
+        },
+        knowledgeRetriever: {
+          searchRules: async () => []
+        },
+        provider: 'mastra-agent'
+      }
+    );
+
+    expect(result.provider).toBe('deterministic-dev');
+    expect(result.generationError).toBe('model unavailable');
+    expect(result.narration).toContain('La patrouille ferme la herse.');
+  });
 });
 
 function scriptedRolls(values: number[]) {
