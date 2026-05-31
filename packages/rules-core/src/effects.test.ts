@@ -5,6 +5,7 @@ import {
   computeEffectiveModifiers,
   createEffectUseLedger,
   effectiveAttribute,
+  getEffectMjValidationStatus,
   getEffectUseStatus,
   recordEffectUse,
   resetEffectUseLedgerForDay,
@@ -239,6 +240,72 @@ describe('effect modifier engine', () => {
     expect(
       getEffectUseStatus(limited, used, { characterId: 'aveline', day: 'jour-2' }).allowed
     ).toBe(true);
+  });
+
+  it('gates MJ-validated activity effects unless their source ref is approved', () => {
+    const guarded = effect({
+      target: 'difficulty',
+      scope: 'attaque',
+      op: 'sub',
+      value: 5,
+      activation: 'active',
+      duration: 'ephemeral',
+      condition: {
+        aptitude: 'perception',
+        directness: 'direct_only',
+        intent: 'sauvegarder',
+        target_disposition: 'enemy',
+        target_tag: 'magicien'
+      },
+      requires_mj_validation: true
+    });
+
+    expect(getEffectMjValidationStatus(guarded)).toEqual({
+      required: true,
+      satisfied: false,
+      sourceRef: 'fixture:effect'
+    });
+
+    const unvalidated = computeEffectiveModifiers([guarded], {
+      activations: ['active'],
+      aptitude: 'perception',
+      directness: 'direct_only',
+      intent: 'sauvegarder',
+      target_disposition: 'enemy',
+      target_tag: ['magicien']
+    });
+    expect(unvalidated.difficulty).toEqual({});
+
+    const validated = computeEffectiveModifiers([guarded], {
+      activations: ['active'],
+      aptitude: 'perception',
+      directness: 'direct_only',
+      intent: 'sauvegarder',
+      target_disposition: 'enemy',
+      target_tag: ['magicien'],
+      validatedEffectRefs: ['fixture:effect']
+    });
+    expect(validated.difficulty.attaque.sub).toBe(5);
+  });
+
+  it('lets tables disable the global MJ validation gate explicitly', () => {
+    const guarded = effect({
+      target: 'pool',
+      op: 'add',
+      value: 1,
+      requires_mj_validation: true
+    });
+
+    expect(getEffectMjValidationStatus(guarded, { requireMjValidation: false })).toMatchObject({
+      required: false,
+      satisfied: true
+    });
+
+    const modifiers = computeEffectiveModifiers([guarded], {
+      requireMjValidation: false
+    });
+
+    expect(modifiers.pool.__global__.add).toBe(1);
   });
 });
 

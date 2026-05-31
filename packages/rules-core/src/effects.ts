@@ -50,7 +50,9 @@ export type EffectApplicationContext = EffectConditionContext &
     characterId?: string;
     currentDay?: string;
     dailyUses?: EffectUseLedger;
+    requireMjValidation?: boolean;
     statusRegistry?: CompositeStatusRegistry;
+    validatedEffectRefs?: readonly string[];
   };
 
 export interface EffectModifierApplication {
@@ -121,6 +123,12 @@ export interface RecordEffectUseResult {
   ledger: EffectUseLedger;
   recorded: boolean;
   status: EffectUseStatus;
+}
+
+export interface EffectMjValidationStatus {
+  required: boolean;
+  satisfied: boolean;
+  sourceRef: string;
 }
 
 export function createEffectUseLedger(day: string): EffectUseLedger {
@@ -216,6 +224,30 @@ export function recordEffectUse(
     ledger: nextLedger,
     recorded: true,
     status: getEffectUseStatus(effect, nextLedger, { ...options, day })
+  };
+}
+
+export function getEffectMjValidationStatus(
+  effect: EffectModel,
+  ctx: Pick<EffectApplicationContext, 'requireMjValidation' | 'validatedEffectRefs'> = {}
+): EffectMjValidationStatus {
+  const parsed = parseEffectModel(effect);
+  const required = parsed.spec.requires_mj_validation === true && ctx.requireMjValidation !== false;
+
+  if (!required) {
+    return {
+      required: false,
+      satisfied: true,
+      sourceRef: parsed.source.ref
+    };
+  }
+
+  const satisfied = ctx.validatedEffectRefs?.includes(parsed.source.ref) ?? false;
+
+  return {
+    required,
+    satisfied,
+    sourceRef: parsed.source.ref
   };
 }
 
@@ -322,8 +354,13 @@ function isEffectActive(effect: EffectModel, ctx: EffectApplicationContext): boo
     matchesCondition(spec.condition, ctx) &&
     isActivationActive(spec.activation, ctx) &&
     isDurationActive(spec.duration, ctx) &&
+    isMjValidationSatisfied(effect, ctx) &&
     isDailyUseAvailable(effect, ctx)
   );
+}
+
+function isMjValidationSatisfied(effect: EffectModel, ctx: EffectApplicationContext): boolean {
+  return getEffectMjValidationStatus(effect, ctx).satisfied;
 }
 
 function isDailyUseAvailable(effect: EffectModel, ctx: EffectApplicationContext): boolean {
