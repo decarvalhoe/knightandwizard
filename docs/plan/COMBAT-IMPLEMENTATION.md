@@ -86,14 +86,14 @@ _(Les sorts-en-combat (R-9.31) sont passés en MVP et livrés via M2 — voir `M
 
 ### Atouts / effets / statuts
 
-| Règle                              | Objet                       | Périmètre      | Statut | Emplacement / écart                                                            |
-| ---------------------------------- | --------------------------- | -------------- | ------ | ------------------------------------------------------------------------------ |
-| EffectModel                        | cadre source/spec/render    | —              | ✅     | `effect-model.ts`, `effects.ts`, renderer                                      |
-| 88 specs atouts classe/orientation | modificateurs d'action      | V2             | ❌     | cadre prêt, **specs non encodées**                                             |
-| `target:'damage'`                  | bonus dégâts d'atout/sort   | MVP            | ✅     | `combat.ts` `damageModifiersFromEffects` consomme `target:'damage'` (#137)     |
-| `requires_mj_validation`           | garde/juste-cause/méfait…   | MVP            | 🟡     | flag présent ; flux d'arbitrage ❌                                             |
-| prédilection (slots)               | arme/instrument/monture/…   | —              | ✅     | `predilection.ts`                                                              |
-| R-9.27                             | catalogue d'états tactiques | **MVP** (base) | 🟡     | 4 statuts nus ; `fou_furieux` ✅ ; **modificateurs/immunités/interactions ❌** |
+| Règle                              | Objet                       | Périmètre      | Statut | Emplacement / écart                                                                                                          |
+| ---------------------------------- | --------------------------- | -------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| EffectModel                        | cadre source/spec/render    | —              | ✅     | `effect-model.ts`, `effects.ts`, renderer                                                                                    |
+| 88 specs atouts classe/orientation | modificateurs d'action      | V2             | ❌     | cadre prêt, **specs non encodées**                                                                                           |
+| `target:'damage'`                  | bonus dégâts d'atout/sort   | MVP            | ✅     | `combat.ts` `damageModifiersFromEffects` consomme `target:'damage'` (#137)                                                   |
+| `requires_mj_validation`           | garde/juste-cause/méfait…   | MVP            | 🟡     | flag présent ; flux d'arbitrage ❌                                                                                           |
+| prédilection (slots)               | arme/instrument/monture/…   | —              | ✅     | `predilection.ts`                                                                                                            |
+| R-9.27                             | catalogue d'états tactiques | **MVP** (base) | 🟡     | registre rules-core R-9.27 : 34 états + modificateurs/immunités/interactions de base ✅ ; catalogue vivant/API/UI stricts ❌ |
 
 ### Portée / allonge / recharge
 
