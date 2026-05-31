@@ -65,9 +65,21 @@ interface JoinSessionPlayerRequestBody {
   role?: unknown;
 }
 
+interface UpsertSessionSceneRequestBody {
+  description?: unknown;
+  location?: unknown;
+  npcIds?: unknown;
+  openedAtSequence?: unknown;
+  sceneId?: unknown;
+  status?: unknown;
+  title?: unknown;
+}
+
 interface SessionParams {
   slug: string;
 }
+
+type SessionSql = postgres.Sql | postgres.TransactionSql;
 
 interface DecisionParams extends SessionParams {
   decisionId: string;
@@ -102,6 +114,7 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
   app.options('/sessions', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug/players', async (_request, reply) => reply.code(204).send());
+  app.options('/sessions/:slug/scenes', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug/events', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug/decisions', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug/decisions/:decisionId/resolve', async (_request, reply) =>
@@ -169,24 +182,50 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
     }
 
     const sql = createSqlClient();
-    const metadata = body.metadata === undefined ? {} : (body.metadata as Record<string, unknown>);
+    const initial = splitSessionMetadata(
+      body.metadata === undefined ? {} : (body.metadata as Record<string, unknown>)
+    );
     const mode = typeof body.mode === 'string' ? body.mode : 'classic_table';
     const status = typeof body.status === 'string' ? body.status : 'planned';
 
     try {
-      const rows = await sql<SessionRow[]>`
-        INSERT INTO game_sessions (slug, title, mode, status, metadata)
-        VALUES (
-          ${body.slug as string},
-          ${body.title as string},
-          ${mode},
-          ${status},
-          ${sql.json(metadata as postgres.JSONValue)}::jsonb
-        )
-        RETURNING id, slug, title, mode, status, metadata, created_at, updated_at
-      `;
+      const result = await sql.begin(async (tx) => {
+        const rows = await tx<SessionRow[]>`
+          INSERT INTO game_sessions (slug, title, mode, status, metadata)
+          VALUES (
+            ${body.slug as string},
+            ${body.title as string},
+            ${mode},
+            ${status},
+            ${tx.json(initial.metadata as postgres.JSONValue)}::jsonb
+          )
+          RETURNING id, slug, title, mode, status, metadata, created_at, updated_at
+        `;
+        const session = rows[0]!;
 
-      return reply.code(201).send(toSessionResponse(rows[0]!, [], []));
+        for (const player of initial.players ?? []) {
+          await upsertSessionPlayerRow(tx, session.id, {
+            ...player,
+            capability: randomUUID(),
+            connected: player.connected ?? false,
+            lastSeenAt: player.lastSeenAt
+          });
+        }
+
+        for (const scene of initial.scenes ?? []) {
+          await upsertSessionSceneRow(tx, session.id, scene);
+        }
+
+        return {
+          players: await selectSessionPlayers(tx, session.id),
+          scenes: await selectSessionScenes(tx, session.id),
+          session
+        };
+      });
+
+      return reply
+        .code(201)
+        .send(toSessionResponse(result.session, [], [], result.players, result.scenes));
     } finally {
       await sql.end({ timeout: 5 });
     }
@@ -238,8 +277,10 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
           END DESC,
           created_at ASC
       `;
+      const playerRows = await selectSessionPlayers(sql, session.id);
+      const sceneRows = await selectSessionScenes(sql, session.id);
 
-      return toSessionResponse(session, eventRows, decisionRows);
+      return toSessionResponse(session, eventRows, decisionRows, playerRows, sceneRows);
     } finally {
       await sql.end({ timeout: 5 });
     }
@@ -292,7 +333,6 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             }
           }
 
-          const metadata = isRecord(session.metadata) ? { ...session.metadata } : {};
           const player: SessionPlayer = {
             connected: true,
             id: playerId,
@@ -305,17 +345,13 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             player.characterId = characterId;
           }
 
-          metadata.players = upsertSessionPlayer(toSessionPlayers(metadata.players) ?? [], player);
-          metadata.capabilities = {
-            ...toCapabilityMap(metadata.capabilities),
-            [playerId]: capability
-          };
-
+          const persistedPlayer = await upsertSessionPlayerRow(tx, session.id, {
+            ...player,
+            capability
+          });
           const updatedRows = await tx<SessionRow[]>`
             UPDATE game_sessions
-            SET
-              metadata = ${tx.json(metadata as postgres.JSONValue)}::jsonb,
-              updated_at = now()
+            SET updated_at = now()
             WHERE id = ${session.id}
             RETURNING id, slug, title, mode, status, metadata, created_at, updated_at
           `;
@@ -355,7 +391,9 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             capability,
             decisions: decisionRows,
             events: eventRows,
-            player,
+            player: persistedPlayer,
+            players: await selectSessionPlayers(tx, session.id),
+            scenes: await selectSessionScenes(tx, session.id),
             session: updatedRows[0]!,
             status: 'joined' as const
           };
@@ -376,8 +414,134 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             playerId: result.player.id
           },
           player: result.player,
-          session: toSessionResponse(result.session, result.events, result.decisions),
+          session: toSessionResponse(
+            result.session,
+            result.events,
+            result.decisions,
+            result.players,
+            result.scenes
+          ),
           status: 'joined'
+        };
+      } finally {
+        await sql.end({ timeout: 5 });
+      }
+    }
+  );
+
+  app.post<{ Body: UpsertSessionSceneRequestBody; Params: SessionParams }>(
+    '/sessions/:slug/scenes',
+    async (request, reply) => {
+      const body = request.body ?? {};
+      const validation = validateUpsertSessionSceneBody(body);
+
+      if (!validation.valid) {
+        return reply.code(400).send({
+          errors: validation.errors,
+          status: 'invalid'
+        });
+      }
+
+      const sql = createSqlClient();
+      const scene = validation.scene!;
+
+      try {
+        const result = await sql.begin(async (tx) => {
+          const sessionRows = await tx<SessionRow[]>`
+            SELECT id, slug, title, mode, status, metadata, created_at, updated_at
+            FROM game_sessions
+            WHERE slug = ${request.params.slug}
+            FOR UPDATE
+          `;
+          const session = sessionRows[0];
+
+          if (!session) {
+            return { status: 'not_found' as const };
+          }
+
+          const persistedScene = await upsertSessionSceneRow(tx, session.id, scene);
+          const updatedRows = await tx<SessionRow[]>`
+            UPDATE game_sessions
+            SET updated_at = now()
+            WHERE id = ${session.id}
+            RETURNING id, slug, title, mode, status, metadata, created_at, updated_at
+          `;
+          await tx`
+            INSERT INTO audit_events (actor_id, action, entity_type, entity_id, payload)
+            VALUES (
+              null,
+              'session.scene.upserted',
+              'session_scene',
+              ${persistedScene.id},
+              ${tx.json({
+                sceneId: persistedScene.scene_id,
+                sessionId: session.id
+              } as postgres.JSONValue)}::jsonb
+            )
+          `;
+          const eventRows = await tx<SessionEventRow[]>`
+            SELECT id, session_id, sequence, event_type, actor_id, payload, created_at
+            FROM session_events
+            WHERE session_id = ${session.id}
+            ORDER BY sequence ASC
+          `;
+          const decisionRows = await tx<SessionDecisionRow[]>`
+            SELECT
+              id,
+              session_id,
+              title,
+              requested_by,
+              assigned_to,
+              priority,
+              status,
+              payload,
+              resolution,
+              created_at,
+              resolved_at,
+              updated_at
+            FROM session_decisions
+            WHERE session_id = ${session.id}
+            ORDER BY
+              CASE priority
+                WHEN 'urgent' THEN 4
+                WHEN 'high' THEN 3
+                WHEN 'normal' THEN 2
+                ELSE 1
+              END DESC,
+              created_at ASC
+          `;
+
+          return {
+            decisions: decisionRows,
+            events: eventRows,
+            players: await selectSessionPlayers(tx, session.id),
+            scene: persistedScene,
+            scenes: await selectSessionScenes(tx, session.id),
+            session: updatedRows[0]!,
+            status: 'upserted' as const
+          };
+        });
+
+        if (result.status === 'not_found') {
+          return reply.code(404).send({ status: 'not_found' });
+        }
+
+        sessionHub.broadcast(request.params.slug, {
+          kind: 'session.scene',
+          scene: toSessionSceneResponse(result.scene),
+          slug: request.params.slug
+        });
+
+        return {
+          scene: toSessionSceneResponse(result.scene),
+          session: toSessionResponse(
+            result.session,
+            result.events,
+            result.decisions,
+            result.players,
+            result.scenes
+          ),
+          status: 'upserted'
         };
       } finally {
         await sql.end({ timeout: 5 });
@@ -914,6 +1078,8 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             decisionRows,
             event: eventRows[0]!,
             fullEventRows,
+            playerRows: await selectSessionPlayers(tx, session.id),
+            sceneRows: await selectSessionScenes(tx, session.id),
             session,
             status: 'created' as const,
             targetSequence: target.sequence
@@ -937,7 +1103,9 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
         const priorState = buildSessionState(
           result.session,
           result.fullEventRows,
-          result.decisionRows
+          result.decisionRows,
+          result.playerRows,
+          result.sceneRows
         );
         const revertedState = revertSessionToSequence(priorState, result.targetSequence);
 
@@ -965,6 +1133,34 @@ interface SessionRow {
   metadata: Record<string, unknown>;
   mode: string;
   slug: string;
+  status: string;
+  title: string;
+  updated_at: Date | string;
+}
+
+interface SessionPlayerRow {
+  capability: string;
+  character_id: null | string;
+  connected: boolean;
+  created_at: Date | string;
+  id: string;
+  last_seen_at: Date | null | string;
+  name: string;
+  player_id: string;
+  role: string;
+  session_id: string;
+  updated_at: Date | string;
+}
+
+interface SessionSceneRow {
+  created_at: Date | string;
+  description: null | string;
+  id: string;
+  location: string;
+  npc_ids: string[];
+  opened_at_sequence: null | number;
+  scene_id: string;
+  session_id: string;
   status: string;
   title: string;
   updated_at: Date | string;
@@ -1058,6 +1254,83 @@ function validateJoinSessionPlayerBody(body: JoinSessionPlayerRequestBody): Vali
   }
 
   return { errors, valid: errors.length === 0 };
+}
+
+function validateUpsertSessionSceneBody(
+  body: UpsertSessionSceneRequestBody
+): ValidationResult & { scene?: SessionScene } {
+  const errors: string[] = [];
+  const sceneId = isNonEmptyString(body.sceneId) ? body.sceneId.trim() : undefined;
+  const location = isNonEmptyString(body.location) ? body.location.trim() : undefined;
+  const title = isNonEmptyString(body.title) ? body.title.trim() : location;
+  const status =
+    body.status === 'active' || body.status === 'closed' || body.status === 'draft'
+      ? body.status
+      : body.status === undefined
+        ? 'draft'
+        : undefined;
+  const openedAtSequence =
+    typeof body.openedAtSequence === 'number' && Number.isInteger(body.openedAtSequence)
+      ? body.openedAtSequence
+      : undefined;
+
+  if (sceneId === undefined) {
+    errors.push('sceneId is required');
+  }
+
+  if (location === undefined) {
+    errors.push('location is required');
+  }
+
+  if (title === undefined) {
+    errors.push('title is required');
+  }
+
+  if (status === undefined) {
+    errors.push('status is invalid');
+  }
+
+  if (
+    body.openedAtSequence !== undefined &&
+    (openedAtSequence === undefined || openedAtSequence < 1)
+  ) {
+    errors.push('openedAtSequence must be a positive integer');
+  }
+
+  if (
+    body.npcIds !== undefined &&
+    (!Array.isArray(body.npcIds) || !body.npcIds.every(isNonEmptyString))
+  ) {
+    errors.push('npcIds must be an array of strings');
+  }
+
+  if (errors.length > 0) {
+    return { errors, valid: false };
+  }
+
+  const scene: SessionScene = {
+    id: sceneId!,
+    location: location!,
+    status: status!,
+    title: title!
+  };
+
+  if (isNonEmptyString(body.description)) {
+    scene.description = body.description.trim();
+  }
+
+  if (Array.isArray(body.npcIds)) {
+    const npcIds = body.npcIds.map((npcId) => npcId.trim());
+    if (npcIds.length > 0) {
+      scene.npcIds = npcIds;
+    }
+  }
+
+  if (openedAtSequence !== undefined) {
+    scene.openedAtSequence = openedAtSequence;
+  }
+
+  return { errors, scene, valid: true };
 }
 
 function validateEventBody(body: AppendEventRequestBody): ValidationResult {
@@ -1269,26 +1542,170 @@ function isNonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0;
 }
 
-function upsertSessionPlayer(players: SessionPlayer[], player: SessionPlayer): SessionPlayer[] {
-  const existingIndex = players.findIndex((entry) => entry.id === player.id);
+function splitSessionMetadata(metadata: Record<string, unknown>): {
+  metadata: Record<string, unknown>;
+  players: SessionPlayer[] | undefined;
+  scenes: SessionScene[] | undefined;
+} {
+  const { players: rawPlayers, scenes: rawScenes, ...rest } = metadata;
+  delete rest.capabilities;
 
-  if (existingIndex === -1) {
-    return [...players, player];
-  }
-
-  return players.map((entry, index) => (index === existingIndex ? { ...entry, ...player } : entry));
+  return {
+    metadata: rest,
+    players: toSessionPlayers(rawPlayers),
+    scenes: toSessionScenes(rawScenes)
+  };
 }
 
-function toCapabilityMap(value: unknown): Record<string, string> {
-  if (!isRecord(value)) {
-    return {};
-  }
+async function selectSessionPlayers(
+  sql: SessionSql,
+  sessionId: string
+): Promise<SessionPlayerRow[]> {
+  return sql<SessionPlayerRow[]>`
+    SELECT
+      id,
+      session_id,
+      player_id,
+      name,
+      role,
+      character_id,
+      capability,
+      connected,
+      last_seen_at,
+      created_at,
+      updated_at
+    FROM session_players
+    WHERE session_id = ${sessionId}
+    ORDER BY player_id ASC
+  `;
+}
 
-  return Object.fromEntries(
-    Object.entries(value).filter(
-      (entry): entry is [string, string] => isNonEmptyString(entry[0]) && isNonEmptyString(entry[1])
+async function selectSessionScenes(sql: SessionSql, sessionId: string): Promise<SessionSceneRow[]> {
+  return sql<SessionSceneRow[]>`
+    SELECT
+      id,
+      session_id,
+      scene_id,
+      title,
+      location,
+      status,
+      description,
+      npc_ids,
+      opened_at_sequence,
+      created_at,
+      updated_at
+    FROM session_scenes
+    WHERE session_id = ${sessionId}
+    ORDER BY scene_id ASC
+  `;
+}
+
+async function upsertSessionPlayerRow(
+  sql: SessionSql,
+  sessionId: string,
+  player: SessionPlayer & { capability: string }
+): Promise<SessionPlayer> {
+  const rows = await sql<SessionPlayerRow[]>`
+    INSERT INTO session_players (
+      session_id,
+      player_id,
+      name,
+      role,
+      character_id,
+      capability,
+      connected,
+      last_seen_at,
+      updated_at
     )
-  );
+    VALUES (
+      ${sessionId},
+      ${player.id},
+      ${player.name},
+      ${player.role},
+      ${player.characterId ?? null},
+      ${player.capability},
+      ${player.connected ?? true},
+      ${player.lastSeenAt ?? null},
+      now()
+    )
+    ON CONFLICT (session_id, player_id)
+    DO UPDATE SET
+      name = EXCLUDED.name,
+      role = EXCLUDED.role,
+      character_id = EXCLUDED.character_id,
+      capability = EXCLUDED.capability,
+      connected = EXCLUDED.connected,
+      last_seen_at = EXCLUDED.last_seen_at,
+      updated_at = now()
+    RETURNING
+      id,
+      session_id,
+      player_id,
+      name,
+      role,
+      character_id,
+      capability,
+      connected,
+      last_seen_at,
+      created_at,
+      updated_at
+  `;
+
+  return toSessionPlayerResponse(rows[0]!);
+}
+
+async function upsertSessionSceneRow(
+  sql: SessionSql,
+  sessionId: string,
+  scene: SessionScene
+): Promise<SessionSceneRow> {
+  const rows = await sql<SessionSceneRow[]>`
+    INSERT INTO session_scenes (
+      session_id,
+      scene_id,
+      title,
+      location,
+      status,
+      description,
+      npc_ids,
+      opened_at_sequence,
+      updated_at
+    )
+    VALUES (
+      ${sessionId},
+      ${scene.id},
+      ${scene.title},
+      ${scene.location},
+      ${scene.status},
+      ${scene.description ?? null},
+      ${sql.json((scene.npcIds ?? []) as postgres.JSONValue)}::jsonb,
+      ${scene.openedAtSequence ?? null},
+      now()
+    )
+    ON CONFLICT (session_id, scene_id)
+    DO UPDATE SET
+      title = EXCLUDED.title,
+      location = EXCLUDED.location,
+      status = EXCLUDED.status,
+      description = EXCLUDED.description,
+      npc_ids = EXCLUDED.npc_ids,
+      opened_at_sequence = EXCLUDED.opened_at_sequence,
+      updated_at = now()
+    RETURNING
+      id,
+      session_id,
+      scene_id,
+      title,
+      location,
+      status,
+      description,
+      npc_ids,
+      opened_at_sequence,
+      created_at,
+      updated_at
+  `;
+
+  return rows[0]!;
 }
 
 function buildJoinHref(slug: string, playerId: string, capability: string): string {
@@ -1297,12 +1714,59 @@ function buildJoinHref(slug: string, playerId: string, capability: string): stri
   )}&capability=${encodeURIComponent(capability)}`;
 }
 
+function toSessionPlayerResponse(row: SessionPlayerRow): SessionPlayer {
+  const player: SessionPlayer = {
+    connected: row.connected,
+    id: row.player_id,
+    name: row.name,
+    role: row.role as SessionPlayer['role']
+  };
+
+  if (row.character_id !== null) {
+    player.characterId = row.character_id;
+  }
+
+  if (row.last_seen_at !== null) {
+    player.lastSeenAt = serializeDate(row.last_seen_at);
+  }
+
+  return player;
+}
+
+function toSessionSceneResponse(row: SessionSceneRow): SessionScene {
+  const scene: SessionScene = {
+    id: row.scene_id,
+    location: row.location,
+    status:
+      row.status === 'active' || row.status === 'closed' || row.status === 'draft'
+        ? row.status
+        : 'draft',
+    title: row.title
+  };
+
+  if (row.description !== null) {
+    scene.description = row.description;
+  }
+
+  if (Array.isArray(row.npc_ids) && row.npc_ids.length > 0) {
+    scene.npcIds = row.npc_ids.filter(isNonEmptyString);
+  }
+
+  if (row.opened_at_sequence !== null) {
+    scene.openedAtSequence = row.opened_at_sequence;
+  }
+
+  return scene;
+}
+
 function toSessionResponse(
   session: SessionRow,
   events: SessionEventRow[],
-  decisions: SessionDecisionRow[]
+  decisions: SessionDecisionRow[],
+  playerRows: SessionPlayerRow[] = [],
+  sceneRows: SessionSceneRow[] = []
 ) {
-  const rawState = buildSessionState(session, events, decisions);
+  const rawState = buildSessionState(session, events, decisions, playerRows, sceneRows);
   const state = rawState.events.some((event) => event.type === 'rollback_requested')
     ? projectSessionStateFromJournal(rawState)
     : rawState;
@@ -1333,9 +1797,17 @@ function toSessionResponse(
 function buildSessionState(
   session: SessionRow,
   events: SessionEventRow[],
-  decisions: SessionDecisionRow[]
+  decisions: SessionDecisionRow[],
+  playerRows: SessionPlayerRow[] = [],
+  sceneRows: SessionSceneRow[] = []
 ): SessionState {
   const metadata = isRecord(session.metadata) ? session.metadata : {};
+  const players =
+    playerRows.length > 0
+      ? playerRows.map(toSessionPlayerResponse)
+      : toSessionPlayers(metadata.players);
+  const scenes =
+    sceneRows.length > 0 ? sceneRows.map(toSessionSceneResponse) : toSessionScenes(metadata.scenes);
 
   return createSessionState({
     createdAt: serializeDate(session.created_at),
@@ -1344,8 +1816,8 @@ function buildSessionState(
     id: session.id,
     metadata,
     mode: session.mode as SessionState['mode'],
-    players: toSessionPlayers(metadata.players),
-    scenes: toSessionScenes(metadata.scenes),
+    players,
+    scenes,
     slug: session.slug,
     status: session.status as SessionState['status'],
     title: session.title,

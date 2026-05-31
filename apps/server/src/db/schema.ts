@@ -1,5 +1,6 @@
 import { sql } from 'drizzle-orm';
 import {
+  boolean,
   customType,
   index,
   integer,
@@ -34,6 +35,8 @@ export const REQUIRED_APP_TABLES = [
   'character_drafts',
   'characters',
   'game_sessions',
+  'session_players',
+  'session_scenes',
   'session_events',
   'session_decisions',
   'gm_memories',
@@ -117,6 +120,62 @@ export const gameSessions = pgTable(
   (table) => ({
     slugIdx: uniqueIndex('game_sessions_slug_idx').on(table.slug),
     statusIdx: index('game_sessions_status_idx').on(table.status)
+  })
+);
+
+export const sessionPlayers = pgTable(
+  'session_players',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    sessionId: uuid('session_id')
+      .notNull()
+      .references(() => gameSessions.id, { onDelete: 'cascade' }),
+    playerId: text('player_id').notNull(),
+    name: text('name').notNull(),
+    role: text('role').notNull(),
+    characterId: text('character_id').references(() => characters.id, { onDelete: 'set null' }),
+    capability: text('capability').notNull(),
+    connected: boolean('connected').notNull().default(true),
+    lastSeenAt: timestamp('last_seen_at', { withTimezone: true }),
+    createdAt: now(),
+    updatedAt: updatedNow()
+  },
+  (table) => ({
+    sessionPlayerIdx: uniqueIndex('session_players_session_player_idx').on(
+      table.sessionId,
+      table.playerId
+    ),
+    characterIdIdx: index('session_players_character_id_idx').on(table.characterId),
+    roleIdx: index('session_players_role_idx').on(table.role)
+  })
+);
+
+export const sessionScenes = pgTable(
+  'session_scenes',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    sessionId: uuid('session_id')
+      .notNull()
+      .references(() => gameSessions.id, { onDelete: 'cascade' }),
+    sceneId: text('scene_id').notNull(),
+    title: text('title').notNull(),
+    location: text('location').notNull(),
+    status: text('status').notNull().default('draft'),
+    description: text('description'),
+    npcIds: jsonb('npc_ids')
+      .$type<string[]>()
+      .notNull()
+      .default(sql`'[]'::jsonb`),
+    openedAtSequence: integer('opened_at_sequence'),
+    createdAt: now(),
+    updatedAt: updatedNow()
+  },
+  (table) => ({
+    sessionSceneIdx: uniqueIndex('session_scenes_session_scene_idx').on(
+      table.sessionId,
+      table.sceneId
+    ),
+    statusIdx: index('session_scenes_status_idx').on(table.status)
   })
 );
 
