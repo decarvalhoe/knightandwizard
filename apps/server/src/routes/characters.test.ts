@@ -221,6 +221,74 @@ describe('character routes', () => {
     });
   });
 
+  it('converts persisted quest points into usable XP when the quest ends', async () => {
+    const draftId = `route-quest-convert-character-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleDraft('Aveline Queteuse'),
+      url: `/character-drafts/${draftId}`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { draftId },
+      url: '/characters/finalize'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        amount: 2,
+        questPoints: 3,
+        reason: 'Trois seances de quete',
+        sessionSlug: 'quete-brumeval'
+      },
+      url: `/characters/${draftId}/xp-awards`
+    });
+
+    const convertResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        reason: 'Quete terminee et personnage survivant',
+        sessionSlug: 'quete-brumeval'
+      },
+      url: `/characters/${draftId}/quest-points/convert`
+    });
+    const readResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${draftId}`
+    });
+
+    expect(convertResponse.statusCode).toBe(200);
+    expect(convertResponse.json()).toMatchObject({
+      character: {
+        id: draftId,
+        metadata: {
+          questPointConversions: [
+            {
+              actorId: 'gm',
+              questPoints: 3,
+              reason: 'Quete terminee et personnage survivant',
+              sessionSlug: 'quete-brumeval'
+            }
+          ]
+        },
+        progression: {
+          experiencePoints: 5,
+          experienceTotal: 5,
+          questPoints: 0
+        }
+      },
+      status: 'updated'
+    });
+    expect(readResponse.json().character.progression).toEqual({
+      experiencePoints: 5,
+      experienceTotal: 5,
+      questPoints: 0
+    });
+  });
+
   it('spends persisted XP to improve an existing skill', async () => {
     const draftId = `route-skill-xp-character-${randomUUID()}`;
 

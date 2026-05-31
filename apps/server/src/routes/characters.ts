@@ -4,12 +4,14 @@ import {
   CharacterDraftNotFoundError,
   CharacterNotFoundError,
   awardPersistedCharacterXp,
+  convertPersistedCharacterQuestPoints,
   finalizeCharacterDraft,
   getPersistedCharacter,
   improvePersistedCharacterSkill,
   listPersistedCharacterActiveSpells,
   updatePersistedCharacterCombatState,
   type CharacterCombatStateUpdate,
+  type CharacterQuestPointConversionUpdate,
   type CharacterSkillImprovementUpdate,
   type CharacterXpAwardUpdate
 } from '../characters/finalize.js';
@@ -42,6 +44,12 @@ interface ImproveCharacterSkillRequestBody {
   skillId?: unknown;
 }
 
+interface ConvertQuestPointsRequestBody {
+  actorId?: unknown;
+  reason?: unknown;
+  sessionSlug?: unknown;
+}
+
 interface CharacterParams {
   id: string;
 }
@@ -50,6 +58,9 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
   app.options('/characters/finalize', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id/active-spells', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id/combat-state', async (_request, reply) => reply.code(204).send());
+  app.options('/characters/:id/quest-points/convert', async (_request, reply) =>
+    reply.code(204).send()
+  );
   app.options('/characters/:id/skill-improvements', async (_request, reply) =>
     reply.code(204).send()
   );
@@ -185,6 +196,35 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
         const result = await improvePersistedCharacterSkill(request.params.id, validation.input, {
           userId: resolveRequestUserId(request)
         });
+
+        return {
+          character: result.character,
+          status: 'updated'
+        };
+      } catch (error) {
+        return sendCharacterRouteError(error, reply);
+      }
+    }
+  );
+
+  app.post<{ Body: ConvertQuestPointsRequestBody; Params: CharacterParams }>(
+    '/characters/:id/quest-points/convert',
+    async (request, reply) => {
+      const validation = validateQuestPointConversion(request.body ?? {});
+
+      if (!validation.valid) {
+        return reply.code(400).send({
+          errors: validation.errors,
+          status: 'invalid'
+        });
+      }
+
+      try {
+        const result = await convertPersistedCharacterQuestPoints(
+          request.params.id,
+          validation.input,
+          { userId: resolveRequestUserId(request) }
+        );
 
         return {
           character: result.character,
@@ -381,6 +421,42 @@ function validateSkillImprovement(
       ...(input.reason ? { reason: input.reason } : {}),
       ...(input.sessionSlug ? { sessionSlug: input.sessionSlug } : {}),
       skillId: input.skillId
+    },
+    valid: true
+  };
+}
+
+function validateQuestPointConversion(
+  body: ConvertQuestPointsRequestBody
+):
+  | { input: CharacterQuestPointConversionUpdate; valid: true }
+  | { errors: string[]; valid: false } {
+  const errors: string[] = [];
+  const actorId = normalizeOptionalString(body.actorId);
+  const reason = normalizeOptionalString(body.reason);
+  const sessionSlug = normalizeOptionalString(body.sessionSlug);
+
+  if (body.actorId !== undefined && actorId === undefined) {
+    errors.push('actorId must be a non-empty string');
+  }
+
+  if (body.reason !== undefined && reason === undefined) {
+    errors.push('reason must be a non-empty string');
+  }
+
+  if (body.sessionSlug !== undefined && sessionSlug === undefined) {
+    errors.push('sessionSlug must be a non-empty string');
+  }
+
+  if (errors.length > 0) {
+    return { errors, valid: false };
+  }
+
+  return {
+    input: {
+      ...(actorId ? { actorId } : {}),
+      ...(reason ? { reason } : {}),
+      ...(sessionSlug ? { sessionSlug } : {})
     },
     valid: true
   };
