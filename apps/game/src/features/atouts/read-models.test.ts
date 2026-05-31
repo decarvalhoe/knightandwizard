@@ -70,6 +70,7 @@ describe('buildAtoutsCompanionView', () => {
       skillTotal: 2
     });
     expect(view.highlightAtouts.map((atout) => atout.id)).toEqual(['ambidextrie', 'adrenaline']);
+    expect(view.browseAtouts.map((atout) => atout.id)).toEqual(['adrenaline', 'ambidextrie']);
     expect(view.skillFamilies).toEqual([
       { family: 'combat', label: 'Combat', total: 1 },
       { family: 'survie', label: 'Survie', total: 1 }

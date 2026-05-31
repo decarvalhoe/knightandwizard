@@ -187,14 +187,51 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByRole('heading', { name: 'Audit complet' })).toBeVisible();
 
     await page.getByRole('tab', { name: 'Complet' }).click();
-    const equipmentPicker = page.locator('#equipment-picker');
-    await expect(equipmentPicker).toBeVisible();
-    expect(await equipmentPicker.locator('option').count()).toBeGreaterThan(0);
-    await equipmentPicker.selectOption({ index: 0 });
-    await page.getByRole('button', { name: 'Ajouter' }).click();
+    await expect(page.locator('#equipment-picker')).toHaveCount(0);
+    await page.locator('#equipment-search').fill('Potion de Soin');
+    await page
+      .getByLabel('Équipements trouvés')
+      .getByRole('button', { name: /Potion de Soin/ })
+      .click();
     await expect(
       page.locator('p.kw-sheet__muted').filter({ hasText: /Charge .* kg/ })
     ).toBeVisible();
+  });
+
+  test('catalog browsers use searchable results instead of heavy native selects', async ({
+    page
+  }, testInfo) => {
+    annotateCanonical(testInfo, 'dashboard');
+
+    await page.goto('/character');
+    await page.getByRole('tab', { name: 'Complet' }).click();
+    await expect(page.locator('select')).toHaveCount(0);
+    await page.locator('#equipment-search').fill('Potion de Soin');
+    await expect(
+      page.getByLabel('Équipements trouvés').getByRole('button', { name: /Potion de Soin/ })
+    ).toBeVisible();
+
+    await page.goto('/atouts');
+    await expect(page.locator('select')).toHaveCount(0);
+    await page.locator('#atouts-search').fill('Accoutumance');
+    await expect(
+      page
+        .getByLabel('Atouts filtrés')
+        .getByRole('heading', { name: 'Accoutumance à la douleur' })
+        .first()
+    ).toBeVisible();
+
+    await page.goto('/bestiaire');
+    await expect(page.locator('select')).toHaveCount(0);
+    await page.locator('#bestiaire-search').fill('Centaure');
+    await expect(page.getByRole('button', { name: /Centaure Humanoïdes/ })).toBeVisible();
+
+    await page.goto('/grimoire');
+    await expect(page.locator('select')).toHaveCount(0);
+    await page.locator('#grimoire-search').fill('Augmentation énergétique');
+    await expect(page.getByRole('heading', { name: 'Augmentation énergétique' })).toBeVisible();
+    await page.getByRole('button', { name: /Abjuration/ }).click();
+    await expect(page.getByText('Grand Grimoire web')).toBeVisible();
   });
 
   test('character sheet can render an API-backed saved draft', async ({ page }, testInfo) => {

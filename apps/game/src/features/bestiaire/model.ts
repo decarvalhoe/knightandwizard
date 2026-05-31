@@ -51,6 +51,7 @@ export interface BestiarySurfaceView {
 export interface BestiaryEntryView {
   attributeMaxItems: Array<{ label: string; value: number }>;
   category: string;
+  categoryLabel: string;
   habitat: string[];
   id: string;
   innateAtouts: string[];
@@ -80,10 +81,12 @@ export interface BestiaryMetrics {
 
 export interface CategorySummary {
   category: string;
+  label: string;
   count: number;
 }
 
 export interface SourceFileView {
+  label: string;
   path: string;
 }
 
@@ -128,7 +131,7 @@ export function buildBestiarySurfaceView(catalog: BestiaryCatalogDocument): Best
       playableEntries
     },
     sourceFiles: (catalog.metadata?.source_files ?? []).flatMap((source) =>
-      source.path ? [{ path: source.path }] : []
+      source.path ? [{ label: humanizeSourcePath(source.path), path: source.path }] : []
     )
   };
 }
@@ -144,6 +147,7 @@ function toEntryView(creature: BestiaryCatalogCreature): BestiaryEntryView {
       value: creature.attribute_max[key]
     })),
     category: creature.category,
+    categoryLabel: labelCreatureCategory(creature.category),
     habitat: creature.habitat ?? [],
     id: creature.id,
     innateAtouts: creature.innate_atouts ?? [],
@@ -173,8 +177,26 @@ function toCategorySummaries(entries: BestiaryEntryView[]): CategorySummary[] {
   }
 
   return [...counts.entries()]
-    .map(([category, count]) => ({ category, count }))
-    .sort((left, right) => left.category.localeCompare(right.category, 'fr'));
+    .map(([category, count]) => ({ category, count, label: labelCreatureCategory(category) }))
+    .sort((left, right) => left.label.localeCompare(right.label, 'fr'));
+}
+
+function labelCreatureCategory(category: string): string {
+  const labels: Record<string, string> = {
+    beast: 'Bêtes',
+    humanoid: 'Humanoïdes',
+    spirit: 'Esprits',
+    undead: 'Morts-vivants'
+  };
+
+  return labels[category] ?? category;
+}
+
+function humanizeSourcePath(path: string): string {
+  if (path.includes('/paper/')) return 'Bestiaire papier';
+  if (path.includes('/web-scraped/')) return 'Bestiaire web';
+
+  return 'Source bestiaire';
 }
 
 function cleanCreatureName(name: string): string {

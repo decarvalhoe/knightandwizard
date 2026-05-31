@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, type CSSProperties } from 'react';
+import { useMemo, useState, type CSSProperties } from 'react';
 
-import { Badge, Button, Card, Label, Seal, StatBlock } from '@knightandwizard/ui';
+import { Badge, Button, Card, Field, Label, Seal, StatBlock } from '@knightandwizard/ui';
 import type { BadgeTone } from '@knightandwizard/ui';
 
 import type {
@@ -22,6 +22,11 @@ const COMPANION_IDENTITY = {
 
 export function AtoutsCompanionSurface({ view }: Readonly<{ view: AtoutsCompanionView }>) {
   const [night, setNight] = useState(false);
+  const [atoutSearch, setAtoutSearch] = useState('');
+  const filteredAtouts = useMemo(
+    () => filterAtouts(view.browseAtouts, atoutSearch, 12),
+    [atoutSearch, view.browseAtouts]
+  );
 
   const catalogStats = [
     { label: 'Atouts', value: formatNumber(view.stats.atoutTotal) },
@@ -75,6 +80,31 @@ export function AtoutsCompanionSurface({ view }: Readonly<{ view: AtoutsCompanio
 
         <div className="kw-atouts-layout">
           <section className="kw-atouts-stack" aria-label="Atouts suivis">
+            <Card>
+              <div className="kw-atouts-section-head">
+                <div>
+                  <Label>Répertoire</Label>
+                  <h2>Recherche d&apos;atouts</h2>
+                </div>
+                <Badge tone="info">{formatNumber(view.browseAtouts.length)} actifs</Badge>
+              </div>
+              <Field
+                id="atouts-search"
+                label="Rechercher"
+                onChange={(event) => setAtoutSearch(event.target.value)}
+                placeholder="Adrénaline, ambidextrie, race..."
+                type="search"
+                value={atoutSearch}
+              />
+              <div className="kw-atouts-catalog-list" aria-label="Atouts filtrés">
+                {filteredAtouts.length > 0 ? (
+                  filteredAtouts.map((atout) => <AtoutEntry atout={atout} key={atout.id} />)
+                ) : (
+                  <p>Aucun atout trouvé.</p>
+                )}
+              </div>
+            </Card>
+
             <Card>
               <div className="kw-atouts-section-head">
                 <div>
@@ -180,6 +210,19 @@ function BreakdownMeter({ item }: Readonly<{ item: BreakdownItem }>) {
   );
 }
 
+function filterAtouts(atouts: AtoutSummary[], query: string, limit: number): AtoutSummary[] {
+  const normalizedQuery = normalizeSearchText(query);
+  const source = normalizedQuery
+    ? atouts.filter((atout) =>
+        normalizeSearchText(`${atout.name} ${atout.effect} ${scopeLabel(atout.scope)}`).includes(
+          normalizedQuery
+        )
+      )
+    : atouts;
+
+  return source.slice(0, limit);
+}
+
 function activationTone(activation: AtoutActivation): BadgeTone {
   if (activation === 'ephemere') return 'warn';
   if (activation === 'permanent') return 'success';
@@ -239,4 +282,12 @@ function formatAtoutValue(value: number | null): string {
 
 function formatNumber(value: number): string {
   return new Intl.NumberFormat('fr-FR').format(value);
+}
+
+function normalizeSearchText(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+    .trim();
 }

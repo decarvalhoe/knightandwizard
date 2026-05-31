@@ -667,9 +667,17 @@ a {
 }
 
 .kw-atouts-meter-list,
-.kw-atouts-family-list {
+.kw-atouts-family-list,
+.kw-atouts-catalog-list {
   gap: 10px;
   margin-top: 12px;
+}
+
+.kw-atouts-catalog-list {
+  display: grid;
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 4px;
 }
 
 .kw-atouts-meter {
@@ -1273,14 +1281,45 @@ a {
 
 .kw-sheet__inventory-tools {
   display: grid;
-  grid-template-columns: minmax(190px, 1fr) auto;
+  grid-template-columns: minmax(210px, 0.42fr) minmax(0, 1fr);
   gap: 10px;
-  align-items: end;
+  align-items: start;
 }
 
 .kw-sheet__add-button,
 .kw-sheet__icon-button {
   white-space: nowrap;
+}
+
+.kw-sheet__equipment-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  min-width: 0;
+}
+
+.kw-sheet__equipment-option.kw-btn {
+  min-height: 58px;
+  justify-content: space-between;
+  text-align: left;
+  white-space: normal;
+}
+
+.kw-sheet__equipment-option span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.kw-sheet__equipment-option strong,
+.kw-sheet__equipment-option small {
+  overflow-wrap: anywhere;
+}
+
+.kw-sheet__equipment-option small {
+  color: var(--color-text-muted);
+  font-family: var(--font-label);
+  font-size: var(--text-label-sm);
 }
 
 .kw-sheet__icon-button.kw-btn {
@@ -1444,6 +1483,7 @@ a {
 .kw-bestiary__species-list {
   max-height: 720px;
   overflow: auto;
+  margin-top: 12px;
   padding-right: 4px;
 }
 
@@ -1521,5 +1561,123 @@ a {
 
   .kw-bestiary {
     padding: 16px;
+  }
+}
+
+.kw-grimoire-page,
+.kw-grimoire__spell-list,
+.kw-grimoire__school-list {
+  display: grid;
+  gap: 16px;
+}
+
+.kw-grimoire-page h1,
+.kw-grimoire-page h2,
+.kw-grimoire-page h3,
+.kw-grimoire-page p {
+  margin: 0;
+}
+
+.kw-grimoire-page h1,
+.kw-grimoire-page h2,
+.kw-grimoire-page h3 {
+  color: var(--color-text-ink);
+  font-family: var(--font-display);
+  line-height: var(--leading-tight);
+}
+
+.kw-grimoire-page h1 {
+  font-size: var(--text-title-l);
+}
+
+.kw-grimoire-page h2 {
+  font-size: var(--text-title-m);
+}
+
+.kw-grimoire-page h3 {
+  font-size: var(--text-body-l);
+}
+
+.kw-grimoire-page p {
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}
+
+.kw-grimoire__badge-row,
+.kw-grimoire__schools,
+.kw-grimoire__spell-meta,
+.kw-grimoire__school-card-head,
+.kw-grimoire__panel-head,
+.kw-grimoire__spell-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.kw-grimoire__badge-row {
+  margin-top: 12px;
+}
+
+.kw-grimoire__overview,
+.kw-grimoire__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.62fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.kw-grimoire__schools {
+  align-items: center;
+}
+
+.kw-grimoire__school-button.kw-btn {
+  white-space: normal;
+}
+
+.kw-grimoire__panel-head,
+.kw-grimoire__spell-head,
+.kw-grimoire__school-card-head {
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.kw-grimoire__spell-card,
+.kw-grimoire__school-card {
+  display: grid;
+  gap: 10px;
+  border: var(--border-hairline) solid var(--color-border-hairline);
+  background: var(--color-bg-elevated);
+  padding: 12px;
+}
+
+.kw-grimoire__spell-head > div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.kw-grimoire__spell-meta {
+  align-items: center;
+  color: var(--color-text-muted);
+  font-family: var(--font-label);
+  font-size: var(--text-label-sm);
+}
+
+@media (max-width: 900px) {
+  .kw-grimoire__overview,
+  .kw-grimoire__layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .kw-grimoire__panel-head,
+  .kw-grimoire__spell-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .kw-grimoire__schools .kw-btn {
+    width: 100%;
   }
 }

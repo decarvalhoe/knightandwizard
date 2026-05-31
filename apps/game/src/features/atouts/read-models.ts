@@ -57,6 +57,7 @@ export type AtoutScope = 'classe' | 'neutre' | 'orientation' | 'race' | 'niveau'
 
 export interface AtoutsCompanionView {
   activationBreakdown: BreakdownItem[];
+  browseAtouts: AtoutSummary[];
   focusSkills: SkillSummary[];
   highlightAtouts: AtoutSummary[];
   skillFamilies: SkillFamilySummary[];
@@ -131,6 +132,9 @@ export function buildAtoutsCompanionView({
 
   return {
     activationBreakdown: buildBreakdown(atoutEntries, (atout) => atout.activation),
+    browseAtouts: atoutEntries
+      .filter((atout) => atout.status === 'active')
+      .sort((left, right) => left.name.localeCompare(right.name, 'fr')),
     focusSkills: selectPreferred(skillEntries, FOCUS_SKILL_IDS, 6),
     highlightAtouts: selectPreferred(
       atoutEntries.filter((atout) => atout.status === 'active'),
@@ -139,8 +143,8 @@ export function buildAtoutsCompanionView({
     ),
     skillFamilies: buildSkillFamilies(skillEntries),
     sourceLabels: {
-      atouts: atouts.metadata?.source ?? 'atouts.yaml',
-      skills: skills.metadata?.source ?? 'competences.yaml'
+      atouts: humanizeSourceLabel(atouts.metadata?.source, 'Atouts'),
+      skills: humanizeSourceLabel(skills.metadata?.source, 'Compétences')
     },
     scopeBreakdown: buildBreakdown(atoutEntries, (atout) => atout.scope),
     stats: {
@@ -275,4 +279,12 @@ function labelCatalogKey(key: string): string {
   };
 
   return labels[key] ?? key;
+}
+
+function humanizeSourceLabel(source: string | undefined, fallback: string): string {
+  if (!source) return fallback;
+  if (source.includes('/atouts/')) return 'Atouts web';
+  if (source.includes('competences')) return 'Compétences';
+
+  return fallback;
 }
