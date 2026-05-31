@@ -407,16 +407,19 @@ test.describe('K&W player and GM application flows', () => {
     await expect(proposalPanel.getByText('Le MJ decrit les details visibles')).toBeVisible();
     await expect(proposalPanel.getByText(/Sources \d+ · Mémoire \d+/)).toBeVisible();
 
+    await page.getByLabel('Heures effectives').fill('2');
     await page.getByLabel('Point de quête').check();
-    await page.getByRole('button', { name: 'Attribuer 1 XP' }).click();
-    await expect(page.getByText('XP attribue a Aveline Cockpit + 1 point de quête')).toBeVisible();
+    await page.getByRole('button', { name: 'Attribuer 2 XP' }).click();
+    await expect(
+      page.getByText('2 XP attribues a Aveline Cockpit + 1 point de quête')
+    ).toBeVisible();
 
     await page.goto(`/character?characterId=${draftId}`);
     await expect(page.getByRole('heading', { name: 'Aveline Cockpit' })).toBeVisible();
-    await expect(page.getByText('XP 1 / 1')).toBeVisible();
+    await expect(page.getByText('XP 2 / 2')).toBeVisible();
     await expect(page.getByText('Quête 1')).toBeVisible();
     await page.getByRole('button', { name: 'Convertir la quête' }).click();
-    await expect(page.getByText('XP 2 / 2')).toBeVisible();
+    await expect(page.getByText('XP 3 / 3')).toBeVisible();
     await expect(page.getByText('Quête 1')).toHaveCount(0);
 
     await page.goto(`/mj?slug=${slug}`);

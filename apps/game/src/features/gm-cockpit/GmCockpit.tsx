@@ -56,6 +56,8 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
   const view = useMemo(() => buildGmCockpitView(state), [state]);
   const [selectedXpTarget, setSelectedXpTarget] = useState(view.xpTargets[0]?.characterId ?? '');
   const [awardQuestPoint, setAwardQuestPoint] = useState(false);
+  const [xpBonus, setXpBonus] = useState(0);
+  const [xpEffectiveHours, setXpEffectiveHours] = useState(1);
   const [selectedNpcTemplateId, setSelectedNpcTemplateId] = useState(
     bestiaryNpcTemplates[0]?.id ?? ''
   );
@@ -81,6 +83,7 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
     bestiaryNpcTemplates.find((template) => template.id === selectedNpcTemplateId) ??
     bestiaryNpcTemplates[0];
   const structuredChangeLabel = changeRequestStructuredLabel(changeKind);
+  const xpAwardAmount = clampXpAward(xpEffectiveHours + xpBonus);
   const effectiveRollbackSequence =
     rollbackSequence.length > 0
       ? Number.parseInt(rollbackSequence, 10)
@@ -110,13 +113,14 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
     }
 
     const questPoints = awardQuestPoint ? 1 : 0;
+    const reason = `Fin de session (${xpEffectiveHours} h effectives + ${xpBonus} bonus MJ)`;
 
     void run('xp', async () => {
       await awardCharacterXp(effectiveXpTarget.characterId, {
         actorId: 'gm',
-        amount: 1,
+        amount: xpAwardAmount,
         ...(questPoints > 0 ? { questPoints } : {}),
-        reason: 'Fin de session',
+        reason,
         sessionSlug: state.slug
       });
       await appendGmRulingToSession(state.slug, {
@@ -125,8 +129,10 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
           characterId: effectiveXpTarget.characterId,
           kind: 'xp_award',
           ...(questPoints > 0 ? { questPoints } : {}),
-          text: `XP attribue a ${effectiveXpTarget.name}${questPoints > 0 ? ' + 1 point de quête' : ''}`,
-          xp: 1
+          effectiveHours: xpEffectiveHours,
+          text: `${xpAwardAmount === 1 ? 'XP attribue' : `${xpAwardAmount} XP attribues`} a ${effectiveXpTarget.name}${questPoints > 0 ? ' + 1 point de quête' : ''}`,
+          xp: xpAwardAmount,
+          xpBonus
         }
       });
     });
@@ -623,6 +629,34 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
               Bestiaire indisponible pour cette session.
             </p>
           )}
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <label className="block text-sm font-semibold text-ink/70" htmlFor="gm-xp-hours">
+              Heures effectives
+              <input
+                className="mt-2 w-full rounded-md border border-ink/12 bg-paper px-3 py-2 text-sm font-semibold text-ink"
+                id="gm-xp-hours"
+                max={8}
+                min={1}
+                onChange={(event) =>
+                  setXpEffectiveHours(clampIntegerInput(event.target.value, 1, 8))
+                }
+                type="number"
+                value={xpEffectiveHours}
+              />
+            </label>
+            <label className="block text-sm font-semibold text-ink/70" htmlFor="gm-xp-bonus">
+              Bonus MJ
+              <input
+                className="mt-2 w-full rounded-md border border-ink/12 bg-paper px-3 py-2 text-sm font-semibold text-ink"
+                id="gm-xp-bonus"
+                max={7}
+                min={0}
+                onChange={(event) => setXpBonus(clampIntegerInput(event.target.value, 0, 7))}
+                type="number"
+                value={xpBonus}
+              />
+            </label>
+          </div>
           <label className="mt-4 flex items-center gap-2 text-sm font-semibold text-ink/70">
             <input
               checked={awardQuestPoint}
@@ -641,7 +675,7 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
               type="button"
             >
               <CheckCircle2 aria-hidden="true" className="size-4" />
-              Attribuer 1 XP
+              Attribuer {xpAwardAmount} XP
             </button>
             <button
               className="inline-flex items-center gap-2 rounded-md bg-ink px-3 py-2 text-sm font-semibold text-white disabled:opacity-50"
@@ -803,6 +837,20 @@ function changeRequestStructuredPayload(changeKind: string, value: string): Reco
   }
 
   return { requestedValue: value };
+}
+
+function clampIntegerInput(value: string, min: number, max: number): number {
+  const parsed = Number.parseInt(value, 10);
+
+  if (!Number.isFinite(parsed)) {
+    return min;
+  }
+
+  return Math.min(max, Math.max(min, parsed));
+}
+
+function clampXpAward(value: number): number {
+  return Math.min(8, Math.max(1, value));
 }
 
 function defaultAssistantPrompt(view: ReturnType<typeof buildGmCockpitView>): string {
