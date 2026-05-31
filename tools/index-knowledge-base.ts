@@ -253,11 +253,20 @@ function sourceKindFor(source: SourceEntry): KnowledgeSourceKind {
     return 'catalog_yaml';
   }
 
-  if (source.path === 'docs/game/knightandwizard-game-foundation.md') {
+  if (isLoreMarkdownSource(source.path)) {
     return 'lore_markdown';
   }
 
   return source.source_type;
+}
+
+function isLoreMarkdownSource(path: string): boolean {
+  return (
+    path.endsWith('.md') &&
+    (path === 'docs/game/knightandwizard-game-foundation.md' ||
+      path.includes('/histoires/') ||
+      path.includes('data/legacy/web-scraped/monde/'))
+  );
 }
 
 function sourceMetadata(source: KnowledgeIndexSource): Partial<KnowledgeChunkMetadata> {

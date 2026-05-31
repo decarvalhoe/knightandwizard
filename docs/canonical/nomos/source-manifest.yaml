@@ -12797,7 +12797,7 @@ sources:
   - id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-BLAGUES-DICTONS-ET-PROVERBES
     path: data/legacy/paper/regles-papier/extracted/histoires/blagues-dictons-et-proverbes.md
     type: markdown
-    domain: rules
+    domain: D12-world
     priority: legacy
     status: active
     hash: 2a9fe277335e50a68969f1fdbb03a761ac2d0cc04e637dc2d69a8093c68ae55d
@@ -12811,7 +12811,7 @@ sources:
   - id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-CULTES-ET-RELIGIONS
     path: data/legacy/paper/regles-papier/extracted/histoires/cultes-et-religions.md
     type: markdown
-    domain: rules
+    domain: D12-religions
     priority: legacy
     status: active
     hash: 87bdbb2b25fdd3979cf874f8dca16d09b5fb3405ff7925e616224a1e7122488f
@@ -12825,7 +12825,7 @@ sources:
   - id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-LA-CREATION-DES-TERRES-OUBLIEES
     path: data/legacy/paper/regles-papier/extracted/histoires/la-creation-des-terres-oubliees.md
     type: markdown
-    domain: rules
+    domain: D12-world
     priority: legacy
     status: active
     hash: 15b0509915f87723aedc54a3c5c966c275aec5eba67c53eed1e3755e0fc462b0
@@ -12839,7 +12839,7 @@ sources:
   - id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-NATIONS
     path: data/legacy/paper/regles-papier/extracted/histoires/nations.md
     type: markdown
-    domain: rules
+    domain: D12-world
     priority: legacy
     status: active
     hash: c67eec84b34d50659e8719bd2775aa572214404e0b9c3714ff849cea46259cf4
@@ -12853,7 +12853,7 @@ sources:
   - id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-ORGANISATIONS
     path: data/legacy/paper/regles-papier/extracted/histoires/organisations.md
     type: markdown
-    domain: rules
+    domain: D12-organisations
     priority: legacy
     status: active
     hash: 8c3baffca26e9ff48237fb34cc5856b389d2a9b40a0babdfdec0b3a64523777b
@@ -12867,7 +12867,7 @@ sources:
   - id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-US-ET-COUTUMES
     path: data/legacy/paper/regles-papier/extracted/histoires/us-et-coutumes.md
     type: markdown
-    domain: rules
+    domain: D12-world
     priority: legacy
     status: active
     hash: 7734298132eb8f15d149e8e0f01b793828ab8ccc85933315ddf487c7cef1a2c9
@@ -14099,7 +14099,7 @@ sources:
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-CARTE-DU-MONDE-INDEX
     path: data/legacy/web-scraped/monde/carte-du-monde/index.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: d90779b59e7bd17613d70dddac199eb00bf81ae6b557d92afdd5ade31db95bb0
@@ -14109,11 +14109,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-1
     path: data/legacy/web-scraped/monde/lieux/place-1.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 6e55b8909f0b5c45160ab006f644a760828ee4fb37e1bc58ad1163699ee07b4f
@@ -14123,11 +14123,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-15
     path: data/legacy/web-scraped/monde/lieux/place-15.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 4a592b8e804ff8dab787894a1faf3f29299660845029c10c72f2a3ed164847ab
@@ -14137,11 +14137,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-16
     path: data/legacy/web-scraped/monde/lieux/place-16.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 3519223956745f9a59a28558f3b5f9c5b37455916396ab1a4140f29da9c6ef1b
@@ -14151,11 +14151,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-18
     path: data/legacy/web-scraped/monde/lieux/place-18.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 60614f78cad26b8c32d860487564a003a818e3caec1146c3c62358334a5948ac
@@ -14165,11 +14165,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-2
     path: data/legacy/web-scraped/monde/lieux/place-2.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: ab2d2b31553c5290219ba5b7befe4024a6575831528e5aaa8b67833edc615ac7
@@ -14179,11 +14179,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-20
     path: data/legacy/web-scraped/monde/lieux/place-20.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 0b24214e03b2624be45e54a4fecbc21c9ec3ff99b3ddd73d54b56a0043d60dac
@@ -14193,11 +14193,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-23
     path: data/legacy/web-scraped/monde/lieux/place-23.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 0bce6faa906b50c6a01ed5198b89f9e3a70889d736646efda7a5a1c74b26352a
@@ -14207,11 +14207,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-26
     path: data/legacy/web-scraped/monde/lieux/place-26.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 515c2e1e671dbbdbe5db5e2eb0e522abfa58dacba544cf71aee838d86d08e0ae
@@ -14221,11 +14221,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-27
     path: data/legacy/web-scraped/monde/lieux/place-27.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: a9a06d16342ee1787334b83bc9e5a6fff12b0415e146b96f97692b66a083a92d
@@ -14235,11 +14235,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-28
     path: data/legacy/web-scraped/monde/lieux/place-28.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: cadccff04d05ecf7b5512c715ea304f39d052835ecea34057c147a20f08e19bf
@@ -14249,11 +14249,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-29
     path: data/legacy/web-scraped/monde/lieux/place-29.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 593f1a781860bc3951f0ebc652baf183f394a2e60f7a6877cb83c1136ed7a70e
@@ -14263,11 +14263,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-3
     path: data/legacy/web-scraped/monde/lieux/place-3.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: e0ecdc99781280bc6e6902a3b2b7447328896c18c741a97fb9b6e487644da780
@@ -14277,11 +14277,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-31
     path: data/legacy/web-scraped/monde/lieux/place-31.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 4b3d42b199cd5c15be78888b7b50ba6d7872b7facfbdbabb507c7dfd2d163f3b
@@ -14291,11 +14291,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-4
     path: data/legacy/web-scraped/monde/lieux/place-4.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: f98a95df0c9a47b2217ee295e6588ef6a69ac5b7e7b3be8f58532b54eb558d43
@@ -14305,11 +14305,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-5
     path: data/legacy/web-scraped/monde/lieux/place-5.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: bec8c3ed5b2828c696fe7f347ee71c26952858e94fc95db794ac26f5f70ed2f8
@@ -14319,11 +14319,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-6
     path: data/legacy/web-scraped/monde/lieux/place-6.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: c4f66e0de5b65974bb35a1ea19d66a832619408088ea307eb2e9ff6faa06edfc
@@ -14333,11 +14333,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-7
     path: data/legacy/web-scraped/monde/lieux/place-7.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: e5a8221083c41f6f7b29ebd9fdedac7f54c62be11bc554227266e508e3bd8341
@@ -14347,11 +14347,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-13
     path: data/legacy/web-scraped/monde/regions/land-13.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 52f7c46fe447fff6b3cb963d4652e51b21fb56d89845251831293ee6ace5e48f
@@ -14361,11 +14361,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-21
     path: data/legacy/web-scraped/monde/regions/land-21.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 3d7ac73a3fa3e18ebeca1718c941b5bc890e7cb76f406b3f6c46bff16e31d96d
@@ -14375,11 +14375,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-24
     path: data/legacy/web-scraped/monde/regions/land-24.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 587e4d273d24e52c525a44e6c393a8d88c1f66b0dd449ce8e8d8ca955a8b10ed
@@ -14389,11 +14389,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-8
     path: data/legacy/web-scraped/monde/regions/land-8.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: de639a46895687463b1341a1c12fa8350c663e3cabb359aee6a31c0db7372e8a
@@ -14403,11 +14403,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-9
     path: data/legacy/web-scraped/monde/regions/land-9.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 143659258163215e0603ef2545595c19c72ed186be3c6e3456f23eaa11bc035b
@@ -14417,11 +14417,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-TOUS-LES-LIEUX-INDEX
     path: data/legacy/web-scraped/monde/tous-les-lieux/index.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: b559e45b09cd00fe585acfeb26fd38a5a156c66dde61d4991b61bf76d7075fc2
@@ -14431,11 +14431,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-10
     path: data/legacy/web-scraped/monde/villes/city-10.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 5592fbc1907f092d504ef4fce67620f61a1e533c900e0900254ee382a8280959
@@ -14445,11 +14445,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-11
     path: data/legacy/web-scraped/monde/villes/city-11.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 82dd81dc21604591bffb4d883062fc91ad13fa1a8b66e549022a53745bde3338
@@ -14459,11 +14459,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-12
     path: data/legacy/web-scraped/monde/villes/city-12.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: e5e23fe1c79f8fe1d127a17b2a745780f6670657cd4c8d2d03b5bf539e826801
@@ -14473,11 +14473,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-14
     path: data/legacy/web-scraped/monde/villes/city-14.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: f39d0575e94b74f5afb65f4f0bdbfa58a6d1d2d6d00e27af4d191d29348aa90f
@@ -14487,11 +14487,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-17
     path: data/legacy/web-scraped/monde/villes/city-17.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: d168a9addba03994428d23146997c4d3aa3dcd263d483e65566509d28c6a7bbc
@@ -14501,11 +14501,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-19
     path: data/legacy/web-scraped/monde/villes/city-19.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 120a8d40c15c9049ba47988ede7c917c2e9c644e7843506db8b6a51c2bf46ba2
@@ -14515,11 +14515,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-22
     path: data/legacy/web-scraped/monde/villes/city-22.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: a0e22b49e71e4e1686394c2ee88a9623b737859a2f298f03ec79df5c23fdc33a
@@ -14529,11 +14529,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-25
     path: data/legacy/web-scraped/monde/villes/city-25.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 0343880064a244a216277c6b29e62b62a0dcd7da4372e482c2662c359dc6ff88
@@ -14543,11 +14543,11 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-30
     path: data/legacy/web-scraped/monde/villes/city-30.md
     type: source_code
-    domain: unclassified
+    domain: D12-world
     priority: reference
     status: active
     hash: 02ce93a7fc9111aab96f0b60bf508c90f44adb5d41cec335df6cee2a769d2a58
@@ -14557,7 +14557,7 @@ sources:
     allowed_uses:
       - vector_index
       - citation_internal
-    notes: Registered source requiring later classification.
+    notes: Scraped legacy world lore source.
   - id: DATA-LEGACY-WEB-SCRAPED-OUTILS-ASSISTANT-COMBAT-INDEX
     path: data/legacy/web-scraped/outils/assistant-combat/index.md
     type: source_code
