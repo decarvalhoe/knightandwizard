@@ -13,6 +13,7 @@ import {
   rebuildSessionStateFromEvents,
   requestSessionRollback,
   resolveGmDecision,
+  renewSessionSpell,
   revertSessionToSequence
 } from './session.js';
 
@@ -402,6 +403,48 @@ describe('session narrative clock (R-8.20 — temps double)', () => {
 
     const dispelled = dispelSessionSpell(farFuture, { actorId: 'gm', activeSpellId: 'spell-ward' });
     expect(dispelled.activeSpells).toEqual([]);
+  });
+
+  it('renews an active spell from the current narrative instant without a new cast', () => {
+    const session = newSession();
+    const cast = castSessionSpell(session, {
+      activeSpellId: 'spell-aura',
+      durationAmount: 10,
+      durationUnit: 'minute'
+    });
+    const fiveMinutesLater = advanceSessionNarrative(cast, { by: { minutes: 5 } });
+    const renewed = renewSessionSpell(fiveMinutesLater, {
+      actorId: 'gm',
+      activeSpellId: 'spell-aura'
+    });
+
+    expect(renewed.events.map((event) => event.type)).toEqual([
+      'spell_cast',
+      'narrative_time_advanced',
+      'spell_renewed'
+    ]);
+    expect(renewed.activeSpells).toMatchObject([
+      { castAtSeconds: 300, durationAmount: 10, durationUnit: 'minute', id: 'spell-aura' }
+    ]);
+
+    const originalExpiry = advanceSessionNarrative(renewed, { by: { minutes: 5 } });
+    expect(originalExpiry.activeSpells.map((spell) => spell.id)).toEqual(['spell-aura']);
+
+    const renewedExpiry = advanceSessionNarrative(originalExpiry, { by: { minutes: 5 } });
+    expect(renewedExpiry.activeSpells).toEqual([]);
+  });
+
+  it('does not resurrect an already expired spell on renewal', () => {
+    const session = newSession();
+    const cast = castSessionSpell(session, {
+      activeSpellId: 'spell-short',
+      durationAmount: 1,
+      durationUnit: 'minute'
+    });
+    const expired = advanceSessionNarrative(cast, { by: { minutes: 1 } });
+    const renewed = renewSessionSpell(expired, { activeSpellId: 'spell-short' });
+
+    expect(renewed.activeSpells).toEqual([]);
   });
 
   it('rewinds the clock and resurrects a lapsed spell when reverting (rollback rewinds time)', () => {

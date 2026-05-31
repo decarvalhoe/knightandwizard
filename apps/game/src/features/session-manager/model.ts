@@ -174,6 +174,7 @@ const eventLabels: Record<SessionEventType, string> = {
   rollback_requested: 'Renvoi demandé',
   scene_opened: 'Scène ouverte',
   spell_cast: 'Sort lancé',
+  spell_renewed: 'Sort renouvelé',
   spell_dispelled: 'Sort dissipé'
 };
 

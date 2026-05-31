@@ -54,6 +54,7 @@ export interface CharacterActiveSpellReadModel {
   durationUnit: string;
   expiresAtCombatDt?: number;
   expiresAtNarrativeSeconds?: number;
+  lastRenewedAt?: string;
   sourceCasterId?: string;
   spellId?: string;
   status: string;
@@ -98,6 +99,7 @@ interface CharacterActiveSpellRow {
   duration_unit: string;
   expires_at_combat_dt: null | number;
   expires_at_narrative_seconds: null | number | string;
+  last_renewed_at: null | string;
   session_slug: string;
   source_caster_id: null | string;
   spell_id: null | string;
@@ -322,6 +324,7 @@ export async function listPersistedCharacterActiveSpells(
         cas.successes_count,
         cas.expires_at_narrative_seconds,
         cas.expires_at_combat_dt,
+        cas.last_renewed_at::text AS last_renewed_at,
         cas.status,
         gs.slug AS session_slug
       FROM character_active_spells cas
@@ -637,6 +640,7 @@ function toCharacterActiveSpellReadModel(
     ...(row.expires_at_narrative_seconds !== null
       ? { expiresAtNarrativeSeconds: Number(row.expires_at_narrative_seconds) }
       : {}),
+    ...(row.last_renewed_at !== null ? { lastRenewedAt: row.last_renewed_at } : {}),
     ...(row.source_caster_id !== null ? { sourceCasterId: row.source_caster_id } : {}),
     ...(row.spell_id !== null ? { spellId: row.spell_id } : {}),
     status: row.status,
