@@ -21,16 +21,16 @@
 
 ## Consommation des 8 cibles `EffectModel`
 
-| Cible        | Consommée par                                   | Statut           |
-| ------------ | ----------------------------------------------- | ---------------- |
-| `aptitude`   | `character.ts` (`calculateEffectiveAttributes`) | ✅               |
-| `factor`     | `combat.ts` (`effectiveSpeedFactor`, V2b)       | ✅               |
-| `pool`       | `dice.ts` (`calculateEffectiveRollRequest`)     | ✅               |
-| `difficulty` | `dice.ts`                                       | ✅               |
-| **`damage`** | —                                               | ❌ **#137**      |
-| `energy`     | (magie — à venir)                               | 🟡               |
-| `vitality`   | (soin / drain — à venir)                        | 🟡               |
-| `status`     | `status-effects.ts` (`fou_furieux` seul)        | 🟡 **#132/#141** |
+| Cible        | Consommée par                                                       | Statut           |
+| ------------ | ------------------------------------------------------------------- | ---------------- |
+| `aptitude`   | `character.ts` (`calculateEffectiveAttributes`)                     | ✅               |
+| `factor`     | `combat.ts` (`effectiveSpeedFactor`, V2b)                           | ✅               |
+| `pool`       | `dice.ts` (`calculateEffectiveRollRequest`)                         | ✅               |
+| `difficulty` | `dice.ts`                                                           | ✅               |
+| **`damage`** | —                                                                   | ❌ **#137**      |
+| `energy`     | (magie — à venir)                                                   | 🟡               |
+| `vitality`   | (soin / drain — à venir)                                            | 🟡               |
+| `status`     | `status-effects.ts` (`fou_furieux`) + `combat-statuses.ts` (R-9.27) | 🟡 **#132/#141** |
 
 ## Encodage des specs (le gros du travail)
 

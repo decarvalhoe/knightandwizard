@@ -182708,7 +182708,7 @@ units:
     source_refs:
       - source_id: DOCS-PLAN-COMBAT-IMPLEMENTATION
         locator: docs/plan/COMBAT-IMPLEMENTATION.md
-        hash: sha256:1355f0efab3d97859fd0c9f14b2f921fcfc0dcf424596eecc3d75043c51e8da7
+        hash: sha256:0f531fd268353baff2316839488c933939b75e60dfbb56b01e858ae78cdf9e6e
     business_rule: docs/plan/COMBAT-IMPLEMENTATION.md from docs/plan/COMBAT-IMPLEMENTATION.md.
     status: partial
     gaps:
@@ -182723,7 +182723,7 @@ units:
     source_refs:
       - source_id: DOCS-PLAN-EFFECTS-IMPLEMENTATION
         locator: docs/plan/EFFECTS-IMPLEMENTATION.md
-        hash: sha256:36b522713d3c3d7addb7585b3e086dbb6e284d71e4f66395249b7dd3eaa785db
+        hash: sha256:50e9e933ec33cc965cff73a0a1226e194e18dd20d876353bbd8d9f9f489ea59f
     business_rule: docs/plan/EFFECTS-IMPLEMENTATION.md from docs/plan/EFFECTS-IMPLEMENTATION.md.
     status: partial
     gaps:
