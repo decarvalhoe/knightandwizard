@@ -211,8 +211,9 @@ const EFFECT_RENDER_TEMPLATES: Partial<Record<RenderTemplateKey, (spec: EffectSp
 export function renderEffect(model: EffectModel): string {
   const baseRender = renderEffectSpec(model.spec);
   const conditionRender = renderConditionSuffix(model.spec.condition);
+  const usageRender = renderDailyUseSuffix(model.spec.uses_per_day);
 
-  return `${baseRender}${conditionRender}`;
+  return `${baseRender}${conditionRender}${usageRender}`;
 }
 
 /**
@@ -241,6 +242,10 @@ function renderFallback(spec: EffectSpec): string {
   const scope = spec.scope === undefined ? '' : ` (${renderScope(spec.scope)})`;
 
   return `Applique ${spec.op} ${renderValue(spec.value)} sur ${TARGET_LABELS[spec.target]}${scope}`;
+}
+
+function renderDailyUseSuffix(usesPerDay: number | undefined): string {
+  return usesPerDay === undefined ? '' : ` (${usesPerDay}/jour)`;
 }
 
 function renderValue(value: EffectValue): string {

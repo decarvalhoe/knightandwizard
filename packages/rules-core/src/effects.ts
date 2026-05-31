@@ -7,7 +7,6 @@ import {
   type EffectDuration,
   type EffectModel,
   type EffectOperation,
-  type EffectSpec,
   type EffectTarget,
   type EffectValueContext
 } from './effect-model.js';
@@ -48,6 +47,9 @@ export type EffectApplicationContext = EffectConditionContext &
     includeEphemeral?: boolean;
     predilection?: PredilectionSlots;
     activeStatuses?: readonly ActiveStatusEntry[];
+    characterId?: string;
+    currentDay?: string;
+    dailyUses?: EffectUseLedger;
     statusRegistry?: CompositeStatusRegistry;
   };
 
@@ -96,6 +98,127 @@ export interface EffectiveValueOptions {
   minimum?: number;
 }
 
+export interface EffectUseLedger {
+  day: string;
+  byCharacter: Record<string, Record<string, number>>;
+}
+
+export interface EffectUseOptions {
+  characterId: string;
+  day?: string;
+  effectKey?: string;
+}
+
+export interface EffectUseStatus {
+  allowed: boolean;
+  limited: boolean;
+  limit: number | null;
+  remaining: number | null;
+  used: number;
+}
+
+export interface RecordEffectUseResult {
+  ledger: EffectUseLedger;
+  recorded: boolean;
+  status: EffectUseStatus;
+}
+
+export function createEffectUseLedger(day: string): EffectUseLedger {
+  return { byCharacter: {}, day };
+}
+
+export function resetEffectUseLedgerForDay(day: string): EffectUseLedger {
+  return createEffectUseLedger(day);
+}
+
+export function resetEffectUseLedgerForRest(
+  ledger: EffectUseLedger,
+  characterId: string
+): EffectUseLedger {
+  const remainingCharacters = { ...ledger.byCharacter };
+  delete remainingCharacters[characterId];
+
+  return {
+    ...ledger,
+    byCharacter: remainingCharacters
+  };
+}
+
+export function effectUseKey(effect: EffectModel, overrideKey?: string): string {
+  return overrideKey ?? effect.source.ref;
+}
+
+export function getEffectUseStatus(
+  effect: EffectModel,
+  ledger: EffectUseLedger,
+  options: EffectUseOptions
+): EffectUseStatus {
+  const limit = effect.spec.uses_per_day ?? null;
+
+  if (limit === null) {
+    return {
+      allowed: true,
+      limited: false,
+      limit,
+      remaining: null,
+      used: 0
+    };
+  }
+
+  const day = options.day ?? ledger.day;
+  const used =
+    day === ledger.day
+      ? (ledger.byCharacter[options.characterId]?.[effectUseKey(effect, options.effectKey)] ?? 0)
+      : 0;
+  const remaining = Math.max(0, limit - used);
+
+  return {
+    allowed: used < limit,
+    limited: true,
+    limit,
+    remaining,
+    used
+  };
+}
+
+export function recordEffectUse(
+  effect: EffectModel,
+  ledger: EffectUseLedger,
+  options: EffectUseOptions
+): RecordEffectUseResult {
+  const day = options.day ?? ledger.day;
+  const normalizedLedger = ledger.day === day ? ledger : createEffectUseLedger(day);
+  const currentStatus = getEffectUseStatus(effect, normalizedLedger, { ...options, day });
+
+  if (!currentStatus.limited || !currentStatus.allowed) {
+    return {
+      ledger: normalizedLedger,
+      recorded: false,
+      status: currentStatus
+    };
+  }
+
+  const effectKey = effectUseKey(effect, options.effectKey);
+  const currentCharacterUses = normalizedLedger.byCharacter[options.characterId] ?? {};
+  const nextUsed = (currentCharacterUses[effectKey] ?? 0) + 1;
+  const nextLedger = {
+    ...normalizedLedger,
+    byCharacter: {
+      ...normalizedLedger.byCharacter,
+      [options.characterId]: {
+        ...currentCharacterUses,
+        [effectKey]: nextUsed
+      }
+    }
+  };
+
+  return {
+    ledger: nextLedger,
+    recorded: true,
+    status: getEffectUseStatus(effect, nextLedger, { ...options, day })
+  };
+}
+
 export function computeEffectiveModifiers(
   activeEffects: EffectModel[],
   ctx: EffectApplicationContext
@@ -107,7 +230,7 @@ export function computeEffectiveModifiers(
   for (const activeEffect of effects) {
     const effect = parseEffectModel(activeEffect);
 
-    if (!isEffectActive(effect.spec, ctx)) {
+    if (!isEffectActive(effect, ctx)) {
       continue;
     }
 
@@ -192,12 +315,30 @@ function createEmptyModifiers(): EffectiveModifiers {
   };
 }
 
-function isEffectActive(spec: EffectSpec, ctx: EffectApplicationContext): boolean {
+function isEffectActive(effect: EffectModel, ctx: EffectApplicationContext): boolean {
+  const { spec } = effect;
+
   return (
     matchesCondition(spec.condition, ctx) &&
     isActivationActive(spec.activation, ctx) &&
-    isDurationActive(spec.duration, ctx)
+    isDurationActive(spec.duration, ctx) &&
+    isDailyUseAvailable(effect, ctx)
   );
+}
+
+function isDailyUseAvailable(effect: EffectModel, ctx: EffectApplicationContext): boolean {
+  if (effect.spec.uses_per_day === undefined) {
+    return true;
+  }
+
+  if (ctx.dailyUses === undefined || ctx.characterId === undefined) {
+    return true;
+  }
+
+  return getEffectUseStatus(effect, ctx.dailyUses, {
+    characterId: ctx.characterId,
+    day: ctx.currentDay
+  }).allowed;
 }
 
 function isActivationActive(activation: EffectActivation, ctx: EffectApplicationContext): boolean {
