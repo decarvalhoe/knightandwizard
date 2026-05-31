@@ -407,12 +407,14 @@ test.describe('K&W player and GM application flows', () => {
     await expect(proposalPanel.getByText('Le MJ decrit les details visibles')).toBeVisible();
     await expect(proposalPanel.getByText(/Sources \d+ · Mémoire \d+/)).toBeVisible();
 
+    await page.getByLabel('Point de quête').check();
     await page.getByRole('button', { name: 'Attribuer 1 XP' }).click();
-    await expect(page.getByText('XP attribue a Aveline Cockpit')).toBeVisible();
+    await expect(page.getByText('XP attribue a Aveline Cockpit + 1 point de quête')).toBeVisible();
 
     await page.goto(`/character?characterId=${draftId}`);
     await expect(page.getByRole('heading', { name: 'Aveline Cockpit' })).toBeVisible();
     await expect(page.getByText('XP 1 / 1')).toBeVisible();
+    await expect(page.getByText('Quête 1')).toBeVisible();
 
     await page.goto(`/mj?slug=${slug}`);
     await expect(page.getByLabel('Gabarit PNJ')).toBeVisible();

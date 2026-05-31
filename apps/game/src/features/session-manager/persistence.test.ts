@@ -237,6 +237,7 @@ describe('session manager persistence', () => {
     await awardCharacterXp('pc-aveline', {
       actorId: 'gm',
       amount: 1,
+      questPoints: 1,
       reason: 'Fin de session',
       sessionSlug: 'brumeval'
     });
@@ -247,6 +248,7 @@ describe('session manager persistence', () => {
         body: JSON.stringify({
           actorId: 'gm',
           amount: 1,
+          questPoints: 1,
           reason: 'Fin de session',
           sessionSlug: 'brumeval'
         }),

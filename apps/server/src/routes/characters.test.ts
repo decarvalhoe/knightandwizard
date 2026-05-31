@@ -180,6 +180,7 @@ describe('character routes', () => {
       payload: {
         actorId: 'gm',
         amount: 2,
+        questPoints: 1,
         reason: 'Fin de session',
         sessionSlug: 'mvp-xp'
       },
@@ -199,6 +200,7 @@ describe('character routes', () => {
             {
               actorId: 'gm',
               amount: 2,
+              questPoints: 1,
               reason: 'Fin de session',
               sessionSlug: 'mvp-xp'
             }
@@ -207,7 +209,7 @@ describe('character routes', () => {
         progression: {
           experiencePoints: 2,
           experienceTotal: 2,
-          questPoints: 0
+          questPoints: 1
         }
       },
       status: 'updated'
@@ -215,7 +217,7 @@ describe('character routes', () => {
     expect(readResponse.json().character.progression).toEqual({
       experiencePoints: 2,
       experienceTotal: 2,
-      questPoints: 0
+      questPoints: 1
     });
   });
 
