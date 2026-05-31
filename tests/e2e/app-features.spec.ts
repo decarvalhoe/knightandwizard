@@ -397,6 +397,15 @@ test.describe('K&W player and GM application flows', () => {
       'href',
       `/combat?slug=${slug}&characterId=${draftId}`
     );
+    await expect(page.getByRole('heading', { name: 'Assistant MJ' })).toBeVisible();
+
+    await page.getByLabel('Brief de scène').fill('La brume cache un guetteur pres de la porte.');
+    await page.getByRole('button', { name: 'Décrire' }).click();
+    const proposalPanel = page.locator('article').filter({
+      has: page.getByRole('heading', { name: 'Proposition' })
+    });
+    await expect(proposalPanel.getByText('Le MJ decrit les details visibles')).toBeVisible();
+    await expect(proposalPanel.getByText(/Sources \d+ · Mémoire \d+/)).toBeVisible();
 
     await page.getByRole('button', { name: 'Attribuer 1 XP' }).click();
     await expect(page.getByText('XP attribue a Aveline Cockpit')).toBeVisible();

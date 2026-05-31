@@ -6,6 +6,7 @@ import {
   appendGmRulingToSession,
   appendThreadPostToSession,
   awardCharacterXp,
+  describeGameMasterScene,
   queuePersistedChangeRequest,
   queuePersistedGmDecision,
   requestPersistedRollback,
@@ -151,6 +152,38 @@ describe('session manager persistence', () => {
         method: 'PATCH'
       }
     );
+  });
+
+  it('describes a GM scene through the assistant API', async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = 'http://browser-api.test';
+    const fetchMock = vi.fn().mockResolvedValue(
+      okJson({
+        knowledge: { citations: [{ sourcePath: 'docs/rules/08-magie.md' }] },
+        model: 'ollama/qwen2.5:7b',
+        narration: 'La brume avale les bruits de la porte nord.',
+        provider: 'deterministic-dev',
+        status: 'described'
+      })
+    );
+    vi.stubGlobal('fetch', fetchMock);
+
+    const result = await describeGameMasterScene({
+      sceneDescription: 'La porte nord disparait dans la brume.',
+      sessionId: 'brumeval'
+    });
+
+    expect(fetchMock).toHaveBeenCalledWith('http://browser-api.test/game-master/scenes/describe', {
+      body: JSON.stringify({
+        sceneDescription: 'La porte nord disparait dans la brume.',
+        sessionId: 'brumeval'
+      }),
+      headers: { 'content-type': 'application/json' },
+      method: 'POST'
+    });
+    expect(result).toMatchObject({
+      narration: 'La brume avale les bruits de la porte nord.',
+      provider: 'deterministic-dev'
+    });
   });
 
   it('appends a GM ruling event for cockpit actions', async () => {

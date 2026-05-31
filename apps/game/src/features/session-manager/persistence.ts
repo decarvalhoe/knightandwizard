@@ -85,10 +85,44 @@ export interface AwardCharacterXpInput {
   sessionSlug?: string;
 }
 
+export interface DescribeGameMasterSceneInput {
+  sceneDescription: string;
+  sessionId: string;
+}
+
+export interface GameMasterSceneDescription {
+  episodicMemory?: {
+    memories?: unknown[];
+  };
+  knowledge?: {
+    citations?: unknown[];
+  };
+  model: string;
+  narration: string;
+  provider: string;
+}
+
 export async function fetchPersistedSessionState(slug: string): Promise<SessionManagerState> {
   const snapshot = await getPersistedSessionSnapshot(slug);
 
   return toSessionManagerState(snapshot);
+}
+
+export async function describeGameMasterScene(
+  input: DescribeGameMasterSceneInput
+): Promise<GameMasterSceneDescription> {
+  const baseUrl = getClientApiBaseUrl();
+  const response = await fetch(`${baseUrl}/game-master/scenes/describe`, {
+    body: JSON.stringify(input),
+    headers: { 'content-type': 'application/json' },
+    method: 'POST'
+  });
+
+  if (!response.ok) {
+    throw new Error(`Unable to describe GM scene ${input.sessionId}: HTTP ${response.status}`);
+  }
+
+  return (await response.json()) as GameMasterSceneDescription;
 }
 
 export async function appendDiceRollToSession(

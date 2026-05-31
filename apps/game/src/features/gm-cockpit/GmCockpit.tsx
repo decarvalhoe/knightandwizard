@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
   ArrowUpRight,
+  Bot,
   CheckCircle2,
   Gavel,
   PlusCircle,
@@ -17,8 +18,11 @@ import {
 import type { SessionManagerState } from '../session-manager/model';
 import {
   appendGmRulingToSession,
+  appendPersistedSessionEvent,
   awardCharacterXp,
+  describeGameMasterScene,
   fetchPersistedSessionState,
+  type GameMasterSceneDescription,
   queuePersistedChangeRequest,
   requestPersistedRollback,
   resolvePersistedChangeRequest
@@ -42,6 +46,8 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
   const [rollbackSequence, setRollbackSequence] = useState(
     view.rollbackTargets[0]?.sequence.toString() ?? ''
   );
+  const [assistantPrompt, setAssistantPrompt] = useState(() => defaultAssistantPrompt(view));
+  const [assistantResult, setAssistantResult] = useState<GameMasterSceneDescription | null>(null);
   const [pendingAction, setPendingAction] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -114,6 +120,34 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
         payload: {
           kind: 'session_closed',
           text: 'Fin de session marquee par le MJ'
+        }
+      });
+    });
+  }
+
+  function describeWithAssistant() {
+    const sceneDescription = assistantPrompt.trim();
+
+    if (!sceneDescription) {
+      return;
+    }
+
+    void run('assistant', async () => {
+      const result = await describeGameMasterScene({
+        sceneDescription,
+        sessionId: state.slug
+      });
+      setAssistantResult(result);
+      await appendPersistedSessionEvent(state.slug, {
+        actorId: 'llm',
+        eventType: 'narration',
+        payload: {
+          citationCount: result.knowledge?.citations?.length ?? 0,
+          kind: 'gm_assistant',
+          memoryCount: result.episodicMemory?.memories?.length ?? 0,
+          model: result.model,
+          provider: result.provider,
+          text: result.narration
         }
       });
     });
@@ -252,6 +286,53 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
               </li>
             ))}
           </ol>
+        </article>
+      </section>
+
+      <section className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+        <article className="rounded-md border border-ink/10 bg-white/72 p-4 shadow-sm">
+          <div className="flex items-center gap-2">
+            <Bot aria-hidden="true" className="size-5 text-gold" />
+            <h2 className="text-lg font-semibold text-ink">Assistant MJ</h2>
+          </div>
+          <label
+            className="mt-4 block text-sm font-semibold text-ink/70"
+            htmlFor="gm-assistant-prompt"
+          >
+            Brief de scène
+            <textarea
+              className="mt-2 min-h-28 w-full rounded-md border border-ink/12 bg-paper px-3 py-2 text-sm font-semibold leading-6 text-ink"
+              id="gm-assistant-prompt"
+              onChange={(event) => setAssistantPrompt(event.target.value)}
+              value={assistantPrompt}
+            />
+          </label>
+          <button
+            className="mt-3 inline-flex items-center gap-2 rounded-md bg-ink px-3 py-2 text-sm font-semibold text-white disabled:opacity-50"
+            disabled={pendingAction !== null || !assistantPrompt.trim()}
+            onClick={describeWithAssistant}
+            type="button"
+          >
+            <Bot aria-hidden="true" className="size-4" />
+            Décrire
+          </button>
+        </article>
+
+        <article className="rounded-md border border-ink/10 bg-white/72 p-4 shadow-sm">
+          <h2 className="text-lg font-semibold text-ink">Proposition</h2>
+          {assistantResult ? (
+            <>
+              <p className="mt-4 text-sm leading-6 text-ink/75">{assistantResult.narration}</p>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-ink/50">
+                Sources {assistantResult.knowledge?.citations?.length ?? 0} · Mémoire{' '}
+                {assistantResult.episodicMemory?.memories?.length ?? 0}
+              </p>
+            </>
+          ) : (
+            <p className="mt-4 text-sm leading-6 text-ink/60">
+              {view.activeScene?.description ?? 'Aucune proposition inscrite.'}
+            </p>
+          )}
         </article>
       </section>
 
@@ -494,6 +575,16 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
       </section>
     </main>
   );
+}
+
+function defaultAssistantPrompt(view: ReturnType<typeof buildGmCockpitView>): string {
+  const scene = view.activeScene;
+
+  if (!scene) {
+    return 'La table reprend sans scene active.';
+  }
+
+  return [scene.title, scene.location, scene.description].filter(Boolean).join(' · ');
 }
 
 function CockpitLink({ href, label }: Readonly<{ href: string; label: string }>) {
