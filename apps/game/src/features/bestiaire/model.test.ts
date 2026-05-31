@@ -42,6 +42,7 @@ describe('bestiaire surface view model', () => {
     expect(view.entries.map((entry) => entry.name)).toEqual(['Humain', 'Griffon']);
     expect(view.entries[0]).toMatchObject({
       category: 'humanoid',
+      categoryLabel: 'Humanoïdes',
       languageLabel: 'Langage articule',
       lifeExpectancyLabel: '75 ans',
       playableLabel: 'Race jouable',
@@ -52,12 +53,18 @@ describe('bestiaire surface view model', () => {
       playableLabel: 'Creature MJ'
     });
     expect(view.categorySummaries).toEqual([
-      { category: 'beast', count: 1 },
-      { category: 'humanoid', count: 1 }
+      { category: 'beast', count: 1, label: 'Bêtes' },
+      { category: 'humanoid', count: 1, label: 'Humanoïdes' }
     ]);
-    expect(view.sourceFiles.map((source) => source.path)).toEqual([
-      'data/legacy/web-scraped/documents/bestiaire/index.md',
-      'data/legacy/paper/regles-papier/extracted/listes/bestiaire.md'
+    expect(view.sourceFiles).toEqual([
+      {
+        label: 'Bestiaire web',
+        path: 'data/legacy/web-scraped/documents/bestiaire/index.md'
+      },
+      {
+        label: 'Bestiaire papier',
+        path: 'data/legacy/paper/regles-papier/extracted/listes/bestiaire.md'
+      }
     ]);
   });
 

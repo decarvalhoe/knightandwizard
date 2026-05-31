@@ -2,7 +2,16 @@
 
 import { useMemo, useState } from 'react';
 
-import { Badge, Button, Card, Label, Seal, StatBlock, type BadgeTone } from '@knightandwizard/ui';
+import {
+  Badge,
+  Button,
+  Card,
+  Field,
+  Label,
+  Seal,
+  StatBlock,
+  type BadgeTone
+} from '@knightandwizard/ui';
 
 import type { BestiaryEntryView, BestiarySurfaceView } from './model';
 
@@ -13,10 +22,19 @@ interface BestiaireSurfaceProps {
 export function BestiaireSurface({ view }: Readonly<BestiaireSurfaceProps>) {
   const [night, setNight] = useState(false);
   const [selectedId, setSelectedId] = useState(view.entries[0]?.id ?? '');
+  const [search, setSearch] = useState('');
+
+  const filteredEntries = useMemo(
+    () => filterBestiaryEntries(view.entries, search),
+    [search, view.entries]
+  );
 
   const selected = useMemo(
-    () => view.entries.find((entry) => entry.id === selectedId) ?? view.entries[0],
-    [selectedId, view.entries]
+    () =>
+      filteredEntries.find((entry) => entry.id === selectedId) ??
+      filteredEntries[0] ??
+      view.entries[0],
+    [filteredEntries, selectedId, view.entries]
   );
 
   return (
@@ -50,7 +68,7 @@ export function BestiaireSurface({ view }: Readonly<BestiaireSurfaceProps>) {
               <Badge tone="neutral">API catalogues</Badge>
               {view.sourceFiles.map((source) => (
                 <Badge key={source.path} tone="neutral">
-                  {source.path}
+                  {source.label}
                 </Badge>
               ))}
             </div>
@@ -76,7 +94,7 @@ export function BestiaireSurface({ view }: Readonly<BestiaireSurfaceProps>) {
             <div className="kw-bestiary__category-grid">
               {view.categorySummaries.map((summary) => (
                 <div className="kw-bestiary__category-row" key={summary.category}>
-                  <span>{summary.category}</span>
+                  <span>{summary.label}</span>
                   <Badge tone="neutral">{summary.count}</Badge>
                 </div>
               ))}
@@ -89,24 +107,36 @@ export function BestiaireSurface({ view }: Readonly<BestiaireSurfaceProps>) {
             <div className="kw-bestiary__panel-head">
               <div>
                 <Label>Index des especes</Label>
-                <h2>{view.metrics.activeEntries} fiches actives</h2>
+                <h2>{filteredEntries.length} fiches affichées</h2>
               </div>
             </div>
+            <Field
+              id="bestiaire-search"
+              label="Rechercher"
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Humain, griffon, race jouable..."
+              type="search"
+              value={search}
+            />
             <div className="kw-bestiary__species-list" aria-label="Fiches du bestiaire">
-              {view.entries.map((entry) => (
-                <Button
-                  aria-pressed={entry.id === selected?.id}
-                  className="kw-bestiary__species-button"
-                  key={entry.id}
-                  onClick={() => setSelectedId(entry.id)}
-                  variant={entry.id === selected?.id ? 'primary' : 'secondary'}
-                >
-                  <span className="kw-bestiary__species-name">{entry.name}</span>
-                  <span className="kw-bestiary__species-meta">
-                    {entry.category} · {entry.playableLabel}
-                  </span>
-                </Button>
-              ))}
+              {filteredEntries.length > 0 ? (
+                filteredEntries.map((entry) => (
+                  <Button
+                    aria-pressed={entry.id === selected?.id}
+                    className="kw-bestiary__species-button"
+                    key={entry.id}
+                    onClick={() => setSelectedId(entry.id)}
+                    variant={entry.id === selected?.id ? 'primary' : 'secondary'}
+                  >
+                    <span className="kw-bestiary__species-name">{entry.name}</span>
+                    <span className="kw-bestiary__species-meta">
+                      {entry.categoryLabel} · {entry.playableLabel}
+                    </span>
+                  </Button>
+                ))
+              ) : (
+                <p className="kw-bestiary__muted">Aucune fiche trouvée.</p>
+              )}
             </div>
           </Card>
 
@@ -146,7 +176,7 @@ function BestiaryDetail({ entry }: Readonly<{ entry: BestiaryEntryView | undefin
         <StatBlock
           title="Morphologie"
           items={[
-            { label: 'Categorie', value: entry.category },
+            { label: 'Categorie', value: entry.categoryLabel },
             { label: 'Taille', value: entry.sizeLabel },
             { label: 'Esperance', value: entry.lifeExpectancyLabel },
             { label: 'Langage', value: entry.languageLabel }
@@ -198,6 +228,28 @@ function TraitList({ label, values }: Readonly<{ label: string; values: string[]
   );
 }
 
+function filterBestiaryEntries(entries: BestiaryEntryView[], query: string): BestiaryEntryView[] {
+  const normalizedQuery = normalizeSearchText(query);
+
+  if (!normalizedQuery) return entries;
+
+  return entries.filter((entry) =>
+    normalizeSearchText(
+      `${entry.name} ${entry.sourceName} ${entry.categoryLabel} ${entry.playableLabel} ${
+        entry.lore ?? ''
+      }`
+    ).includes(normalizedQuery)
+  );
+}
+
 function playableTone(entry: BestiaryEntryView): BadgeTone {
   return entry.playable ? 'success' : 'info';
+}
+
+function normalizeSearchText(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+    .trim();
 }

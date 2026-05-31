@@ -13,7 +13,6 @@ import {
   Label,
   ProgressBar,
   Seal,
-  SelectField,
   StatBlock,
   Tabs,
   Toast,
@@ -82,9 +81,6 @@ export function CharacterSheet({
   const [lastRoll, setLastRoll] = useState<AttributeRollResult | null>(null);
   const [equipmentSearch, setEquipmentSearch] = useState('');
   const [rollHistory, setRollHistory] = useState<AttributeRollResult[]>([]);
-  const [selectedEquipmentId, setSelectedEquipmentId] = useState<string>(
-    () => equipmentCatalog[0]?.id ?? ''
-  );
 
   function addEquipment(equipmentId: string) {
     const option = equipmentCatalog.find((entry) => entry.id === equipmentId);
@@ -117,12 +113,9 @@ export function CharacterSheet({
   const combatStatuses = combatStatusesFromMetadata(character.metadata.combat);
   const showGrimoire = shouldShowGrimoire(character, spells);
   const filteredEquipmentCatalog = useMemo(
-    () => filterEquipmentCatalog(equipmentCatalog, equipmentSearch),
+    () => filterEquipmentCatalog(equipmentCatalog, equipmentSearch, 8),
     [equipmentCatalog, equipmentSearch]
   );
-  const selectedEquipment =
-    filteredEquipmentCatalog.find((entry) => entry.id === selectedEquipmentId) ??
-    filteredEquipmentCatalog[0];
 
   function roll(attribute: AttributeKey) {
     const result = rollAttributeCheck(
@@ -360,34 +353,37 @@ export function CharacterSheet({
                 <Field
                   id="equipment-search"
                   label="Recherche"
+                  hint={`${filteredEquipmentCatalog.length} proposition${
+                    filteredEquipmentCatalog.length > 1 ? 's' : ''
+                  } affichée${filteredEquipmentCatalog.length > 1 ? 's' : ''}`}
                   onChange={(event) => setEquipmentSearch(event.target.value)}
                   placeholder="Épée, potion, bouclier..."
                   type="search"
                   value={equipmentSearch}
                 />
-                <SelectField
-                  id="equipment-picker"
-                  label="Équipement"
-                  onChange={(event) => setSelectedEquipmentId(event.target.value)}
-                  options={
-                    filteredEquipmentCatalog.length > 0
-                      ? filteredEquipmentCatalog.map((option) => ({
-                          label: option.name,
-                          value: option.id
-                        }))
-                      : [{ disabled: true, label: 'Aucun résultat', value: '' }]
-                  }
-                  value={selectedEquipment?.id ?? ''}
-                />
-                <Button
-                  className="kw-sheet__add-button"
-                  disabled={!selectedEquipment}
-                  onClick={() => selectedEquipment && addEquipment(selectedEquipment.id)}
-                  type="button"
-                >
-                  <PackagePlus aria-hidden="true" className="kw-sheet__button-icon" />
-                  Ajouter
-                </Button>
+                <div className="kw-sheet__equipment-results" aria-label="Équipements trouvés">
+                  {filteredEquipmentCatalog.length > 0 ? (
+                    filteredEquipmentCatalog.map((option) => (
+                      <Button
+                        className="kw-sheet__equipment-option"
+                        key={option.id}
+                        onClick={() => addEquipment(option.id)}
+                        type="button"
+                        variant="secondary"
+                      >
+                        <span>
+                          <strong>{option.name}</strong>
+                          <small>
+                            {inventoryCategoryLabel(option.category)} · {option.weightKg ?? 0} kg
+                          </small>
+                        </span>
+                        <PackagePlus aria-hidden="true" className="kw-sheet__button-icon" />
+                      </Button>
+                    ))
+                  ) : (
+                    <p className="kw-sheet__muted">Aucun équipement trouvé.</p>
+                  )}
+                </div>
               </div>
             ) : undefined
           }
