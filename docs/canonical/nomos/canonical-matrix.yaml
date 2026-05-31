@@ -173363,7 +173363,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-BLAGUES-DICTONS-ET-PROVERBES
     unit_type: catalog_entry
     name: data/legacy/paper/regles-papier/extracted/histoires/blagues-dictons-et-proverbes.md
-    domain: rules
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-BLAGUES-DICTONS-ET-PROVERBES
@@ -173380,7 +173380,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-CULTES-ET-RELIGIONS
     unit_type: catalog_entry
     name: data/legacy/paper/regles-papier/extracted/histoires/cultes-et-religions.md
-    domain: rules
+    domain: d12-religions
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-CULTES-ET-RELIGIONS
@@ -173397,7 +173397,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-LA-CREATION-DES-TERRES-OUBLIEES
     unit_type: catalog_entry
     name: data/legacy/paper/regles-papier/extracted/histoires/la-creation-des-terres-oubliees.md
-    domain: rules
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-LA-CREATION-DES-TERRES-OUBLIEES
@@ -173414,7 +173414,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-NATIONS
     unit_type: catalog_entry
     name: data/legacy/paper/regles-papier/extracted/histoires/nations.md
-    domain: rules
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-NATIONS
@@ -173431,7 +173431,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-ORGANISATIONS
     unit_type: catalog_entry
     name: data/legacy/paper/regles-papier/extracted/histoires/organisations.md
-    domain: rules
+    domain: d12-organisations
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-ORGANISATIONS
@@ -173448,7 +173448,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-US-ET-COUTUMES
     unit_type: catalog_entry
     name: data/legacy/paper/regles-papier/extracted/histoires/us-et-coutumes.md
-    domain: rules
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-PAPER-REGLES-PAPIER-EXTRACTED-HISTOIRES-US-ET-COUTUMES
@@ -174918,7 +174918,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-CARTE-DU-MONDE-INDEX
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/carte-du-monde/index.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-CARTE-DU-MONDE-INDEX
@@ -174933,7 +174933,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-1
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-1.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-1
@@ -174948,7 +174948,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-15
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-15.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-15
@@ -174963,7 +174963,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-16
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-16.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-16
@@ -174978,7 +174978,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-18
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-18.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-18
@@ -174993,7 +174993,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-2
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-2.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-2
@@ -175008,7 +175008,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-20
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-20.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-20
@@ -175023,7 +175023,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-23
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-23.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-23
@@ -175038,7 +175038,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-26
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-26.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-26
@@ -175053,7 +175053,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-27
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-27.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-27
@@ -175068,7 +175068,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-28
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-28.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-28
@@ -175083,7 +175083,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-29
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-29.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-29
@@ -175098,7 +175098,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-3
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-3.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-3
@@ -175113,7 +175113,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-31
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-31.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-31
@@ -175128,7 +175128,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-4
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-4.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-4
@@ -175143,7 +175143,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-5
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-5.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-5
@@ -175158,7 +175158,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-6
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-6.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-6
@@ -175173,7 +175173,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-7
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/lieux/place-7.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-LIEUX-PLACE-7
@@ -175188,7 +175188,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-13
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/regions/land-13.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-13
@@ -175203,7 +175203,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-21
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/regions/land-21.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-21
@@ -175218,7 +175218,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-24
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/regions/land-24.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-24
@@ -175233,7 +175233,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-8
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/regions/land-8.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-8
@@ -175248,7 +175248,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-9
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/regions/land-9.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-REGIONS-LAND-9
@@ -175263,7 +175263,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-TOUS-LES-LIEUX-INDEX
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/tous-les-lieux/index.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-TOUS-LES-LIEUX-INDEX
@@ -175278,7 +175278,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-10
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/villes/city-10.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-10
@@ -175293,7 +175293,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-11
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/villes/city-11.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-11
@@ -175308,7 +175308,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-12
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/villes/city-12.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-12
@@ -175323,7 +175323,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-14
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/villes/city-14.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-14
@@ -175338,7 +175338,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-17
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/villes/city-17.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-17
@@ -175353,7 +175353,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-19
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/villes/city-19.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-19
@@ -175368,7 +175368,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-22
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/villes/city-22.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-22
@@ -175383,7 +175383,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-25
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/villes/city-25.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-25
@@ -175398,7 +175398,7 @@ units:
   - unit_id: SOURCE-DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-30
     unit_type: catalog_entry
     name: data/legacy/web-scraped/monde/villes/city-30.md
-    domain: unclassified
+    domain: d12-world
     criticality: low
     source_refs:
       - source_id: DATA-LEGACY-WEB-SCRAPED-MONDE-VILLES-CITY-30
