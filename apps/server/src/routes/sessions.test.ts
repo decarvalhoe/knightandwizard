@@ -77,12 +77,103 @@ describe('session routes', () => {
         { actorId: 'aveline', type: 'dice_roll', sequence: 2 }
       ],
       players: [
-        { id: 'gm', name: 'MJ', role: 'human_gm' },
-        { id: 'aveline', name: 'Aveline', role: 'player' }
+        { id: 'aveline', name: 'Aveline', role: 'player' },
+        { id: 'gm', name: 'MJ', role: 'human_gm' }
       ],
       scenes: [{ id: 'brumeval-gate', location: 'Brumeval', title: 'Porte nord' }],
       slug,
       title: 'Session API'
+    });
+  });
+
+  it('persists initial session players and scenes as first-class rows', async () => {
+    const slug = `api-session-rows-${randomUUID()}`;
+
+    const createResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        metadata: {
+          players: [
+            { id: 'gm', name: 'MJ', role: 'human_gm' },
+            { id: 'aveline', name: 'Aveline', role: 'player' }
+          ],
+          scenes: [
+            {
+              description: 'La garde surveille les voyageurs.',
+              id: 'brumeval-gate',
+              location: 'Brumeval',
+              status: 'active',
+              title: 'Porte nord'
+            }
+          ],
+          tableNote: 'Session publique'
+        },
+        mode: 'digital_human_gm',
+        slug,
+        title: 'Session Rows API'
+      },
+      url: '/sessions'
+    });
+    const readResponse = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+    const sql = createSqlClient();
+    let playerRows: { name: string; player_id: string; role: string }[];
+    let sceneRows: { location: string; scene_id: string; status: string; title: string }[];
+    let metadataRows: { metadata: Record<string, unknown> }[];
+
+    try {
+      playerRows = await sql<{ name: string; player_id: string; role: string }[]>`
+        SELECT sp.player_id, sp.name, sp.role
+        FROM session_players sp
+        JOIN game_sessions gs ON gs.id = sp.session_id
+        WHERE gs.slug = ${slug}
+        ORDER BY sp.player_id ASC
+      `;
+      sceneRows = await sql<
+        { location: string; scene_id: string; status: string; title: string }[]
+      >`
+        SELECT ss.scene_id, ss.location, ss.status, ss.title
+        FROM session_scenes ss
+        JOIN game_sessions gs ON gs.id = ss.session_id
+        WHERE gs.slug = ${slug}
+        ORDER BY ss.scene_id ASC
+      `;
+      metadataRows = await sql<{ metadata: Record<string, unknown> }[]>`
+        SELECT metadata
+        FROM game_sessions
+        WHERE slug = ${slug}
+      `;
+    } finally {
+      await sql.end({ timeout: 5 });
+    }
+
+    expect(createResponse.statusCode).toBe(201);
+    expect(playerRows).toEqual([
+      { name: 'Aveline', player_id: 'aveline', role: 'player' },
+      { name: 'MJ', player_id: 'gm', role: 'human_gm' }
+    ]);
+    expect(sceneRows).toEqual([
+      {
+        location: 'Brumeval',
+        scene_id: 'brumeval-gate',
+        status: 'active',
+        title: 'Porte nord'
+      }
+    ]);
+    expect(metadataRows[0]?.metadata).toEqual({ tableNote: 'Session publique' });
+    expect(readResponse.json().state).toMatchObject({
+      players: [
+        { id: 'aveline', name: 'Aveline', role: 'player' },
+        { id: 'gm', name: 'MJ', role: 'human_gm' }
+      ],
+      scenes: [
+        {
+          description: 'La garde surveille les voyageurs.',
+          id: 'brumeval-gate',
+          location: 'Brumeval',
+          status: 'active',
+          title: 'Porte nord'
+        }
+      ]
     });
   });
 
@@ -143,6 +234,56 @@ describe('session routes', () => {
         id: 'player-aveline',
         name: 'Aveline Join',
         role: 'player'
+      }
+    ]);
+  });
+
+  it('upserts scenes through the first-class session scene API', async () => {
+    const slug = `scene-session-${randomUUID()}`;
+
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, status: 'active', title: 'Scene API' },
+      url: '/sessions'
+    });
+
+    const sceneResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        description: 'Les cloches de la porte nord sonnent.',
+        location: 'Brumeval',
+        npcIds: ['captain-thern'],
+        openedAtSequence: 3,
+        sceneId: 'brumeval-gate',
+        status: 'active',
+        title: 'Porte nord'
+      },
+      url: `/sessions/${slug}/scenes`
+    });
+    const readResponse = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+
+    expect(sceneResponse.statusCode).toBe(200);
+    expect(sceneResponse.json()).toMatchObject({
+      scene: {
+        description: 'Les cloches de la porte nord sonnent.',
+        id: 'brumeval-gate',
+        location: 'Brumeval',
+        npcIds: ['captain-thern'],
+        openedAtSequence: 3,
+        status: 'active',
+        title: 'Porte nord'
+      },
+      status: 'upserted'
+    });
+    expect(readResponse.json().state.scenes).toEqual([
+      {
+        description: 'Les cloches de la porte nord sonnent.',
+        id: 'brumeval-gate',
+        location: 'Brumeval',
+        npcIds: ['captain-thern'],
+        openedAtSequence: 3,
+        status: 'active',
+        title: 'Porte nord'
       }
     ]);
   });

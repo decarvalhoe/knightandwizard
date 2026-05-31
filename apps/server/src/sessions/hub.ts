@@ -16,7 +16,7 @@ export interface LiveConnection {
   send(data: string): void;
 }
 
-export type SessionBroadcastKind = 'session.event' | 'session.presence';
+export type SessionBroadcastKind = 'session.event' | 'session.presence' | 'session.scene';
 
 export interface SessionBroadcast {
   readonly kind: SessionBroadcastKind;
