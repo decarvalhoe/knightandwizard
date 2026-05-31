@@ -311,8 +311,16 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
       `;
       const playerRows = await selectSessionPlayers(sql, session.id);
       const sceneRows = await selectSessionScenes(sql, session.id);
+      const changeRequestRows = await selectSessionChangeRequests(sql, session.id);
 
-      return toSessionResponse(session, eventRows, decisionRows, playerRows, sceneRows);
+      return toSessionResponse(
+        session,
+        eventRows,
+        decisionRows,
+        playerRows,
+        sceneRows,
+        changeRequestRows
+      );
     } finally {
       await sql.end({ timeout: 5 });
     }
@@ -421,6 +429,7 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
 
           return {
             capability,
+            changeRequests: await selectSessionChangeRequests(tx, session.id),
             decisions: decisionRows,
             events: eventRows,
             player: persistedPlayer,
@@ -451,7 +460,8 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             result.events,
             result.decisions,
             result.players,
-            result.scenes
+            result.scenes,
+            result.changeRequests
           ),
           status: 'joined'
         };
@@ -2499,7 +2509,8 @@ function toSessionResponse(
   events: SessionEventRow[],
   decisions: SessionDecisionRow[],
   playerRows: SessionPlayerRow[] = [],
-  sceneRows: SessionSceneRow[] = []
+  sceneRows: SessionSceneRow[] = [],
+  changeRequestRows: ChangeRequestRow[] = []
 ) {
   const rawState = buildSessionState(session, events, decisions, playerRows, sceneRows);
   const state = rawState.events.some((event) => event.type === 'rollback_requested')
@@ -2507,6 +2518,7 @@ function toSessionResponse(
     : rawState;
 
   return {
+    changeRequests: changeRequestRows.map(toChangeRequestResponse),
     createdAt: serializeDate(session.created_at),
     decisions: decisions.map(toDecisionResponse),
     events: events.map(toEventResponse),

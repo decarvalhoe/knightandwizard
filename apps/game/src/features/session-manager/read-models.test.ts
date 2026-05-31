@@ -39,7 +39,26 @@ describe('session manager read models', () => {
           status: 'active',
           title: 'Brumeval',
           updatedAt: '2026-05-26T10:01:00.000Z'
-        }
+        },
+        changeRequests: [
+          {
+            assignedTo: 'human_gm',
+            authority: 'human_gm',
+            changeKind: 'predilection_target',
+            createdAt: '2026-05-26T10:02:00.000Z',
+            id: 'change-1',
+            payload: {},
+            priority: 'normal',
+            requestedBy: 'player-aveline',
+            scope: 'game_state',
+            status: 'pending',
+            summary: 'Changement de cible de predilection.',
+            targetId: 'pc-aveline',
+            targetType: 'character',
+            title: 'Changer la predilection',
+            updatedAt: '2026-05-26T10:02:00.000Z'
+          }
+        ]
       })
     );
     vi.stubGlobal('fetch', fetchMock);
@@ -51,6 +70,9 @@ describe('session manager read models', () => {
     });
     expect(readModel.initialState.events.map((event) => event.type)).toEqual(['scene_opened']);
     expect(readModel.initialState.players).toEqual([{ id: 'gm', name: 'MJ', role: 'human_gm' }]);
+    expect(readModel.initialState.changeRequests.map((request) => request.title)).toEqual([
+      'Changer la predilection'
+    ]);
   });
 
   it('creates an empty durable session when the requested slug does not exist', async () => {

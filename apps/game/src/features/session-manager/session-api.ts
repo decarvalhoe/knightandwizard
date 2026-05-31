@@ -1,5 +1,7 @@
 import type {
+  SessionControllerRole,
   SessionDecision,
+  SessionDecisionPriority,
   SessionEvent,
   SessionMode,
   SessionPlayer,
@@ -8,11 +10,18 @@ import type {
   SessionStatus
 } from '@knightandwizard/rules-core';
 
-import { createSessionManagerState, type SessionManagerState } from './model';
+import {
+  createSessionManagerState,
+  type SessionChangeRequest,
+  type SessionChangeRequestScope,
+  type SessionChangeRequestStatus,
+  type SessionManagerState
+} from './model';
 
 export const DEFAULT_SESSION_SLUG = 'brumeval';
 
 export interface PersistedSessionSnapshot {
+  changeRequests?: unknown[];
   createdAt?: string;
   decisions?: SessionDecision[];
   events?: Array<SessionEvent | PersistedSessionEvent>;
@@ -54,6 +63,8 @@ export function createPersistedSessionPayload(slug: string): CreatePersistedSess
 }
 
 export function toSessionManagerState(snapshot: PersistedSessionSnapshot): SessionManagerState {
+  const changeRequests = toSessionChangeRequests(snapshot.changeRequests);
+
   if (snapshot.state) {
     // Le "Journal canonique" est le log d'evenements immuable. Apres un rollback,
     // le serveur renvoie une projection revertie dans `state` (evenements tronques),
@@ -65,13 +76,14 @@ export function toSessionManagerState(snapshot: PersistedSessionSnapshot): Sessi
       : undefined;
 
     if (fullEvents && fullEvents.length > snapshot.state.events.length) {
-      return { ...snapshot.state, events: fullEvents };
+      return { ...snapshot.state, changeRequests, events: fullEvents };
     }
 
-    return snapshot.state;
+    return { ...snapshot.state, changeRequests };
   }
 
   return createSessionManagerState({
+    changeRequests,
     createdAt: snapshot.createdAt,
     decisions: snapshot.decisions ?? [],
     events: (snapshot.events ?? []).map(toSessionEvent),
@@ -145,6 +157,58 @@ function isSessionScene(value: unknown): value is SessionScene {
     typeof value.location === 'string' &&
     typeof value.title === 'string' &&
     (value.status === 'active' || value.status === 'closed' || value.status === 'draft')
+  );
+}
+
+function toSessionChangeRequests(value: unknown): SessionChangeRequest[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value.filter(isSessionChangeRequest).map((request) => ({ ...request }));
+}
+
+function isSessionChangeRequest(value: unknown): value is SessionChangeRequest {
+  if (!isRecord(value)) {
+    return false;
+  }
+
+  return (
+    typeof value.id === 'string' &&
+    isChangeRequestScope(value.scope) &&
+    typeof value.targetType === 'string' &&
+    typeof value.changeKind === 'string' &&
+    typeof value.title === 'string' &&
+    typeof value.summary === 'string' &&
+    typeof value.requestedBy === 'string' &&
+    isControllerRole(value.assignedTo) &&
+    isControllerRole(value.authority) &&
+    isDecisionPriority(value.priority) &&
+    isChangeRequestStatus(value.status) &&
+    isRecord(value.payload) &&
+    typeof value.createdAt === 'string'
+  );
+}
+
+function isControllerRole(value: unknown): value is SessionControllerRole {
+  return value === 'auto' || value === 'human_gm' || value === 'llm' || value === 'player';
+}
+
+function isDecisionPriority(value: unknown): value is SessionDecisionPriority {
+  return value === 'high' || value === 'low' || value === 'normal' || value === 'urgent';
+}
+
+function isChangeRequestScope(value: unknown): value is SessionChangeRequestScope {
+  return value === 'canon' || value === 'game_state';
+}
+
+function isChangeRequestStatus(value: unknown): value is SessionChangeRequestStatus {
+  return (
+    value === 'applied' ||
+    value === 'approved' ||
+    value === 'pending' ||
+    value === 'rejected' ||
+    value === 'superseded'
   );
 }
 

@@ -24,6 +24,21 @@ export interface GmCockpitDecision {
   title: string;
 }
 
+export interface GmCockpitChangeRequest {
+  assignedTo: string;
+  authority: string;
+  changeKind: string;
+  id: string;
+  priority: string;
+  priorityLabel: string;
+  requestedBy: string;
+  status: string;
+  statusLabel: string;
+  summary: string;
+  targetLabel: string;
+  title: string;
+}
+
 export interface GmCockpitRollbackTarget {
   label: string;
   sequence: number;
@@ -39,6 +54,7 @@ export interface GmCockpitView {
   activeScene?: SessionScene;
   metrics: SessionManagerView['metrics'];
   participants: GmCockpitParticipant[];
+  pendingChangeRequests: GmCockpitChangeRequest[];
   pendingDecisions: GmCockpitDecision[];
   primaryCombatHref: string;
   recentEvents: SessionManagerView['recentEvents'];
@@ -82,6 +98,20 @@ export function buildGmCockpitView(state: SessionManagerState): GmCockpitView {
       priorityLabel: decision.priorityLabel,
       requestedBy: decision.requestedBy,
       title: decision.title
+    })),
+    pendingChangeRequests: session.changeRequestQueue.map((request) => ({
+      assignedTo: request.assignedTo,
+      authority: request.authority,
+      changeKind: request.changeKind,
+      id: request.id,
+      priority: request.priority,
+      priorityLabel: request.priorityLabel,
+      requestedBy: request.requestedBy,
+      status: request.status,
+      statusLabel: request.statusLabel,
+      summary: request.summary,
+      targetLabel: request.targetLabel,
+      title: request.title
     })),
     primaryCombatHref: primaryCharacterId
       ? `/combat?slug=${encodeURIComponent(state.slug)}&characterId=${encodeURIComponent(primaryCharacterId)}`
