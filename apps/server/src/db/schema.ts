@@ -2,6 +2,7 @@ import { sql } from 'drizzle-orm';
 import {
   boolean,
   customType,
+  doublePrecision,
   index,
   integer,
   jsonb,
@@ -34,6 +35,7 @@ export const REQUIRED_APP_TABLES = [
   'catalog_documents',
   'character_drafts',
   'characters',
+  'character_active_spells',
   'game_sessions',
   'session_players',
   'session_scenes',
@@ -120,6 +122,46 @@ export const gameSessions = pgTable(
   (table) => ({
     slugIdx: uniqueIndex('game_sessions_slug_idx').on(table.slug),
     statusIdx: index('game_sessions_status_idx').on(table.status)
+  })
+);
+
+export const characterActiveSpells = pgTable(
+  'character_active_spells',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    sessionId: uuid('session_id')
+      .notNull()
+      .references(() => gameSessions.id, { onDelete: 'cascade' }),
+    characterId: text('character_id')
+      .notNull()
+      .references(() => characters.id, { onDelete: 'cascade' }),
+    activeSpellId: text('active_spell_id').notNull(),
+    spellId: text('spell_id'),
+    sourceCasterId: text('source_caster_id'),
+    castAtSequence: integer('cast_at_sequence').notNull(),
+    castAtNarrativeSeconds: doublePrecision('cast_at_narrative_seconds').notNull().default(0),
+    durationAmount: doublePrecision('duration_amount').notNull().default(0),
+    durationUnit: text('duration_unit').notNull(),
+    successesCount: integer('successes_count'),
+    expiresAtNarrativeSeconds: doublePrecision('expires_at_narrative_seconds'),
+    expiresAtCombatDt: integer('expires_at_combat_dt'),
+    lastRenewedAt: timestamp('last_renewed_at', { withTimezone: true }),
+    dispelledAtSequence: integer('dispelled_at_sequence'),
+    status: text('status').notNull().default('active'),
+    createdAt: now(),
+    updatedAt: updatedNow()
+  },
+  (table) => ({
+    characterStatusIdx: index('character_active_spells_character_status_idx').on(
+      table.characterId,
+      table.status
+    ),
+    sessionCharacterSpellIdx: uniqueIndex('character_active_spells_session_character_spell_idx').on(
+      table.sessionId,
+      table.characterId,
+      table.activeSpellId
+    ),
+    sessionIdx: index('character_active_spells_session_idx').on(table.sessionId)
   })
 );
 

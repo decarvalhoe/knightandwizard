@@ -5,6 +5,7 @@ import {
   awardPersistedCharacterXp,
   finalizeCharacterDraft,
   getPersistedCharacter,
+  listPersistedCharacterActiveSpells,
   updatePersistedCharacterCombatState,
   type CharacterCombatStateUpdate,
   type CharacterXpAwardUpdate
@@ -35,6 +36,7 @@ interface CharacterParams {
 
 export async function registerCharacterRoutes(app: FastifyInstance): Promise<void> {
   app.options('/characters/finalize', async (_request, reply) => reply.code(204).send());
+  app.options('/characters/:id/active-spells', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id/combat-state', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id/xp-awards', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id', async (_request, reply) => reply.code(204).send());
@@ -65,6 +67,21 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
       }
     }
   );
+
+  app.get<{ Params: CharacterParams }>('/characters/:id/active-spells', async (request, reply) => {
+    try {
+      const activeSpells = await listPersistedCharacterActiveSpells(request.params.id, {
+        userId: resolveRequestUserId(request)
+      });
+
+      return {
+        activeSpells,
+        status: 'found'
+      };
+    } catch (error) {
+      return sendCharacterRouteError(error, reply);
+    }
+  });
 
   app.get<{ Params: CharacterParams }>('/characters/:id', async (request, reply) => {
     try {

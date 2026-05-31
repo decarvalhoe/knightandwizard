@@ -45,6 +45,22 @@ export interface CharacterPersistenceResult {
   character: Character;
 }
 
+export interface CharacterActiveSpellReadModel {
+  activeSpellId: string;
+  castAtNarrativeSeconds: number;
+  castAtSequence: number;
+  characterId: string;
+  durationAmount: number;
+  durationUnit: string;
+  expiresAtCombatDt?: number;
+  expiresAtNarrativeSeconds?: number;
+  sourceCasterId?: string;
+  spellId?: string;
+  status: string;
+  successesCount?: number;
+  sessionSlug: string;
+}
+
 export interface CharacterPersistenceScope {
   userId?: string;
 }
@@ -71,6 +87,22 @@ interface CharacterCreationCatalog {
   equipment: Array<{ id: string; name: string }>;
   orientations: CharacterOrientationProfile[];
   races: RaceProfile[];
+}
+
+interface CharacterActiveSpellRow {
+  active_spell_id: string;
+  cast_at_narrative_seconds: number | string;
+  cast_at_sequence: number;
+  character_id: string;
+  duration_amount: number | string;
+  duration_unit: string;
+  expires_at_combat_dt: null | number;
+  expires_at_narrative_seconds: null | number | string;
+  session_slug: string;
+  source_caster_id: null | string;
+  spell_id: null | string;
+  status: string;
+  successes_count: null | number;
 }
 
 interface CharacterCreationDraftSnapshot {
@@ -250,6 +282,56 @@ export async function getPersistedCharacter(
     return {
       character: row.character
     };
+  } finally {
+    await sql.end({ timeout: 5 });
+  }
+}
+
+export async function listPersistedCharacterActiveSpells(
+  id: string,
+  scope: CharacterPersistenceScope = {}
+): Promise<CharacterActiveSpellReadModel[]> {
+  const sql = createSqlClient();
+  const db = createDbClient(sql);
+
+  try {
+    const characterRows = await db
+      .select({ id: characters.id })
+      .from(characters)
+      .where(
+        scope.userId
+          ? and(eq(characters.id, id), eq(characters.userId, scope.userId))
+          : eq(characters.id, id)
+      )
+      .limit(1);
+
+    if (characterRows.length === 0) {
+      throw new CharacterNotFoundError(id);
+    }
+
+    const spellRows = await sql<CharacterActiveSpellRow[]>`
+      SELECT
+        cas.character_id,
+        cas.active_spell_id,
+        cas.spell_id,
+        cas.source_caster_id,
+        cas.cast_at_sequence,
+        cas.cast_at_narrative_seconds,
+        cas.duration_amount,
+        cas.duration_unit,
+        cas.successes_count,
+        cas.expires_at_narrative_seconds,
+        cas.expires_at_combat_dt,
+        cas.status,
+        gs.slug AS session_slug
+      FROM character_active_spells cas
+      JOIN game_sessions gs ON gs.id = cas.session_id
+      WHERE cas.character_id = ${id}
+        AND cas.status = 'active'
+      ORDER BY cas.cast_at_sequence ASC, cas.created_at ASC
+    `;
+
+    return spellRows.map(toCharacterActiveSpellReadModel);
   } finally {
     await sql.end({ timeout: 5 });
   }
@@ -539,6 +621,28 @@ function requireSelection<T>(value: T | undefined, label: string): T {
   }
 
   return value;
+}
+
+function toCharacterActiveSpellReadModel(
+  row: CharacterActiveSpellRow
+): CharacterActiveSpellReadModel {
+  return {
+    activeSpellId: row.active_spell_id,
+    castAtNarrativeSeconds: Number(row.cast_at_narrative_seconds),
+    castAtSequence: row.cast_at_sequence,
+    characterId: row.character_id,
+    durationAmount: Number(row.duration_amount),
+    durationUnit: row.duration_unit,
+    ...(row.expires_at_combat_dt !== null ? { expiresAtCombatDt: row.expires_at_combat_dt } : {}),
+    ...(row.expires_at_narrative_seconds !== null
+      ? { expiresAtNarrativeSeconds: Number(row.expires_at_narrative_seconds) }
+      : {}),
+    ...(row.source_caster_id !== null ? { sourceCasterId: row.source_caster_id } : {}),
+    ...(row.spell_id !== null ? { spellId: row.spell_id } : {}),
+    status: row.status,
+    ...(row.successes_count !== null ? { successesCount: row.successes_count } : {}),
+    sessionSlug: row.session_slug
+  };
 }
 
 function cleanName(name: string): string {
