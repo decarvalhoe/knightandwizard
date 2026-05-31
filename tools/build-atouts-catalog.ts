@@ -1,6 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import yaml from 'js-yaml';
@@ -27,6 +27,22 @@ interface SourceRef {
   ref: string;
 }
 
+type EffectFidelity = 'covered' | 'ambiguous' | 'pending';
+
+interface EffectSource {
+  prose: string;
+  ref: string;
+}
+
+type EffectSpec = Record<string, unknown>;
+
+interface AtoutEffectFields {
+  source: EffectSource;
+  spec: EffectSpec;
+  fidelity: EffectFidelity;
+  ambiguity_ref?: string | null;
+}
+
 interface AtoutEntry {
   id: string;
   name: string;
@@ -37,6 +53,10 @@ interface AtoutEntry {
   scope: AtoutScope;
   source_refs: SourceRef[];
   metadata?: Record<string, unknown>;
+  source?: EffectSource;
+  spec?: EffectSpec;
+  fidelity?: EffectFidelity;
+  ambiguity_ref?: string | null;
 }
 
 interface ParsedBaseAtouts {
@@ -64,6 +84,230 @@ interface RaceAssetGroup {
   raceIds: Set<string>;
   raceNames: Set<string>;
 }
+
+const PILOT_EFFECT_SPECS: Record<string, Omit<AtoutEffectFields, 'source'>> = {
+  'race-innate-equilibre-controle': {
+    spec: {
+      target: 'difficulty',
+      op: 'sub',
+      value: 3,
+      condition: { action_type: 'equilibre' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'race-innate-flaire-infaillible': {
+    spec: {
+      target: 'difficulty',
+      op: 'sub',
+      value: 3,
+      condition: { competence: 'odorat' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'race-innate-pisteur-ne': {
+    spec: {
+      target: 'difficulty',
+      op: 'sub',
+      value: 3,
+      condition: { competence: 'pistage' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-2-apaisement-guerrier-justicier': {
+    spec: {
+      target: 'vitality',
+      op: 'add',
+      value: 'level',
+      condition: { target_disposition: 'ally' },
+      activation: 'active',
+      duration: 'ephemeral'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-2-apaisement-intellectuel-medecin': {
+    spec: {
+      target: 'vitality',
+      op: 'add',
+      value: 'level',
+      condition: { target_disposition: 'ally' },
+      activation: 'active',
+      duration: 'ephemeral'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-2-auto-soin-guerrier': {
+    spec: {
+      target: 'vitality',
+      op: 'add',
+      value: 'level',
+      condition: { target_ref: 'self' },
+      activation: 'active',
+      duration: 'ephemeral'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-2-bluff-intellectuel-joueur-de-poker': {
+    spec: {
+      target: 'difficulty',
+      op: 'sub',
+      value: 1,
+      condition: { competence: 'mensonge' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-2-maitrise-de-la-hache-ouvrier-bucheron': {
+    spec: {
+      target: 'difficulty',
+      op: 'sub',
+      value: 1,
+      condition: { competence: 'hache' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-2-paluche-ouvrier-bucheron': {
+    spec: {
+      target: 'damage',
+      scope: 'C',
+      op: 'add',
+      value: 1,
+      condition: { action_type: 'coup_de_poing_ou_claque' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-3-accoutumance-a-la-douleur-ouvrier': {
+    spec: {
+      target: 'difficulty',
+      op: 'sub',
+      value: 1,
+      condition: { aptitude: 'stamina' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-3-coup-mortel-guerrier': {
+    spec: {
+      target: 'damage',
+      op: 'add',
+      value: 'level',
+      condition: { action_type: 'attaque' },
+      activation: 'active',
+      duration: 'ephemeral'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-3-coup-mortel-hors-la-loi-assassin': {
+    spec: {
+      target: 'damage',
+      op: 'add',
+      value: 'level',
+      condition: { action_type: 'attaque' },
+      activation: 'active',
+      duration: 'ephemeral'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-3-force-de-l-ours-voyageur': {
+    spec: {
+      target: 'difficulty',
+      op: 'sub',
+      value: 1,
+      condition: { aptitude: 'strength' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-5-maitre-du-mensonge-artiste-comedien': {
+    spec: {
+      target: 'pool',
+      op: 'add',
+      value: 'level',
+      condition: { competence: 'mensonge' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-5-maitre-du-mensonge-hors-la-loi': {
+    spec: {
+      target: 'pool',
+      op: 'add',
+      value: 'level',
+      condition: { competence: 'mensonge' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-5-maitre-du-mensonge-intellectuel-politicien': {
+    spec: {
+      target: 'pool',
+      op: 'add',
+      value: 'level',
+      condition: { competence: 'mensonge' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-5-orateur-ideal-intellectuel-politicien': {
+    spec: {
+      target: 'pool',
+      op: 'add',
+      value: 'level',
+      condition: { competence: 'discours-de-foule' },
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-10-maitre-en-choc-guerrier': {
+    spec: {
+      target: 'damage',
+      scope: 'C',
+      op: 'add',
+      value: 1,
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-10-maitre-en-lame-guerrier': {
+    spec: {
+      target: 'damage',
+      scope: 'T',
+      op: 'add',
+      value: 1,
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  },
+  'niveau-10-maitre-en-perforation-guerrier': {
+    spec: {
+      target: 'damage',
+      scope: 'P',
+      op: 'add',
+      value: 1,
+      activation: 'passive',
+      duration: 'permanent'
+    },
+    fidelity: 'covered'
+  }
+};
 
 function slugify(value: string): string {
   return value
@@ -121,6 +365,103 @@ function uniqueSourceRefs(sourceRefs: SourceRef[]): SourceRef[] {
     seen.add(key);
     return true;
   });
+}
+
+function isEffectFidelity(value: unknown): value is EffectFidelity {
+  return value === 'covered' || value === 'ambiguous' || value === 'pending';
+}
+
+function readExistingEffectFields(): Map<string, AtoutEffectFields> {
+  const overlays = new Map<string, AtoutEffectFields>();
+  if (!existsSync(OUTPUT_PATH)) return overlays;
+
+  const parsed = yaml.load(readFileSync(OUTPUT_PATH, 'utf8'));
+  if (!isRecord(parsed) || !Array.isArray(parsed.atouts)) return overlays;
+
+  for (const rawAtout of parsed.atouts) {
+    if (!isRecord(rawAtout) || typeof rawAtout.id !== 'string') continue;
+    if (!isRecord(rawAtout.source) || !isRecord(rawAtout.spec)) continue;
+    if (typeof rawAtout.source.prose !== 'string' || typeof rawAtout.source.ref !== 'string') {
+      continue;
+    }
+    if (!isEffectFidelity(rawAtout.fidelity)) continue;
+
+    overlays.set(rawAtout.id, {
+      source: {
+        prose: rawAtout.source.prose,
+        ref: rawAtout.source.ref
+      },
+      spec: rawAtout.spec,
+      fidelity: rawAtout.fidelity,
+      ...(typeof rawAtout.ambiguity_ref === 'string' || rawAtout.ambiguity_ref === null
+        ? { ambiguity_ref: rawAtout.ambiguity_ref }
+        : {})
+    });
+  }
+
+  return overlays;
+}
+
+function sourceRefForEffect(atout: AtoutEntry): string {
+  const sourceRef =
+    atout.source_refs.find((candidate) => candidate.path === RELATIVE_LEVEL_SOURCE) ??
+    atout.source_refs.find((candidate) => candidate.path === RELATIVE_BASE_SOURCE) ??
+    atout.source_refs[0];
+
+  if (sourceRef === undefined) {
+    throw new Error(`Atout ${atout.id} has no source_refs`);
+  }
+
+  return `${sourceRef.path}#${sourceRef.ref}`;
+}
+
+function applyEffectFields(
+  atouts: AtoutEntry[],
+  preservedFields: Map<string, AtoutEffectFields>
+): AtoutEntry[] {
+  const seenPilotIds = new Set<string>();
+
+  const withEffects = atouts.map((atout) => {
+    const pilot = PILOT_EFFECT_SPECS[atout.id];
+    if (pilot !== undefined) {
+      seenPilotIds.add(atout.id);
+      return {
+        ...atout,
+        source: {
+          prose: atout.effect,
+          ref: sourceRefForEffect(atout)
+        },
+        ...pilot
+      };
+    }
+
+    const preserved = preservedFields.get(atout.id);
+    if (preserved === undefined) return atout;
+
+    return {
+      ...atout,
+      ...preserved
+    };
+  });
+
+  const missingPilotIds = Object.keys(PILOT_EFFECT_SPECS).filter((id) => !seenPilotIds.has(id));
+  if (missingPilotIds.length > 0) {
+    throw new Error(`Missing atout effect pilot entries: ${missingPilotIds.join(', ')}`);
+  }
+
+  return withEffects;
+}
+
+function countEffectSpecsByScope(atouts: AtoutEntry[]): Record<AtoutScope, number> {
+  return atouts.reduce<Record<AtoutScope, number>>(
+    (acc, atout) => {
+      if (atout.spec !== undefined) {
+        acc[atout.scope] += 1;
+      }
+      return acc;
+    },
+    { classe: 0, neutre: 0, orientation: 0, race: 0, niveau: 0 }
+  );
 }
 
 function allocateId(idCounter: Map<string, number>, baseId: string): string {
@@ -393,10 +734,16 @@ function parseRaceCatalogAtouts(byName: Map<string, AtoutEntry[]>): {
 }
 
 function main(): void {
+  const preservedEffectFields = readExistingEffectFields();
   const base = parseBaseAtouts();
   const level = parseLevelAtouts(base.byName);
   const raceCatalog = parseRaceCatalogAtouts(base.byName);
-  const atouts = [...base.atouts, ...level.atouts, ...raceCatalog.atouts];
+  const atouts = applyEffectFields(
+    [...base.atouts, ...level.atouts, ...raceCatalog.atouts],
+    preservedEffectFields
+  );
+  const effectSpecsByScope = countEffectSpecsByScope(atouts);
+  const effectSpecsCount = Object.values(effectSpecsByScope).reduce((sum, count) => sum + count, 0);
   const today = new Date().toISOString().slice(0, 10);
 
   const payload = {
@@ -418,9 +765,11 @@ function main(): void {
       base_entries: base.atouts.length,
       level_entries: level.atouts.length,
       race_catalog_entries: raceCatalog.atouts.length,
+      effect_specs: effectSpecsCount,
+      effect_specs_by_scope: effectSpecsByScope,
       catalog_status: 'expanded',
       notes:
-        'Atouts/handicaps extraits de la liste web canonique (assets-list), des tableaux atouts-niveaux et des atouts/handicaps innés du catalogue races. Scopes: classe / neutre / orientation / race / niveau. Activation unknown et value null signalent une relation source sans valeur explicite dans la liste de base.'
+        'Atouts/handicaps extraits de la liste web canonique (assets-list), des tableaux atouts-niveaux et des atouts/handicaps innés du catalogue races. Scopes: classe / neutre / orientation / race / niveau. Activation unknown et value null signalent une relation source sans valeur explicite dans la liste de base. Les specs EffectModel existantes sont préservées et le pilote #127 encode un lot audité race+niveau.'
     },
     atouts
   };

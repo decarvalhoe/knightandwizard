@@ -9,7 +9,7 @@
 > (`computeEffectiveModifiers`, `effectiveValue`). Règles : R-1.36→1.40 (modificateurs), R-9.x (atouts
 > combat), R-8.x (sorts), D4 (atouts). Légende : ✅ · 🟡 · ❌. Périmètre : **MVP** · **V2**.
 >
-> **État : le cadre existe et est partiellement consommé ; les specs ne sont pas encodées.**
+> **État : le cadre existe et est partiellement consommé ; les specs sont encodées par lots audités.**
 
 ## Décisions verrouillées
 
@@ -38,10 +38,10 @@
 | -------------------------------------------------------------------- | -------- | -------------- | ------------------------ |
 | Cadre EffectModel (schéma + parser + renderer + applyEffects)        | —        | ✅             | #123 / #124 / #125       |
 | Prédilection (slots)                                                 | —        | ✅ (mécanisme) | #140 (`predilection.ts`) |
-| Atouts de classe / orientation                                       | 88 specs | ❌             | #127 (pilote)            |
+| Atouts de classe / orientation                                       | 88 specs | ✅             | #146 / #150              |
 | Atouts / handicaps (valeurs)                                         | ~2410    | ❌             | #127                     |
-| Atouts raciaux (R-3.3)                                               | —        | ❌             | #127                     |
-| Atouts de niveau (R-7.10)                                            | —        | ❌             | #127                     |
+| Atouts raciaux (R-3.3)                                               | 3 specs  | 🟡 pilote      | #127                     |
+| Atouts de niveau (R-7.10)                                            | 17 specs | 🟡 pilote      | #127                     |
 | Dimensions de match (aptitude + target + intent + **validation MJ**) | —        | ❌             | #139                     |
 | `uses_per_day` (atouts éphémères)                                    | —        | ❌             | #142                     |
 
@@ -51,7 +51,8 @@
    (au branchement magie / soin).
 2. **Statuts** : catalogue R-9.27 via `status-effects.ts` (#132) + statuts composites & sources d'activation
    (#141) + états via effets dans `combat.ts` (#126).
-3. **Encodage pilote** : atouts de **race** + de **niveau** → `EffectModel` (#127).
+3. **Encodage pilote** : atouts de **race** + de **niveau** → `EffectModel` (#127) — 20 specs
+   couvertes, total catalogue 108 specs (75 classe + 13 orientation + 3 race + 17 niveau).
 4. **Dimensions de match** (#139) + `uses_per_day` (#142) + **validation MJ** des cibles (#139/#140).
 5. **Encodage complet** : les 88 atouts classe/orientation + le gros des ~2410 (au fil de l'eau).
 

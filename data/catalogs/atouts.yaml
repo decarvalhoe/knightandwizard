@@ -13,16 +13,24 @@ metadata:
     - path: data/catalogs/races.yaml
       sha256: 8ac94f5dd430b021e8c7f1f92b991dd51568cabffebc18b2b0b7669f9d68ddff
       kind: derived_races_catalog
-  imported_at: '2026-05-23'
+  imported_at: '2026-05-31'
   total_entries: 802
   base_entries: 416
   level_entries: 347
   race_catalog_entries: 39
+  effect_specs: 108
+  effect_specs_by_scope:
+    classe: 75
+    neutre: 0
+    orientation: 13
+    race: 3
+    niveau: 17
   catalog_status: expanded
   notes: >-
     Atouts/handicaps extraits de la liste web canonique (assets-list), des tableaux atouts-niveaux et des
     atouts/handicaps innés du catalogue races. Scopes: classe / neutre / orientation / race / niveau. Activation unknown
-    et value null signalent une relation source sans valeur explicite dans la liste de base.
+    et value null signalent une relation source sans valeur explicite dans la liste de base. Les specs EffectModel
+    existantes sont préservées et le pilote #127 encode un lot audité race+niveau.
 atouts:
   - id: abordage
     name: Abordage
@@ -8220,6 +8228,18 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: apaisement
+    source:
+      prose: Soigne les blessures par le touché. La vitalité ainsi récupérée est égale au niveau du soignant.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:1:row:8
+    spec:
+      target: vitality
+      op: add
+      value: level
+      condition:
+        target_disposition: ally
+      activation: active
+      duration: ephemeral
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: apaisement
@@ -8250,6 +8270,18 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: apaisement
+    source:
+      prose: Soigne les blessures par le touché. La vitalité ainsi récupérée est égale au niveau du soignant.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:1:row:9
+    spec:
+      target: vitality
+      op: add
+      value: level
+      condition:
+        target_disposition: ally
+      activation: active
+      duration: ephemeral
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: apaisement
@@ -8507,6 +8539,20 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: auto-soin
+    source:
+      prose: >-
+        Soigne les blessures du personnage, par sa propre concentration. La vitalité ainsi récupérée est égale au
+        niveau.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:1:row:17
+    spec:
+      target: vitality
+      op: add
+      value: level
+      condition:
+        target_ref: self
+      activation: active
+      duration: ephemeral
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: auto-soin
@@ -8569,6 +8615,18 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: bluff
+    source:
+      prose: Cet atout diminue la difficulté des jets de mensonge de 1.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:1:row:19
+    spec:
+      target: difficulty
+      op: sub
+      value: 1
+      condition:
+        competence: mensonge
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: bluff
@@ -10187,6 +10245,18 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: maitrise-de-la-hache
+    source:
+      prose: Diminue la difficulté d’un jet de hache de 1.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:1:row:71
+    spec:
+      target: difficulty
+      op: sub
+      value: 1
+      condition:
+        competence: hache
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: maitrise-de-la-hache
@@ -10672,6 +10742,19 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: paluche
+    source:
+      prose: Les dégâts occasionner par un coup de poing ou une claque font 1 dégât supplémentaire automatique.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:1:row:86
+    spec:
+      target: damage
+      scope: C
+      op: add
+      value: 1
+      condition:
+        action_type: coup_de_poing_ou_claque
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: paluche
@@ -12357,6 +12440,18 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: accoutumance-a-la-douleur
+    source:
+      prose: Diminue la difficulté des jets d’endurance de 1.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:2:row:1
+    spec:
+      target: difficulty
+      op: sub
+      value: 1
+      condition:
+        aptitude: stamina
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: accoutumance-a-la-douleur
@@ -12610,6 +12705,20 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: coup-mortel
+    source:
+      prose: >-
+        Additionne automatiquement le niveau du personnage, aux dégâts infligés par celui-ci. Un seul coup mortel peut
+        être porté à la fois.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:2:row:9
+    spec:
+      target: damage
+      op: add
+      value: level
+      condition:
+        action_type: attaque
+      activation: active
+      duration: ephemeral
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: coup-mortel
@@ -12642,6 +12751,20 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: coup-mortel
+    source:
+      prose: >-
+        Additionne automatiquement le niveau du personnage, aux dégâts infligés par celui-ci. Un seul coup mortel peut
+        être porté à la fois.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:2:row:10
+    spec:
+      target: damage
+      op: add
+      value: level
+      condition:
+        action_type: attaque
+      activation: active
+      duration: ephemeral
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: coup-mortel
@@ -12921,6 +13044,18 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: force-de-l-ours
+    source:
+      prose: Diminue la difficulté des jets de force de 1.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:2:row:19
+    spec:
+      target: difficulty
+      op: sub
+      value: 1
+      condition:
+        aptitude: strength
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: force-de-lours
@@ -16390,6 +16525,18 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: maitre-du-mensonge
+    source:
+      prose: Le personnage peut ajouter son niveau à son nombre de dès lors d'un jet de mensonge.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:4:row:13
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: mensonge
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: maitre-du-mensonge
@@ -16420,6 +16567,18 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: maitre-du-mensonge
+    source:
+      prose: Le personnage peut ajouter son niveau à son nombre de dès lors d'un jet de mensonge.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:4:row:14
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: mensonge
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: maitre-du-mensonge
@@ -16450,6 +16609,18 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: maitre-du-mensonge
+    source:
+      prose: Le personnage peut ajouter son niveau à son nombre de dès lors d'un jet de mensonge.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:4:row:15
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: mensonge
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: maitre-du-mensonge
@@ -16480,6 +16651,18 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: orateur-ideal
+    source:
+      prose: Ajoute le niveau du personnage à ses dès lors d'un jet de discours.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:4:row:16
+    spec:
+      target: pool
+      op: add
+      value: level
+      condition:
+        competence: discours-de-foule
+      activation: passive
+      duration: permanent
+    fidelity: covered
     generated_prose: "Atout permanent : Ajoute le niveau du personnage à ses dès lors d'un jet de discours."
     prose_origin: templated
     validation: pending
@@ -18442,6 +18625,17 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: maitre-en-choc
+    source:
+      prose: Le personnage inflige un dégât supplémentaire automatique, lorsque celui-ci inflige des dégâts contondants.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:9:row:6
+    spec:
+      target: damage
+      scope: C
+      op: add
+      value: 1
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: maitre-en-choc
@@ -18502,6 +18696,17 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: maitre-en-lame
+    source:
+      prose: Le personnage inflige un dégât supplémentaire automatique, lorsque celui-ci inflige des dégâts tranchants.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:9:row:8
+    spec:
+      target: damage
+      scope: T
+      op: add
+      value: 1
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: maitre-en-lame
@@ -18532,6 +18737,17 @@ atouts:
       special_condition: null
       value_source: base_atouts
       matched_base_atout_id: maitre-en-perforation
+    source:
+      prose: Le personnage inflige 1 dégât supplémentaire automatique, lorsque celui-ci inflige des dégâts perforants.
+      ref: data/legacy/web-scraped/documents/atouts-niveaux/index.md#tableau:9:row:9
+    spec:
+      target: damage
+      scope: P
+      op: add
+      value: 1
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: maitre-en-perforation
@@ -19401,6 +19617,20 @@ atouts:
         - Khogr
       relation_status: matched_by_name
       matched_base_atout_id: equilibre-controle
+    source:
+      prose: >-
+        Le personnage possède un sens inné de l’équilibre et diminue la difficulté de touts les jets basés sur
+        l’équilibre de 3.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:equilibre-controle
+    spec:
+      target: difficulty
+      op: sub
+      value: 3
+      condition:
+        action_type: equilibre
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: equilibre-controle
@@ -19427,6 +19657,18 @@ atouts:
         - Canidae
       relation_status: matched_by_name
       matched_base_atout_id: flaire-infaillible
+    source:
+      prose: Le personnage possède un flaire hors norme et diminue la difficulté de tous ses jets basés sur l’odorat de 3.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:flaire-infaillible
+    spec:
+      target: difficulty
+      op: sub
+      value: 3
+      condition:
+        competence: odorat
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: flaire-infaillible
@@ -19789,6 +20031,20 @@ atouts:
         - Canidae
       relation_status: matched_by_name
       matched_base_atout_id: pisteur-ne
+    source:
+      prose: >-
+        Le personnage possède un sens du pistage aiguisé et diminue la difficulté de tous les jets basés sur le pistage
+        de 3.
+      ref: data/legacy/web-scraped/documents/atouts/index.md#entry:pisteur-ne
+    spec:
+      target: difficulty
+      op: sub
+      value: 3
+      condition:
+        competence: pistage
+      activation: passive
+      duration: permanent
+    fidelity: covered
     prose_refs:
       - catalog: lexique
         entry_id: pisteur-ne
