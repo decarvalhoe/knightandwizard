@@ -415,8 +415,10 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('XP 1 / 1')).toBeVisible();
 
     await page.goto(`/mj?slug=${slug}`);
-    await page.getByRole('button', { name: 'PNJ rapide' }).click();
-    await expect(page.getByText('PNJ rapide ajoute au suivi MJ')).toBeVisible();
+    await expect(page.getByLabel('Gabarit PNJ')).toBeVisible();
+    await page.getByLabel('Gabarit PNJ').selectOption('squelette');
+    await page.getByRole('button', { name: 'PNJ bestiaire' }).click();
+    await expect(page.getByText('Squelette ajoute au suivi MJ depuis le bestiaire')).toBeVisible();
 
     await page.getByRole('button', { name: 'Fin de session' }).click();
     await expect(page.getByText('Fin de session marquee par le MJ')).toBeVisible();
