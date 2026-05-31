@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createSqlClient } from '../db/client.js';
 import { runMigrations } from '../db/migrate.js';
+import type { EmbeddingProvider } from '../knowledge/repository.js';
 import {
   buildEpisodicMemoryContext,
   createDatabaseEpisodicMemoryStore,
@@ -102,6 +103,59 @@ describe('game master episodic memory', () => {
     });
   });
 
+  it('stores memory embeddings and recalls vector matches before lexical fallback', async () => {
+    const sessionKey = `test-memory-${randomUUID()}`;
+    const semanticEmbeddingProvider = new SemanticMemoryEmbeddingProvider();
+    const memory = await recordGmMemory(
+      sql,
+      {
+        importance: 3,
+        kind: 'npc_encounter',
+        provenanceType: 'session_fact',
+        sessionKey,
+        source: 'game-master',
+        subject: 'Sergent Malo',
+        summary: 'Le Sergent Malo tient la porte nord de Brumeval.'
+      },
+      { embeddingProvider: semanticEmbeddingProvider }
+    );
+
+    await recordGmMemory(
+      sql,
+      {
+        importance: 5,
+        kind: 'weather',
+        provenanceType: 'session_fact',
+        sessionKey,
+        source: 'game-master',
+        subject: 'Averse du soir',
+        summary: 'Une pluie froide transforme la route en boue.'
+      },
+      { embeddingProvider: semanticEmbeddingProvider }
+    );
+
+    const embeddingRows = await sql<{ has_embedding: boolean }[]>`
+      SELECT embedding IS NOT NULL AS has_embedding
+      FROM gm_memories
+      WHERE id = ${memory.id}
+    `;
+    const memories = await searchGmMemories(
+      sql,
+      {
+        limit: 2,
+        query: 'vigile des remparts',
+        sessionKey
+      },
+      { embeddingProvider: semanticEmbeddingProvider }
+    );
+
+    expect(embeddingRows).toEqual([{ has_embedding: true }]);
+    expect(memories[0]).toMatchObject({
+      subject: 'Sergent Malo'
+    });
+    expect(memories[0]?.score).toBeGreaterThan(0.9);
+  });
+
   it('requires canonical sources for canonical lore memories', async () => {
     const sessionKey = `test-memory-${randomUUID()}`;
 
@@ -131,3 +185,25 @@ describe('game master episodic memory', () => {
     });
   });
 });
+
+class SemanticMemoryEmbeddingProvider implements EmbeddingProvider {
+  readonly dimensions = 1536;
+
+  async embed(text: string): Promise<number[]> {
+    const vector = new Array<number>(this.dimensions).fill(0);
+    const normalized = text
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+
+    if (/(malo|nord|porte|rempart|sergent|vigile)/.test(normalized)) {
+      vector[0] = 1;
+    }
+
+    if (/(averse|boue|pluie|route)/.test(normalized)) {
+      vector[1] = 1;
+    }
+
+    return vector;
+  }
+}

@@ -312,7 +312,7 @@ function extractEmbedding(payload: { embedding?: unknown; embeddings?: unknown }
   return candidate;
 }
 
-function toVectorLiteral(vector: number[]): string {
+export function toVectorLiteral(vector: number[]): string {
   return `[${vector.map((value) => formatVectorNumber(value)).join(',')}]`;
 }
 
