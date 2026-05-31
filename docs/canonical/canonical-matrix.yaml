@@ -328229,7 +328229,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-paper-regles-papier-extracted-histoires-blagues-dictons-et-proverbes"
     unit_type: "source_document"
-    domain: "rules"
+    domain: "D12-world"
     title: "data/legacy/paper/regles-papier/extracted/histoires/blagues-dictons-et-proverbes.md"
     status: covered
     sources:
@@ -328265,7 +328265,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-paper-regles-papier-extracted-histoires-cultes-et-religions"
     unit_type: "source_document"
-    domain: "rules"
+    domain: "D12-religions"
     title: "data/legacy/paper/regles-papier/extracted/histoires/cultes-et-religions.md"
     status: covered
     sources:
@@ -328301,7 +328301,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-paper-regles-papier-extracted-histoires-la-creation-des-terres-oubliees"
     unit_type: "source_document"
-    domain: "rules"
+    domain: "D12-world"
     title: "data/legacy/paper/regles-papier/extracted/histoires/la-creation-des-terres-oubliees.md"
     status: covered
     sources:
@@ -328337,7 +328337,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-paper-regles-papier-extracted-histoires-nations"
     unit_type: "source_document"
-    domain: "rules"
+    domain: "D12-world"
     title: "data/legacy/paper/regles-papier/extracted/histoires/nations.md"
     status: covered
     sources:
@@ -328373,7 +328373,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-paper-regles-papier-extracted-histoires-organisations"
     unit_type: "source_document"
-    domain: "rules"
+    domain: "D12-organisations"
     title: "data/legacy/paper/regles-papier/extracted/histoires/organisations.md"
     status: covered
     sources:
@@ -328409,7 +328409,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-paper-regles-papier-extracted-histoires-us-et-coutumes"
     unit_type: "source_document"
-    domain: "rules"
+    domain: "D12-world"
     title: "data/legacy/paper/regles-papier/extracted/histoires/us-et-coutumes.md"
     status: covered
     sources:
@@ -331577,7 +331577,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-carte-du-monde-index"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/carte-du-monde/index.md"
     status: covered
     sources:
@@ -331613,7 +331613,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-1"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-1.md"
     status: covered
     sources:
@@ -331649,7 +331649,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-15"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-15.md"
     status: covered
     sources:
@@ -331685,7 +331685,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-16"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-16.md"
     status: covered
     sources:
@@ -331721,7 +331721,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-18"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-18.md"
     status: covered
     sources:
@@ -331757,7 +331757,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-2"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-2.md"
     status: covered
     sources:
@@ -331793,7 +331793,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-20"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-20.md"
     status: covered
     sources:
@@ -331829,7 +331829,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-23"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-23.md"
     status: covered
     sources:
@@ -331865,7 +331865,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-26"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-26.md"
     status: covered
     sources:
@@ -331901,7 +331901,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-27"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-27.md"
     status: covered
     sources:
@@ -331937,7 +331937,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-28"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-28.md"
     status: covered
     sources:
@@ -331973,7 +331973,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-29"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-29.md"
     status: covered
     sources:
@@ -332009,7 +332009,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-3"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-3.md"
     status: covered
     sources:
@@ -332045,7 +332045,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-31"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-31.md"
     status: covered
     sources:
@@ -332081,7 +332081,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-4"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-4.md"
     status: covered
     sources:
@@ -332117,7 +332117,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-5"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-5.md"
     status: covered
     sources:
@@ -332153,7 +332153,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-6"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-6.md"
     status: covered
     sources:
@@ -332189,7 +332189,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-lieux-place-7"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/lieux/place-7.md"
     status: covered
     sources:
@@ -332225,7 +332225,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-regions-land-13"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/regions/land-13.md"
     status: covered
     sources:
@@ -332261,7 +332261,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-regions-land-21"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/regions/land-21.md"
     status: covered
     sources:
@@ -332297,7 +332297,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-regions-land-24"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/regions/land-24.md"
     status: covered
     sources:
@@ -332333,7 +332333,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-regions-land-8"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/regions/land-8.md"
     status: covered
     sources:
@@ -332369,7 +332369,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-regions-land-9"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/regions/land-9.md"
     status: covered
     sources:
@@ -332405,7 +332405,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-tous-les-lieux-index"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/tous-les-lieux/index.md"
     status: covered
     sources:
@@ -332441,7 +332441,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-villes-city-10"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/villes/city-10.md"
     status: covered
     sources:
@@ -332477,7 +332477,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-villes-city-11"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/villes/city-11.md"
     status: covered
     sources:
@@ -332513,7 +332513,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-villes-city-12"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/villes/city-12.md"
     status: covered
     sources:
@@ -332549,7 +332549,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-villes-city-14"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/villes/city-14.md"
     status: covered
     sources:
@@ -332585,7 +332585,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-villes-city-17"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/villes/city-17.md"
     status: covered
     sources:
@@ -332621,7 +332621,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-villes-city-19"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/villes/city-19.md"
     status: covered
     sources:
@@ -332657,7 +332657,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-villes-city-22"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/villes/city-22.md"
     status: covered
     sources:
@@ -332693,7 +332693,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-villes-city-25"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/villes/city-25.md"
     status: covered
     sources:
@@ -332729,7 +332729,7 @@ units:
       evidence: "Source document only."
   - unit_id: "source:data-legacy-web-scraped-monde-villes-city-30"
     unit_type: "source_document"
-    domain: "unclassified"
+    domain: "D12-world"
     title: "data/legacy/web-scraped/monde/villes/city-30.md"
     status: covered
     sources:

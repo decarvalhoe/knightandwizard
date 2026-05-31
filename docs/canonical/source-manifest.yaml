@@ -8153,8 +8153,8 @@ sources:
     source_type: legacy_paper_extract
     priority: 70
     status: active
-    domains: ["rules"]
-    contains: ["paper_extract"]
+    domains: ["D12-world", "lore"]
+    contains: ["folklore", "proverbs"]
     notes: "Extracted paper source."
   - id: "data-legacy-paper-regles-papier-extracted-histoires-cultes-et-religions"
     path: "data/legacy/paper/regles-papier/extracted/histoires/cultes-et-religions.md"
@@ -8162,8 +8162,8 @@ sources:
     source_type: legacy_paper_extract
     priority: 70
     status: active
-    domains: ["rules"]
-    contains: ["paper_extract"]
+    domains: ["D12-religions", "D12-world", "lore"]
+    contains: ["religions", "deities"]
     notes: "Extracted paper source."
   - id: "data-legacy-paper-regles-papier-extracted-histoires-la-creation-des-terres-oubliees"
     path: "data/legacy/paper/regles-papier/extracted/histoires/la-creation-des-terres-oubliees.md"
@@ -8171,8 +8171,8 @@ sources:
     source_type: legacy_paper_extract
     priority: 70
     status: active
-    domains: ["rules"]
-    contains: ["paper_extract"]
+    domains: ["D12-world", "lore"]
+    contains: ["creation_myth", "world_lore"]
     notes: "Extracted paper source."
   - id: "data-legacy-paper-regles-papier-extracted-histoires-nations"
     path: "data/legacy/paper/regles-papier/extracted/histoires/nations.md"
@@ -8180,8 +8180,8 @@ sources:
     source_type: legacy_paper_extract
     priority: 70
     status: active
-    domains: ["rules"]
-    contains: ["paper_extract"]
+    domains: ["D12-world", "lore"]
+    contains: ["nations", "regional_lore"]
     notes: "Extracted paper source."
   - id: "data-legacy-paper-regles-papier-extracted-histoires-organisations"
     path: "data/legacy/paper/regles-papier/extracted/histoires/organisations.md"
@@ -8189,8 +8189,8 @@ sources:
     source_type: legacy_paper_extract
     priority: 70
     status: active
-    domains: ["rules"]
-    contains: ["paper_extract"]
+    domains: ["D12-organisations", "lore"]
+    contains: ["organisations"]
     notes: "Extracted paper source."
   - id: "data-legacy-paper-regles-papier-extracted-histoires-us-et-coutumes"
     path: "data/legacy/paper/regles-papier/extracted/histoires/us-et-coutumes.md"
@@ -8198,8 +8198,8 @@ sources:
     source_type: legacy_paper_extract
     priority: 70
     status: active
-    domains: ["rules"]
-    contains: ["paper_extract"]
+    domains: ["D12-world", "lore"]
+    contains: ["cultures", "customs"]
     notes: "Extracted paper source."
   - id: "data-legacy-paper-regles-papier-extracted-infos-champignons-toxiques"
     path: "data/legacy/paper/regles-papier/extracted/infos/champignons-toxiques.md"
@@ -8990,297 +8990,297 @@ sources:
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-1"
     path: "data/legacy/web-scraped/monde/lieux/place-1.md"
     sha256: "6e55b8909f0b5c45160ab006f644a760828ee4fb37e1bc58ad1163699ee07b4f"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-15"
     path: "data/legacy/web-scraped/monde/lieux/place-15.md"
     sha256: "4a592b8e804ff8dab787894a1faf3f29299660845029c10c72f2a3ed164847ab"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-16"
     path: "data/legacy/web-scraped/monde/lieux/place-16.md"
     sha256: "3519223956745f9a59a28558f3b5f9c5b37455916396ab1a4140f29da9c6ef1b"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-18"
     path: "data/legacy/web-scraped/monde/lieux/place-18.md"
     sha256: "60614f78cad26b8c32d860487564a003a818e3caec1146c3c62358334a5948ac"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-2"
     path: "data/legacy/web-scraped/monde/lieux/place-2.md"
     sha256: "ab2d2b31553c5290219ba5b7befe4024a6575831528e5aaa8b67833edc615ac7"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-20"
     path: "data/legacy/web-scraped/monde/lieux/place-20.md"
     sha256: "0b24214e03b2624be45e54a4fecbc21c9ec3ff99b3ddd73d54b56a0043d60dac"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-23"
     path: "data/legacy/web-scraped/monde/lieux/place-23.md"
     sha256: "0bce6faa906b50c6a01ed5198b89f9e3a70889d736646efda7a5a1c74b26352a"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-26"
     path: "data/legacy/web-scraped/monde/lieux/place-26.md"
     sha256: "515c2e1e671dbbdbe5db5e2eb0e522abfa58dacba544cf71aee838d86d08e0ae"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-27"
     path: "data/legacy/web-scraped/monde/lieux/place-27.md"
     sha256: "a9a06d16342ee1787334b83bc9e5a6fff12b0415e146b96f97692b66a083a92d"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-28"
     path: "data/legacy/web-scraped/monde/lieux/place-28.md"
     sha256: "cadccff04d05ecf7b5512c715ea304f39d052835ecea34057c147a20f08e19bf"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-29"
     path: "data/legacy/web-scraped/monde/lieux/place-29.md"
     sha256: "593f1a781860bc3951f0ebc652baf183f394a2e60f7a6877cb83c1136ed7a70e"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-3"
     path: "data/legacy/web-scraped/monde/lieux/place-3.md"
     sha256: "e0ecdc99781280bc6e6902a3b2b7447328896c18c741a97fb9b6e487644da780"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-31"
     path: "data/legacy/web-scraped/monde/lieux/place-31.md"
     sha256: "4b3d42b199cd5c15be78888b7b50ba6d7872b7facfbdbabb507c7dfd2d163f3b"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-4"
     path: "data/legacy/web-scraped/monde/lieux/place-4.md"
     sha256: "f98a95df0c9a47b2217ee295e6588ef6a69ac5b7e7b3be8f58532b54eb558d43"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-5"
     path: "data/legacy/web-scraped/monde/lieux/place-5.md"
     sha256: "bec8c3ed5b2828c696fe7f347ee71c26952858e94fc95db794ac26f5f70ed2f8"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-6"
     path: "data/legacy/web-scraped/monde/lieux/place-6.md"
     sha256: "c4f66e0de5b65974bb35a1ea19d66a832619408088ea307eb2e9ff6faa06edfc"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-lieux-place-7"
     path: "data/legacy/web-scraped/monde/lieux/place-7.md"
     sha256: "e5a8221083c41f6f7b29ebd9fdedac7f54c62be11bc554227266e508e3bd8341"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["locations", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-regions-land-13"
     path: "data/legacy/web-scraped/monde/regions/land-13.md"
     sha256: "52f7c46fe447fff6b3cb963d4652e51b21fb56d89845251831293ee6ace5e48f"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["regions", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-regions-land-21"
     path: "data/legacy/web-scraped/monde/regions/land-21.md"
     sha256: "3d7ac73a3fa3e18ebeca1718c941b5bc890e7cb76f406b3f6c46bff16e31d96d"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["regions", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-regions-land-24"
     path: "data/legacy/web-scraped/monde/regions/land-24.md"
     sha256: "587e4d273d24e52c525a44e6c393a8d88c1f66b0dd449ce8e8d8ca955a8b10ed"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["regions", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-regions-land-8"
     path: "data/legacy/web-scraped/monde/regions/land-8.md"
     sha256: "de639a46895687463b1341a1c12fa8350c663e3cabb359aee6a31c0db7372e8a"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["regions", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-regions-land-9"
     path: "data/legacy/web-scraped/monde/regions/land-9.md"
     sha256: "143659258163215e0603ef2545595c19c72ed186be3c6e3456f23eaa11bc035b"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["regions", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-tous-les-lieux-index"
     path: "data/legacy/web-scraped/monde/tous-les-lieux/index.md"
     sha256: "b559e45b09cd00fe585acfeb26fd38a5a156c66dde61d4991b61bf76d7075fc2"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-villes-city-10"
     path: "data/legacy/web-scraped/monde/villes/city-10.md"
     sha256: "5592fbc1907f092d504ef4fce67620f61a1e533c900e0900254ee382a8280959"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["cities", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-villes-city-11"
     path: "data/legacy/web-scraped/monde/villes/city-11.md"
     sha256: "82dd81dc21604591bffb4d883062fc91ad13fa1a8b66e549022a53745bde3338"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["cities", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-villes-city-12"
     path: "data/legacy/web-scraped/monde/villes/city-12.md"
     sha256: "e5e23fe1c79f8fe1d127a17b2a745780f6670657cd4c8d2d03b5bf539e826801"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["cities", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-villes-city-14"
     path: "data/legacy/web-scraped/monde/villes/city-14.md"
     sha256: "f39d0575e94b74f5afb65f4f0bdbfa58a6d1d2d6d00e27af4d191d29348aa90f"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["cities", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-villes-city-17"
     path: "data/legacy/web-scraped/monde/villes/city-17.md"
     sha256: "d168a9addba03994428d23146997c4d3aa3dcd263d483e65566509d28c6a7bbc"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["cities", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-villes-city-19"
     path: "data/legacy/web-scraped/monde/villes/city-19.md"
     sha256: "120a8d40c15c9049ba47988ede7c917c2e9c644e7843506db8b6a51c2bf46ba2"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["cities", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-villes-city-22"
     path: "data/legacy/web-scraped/monde/villes/city-22.md"
     sha256: "a0e22b49e71e4e1686394c2ee88a9623b737859a2f298f03ec79df5c23fdc33a"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["cities", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-villes-city-25"
     path: "data/legacy/web-scraped/monde/villes/city-25.md"
     sha256: "0343880064a244a216277c6b29e62b62a0dcd7da4372e482c2662c359dc6ff88"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["cities", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-monde-villes-city-30"
     path: "data/legacy/web-scraped/monde/villes/city-30.md"
     sha256: "02ce93a7fc9111aab96f0b60bf508c90f44adb5d41cec335df6cee2a769d2a58"
     source_type: other
     priority: 20
     status: active
-    domains: ["unclassified"]
-    contains: ["other"]
-    notes: "Registered source requiring later classification."
+    domains: ["D12-world", "lore"]
+    contains: ["cities", "world_lore"]
+    notes: "Scraped legacy world lore source."
   - id: "data-legacy-web-scraped-outils-assistant-combat-index"
     path: "data/legacy/web-scraped/outils/assistant-combat/index.md"
     sha256: "aa5b3b85caa7ef025366bbdda0ea1d8c3c56f7fc288133b1cf53b11bf0023c42"

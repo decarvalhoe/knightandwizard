@@ -1132,6 +1132,16 @@ function classifySource(path: string): Omit<SourceEntry, 'id' | 'path' | 'sha256
       'Scraped legacy web source.'
     );
   }
+  if (path.startsWith('data/legacy/web-scraped/monde/') && path.endsWith('.md')) {
+    return classify(
+      'other',
+      20,
+      'active',
+      containsForLegacyWeb(path),
+      domainsForLegacyWeb(path),
+      'Scraped legacy world lore source.'
+    );
+  }
   if (path.startsWith('data/legacy/paper/') && path.includes('/extracted/')) {
     return classify(
       'legacy_paper_extract',
@@ -1242,6 +1252,7 @@ function containsForCatalog(path: string): string[] {
 function domainsForLegacyWeb(path: string): string[] {
   if (path.includes('character-detail')) return ['legacy-characters', 'lore'];
   if (path.includes('play.php')) return ['legacy-sessions', 'lore'];
+  if (path.includes('/monde/')) return ['D12-world', 'lore'];
   if (path.includes('spells')) return ['D8-magic'];
   if (path.includes('classes')) return ['D4-classes'];
   if (path.includes('skills')) return ['D5-skills'];
@@ -1253,6 +1264,10 @@ function domainsForLegacyWeb(path: string): string[] {
 function containsForLegacyWeb(path: string): string[] {
   if (path.includes('character-detail')) return ['legacy_character'];
   if (path.includes('play.php')) return ['legacy_session_page', 'forum_posts'];
+  if (path.includes('/monde/lieux/')) return ['locations', 'world_lore'];
+  if (path.includes('/monde/villes/')) return ['cities', 'world_lore'];
+  if (path.includes('/monde/regions/')) return ['regions', 'world_lore'];
+  if (path.includes('/monde/')) return ['world_lore'];
   if (path.includes('spells')) return ['spells'];
   if (path.includes('classes')) return ['orientations', 'classes'];
   if (path.includes('skills')) return ['skills', 'specializations'];
@@ -1267,8 +1282,11 @@ function domainsForPaperExtract(path: string): string[] {
   if (path.includes('lexique') || path.includes('atouts')) return ['D4-assets'];
   if (path.includes('bestiaire')) return ['D3-races', 'D11-creatures'];
   if (path.includes('experience')) return ['D7-progression'];
+  if (path.includes('/histoires/nations')) return ['D12-world', 'lore'];
+  if (path.includes('/histoires/cultes')) return ['D12-religions', 'D12-world', 'lore'];
+  if (path.includes('/histoires/organisations')) return ['D12-organisations', 'lore'];
+  if (path.includes('/histoires/')) return ['D12-world', 'lore'];
   if (path.includes('regles')) return ['rules'];
-  if (path.includes('nations') || path.includes('cultes')) return ['D12-world'];
   return ['legacy-paper'];
 }
 
@@ -1278,6 +1296,13 @@ function containsForPaperExtract(path: string): string[] {
   if (path.includes('lexique')) return ['lexicon', 'assets', 'handicaps'];
   if (path.includes('atouts')) return ['level_assets', 'assets'];
   if (path.includes('bestiaire')) return ['races', 'creatures'];
+  if (path.includes('/histoires/nations')) return ['nations', 'regional_lore'];
+  if (path.includes('/histoires/cultes')) return ['religions', 'deities'];
+  if (path.includes('/histoires/organisations')) return ['organisations'];
+  if (path.includes('/histoires/us-et-coutumes')) return ['cultures', 'customs'];
+  if (path.includes('/histoires/la-creation')) return ['creation_myth', 'world_lore'];
+  if (path.includes('/histoires/blagues')) return ['folklore', 'proverbs'];
+  if (path.includes('/histoires/')) return ['world_lore'];
   return ['paper_extract'];
 }
 

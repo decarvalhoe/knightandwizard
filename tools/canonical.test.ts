@@ -39,6 +39,27 @@ describe('canonical compliance artifacts', () => {
             path: 'apps/legacy-php-site/includes/PHPMailer/vendor.php',
             source_type: 'third_party',
             status: 'out_of_scope'
+          }),
+          expect.objectContaining({
+            contains: ['nations', 'regional_lore'],
+            domains: ['D12-world', 'lore'],
+            path: 'data/legacy/paper/regles-papier/extracted/histoires/nations.md',
+            source_type: 'legacy_paper_extract',
+            status: 'active'
+          }),
+          expect.objectContaining({
+            contains: ['religions', 'deities'],
+            domains: ['D12-religions', 'D12-world', 'lore'],
+            path: 'data/legacy/paper/regles-papier/extracted/histoires/cultes-et-religions.md',
+            source_type: 'legacy_paper_extract',
+            status: 'active'
+          }),
+          expect.objectContaining({
+            contains: ['locations', 'world_lore'],
+            domains: ['D12-world', 'lore'],
+            path: 'data/legacy/web-scraped/monde/lieux/place-1.md',
+            source_type: 'other',
+            status: 'active'
           })
         ])
       );
@@ -449,7 +470,11 @@ async function createFixtureRepo(): Promise<string> {
   const root = await mkdtemp(join(tmpdir(), 'kw-canonical-'));
   await mkdir(join(root, 'docs/rules'), { recursive: true });
   await mkdir(join(root, 'data/catalogs'), { recursive: true });
+  await mkdir(join(root, 'data/legacy/paper/regles-papier/extracted/histoires'), {
+    recursive: true
+  });
   await mkdir(join(root, 'data/legacy/web-scraped/raw-html/details'), { recursive: true });
+  await mkdir(join(root, 'data/legacy/web-scraped/monde/lieux'), { recursive: true });
   await mkdir(join(root, 'apps/legacy-php-site/includes/PHPMailer'), { recursive: true });
   await writeFile(join(root, 'docs/rules/01-resolution.md'), '### R-1.17 - Echec critique\n');
   await writeFile(
@@ -463,6 +488,18 @@ async function createFixtureRepo(): Promise<string> {
   await writeFile(
     join(root, 'data/legacy/web-scraped/raw-html/details/character-detail.php_id-87.html'),
     '<html>Aveline</html>'
+  );
+  await writeFile(
+    join(root, 'data/legacy/paper/regles-papier/extracted/histoires/nations.md'),
+    '# Nations\n'
+  );
+  await writeFile(
+    join(root, 'data/legacy/paper/regles-papier/extracted/histoires/cultes-et-religions.md'),
+    '# Cultes et religions\n'
+  );
+  await writeFile(
+    join(root, 'data/legacy/web-scraped/monde/lieux/place-1.md'),
+    '# Tour de Port-Sel\n'
   );
   await writeFile(join(root, 'apps/legacy-php-site/includes/PHPMailer/vendor.php'), '<?php');
   return root;

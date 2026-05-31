@@ -23,12 +23,36 @@ describe('knowledge base index plan', () => {
         }),
         expect.objectContaining({
           sourcePath: 'data/legacy/web-scraped/raw-html/details/character-detail.php_id-126.html'
+        }),
+        expect.objectContaining({
+          domains: ['D12-world', 'lore'],
+          sourceKind: 'lore_markdown',
+          sourcePath: 'data/legacy/paper/regles-papier/extracted/histoires/nations.md'
+        }),
+        expect.objectContaining({
+          domains: ['D12-religions', 'D12-world', 'lore'],
+          sourceKind: 'lore_markdown',
+          sourcePath: 'data/legacy/paper/regles-papier/extracted/histoires/cultes-et-religions.md'
+        }),
+        expect.objectContaining({
+          domains: ['D12-world', 'lore'],
+          sourceKind: 'lore_markdown',
+          sourcePath: 'data/legacy/web-scraped/monde/lieux/place-1.md'
         })
       ])
     );
 
     expect(plan.chunks).toEqual(
       expect.arrayContaining([
+        expect.objectContaining({
+          metadata: expect.objectContaining({
+            contains: ['nations', 'regional_lore'],
+            domain: 'D12-world',
+            source_type: 'legacy_paper_extract'
+          }),
+          sourceKind: 'lore_markdown',
+          sourcePath: 'data/legacy/paper/regles-papier/extracted/histoires/nations.md'
+        }),
         expect.objectContaining({
           sourcePath: 'data/legacy/web-scraped/raw-html/details/character-detail.php_id-126.html',
           metadata: expect.objectContaining({
