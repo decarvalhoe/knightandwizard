@@ -17,7 +17,7 @@ export function buildApp(options: FastifyServerOptions = {}): FastifyInstance {
 
     reply.header('access-control-allow-origin', origin);
     reply.header('access-control-allow-methods', 'GET,PUT,POST,PATCH,OPTIONS');
-    reply.header('access-control-allow-headers', 'content-type,authorization');
+    reply.header('access-control-allow-headers', 'content-type,authorization,x-kw-user-id');
 
     if (request.method === 'OPTIONS') {
       return reply.code(204).send();
