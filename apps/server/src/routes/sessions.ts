@@ -16,7 +16,9 @@ import {
   changePredilection,
   createSessionState,
   durationToSeconds,
+  learnSkill,
   projectSessionStateFromJournal,
+  ProgressionError,
   revertSessionToSequence,
   type Character,
   type PredilectionKind,
@@ -1115,6 +1117,10 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             return { status: 'change_request_target_not_found' as const };
           }
 
+          if (application.status === 'invalid') {
+            return { error: application.error, status: 'change_request_invalid' as const };
+          }
+
           const resolvedResolution =
             application.appliedChange === undefined
               ? resolution
@@ -1209,6 +1215,10 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
 
         if (result.status === 'change_request_target_not_found') {
           return reply.code(404).send({ status: 'change_request_target_not_found' });
+        }
+
+        if (result.status === 'change_request_invalid') {
+          return reply.code(400).send({ errors: [result.error], status: 'invalid' });
         }
 
         sessionHub.broadcast(request.params.slug, {
@@ -1651,7 +1661,7 @@ interface CharacterPayloadRow {
   payload: Character;
 }
 
-interface AppliedChangeRequest {
+interface AppliedPredilectionChangeRequest {
   changeKind: string;
   predilectionKind: PredilectionKind;
   targetId: string;
@@ -1660,9 +1670,23 @@ interface AppliedChangeRequest {
   value: string;
 }
 
+interface AppliedSkillImprovementChangeRequest {
+  changeKind: string;
+  cost: number;
+  nextPoints: number;
+  parentId?: string | null;
+  previousPoints: number;
+  skillId: string;
+  targetId: string;
+  type: 'character_skill_improved';
+}
+
+type AppliedChangeRequest = AppliedPredilectionChangeRequest | AppliedSkillImprovementChangeRequest;
+
 type ChangeRequestApplicationResult =
   | { appliedChange?: undefined; status: 'skipped' }
   | { appliedChange: AppliedChangeRequest; status: 'applied' }
+  | { appliedChange?: undefined; error: string; status: 'invalid' }
   | { appliedChange?: undefined; status: 'target_not_found' };
 
 interface NormalizedChangeRequestInput {
@@ -1997,13 +2021,27 @@ async function applyApprovedChangeRequest(
   changeRequest: ChangeRequestRow,
   actorId: string
 ): Promise<ChangeRequestApplicationResult> {
-  if (
-    changeRequest.target_type !== 'character' ||
-    changeRequest.change_kind !== 'predilection_target'
-  ) {
+  if (changeRequest.target_type !== 'character') {
     return { status: 'skipped' };
   }
 
+  if (changeRequest.change_kind === 'predilection_target') {
+    return applyApprovedPredilectionChangeRequest(tx, session, changeRequest, actorId);
+  }
+
+  if (changeRequest.change_kind === 'skill_improvement') {
+    return applyApprovedSkillImprovementChangeRequest(tx, session, changeRequest, actorId);
+  }
+
+  return { status: 'skipped' };
+}
+
+async function applyApprovedPredilectionChangeRequest(
+  tx: postgres.TransactionSql,
+  session: SessionRow,
+  changeRequest: ChangeRequestRow,
+  actorId: string
+): Promise<ChangeRequestApplicationResult> {
   const targetId = changeRequest.target_id;
   const predilectionKind = readPredilectionKind(
     changeRequest.payload.predilectionKind ?? changeRequest.payload.kind
@@ -2063,6 +2101,120 @@ async function applyApprovedChangeRequest(
       ]
     },
     predilection: predilectionUpdate.slots
+  };
+
+  await tx`
+    UPDATE characters
+    SET payload = ${tx.json(character as unknown as postgres.JSONValue)}::jsonb,
+        updated_at = now()
+    WHERE id = ${targetId}
+  `;
+
+  return { appliedChange, status: 'applied' };
+}
+
+async function applyApprovedSkillImprovementChangeRequest(
+  tx: postgres.TransactionSql,
+  session: SessionRow,
+  changeRequest: ChangeRequestRow,
+  actorId: string
+): Promise<ChangeRequestApplicationResult> {
+  const targetId = changeRequest.target_id;
+  const skillId =
+    readNonEmptyString(changeRequest.payload.skillId) ??
+    readNonEmptyString(changeRequest.payload.requestedSkillId) ??
+    readNonEmptyString(changeRequest.payload.value);
+
+  if (targetId === null || skillId === undefined) {
+    return { status: 'skipped' };
+  }
+
+  const parentId =
+    changeRequest.payload.parentId === null
+      ? null
+      : readNonEmptyString(changeRequest.payload.parentId);
+  const isMain =
+    typeof changeRequest.payload.isMain === 'boolean' ? changeRequest.payload.isMain : undefined;
+  const characterRows = await tx<CharacterPayloadRow[]>`
+    SELECT c.payload
+    FROM characters c
+    JOIN session_players sp ON sp.character_id = c.id
+    WHERE c.id = ${targetId}
+      AND sp.session_id = ${session.id}
+    FOR UPDATE OF c
+  `;
+  const row = characterRows[0];
+
+  if (row === undefined) {
+    return { status: 'target_not_found' };
+  }
+
+  const previousSkill = row.payload.skills.find((skill) => skill.id === skillId);
+  let improved: Character;
+
+  try {
+    improved = learnSkill(row.payload, skillId, {
+      hasNarrativeAccess: true,
+      ...(isMain !== undefined ? { isMain } : {}),
+      ...(parentId !== undefined ? { parentId } : {})
+    });
+  } catch (error) {
+    if (error instanceof ProgressionError) {
+      return { error: error.message, status: 'invalid' };
+    }
+
+    throw error;
+  }
+
+  const nextSkill = improved.skills.find((skill) => skill.id === skillId);
+  const appliedAt = new Date().toISOString();
+  const previousPoints = previousSkill?.points ?? 0;
+  const nextPoints = nextSkill?.points ?? previousPoints;
+  const cost = row.payload.progression.experiencePoints - improved.progression.experiencePoints;
+  const appliedChange: AppliedChangeRequest = {
+    changeKind: changeRequest.change_kind,
+    cost,
+    nextPoints,
+    ...(parentId !== undefined ? { parentId } : {}),
+    previousPoints,
+    skillId,
+    targetId,
+    type: 'character_skill_improved'
+  };
+  const character: Character = {
+    ...improved,
+    metadata: {
+      ...improved.metadata,
+      governanceChangeRequests: [
+        ...readRecordArray(improved.metadata.governanceChangeRequests),
+        {
+          actorId,
+          appliedAt,
+          changeKind: changeRequest.change_kind,
+          changeRequestId: changeRequest.id,
+          cost,
+          nextPoints,
+          previousPoints,
+          sessionSlug: session.slug,
+          skillId
+        }
+      ],
+      xpSpends: [
+        ...readRecordArray(improved.metadata.xpSpends),
+        {
+          actorId,
+          changeRequestId: changeRequest.id,
+          cost,
+          kind: 'skill_improvement',
+          nextPoints,
+          ...(parentId !== undefined ? { parentId } : {}),
+          previousPoints,
+          sessionSlug: session.slug,
+          skillId,
+          spentAt: appliedAt
+        }
+      ]
+    }
   };
 
   await tx`
