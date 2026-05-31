@@ -418,6 +418,21 @@ test.describe('K&W player and GM application flows', () => {
 
     await page.goto(`/mj?slug=${slug}`);
     await expect(page.getByLabel('Gabarit PNJ')).toBeVisible();
+    await page.getByLabel('Minute').fill('Reclasser Aveline');
+    await page.getByLabel('Type').selectOption('class_reclassification');
+    await expect(page.getByLabel('Classe demandée')).toBeVisible();
+    await page.getByLabel('Identifiant').fill(draftId);
+    await page.getByLabel('Classe demandée').fill('duelliste');
+    await page.getByLabel('Résumé').fill('Reclassement valide apres duel judiciaire.');
+    await page.getByRole('button', { name: 'Inscrire' }).click();
+    await expect(page.getByText('Reclasser Aveline').first()).toBeVisible();
+    await page.getByRole('button', { name: 'Approuver' }).first().click();
+
+    await page.goto(`/character?characterId=${draftId}`);
+    await expect(page.getByText('Humain · Guerrier · Duelliste')).toBeVisible();
+
+    await page.goto(`/mj?slug=${slug}`);
+    await expect(page.getByLabel('Gabarit PNJ')).toBeVisible();
     await page.getByLabel('Gabarit PNJ').selectOption('squelette');
     await page.getByRole('button', { name: 'PNJ bestiaire' }).click();
     await expect(page.getByText('Squelette ajoute au suivi MJ depuis le bestiaire')).toBeVisible();

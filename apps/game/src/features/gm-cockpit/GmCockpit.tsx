@@ -60,6 +60,7 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
     bestiaryNpcTemplates[0]?.id ?? ''
   );
   const [changeKind, setChangeKind] = useState('predilection_target');
+  const [changeStructuredValue, setChangeStructuredValue] = useState('');
   const [changeSummary, setChangeSummary] = useState('Changement a valider par le MJ.');
   const [changeTargetId, setChangeTargetId] = useState(view.xpTargets[0]?.characterId ?? '');
   const [changeTargetType, setChangeTargetType] = useState('character');
@@ -79,6 +80,7 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
   const effectiveNpcTemplate =
     bestiaryNpcTemplates.find((template) => template.id === selectedNpcTemplateId) ??
     bestiaryNpcTemplates[0];
+  const structuredChangeLabel = changeRequestStructuredLabel(changeKind);
   const effectiveRollbackSequence =
     rollbackSequence.length > 0
       ? Number.parseInt(rollbackSequence, 10)
@@ -224,6 +226,7 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
     const title = changeTitle.trim();
     const summary = changeSummary.trim();
     const targetId = changeTargetId.trim();
+    const structuredValue = changeStructuredValue.trim();
 
     if (!title || !summary) {
       return;
@@ -234,7 +237,10 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
         assignedTo: 'human_gm',
         authority: 'human_gm',
         changeKind,
-        payload: { source: 'gm-cockpit' },
+        payload: {
+          source: 'gm-cockpit',
+          ...changeRequestStructuredPayload(changeKind, structuredValue)
+        },
         priority: 'normal',
         requestedBy: 'gm',
         summary,
@@ -244,6 +250,7 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
       });
       setChangeTitle('Changer une predilection');
       setChangeSummary('Changement a valider par le MJ.');
+      setChangeStructuredValue('');
     });
   }
 
@@ -709,6 +716,15 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
               value={changeTargetId}
             />
           </label>
+          <label className="block text-sm font-semibold text-ink/70" htmlFor="gm-change-value">
+            {structuredChangeLabel}
+            <input
+              className="mt-2 w-full rounded-md border border-ink/12 bg-paper px-3 py-2 text-sm font-semibold text-ink"
+              id="gm-change-value"
+              onChange={(event) => setChangeStructuredValue(event.target.value)}
+              value={changeStructuredValue}
+            />
+          </label>
           <label
             className="block text-sm font-semibold text-ink/70 md:col-span-2"
             htmlFor="gm-change-summary"
@@ -751,6 +767,42 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
       </section>
     </main>
   );
+}
+
+function changeRequestStructuredLabel(changeKind: string): string {
+  if (changeKind === 'class_reclassification') {
+    return 'Classe demandée';
+  }
+
+  if (changeKind === 'predilection_target') {
+    return 'Cible demandée';
+  }
+
+  if (changeKind === 'feat_target') {
+    return 'Atout ou cible';
+  }
+
+  return 'Valeur structurée';
+}
+
+function changeRequestStructuredPayload(changeKind: string, value: string): Record<string, string> {
+  if (value.length === 0) {
+    return {};
+  }
+
+  if (changeKind === 'class_reclassification') {
+    return { requestedClassId: value };
+  }
+
+  if (changeKind === 'predilection_target') {
+    return { requestedTarget: value };
+  }
+
+  if (changeKind === 'feat_target') {
+    return { requestedTarget: value };
+  }
+
+  return { requestedValue: value };
 }
 
 function defaultAssistantPrompt(view: ReturnType<typeof buildGmCockpitView>): string {

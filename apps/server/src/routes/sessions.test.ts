@@ -661,6 +661,109 @@ describe('session routes', () => {
     });
   });
 
+  it('applies approved class reclassification requests to linked session characters', async () => {
+    const slug = `change-request-class-session-${randomUUID()}`;
+    const characterId = `change-request-class-character-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleCharacterDraft('Aveline Reclassee'),
+      url: `/character-drafts/${characterId}`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { draftId: characterId },
+      url: '/characters/finalize'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        mode: 'digital_human_gm',
+        slug,
+        status: 'active',
+        title: 'Class Apply API'
+      },
+      url: '/sessions'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        characterId,
+        name: 'Aveline Reclassee',
+        playerId: 'player-aveline',
+        role: 'player'
+      },
+      url: `/sessions/${slug}/players`
+    });
+
+    const createResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        assignedTo: 'human_gm',
+        authority: 'human_gm',
+        changeKind: 'class_reclassification',
+        payload: {
+          requestedClassId: 'duelliste'
+        },
+        priority: 'normal',
+        requestedBy: 'player-aveline',
+        summary: 'Aveline demande un reclassement apres duel judiciaire.',
+        targetId: characterId,
+        targetType: 'character',
+        title: 'Reclasser Aveline'
+      },
+      url: `/sessions/${slug}/change-requests`
+    });
+    const changeRequest = createResponse.json().changeRequest;
+
+    const resolveResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        resolution: { ruling: 'Valide apres audience au greffe.' },
+        status: 'approved'
+      },
+      url: `/sessions/${slug}/change-requests/${changeRequest.id}/resolve`
+    });
+    const characterResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${characterId}`
+    });
+
+    expect(resolveResponse.statusCode).toBe(200);
+    expect(resolveResponse.json().changeRequest.resolution).toMatchObject({
+      appliedChange: {
+        changeKind: 'class_reclassification',
+        classId: 'duelliste',
+        className: 'Duelliste',
+        previousClassId: 'garde',
+        targetId: characterId,
+        type: 'character_class_reclassified'
+      },
+      ruling: 'Valide apres audience au greffe.'
+    });
+    expect(characterResponse.json().character.classProfile).toMatchObject({
+      id: 'duelliste',
+      name: 'Duelliste',
+      orientationId: 'guerrier',
+      primarySkillIds: ['epee-a-une-main']
+    });
+    expect(characterResponse.json().character.orientation).toMatchObject({
+      id: 'guerrier',
+      name: 'Guerrier'
+    });
+    expect(characterResponse.json().character.metadata.governanceChangeRequests).toMatchObject([
+      {
+        actorId: 'gm',
+        changeKind: 'class_reclassification',
+        changeRequestId: changeRequest.id,
+        nextClassId: 'duelliste',
+        previousClassId: 'garde',
+        sessionSlug: slug
+      }
+    ]);
+  });
+
   it('records rollback requests without deleting previous events', async () => {
     const slug = `rollback-session-${randomUUID()}`;
 
