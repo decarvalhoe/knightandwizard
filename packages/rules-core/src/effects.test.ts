@@ -1,7 +1,15 @@
 import { describe, expect, it } from 'vitest';
 
 import { parseEffectModel, type EffectModel, type EffectSpec } from './effect-model.js';
-import { computeEffectiveModifiers, effectiveAttribute } from './effects.js';
+import {
+  computeEffectiveModifiers,
+  createEffectUseLedger,
+  effectiveAttribute,
+  getEffectUseStatus,
+  recordEffectUse,
+  resetEffectUseLedgerForDay,
+  resetEffectUseLedgerForRest
+} from './effects.js';
 
 describe('effect modifier engine', () => {
   it('accumulates active additive modifiers by target and scope', () => {
@@ -163,6 +171,74 @@ describe('effect modifier engine', () => {
     });
 
     expect(modifiers.pool.musique.add).toBe(1);
+  });
+
+  it('tracks uses-per-day limits by character and gates exhausted active effects', () => {
+    const limited = effect({
+      target: 'difficulty',
+      op: 'sub',
+      value: 5,
+      activation: 'active',
+      duration: 'ephemeral',
+      uses_per_day: 1
+    });
+    const ledger = createEffectUseLedger('jour-1');
+
+    expect(getEffectUseStatus(limited, ledger, { characterId: 'aveline' })).toMatchObject({
+      allowed: true,
+      limit: 1,
+      remaining: 1,
+      used: 0
+    });
+
+    const firstUse = recordEffectUse(limited, ledger, { characterId: 'aveline' });
+    expect(firstUse.recorded).toBe(true);
+    expect(firstUse.status).toMatchObject({
+      allowed: false,
+      remaining: 0,
+      used: 1
+    });
+
+    const exhausted = computeEffectiveModifiers([limited], {
+      activations: ['active'],
+      characterId: 'aveline',
+      currentDay: 'jour-1',
+      dailyUses: firstUse.ledger
+    });
+    expect(exhausted.difficulty).toEqual({});
+
+    const otherCharacter = computeEffectiveModifiers([limited], {
+      activations: ['active'],
+      characterId: 'bastian',
+      currentDay: 'jour-1',
+      dailyUses: firstUse.ledger
+    });
+    expect(otherCharacter.difficulty.__global__.sub).toBe(5);
+  });
+
+  it('resets uses-per-day ledgers on rest and new days', () => {
+    const limited = effect({
+      target: 'pool',
+      op: 'add',
+      value: 2,
+      activation: 'active',
+      duration: 'ephemeral',
+      uses_per_day: 1
+    });
+    const used = recordEffectUse(limited, createEffectUseLedger('jour-1'), {
+      characterId: 'aveline'
+    }).ledger;
+
+    expect(getEffectUseStatus(limited, used, { characterId: 'aveline' }).allowed).toBe(false);
+
+    const afterRest = resetEffectUseLedgerForRest(used, 'aveline');
+    expect(getEffectUseStatus(limited, afterRest, { characterId: 'aveline' }).allowed).toBe(true);
+
+    const nextDay = resetEffectUseLedgerForDay('jour-2');
+    expect(getEffectUseStatus(limited, nextDay, { characterId: 'aveline' }).allowed).toBe(true);
+    expect(
+      getEffectUseStatus(limited, used, { characterId: 'aveline', day: 'jour-2' }).allowed
+    ).toBe(true);
   });
 });
 

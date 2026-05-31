@@ -114,6 +114,20 @@ describe('renderEffect', () => {
     expect(renderEffect(model)).toBe('Inflige niveau + 1 dégâts supplémentaires');
   });
 
+  it('renders daily use limits', () => {
+    const model = effectModel({
+      target: 'difficulty',
+      op: 'sub',
+      value: 5,
+      condition: { competence: 'danse' },
+      activation: 'active',
+      duration: 'ephemeral',
+      uses_per_day: 2
+    });
+
+    expect(renderEffect(model)).toBe('Réduit la difficulté de 5 avec la compétence danse (2/jour)');
+  });
+
   it('renders activity condition dimensions', () => {
     const model = effectModel({
       target: 'pool',
