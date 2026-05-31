@@ -14,7 +14,7 @@ import {
   toSessionManagerState,
   type PersistedSessionSnapshot
 } from './session-api';
-import type { SessionManagerState } from './model';
+import type { SessionChangeRequestStatus, SessionManagerState } from './model';
 
 export interface AppendResolvedEventInput {
   actorId: string;
@@ -40,10 +40,29 @@ export interface QueuePersistedGmDecisionInput {
   title: string;
 }
 
+export interface QueuePersistedChangeRequestInput {
+  assignedTo?: SessionControllerRole;
+  authority?: SessionControllerRole;
+  changeKind: string;
+  payload?: Record<string, unknown>;
+  priority?: SessionDecisionPriority;
+  requestedBy: string;
+  summary: string;
+  targetId?: string;
+  targetType: string;
+  title: string;
+}
+
 export interface ResolvePersistedGmDecisionInput {
   actorId: string;
   resolution?: Record<string, unknown>;
   status: Exclude<SessionDecisionStatus, 'pending'>;
+}
+
+export interface ResolvePersistedChangeRequestInput {
+  actorId: string;
+  resolution?: Record<string, unknown>;
+  status: Exclude<SessionChangeRequestStatus, 'pending'>;
 }
 
 export interface RequestPersistedRollbackInput {
@@ -185,6 +204,13 @@ export async function queuePersistedGmDecision(
   await postSessionJson(slug, `/sessions/${encodeURIComponent(slug)}/decisions`, input);
 }
 
+export async function queuePersistedChangeRequest(
+  slug: string,
+  input: QueuePersistedChangeRequestInput
+): Promise<void> {
+  await postSessionJson(slug, `/sessions/${encodeURIComponent(slug)}/change-requests`, input);
+}
+
 export async function resolvePersistedGmDecision(
   slug: string,
   decisionId: string,
@@ -193,6 +219,18 @@ export async function resolvePersistedGmDecision(
   await postSessionJson(
     slug,
     `/sessions/${encodeURIComponent(slug)}/decisions/${encodeURIComponent(decisionId)}/resolve`,
+    input
+  );
+}
+
+export async function resolvePersistedChangeRequest(
+  slug: string,
+  changeRequestId: string,
+  input: ResolvePersistedChangeRequestInput
+): Promise<void> {
+  await postSessionJson(
+    slug,
+    `/sessions/${encodeURIComponent(slug)}/change-requests/${encodeURIComponent(changeRequestId)}/resolve`,
     input
   );
 }

@@ -6,8 +6,10 @@ import {
   appendGmRulingToSession,
   appendThreadPostToSession,
   awardCharacterXp,
+  queuePersistedChangeRequest,
   queuePersistedGmDecision,
   requestPersistedRollback,
+  resolvePersistedChangeRequest,
   resolvePersistedGmDecision,
   syncCharacterCombatState
 } from './persistence.js';
@@ -262,6 +264,67 @@ describe('session manager persistence', () => {
           actorId: 'gm',
           reason: 'Correction demandee par le MJ',
           targetSequence: 2
+        }),
+        headers: { 'content-type': 'application/json' },
+        method: 'POST'
+      }
+    );
+  });
+
+  it('persists session change requests through the governance routes', async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = 'http://browser-api.test';
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(okJson({ changeRequest: { id: 'change-1' }, status: 'created' }))
+      .mockResolvedValueOnce(okJson({ changeRequest: { id: 'change-1' }, status: 'resolved' }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    await queuePersistedChangeRequest('brumeval', {
+      assignedTo: 'human_gm',
+      authority: 'human_gm',
+      changeKind: 'predilection_target',
+      payload: { source: 'cockpit' },
+      priority: 'high',
+      requestedBy: 'gm',
+      summary: 'Aveline veut changer sa cible de predilection.',
+      targetId: 'pc-aveline',
+      targetType: 'character',
+      title: 'Changer la predilection'
+    });
+    await resolvePersistedChangeRequest('brumeval', 'change-1', {
+      actorId: 'gm',
+      resolution: { ruling: 'Accorde pour la prochaine scene.' },
+      status: 'approved'
+    });
+
+    expect(fetchMock).toHaveBeenNthCalledWith(
+      1,
+      'http://browser-api.test/sessions/brumeval/change-requests',
+      {
+        body: JSON.stringify({
+          assignedTo: 'human_gm',
+          authority: 'human_gm',
+          changeKind: 'predilection_target',
+          payload: { source: 'cockpit' },
+          priority: 'high',
+          requestedBy: 'gm',
+          summary: 'Aveline veut changer sa cible de predilection.',
+          targetId: 'pc-aveline',
+          targetType: 'character',
+          title: 'Changer la predilection'
+        }),
+        headers: { 'content-type': 'application/json' },
+        method: 'POST'
+      }
+    );
+    expect(fetchMock).toHaveBeenNthCalledWith(
+      2,
+      'http://browser-api.test/sessions/brumeval/change-requests/change-1/resolve',
+      {
+        body: JSON.stringify({
+          actorId: 'gm',
+          resolution: { ruling: 'Accorde pour la prochaine scene.' },
+          status: 'approved'
         }),
         headers: { 'content-type': 'application/json' },
         method: 'POST'

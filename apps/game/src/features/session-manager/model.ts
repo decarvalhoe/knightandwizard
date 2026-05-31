@@ -9,8 +9,10 @@ import {
   spellExpiresAt,
   type ActiveSpell,
   type AppendSessionEventInput,
+  type SessionControllerRole,
   type SessionAuditEntry,
   type SessionDecision,
+  type SessionDecisionPriority,
   type SessionDecisionStatus,
   type SessionEvent,
   type SessionEventType,
@@ -20,10 +22,42 @@ import {
   type SessionState
 } from '@knightandwizard/rules-core';
 
-export type SessionManagerState = SessionState;
+export type SessionChangeRequestScope = 'canon' | 'game_state';
+export type SessionChangeRequestStatus =
+  | 'applied'
+  | 'approved'
+  | 'pending'
+  | 'rejected'
+  | 'superseded';
+
+export interface SessionChangeRequest {
+  assignedTo: SessionControllerRole;
+  authority: SessionControllerRole;
+  changeKind: string;
+  createdAt: string;
+  id: string;
+  payload: Record<string, unknown>;
+  priority: SessionDecisionPriority;
+  requestedBy: string;
+  resolution?: Record<string, unknown>;
+  resolvedAt?: string;
+  resolvedBy?: string;
+  scope: SessionChangeRequestScope;
+  status: SessionChangeRequestStatus;
+  summary: string;
+  targetId?: string;
+  targetType: string;
+  title: string;
+  updatedAt?: string;
+}
+
+export interface SessionManagerState extends SessionState {
+  changeRequests: SessionChangeRequest[];
+}
 
 export interface CreateSessionManagerStateInput {
   audit?: SessionAuditEntry[];
+  changeRequests?: SessionChangeRequest[];
   createdAt?: string;
   decisions?: SessionDecision[];
   events?: SessionEvent[];
@@ -72,6 +106,21 @@ export interface SessionDecisionRow {
   title: string;
 }
 
+export interface SessionChangeRequestRow {
+  assignedTo: string;
+  authority: string;
+  changeKind: string;
+  id: string;
+  priority: SessionChangeRequest['priority'];
+  priorityLabel: string;
+  requestedBy: string;
+  status: SessionChangeRequest['status'];
+  statusLabel: string;
+  summary: string;
+  targetLabel: string;
+  title: string;
+}
+
 export interface RollbackTargetRow {
   label: string;
   sequence: number;
@@ -94,6 +143,7 @@ export interface NarrativeClockView {
 
 export interface SessionManagerView {
   activeScene?: SessionScene;
+  changeRequestQueue: SessionChangeRequestRow[];
   decisionQueue: SessionDecisionRow[];
   metrics: {
     activePlayers: number;
@@ -130,21 +180,24 @@ const eventLabels: Record<SessionEventType, string> = {
 export function createSessionManagerState(
   input: CreateSessionManagerStateInput = {}
 ): SessionManagerState {
-  return createSessionState({
-    audit: input.audit,
-    createdAt: input.createdAt,
-    decisions: input.decisions,
-    events: input.events,
-    id: input.id ?? 'session-empty',
-    metadata: input.metadata ?? {},
-    mode: input.mode ?? 'digital_human_gm',
-    players: input.players ?? [],
-    scenes: input.scenes ?? [],
-    slug: input.slug ?? 'session-empty',
-    status: input.status ?? 'planned',
-    title: input.title ?? 'Session',
-    updatedAt: input.updatedAt
-  });
+  return withSessionChangeRequests(
+    createSessionState({
+      audit: input.audit,
+      createdAt: input.createdAt,
+      decisions: input.decisions,
+      events: input.events,
+      id: input.id ?? 'session-empty',
+      metadata: input.metadata ?? {},
+      mode: input.mode ?? 'digital_human_gm',
+      players: input.players ?? [],
+      scenes: input.scenes ?? [],
+      slug: input.slug ?? 'session-empty',
+      status: input.status ?? 'planned',
+      title: input.title ?? 'Session',
+      updatedAt: input.updatedAt
+    }),
+    input.changeRequests ?? []
+  );
 }
 
 export function buildSessionManagerView(state: SessionManagerState): SessionManagerView {
@@ -159,6 +212,9 @@ export function buildSessionManagerView(state: SessionManagerState): SessionMana
 
   return {
     activeScene: getActiveScene(state),
+    changeRequestQueue: state.changeRequests
+      .filter((request) => request.status === 'pending')
+      .map((request) => toChangeRequestRow(state, request)),
     decisionQueue: pendingDecisions.map((decision) => ({
       assignedTo: roleLabel(decision.assignedTo),
       createdAt: decision.createdAt,
@@ -200,7 +256,7 @@ export function recordSessionEvent(
   input: AppendSessionEventInput,
   options?: SessionMutationOptions
 ): SessionManagerState {
-  return appendSessionEvent(state, input, options);
+  return withSessionChangeRequests(appendSessionEvent(state, input, options), state.changeRequests);
 }
 
 export function submitGmDecisionRequest(
@@ -208,16 +264,19 @@ export function submitGmDecisionRequest(
   title: string,
   options?: SessionMutationOptions
 ): SessionManagerState {
-  return queueGmDecision(
-    state,
-    {
-      assignedTo: 'human_gm',
-      payload: { source: 'session-manager' },
-      priority: 'high',
-      requestedBy: 'llm',
-      title
-    },
-    options
+  return withSessionChangeRequests(
+    queueGmDecision(
+      state,
+      {
+        assignedTo: 'human_gm',
+        payload: { source: 'session-manager' },
+        priority: 'high',
+        requestedBy: 'llm',
+        title
+      },
+      options
+    ),
+    state.changeRequests
   );
 }
 
@@ -233,15 +292,18 @@ export function resolveNextPendingDecision(
     return state;
   }
 
-  return resolveGmDecision(
-    state,
-    nextDecision.id,
-    {
-      actorId: 'gm',
-      resolution,
-      status
-    },
-    options
+  return withSessionChangeRequests(
+    resolveGmDecision(
+      state,
+      nextDecision.id,
+      {
+        actorId: 'gm',
+        resolution,
+        status
+      },
+      options
+    ),
+    state.changeRequests
   );
 }
 
@@ -251,14 +313,17 @@ export function requestRollbackFromEvent(
   reason: string,
   options?: SessionMutationOptions
 ): SessionManagerState {
-  return requestSessionRollback(
-    state,
-    {
-      actorId: 'gm',
-      reason,
-      targetSequence
-    },
-    options
+  return withSessionChangeRequests(
+    requestSessionRollback(
+      state,
+      {
+        actorId: 'gm',
+        reason,
+        targetSequence
+      },
+      options
+    ),
+    state.changeRequests
   );
 }
 
@@ -290,7 +355,7 @@ export function applyLiveSessionEvent(
 
     return {
       kind: 'applied',
-      state: { ...projected, events, scenes }
+      state: withSessionChangeRequests({ ...projected, events, scenes }, state.changeRequests)
     };
   }
 
@@ -319,6 +384,16 @@ function toActiveSpellRow(spell: ActiveSpell, nowSeconds: number): ActiveSpellRo
       ? 'Permanent (dissipation requise)'
       : `Expire dans ${formatDuration(Math.max(0, expiresAt - nowSeconds))}`,
     target: spell.targetId
+  };
+}
+
+export function withSessionChangeRequests(
+  state: SessionState,
+  changeRequests: SessionChangeRequest[]
+): SessionManagerState {
+  return {
+    ...state,
+    changeRequests: [...changeRequests]
   };
 }
 
@@ -375,6 +450,28 @@ function toEventRow(state: SessionManagerState, event: SessionEvent): SessionEve
     label,
     sequence: event.sequence,
     tone: eventTone(event.type)
+  };
+}
+
+function toChangeRequestRow(
+  state: SessionManagerState,
+  request: SessionChangeRequest
+): SessionChangeRequestRow {
+  return {
+    assignedTo: roleLabel(request.assignedTo),
+    authority: roleLabel(request.authority),
+    changeKind: request.changeKind,
+    id: request.id,
+    priority: request.priority,
+    priorityLabel: priorityLabel(request.priority),
+    requestedBy: actorName(state, request.requestedBy),
+    status: request.status,
+    statusLabel: changeRequestStatusLabel(request.status),
+    summary: request.summary,
+    targetLabel: request.targetId
+      ? `${request.targetType} · ${request.targetId}`
+      : request.targetType,
+    title: request.title
   };
 }
 
@@ -552,4 +649,16 @@ const priorityLabels: Record<SessionDecision['priority'], string> = {
 
 function priorityLabel(priority: SessionDecision['priority']): string {
   return priorityLabels[priority];
+}
+
+const changeRequestStatusLabels: Record<SessionChangeRequestStatus, string> = {
+  applied: 'Appliquée',
+  approved: 'Approuvée',
+  pending: 'En attente',
+  rejected: 'Rejetée',
+  superseded: 'Remplacée'
+};
+
+function changeRequestStatusLabel(status: SessionChangeRequestStatus): string {
+  return changeRequestStatusLabels[status];
 }

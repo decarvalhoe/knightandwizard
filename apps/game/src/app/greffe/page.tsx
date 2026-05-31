@@ -31,7 +31,11 @@ import {
   type TableColumn
 } from '@knightandwizard/ui';
 
-import { createSessionManagerState, recordSessionEvent } from '@/features/session-manager/model';
+import {
+  createSessionManagerState,
+  recordSessionEvent,
+  withSessionChangeRequests
+} from '@/features/session-manager/model';
 
 type DecisionRow = {
   assignedTo: Arbiter;
@@ -508,85 +512,100 @@ function createInitialGreffeState(): SessionState {
     }
   );
 
-  state = queueGmDecision(
-    state,
-    {
-      assignedTo: 'human_gm',
-      payload: { cause: 'passage-nord', source: 'D13 multi-arbitre' },
-      priority: 'urgent',
-      requestedBy: 'scribe-llm',
-      title: 'Trancher le droit de passage au pont nord'
-    },
-    {
-      decisionId: 'cause-001',
-      eventId: 'greffe-event-2',
-      now: '2026-04-30T10:01:00.000Z'
-    }
-  );
-
-  state = resolveGmDecision(
-    state,
-    'cause-001',
-    {
-      actorId: 'gm',
-      resolution: {
-        ruling: 'Le passage est accordé, coût narratif différé.',
-        source: 'human_gm'
+  state = withSessionChangeRequests(
+    queueGmDecision(
+      state,
+      {
+        assignedTo: 'human_gm',
+        payload: { cause: 'passage-nord', source: 'D13 multi-arbitre' },
+        priority: 'urgent',
+        requestedBy: 'scribe-llm',
+        title: 'Trancher le droit de passage au pont nord'
       },
-      status: 'approved'
-    },
-    {
-      eventId: 'greffe-event-3',
-      now: '2026-04-30T10:02:00.000Z'
-    }
+      {
+        decisionId: 'cause-001',
+        eventId: 'greffe-event-2',
+        now: '2026-04-30T10:01:00.000Z'
+      }
+    ),
+    state.changeRequests
   );
 
-  state = queueGmDecision(
-    state,
-    {
-      assignedTo: 'player',
-      payload: { cause: 'risque-consenti', source: 'consentement joueur' },
-      priority: 'high',
-      requestedBy: 'gm',
-      title: 'Confirmer le risque consenti par Aveline'
-    },
-    {
-      decisionId: 'cause-002',
-      eventId: 'greffe-event-4',
-      now: '2026-04-30T10:03:00.000Z'
-    }
+  state = withSessionChangeRequests(
+    resolveGmDecision(
+      state,
+      'cause-001',
+      {
+        actorId: 'gm',
+        resolution: {
+          ruling: 'Le passage est accordé, coût narratif différé.',
+          source: 'human_gm'
+        },
+        status: 'approved'
+      },
+      {
+        eventId: 'greffe-event-3',
+        now: '2026-04-30T10:02:00.000Z'
+      }
+    ),
+    state.changeRequests
   );
 
-  state = queueGmDecision(
-    state,
-    {
-      assignedTo: 'llm',
-      payload: { cause: 'attendus-narratifs', guardrail: 'narration_only' },
-      priority: 'normal',
-      requestedBy: 'aveline',
-      title: 'Proposer les attendus narratifs sans calcul mécanique'
-    },
-    {
-      decisionId: 'cause-003',
-      eventId: 'greffe-event-5',
-      now: '2026-04-30T10:04:00.000Z'
-    }
+  state = withSessionChangeRequests(
+    queueGmDecision(
+      state,
+      {
+        assignedTo: 'player',
+        payload: { cause: 'risque-consenti', source: 'consentement joueur' },
+        priority: 'high',
+        requestedBy: 'gm',
+        title: 'Confirmer le risque consenti par Aveline'
+      },
+      {
+        decisionId: 'cause-002',
+        eventId: 'greffe-event-4',
+        now: '2026-04-30T10:03:00.000Z'
+      }
+    ),
+    state.changeRequests
   );
 
-  state = queueGmDecision(
-    state,
-    {
-      assignedTo: 'auto',
-      payload: { cause: 'delai', guardrail: 'typed_projection_only' },
-      priority: 'low',
-      requestedBy: 'scribe-llm',
-      title: 'Appliquer le suivi automatique du délai'
-    },
-    {
-      decisionId: 'cause-004',
-      eventId: 'greffe-event-6',
-      now: '2026-04-30T10:05:00.000Z'
-    }
+  state = withSessionChangeRequests(
+    queueGmDecision(
+      state,
+      {
+        assignedTo: 'llm',
+        payload: { cause: 'attendus-narratifs', guardrail: 'narration_only' },
+        priority: 'normal',
+        requestedBy: 'aveline',
+        title: 'Proposer les attendus narratifs sans calcul mécanique'
+      },
+      {
+        decisionId: 'cause-003',
+        eventId: 'greffe-event-5',
+        now: '2026-04-30T10:04:00.000Z'
+      }
+    ),
+    state.changeRequests
+  );
+
+  state = withSessionChangeRequests(
+    queueGmDecision(
+      state,
+      {
+        assignedTo: 'auto',
+        payload: { cause: 'delai', guardrail: 'typed_projection_only' },
+        priority: 'low',
+        requestedBy: 'scribe-llm',
+        title: 'Appliquer le suivi automatique du délai'
+      },
+      {
+        decisionId: 'cause-004',
+        eventId: 'greffe-event-6',
+        now: '2026-04-30T10:05:00.000Z'
+      }
+    ),
+    state.changeRequests
   );
 
   state = recordSessionEvent(
@@ -604,17 +623,20 @@ function createInitialGreffeState(): SessionState {
     }
   );
 
-  return requestSessionRollback(
-    state,
-    {
-      actorId: 'gm',
-      reason: 'Renvoi préparatoire vers la confirmation du risque.',
-      targetSequence: 4
-    },
-    {
-      eventId: 'greffe-event-8',
-      now: '2026-04-30T10:07:00.000Z'
-    }
+  return withSessionChangeRequests(
+    requestSessionRollback(
+      state,
+      {
+        actorId: 'gm',
+        reason: 'Renvoi préparatoire vers la confirmation du risque.',
+        targetSequence: 4
+      },
+      {
+        eventId: 'greffe-event-8',
+        now: '2026-04-30T10:07:00.000Z'
+      }
+    ),
+    state.changeRequests
   );
 }
 

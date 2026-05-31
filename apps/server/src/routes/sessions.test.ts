@@ -443,6 +443,13 @@ describe('session routes', () => {
         status: 'approved'
       }
     ]);
+    expect(readResponse.json().changeRequests).toMatchObject([
+      {
+        id: changeRequest.id,
+        status: 'approved',
+        title: 'Changer la predilection d Aveline'
+      }
+    ]);
     expect(
       readResponse.json().events.map((event: { eventType: string }) => event.eventType)
     ).toEqual(['change_request_submitted', 'change_request_resolved']);

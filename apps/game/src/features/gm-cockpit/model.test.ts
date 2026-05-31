@@ -19,6 +19,25 @@ describe('GM cockpit model', () => {
           title: 'Valider le bruit de la serrure'
         }
       ],
+      changeRequests: [
+        {
+          assignedTo: 'human_gm',
+          authority: 'human_gm',
+          changeKind: 'predilection_target',
+          createdAt: '2026-05-29T08:02:00.000Z',
+          id: 'change-1',
+          payload: { source: 'character-sheet' },
+          priority: 'high',
+          requestedBy: 'player-aveline',
+          scope: 'game_state',
+          status: 'pending',
+          summary: 'Aveline veut remplacer son arme de predilection.',
+          targetId: 'pc-aveline',
+          targetType: 'character',
+          title: 'Changer la predilection',
+          updatedAt: '2026-05-29T08:02:00.000Z'
+        }
+      ],
       events: [
         {
           actorId: 'gm',
@@ -70,6 +89,22 @@ describe('GM cockpit model', () => {
         priorityLabel: 'Haute',
         requestedBy: 'Aveline',
         title: 'Valider le bruit de la serrure'
+      }
+    ]);
+    expect(view.pendingChangeRequests).toEqual([
+      {
+        assignedTo: 'MJ humain',
+        authority: 'MJ humain',
+        changeKind: 'predilection_target',
+        id: 'change-1',
+        priority: 'high',
+        priorityLabel: 'Haute',
+        requestedBy: 'Aveline',
+        status: 'pending',
+        statusLabel: 'En attente',
+        summary: 'Aveline veut remplacer son arme de predilection.',
+        targetLabel: 'character · pc-aveline',
+        title: 'Changer la predilection'
       }
     ]);
     expect(view.primaryCombatHref).toBe('/combat?slug=brumeval&characterId=pc-aveline');
