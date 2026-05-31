@@ -27,6 +27,7 @@ export {
 } from './rules-tools.js';
 
 export const DEFAULT_GAME_MASTER_MODEL = 'ollama/qwen2.5:7b';
+export type GameMasterProvider = 'deterministic-dev' | 'mastra-agent';
 
 export const GAME_MASTER_INSTRUCTIONS = [
   'Tu es le MJ numerique de Knight & Wizard.',
@@ -51,11 +52,12 @@ export interface GameMasterSceneInput {
 
 export interface GameMasterSceneResponse {
   episodicMemory: GameMasterEpisodicMemoryContext;
+  generationError?: string;
   knowledge: GameMasterKnowledgeContext;
   memory: WorkingMemorySession;
   model: string;
   narration: string;
-  provider: 'deterministic-dev';
+  provider: GameMasterProvider;
   toolCalls: GameMasterToolCall[];
 }
 
@@ -72,14 +74,20 @@ export interface GameMasterRuntimeOptions {
 }
 
 export interface GameMasterSceneOptions extends GameMasterRuntimeOptions {
+  agentInvoker?: GameMasterAgentInvoker;
   episodicMemoryStore?: EpisodicMemoryStore;
   knowledgeLimit?: number;
   knowledgeRetriever?: KnowledgeRetriever;
   memory?: WorkingMemory;
+  provider?: GameMasterProvider;
 }
 
 export interface KnowledgeRetriever {
   searchRules(query: string, limit: number): Promise<RuleSearchResult[]>;
+}
+
+export interface GameMasterAgentInvoker {
+  generate(agent: Agent, prompt: string): Promise<string>;
 }
 
 export interface GameMasterKnowledgeCitation {
@@ -125,6 +133,15 @@ export interface WorkingMemory {
 const defaultWorkingMemory = createWorkingMemory();
 const defaultKnowledgeRetriever: KnowledgeRetriever = {
   searchRules: (query, limit) => searchRules(query, { limit })
+};
+const defaultAgentInvoker: GameMasterAgentInvoker = {
+  async generate(agent, prompt) {
+    const result = await (agent as Agent & { generate(input: string): Promise<unknown> }).generate(
+      prompt
+    );
+
+    return readGeneratedText(result);
+  }
 };
 let defaultEpisodicMemoryStore: EpisodicMemoryStore | undefined;
 
@@ -221,12 +238,37 @@ export async function describeSceneWithGameMaster(
     });
   }
 
-  const narration = buildDeterministicNarration(
+  const deterministicNarration = buildDeterministicNarration(
     sceneDescription,
     toolCalls,
     knowledge,
     episodicMemory
   );
+  const requestedProvider = options.provider ?? getGameMasterProvider();
+  let generationError: string | undefined;
+  let narration = deterministicNarration;
+  let provider: GameMasterProvider = 'deterministic-dev';
+
+  if (requestedProvider === 'mastra-agent') {
+    try {
+      const generated = (
+        await (options.agentInvoker ?? defaultAgentInvoker).generate(
+          runtime.agent,
+          buildAgentPrompt(sceneDescription, toolCalls, knowledge, episodicMemory)
+        )
+      ).trim();
+
+      if (generated.length === 0) {
+        throw new Error('agent.generate returned empty narration');
+      }
+
+      narration = generated;
+      provider = 'mastra-agent';
+    } catch (error) {
+      generationError = error instanceof Error ? error.message : 'Unknown agent.generate error';
+    }
+  }
+
   const session = memory.appendTurn(input.sessionId, {
     content: narration,
     role: 'assistant',
@@ -241,13 +283,18 @@ export async function describeSceneWithGameMaster(
     memory: session,
     model: runtime.model,
     narration,
-    provider: 'deterministic-dev',
+    ...(generationError === undefined ? {} : { generationError }),
+    provider,
     toolCalls
   };
 }
 
 function getGameMasterModel(): string {
   return process.env.GAME_MASTER_MODEL ?? DEFAULT_GAME_MASTER_MODEL;
+}
+
+function getGameMasterProvider(): GameMasterProvider {
+  return process.env.GAME_MASTER_PROVIDER === 'mastra-agent' ? 'mastra-agent' : 'deterministic-dev';
 }
 
 function buildDeterministicNarration(
@@ -291,6 +338,49 @@ function buildDeterministicNarration(
   });
 
   return `${sceneText}${sourcesText}${memoryText} ${rollFragments.join(' ')} Le resultat mecanique est integre a la narration sans recalcul par le LLM.`;
+}
+
+function buildAgentPrompt(
+  sceneDescription: string,
+  toolCalls: GameMasterToolCall[],
+  knowledge: GameMasterKnowledgeContext,
+  episodicMemory: GameMasterEpisodicMemoryContext
+): string {
+  return [
+    'Scene joueur:',
+    sceneDescription,
+    'Contexte RAG canonique a citer:',
+    knowledge.context || 'Aucune source retrouvee.',
+    'Memoire episodique de session:',
+    episodicMemory.context || 'Aucune memoire retrouvee.',
+    'Resultats outils rules-core deja calcules:',
+    toolCalls.length === 0
+      ? 'Aucun outil mecanique appele.'
+      : toolCalls.map(toolCallToPrompt).join('\n'),
+    'Contraintes de sortie:',
+    [
+      '- Ne recalcule jamais les des, degats, DT, XP ou effets.',
+      '- Integre les resultats outils tels quels.',
+      '- Cite les sources RAG disponibles avec leurs marqueurs [1], [2].',
+      '- En cas d ambiguite mecanique, demande une validation MJ humain.'
+    ].join('\n')
+  ].join('\n\n');
+}
+
+function toolCallToPrompt({ input, output, tool }: GameMasterToolCall): string {
+  const reason = input.reason ? ` (${input.reason})` : '';
+
+  if (output.status === 'error') {
+    return `${tool}${reason}: erreur ${output.message}`;
+  }
+
+  const critical = output.isCriticalSuccess
+    ? ' reussite critique'
+    : output.isCriticalFailure
+      ? ` echec critique${typeof output.criticalFailureSeverity === 'number' ? ` D100 ${output.criticalFailureSeverity}` : ''}`
+      : '';
+
+  return `${tool}${reason}: ${output.successes} succes sur difficulte ${input.difficulty}, jets [${output.rolls.join(', ')}]${critical}`;
 }
 
 async function retrieveKnowledgeContext(
@@ -398,4 +488,29 @@ function summarizeMemorySubject(sceneDescription: string): string {
   }
 
   return `${normalized.slice(0, 79).trim()}…`;
+}
+
+function readGeneratedText(value: unknown): string {
+  if (typeof value === 'string') {
+    return value;
+  }
+
+  if (isRecord(value)) {
+    const direct = readString(value, 'text') ?? readString(value, 'content');
+
+    if (direct !== undefined) {
+      return direct;
+    }
+  }
+
+  return JSON.stringify(value);
+}
+
+function readString(record: Record<string, unknown>, key: string): string | undefined {
+  const value = record[key];
+  return typeof value === 'string' ? value : undefined;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
