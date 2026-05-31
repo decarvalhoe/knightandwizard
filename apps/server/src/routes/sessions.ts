@@ -11,9 +11,12 @@ import {
   SESSION_DECISION_STATUSES,
   SESSION_MODES,
   SESSION_STATUSES,
+  SPELL_DURATION_UNITS,
   createSessionState,
+  durationToSeconds,
   projectSessionStateFromJournal,
-  revertSessionToSequence
+  revertSessionToSequence,
+  type SpellDurationUnit
 } from '@knightandwizard/rules-core';
 import type postgres from 'postgres';
 import { createSqlClient } from '../db/client.js';
@@ -103,6 +106,7 @@ interface SessionEntityLinks {
 const validModes = new Set<string>(SESSION_MODES);
 const validStatuses = new Set<string>(SESSION_STATUSES);
 const validPriorities = new Set<string>(SESSION_DECISION_PRIORITIES);
+const validSpellDurationUnits = new Set<string>(SPELL_DURATION_UNITS);
 // A decision cannot be *resolved* into the 'pending' state.
 const validDecisionStatuses = new Set<string>(
   SESSION_DECISION_STATUSES.filter((status) => status !== 'pending')
@@ -591,6 +595,18 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             WHERE session_id = ${session.id}
           `;
           const sequence = sequenceRows[0]!.next_sequence;
+          const needsPriorEventRows =
+            eventType === 'spell_cast' ||
+            eventType === 'narrative_time_advanced' ||
+            eventType === 'combat_ended';
+          const priorEventRows = needsPriorEventRows
+            ? await tx<SessionEventRow[]>`
+                  SELECT id, session_id, sequence, event_type, actor_id, payload, created_at
+                  FROM session_events
+                  WHERE session_id = ${session.id}
+                  ORDER BY sequence ASC
+                `
+            : [];
           const eventRows = await tx<SessionEventRow[]>`
             INSERT INTO session_events (session_id, sequence, event_type, actor_id, payload)
             VALUES (
@@ -602,6 +618,7 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             )
             RETURNING id, session_id, sequence, event_type, actor_id, payload, created_at
           `;
+          const event = eventRows[0]!;
 
           await tx`
             INSERT INTO audit_events (actor_id, action, entity_type, entity_id, payload)
@@ -609,7 +626,7 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               ${actorId},
               'session.event.appended',
               'session_event',
-              ${eventRows[0]!.id},
+              ${event.id},
               ${tx.json(
                 attachLinks(
                   {
@@ -622,13 +639,14 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               )}::jsonb
             )
           `;
+          await persistCharacterActiveSpellEvent(tx, session, event, priorEventRows);
           await tx`
             UPDATE game_sessions
             SET updated_at = now()
             WHERE id = ${session.id}
           `;
 
-          return { event: eventRows[0]!, status: 'created' as const };
+          return { event, status: 'created' as const };
         });
 
         if (result.status === 'not_found') {
@@ -1196,6 +1214,18 @@ interface SessionDecisionRow {
   updated_at: Date | string;
 }
 
+interface CharacterActiveSpellCast {
+  activeSpellId: string;
+  characterId: string;
+  durationAmount: number;
+  durationUnit: SpellDurationUnit;
+  expiresAtCombatDt: null | number;
+  expiresAtNarrativeSeconds: null | number;
+  sourceCasterId: null | string;
+  spellId: null | string;
+  successesCount: null | number;
+}
+
 function validateCreateSessionBody(body: CreateSessionRequestBody): ValidationResult {
   const errors: string[] = [];
 
@@ -1542,6 +1572,24 @@ function isNonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0;
 }
 
+function readNonEmptyString(value: unknown): string | undefined {
+  return isNonEmptyString(value) ? value.trim() : undefined;
+}
+
+function readSpellDurationUnit(value: unknown): SpellDurationUnit | undefined {
+  return typeof value === 'string' && validSpellDurationUnits.has(value)
+    ? (value as SpellDurationUnit)
+    : undefined;
+}
+
+function readNonNegativeNumber(value: unknown): number | undefined {
+  return typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : undefined;
+}
+
+function readNonNegativeInteger(value: unknown): number | undefined {
+  return typeof value === 'number' && Number.isInteger(value) && value >= 0 ? value : undefined;
+}
+
 function splitSessionMetadata(metadata: Record<string, unknown>): {
   metadata: Record<string, unknown>;
   players: SessionPlayer[] | undefined;
@@ -1706,6 +1754,182 @@ async function upsertSessionSceneRow(
   `;
 
   return rows[0]!;
+}
+
+async function persistCharacterActiveSpellEvent(
+  sql: SessionSql,
+  session: SessionRow,
+  event: SessionEventRow,
+  priorEventRows: SessionEventRow[]
+): Promise<void> {
+  if (event.event_type === 'spell_cast') {
+    const stateBeforeCast = buildSessionState(session, priorEventRows, []);
+    const cast = readCharacterActiveSpellCast(event, stateBeforeCast.narrativeSeconds);
+
+    if (cast === undefined) {
+      return;
+    }
+
+    await expireCharacterActiveSpells(sql, session.id, stateBeforeCast.narrativeSeconds);
+    const characterRows = await sql<{ id: string }[]>`
+      SELECT id
+      FROM characters
+      WHERE id = ${cast.characterId}
+    `;
+
+    if (characterRows.length === 0) {
+      return;
+    }
+
+    await sql`
+      INSERT INTO character_active_spells (
+        session_id,
+        character_id,
+        active_spell_id,
+        spell_id,
+        source_caster_id,
+        cast_at_sequence,
+        cast_at_narrative_seconds,
+        duration_amount,
+        duration_unit,
+        successes_count,
+        expires_at_narrative_seconds,
+        expires_at_combat_dt,
+        status,
+        dispelled_at_sequence,
+        updated_at
+      )
+      VALUES (
+        ${session.id},
+        ${cast.characterId},
+        ${cast.activeSpellId},
+        ${cast.spellId},
+        ${cast.sourceCasterId},
+        ${event.sequence},
+        ${stateBeforeCast.narrativeSeconds},
+        ${cast.durationAmount},
+        ${cast.durationUnit},
+        ${cast.successesCount},
+        ${cast.expiresAtNarrativeSeconds},
+        ${cast.expiresAtCombatDt},
+        'active',
+        null,
+        now()
+      )
+      ON CONFLICT (session_id, character_id, active_spell_id)
+      DO UPDATE SET
+        spell_id = EXCLUDED.spell_id,
+        source_caster_id = EXCLUDED.source_caster_id,
+        cast_at_sequence = EXCLUDED.cast_at_sequence,
+        cast_at_narrative_seconds = EXCLUDED.cast_at_narrative_seconds,
+        duration_amount = EXCLUDED.duration_amount,
+        duration_unit = EXCLUDED.duration_unit,
+        successes_count = EXCLUDED.successes_count,
+        expires_at_narrative_seconds = EXCLUDED.expires_at_narrative_seconds,
+        expires_at_combat_dt = EXCLUDED.expires_at_combat_dt,
+        status = 'active',
+        dispelled_at_sequence = null,
+        updated_at = now()
+    `;
+    return;
+  }
+
+  if (event.event_type === 'narrative_time_advanced' || event.event_type === 'combat_ended') {
+    const stateAfterAdvance = buildSessionState(session, [...priorEventRows, event], []);
+
+    await expireCharacterActiveSpells(sql, session.id, stateAfterAdvance.narrativeSeconds);
+    return;
+  }
+
+  if (event.event_type !== 'spell_dispelled') {
+    return;
+  }
+
+  const activeSpellId =
+    readNonEmptyString(event.payload.activeSpellId) ?? readNonEmptyString(event.payload.id);
+
+  if (activeSpellId === undefined) {
+    return;
+  }
+
+  const targetId = readNonEmptyString(event.payload.targetId);
+
+  if (targetId !== undefined) {
+    await sql`
+      UPDATE character_active_spells
+      SET
+        status = 'dispelled',
+        dispelled_at_sequence = ${event.sequence},
+        updated_at = now()
+      WHERE session_id = ${session.id}
+        AND character_id = ${targetId}
+        AND active_spell_id = ${activeSpellId}
+        AND status = 'active'
+    `;
+    return;
+  }
+
+  await sql`
+    UPDATE character_active_spells
+    SET
+      status = 'dispelled',
+      dispelled_at_sequence = ${event.sequence},
+      updated_at = now()
+    WHERE session_id = ${session.id}
+      AND active_spell_id = ${activeSpellId}
+      AND status = 'active'
+  `;
+}
+
+function readCharacterActiveSpellCast(
+  event: SessionEventRow,
+  castAtNarrativeSeconds: number
+): CharacterActiveSpellCast | undefined {
+  const targetId = readNonEmptyString(event.payload.targetId);
+  const durationUnit = readSpellDurationUnit(event.payload.durationUnit);
+
+  if (targetId === undefined || durationUnit === undefined) {
+    return undefined;
+  }
+
+  const durationAmount = readNonNegativeNumber(event.payload.durationAmount) ?? 0;
+  const durationSeconds = durationToSeconds(durationAmount, durationUnit);
+
+  return {
+    activeSpellId:
+      readNonEmptyString(event.payload.activeSpellId) ??
+      readNonEmptyString(event.payload.id) ??
+      `spell-${event.sequence}`,
+    characterId: targetId,
+    durationAmount,
+    durationUnit,
+    expiresAtCombatDt: durationUnit === 'DT' ? Math.floor(durationAmount) : null,
+    expiresAtNarrativeSeconds:
+      durationSeconds === null ? null : castAtNarrativeSeconds + durationSeconds,
+    sourceCasterId: event.actor_id,
+    spellId: readNonEmptyString(event.payload.spellId) ?? null,
+    successesCount:
+      readNonNegativeInteger(event.payload.successesCount) ??
+      readNonNegativeInteger(event.payload.successes_count) ??
+      null
+  };
+}
+
+async function expireCharacterActiveSpells(
+  sql: SessionSql,
+  sessionId: string,
+  narrativeSeconds: number
+): Promise<void> {
+  await sql`
+    UPDATE character_active_spells
+    SET
+      status = 'expired',
+      updated_at = now()
+    WHERE session_id = ${sessionId}
+      AND status = 'active'
+      AND expires_at_narrative_seconds IS NOT NULL
+      AND expires_at_narrative_seconds <= ${narrativeSeconds}
+  `;
 }
 
 function buildJoinHref(slug: string, playerId: string, capability: string): string {

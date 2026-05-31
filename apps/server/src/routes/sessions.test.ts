@@ -666,6 +666,152 @@ describe('session routes', () => {
     expect(expiredState.activeSpells).toEqual([]);
   });
 
+  it('persists active spell instances per target character from session events (R-8.20)', async () => {
+    const slug = `character-spell-session-${randomUUID()}`;
+    const characterId = `active-spell-target-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleCharacterDraft('Aveline Protegee'),
+      url: `/character-drafts/${characterId}`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { draftId: characterId },
+      url: '/characters/finalize'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, title: 'Character Spell API' },
+      url: '/sessions'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', eventType: 'narrative_time_advanced', payload: { hours: 1 } },
+      url: `/sessions/${slug}/events`
+    });
+    const castResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'spell_cast',
+        payload: {
+          activeSpellId: 'spell-aura-character',
+          durationAmount: 10,
+          durationUnit: 'minute',
+          spellId: 'aura-de-courage',
+          successesCount: 3,
+          targetId: characterId
+        }
+      },
+      url: `/sessions/${slug}/events`
+    });
+    const activeResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${characterId}/active-spells`
+    });
+
+    expect(castResponse.statusCode).toBe(201);
+    expect(activeResponse.statusCode).toBe(200);
+    expect(activeResponse.json()).toEqual({
+      activeSpells: [
+        {
+          activeSpellId: 'spell-aura-character',
+          castAtNarrativeSeconds: 3_600,
+          castAtSequence: 2,
+          characterId,
+          durationAmount: 10,
+          durationUnit: 'minute',
+          expiresAtNarrativeSeconds: 4_200,
+          sourceCasterId: 'gm',
+          spellId: 'aura-de-courage',
+          status: 'active',
+          successesCount: 3,
+          sessionSlug: slug
+        }
+      ],
+      status: 'found'
+    });
+
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'spell_dispelled',
+        payload: { activeSpellId: 'spell-aura-character', targetId: characterId }
+      },
+      url: `/sessions/${slug}/events`
+    });
+    const afterDispelResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${characterId}/active-spells`
+    });
+
+    expect(afterDispelResponse.statusCode).toBe(200);
+    expect(afterDispelResponse.json()).toEqual({
+      activeSpells: [],
+      status: 'found'
+    });
+  });
+
+  it('expires persisted character active spells when narrative time passes their duration', async () => {
+    const slug = `character-spell-expiry-${randomUUID()}`;
+    const characterId = `active-spell-expiry-target-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleCharacterDraft('Aveline Chronometree'),
+      url: `/character-drafts/${characterId}`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { draftId: characterId },
+      url: '/characters/finalize'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, title: 'Character Spell Expiry API' },
+      url: '/sessions'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'spell_cast',
+        payload: {
+          activeSpellId: 'spell-short-character',
+          durationAmount: 1,
+          durationUnit: 'minute',
+          spellId: 'aura-breve',
+          targetId: characterId
+        }
+      },
+      url: `/sessions/${slug}/events`
+    });
+
+    const activeResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${characterId}/active-spells`
+    });
+    expect(activeResponse.json().activeSpells).toHaveLength(1);
+
+    await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', eventType: 'narrative_time_advanced', payload: { minutes: 1 } },
+      url: `/sessions/${slug}/events`
+    });
+    const expiredResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${characterId}/active-spells`
+    });
+
+    expect(expiredResponse.statusCode).toBe(200);
+    expect(expiredResponse.json()).toEqual({
+      activeSpells: [],
+      status: 'found'
+    });
+  });
+
   it('rejects invalid session payloads', async () => {
     const response = await app.inject({
       method: 'POST',
