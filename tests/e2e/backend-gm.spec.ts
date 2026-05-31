@@ -19,6 +19,7 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
     const draftId = `e2e-draft-${suffix}`;
     const sessionSlug = `e2e-session-${suffix}`;
     const gmSessionId = `e2e-gm-${suffix}`;
+    const e2eUserHeaders = { 'x-kw-user-id': 'e2e' };
     const canonicalLinks = {
       characters: ['aveline'],
       objects: ['relique-brisee'],
@@ -73,13 +74,22 @@ test.describe('K&W backend, RAG and GM runtime flows', () => {
           rules: 'character creation draft persistence'
         },
         userId: 'e2e'
-      }
+      },
+      e2eUserHeaders
     );
 
-    await expectJson(request, 'GET', `/character-drafts/${draftId}`, 200, (body) => {
-      expect(body.status).toBe('found');
-      expect(asRecord(body.payload).name).toBe(canonicalE2EFixtures.actors.avelineDraftName);
-    });
+    await expectJson(
+      request,
+      'GET',
+      `/character-drafts/${draftId}`,
+      200,
+      (body) => {
+        expect(body.status).toBe('found');
+        expect(asRecord(body.payload).name).toBe(canonicalE2EFixtures.actors.avelineDraftName);
+      },
+      undefined,
+      e2eUserHeaders
+    );
 
     await expectJson(
       request,
@@ -274,11 +284,15 @@ async function expectJson(
   path: string,
   expectedStatus: number,
   assertBody: (body: JsonObject) => void,
-  data?: Record<string, unknown>
+  data?: Record<string, unknown>,
+  headers: Record<string, string> = {}
 ): Promise<JsonObject> {
   const response = await request.fetch(`${apiBaseUrl}${path}`, {
     data,
-    headers: data ? { 'content-type': 'application/json' } : undefined,
+    headers: {
+      ...(data ? { 'content-type': 'application/json' } : {}),
+      ...headers
+    },
     method
   });
   const body = asRecord(await response.json());

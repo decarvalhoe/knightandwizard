@@ -22,7 +22,7 @@ import {
   type RaceProfile,
   gainXP
 } from '@knightandwizard/rules-core';
-import { eq, sql as drizzleSql } from 'drizzle-orm';
+import { and, eq, sql as drizzleSql } from 'drizzle-orm';
 import { z } from 'zod';
 import { createDbClient, createSqlClient } from '../db/client.js';
 import { characterDrafts, characters } from '../db/schema.js';
@@ -43,6 +43,10 @@ export class CharacterNotFoundError extends Error {
 
 export interface CharacterPersistenceResult {
   character: Character;
+}
+
+export interface CharacterPersistenceScope {
+  userId?: string;
 }
 
 export interface CharacterCombatStateUpdate {
@@ -159,7 +163,10 @@ const CharacterCreationDraftSnapshotSchema: z.ZodType<CharacterCreationDraftSnap
   payload: CharacterCreationDraftPayloadSchema
 });
 
-export async function finalizeCharacterDraft(draftId: string): Promise<CharacterPersistenceResult> {
+export async function finalizeCharacterDraft(
+  draftId: string,
+  scope: CharacterPersistenceScope = {}
+): Promise<CharacterPersistenceResult> {
   const sql = createSqlClient();
   const db = createDbClient(sql);
 
@@ -167,7 +174,11 @@ export async function finalizeCharacterDraft(draftId: string): Promise<Character
     const draftRows = await db
       .select()
       .from(characterDrafts)
-      .where(eq(characterDrafts.id, draftId))
+      .where(
+        scope.userId
+          ? and(eq(characterDrafts.id, draftId), eq(characterDrafts.userId, scope.userId))
+          : eq(characterDrafts.id, draftId)
+      )
       .limit(1);
     const row = draftRows[0];
 
@@ -213,7 +224,10 @@ export async function finalizeCharacterDraft(draftId: string): Promise<Character
   }
 }
 
-export async function getPersistedCharacter(id: string): Promise<CharacterPersistenceResult> {
+export async function getPersistedCharacter(
+  id: string,
+  scope: CharacterPersistenceScope = {}
+): Promise<CharacterPersistenceResult> {
   const sql = createSqlClient();
   const db = createDbClient(sql);
 
@@ -221,7 +235,11 @@ export async function getPersistedCharacter(id: string): Promise<CharacterPersis
     const rows = await db
       .select({ character: characters.payload })
       .from(characters)
-      .where(eq(characters.id, id))
+      .where(
+        scope.userId
+          ? and(eq(characters.id, id), eq(characters.userId, scope.userId))
+          : eq(characters.id, id)
+      )
       .limit(1);
     const row = rows[0];
 
@@ -239,7 +257,8 @@ export async function getPersistedCharacter(id: string): Promise<CharacterPersis
 
 export async function updatePersistedCharacterCombatState(
   id: string,
-  input: CharacterCombatStateUpdate
+  input: CharacterCombatStateUpdate,
+  scope: CharacterPersistenceScope = {}
 ): Promise<CharacterPersistenceResult> {
   const sql = createSqlClient();
   const db = createDbClient(sql);
@@ -248,7 +267,11 @@ export async function updatePersistedCharacterCombatState(
     const rows = await db
       .select({ character: characters.payload })
       .from(characters)
-      .where(eq(characters.id, id))
+      .where(
+        scope.userId
+          ? and(eq(characters.id, id), eq(characters.userId, scope.userId))
+          : eq(characters.id, id)
+      )
       .limit(1);
     const row = rows[0];
 
@@ -285,7 +308,11 @@ export async function updatePersistedCharacterCombatState(
         payload: character,
         updatedAt: drizzleSql`now()`
       })
-      .where(eq(characters.id, id))
+      .where(
+        scope.userId
+          ? and(eq(characters.id, id), eq(characters.userId, scope.userId))
+          : eq(characters.id, id)
+      )
       .returning({ character: characters.payload });
 
     return {
@@ -298,7 +325,8 @@ export async function updatePersistedCharacterCombatState(
 
 export async function awardPersistedCharacterXp(
   id: string,
-  input: CharacterXpAwardUpdate
+  input: CharacterXpAwardUpdate,
+  scope: CharacterPersistenceScope = {}
 ): Promise<CharacterPersistenceResult> {
   const sql = createSqlClient();
   const db = createDbClient(sql);
@@ -307,7 +335,11 @@ export async function awardPersistedCharacterXp(
     const rows = await db
       .select({ character: characters.payload })
       .from(characters)
-      .where(eq(characters.id, id))
+      .where(
+        scope.userId
+          ? and(eq(characters.id, id), eq(characters.userId, scope.userId))
+          : eq(characters.id, id)
+      )
       .limit(1);
     const row = rows[0];
 
@@ -340,7 +372,11 @@ export async function awardPersistedCharacterXp(
         payload: character,
         updatedAt: drizzleSql`now()`
       })
-      .where(eq(characters.id, id))
+      .where(
+        scope.userId
+          ? and(eq(characters.id, id), eq(characters.userId, scope.userId))
+          : eq(characters.id, id)
+      )
       .returning({ character: characters.payload });
 
     return {

@@ -48,6 +48,68 @@ describe('character routes', () => {
     });
   });
 
+  it('scopes character finalization and mutations to the current request user', async () => {
+    const draftId = `route-auth-character-${randomUUID()}`;
+
+    await app.inject({
+      headers: { 'x-kw-user-id': 'player-aveline' },
+      method: 'PUT',
+      payload: sampleDraft('Aveline Authentifiee'),
+      url: `/character-drafts/${draftId}`
+    });
+
+    const deniedFinalizeResponse = await app.inject({
+      headers: { 'x-kw-user-id': 'player-bastian' },
+      method: 'POST',
+      payload: { draftId },
+      url: '/characters/finalize'
+    });
+    const finalizeResponse = await app.inject({
+      headers: { 'x-kw-user-id': 'player-aveline' },
+      method: 'POST',
+      payload: { draftId },
+      url: '/characters/finalize'
+    });
+    const ownerReadResponse = await app.inject({
+      headers: { 'x-kw-user-id': 'player-aveline' },
+      method: 'GET',
+      url: `/characters/${draftId}`
+    });
+    const otherReadResponse = await app.inject({
+      headers: { 'x-kw-user-id': 'player-bastian' },
+      method: 'GET',
+      url: `/characters/${draftId}`
+    });
+    const otherCombatResponse = await app.inject({
+      headers: { 'x-kw-user-id': 'player-bastian' },
+      method: 'PATCH',
+      payload: { vitality: { current: 1 } },
+      url: `/characters/${draftId}/combat-state`
+    });
+    const otherXpResponse = await app.inject({
+      headers: { 'x-kw-user-id': 'player-bastian' },
+      method: 'POST',
+      payload: { amount: 1, reason: 'Intrusion' },
+      url: `/characters/${draftId}/xp-awards`
+    });
+
+    expect(deniedFinalizeResponse.statusCode).toBe(404);
+    expect(finalizeResponse.statusCode).toBe(201);
+    expect(finalizeResponse.json()).toMatchObject({
+      character: {
+        id: draftId,
+        name: 'Aveline Authentifiee',
+        userId: 'player-aveline'
+      },
+      status: 'finalized'
+    });
+    expect(ownerReadResponse.statusCode).toBe(200);
+    expect(ownerReadResponse.json().character.userId).toBe('player-aveline');
+    expect(otherReadResponse.statusCode).toBe(404);
+    expect(otherCombatResponse.statusCode).toBe(404);
+    expect(otherXpResponse.statusCode).toBe(404);
+  });
+
   it('updates persisted combat vitality and statuses for the character sheet', async () => {
     const draftId = `route-combat-character-${randomUUID()}`;
 

@@ -9,6 +9,7 @@ import {
   type CharacterCombatStateUpdate,
   type CharacterXpAwardUpdate
 } from '../characters/finalize.js';
+import { resolveRequestUserId } from '../auth/user.js';
 
 interface FinalizeCharacterRequestBody {
   draftId?: unknown;
@@ -51,7 +52,9 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
       }
 
       try {
-        const result = await finalizeCharacterDraft(draftId);
+        const result = await finalizeCharacterDraft(draftId, {
+          userId: resolveRequestUserId(request)
+        });
 
         return reply.code(201).send({
           character: result.character,
@@ -65,7 +68,9 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
 
   app.get<{ Params: CharacterParams }>('/characters/:id', async (request, reply) => {
     try {
-      const result = await getPersistedCharacter(request.params.id);
+      const result = await getPersistedCharacter(request.params.id, {
+        userId: resolveRequestUserId(request)
+      });
 
       return {
         character: result.character,
@@ -91,7 +96,8 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
       try {
         const result = await updatePersistedCharacterCombatState(
           request.params.id,
-          validation.input
+          validation.input,
+          { userId: resolveRequestUserId(request) }
         );
 
         return {
@@ -117,7 +123,9 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
       }
 
       try {
-        const result = await awardPersistedCharacterXp(request.params.id, validation.input);
+        const result = await awardPersistedCharacterXp(request.params.id, validation.input, {
+          userId: resolveRequestUserId(request)
+        });
 
         return {
           character: result.character,

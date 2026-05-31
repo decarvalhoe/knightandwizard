@@ -1,5 +1,6 @@
 import type { FastifyInstance } from 'fastify';
 import type postgres from 'postgres';
+import { normalizeUserId, resolveRequestUserId } from '../auth/user.js';
 import { createSqlClient } from '../db/client.js';
 
 interface CharacterDraftRequestBody {
@@ -28,7 +29,7 @@ export async function registerCharacterDraftRoutes(app: FastifyInstance): Promis
       }
 
       const sql = createSqlClient();
-      const userId = typeof request.body.userId === 'string' ? request.body.userId : 'local-dev';
+      const userId = resolveRequestUserId(request, request.body.userId);
       const payload = request.body.payload as postgres.JSONValue;
 
       try {
@@ -47,9 +48,16 @@ export async function registerCharacterDraftRoutes(app: FastifyInstance): Promis
             current_step = EXCLUDED.current_step,
             payload = EXCLUDED.payload,
             updated_at = now()
+          WHERE character_drafts.user_id = EXCLUDED.user_id
           RETURNING id, user_id, current_step, payload, updated_at
         `;
         const row = rows[0];
+
+        if (!row) {
+          return reply.code(409).send({
+            status: 'owner_conflict'
+          });
+        }
 
         return {
           currentStep: row.current_step,
@@ -69,12 +77,14 @@ export async function registerCharacterDraftRoutes(app: FastifyInstance): Promis
     '/character-drafts/:id',
     async (request, reply) => {
       const sql = createSqlClient();
+      const userId = resolveRequestUserId(request);
 
       try {
         const rows = await sql<CharacterDraftRow[]>`
           SELECT id, user_id, current_step, payload, updated_at
           FROM character_drafts
           WHERE id = ${request.params.id}
+            AND user_id = ${userId}
         `;
         const row = rows[0];
 
@@ -116,6 +126,10 @@ function validateDraftBody(body: CharacterDraftRequestBody): { errors: string[];
 
   if (!isRecord(body.payload)) {
     errors.push('payload must be an object');
+  }
+
+  if (body.userId !== undefined && normalizeUserId(body.userId) === undefined) {
+    errors.push('userId must be a non-empty string');
   }
 
   return {
