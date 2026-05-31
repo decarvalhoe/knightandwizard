@@ -346,6 +346,26 @@ describe('session narrative clock (R-8.20 — temps double)', () => {
     expect(later.events.map((event) => event.type)).toEqual(['narrative_time_advanced']);
   });
 
+  it('applies the MJ cadence multiplier to narrative time advances', () => {
+    const session = newSession();
+    const halfSpeed = advanceSessionNarrative(session, {
+      actorId: 'gm',
+      by: { cadenceMultiplier: 0.5, hours: 2 }
+    });
+    const paused = advanceSessionNarrative(halfSpeed, {
+      actorId: 'gm',
+      by: { cadenceMultiplier: 0, hours: 4 }
+    });
+    const doubleSpeed = advanceSessionNarrative(paused, {
+      actorId: 'gm',
+      by: { cadenceMultiplier: 2, minutes: 15 }
+    });
+
+    expect(halfSpeed.narrativeSeconds).toBe(3_600);
+    expect(paused.narrativeSeconds).toBe(3_600);
+    expect(doubleSpeed.narrativeSeconds).toBe(5_400);
+  });
+
   it('folds the elapsed combat DT back into the narrative clock at end of combat', () => {
     const session = newSession();
     // 50 DT of combat = 10 narrative seconds (1 DT = 0,2 s).

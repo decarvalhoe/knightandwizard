@@ -984,6 +984,68 @@ describe('session routes', () => {
     expect(expiredState.activeSpells).toEqual([]);
   });
 
+  it('applies cadence multipliers when projecting narrative time advances', async () => {
+    const slug = `clock-cadence-session-${randomUUID()}`;
+
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, title: 'Clock Cadence API' },
+      url: '/sessions'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'narrative_time_advanced',
+        payload: { cadenceMultiplier: 0.5, hours: 2 }
+      },
+      url: `/sessions/${slug}/events`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'spell_cast',
+        payload: {
+          activeSpellId: 'spell-cadence',
+          durationAmount: 10,
+          durationUnit: 'minute',
+          spellId: 'aura-lente',
+          targetId: 'aveline'
+        }
+      },
+      url: `/sessions/${slug}/events`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'narrative_time_advanced',
+        payload: { cadenceMultiplier: 0, minutes: 30 }
+      },
+      url: `/sessions/${slug}/events`
+    });
+
+    const paused = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+
+    expect(paused.json().state.narrativeSeconds).toBe(3_600);
+    expect(paused.json().state.activeSpells).toMatchObject([{ id: 'spell-cadence' }]);
+
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'narrative_time_advanced',
+        payload: { cadenceMultiplier: 2, minutes: 5 }
+      },
+      url: `/sessions/${slug}/events`
+    });
+    const expired = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+
+    expect(expired.json().state.narrativeSeconds).toBe(4_200);
+    expect(expired.json().state.activeSpells).toEqual([]);
+  });
+
   it('persists active spell instances per target character from session events (R-8.20)', async () => {
     const slug = `character-spell-session-${randomUUID()}`;
     const characterId = `active-spell-target-${randomUUID()}`;

@@ -46,6 +46,10 @@ const priorityClasses = {
   urgent: 'bg-wine/12 text-wine'
 };
 
+const narrativeCadenceOptions = [0, 0.5, 1, 2] as const;
+
+type NarrativeCadenceMultiplier = (typeof narrativeCadenceOptions)[number];
+
 interface SessionManagerProps {
   currentPlayerId?: string;
   initialState: SessionManagerState;
@@ -56,6 +60,8 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
   const [pendingAction, setPendingAction] = useState<string | null>(null);
   const [mutationError, setMutationError] = useState<string | null>(null);
   const [postText, setPostText] = useState('');
+  const [narrativeCadence, setNarrativeCadence] = useState<NarrativeCadenceMultiplier>(1);
+  const narrativeCadenceRef = useRef<NarrativeCadenceMultiplier>(1);
   const view = useMemo(() => buildSessionManagerView(state), [state]);
   const [rollbackSequence, setRollbackSequence] = useState(
     view.rollbackTargets[0]?.sequence.toString() ?? ''
@@ -124,8 +130,16 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
 
   function skipNarrativeTime(by: { days?: number; hours?: number; minutes?: number }) {
     void runPersistedAction('narrative-advance', async (slug) => {
-      await advancePersistedNarrative(slug, { actorId: 'gm', by });
+      await advancePersistedNarrative(slug, {
+        actorId: 'gm',
+        by: { ...by, cadenceMultiplier: narrativeCadenceRef.current }
+      });
     });
+  }
+
+  function selectNarrativeCadence(option: NarrativeCadenceMultiplier) {
+    narrativeCadenceRef.current = option;
+    setNarrativeCadence(option);
   }
 
   function resolvePostText(fallback: string) {
@@ -343,6 +357,29 @@ export function SessionManager({ currentPlayerId, initialState }: Readonly<Sessi
           >
             {view.narrativeClock.instantLabel}
           </p>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold uppercase tracking-[0.12em] text-ink/62">
+              Cadence
+            </span>
+            <div className="flex rounded-md border border-ink/10 bg-paper p-1">
+              {narrativeCadenceOptions.map((option) => (
+                <button
+                  aria-pressed={narrativeCadence === option}
+                  className={`h-8 min-w-12 rounded px-3 text-sm font-semibold transition ${
+                    narrativeCadence === option
+                      ? 'bg-forest text-paper'
+                      : 'text-ink/62 hover:bg-forest/10 hover:text-forest'
+                  }`}
+                  disabled={busy}
+                  key={option}
+                  onClick={() => selectNarrativeCadence(option)}
+                  type="button"
+                >
+                  x{option}
+                </button>
+              ))}
+            </div>
+          </div>
           <div className="mt-3 flex flex-wrap gap-2">
             <TimeSkipButton
               disabled={busy}

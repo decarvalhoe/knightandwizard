@@ -271,7 +271,13 @@ export async function resolvePersistedChangeRequest(
 
 export interface AdvancePersistedNarrativeInput {
   actorId: string;
-  by: { days?: number; hours?: number; minutes?: number; seconds?: number };
+  by: {
+    cadenceMultiplier?: 0 | 0.5 | 1 | 2;
+    days?: number;
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+  };
 }
 
 export interface DispelPersistedSpellInput {

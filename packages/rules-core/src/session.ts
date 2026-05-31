@@ -1,7 +1,9 @@
 import {
   type ActiveSpell,
   type NarrativeAdvance,
+  type NarrativeCadenceMultiplier,
   type SpellDurationUnit,
+  NARRATIVE_CADENCE_MULTIPLIERS,
   SPELL_DURATION_UNITS,
   advanceNarrative,
   endCombat,
@@ -839,11 +841,19 @@ function reduceNarrativeEvent(clock: NarrativeClock, event: SessionEvent): Narra
 
 function narrativeAdvanceFromPayload(payload: Record<string, unknown>): NarrativeAdvance {
   return {
+    cadenceMultiplier: readNarrativeCadenceMultiplier(payload.cadenceMultiplier),
     days: nonNegativeNumber(payload.days),
     hours: nonNegativeNumber(payload.hours),
     minutes: nonNegativeNumber(payload.minutes),
     seconds: nonNegativeNumber(payload.seconds)
   };
+}
+
+function readNarrativeCadenceMultiplier(value: unknown): NarrativeCadenceMultiplier | undefined {
+  return typeof value === 'number' &&
+    NARRATIVE_CADENCE_MULTIPLIERS.some((multiplier) => multiplier === value)
+    ? (value as NarrativeCadenceMultiplier)
+    : undefined;
 }
 
 function activeSpellFromEvent(event: SessionEvent, castAtSeconds: number): ActiveSpell | undefined {
