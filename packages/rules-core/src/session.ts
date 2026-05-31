@@ -29,6 +29,8 @@ export const SESSION_EVENT_TYPES = [
   'gm_ruling',
   'gm_decision_requested',
   'gm_decision_resolved',
+  'change_request_submitted',
+  'change_request_resolved',
   'rollback_requested',
   'narrative_time_advanced',
   'combat_ended',

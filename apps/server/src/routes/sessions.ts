@@ -46,9 +46,28 @@ interface QueueDecisionRequestBody {
   title?: unknown;
 }
 
+interface CreateChangeRequestBody {
+  assignedTo?: unknown;
+  authority?: unknown;
+  changeKind?: unknown;
+  payload?: unknown;
+  priority?: unknown;
+  requestedBy?: unknown;
+  summary?: unknown;
+  targetId?: unknown;
+  targetType?: unknown;
+  title?: unknown;
+}
+
 interface ResolveDecisionRequestBody {
   actorId?: unknown;
   links?: unknown;
+  resolution?: unknown;
+  status?: unknown;
+}
+
+interface ResolveChangeRequestBody {
+  actorId?: unknown;
   resolution?: unknown;
   status?: unknown;
 }
@@ -88,6 +107,10 @@ interface DecisionParams extends SessionParams {
   decisionId: string;
 }
 
+interface ChangeRequestParams extends SessionParams {
+  changeRequestId: string;
+}
+
 interface SessionRuleLink {
   ref?: string;
   sourcePath: string;
@@ -107,6 +130,7 @@ const validModes = new Set<string>(SESSION_MODES);
 const validStatuses = new Set<string>(SESSION_STATUSES);
 const validPriorities = new Set<string>(SESSION_DECISION_PRIORITIES);
 const validSpellDurationUnits = new Set<string>(SPELL_DURATION_UNITS);
+const validChangeRequestStatuses = new Set(['approved', 'rejected', 'applied', 'superseded']);
 // A decision cannot be *resolved* into the 'pending' state.
 const validDecisionStatuses = new Set<string>(
   SESSION_DECISION_STATUSES.filter((status) => status !== 'pending')
@@ -121,6 +145,10 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
   app.options('/sessions/:slug/scenes', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug/events', async (_request, reply) => reply.code(204).send());
   app.options('/sessions/:slug/decisions', async (_request, reply) => reply.code(204).send());
+  app.options('/sessions/:slug/change-requests', async (_request, reply) => reply.code(204).send());
+  app.options('/sessions/:slug/change-requests/:changeRequestId/resolve', async (_request, reply) =>
+    reply.code(204).send()
+  );
   app.options('/sessions/:slug/decisions/:decisionId/resolve', async (_request, reply) =>
     reply.code(204).send()
   );
@@ -817,6 +845,328 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
     }
   );
 
+  app.get<{ Params: SessionParams }>('/sessions/:slug/change-requests', async (request, reply) => {
+    const sql = createSqlClient();
+
+    try {
+      const sessionRows = await sql<SessionRow[]>`
+        SELECT id, slug, title, mode, status, metadata, created_at, updated_at
+        FROM game_sessions
+        WHERE slug = ${request.params.slug}
+      `;
+      const session = sessionRows[0];
+
+      if (!session) {
+        return reply.code(404).send({ status: 'not_found' });
+      }
+
+      const changeRequestRows = await selectSessionChangeRequests(sql, session.id);
+
+      return {
+        changeRequests: changeRequestRows.map(toChangeRequestResponse),
+        status: 'found'
+      };
+    } finally {
+      await sql.end({ timeout: 5 });
+    }
+  });
+
+  app.post<{ Body: CreateChangeRequestBody; Params: SessionParams }>(
+    '/sessions/:slug/change-requests',
+    async (request, reply) => {
+      const body = request.body ?? {};
+      const validation = validateCreateChangeRequestBody(body);
+
+      if (!validation.valid) {
+        return reply.code(400).send({
+          errors: validation.errors,
+          status: 'invalid'
+        });
+      }
+
+      const sql = createSqlClient();
+      const input = validation.input!;
+
+      try {
+        const result = await sql.begin(async (tx) => {
+          const sessionRows = await tx<SessionRow[]>`
+            SELECT id, slug, title, mode, status, metadata, created_at, updated_at
+            FROM game_sessions
+            WHERE slug = ${request.params.slug}
+            FOR UPDATE
+          `;
+          const session = sessionRows[0];
+
+          if (!session) {
+            return { status: 'not_found' as const };
+          }
+
+          const changeRequestRows = await tx<ChangeRequestRow[]>`
+            INSERT INTO change_requests (
+              scope,
+              session_id,
+              target_type,
+              target_id,
+              change_kind,
+              title,
+              summary,
+              requested_by,
+              assigned_to,
+              authority,
+              priority,
+              payload
+            )
+            VALUES (
+              'game_state',
+              ${session.id},
+              ${input.targetType},
+              ${input.targetId ?? null},
+              ${input.changeKind},
+              ${input.title},
+              ${input.summary},
+              ${input.requestedBy},
+              ${input.assignedTo},
+              ${input.authority},
+              ${input.priority},
+              ${tx.json(input.payload as postgres.JSONValue)}::jsonb
+            )
+            RETURNING
+              id,
+              scope,
+              session_id,
+              target_type,
+              target_id,
+              change_kind,
+              title,
+              summary,
+              requested_by,
+              assigned_to,
+              authority,
+              priority,
+              status,
+              payload,
+              resolution,
+              resolved_by,
+              resolved_at,
+              created_at,
+              updated_at
+          `;
+          const changeRequest = changeRequestRows[0]!;
+          const sequenceRows = await tx<{ next_sequence: number }[]>`
+            SELECT (COALESCE(MAX(sequence), 0) + 1)::int AS next_sequence
+            FROM session_events
+            WHERE session_id = ${session.id}
+          `;
+          const sequence = sequenceRows[0]!.next_sequence;
+          const eventRows = await tx<SessionEventRow[]>`
+            INSERT INTO session_events (session_id, sequence, event_type, actor_id, payload)
+            VALUES (
+              ${session.id},
+              ${sequence},
+              'change_request_submitted',
+              ${input.requestedBy},
+              ${tx.json({
+                authority: input.authority,
+                changeKind: input.changeKind,
+                changeRequestId: changeRequest.id,
+                priority: input.priority,
+                requestedBy: input.requestedBy,
+                targetId: input.targetId,
+                targetType: input.targetType,
+                title: input.title
+              } as postgres.JSONValue)}::jsonb
+            )
+            RETURNING id, session_id, sequence, event_type, actor_id, payload, created_at
+          `;
+
+          await tx`
+            INSERT INTO audit_events (actor_id, action, entity_type, entity_id, payload)
+            VALUES (
+              ${input.requestedBy},
+              'change_request.created',
+              'change_request',
+              ${changeRequest.id},
+              ${tx.json({
+                changeRequestId: changeRequest.id,
+                eventId: eventRows[0]!.id,
+                sessionId: session.id,
+                targetId: input.targetId,
+                targetType: input.targetType
+              } as postgres.JSONValue)}::jsonb
+            )
+          `;
+          await tx`
+            UPDATE game_sessions
+            SET updated_at = now()
+            WHERE id = ${session.id}
+          `;
+
+          return { changeRequest, event: eventRows[0]!, status: 'created' as const };
+        });
+
+        if (result.status === 'not_found') {
+          return reply.code(404).send({ status: 'not_found' });
+        }
+
+        sessionHub.broadcast(request.params.slug, {
+          event: toEventResponse(result.event),
+          kind: 'session.event',
+          slug: request.params.slug
+        });
+
+        return reply.code(201).send({
+          changeRequest: toChangeRequestResponse(result.changeRequest),
+          event: toEventResponse(result.event),
+          status: 'created'
+        });
+      } finally {
+        await sql.end({ timeout: 5 });
+      }
+    }
+  );
+
+  app.post<{ Body: ResolveChangeRequestBody; Params: ChangeRequestParams }>(
+    '/sessions/:slug/change-requests/:changeRequestId/resolve',
+    async (request, reply) => {
+      const body = request.body ?? {};
+      const validation = validateResolveChangeRequestBody(body);
+
+      if (!validation.valid) {
+        return reply.code(400).send({
+          errors: validation.errors,
+          status: 'invalid'
+        });
+      }
+
+      const sql = createSqlClient();
+      const actorId = body.actorId as string;
+      const changeRequestStatus = body.status as string;
+      const resolution =
+        body.resolution === undefined ? {} : (body.resolution as Record<string, unknown>);
+
+      try {
+        const result = await sql.begin(async (tx) => {
+          const sessionRows = await tx<SessionRow[]>`
+            SELECT id, slug, title, mode, status, metadata, created_at, updated_at
+            FROM game_sessions
+            WHERE slug = ${request.params.slug}
+            FOR UPDATE
+          `;
+          const session = sessionRows[0];
+
+          if (!session) {
+            return { status: 'not_found' as const };
+          }
+
+          const changeRequestRows = await tx<ChangeRequestRow[]>`
+            UPDATE change_requests
+            SET
+              status = ${changeRequestStatus},
+              resolution = ${tx.json(resolution as postgres.JSONValue)}::jsonb,
+              resolved_by = ${actorId},
+              resolved_at = now(),
+              updated_at = now()
+            WHERE id = ${request.params.changeRequestId}
+              AND session_id = ${session.id}
+              AND status = 'pending'
+            RETURNING
+              id,
+              scope,
+              session_id,
+              target_type,
+              target_id,
+              change_kind,
+              title,
+              summary,
+              requested_by,
+              assigned_to,
+              authority,
+              priority,
+              status,
+              payload,
+              resolution,
+              resolved_by,
+              resolved_at,
+              created_at,
+              updated_at
+          `;
+          const changeRequest = changeRequestRows[0];
+
+          if (!changeRequest) {
+            return { status: 'change_request_not_found' as const };
+          }
+
+          const sequenceRows = await tx<{ next_sequence: number }[]>`
+            SELECT (COALESCE(MAX(sequence), 0) + 1)::int AS next_sequence
+            FROM session_events
+            WHERE session_id = ${session.id}
+          `;
+          const sequence = sequenceRows[0]!.next_sequence;
+          const eventRows = await tx<SessionEventRow[]>`
+            INSERT INTO session_events (session_id, sequence, event_type, actor_id, payload)
+            VALUES (
+              ${session.id},
+              ${sequence},
+              'change_request_resolved',
+              ${actorId},
+              ${tx.json({
+                changeRequestId: changeRequest.id,
+                resolution,
+                status: changeRequestStatus
+              } as postgres.JSONValue)}::jsonb
+            )
+            RETURNING id, session_id, sequence, event_type, actor_id, payload, created_at
+          `;
+
+          await tx`
+            INSERT INTO audit_events (actor_id, action, entity_type, entity_id, payload)
+            VALUES (
+              ${actorId},
+              'change_request.resolved',
+              'change_request',
+              ${changeRequest.id},
+              ${tx.json({
+                changeRequestId: changeRequest.id,
+                eventId: eventRows[0]!.id,
+                sessionId: session.id,
+                status: changeRequestStatus
+              } as postgres.JSONValue)}::jsonb
+            )
+          `;
+          await tx`
+            UPDATE game_sessions
+            SET updated_at = now()
+            WHERE id = ${session.id}
+          `;
+
+          return { changeRequest, event: eventRows[0]!, status: 'resolved' as const };
+        });
+
+        if (result.status === 'not_found') {
+          return reply.code(404).send({ status: 'not_found' });
+        }
+
+        if (result.status === 'change_request_not_found') {
+          return reply.code(404).send({ status: 'change_request_not_found' });
+        }
+
+        sessionHub.broadcast(request.params.slug, {
+          event: toEventResponse(result.event),
+          kind: 'session.event',
+          slug: request.params.slug
+        });
+
+        return {
+          changeRequest: toChangeRequestResponse(result.changeRequest),
+          event: toEventResponse(result.event),
+          status: 'resolved'
+        };
+      } finally {
+        await sql.end({ timeout: 5 });
+      }
+    }
+  );
+
   app.post<{ Body: ResolveDecisionRequestBody; Params: DecisionParams }>(
     '/sessions/:slug/decisions/:decisionId/resolve',
     async (request, reply) => {
@@ -1214,6 +1564,41 @@ interface SessionDecisionRow {
   updated_at: Date | string;
 }
 
+interface ChangeRequestRow {
+  assigned_to: string;
+  authority: string;
+  change_kind: string;
+  created_at: Date | string;
+  id: string;
+  payload: Record<string, unknown>;
+  priority: string;
+  requested_by: string;
+  resolution: null | Record<string, unknown>;
+  resolved_at: Date | null | string;
+  resolved_by: null | string;
+  scope: string;
+  session_id: null | string;
+  status: string;
+  summary: string;
+  target_id: null | string;
+  target_type: string;
+  title: string;
+  updated_at: Date | string;
+}
+
+interface NormalizedChangeRequestInput {
+  assignedTo: string;
+  authority: string;
+  changeKind: string;
+  payload: Record<string, unknown>;
+  priority: string;
+  requestedBy: string;
+  summary: string;
+  targetId: string | undefined;
+  targetType: string;
+  title: string;
+}
+
 interface CharacterActiveSpellCast {
   activeSpellId: string;
   characterId: string;
@@ -1417,6 +1802,78 @@ function validateDecisionBody(body: QueueDecisionRequestBody): ValidationResult 
   return { errors, valid: errors.length === 0 };
 }
 
+function validateCreateChangeRequestBody(
+  body: CreateChangeRequestBody
+): ValidationResult & { input?: NormalizedChangeRequestInput } {
+  const errors: string[] = [];
+  const requestedBy = readNonEmptyString(body.requestedBy);
+  const title = readNonEmptyString(body.title);
+  const targetType = readNonEmptyString(body.targetType);
+  const changeKind = readNonEmptyString(body.changeKind);
+  const summary = readNonEmptyString(body.summary);
+  const targetId = readNonEmptyString(body.targetId);
+  const assignedTo = readNonEmptyString(body.assignedTo) ?? 'human_gm';
+  const authority = readNonEmptyString(body.authority) ?? 'human_gm';
+  const priority = readNonEmptyString(body.priority) ?? 'normal';
+
+  if (requestedBy === undefined) {
+    errors.push('requestedBy is required');
+  }
+
+  if (title === undefined) {
+    errors.push('title is required');
+  }
+
+  if (targetType === undefined) {
+    errors.push('targetType is required');
+  }
+
+  if (changeKind === undefined) {
+    errors.push('changeKind is required');
+  }
+
+  if (summary === undefined) {
+    errors.push('summary is required');
+  }
+
+  if (!validControllerRoles.has(assignedTo)) {
+    errors.push('assignedTo is invalid');
+  }
+
+  if (!validControllerRoles.has(authority)) {
+    errors.push('authority is invalid');
+  }
+
+  if (!validPriorities.has(priority)) {
+    errors.push('priority is invalid');
+  }
+
+  if (body.payload !== undefined && !isRecord(body.payload)) {
+    errors.push('payload must be an object');
+  }
+
+  if (errors.length > 0) {
+    return { errors, valid: false };
+  }
+
+  return {
+    errors,
+    input: {
+      assignedTo,
+      authority,
+      changeKind: changeKind!,
+      payload: body.payload === undefined ? {} : (body.payload as Record<string, unknown>),
+      priority,
+      requestedBy: requestedBy!,
+      summary: summary!,
+      targetId,
+      targetType: targetType!,
+      title: title!
+    },
+    valid: true
+  };
+}
+
 function validateResolveDecisionBody(body: ResolveDecisionRequestBody): ValidationResult {
   const errors: string[] = [];
 
@@ -1433,6 +1890,24 @@ function validateResolveDecisionBody(body: ResolveDecisionRequestBody): Validati
   }
 
   validateSessionLinks(body.links, errors);
+
+  return { errors, valid: errors.length === 0 };
+}
+
+function validateResolveChangeRequestBody(body: ResolveChangeRequestBody): ValidationResult {
+  const errors: string[] = [];
+
+  if (!isNonEmptyString(body.actorId)) {
+    errors.push('actorId is required');
+  }
+
+  if (typeof body.status !== 'string' || !validChangeRequestStatuses.has(body.status)) {
+    errors.push('status is invalid');
+  }
+
+  if (body.resolution !== undefined && !isRecord(body.resolution)) {
+    errors.push('resolution must be an object');
+  }
 
   return { errors, valid: errors.length === 0 };
 }
@@ -1645,6 +2120,42 @@ async function selectSessionScenes(sql: SessionSql, sessionId: string): Promise<
     FROM session_scenes
     WHERE session_id = ${sessionId}
     ORDER BY scene_id ASC
+  `;
+}
+
+async function selectSessionChangeRequests(
+  sql: SessionSql,
+  sessionId: string
+): Promise<ChangeRequestRow[]> {
+  return sql<ChangeRequestRow[]>`
+    SELECT
+      id,
+      scope,
+      session_id,
+      target_type,
+      target_id,
+      change_kind,
+      title,
+      summary,
+      requested_by,
+      assigned_to,
+      authority,
+      priority,
+      status,
+      payload,
+      resolution,
+      resolved_by,
+      resolved_at,
+      created_at,
+      updated_at
+    FROM change_requests
+    WHERE session_id = ${sessionId}
+    ORDER BY
+      CASE status
+        WHEN 'pending' THEN 0
+        ELSE 1
+      END ASC,
+      created_at ASC
   `;
 }
 
@@ -2109,6 +2620,30 @@ function toDecisionResponse(row: SessionDecisionRow) {
     resolvedAt: row.resolved_at ? serializeDate(row.resolved_at) : undefined,
     sessionId: row.session_id,
     status: row.status,
+    title: row.title,
+    updatedAt: serializeDate(row.updated_at)
+  };
+}
+
+function toChangeRequestResponse(row: ChangeRequestRow) {
+  return {
+    assignedTo: row.assigned_to,
+    authority: row.authority,
+    changeKind: row.change_kind,
+    createdAt: serializeDate(row.created_at),
+    id: row.id,
+    payload: row.payload,
+    priority: row.priority,
+    requestedBy: row.requested_by,
+    resolution: row.resolution ?? undefined,
+    resolvedAt: row.resolved_at ? serializeDate(row.resolved_at) : undefined,
+    resolvedBy: row.resolved_by ?? undefined,
+    scope: row.scope,
+    sessionId: row.session_id ?? undefined,
+    status: row.status,
+    summary: row.summary,
+    targetId: row.target_id ?? undefined,
+    targetType: row.target_type,
     title: row.title,
     updatedAt: serializeDate(row.updated_at)
   };
