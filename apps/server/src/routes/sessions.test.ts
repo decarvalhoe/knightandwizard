@@ -553,6 +553,114 @@ describe('session routes', () => {
     ]);
   });
 
+  it('applies approved skill improvement change requests to linked session characters', async () => {
+    const slug = `change-request-skill-session-${randomUUID()}`;
+    const characterId = `change-request-skill-character-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleCharacterDraft('Aveline Entrainee'),
+      url: `/character-drafts/${characterId}`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { draftId: characterId },
+      url: '/characters/finalize'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { amount: 20, reason: 'Reserve de progression MJ' },
+      url: `/characters/${characterId}/xp-awards`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, status: 'active', title: 'Skill Apply API' },
+      url: '/sessions'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        characterId,
+        name: 'Aveline Entrainee',
+        playerId: 'player-aveline',
+        role: 'player'
+      },
+      url: `/sessions/${slug}/players`
+    });
+
+    const createResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        assignedTo: 'human_gm',
+        authority: 'human_gm',
+        changeKind: 'skill_improvement',
+        payload: {
+          skillId: 'epee-a-une-main'
+        },
+        priority: 'normal',
+        requestedBy: 'player-aveline',
+        summary: 'Aveline depense son XP pour ameliorer son maniement.',
+        targetId: characterId,
+        targetType: 'character',
+        title: 'Ameliorer epee a une main'
+      },
+      url: `/sessions/${slug}/change-requests`
+    });
+    const changeRequest = createResponse.json().changeRequest;
+
+    const resolveResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        resolution: { ruling: 'Valide apres entrainement.' },
+        status: 'approved'
+      },
+      url: `/sessions/${slug}/change-requests/${changeRequest.id}/resolve`
+    });
+    const characterResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${characterId}`
+    });
+
+    expect(resolveResponse.statusCode).toBe(200);
+    expect(resolveResponse.json().changeRequest.resolution).toMatchObject({
+      appliedChange: {
+        changeKind: 'skill_improvement',
+        cost: 12,
+        previousPoints: 4,
+        skillId: 'epee-a-une-main',
+        targetId: characterId,
+        type: 'character_skill_improved'
+      },
+      ruling: 'Valide apres entrainement.'
+    });
+    expect(characterResponse.json().character.skills).toContainEqual({
+      id: 'epee-a-une-main',
+      isMain: true,
+      points: 5
+    });
+    expect(characterResponse.json().character.progression.experiencePoints).toBe(8);
+    expect(characterResponse.json().character.metadata).toMatchObject({
+      governanceChangeRequests: [
+        {
+          actorId: 'gm',
+          changeKind: 'skill_improvement',
+          changeRequestId: changeRequest.id,
+          sessionSlug: slug
+        }
+      ],
+      xpSpends: [
+        {
+          changeRequestId: changeRequest.id,
+          cost: 12,
+          kind: 'skill_improvement',
+          previousPoints: 4,
+          skillId: 'epee-a-une-main'
+        }
+      ]
+    });
+  });
+
   it('records rollback requests without deleting previous events', async () => {
     const slug = `rollback-session-${randomUUID()}`;
 
