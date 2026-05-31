@@ -55,6 +55,7 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
   const [state, setState] = useState(initialState);
   const view = useMemo(() => buildGmCockpitView(state), [state]);
   const [selectedXpTarget, setSelectedXpTarget] = useState(view.xpTargets[0]?.characterId ?? '');
+  const [awardQuestPoint, setAwardQuestPoint] = useState(false);
   const [selectedNpcTemplateId, setSelectedNpcTemplateId] = useState(
     bestiaryNpcTemplates[0]?.id ?? ''
   );
@@ -106,10 +107,13 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
       return;
     }
 
+    const questPoints = awardQuestPoint ? 1 : 0;
+
     void run('xp', async () => {
       await awardCharacterXp(effectiveXpTarget.characterId, {
         actorId: 'gm',
         amount: 1,
+        ...(questPoints > 0 ? { questPoints } : {}),
         reason: 'Fin de session',
         sessionSlug: state.slug
       });
@@ -118,7 +122,8 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
         payload: {
           characterId: effectiveXpTarget.characterId,
           kind: 'xp_award',
-          text: `XP attribue a ${effectiveXpTarget.name}`,
+          ...(questPoints > 0 ? { questPoints } : {}),
+          text: `XP attribue a ${effectiveXpTarget.name}${questPoints > 0 ? ' + 1 point de quête' : ''}`,
           xp: 1
         }
       });
@@ -611,6 +616,16 @@ export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<
               Bestiaire indisponible pour cette session.
             </p>
           )}
+          <label className="mt-4 flex items-center gap-2 text-sm font-semibold text-ink/70">
+            <input
+              checked={awardQuestPoint}
+              className="size-4 rounded border-ink/20 text-forest"
+              disabled={pendingAction !== null}
+              onChange={(event) => setAwardQuestPoint(event.target.checked)}
+              type="checkbox"
+            />
+            Point de quête
+          </label>
           <div className="mt-3 flex flex-wrap gap-2">
             <button
               className="inline-flex items-center gap-2 rounded-md bg-forest px-3 py-2 text-sm font-semibold text-white disabled:opacity-50"

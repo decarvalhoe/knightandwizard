@@ -299,6 +299,9 @@ export function CharacterSheet({
             <Badge tone="success">
               XP {character.progression.experiencePoints} / {character.progression.experienceTotal}
             </Badge>
+            {character.progression.questPoints > 0 ? (
+              <Badge tone="info">Quête {character.progression.questPoints}</Badge>
+            ) : null}
           </div>
         </div>
 
