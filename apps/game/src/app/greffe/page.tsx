@@ -5,13 +5,16 @@ import { useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 
 import {
   ARBITER_PRECEDENCE,
+  buildConflictResolutionPlan,
   getPendingDecisions,
   hasArbiterAuthorityOver,
+  nextConflictResolutionStep,
   queueGmDecision,
   requestSessionRollback,
   resolveGmDecision,
   revertSessionToSequence,
   type Arbiter,
+  type ConflictResolutionActor,
   type SessionDecision,
   type SessionDecisionStatus,
   type SessionEvent,
@@ -52,6 +55,21 @@ type AuthorityRow = {
   label: string;
   rank: number;
   overrides: string;
+};
+
+type ConflictStepRow = {
+  actor: string;
+  auditRequired: boolean;
+  id: string;
+  label: string;
+  rank: number;
+};
+
+type ConflictRecourseRow = {
+  auditRequired: boolean;
+  consensusRequired: boolean;
+  id: string;
+  label: string;
 };
 
 const surfaceStyle: CSSProperties = {
@@ -229,6 +247,29 @@ export default function GreffePage() {
   const nextDecision = useMemo(() => selectNextDecisionByAuthority(state), [state]);
   const decisionRows = useMemo(() => state.decisions.map(toDecisionRow), [state]);
   const authorityRows = useMemo(() => buildAuthorityRows(), []);
+  const conflictPlan = useMemo(() => buildConflictResolutionPlan('rule_interpretation'), []);
+  const conflictRows = useMemo<ConflictStepRow[]>(
+    () =>
+      conflictPlan.steps.map((step, index) => ({
+        actor: conflictActorLabel(step.actor),
+        auditRequired: step.auditRequired,
+        id: step.id,
+        label: step.label,
+        rank: index + 1
+      })),
+    [conflictPlan]
+  );
+  const recourseRows = useMemo<ConflictRecourseRow[]>(
+    () =>
+      conflictPlan.recourses.map((recourse) => ({
+        auditRequired: recourse.auditRequired,
+        consensusRequired: recourse.consensusRequired,
+        id: recourse.id,
+        label: recourse.label
+      })),
+    [conflictPlan]
+  );
+  const activeConflictStep = nextConflictResolutionStep(['discussion_among_table']);
   const recentEvents = useMemo(() => [...state.events].slice(-8).reverse(), [state.events]);
   const rollbackTargets = useMemo(
     () =>
@@ -374,6 +415,49 @@ export default function GreffePage() {
                 />
               </div>
             ))}
+          </div>
+        </Card>
+
+        <Card>
+          <div style={heroStyle}>
+            <div style={stackStyle}>
+              <Label>R-13.12</Label>
+              <h2 style={panelTitleStyle}>Arbitrage des conflits</h2>
+              <p style={subtitleStyle}>{conflictPlan.description}</p>
+            </div>
+            <Seal>
+              <Scale aria-hidden="true" style={iconStyle} /> Litige
+            </Seal>
+          </div>
+
+          <div style={stackStyle}>
+            {conflictRows.map((row) => (
+              <div key={row.id} style={eventRowStyle}>
+                <Badge tone={row.auditRequired ? 'warn' : 'neutral'}>#{row.rank}</Badge>
+                <span style={stackStyle}>
+                  <strong>{row.label}</strong>
+                  <span style={mutedStyle}>
+                    {row.actor} · {row.auditRequired ? 'audit requis' : 'discussion libre'}
+                  </span>
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ ...stackStyle, marginTop: 12 }}>
+            <span style={mutedStyle}>
+              Suite après discussion :{' '}
+              {activeConflictStep
+                ? `${activeConflictStep.label} · ${conflictActorLabel(activeConflictStep.actor)}`
+                : 'clôturé'}
+            </span>
+            <div style={inlineStackStyle}>
+              {recourseRows.map((row) => (
+                <Badge key={row.id} tone={row.consensusRequired ? 'info' : 'neutral'}>
+                  {row.label}
+                </Badge>
+              ))}
+            </div>
           </div>
         </Card>
 
@@ -705,6 +789,12 @@ function actorIdForArbiter(arbiter: Arbiter): string {
 
 function actorLabel(actorId: string): string {
   return actorNames[actorId] ?? actorId;
+}
+
+function conflictActorLabel(actor: ConflictResolutionActor): string {
+  if (actor === 'admin') return 'Admin';
+  if (actor === 'table') return 'Table';
+  return roleLabels[actor];
 }
 
 function statusLabel(status: SessionDecisionStatus): string {
