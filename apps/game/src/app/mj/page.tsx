@@ -1,4 +1,5 @@
-import { GmCockpit } from '@/features/gm-cockpit/GmCockpit';
+import { GmCockpit, type GmCockpitNpcTemplate } from '@/features/gm-cockpit/GmCockpit';
+import { getBestiaireReadModel } from '@/features/bestiaire/read-models';
 import { getSessionManagerReadModel } from '@/features/session-manager/read-models';
 
 export const dynamic = 'force-dynamic';
@@ -10,9 +11,40 @@ export default async function GmPage({
 }: Readonly<{ searchParams: Promise<Record<string, string | string[] | undefined>> }>) {
   const params = await searchParams;
   const slug = normalizeSlug(normalizeSearchParam(params.slug));
-  const readModel = await getSessionManagerReadModel(slug);
+  const [readModel, bestiaireReadModel] = await Promise.all([
+    getSessionManagerReadModel(slug),
+    getBestiaireReadModel()
+  ]);
 
-  return <GmCockpit initialState={readModel.initialState} />;
+  return (
+    <GmCockpit
+      bestiaryNpcTemplates={toNpcTemplates(bestiaireReadModel.view.entries)}
+      initialState={readModel.initialState}
+    />
+  );
+}
+
+function toNpcTemplates(
+  entries: Array<{
+    categoryLabel: string;
+    id: string;
+    name: string;
+    playable: boolean;
+    speedFactor: number;
+    vitalityBase: number;
+    willFactor: number;
+  }>
+): GmCockpitNpcTemplate[] {
+  return entries
+    .filter((entry) => !entry.playable)
+    .map((entry) => ({
+      categoryLabel: entry.categoryLabel,
+      id: entry.id,
+      name: entry.name,
+      speedFactor: entry.speedFactor,
+      vitalityBase: entry.vitalityBase,
+      willFactor: entry.willFactor
+    }));
 }
 
 function normalizeSlug(value: string | undefined): string | undefined {

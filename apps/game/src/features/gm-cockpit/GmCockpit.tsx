@@ -37,14 +37,27 @@ const narrativeCadenceOptions = [0, 0.5, 1, 2] as const;
 
 type NarrativeCadenceMultiplier = (typeof narrativeCadenceOptions)[number];
 
+export interface GmCockpitNpcTemplate {
+  categoryLabel: string;
+  id: string;
+  name: string;
+  speedFactor: number;
+  vitalityBase: number;
+  willFactor: number;
+}
+
 interface GmCockpitProps {
+  bestiaryNpcTemplates?: GmCockpitNpcTemplate[];
   initialState: SessionManagerState;
 }
 
-export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
+export function GmCockpit({ bestiaryNpcTemplates = [], initialState }: Readonly<GmCockpitProps>) {
   const [state, setState] = useState(initialState);
   const view = useMemo(() => buildGmCockpitView(state), [state]);
   const [selectedXpTarget, setSelectedXpTarget] = useState(view.xpTargets[0]?.characterId ?? '');
+  const [selectedNpcTemplateId, setSelectedNpcTemplateId] = useState(
+    bestiaryNpcTemplates[0]?.id ?? ''
+  );
   const [changeKind, setChangeKind] = useState('predilection_target');
   const [changeSummary, setChangeSummary] = useState('Changement a valider par le MJ.');
   const [changeTargetId, setChangeTargetId] = useState(view.xpTargets[0]?.characterId ?? '');
@@ -62,6 +75,9 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
 
   const effectiveXpTarget =
     view.xpTargets.find((target) => target.characterId === selectedXpTarget) ?? view.xpTargets[0];
+  const effectiveNpcTemplate =
+    bestiaryNpcTemplates.find((template) => template.id === selectedNpcTemplateId) ??
+    bestiaryNpcTemplates[0];
   const effectiveRollbackSequence =
     rollbackSequence.length > 0
       ? Number.parseInt(rollbackSequence, 10)
@@ -110,13 +126,22 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
   }
 
   function addQuickNpc() {
+    const template = effectiveNpcTemplate;
+
     void run('npc', async () => {
       await appendGmRulingToSession(state.slug, {
         actorId: 'gm',
         payload: {
+          bestiaryId: template?.id,
+          category: template?.categoryLabel,
           kind: 'quick_npc',
-          name: 'PNJ rapide',
-          text: 'PNJ rapide ajoute au suivi MJ'
+          name: template?.name ?? 'PNJ rapide',
+          speedFactor: template?.speedFactor,
+          text: template
+            ? `${template.name} ajoute au suivi MJ depuis le bestiaire`
+            : 'PNJ rapide ajoute au suivi MJ',
+          vitalityBase: template?.vitalityBase,
+          willFactor: template?.willFactor
         }
       });
     });
@@ -560,6 +585,32 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
               </option>
             ))}
           </select>
+          <label className="mt-4 block text-sm font-semibold text-ink/70" htmlFor="gm-npc-template">
+            Gabarit PNJ
+          </label>
+          <select
+            className="mt-2 w-full rounded-md border border-ink/12 bg-paper px-3 py-2 text-sm font-semibold text-ink"
+            disabled={pendingAction !== null || bestiaryNpcTemplates.length === 0}
+            id="gm-npc-template"
+            onChange={(event) => setSelectedNpcTemplateId(event.target.value)}
+            value={selectedNpcTemplateId}
+          >
+            {bestiaryNpcTemplates.map((template) => (
+              <option key={template.id} value={template.id}>
+                {template.name} · {template.categoryLabel}
+              </option>
+            ))}
+          </select>
+          {effectiveNpcTemplate ? (
+            <p className="mt-2 text-xs font-semibold text-ink/55">
+              VT {effectiveNpcTemplate.vitalityBase} · FV {effectiveNpcTemplate.speedFactor} · FVol{' '}
+              {effectiveNpcTemplate.willFactor}
+            </p>
+          ) : (
+            <p className="mt-2 text-xs font-semibold text-ink/55">
+              Bestiaire indisponible pour cette session.
+            </p>
+          )}
           <div className="mt-3 flex flex-wrap gap-2">
             <button
               className="inline-flex items-center gap-2 rounded-md bg-forest px-3 py-2 text-sm font-semibold text-white disabled:opacity-50"
@@ -577,7 +628,7 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
               type="button"
             >
               <Users aria-hidden="true" className="size-4" />
-              PNJ rapide
+              PNJ bestiaire
             </button>
             <button
               className="inline-flex items-center gap-2 rounded-md bg-gold px-3 py-2 text-sm font-semibold text-ink disabled:opacity-50"
