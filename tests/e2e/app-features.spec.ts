@@ -415,6 +415,9 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByRole('heading', { name: 'Aveline Cockpit' })).toBeVisible();
     await expect(page.getByText('XP 1 / 1')).toBeVisible();
     await expect(page.getByText('Quête 1')).toBeVisible();
+    await page.getByRole('button', { name: 'Convertir la quête' }).click();
+    await expect(page.getByText('XP 2 / 2')).toBeVisible();
+    await expect(page.getByText('Quête 1')).toHaveCount(0);
 
     await page.goto(`/mj?slug=${slug}`);
     await expect(page.getByLabel('Gabarit PNJ')).toBeVisible();

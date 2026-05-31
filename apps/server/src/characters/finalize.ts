@@ -19,6 +19,7 @@ import {
   type CharacterSkill,
   type CharacterSpell,
   type CombatStatus,
+  convertQuestPoints,
   type RaceProfile,
   gainXP,
   learnSkill
@@ -91,6 +92,12 @@ export interface CharacterSkillImprovementUpdate {
   reason?: string;
   sessionSlug?: string;
   skillId: string;
+}
+
+export interface CharacterQuestPointConversionUpdate {
+  actorId?: string;
+  reason?: string;
+  sessionSlug?: string;
 }
 
 interface CharacterCreationCatalog {
@@ -554,6 +561,74 @@ export async function improvePersistedCharacterSkill(
   }
 }
 
+export async function convertPersistedCharacterQuestPoints(
+  id: string,
+  input: CharacterQuestPointConversionUpdate = {},
+  scope: CharacterPersistenceScope = {}
+): Promise<CharacterPersistenceResult> {
+  const sql = createSqlClient();
+  const db = createDbClient(sql);
+
+  try {
+    const rows = await db
+      .select({ character: characters.payload })
+      .from(characters)
+      .where(
+        scope.userId
+          ? and(eq(characters.id, id), eq(characters.userId, scope.userId))
+          : eq(characters.id, id)
+      )
+      .limit(1);
+    const row = rows[0];
+
+    if (row === undefined) {
+      throw new CharacterNotFoundError(id);
+    }
+
+    const previousQuestPoints = row.character.progression.questPoints;
+    const converted = convertQuestPoints(row.character);
+    const convertedAt = new Date().toISOString();
+    const conversionRecords =
+      previousQuestPoints > 0
+        ? [
+            ...readRecordArray(converted.metadata.questPointConversions),
+            {
+              ...(input.actorId ? { actorId: input.actorId } : {}),
+              convertedAt,
+              ...(input.reason ? { reason: input.reason } : {}),
+              ...(input.sessionSlug ? { sessionSlug: input.sessionSlug } : {}),
+              questPoints: previousQuestPoints
+            }
+          ]
+        : readRecordArray(converted.metadata.questPointConversions);
+    const character: Character = {
+      ...converted,
+      metadata: {
+        ...converted.metadata,
+        questPointConversions: conversionRecords
+      }
+    };
+    const updatedRows = await db
+      .update(characters)
+      .set({
+        payload: character,
+        updatedAt: drizzleSql`now()`
+      })
+      .where(
+        scope.userId
+          ? and(eq(characters.id, id), eq(characters.userId, scope.userId))
+          : eq(characters.id, id)
+      )
+      .returning({ character: characters.payload });
+
+    return {
+      character: updatedRows[0]!.character
+    };
+  } finally {
+    await sql.end({ timeout: 5 });
+  }
+}
+
 async function loadCharacterCreationCatalog(): Promise<CharacterCreationCatalog> {
   const [races, orientations, classes, weapons, protections, potions] = await Promise.all([
     loadValidatedCatalog('races.yaml'),
@@ -581,14 +656,14 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 function readXpAwardRecords(value: unknown): Record<string, unknown>[] {
-  if (!Array.isArray(value)) {
-    return [];
-  }
-
-  return value.filter(isRecord);
+  return readRecordArray(value);
 }
 
 function readXpSpendRecords(value: unknown): Record<string, unknown>[] {
+  return readRecordArray(value);
+}
+
+function readRecordArray(value: unknown): Record<string, unknown>[] {
   if (!Array.isArray(value)) {
     return [];
   }

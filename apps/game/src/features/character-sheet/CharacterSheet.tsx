@@ -19,6 +19,7 @@ import {
   type ToastTone
 } from '@knightandwizard/ui';
 
+import { getClientApiBaseUrl } from '../../lib/api';
 import {
   addInventoryItem,
   attributeRollOutcomeLabels,
@@ -77,10 +78,13 @@ export function CharacterSheet({
   spells
 }: Readonly<CharacterSheetProps>) {
   const [mode, setMode] = useState<CharacterSheetMode>('complete');
+  const [sheetCharacter, setSheetCharacter] = useState(character);
   const [inventory, setInventory] = useState(initialInventory);
   const [lastRoll, setLastRoll] = useState<AttributeRollResult | null>(null);
   const [equipmentSearch, setEquipmentSearch] = useState('');
   const [rollHistory, setRollHistory] = useState<AttributeRollResult[]>([]);
+  const [questConversionPending, setQuestConversionPending] = useState(false);
+  const [questConversionError, setQuestConversionError] = useState<string | null>(null);
 
   function addEquipment(equipmentId: string) {
     const option = equipmentCatalog.find((entry) => entry.id === equipmentId);
@@ -100,18 +104,18 @@ export function CharacterSheet({
     );
   }
   const view = useMemo(
-    () => buildCharacterSheetView({ character, inventory, mode, spells }),
-    [character, inventory, mode, spells]
+    () => buildCharacterSheetView({ character: sheetCharacter, inventory, mode, spells }),
+    [sheetCharacter, inventory, mode, spells]
   );
   const attributeTotal = attributeOrder.reduce(
-    (total, key) => total + character.attributes[key],
+    (total, key) => total + sheetCharacter.attributes[key],
     0
   );
-  const allSkillRows = skillTreeRows(character.skills, skillCatalog);
+  const allSkillRows = skillTreeRows(sheetCharacter.skills, skillCatalog);
   const skills = visibleSkillTreeRows(allSkillRows);
   const trainedSkillCount = skills.length;
-  const combatStatuses = combatStatusesFromMetadata(character.metadata.combat);
-  const showGrimoire = shouldShowGrimoire(character, spells);
+  const combatStatuses = combatStatusesFromMetadata(sheetCharacter.metadata.combat);
+  const showGrimoire = shouldShowGrimoire(sheetCharacter, spells);
   const filteredEquipmentCatalog = useMemo(
     () => filterEquipmentCatalog(equipmentCatalog, equipmentSearch, 8),
     [equipmentCatalog, equipmentSearch]
@@ -119,7 +123,7 @@ export function CharacterSheet({
 
   function roll(attribute: AttributeKey) {
     const result = rollAttributeCheck(
-      character,
+      sheetCharacter,
       attribute,
       7,
       (sides) => Math.floor(Math.random() * sides) + 1
@@ -127,6 +131,47 @@ export function CharacterSheet({
 
     setLastRoll(result);
     setRollHistory((current) => [result, ...current].slice(0, 6));
+  }
+
+  async function convertQuestPointGauge() {
+    if (questConversionPending || sheetCharacter.progression.questPoints <= 0) {
+      return;
+    }
+
+    setQuestConversionPending(true);
+    setQuestConversionError(null);
+
+    try {
+      const response = await fetch(
+        `${getClientApiBaseUrl()}/characters/${encodeURIComponent(sheetCharacter.id)}/quest-points/convert`,
+        {
+          body: JSON.stringify({
+            actorId: 'player',
+            reason: 'Fin de quête'
+          }),
+          headers: { 'content-type': 'application/json' },
+          method: 'POST'
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const result = (await response.json()) as { character?: Character };
+
+      if (!result.character) {
+        throw new Error('Réponse de conversion incomplète');
+      }
+
+      setSheetCharacter(result.character);
+    } catch (error) {
+      setQuestConversionError(
+        error instanceof Error ? error.message : 'Conversion de quête impossible'
+      );
+    } finally {
+      setQuestConversionPending(false);
+    }
   }
 
   const tabItems = modes.map((item) => {
@@ -181,7 +226,7 @@ export function CharacterSheet({
                 {socialAttributeKeys.map((attribute) => (
                   <AttributeButton
                     attribute={attribute}
-                    baseValue={character.attributes[attribute]}
+                    baseValue={sheetCharacter.attributes[attribute]}
                     effectiveValue={view.attributes[attribute]}
                     key={attribute}
                     label={attributeLabels[attribute]}
@@ -191,9 +236,9 @@ export function CharacterSheet({
               </div>
             </SectionCard>
             <SectionCard title="Réputation et relations">
-              <InfoLine label="Réputation" value={String(character.metadata.reputation)} />
-              <InfoLine label="Divinité" value={String(character.metadata.deity)} />
-              <InfoLine label="Citation" value={String(character.metadata.quote)} />
+              <InfoLine label="Réputation" value={String(sheetCharacter.metadata.reputation)} />
+              <InfoLine label="Divinité" value={String(sheetCharacter.metadata.deity)} />
+              <InfoLine label="Citation" value={String(sheetCharacter.metadata.quote)} />
             </SectionCard>
           </div>
         );
@@ -208,7 +253,7 @@ export function CharacterSheet({
               ))}
             </SectionCard>
             <SectionCard title="Notes privées MJ">
-              <InfoLine label="MJ" value={String(character.metadata.gmNotes)} />
+              <InfoLine label="MJ" value={String(sheetCharacter.metadata.gmNotes)} />
             </SectionCard>
           </div>
         );
@@ -225,13 +270,13 @@ export function CharacterSheet({
               title="9 aptitudes"
             >
               <p className="kw-sheet__muted">
-                Total création {attributeTotal}/{character.race.category}
+                Total création {attributeTotal}/{sheetCharacter.race.category}
               </p>
               <div className="kw-sheet__attribute-grid">
                 {attributeOrder.map((attribute) => (
                   <AttributeButton
                     attribute={attribute}
-                    baseValue={character.attributes[attribute]}
+                    baseValue={sheetCharacter.attributes[attribute]}
                     effectiveValue={view.attributes[attribute]}
                     key={attribute}
                     label={attributeLabels[attribute]}
@@ -261,7 +306,7 @@ export function CharacterSheet({
                 {trainedSkillCount} compétence{trainedSkillCount > 1 ? 's' : ''} ou spécialisation
                 {trainedSkillCount > 1 ? 's' : ''} notée{trainedSkillCount > 1 ? 's' : ''}.
               </p>
-              {character.orientation.isMagical && (
+              {sheetCharacter.orientation.isMagical && (
                 <Toast title="Magicien" tone="info">
                   Pas de compétence primaire mécanique, les sorts comptent double en progression.
                 </Toast>
@@ -285,9 +330,10 @@ export function CharacterSheet({
             <Seal>PJ</Seal>
             <div>
               <Label>Fiche PJ</Label>
-              <h1>{character.name}</h1>
+              <h1>{sheetCharacter.name}</h1>
               <p>
-                {character.race.name} · {character.orientation.name} · {character.classProfile.name}
+                {sheetCharacter.race.name} · {sheetCharacter.orientation.name} ·{' '}
+                {sheetCharacter.classProfile.name}
               </p>
             </div>
           </div>
@@ -297,20 +343,37 @@ export function CharacterSheet({
               {dataSourceLabel}
             </Badge>
             <Badge tone="success">
-              XP {character.progression.experiencePoints} / {character.progression.experienceTotal}
+              XP {sheetCharacter.progression.experiencePoints} /{' '}
+              {sheetCharacter.progression.experienceTotal}
             </Badge>
-            {character.progression.questPoints > 0 ? (
-              <Badge tone="info">Quête {character.progression.questPoints}</Badge>
+            {sheetCharacter.progression.questPoints > 0 ? (
+              <>
+                <Badge tone="info">Quête {sheetCharacter.progression.questPoints}</Badge>
+                <Button
+                  disabled={questConversionPending}
+                  onClick={convertQuestPointGauge}
+                  type="button"
+                  variant="secondary"
+                >
+                  {questConversionPending ? 'Conversion...' : 'Convertir la quête'}
+                </Button>
+              </>
             ) : null}
           </div>
         </div>
 
+        {questConversionError ? (
+          <Toast title="Conversion quête" tone="danger">
+            {questConversionError}
+          </Toast>
+        ) : null}
+
         <div className="kw-sheet__resources" aria-label="Ressources personnage">
           <ProgressBar
             label="Vitalité"
-            max={character.vitality.max}
+            max={sheetCharacter.vitality.max}
             tone="danger"
-            value={character.vitality.current}
+            value={sheetCharacter.vitality.current}
           />
           {view.vitalityState.weakened ? (
             <Badge tone="danger">
@@ -324,18 +387,18 @@ export function CharacterSheet({
               {status}
             </Badge>
           ))}
-          {character.energy.max > 0 || character.energy.current > 0 ? (
+          {sheetCharacter.energy.max > 0 || sheetCharacter.energy.current > 0 ? (
             <ProgressBar
               label="Énergie"
-              max={character.energy.max}
+              max={sheetCharacter.energy.max}
               tone="info"
-              value={character.energy.current}
+              value={sheetCharacter.energy.current}
             />
           ) : null}
           <StatBlock
             items={[
-              { label: 'Facteur vitesse', value: character.speedFactor },
-              { label: 'Facteur volonté', value: character.willFactor }
+              { label: 'Facteur vitesse', value: sheetCharacter.speedFactor },
+              { label: 'Facteur volonté', value: sheetCharacter.willFactor }
             ]}
           />
         </div>
@@ -432,7 +495,7 @@ export function CharacterSheet({
                 { label: 'Énergie', value: view.spellSummary.energyAvailable }
               ]}
             />
-            {character.orientation.isMagical && (
+            {sheetCharacter.orientation.isMagical && (
               <InfoLine
                 label="Création"
                 value={`${view.creationBudget.spellPoints} points de sort = ${view.creationBudget.freeSpellPoints} gratuits + ${view.creationBudget.extraSpellPoints} achetés.`}
