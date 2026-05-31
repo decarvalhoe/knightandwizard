@@ -53,6 +53,7 @@ export interface GmCockpitXpTarget {
 export interface GmCockpitView {
   activeScene?: SessionScene;
   metrics: SessionManagerView['metrics'];
+  narrativeClock: SessionManagerView['narrativeClock'];
   participants: GmCockpitParticipant[];
   pendingChangeRequests: GmCockpitChangeRequest[];
   pendingDecisions: GmCockpitDecision[];
@@ -79,6 +80,7 @@ export function buildGmCockpitView(state: SessionManagerState): GmCockpitView {
   return {
     activeScene: session.activeScene,
     metrics: session.metrics,
+    narrativeClock: session.narrativeClock,
     participants: session.playerRows.map((player) => ({
       ...(player.characterId
         ? {

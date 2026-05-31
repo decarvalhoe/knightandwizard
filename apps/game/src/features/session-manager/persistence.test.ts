@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import {
+  advancePersistedNarrative,
   appendCombatResolutionToSession,
   appendDiceRollToSession,
   appendGmRulingToSession,
@@ -201,6 +202,27 @@ describe('session manager persistence', () => {
         actorId: 'gm',
         eventType: 'gm_ruling',
         payload: { characterId: 'pc-aveline', kind: 'xp_award', xp: 1 }
+      }),
+      headers: { 'content-type': 'application/json' },
+      method: 'POST'
+    });
+  });
+
+  it('appends a narrative time advance with the selected cadence multiplier', async () => {
+    process.env.NEXT_PUBLIC_API_BASE_URL = 'http://browser-api.test';
+    const fetchMock = vi.fn().mockResolvedValue(okJson({ status: 'created' }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    await advancePersistedNarrative('brumeval', {
+      actorId: 'gm',
+      by: { cadenceMultiplier: 0.5, hours: 1 }
+    });
+
+    expect(fetchMock).toHaveBeenCalledWith('http://browser-api.test/sessions/brumeval/events', {
+      body: JSON.stringify({
+        actorId: 'gm',
+        eventType: 'narrative_time_advanced',
+        payload: { cadenceMultiplier: 0.5, hours: 1 }
       }),
       headers: { 'content-type': 'application/json' },
       method: 'POST'

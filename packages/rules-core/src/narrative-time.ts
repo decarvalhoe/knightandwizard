@@ -8,8 +8,8 @@
  * sort de durée DT comme un sort de durée min/heure/jour expire sur la même horloge, ce qui gère
  * automatiquement la conversion « si le combat se termine avant l'expiration ».
  *
- * Le multiplicateur de cadence (× temps réel) agit sur le *rythme d'avancée* en appli/UI, **pas** sur
- * les durées intrinsèques (R-8.20) ; il n'appartient donc pas à ce modèle pur.
+ * Le multiplicateur de cadence (×0/×0.5/×1/×2) agit sur les avances explicites du MJ sans modifier
+ * les durées intrinsèques des sorts déjà posées sur l'horloge.
  */
 
 /** 1 DT = 0,2 seconde narrative (R-8.20). */
@@ -24,6 +24,8 @@ export const NARRATIVE_UNIT_SECONDS = {
 
 export const SPELL_DURATION_UNITS = ['DT', 'minute', 'hour', 'day', 'permanent'] as const;
 export type SpellDurationUnit = (typeof SPELL_DURATION_UNITS)[number];
+export const NARRATIVE_CADENCE_MULTIPLIERS = [0, 0.5, 1, 2] as const;
+export type NarrativeCadenceMultiplier = (typeof NARRATIVE_CADENCE_MULTIPLIERS)[number];
 
 /**
  * Un sort actif sur l'horloge narrative. `durationAmount` est la quantité **résolue** (déjà mise à
@@ -40,6 +42,7 @@ export interface ActiveSpell {
 }
 
 export interface NarrativeAdvance {
+  cadenceMultiplier?: NarrativeCadenceMultiplier;
   days?: number;
   hours?: number;
   minutes?: number;
@@ -109,8 +112,14 @@ export function advanceNarrative(nowSeconds: number, by: NarrativeAdvance): numb
     (by.hours ?? 0) * NARRATIVE_UNIT_SECONDS.hour +
     (by.minutes ?? 0) * NARRATIVE_UNIT_SECONDS.minute +
     (by.seconds ?? 0);
+  const cadenceMultiplier = by.cadenceMultiplier ?? 1;
+
+  if (!NARRATIVE_CADENCE_MULTIPLIERS.some((allowed) => allowed === cadenceMultiplier)) {
+    throw new Error('cadenceMultiplier must be one of 0, 0.5, 1 or 2');
+  }
+
   assertNonNegativeFinite('advance delta', delta);
-  return nowSeconds + delta;
+  return nowSeconds + delta * cadenceMultiplier;
 }
 
 /**

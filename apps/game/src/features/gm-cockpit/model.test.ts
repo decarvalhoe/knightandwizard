@@ -46,6 +46,14 @@ describe('GM cockpit model', () => {
           payload: { text: 'Ouverture de table.' },
           sequence: 1,
           type: 'narration'
+        },
+        {
+          actorId: 'gm',
+          createdAt: '2026-05-29T08:02:00.000Z',
+          id: 'event-2',
+          payload: { minutes: 30 },
+          sequence: 2,
+          type: 'narrative_time_advanced'
         }
       ],
       players: [
@@ -109,6 +117,7 @@ describe('GM cockpit model', () => {
     ]);
     expect(view.primaryCombatHref).toBe('/combat?slug=brumeval&characterId=pc-aveline');
     expect(view.sessionHref).toBe('/session?slug=brumeval');
+    expect(view.narrativeClock.instantLabel).toBe('Jour 1 · 00:30:00');
     expect(view.xpTargets).toEqual([
       {
         characterId: 'pc-aveline',
@@ -116,6 +125,9 @@ describe('GM cockpit model', () => {
         name: 'Aveline'
       }
     ]);
-    expect(view.rollbackTargets).toEqual([{ label: '#1 narration', sequence: 1 }]);
+    expect(view.rollbackTargets).toEqual([
+      { label: '#2 temps narratif avancé', sequence: 2 },
+      { label: '#1 narration', sequence: 1 }
+    ]);
   });
 });

@@ -1,15 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import {
   ArrowUpRight,
   Bot,
   CheckCircle2,
+  Clock,
   Gavel,
   PlusCircle,
   RotateCcw,
   ScrollText,
+  Sparkles,
   Swords,
   Users,
   XCircle
@@ -17,6 +19,7 @@ import {
 
 import type { SessionManagerState } from '../session-manager/model';
 import {
+  advancePersistedNarrative,
   appendGmRulingToSession,
   appendPersistedSessionEvent,
   awardCharacterXp,
@@ -29,6 +32,10 @@ import {
 } from '../session-manager/persistence';
 
 import { buildGmCockpitView } from './model';
+
+const narrativeCadenceOptions = [0, 0.5, 1, 2] as const;
+
+type NarrativeCadenceMultiplier = (typeof narrativeCadenceOptions)[number];
 
 interface GmCockpitProps {
   initialState: SessionManagerState;
@@ -46,6 +53,8 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
   const [rollbackSequence, setRollbackSequence] = useState(
     view.rollbackTargets[0]?.sequence.toString() ?? ''
   );
+  const [narrativeCadence, setNarrativeCadence] = useState<NarrativeCadenceMultiplier>(1);
+  const narrativeCadenceRef = useRef<NarrativeCadenceMultiplier>(1);
   const [assistantPrompt, setAssistantPrompt] = useState(() => defaultAssistantPrompt(view));
   const [assistantResult, setAssistantResult] = useState<GameMasterSceneDescription | null>(null);
   const [pendingAction, setPendingAction] = useState<string | null>(null);
@@ -123,6 +132,20 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
         }
       });
     });
+  }
+
+  function skipNarrativeTime(by: { days?: number; hours?: number; minutes?: number }) {
+    void run('narrative-advance', async () =>
+      advancePersistedNarrative(state.slug, {
+        actorId: 'gm',
+        by: { ...by, cadenceMultiplier: narrativeCadenceRef.current }
+      })
+    );
+  }
+
+  function selectNarrativeCadence(option: NarrativeCadenceMultiplier) {
+    narrativeCadenceRef.current = option;
+    setNarrativeCadence(option);
   }
 
   function describeWithAssistant() {
@@ -236,7 +259,7 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
         ) : null}
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+      <section className="grid gap-4 xl:grid-cols-[1.1fr_0.8fr_0.9fr]">
         <article className="rounded-md border border-ink/10 bg-white/72 p-4 shadow-sm">
           <div className="flex items-center gap-2">
             <ScrollText aria-hidden="true" className="size-5 text-forest" />
@@ -286,6 +309,93 @@ export function GmCockpit({ initialState }: Readonly<GmCockpitProps>) {
               </li>
             ))}
           </ol>
+        </article>
+
+        <article className="rounded-md border border-ink/10 bg-white/72 p-4 shadow-sm">
+          <div className="flex items-center gap-2">
+            <Clock aria-hidden="true" className="size-5 text-forest" />
+            <h2 className="text-lg font-semibold text-ink">Horloge narrative</h2>
+          </div>
+          <p
+            className="mt-4 font-mono text-2xl font-semibold text-ink"
+            data-testid="gm-narrative-instant"
+          >
+            {view.narrativeClock.instantLabel}
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold uppercase tracking-[0.12em] text-ink/62">
+              Cadence
+            </span>
+            <div className="flex rounded-md border border-ink/10 bg-paper p-1">
+              {narrativeCadenceOptions.map((option) => (
+                <button
+                  aria-pressed={narrativeCadence === option}
+                  className={`h-8 min-w-12 rounded px-3 text-sm font-semibold transition ${
+                    narrativeCadence === option
+                      ? 'bg-forest text-paper'
+                      : 'text-ink/62 hover:bg-forest/10 hover:text-forest'
+                  }`}
+                  disabled={pendingAction !== null}
+                  key={option}
+                  onClick={() => selectNarrativeCadence(option)}
+                  type="button"
+                >
+                  x{option}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button
+              className="rounded-md bg-forest px-3 py-2 text-sm font-semibold text-white disabled:opacity-50"
+              disabled={pendingAction !== null}
+              onClick={() => skipNarrativeTime({ minutes: 10 })}
+              type="button"
+            >
+              +10 min
+            </button>
+            <button
+              className="rounded-md bg-forest px-3 py-2 text-sm font-semibold text-white disabled:opacity-50"
+              disabled={pendingAction !== null}
+              onClick={() => skipNarrativeTime({ hours: 1 })}
+              type="button"
+            >
+              +1 h
+            </button>
+            <button
+              className="rounded-md bg-forest px-3 py-2 text-sm font-semibold text-white disabled:opacity-50"
+              disabled={pendingAction !== null}
+              onClick={() => skipNarrativeTime({ days: 1 })}
+              type="button"
+            >
+              Passer la journée
+            </button>
+          </div>
+          <div className="mt-4 border-t border-ink/10 pt-3">
+            <div className="flex items-center gap-2">
+              <Sparkles aria-hidden="true" className="size-4 text-wine" />
+              <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-ink/62">
+                Sorts actifs
+              </h3>
+            </div>
+            {view.narrativeClock.activeSpells.length === 0 ? (
+              <p className="mt-2 rounded-md bg-paper px-3 py-2 text-sm font-semibold text-ink/55">
+                Aucun sort actif
+              </p>
+            ) : (
+              <ul className="mt-2 grid gap-2">
+                {view.narrativeClock.activeSpells.map((spell) => (
+                  <li className="rounded-md bg-paper px-3 py-2" key={spell.id}>
+                    <span className="block text-sm font-semibold text-ink">{spell.label}</span>
+                    <span className="block text-xs font-medium text-ink/55">
+                      {spell.target ? `Cible : ${spell.target} · ` : ''}
+                      {spell.remainingLabel}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </article>
       </section>
 
