@@ -343,6 +343,115 @@ describe('session routes', () => {
     ).toEqual(['gm_decision_requested', 'gm_decision_resolved']);
   });
 
+  it('records session change requests with authority, resolution and audit trail', async () => {
+    const slug = `change-request-session-${randomUUID()}`;
+
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, title: 'Change Request API' },
+      url: '/sessions'
+    });
+
+    const createResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        assignedTo: 'human_gm',
+        authority: 'human_gm',
+        changeKind: 'predilection_target',
+        payload: {
+          currentTarget: 'epee-batarde',
+          requestedTarget: 'rapiere'
+        },
+        priority: 'high',
+        requestedBy: 'player-aveline',
+        summary: 'Aveline veut changer sa predilection apres mentorat.',
+        targetId: 'aveline',
+        targetType: 'character',
+        title: 'Changer la predilection d Aveline'
+      },
+      url: `/sessions/${slug}/change-requests`
+    });
+    expect(createResponse.statusCode).toBe(201);
+
+    const changeRequest = createResponse.json().changeRequest;
+    const listResponse = await app.inject({
+      method: 'GET',
+      url: `/sessions/${slug}/change-requests`
+    });
+    const resolveResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        resolution: { ruling: 'Valide apres entrainement en scene.' },
+        status: 'approved'
+      },
+      url: `/sessions/${slug}/change-requests/${changeRequest.id}/resolve`
+    });
+    const afterResolveResponse = await app.inject({
+      method: 'GET',
+      url: `/sessions/${slug}/change-requests`
+    });
+    const readResponse = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+    const sql = createSqlClient();
+    let auditRows: { action: string; payload: { changeRequestId?: string } }[];
+
+    try {
+      auditRows = await sql<{ action: string; payload: { changeRequestId?: string } }[]>`
+        SELECT action, payload
+        FROM audit_events
+        WHERE payload->>'changeRequestId' = ${changeRequest.id}
+        ORDER BY created_at ASC
+      `;
+    } finally {
+      await sql.end({ timeout: 5 });
+    }
+
+    expect(changeRequest).toMatchObject({
+      assignedTo: 'human_gm',
+      authority: 'human_gm',
+      changeKind: 'predilection_target',
+      payload: {
+        currentTarget: 'epee-batarde',
+        requestedTarget: 'rapiere'
+      },
+      priority: 'high',
+      requestedBy: 'player-aveline',
+      scope: 'game_state',
+      status: 'pending',
+      summary: 'Aveline veut changer sa predilection apres mentorat.',
+      targetId: 'aveline',
+      targetType: 'character',
+      title: 'Changer la predilection d Aveline'
+    });
+    expect(listResponse.statusCode).toBe(200);
+    expect(listResponse.json().changeRequests).toMatchObject([
+      {
+        id: changeRequest.id,
+        status: 'pending'
+      }
+    ]);
+    expect(resolveResponse.statusCode).toBe(200);
+    expect(resolveResponse.json().changeRequest).toMatchObject({
+      id: changeRequest.id,
+      resolution: { ruling: 'Valide apres entrainement en scene.' },
+      resolvedBy: 'gm',
+      status: 'approved'
+    });
+    expect(afterResolveResponse.json().changeRequests).toMatchObject([
+      {
+        id: changeRequest.id,
+        status: 'approved'
+      }
+    ]);
+    expect(
+      readResponse.json().events.map((event: { eventType: string }) => event.eventType)
+    ).toEqual(['change_request_submitted', 'change_request_resolved']);
+    expect(auditRows.map((row) => row.action)).toEqual([
+      'change_request.created',
+      'change_request.resolved'
+    ]);
+  });
+
   it('records rollback requests without deleting previous events', async () => {
     const slug = `rollback-session-${randomUUID()}`;
 

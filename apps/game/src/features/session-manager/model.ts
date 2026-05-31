@@ -110,6 +110,8 @@ export interface SessionManagerView {
 }
 
 const eventLabels: Record<SessionEventType, string> = {
+  change_request_resolved: 'Changement résolu',
+  change_request_submitted: 'Changement demandé',
   combat: 'Combat',
   combat_ended: 'Fin de combat',
   dice_roll: 'Jet de dés',
@@ -412,7 +414,12 @@ function threadKind(type: SessionEventType): SessionThreadRow['kind'] | undefine
     return 'roll';
   }
 
-  if (type === 'gm_decision_requested' || type === 'gm_decision_resolved') {
+  if (
+    type === 'gm_decision_requested' ||
+    type === 'gm_decision_resolved' ||
+    type === 'change_request_submitted' ||
+    type === 'change_request_resolved'
+  ) {
     return 'decision';
   }
 
@@ -442,7 +449,12 @@ function eventTone(type: SessionEventType): SessionEventRow['tone'] {
     return 'rules';
   }
 
-  if (type === 'gm_decision_requested' || type === 'gm_decision_resolved') {
+  if (
+    type === 'gm_decision_requested' ||
+    type === 'gm_decision_resolved' ||
+    type === 'change_request_submitted' ||
+    type === 'change_request_resolved'
+  ) {
     return 'decision';
   }
 

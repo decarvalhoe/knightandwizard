@@ -33,6 +33,7 @@ const updatedNow = () => timestamp('updated_at', { withTimezone: true }).notNull
 
 export const REQUIRED_APP_TABLES = [
   'catalog_documents',
+  'change_requests',
   'character_drafts',
   'characters',
   'character_active_spells',
@@ -162,6 +163,39 @@ export const characterActiveSpells = pgTable(
       table.activeSpellId
     ),
     sessionIdx: index('character_active_spells_session_idx').on(table.sessionId)
+  })
+);
+
+export const changeRequests = pgTable(
+  'change_requests',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    scope: text('scope').notNull(),
+    sessionId: uuid('session_id').references(() => gameSessions.id, { onDelete: 'cascade' }),
+    targetType: text('target_type').notNull(),
+    targetId: text('target_id'),
+    changeKind: text('change_kind').notNull(),
+    title: text('title').notNull(),
+    summary: text('summary').notNull(),
+    requestedBy: text('requested_by').notNull(),
+    assignedTo: text('assigned_to').notNull().default('human_gm'),
+    authority: text('authority').notNull().default('human_gm'),
+    priority: text('priority').notNull().default('normal'),
+    status: text('status').notNull().default('pending'),
+    payload: jsonb('payload')
+      .$type<Record<string, unknown>>()
+      .notNull()
+      .default(sql`'{}'::jsonb`),
+    resolution: jsonb('resolution').$type<Record<string, unknown> | null>(),
+    resolvedBy: text('resolved_by'),
+    resolvedAt: timestamp('resolved_at', { withTimezone: true }),
+    createdAt: now(),
+    updatedAt: updatedNow()
+  },
+  (table) => ({
+    sessionStatusIdx: index('change_requests_session_status_idx').on(table.sessionId, table.status),
+    statusIdx: index('change_requests_status_idx').on(table.status),
+    targetIdx: index('change_requests_target_idx').on(table.targetType, table.targetId)
   })
 );
 
