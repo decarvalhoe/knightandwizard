@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { loadValidatedCatalog, type ClassesCatalog } from '@knightandwizard/catalogs';
 import type { FastifyInstance } from 'fastify';
 import {
   PREDILECTION_KINDS,
@@ -21,6 +22,7 @@ import {
   ProgressionError,
   revertSessionToSequence,
   type Character,
+  type CharacterClassProfile,
   type PredilectionKind,
   type SpellDurationUnit
 } from '@knightandwizard/rules-core';
@@ -1681,7 +1683,21 @@ interface AppliedSkillImprovementChangeRequest {
   type: 'character_skill_improved';
 }
 
-type AppliedChangeRequest = AppliedPredilectionChangeRequest | AppliedSkillImprovementChangeRequest;
+interface AppliedClassReclassificationChangeRequest {
+  changeKind: string;
+  classId: string;
+  className: string;
+  orientationId: string;
+  previousClassId: string;
+  previousClassName: string;
+  targetId: string;
+  type: 'character_class_reclassified';
+}
+
+type AppliedChangeRequest =
+  | AppliedClassReclassificationChangeRequest
+  | AppliedPredilectionChangeRequest
+  | AppliedSkillImprovementChangeRequest;
 
 type ChangeRequestApplicationResult =
   | { appliedChange?: undefined; status: 'skipped' }
@@ -2033,6 +2049,10 @@ async function applyApprovedChangeRequest(
     return applyApprovedSkillImprovementChangeRequest(tx, session, changeRequest, actorId);
   }
 
+  if (changeRequest.change_kind === 'class_reclassification') {
+    return applyApprovedClassReclassificationChangeRequest(tx, session, changeRequest, actorId);
+  }
+
   return { status: 'skipped' };
 }
 
@@ -2225,6 +2245,123 @@ async function applyApprovedSkillImprovementChangeRequest(
   `;
 
   return { appliedChange, status: 'applied' };
+}
+
+async function applyApprovedClassReclassificationChangeRequest(
+  tx: postgres.TransactionSql,
+  session: SessionRow,
+  changeRequest: ChangeRequestRow,
+  actorId: string
+): Promise<ChangeRequestApplicationResult> {
+  const targetId = changeRequest.target_id;
+  const requestedClassId =
+    readNonEmptyString(changeRequest.payload.classId) ??
+    readNonEmptyString(changeRequest.payload.requestedClassId) ??
+    readNonEmptyString(changeRequest.payload.newClassId) ??
+    readNonEmptyString(changeRequest.payload.value);
+
+  if (targetId === null || requestedClassId === undefined) {
+    return { status: 'skipped' };
+  }
+
+  const classProfile = await loadActiveClassProfile(requestedClassId);
+
+  if (classProfile === undefined) {
+    return {
+      error: `class_reclassification target class ${requestedClassId} is not active`,
+      status: 'invalid'
+    };
+  }
+
+  const characterRows = await tx<CharacterPayloadRow[]>`
+    SELECT c.payload
+    FROM characters c
+    JOIN session_players sp ON sp.character_id = c.id
+    WHERE c.id = ${targetId}
+      AND sp.session_id = ${session.id}
+    FOR UPDATE OF c
+  `;
+  const row = characterRows[0];
+
+  if (row === undefined) {
+    return { status: 'target_not_found' };
+  }
+
+  if (classProfile.orientationId !== row.payload.orientation.id) {
+    return {
+      error: `class_reclassification cannot change orientation from ${row.payload.orientation.id} to ${classProfile.orientationId}`,
+      status: 'invalid'
+    };
+  }
+
+  const appliedAt = new Date().toISOString();
+  const appliedChange: AppliedChangeRequest = {
+    changeKind: changeRequest.change_kind,
+    classId: classProfile.id,
+    className: classProfile.name,
+    orientationId: classProfile.orientationId,
+    previousClassId: row.payload.classProfile.id,
+    previousClassName: row.payload.classProfile.name,
+    targetId,
+    type: 'character_class_reclassified'
+  };
+  const character: Character = {
+    ...row.payload,
+    classProfile,
+    metadata: {
+      ...row.payload.metadata,
+      governanceChangeRequests: [
+        ...readRecordArray(row.payload.metadata.governanceChangeRequests),
+        {
+          actorId,
+          appliedAt,
+          changeKind: changeRequest.change_kind,
+          changeRequestId: changeRequest.id,
+          nextClassId: classProfile.id,
+          previousClassId: row.payload.classProfile.id,
+          sessionSlug: session.slug
+        }
+      ]
+    }
+  };
+
+  await tx`
+    UPDATE characters
+    SET payload = ${tx.json(character as unknown as postgres.JSONValue)}::jsonb,
+        updated_at = now()
+    WHERE id = ${targetId}
+  `;
+
+  return { appliedChange, status: 'applied' };
+}
+
+async function loadActiveClassProfile(classId: string): Promise<CharacterClassProfile | undefined> {
+  const catalog = await loadValidatedCatalog('classes.yaml');
+  const entry = (catalog as ClassesCatalog).classes.find(
+    (candidate) =>
+      candidate.status === 'active' &&
+      candidate.id === classId &&
+      candidate.name &&
+      candidate.orientation_id
+  );
+
+  if (entry === undefined) {
+    return undefined;
+  }
+
+  return {
+    id: entry.id,
+    name: cleanCatalogName(entry.name),
+    orientationId: entry.orientation_id,
+    primarySkillIds: entry.primary_skill_id ? [entry.primary_skill_id] : []
+  };
+}
+
+function cleanCatalogName(name: string): string {
+  return name
+    .replace(/,\s*-.*/, '')
+    .replace(/\s*\/.*$/, '')
+    .trim();
 }
 
 function validateRollbackBody(body: RollbackRequestBody): ValidationResult {
