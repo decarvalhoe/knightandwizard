@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   addCombatant,
   applyDamage,
+  applyEffectGrantedStatuses,
   applyStatus,
   createCombatState,
   declareSpellCast,
@@ -161,6 +162,45 @@ describe('combat vitality and statuses', () => {
     ).timeline[0];
 
     expect(stunned.statuses).toEqual([{ id: 'stunned', durationDT: 5, appliedAtDT: 4 }]);
+  });
+
+  it('applies combat statuses granted by active effects through the activation source', () => {
+    const state = addCombatant(createCombatState(4), {
+      ...combatant({ id: 'berserker' }),
+      activeEffects: [statusGrantEffect('fou_furieux')]
+    });
+
+    const activated = applyEffectGrantedStatuses(state, 'berserker', 'player_toggle', {
+      activations: ['active']
+    });
+    const duplicated = applyEffectGrantedStatuses(activated, 'berserker', 'player_toggle', {
+      activations: ['active']
+    });
+
+    expect(activated.timeline[0].statuses).toEqual([{ id: 'fou_furieux', appliedAtDT: 4 }]);
+    expect(activated.log.at(-1)).toMatchObject({
+      type: 'status_applied',
+      targetId: 'berserker',
+      status: { id: 'fou_furieux', appliedAtDT: 4 }
+    });
+    expect(duplicated.timeline[0].statuses).toEqual([{ id: 'fou_furieux', appliedAtDT: 4 }]);
+    expect(duplicated.log).toHaveLength(activated.log.length);
+  });
+
+  it('does not apply effect-granted combat statuses from a disallowed source', () => {
+    const state = addCombatant(createCombatState(4), {
+      ...combatant({ id: 'berserker' }),
+      activeEffects: [statusGrantEffect('fou_furieux')]
+    });
+
+    const inactive = applyEffectGrantedStatuses(state, 'berserker', 'player_toggle');
+    const missing = applyEffectGrantedStatuses(state, 'berserker', 'player_toggle', {
+      activations: ['active'],
+      statusRegistry: {}
+    });
+
+    expect(inactive.timeline[0].statuses).toEqual([]);
+    expect(missing.timeline[0].statuses).toEqual([]);
   });
 
   it('resolves the legacy endurance roll before applying damage', () => {
@@ -709,6 +749,21 @@ function factorEffect(op: 'add' | 'sub', value: number): EffectModel {
   return parseEffectModel({
     source: { prose: 'Fixture speed-factor effect.', ref: 'fixture:factor' },
     spec: { target: 'factor', op, value, activation: 'passive', duration: 'permanent' },
+    fidelity: 'covered'
+  });
+}
+
+function statusGrantEffect(statusId: string): EffectModel {
+  return parseEffectModel({
+    source: { prose: `Fixture status grant ${statusId}.`, ref: `fixture:status:${statusId}` },
+    spec: {
+      target: 'status',
+      scope: statusId,
+      op: 'grant',
+      value: 1,
+      activation: 'active',
+      duration: 'ephemeral'
+    },
     fidelity: 'covered'
   });
 }
