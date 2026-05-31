@@ -1022,6 +1022,120 @@ describe('session routes', () => {
     });
   });
 
+  it('renews active character spells without a new cast roll (R-8.7-bis)', async () => {
+    const slug = `character-spell-renewal-${randomUUID()}`;
+    const characterId = `active-spell-renewal-target-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleCharacterDraft('Aveline Renouvelee'),
+      url: `/character-drafts/${characterId}`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { draftId: characterId },
+      url: '/characters/finalize'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, title: 'Character Spell Renewal API' },
+      url: '/sessions'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'spell_cast',
+        payload: {
+          activeSpellId: 'spell-renewable-character',
+          durationAmount: 10,
+          durationUnit: 'minute',
+          spellId: 'aura-renouvelee',
+          successesCount: 3,
+          targetId: characterId
+        }
+      },
+      url: `/sessions/${slug}/events`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', eventType: 'narrative_time_advanced', payload: { minutes: 5 } },
+      url: `/sessions/${slug}/events`
+    });
+    const renewalResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        eventType: 'spell_renewed',
+        payload: {
+          activeSpellId: 'spell-renewable-character',
+          targetId: characterId
+        }
+      },
+      url: `/sessions/${slug}/events`
+    });
+    const sessionAfterRenewal = await app.inject({ method: 'GET', url: `/sessions/${slug}` });
+    const activeAfterRenewal = await app.inject({
+      method: 'GET',
+      url: `/characters/${characterId}/active-spells`
+    });
+
+    expect(renewalResponse.statusCode).toBe(201);
+    expect(sessionAfterRenewal.json().state.activeSpells).toMatchObject([
+      {
+        castAtSeconds: 300,
+        durationAmount: 10,
+        durationUnit: 'minute',
+        id: 'spell-renewable-character'
+      }
+    ]);
+    expect(activeAfterRenewal.statusCode).toBe(200);
+    expect(activeAfterRenewal.json()).toEqual({
+      activeSpells: [
+        {
+          activeSpellId: 'spell-renewable-character',
+          castAtNarrativeSeconds: 0,
+          castAtSequence: 1,
+          characterId,
+          durationAmount: 10,
+          durationUnit: 'minute',
+          expiresAtNarrativeSeconds: 900,
+          lastRenewedAt: expect.any(String),
+          sourceCasterId: 'gm',
+          spellId: 'aura-renouvelee',
+          status: 'active',
+          successesCount: 3,
+          sessionSlug: slug
+        }
+      ],
+      status: 'found'
+    });
+
+    await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', eventType: 'narrative_time_advanced', payload: { minutes: 5 } },
+      url: `/sessions/${slug}/events`
+    });
+    const stillActive = await app.inject({
+      method: 'GET',
+      url: `/characters/${characterId}/active-spells`
+    });
+
+    expect(stillActive.json().activeSpells).toHaveLength(1);
+
+    await app.inject({
+      method: 'POST',
+      payload: { actorId: 'gm', eventType: 'narrative_time_advanced', payload: { minutes: 5 } },
+      url: `/sessions/${slug}/events`
+    });
+    const expired = await app.inject({
+      method: 'GET',
+      url: `/characters/${characterId}/active-spells`
+    });
+
+    expect(expired.json()).toEqual({ activeSpells: [], status: 'found' });
+  });
+
   it('rejects invalid session payloads', async () => {
     const response = await app.inject({
       method: 'POST',

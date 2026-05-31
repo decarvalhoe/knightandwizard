@@ -5,7 +5,8 @@ import {
   SPELL_DURATION_UNITS,
   advanceNarrative,
   endCombat,
-  expireActiveSpells
+  expireActiveSpells,
+  isActiveSpellExpired
 } from './narrative-time.js';
 
 export const SESSION_MODES = [
@@ -35,6 +36,7 @@ export const SESSION_EVENT_TYPES = [
   'narrative_time_advanced',
   'combat_ended',
   'spell_cast',
+  'spell_renewed',
   'spell_dispelled'
 ] as const;
 
@@ -649,6 +651,11 @@ export interface DispelSessionSpellInput {
   activeSpellId: string;
 }
 
+export interface RenewSessionSpellInput {
+  actorId?: string;
+  activeSpellId: string;
+}
+
 interface NarrativeClock {
   /** Instant narratif courant en secondes (R-8.20). */
   narrativeSeconds: number;
@@ -700,6 +707,23 @@ export function castSessionSpell(
         targetId: input.targetId
       },
       type: 'spell_cast'
+    },
+    options
+  );
+}
+
+/** Renouvelle un sort actif sans nouveau jet : même durée/réussites, nouveau départ d'expiration. */
+export function renewSessionSpell(
+  state: SessionState,
+  input: RenewSessionSpellInput,
+  options: SessionMutationOptions = {}
+): SessionState {
+  return appendSessionEvent(
+    state,
+    {
+      actorId: input.actorId,
+      payload: { activeSpellId: input.activeSpellId },
+      type: 'spell_renewed'
     },
     options
   );
@@ -781,6 +805,25 @@ function reduceNarrativeEvent(clock: NarrativeClock, event: SessionEvent): Narra
       const spell = activeSpellFromEvent(event, clock.narrativeSeconds);
 
       return spell === undefined ? clock : { ...clock, spells: [...clock.spells, spell] };
+    }
+    case 'spell_renewed': {
+      const id = optionalString(event.payload.activeSpellId) ?? optionalString(event.payload.id);
+
+      if (id === undefined) {
+        return clock;
+      }
+
+      let renewed = false;
+      const spells = clock.spells.map((spell) => {
+        if (spell.id !== id || isActiveSpellExpired(spell, clock.narrativeSeconds)) {
+          return spell;
+        }
+
+        renewed = true;
+        return { ...spell, castAtSeconds: clock.narrativeSeconds };
+      });
+
+      return renewed ? { ...clock, spells } : clock;
     }
     case 'spell_dispelled': {
       const id = optionalString(event.payload.activeSpellId) ?? optionalString(event.payload.id);

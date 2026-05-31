@@ -639,6 +639,7 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
           const sequence = sequenceRows[0]!.next_sequence;
           const needsPriorEventRows =
             eventType === 'spell_cast' ||
+            eventType === 'spell_renewed' ||
             eventType === 'narrative_time_advanced' ||
             eventType === 'combat_ended';
           const priorEventRows = needsPriorEventRows
@@ -2514,6 +2515,59 @@ async function persistCharacterActiveSpellEvent(
         dispelled_at_sequence = null,
         updated_at = now()
     `;
+    return;
+  }
+
+  if (event.event_type === 'spell_renewed') {
+    const stateBeforeRenewal = buildSessionState(session, priorEventRows, []);
+    const activeSpellId =
+      readNonEmptyString(event.payload.activeSpellId) ?? readNonEmptyString(event.payload.id);
+
+    if (activeSpellId === undefined) {
+      return;
+    }
+
+    await expireCharacterActiveSpells(sql, session.id, stateBeforeRenewal.narrativeSeconds);
+
+    const targetId = readNonEmptyString(event.payload.targetId);
+    const rows = await sql<
+      Array<{
+        duration_amount: number | string;
+        duration_unit: string;
+        id: string;
+      }>
+    >`
+      SELECT id, duration_amount, duration_unit
+      FROM character_active_spells
+      WHERE session_id = ${session.id}
+        AND active_spell_id = ${activeSpellId}
+        AND status = 'active'
+        ${targetId !== undefined ? sql`AND character_id = ${targetId}` : sql``}
+    `;
+
+    for (const row of rows) {
+      const durationUnit = readSpellDurationUnit(row.duration_unit);
+
+      if (durationUnit === undefined) {
+        continue;
+      }
+
+      const durationAmount = Number(row.duration_amount);
+      const durationSeconds = durationToSeconds(durationAmount, durationUnit);
+      const expiresAtNarrativeSeconds =
+        durationSeconds === null ? null : stateBeforeRenewal.narrativeSeconds + durationSeconds;
+      const expiresAtCombatDt = durationUnit === 'DT' ? Math.floor(durationAmount) : null;
+
+      await sql`
+        UPDATE character_active_spells
+        SET
+          expires_at_narrative_seconds = ${expiresAtNarrativeSeconds},
+          expires_at_combat_dt = ${expiresAtCombatDt},
+          last_renewed_at = now(),
+          updated_at = now()
+        WHERE id = ${row.id}
+      `;
+    }
     return;
   }
 
