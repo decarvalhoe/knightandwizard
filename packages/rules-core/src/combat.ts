@@ -17,12 +17,22 @@ import {
   type EffectValueContext,
   evaluateValue
 } from './effect-model.js';
-import { applyEffectiveModifiers, computeEffectiveModifiers, effectiveValue } from './effects.js';
+import {
+  applyEffectiveModifiers,
+  computeEffectiveModifiers,
+  effectiveValue,
+  type EffectApplicationContext
+} from './effects.js';
 import {
   resolveSpellResistance,
   type SpellResistanceResult,
   type TargetResistanceProfile
 } from './resistance.js';
+import {
+  activateGrantedStatuses,
+  type ActivationSource,
+  type ActiveStatusEntry
+} from './status-effects.js';
 
 export const COMBAT_ROUND_LENGTH_DT = DEFAULT_RULES_CONFIG.combat.roundLengthDT;
 
@@ -480,6 +490,59 @@ export function applyStatus(
           status: nextTarget.statuses.find((candidate) => candidate.id === status.id)
         }
       ]
+    },
+    nextTarget
+  );
+}
+
+export function applyEffectGrantedStatuses(
+  state: CombatState,
+  targetId: string,
+  source: ActivationSource,
+  ctx: EffectApplicationContext = {}
+): CombatState {
+  const target = findCombatant(state, targetId);
+  const activeEffects = target.activeEffects ?? [];
+
+  if (activeEffects.length === 0) {
+    return state;
+  }
+
+  const modifiers = computeEffectiveModifiers(activeEffects, ctx);
+  const grantedStatuses = activateGrantedStatuses(modifiers, source, ctx.statusRegistry);
+
+  if (grantedStatuses.length === 0) {
+    return state;
+  }
+
+  let nextTarget = target;
+  const events: CombatEvent[] = [];
+
+  for (const grantedStatus of grantedStatuses) {
+    const status = combatStatusFromActiveStatus(grantedStatus, state.currentDT, ctx);
+    const beforeCount = nextTarget.statuses.length;
+    nextTarget = withStatus(nextTarget, status, state.currentDT);
+
+    if (nextTarget.statuses.length === beforeCount) {
+      continue;
+    }
+
+    events.push({
+      type: 'status_applied',
+      atDT: state.currentDT,
+      targetId,
+      status: nextTarget.statuses.find((candidate) => candidate.id === status.id)
+    });
+  }
+
+  if (events.length === 0) {
+    return state;
+  }
+
+  return replaceCombatant(
+    {
+      ...state,
+      log: [...state.log, ...events]
     },
     nextTarget
   );
@@ -1077,6 +1140,43 @@ function withStatus(combatant: Combatant, status: CombatStatus, currentDT: numbe
       }
     ]
   };
+}
+
+function combatStatusFromActiveStatus(
+  activeStatus: ActiveStatusEntry,
+  currentDT: number,
+  ctx: EffectValueContext
+): CombatStatus {
+  const durationDT = durationDTFromActiveStatus(activeStatus, ctx);
+
+  return {
+    id: activeStatusId(activeStatus),
+    ...(durationDT === undefined ? {} : { durationDT }),
+    appliedAtDT: currentDT
+  };
+}
+
+function activeStatusId(activeStatus: ActiveStatusEntry): string {
+  return typeof activeStatus === 'string'
+    ? activeStatus
+    : (activeStatus.id ?? activeStatus.statusId);
+}
+
+function durationDTFromActiveStatus(
+  activeStatus: ActiveStatusEntry,
+  ctx: EffectValueContext
+): number | undefined {
+  if (typeof activeStatus === 'string' || activeStatus.duration === undefined) {
+    return undefined;
+  }
+
+  const { duration } = activeStatus;
+
+  if (typeof duration !== 'object' || !('dt' in duration)) {
+    return undefined;
+  }
+
+  return typeof duration.dt === 'number' ? duration.dt : evaluateValue(duration.dt, ctx);
 }
 
 function replaceCombatant(state: CombatState, combatant: Combatant): CombatState {
