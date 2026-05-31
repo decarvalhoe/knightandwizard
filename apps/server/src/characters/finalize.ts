@@ -20,7 +20,8 @@ import {
   type CharacterSpell,
   type CombatStatus,
   type RaceProfile,
-  gainXP
+  gainXP,
+  learnSkill
 } from '@knightandwizard/rules-core';
 import { and, eq, sql as drizzleSql } from 'drizzle-orm';
 import { z } from 'zod';
@@ -81,6 +82,15 @@ export interface CharacterXpAwardUpdate {
   questPoints?: number;
   reason?: string;
   sessionSlug?: string;
+}
+
+export interface CharacterSkillImprovementUpdate {
+  actorId?: string;
+  isMain?: boolean;
+  parentId?: string | null;
+  reason?: string;
+  sessionSlug?: string;
+  skillId: string;
 }
 
 interface CharacterCreationCatalog {
@@ -472,6 +482,78 @@ export async function awardPersistedCharacterXp(
   }
 }
 
+export async function improvePersistedCharacterSkill(
+  id: string,
+  input: CharacterSkillImprovementUpdate,
+  scope: CharacterPersistenceScope = {}
+): Promise<CharacterPersistenceResult> {
+  const sql = createSqlClient();
+  const db = createDbClient(sql);
+
+  try {
+    const rows = await db
+      .select({ character: characters.payload })
+      .from(characters)
+      .where(
+        scope.userId
+          ? and(eq(characters.id, id), eq(characters.userId, scope.userId))
+          : eq(characters.id, id)
+      )
+      .limit(1);
+    const row = rows[0];
+
+    if (row === undefined) {
+      throw new CharacterNotFoundError(id);
+    }
+
+    const previousSkill = row.character.skills.find((skill) => skill.id === input.skillId);
+    const improved = learnSkill(row.character, input.skillId, {
+      hasNarrativeAccess: true,
+      ...(input.isMain !== undefined ? { isMain: input.isMain } : {}),
+      ...(input.parentId !== undefined ? { parentId: input.parentId } : {})
+    });
+    const nextSkill = improved.skills.find((skill) => skill.id === input.skillId);
+    const spentAt = new Date().toISOString();
+    const spendRecord = {
+      ...(input.actorId ? { actorId: input.actorId } : {}),
+      cost: row.character.progression.experiencePoints - improved.progression.experiencePoints,
+      kind: 'skill_improvement',
+      nextPoints: nextSkill?.points ?? previousSkill?.points ?? 0,
+      ...(input.parentId !== undefined ? { parentId: input.parentId } : {}),
+      previousPoints: previousSkill?.points ?? 0,
+      ...(input.reason ? { reason: input.reason } : {}),
+      ...(input.sessionSlug ? { sessionSlug: input.sessionSlug } : {}),
+      skillId: input.skillId,
+      spentAt
+    };
+    const character: Character = {
+      ...improved,
+      metadata: {
+        ...improved.metadata,
+        xpSpends: [...readXpSpendRecords(improved.metadata.xpSpends), spendRecord]
+      }
+    };
+    const updatedRows = await db
+      .update(characters)
+      .set({
+        payload: character,
+        updatedAt: drizzleSql`now()`
+      })
+      .where(
+        scope.userId
+          ? and(eq(characters.id, id), eq(characters.userId, scope.userId))
+          : eq(characters.id, id)
+      )
+      .returning({ character: characters.payload });
+
+    return {
+      character: updatedRows[0]!.character
+    };
+  } finally {
+    await sql.end({ timeout: 5 });
+  }
+}
+
 async function loadCharacterCreationCatalog(): Promise<CharacterCreationCatalog> {
   const [races, orientations, classes, weapons, protections, potions] = await Promise.all([
     loadValidatedCatalog('races.yaml'),
@@ -499,6 +581,14 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 function readXpAwardRecords(value: unknown): Record<string, unknown>[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value.filter(isRecord);
+}
+
+function readXpSpendRecords(value: unknown): Record<string, unknown>[] {
   if (!Array.isArray(value)) {
     return [];
   }

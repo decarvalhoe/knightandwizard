@@ -218,6 +218,115 @@ describe('character routes', () => {
       questPoints: 0
     });
   });
+
+  it('spends persisted XP to improve an existing skill', async () => {
+    const draftId = `route-skill-xp-character-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleDraft('Aveline Studieuse'),
+      url: `/character-drafts/${draftId}`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { draftId },
+      url: '/characters/finalize'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { amount: 20, reason: 'Reserve de progression' },
+      url: `/characters/${draftId}/xp-awards`
+    });
+    const improvementResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        reason: 'Entrainement valide par le MJ',
+        sessionSlug: 'mvp-xp',
+        skillId: 'epee-a-une-main'
+      },
+      url: `/characters/${draftId}/skill-improvements`
+    });
+    const readResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${draftId}`
+    });
+
+    expect(improvementResponse.statusCode).toBe(200);
+    expect(improvementResponse.json()).toMatchObject({
+      character: {
+        id: draftId,
+        metadata: {
+          xpSpends: [
+            {
+              actorId: 'gm',
+              cost: 12,
+              kind: 'skill_improvement',
+              previousPoints: 4,
+              reason: 'Entrainement valide par le MJ',
+              sessionSlug: 'mvp-xp',
+              skillId: 'epee-a-une-main'
+            }
+          ]
+        },
+        progression: {
+          experiencePoints: 8,
+          experienceTotal: 20,
+          questPoints: 0
+        },
+        skills: expect.arrayContaining([
+          expect.objectContaining({ id: 'epee-a-une-main', points: 5 })
+        ])
+      },
+      status: 'updated'
+    });
+    expect(readResponse.json().character.skills).toContainEqual({
+      id: 'epee-a-une-main',
+      isMain: true,
+      points: 5
+    });
+    expect(readResponse.json().character.progression.experiencePoints).toBe(8);
+  });
+
+  it('learns an unaffiliated specialization without materializing the zero-point parent skill', async () => {
+    const draftId = `route-specialization-xp-character-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleDraft('Aveline Specialisee'),
+      url: `/character-drafts/${draftId}`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { draftId },
+      url: '/characters/finalize'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { amount: 3, reason: 'Reserve de specialisation' },
+      url: `/characters/${draftId}/xp-awards`
+    });
+    const improvementResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        parentId: 'competence-non-achetee',
+        skillId: 'specialisation-libre'
+      },
+      url: `/characters/${draftId}/skill-improvements`
+    });
+    const skills = improvementResponse.json().character.skills;
+
+    expect(improvementResponse.statusCode).toBe(200);
+    expect(skills).toContainEqual({
+      id: 'specialisation-libre',
+      parentId: 'competence-non-achetee',
+      points: 1
+    });
+    expect(skills.some((skill: { id: string }) => skill.id === 'competence-non-achetee')).toBe(
+      false
+    );
+    expect(improvementResponse.json().character.progression.experiencePoints).toBe(0);
+  });
 });
 
 function sampleDraft(name: string) {

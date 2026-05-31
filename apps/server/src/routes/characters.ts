@@ -1,13 +1,16 @@
 import type { FastifyInstance, FastifyReply } from 'fastify';
+import { ProgressionError } from '@knightandwizard/rules-core';
 import {
   CharacterDraftNotFoundError,
   CharacterNotFoundError,
   awardPersistedCharacterXp,
   finalizeCharacterDraft,
   getPersistedCharacter,
+  improvePersistedCharacterSkill,
   listPersistedCharacterActiveSpells,
   updatePersistedCharacterCombatState,
   type CharacterCombatStateUpdate,
+  type CharacterSkillImprovementUpdate,
   type CharacterXpAwardUpdate
 } from '../characters/finalize.js';
 import { resolveRequestUserId } from '../auth/user.js';
@@ -30,6 +33,15 @@ interface AwardCharacterXpRequestBody {
   sessionSlug?: unknown;
 }
 
+interface ImproveCharacterSkillRequestBody {
+  actorId?: unknown;
+  isMain?: unknown;
+  parentId?: unknown;
+  reason?: unknown;
+  sessionSlug?: unknown;
+  skillId?: unknown;
+}
+
 interface CharacterParams {
   id: string;
 }
@@ -38,6 +50,9 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
   app.options('/characters/finalize', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id/active-spells', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id/combat-state', async (_request, reply) => reply.code(204).send());
+  app.options('/characters/:id/skill-improvements', async (_request, reply) =>
+    reply.code(204).send()
+  );
   app.options('/characters/:id/xp-awards', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id', async (_request, reply) => reply.code(204).send());
 
@@ -153,6 +168,33 @@ export async function registerCharacterRoutes(app: FastifyInstance): Promise<voi
       }
     }
   );
+
+  app.post<{ Body: ImproveCharacterSkillRequestBody; Params: CharacterParams }>(
+    '/characters/:id/skill-improvements',
+    async (request, reply) => {
+      const validation = validateSkillImprovement(request.body ?? {});
+
+      if (!validation.valid) {
+        return reply.code(400).send({
+          errors: validation.errors,
+          status: 'invalid'
+        });
+      }
+
+      try {
+        const result = await improvePersistedCharacterSkill(request.params.id, validation.input, {
+          userId: resolveRequestUserId(request)
+        });
+
+        return {
+          character: result.character,
+          status: 'updated'
+        };
+      } catch (error) {
+        return sendCharacterRouteError(error, reply);
+      }
+    }
+  );
 }
 
 function normalizeOptionalString(value: unknown): string | undefined {
@@ -168,6 +210,10 @@ function normalizeOptionalString(value: unknown): string | undefined {
 function sendCharacterRouteError(error: unknown, reply: FastifyReply) {
   if (error instanceof CharacterDraftNotFoundError || error instanceof CharacterNotFoundError) {
     return reply.code(404).send({ status: 'not_found' });
+  }
+
+  if (error instanceof ProgressionError) {
+    return reply.code(400).send({ errors: [error.message], status: 'invalid' });
   }
 
   throw error;
@@ -268,6 +314,73 @@ function validateXpAward(
       ...(questPoints.value !== undefined ? { questPoints: questPoints.value } : {}),
       ...(reason ? { reason } : {}),
       ...(sessionSlug ? { sessionSlug } : {})
+    },
+    valid: true
+  };
+}
+
+function validateSkillImprovement(
+  body: ImproveCharacterSkillRequestBody
+): { input: CharacterSkillImprovementUpdate; valid: true } | { errors: string[]; valid: false } {
+  const errors: string[] = [];
+  const actorId = normalizeOptionalString(body.actorId);
+  const reason = normalizeOptionalString(body.reason);
+  const sessionSlug = normalizeOptionalString(body.sessionSlug);
+  const skillId = normalizeOptionalString(body.skillId);
+  const input: Partial<CharacterSkillImprovementUpdate> = {};
+
+  if (!skillId) {
+    errors.push('skillId is required');
+  } else {
+    input.skillId = skillId;
+  }
+
+  if (body.isMain !== undefined) {
+    if (typeof body.isMain !== 'boolean') {
+      errors.push('isMain must be a boolean');
+    } else {
+      input.isMain = body.isMain;
+    }
+  }
+
+  if (body.parentId !== undefined) {
+    if (body.parentId === null) {
+      input.parentId = null;
+    } else {
+      const parentId = normalizeOptionalString(body.parentId);
+
+      if (!parentId) {
+        errors.push('parentId must be a non-empty string or null');
+      } else {
+        input.parentId = parentId;
+      }
+    }
+  }
+
+  if (actorId) {
+    input.actorId = actorId;
+  }
+
+  if (reason) {
+    input.reason = reason;
+  }
+
+  if (sessionSlug) {
+    input.sessionSlug = sessionSlug;
+  }
+
+  if (errors.length > 0 || input.skillId === undefined) {
+    return { errors, valid: false };
+  }
+
+  return {
+    input: {
+      ...(input.actorId ? { actorId: input.actorId } : {}),
+      ...(input.isMain !== undefined ? { isMain: input.isMain } : {}),
+      ...(input.parentId !== undefined ? { parentId: input.parentId } : {}),
+      ...(input.reason ? { reason: input.reason } : {}),
+      ...(input.sessionSlug ? { sessionSlug: input.sessionSlug } : {}),
+      skillId: input.skillId
     },
     valid: true
   };
