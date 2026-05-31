@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import type { FastifyInstance } from 'fastify';
 import {
+  PREDILECTION_KINDS,
   type SessionDecision,
   type SessionEvent,
   type SessionPlayer,
@@ -12,10 +13,13 @@ import {
   SESSION_MODES,
   SESSION_STATUSES,
   SPELL_DURATION_UNITS,
+  changePredilection,
   createSessionState,
   durationToSeconds,
   projectSessionStateFromJournal,
   revertSessionToSequence,
+  type Character,
+  type PredilectionKind,
   type SpellDurationUnit
 } from '@knightandwizard/rules-core';
 import type postgres from 'postgres';
@@ -1068,17 +1072,61 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
             return { status: 'not_found' as const };
           }
 
+          const pendingChangeRequestRows = await tx<ChangeRequestRow[]>`
+            SELECT
+              id,
+              scope,
+              session_id,
+              target_type,
+              target_id,
+              change_kind,
+              title,
+              summary,
+              requested_by,
+              assigned_to,
+              authority,
+              priority,
+              status,
+              payload,
+              resolution,
+              resolved_by,
+              resolved_at,
+              created_at,
+              updated_at
+            FROM change_requests
+            WHERE id = ${request.params.changeRequestId}
+              AND session_id = ${session.id}
+              AND status = 'pending'
+            FOR UPDATE
+          `;
+          const pendingChangeRequest = pendingChangeRequestRows[0];
+
+          if (!pendingChangeRequest) {
+            return { status: 'change_request_not_found' as const };
+          }
+
+          const application =
+            changeRequestStatus === 'approved'
+              ? await applyApprovedChangeRequest(tx, session, pendingChangeRequest, actorId)
+              : { status: 'skipped' as const };
+
+          if (application.status === 'target_not_found') {
+            return { status: 'change_request_target_not_found' as const };
+          }
+
+          const resolvedResolution =
+            application.appliedChange === undefined
+              ? resolution
+              : { ...resolution, appliedChange: application.appliedChange };
           const changeRequestRows = await tx<ChangeRequestRow[]>`
             UPDATE change_requests
             SET
               status = ${changeRequestStatus},
-              resolution = ${tx.json(resolution as postgres.JSONValue)}::jsonb,
+              resolution = ${tx.json(resolvedResolution as postgres.JSONValue)}::jsonb,
               resolved_by = ${actorId},
               resolved_at = now(),
               updated_at = now()
-            WHERE id = ${request.params.changeRequestId}
-              AND session_id = ${session.id}
-              AND status = 'pending'
+            WHERE id = ${pendingChangeRequest.id}
             RETURNING
               id,
               scope,
@@ -1100,12 +1148,7 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               created_at,
               updated_at
           `;
-          const changeRequest = changeRequestRows[0];
-
-          if (!changeRequest) {
-            return { status: 'change_request_not_found' as const };
-          }
-
+          const changeRequest = changeRequestRows[0]!;
           const sequenceRows = await tx<{ next_sequence: number }[]>`
             SELECT (COALESCE(MAX(sequence), 0) + 1)::int AS next_sequence
             FROM session_events
@@ -1121,9 +1164,9 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               ${actorId},
               ${tx.json({
                 changeRequestId: changeRequest.id,
-                resolution,
+                resolution: resolvedResolution,
                 status: changeRequestStatus
-              } as postgres.JSONValue)}::jsonb
+              } as unknown as postgres.JSONValue)}::jsonb
             )
             RETURNING id, session_id, sequence, event_type, actor_id, payload, created_at
           `;
@@ -1138,9 +1181,12 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
               ${tx.json({
                 changeRequestId: changeRequest.id,
                 eventId: eventRows[0]!.id,
+                ...(application.appliedChange === undefined
+                  ? {}
+                  : { appliedChange: application.appliedChange }),
                 sessionId: session.id,
                 status: changeRequestStatus
-              } as postgres.JSONValue)}::jsonb
+              } as unknown as postgres.JSONValue)}::jsonb
             )
           `;
           await tx`
@@ -1158,6 +1204,10 @@ export async function registerSessionRoutes(app: FastifyInstance): Promise<void>
 
         if (result.status === 'change_request_not_found') {
           return reply.code(404).send({ status: 'change_request_not_found' });
+        }
+
+        if (result.status === 'change_request_target_not_found') {
+          return reply.code(404).send({ status: 'change_request_target_not_found' });
         }
 
         sessionHub.broadcast(request.params.slug, {
@@ -1596,6 +1646,24 @@ interface ChangeRequestRow {
   updated_at: Date | string;
 }
 
+interface CharacterPayloadRow {
+  payload: Character;
+}
+
+interface AppliedChangeRequest {
+  changeKind: string;
+  predilectionKind: PredilectionKind;
+  targetId: string;
+  transition: ReturnType<typeof changePredilection>['transition'];
+  type: 'character_predilection_updated';
+  value: string;
+}
+
+type ChangeRequestApplicationResult =
+  | { appliedChange?: undefined; status: 'skipped' }
+  | { appliedChange: AppliedChangeRequest; status: 'applied' }
+  | { appliedChange?: undefined; status: 'target_not_found' };
+
 interface NormalizedChangeRequestInput {
   assignedTo: string;
   authority: string;
@@ -1922,6 +1990,90 @@ function validateResolveChangeRequestBody(body: ResolveChangeRequestBody): Valid
   return { errors, valid: errors.length === 0 };
 }
 
+async function applyApprovedChangeRequest(
+  tx: postgres.TransactionSql,
+  session: SessionRow,
+  changeRequest: ChangeRequestRow,
+  actorId: string
+): Promise<ChangeRequestApplicationResult> {
+  if (
+    changeRequest.target_type !== 'character' ||
+    changeRequest.change_kind !== 'predilection_target'
+  ) {
+    return { status: 'skipped' };
+  }
+
+  const targetId = changeRequest.target_id;
+  const predilectionKind = readPredilectionKind(
+    changeRequest.payload.predilectionKind ?? changeRequest.payload.kind
+  );
+  const requestedTarget =
+    readNonEmptyString(changeRequest.payload.requestedTarget) ??
+    readNonEmptyString(changeRequest.payload.newTarget) ??
+    readNonEmptyString(changeRequest.payload.value);
+
+  if (targetId === null || predilectionKind === undefined || requestedTarget === undefined) {
+    return { status: 'skipped' };
+  }
+
+  const characterRows = await tx<CharacterPayloadRow[]>`
+    SELECT c.payload
+    FROM characters c
+    JOIN session_players sp ON sp.character_id = c.id
+    WHERE c.id = ${targetId}
+      AND sp.session_id = ${session.id}
+    FOR UPDATE OF c
+  `;
+  const row = characterRows[0];
+
+  if (row === undefined) {
+    return { status: 'target_not_found' };
+  }
+
+  const predilectionUpdate = changePredilection(
+    row.payload.predilection ?? {},
+    predilectionKind,
+    requestedTarget,
+    'gm_validation'
+  );
+  const appliedChange: AppliedChangeRequest = {
+    changeKind: changeRequest.change_kind,
+    predilectionKind,
+    targetId,
+    transition: predilectionUpdate.transition,
+    type: 'character_predilection_updated',
+    value: requestedTarget
+  };
+  const appliedAt = new Date().toISOString();
+  const character: Character = {
+    ...row.payload,
+    metadata: {
+      ...row.payload.metadata,
+      governanceChangeRequests: [
+        ...readRecordArray(row.payload.metadata.governanceChangeRequests),
+        {
+          actorId,
+          appliedAt,
+          changeKind: changeRequest.change_kind,
+          changeRequestId: changeRequest.id,
+          sessionSlug: session.slug,
+          transition: predilectionUpdate.transition
+        }
+      ]
+    },
+    predilection: predilectionUpdate.slots
+  };
+
+  await tx`
+    UPDATE characters
+    SET payload = ${tx.json(character as unknown as postgres.JSONValue)}::jsonb,
+        updated_at = now()
+    WHERE id = ${targetId}
+  `;
+
+  return { appliedChange, status: 'applied' };
+}
+
 function validateRollbackBody(body: RollbackRequestBody): ValidationResult {
   const errors: string[] = [];
 
@@ -2061,6 +2213,12 @@ function readNonEmptyString(value: unknown): string | undefined {
   return isNonEmptyString(value) ? value.trim() : undefined;
 }
 
+function readPredilectionKind(value: unknown): PredilectionKind | undefined {
+  return typeof value === 'string' && (PREDILECTION_KINDS as readonly string[]).includes(value)
+    ? (value as PredilectionKind)
+    : undefined;
+}
+
 function readSpellDurationUnit(value: unknown): SpellDurationUnit | undefined {
   return typeof value === 'string' && validSpellDurationUnits.has(value)
     ? (value as SpellDurationUnit)
@@ -2073,6 +2231,10 @@ function readNonNegativeNumber(value: unknown): number | undefined {
 
 function readNonNegativeInteger(value: unknown): number | undefined {
   return typeof value === 'number' && Number.isInteger(value) && value >= 0 ? value : undefined;
+}
+
+function readRecordArray(value: unknown): Record<string, unknown>[] {
+  return Array.isArray(value) ? value.filter(isRecord) : [];
 }
 
 function splitSessionMetadata(metadata: Record<string, unknown>): {

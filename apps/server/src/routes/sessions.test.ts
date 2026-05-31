@@ -459,6 +459,100 @@ describe('session routes', () => {
     ]);
   });
 
+  it('applies approved predilection change requests to linked session characters', async () => {
+    const slug = `change-request-apply-session-${randomUUID()}`;
+    const characterId = `change-request-character-${randomUUID()}`;
+
+    await app.inject({
+      method: 'PUT',
+      payload: sampleCharacterDraft('Aveline Gouvernee'),
+      url: `/character-drafts/${characterId}`
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { draftId: characterId },
+      url: '/characters/finalize'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: { mode: 'digital_human_gm', slug, status: 'active', title: 'Governance Apply API' },
+      url: '/sessions'
+    });
+    await app.inject({
+      method: 'POST',
+      payload: {
+        characterId,
+        name: 'Aveline Gouvernee',
+        playerId: 'player-aveline',
+        role: 'player'
+      },
+      url: `/sessions/${slug}/players`
+    });
+
+    const createResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        assignedTo: 'human_gm',
+        authority: 'human_gm',
+        changeKind: 'predilection_target',
+        payload: {
+          predilectionKind: 'arme',
+          requestedTarget: 'rapiere'
+        },
+        priority: 'normal',
+        requestedBy: 'player-aveline',
+        summary: 'Aveline change son arme de predilection apres entrainement.',
+        targetId: characterId,
+        targetType: 'character',
+        title: 'Changer la predilection d Aveline'
+      },
+      url: `/sessions/${slug}/change-requests`
+    });
+    const changeRequest = createResponse.json().changeRequest;
+
+    const resolveResponse = await app.inject({
+      method: 'POST',
+      payload: {
+        actorId: 'gm',
+        resolution: { ruling: 'Valide apres scene de mentorat.' },
+        status: 'approved'
+      },
+      url: `/sessions/${slug}/change-requests/${changeRequest.id}/resolve`
+    });
+    const characterResponse = await app.inject({
+      method: 'GET',
+      url: `/characters/${characterId}`
+    });
+
+    expect(resolveResponse.statusCode).toBe(200);
+    expect(resolveResponse.json().changeRequest.resolution).toMatchObject({
+      appliedChange: {
+        changeKind: 'predilection_target',
+        predilectionKind: 'arme',
+        targetId: characterId,
+        type: 'character_predilection_updated',
+        value: 'rapiere'
+      },
+      ruling: 'Valide apres scene de mentorat.'
+    });
+    expect(resolveResponse.json().event.payload.resolution.appliedChange).toMatchObject({
+      transition: {
+        action: 'change',
+        next: ['rapiere'],
+        previous: []
+      }
+    });
+    expect(characterResponse.json().character.predilection).toEqual({ arme: ['rapiere'] });
+    expect(characterResponse.json().character.metadata.governanceChangeRequests).toMatchObject([
+      {
+        actorId: 'gm',
+        changeKind: 'predilection_target',
+        changeRequestId: changeRequest.id,
+        sessionSlug: slug
+      }
+    ]);
+  });
+
   it('records rollback requests without deleting previous events', async () => {
     const slug = `rollback-session-${randomUUID()}`;
 
