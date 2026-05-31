@@ -374,6 +374,47 @@ export const LegacyCharactersCatalogSchema = CatalogBaseSchema.extend({
 
 export const AtoutScopeSchema = z.enum(['classe', 'neutre', 'orientation', 'race', 'niveau']);
 export const AtoutActivationSchema = z.enum(['permanent', 'ephemere', 'unknown']);
+export const EffectFidelitySchema = z.enum(['covered', 'ambiguous', 'pending']);
+export const EffectSourceSchema = z
+  .object({
+    prose: NonEmptyStringSchema,
+    ref: NonEmptyStringSchema
+  })
+  .passthrough();
+export const EffectSpecSchema = z
+  .object({
+    target: z.enum([
+      'aptitude',
+      'factor',
+      'difficulty',
+      'pool',
+      'damage',
+      'energy',
+      'vitality',
+      'status',
+      'protection',
+      'summon',
+      'spell'
+    ]),
+    scope: NonEmptyStringSchema.optional(),
+    op: z.enum(['add', 'sub', 'set', 'grant', 'multiply']),
+    value: z.union([
+      z.number().int(),
+      NonEmptyStringSchema,
+      z
+        .object({
+          table: NonEmptyStringSchema,
+          key: NonEmptyStringSchema
+        })
+        .passthrough()
+    ]),
+    condition: z.object({}).passthrough().optional(),
+    activation: z.enum(['passive', 'active', 'triggered']),
+    duration: z.union([NonEmptyStringSchema, z.object({}).passthrough()]),
+    requires_mj_validation: z.boolean().optional(),
+    uses_per_day: z.number().int().positive().optional()
+  })
+  .passthrough();
 
 export const AtoutSchema = z
   .object({
@@ -385,7 +426,11 @@ export const AtoutSchema = z
     activation: AtoutActivationSchema,
     scope: AtoutScopeSchema,
     source_refs: z.array(SourceRefSchema).optional(),
-    metadata: EntryMetadataSchema.optional()
+    metadata: EntryMetadataSchema.optional(),
+    source: EffectSourceSchema.optional(),
+    spec: EffectSpecSchema.optional(),
+    fidelity: EffectFidelitySchema.optional(),
+    ambiguity_ref: NonEmptyStringSchema.nullable().optional()
   })
   .passthrough();
 

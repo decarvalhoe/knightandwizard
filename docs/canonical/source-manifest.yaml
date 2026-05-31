@@ -7915,7 +7915,7 @@ sources:
     notes: "Product catalog table."
   - id: "data-catalogs-atouts"
     path: "data/catalogs/atouts.yaml"
-    sha256: "5784d09e3085ff488dd0150f4cedd444ca58e6f975b4261f01141c468aca254a"
+    sha256: "8795400bf6650a1246f5767d5980ea45e954da6d7490f208d8d09a6c7bd82285"
     source_type: catalog_yaml
     priority: 90
     status: active
@@ -13180,7 +13180,7 @@ sources:
     notes: "Project documentation source."
   - id: "docs-plan-effects-implementation"
     path: "docs/plan/EFFECTS-IMPLEMENTATION.md"
-    sha256: "50e9e933ec33cc965cff73a0a1226e194e18dd20d876353bbd8d9f9f489ea59f"
+    sha256: "3a1f82f8d8e99f5e5ecafe2ff1a076ccaa74890e27f894e2e61bf14cc7e0db1a"
     source_type: generated_doc
     priority: 40
     status: active

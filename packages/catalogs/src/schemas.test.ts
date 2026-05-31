@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
+import { parseEffectModel } from '../../rules-core/src/effect-model.js';
 import {
   CatalogValidationError,
   PRIORITY_CATALOG_NAMES,
@@ -456,6 +457,94 @@ describe('catalog Zod schemas', () => {
       activation: 'unknown',
       value: null,
       scope: 'race'
+    });
+  });
+
+  it('validates encoded atout EffectModel specs including the race and level pilot set', async () => {
+    const catalog = await loadValidatedCatalog('atouts.yaml');
+    const byId = new Map(catalog.atouts.map((atout) => [atout.id, atout]));
+    const encoded = catalog.atouts.filter((atout) => atout.spec !== undefined);
+    const encodedByScope = encoded.reduce<Record<string, number>>((acc, atout) => {
+      acc[atout.scope] = (acc[atout.scope] ?? 0) + 1;
+      return acc;
+    }, {});
+
+    expect(encodedByScope.classe).toBe(75);
+    expect(encodedByScope.orientation).toBe(13);
+    expect(encodedByScope.race).toBeGreaterThanOrEqual(3);
+    expect(encodedByScope.niveau).toBeGreaterThanOrEqual(12);
+
+    for (const atout of encoded) {
+      parseEffectModel({
+        source: atout.source,
+        spec: atout.spec,
+        fidelity: atout.fidelity,
+        ...(atout.ambiguity_ref === undefined ? {} : { ambiguity_ref: atout.ambiguity_ref })
+      });
+    }
+
+    expect(byId.get('race-innate-flaire-infaillible')).toMatchObject({
+      source: {
+        prose:
+          'Le personnage possède un flaire hors norme et diminue la difficulté de tous ses jets basés sur l’odorat de 3.'
+      },
+      spec: {
+        target: 'difficulty',
+        op: 'sub',
+        value: 3,
+        condition: { competence: 'odorat' },
+        activation: 'passive',
+        duration: 'permanent'
+      },
+      fidelity: 'covered'
+    });
+
+    expect(byId.get('race-innate-pisteur-ne')).toMatchObject({
+      spec: {
+        target: 'difficulty',
+        op: 'sub',
+        value: 3,
+        condition: { competence: 'pistage' },
+        activation: 'passive',
+        duration: 'permanent'
+      },
+      fidelity: 'covered'
+    });
+
+    expect(byId.get('niveau-2-apaisement-guerrier-justicier')).toMatchObject({
+      spec: {
+        target: 'vitality',
+        op: 'add',
+        value: 'level',
+        condition: { target_disposition: 'ally' },
+        activation: 'active',
+        duration: 'ephemeral'
+      },
+      fidelity: 'covered'
+    });
+
+    expect(byId.get('niveau-2-bluff-intellectuel-joueur-de-poker')).toMatchObject({
+      spec: {
+        target: 'difficulty',
+        op: 'sub',
+        value: 1,
+        condition: { competence: 'mensonge' },
+        activation: 'passive',
+        duration: 'permanent'
+      },
+      fidelity: 'covered'
+    });
+
+    expect(byId.get('niveau-10-maitre-en-lame-guerrier')).toMatchObject({
+      spec: {
+        target: 'damage',
+        scope: 'T',
+        op: 'add',
+        value: 1,
+        activation: 'passive',
+        duration: 'permanent'
+      },
+      fidelity: 'covered'
     });
   });
 
