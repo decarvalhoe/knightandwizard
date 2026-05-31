@@ -1,8 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
 import { computeEffectiveModifiers, effectiveAttribute } from './effects.js';
+import { parseEffectModel } from './effect-model.js';
 import {
+  activateGrantedStatuses,
   canActivate,
+  collectActivatedStatusGrants,
   COMPOSITE_STATUS_REGISTRY,
   defineCompositeStatusRegistry,
   expandActiveStatuses,
@@ -124,5 +127,74 @@ describe('composite status effects', () => {
     expect(canActivate('mj_imposed', 'gm_only', registry)).toBe(true);
     expect(canActivate('player_toggle', 'gm_only', registry)).toBe(false);
     expect(canActivate('player_toggle', 'missing_status', registry)).toBe(false);
+  });
+
+  it('turns granted status effects into active composite statuses for allowed sources', () => {
+    const grant = parseEffectModel({
+      source: {
+        prose: 'Accorde la folie furieuse.',
+        ref: 'fixture:status:fou-furieux'
+      },
+      spec: {
+        target: 'status',
+        scope: 'fou_furieux',
+        op: 'grant',
+        value: 1,
+        activation: 'active',
+        duration: 'ephemeral'
+      },
+      fidelity: 'covered'
+    });
+
+    const modifiers = computeEffectiveModifiers([grant], { activations: ['active'] });
+    const grants = collectActivatedStatusGrants(modifiers, 'player_toggle');
+
+    expect(grants).toEqual([
+      {
+        activationSource: 'player_toggle',
+        entry: { id: 'fou_furieux' },
+        id: 'fou_furieux',
+        sourceRef: 'fixture:status:fou-furieux'
+      }
+    ]);
+    expect(
+      expandActiveStatuses(activateGrantedStatuses(modifiers, 'player_toggle'), undefined, {
+        elapsedDT: 24,
+        level: 1
+      })
+    ).toHaveLength(4);
+  });
+
+  it('filters granted statuses by their activation source contract', () => {
+    const registry = defineCompositeStatusRegistry({
+      gm_only: {
+        activationSources: ['mj_imposed'],
+        effects: [
+          {
+            target: 'pool',
+            op: 'add',
+            value: 1,
+            activation: 'passive',
+            duration: 'permanent'
+          }
+        ]
+      }
+    });
+    const grant = parseEffectModel({
+      source: { prose: 'Le MJ impose un etat.', ref: 'fixture:status:gm-only' },
+      spec: {
+        target: 'status',
+        scope: 'gm_only',
+        op: 'grant',
+        value: 1,
+        activation: 'active',
+        duration: 'ephemeral'
+      },
+      fidelity: 'covered'
+    });
+    const modifiers = computeEffectiveModifiers([grant], { activations: ['active'] });
+
+    expect(activateGrantedStatuses(modifiers, 'player_toggle', registry)).toEqual([]);
+    expect(activateGrantedStatuses(modifiers, 'mj_imposed', registry)).toEqual([{ id: 'gm_only' }]);
   });
 });

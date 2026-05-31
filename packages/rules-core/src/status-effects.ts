@@ -3,6 +3,7 @@ import {
   parseEffectModel,
   type EffectDuration,
   type EffectModel,
+  type EffectOperation,
   type EffectSpec,
   type EffectValueContext
 } from './effect-model.js';
@@ -32,6 +33,27 @@ export type ActiveStatusEntry =
 export type StatusExpansionContext = EffectValueContext & {
   elapsedDT?: number;
 };
+
+export interface StatusGrantApplicationView {
+  op: EffectOperation;
+  sourceRef: string;
+}
+
+export interface StatusGrantBucketView {
+  applications: readonly StatusGrantApplicationView[];
+  scope?: string;
+}
+
+export interface StatusGrantModifiersView {
+  status: Readonly<Record<string, StatusGrantBucketView>>;
+}
+
+export interface ActivatedStatusGrant {
+  activationSource: ActivationSource;
+  entry: ActiveStatusEntry;
+  id: string;
+  sourceRef: string;
+}
 
 export const COMPOSITE_STATUS_REGISTRY = defineCompositeStatusRegistry({
   fou_furieux: {
@@ -114,6 +136,47 @@ export function expandActiveStatuses(
   }
 
   return expanded;
+}
+
+export function collectActivatedStatusGrants(
+  modifiers: StatusGrantModifiersView,
+  source: ActivationSource,
+  registry: CompositeStatusRegistry = COMPOSITE_STATUS_REGISTRY
+): ActivatedStatusGrant[] {
+  const grants: ActivatedStatusGrant[] = [];
+  const seen = new Set<string>();
+
+  for (const bucket of Object.values(modifiers.status)) {
+    const statusId = bucket.scope;
+
+    if (statusId === undefined || !canActivate(source, statusId, registry)) {
+      continue;
+    }
+
+    for (const application of bucket.applications) {
+      if (application.op !== 'grant' || seen.has(statusId)) {
+        continue;
+      }
+
+      grants.push({
+        activationSource: source,
+        entry: { id: statusId },
+        id: statusId,
+        sourceRef: application.sourceRef
+      });
+      seen.add(statusId);
+    }
+  }
+
+  return grants;
+}
+
+export function activateGrantedStatuses(
+  modifiers: StatusGrantModifiersView,
+  source: ActivationSource,
+  registry: CompositeStatusRegistry = COMPOSITE_STATUS_REGISTRY
+): ActiveStatusEntry[] {
+  return collectActivatedStatusGrants(modifiers, source, registry).map((grant) => grant.entry);
 }
 
 export function canActivate(
