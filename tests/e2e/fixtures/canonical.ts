@@ -8,6 +8,41 @@ export const canonicalE2EFixtures = {
     avelineDraftName: 'E2E Aveline',
     magicianDraftName: 'E2E Magicien'
   },
+  inventoryDraft: {
+    currentStep: 'review',
+    payload: {
+      attributes: {
+        aestheticism: 1,
+        charisma: 2,
+        dexterity: 3,
+        empathy: 1,
+        intelligence: 2,
+        perception: 2,
+        reflexes: 2,
+        stamina: 3,
+        strength: 4
+      },
+      background: 'Garde de la porte nord.',
+      classId: 'garde',
+      deity: 'Les Trois Flammes',
+      equipmentIds: ['epee_batarde'],
+      extraSpellPoints: 0,
+      genderId: 'unspecified',
+      name: 'E2E Aveline',
+      orientationId: 'guerrier',
+      psychology: 'calme',
+      quote: 'La lame engage.',
+      raceId: 'humain',
+      skills: [
+        { id: 'epee-a-une-main', points: 4 },
+        { id: 'stoicisme', points: 4 },
+        { id: 'commandement', points: 4 },
+        { id: 'observation-du-terrain', points: 4 },
+        { id: 'bouclier', points: 4 }
+      ],
+      spells: []
+    }
+  },
   scenes: {
     firstDifficultRoll: 'Aveline tente un jet de des difficile a la porte nord.',
     memoryRecall: 'Aveline repense au jet de des difficile avant de parler au guetteur.'
@@ -25,6 +60,15 @@ export const canonicalE2EFixtures = {
         { path: 'docs/rules/02-attributs.md', ref: 'D2 aptitudes' },
         { path: 'docs/rules/05-competences.md', ref: 'D5 competences et specialisations' },
         { path: 'docs/rules/07-progression.md', ref: 'D7 level points' }
+      ]
+    },
+    inventory: {
+      title: 'canonical inventory persistence and reload',
+      sourceRefs: [
+        { path: 'docs/rules/10-equipement.md', ref: 'D10 equipement' },
+        { path: 'docs/rules/02-attributs.md', ref: 'R-2.18 encombrement' },
+        { path: 'data/catalogs/armes.yaml', ref: 'epee_batarde' },
+        { path: 'data/catalogs/potions.yaml', ref: 'soin' }
       ]
     },
     characterCreation: {

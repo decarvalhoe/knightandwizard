@@ -13,6 +13,77 @@ afterAll(async () => {
 });
 
 describe('character routes', () => {
+  it('persists canonical inventory, safely retries, rejects stale edits and enforces ownership', async () => {
+    const draftId = `inventory-character-${randomUUID()}`;
+    const owner = { 'x-kw-user-id': 'inventory-owner' };
+    await app.inject({
+      method: 'PUT',
+      url: `/character-drafts/${draftId}`,
+      headers: owner,
+      payload: sampleDraft('Aveline Inventaire')
+    });
+    const finalized = await app.inject({
+      method: 'POST',
+      url: '/characters/finalize',
+      headers: owner,
+      payload: { draftId }
+    });
+    expect(finalized.statusCode).toBe(201);
+    const initial = finalized.json().character;
+    const expectedEquipment = initial.equipment.map((item: { id: string; quantity?: number }) => ({
+      id: item.id,
+      quantity: item.quantity ?? 1
+    }));
+    const body = { equipment: [{ id: 'soin', quantity: 2 }], expectedEquipment };
+    const write = () =>
+      app.inject({
+        method: 'PUT',
+        url: `/characters/${draftId}/equipment`,
+        headers: owner,
+        payload: body
+      });
+    const saved = await write();
+    expect(saved.statusCode).toBe(200);
+    expect(saved.json().character.equipment).toMatchObject([{ id: 'soin', quantity: 2 }]);
+    expect(saved.json().character.vitality).toEqual(initial.vitality);
+    expect(saved.json().character.progression).toEqual(initial.progression);
+    expect((await write()).statusCode).toBe(200);
+    const stale = await app.inject({
+      method: 'PUT',
+      url: `/characters/${draftId}/equipment`,
+      headers: owner,
+      payload: { ...body, equipment: [] }
+    });
+    expect(stale.statusCode).toBe(409);
+    const invalid = await app.inject({
+      method: 'PUT',
+      url: `/characters/${draftId}/equipment`,
+      headers: owner,
+      payload: {
+        equipment: [{ id: 'invented-equipment', quantity: 1 }],
+        expectedEquipment: body.equipment
+      }
+    });
+    expect(invalid.statusCode).toBe(400);
+    const denied = await app.inject({
+      method: 'PUT',
+      url: `/characters/${draftId}/equipment`,
+      headers: { 'x-kw-user-id': 'other-user' },
+      payload: { equipment: [], expectedEquipment: body.equipment }
+    });
+    expect(denied.statusCode).toBe(404);
+    const read = await app.inject({ method: 'GET', url: `/characters/${draftId}`, headers: owner });
+    expect(read.json().character.equipment).toEqual(saved.json().character.equipment);
+    const removed = await app.inject({
+      method: 'PUT',
+      url: `/characters/${draftId}/equipment`,
+      headers: owner,
+      payload: { equipment: [], expectedEquipment: body.equipment }
+    });
+    expect(removed.statusCode).toBe(200);
+    expect(removed.json().character.equipment).toEqual([]);
+  });
+
   it('finalizes a saved draft into a persisted character and reads it back by id', async () => {
     const draftId = `route-character-${randomUUID()}`;
 

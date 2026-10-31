@@ -35,9 +35,11 @@ export default async function CharacterPage({ searchParams }: Readonly<Character
       </Card>
 
       <CharacterSheet
+        key={sheet.character.id}
         attributeLabels={sheet.attributeLabels}
         attributeOrder={sheet.attributeOrder}
         character={sheet.character}
+        canPersistInventory={sheet.canPersistInventory}
         dataSourceLabel={sheet.dataSourceLabel}
         equipmentCatalog={sheet.equipmentCatalog}
         initialInventory={sheet.initialInventory}
