@@ -447,9 +447,12 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('Fin de session marquee par le MJ')).toBeVisible();
   });
 
-  test('character creation validates fighter and magician creation budgets', async ({
+  test('character creation persists a fighter after a retry and opens its saved sheet', async ({
     page
   }, testInfo) => {
+    // This journey includes 40 budget inputs, a failed request, a retry and two navigations.
+    // Keep each assertion's normal timeout while allowing the complete persistence journey.
+    test.setTimeout(90_000);
     annotateCanonical(testInfo, 'characterCreation');
 
     await page.goto('/character/create');
@@ -476,12 +479,109 @@ test.describe('K&W player and GM application flows', () => {
     await expect(page.getByText('20/20').first()).toBeVisible();
 
     await openCreationStep(page, 'Validation');
-    await expect(page.getByRole('button', { name: 'Valider le brouillon' })).toBeEnabled();
-    await page.getByRole('button', { name: 'Valider le brouillon' }).click();
-    await expect(page.getByText(/Brouillon valide · vitalite 20 · energie 0/)).toBeVisible();
+    const createCharacter = page.getByRole('button', { name: 'Créer le personnage' });
+    await expect(createCharacter).toBeEnabled();
+
+    // A failed finalization must preserve the saved draft and allow an explicit retry.
+    let failedDraftId = '';
+    let failNextFinalization = true;
+    await page.route('**/characters/finalize', async (route) => {
+      if (route.request().method() !== 'POST' || !failNextFinalization) {
+        await route.continue();
+        return;
+      }
+
+      failNextFinalization = false;
+      failedDraftId = (route.request().postDataJSON() as { draftId: string }).draftId;
+      await route.fulfill({
+        body: JSON.stringify({ status: 'unavailable' }),
+        contentType: 'application/json',
+        headers: { 'access-control-allow-origin': '*' },
+        status: 503
+      });
+    });
+    await createCharacter.click();
+    await expect(page.getByRole('main').getByRole('alert')).toContainText('API HTTP 503');
+    await expect(page.getByRole('link', { name: 'Ouvrir la fiche' })).toHaveCount(0);
+    await expect(page.getByText(/Personnage enregistré/)).toHaveCount(0);
+    await expect(createCharacter).toBeEnabled();
+
+    expect(failedDraftId).not.toBe('');
+    const preservedDraft = await page.request.get(
+      `${e2eApiBaseUrl}/character-drafts/${encodeURIComponent(failedDraftId)}`
+    );
+    expect(preservedDraft.ok()).toBe(true);
+    expect((await preservedDraft.json()).payload.name).toBe(
+      canonicalE2EFixtures.actors.avelineDraftName
+    );
+
+    const finalizedResponse = page.waitForResponse(
+      (response) =>
+        response.url().endsWith('/characters/finalize') &&
+        response.request().method() === 'POST' &&
+        response.status() === 201
+    );
+    await createCharacter.click();
+    const finalized = await (await finalizedResponse).json();
+    expect(finalized.status).toBe('finalized');
+    expect(finalized.character.name).toBe(canonicalE2EFixtures.actors.avelineDraftName);
+    await expect(page.getByRole('main').getByRole('alert')).toHaveCount(0);
+    await expect(page.getByRole('heading', { name: 'Personnage enregistré' })).toBeVisible();
+    await expect(createCharacter).toHaveCount(0);
+    await expect(page.getByRole('status')).toContainText(
+      canonicalE2EFixtures.actors.avelineDraftName
+    );
+
+    const characterId = finalized.character.id as string;
+    const persistedCharacter = await page.request.get(
+      `${e2eApiBaseUrl}/characters/${encodeURIComponent(characterId)}`
+    );
+    expect(persistedCharacter.ok()).toBe(true);
+    expect((await persistedCharacter.json()).character).toMatchObject({
+      id: characterId,
+      name: canonicalE2EFixtures.actors.avelineDraftName
+    });
+    await page.getByRole('link', { name: 'Ouvrir la fiche' }).click();
+    await expect(page).toHaveURL(
+      (url) => url.pathname === '/character' && url.searchParams.get('characterId') === characterId
+    );
+    await expect(
+      page.getByRole('heading', { name: canonicalE2EFixtures.actors.avelineDraftName })
+    ).toBeVisible();
+    await expect(page.getByText('Personnage API')).toBeVisible();
+    await page.reload();
+    await expect(
+      page.getByRole('heading', { name: canonicalE2EFixtures.actors.avelineDraftName })
+    ).toBeVisible();
+    await expect(page.getByText('Personnage API')).toBeVisible();
+
+    await page.goto('/character/create');
+    await expect(page.getByLabel('Nom')).toHaveValue('');
+    await expect
+      .poll(() =>
+        page.evaluate((previousDraftId) => {
+          const raw = window.localStorage.getItem('kw.character-creation-draft.v1');
+          const draft = raw ? (JSON.parse(raw) as { id: string }) : undefined;
+          return Boolean(draft?.id && draft.id !== previousDraftId);
+        }, failedDraftId)
+      )
+      .toBe(true);
+    await page.getByLabel('Nom').fill(canonicalE2EFixtures.actors.magicianDraftName);
     await expect(page.getByText('API synchronisee')).toBeVisible();
 
-    await page.getByRole('button', { name: /Reset/ }).click();
+    const originalCharacter = await page.request.get(
+      `${e2eApiBaseUrl}/characters/${encodeURIComponent(characterId)}`
+    );
+    expect(originalCharacter.ok()).toBe(true);
+    expect((await originalCharacter.json()).character).toMatchObject({
+      id: characterId,
+      name: canonicalE2EFixtures.actors.avelineDraftName
+    });
+  });
+
+  test('character creation validates magician conversion budgets', async ({ page }, testInfo) => {
+    annotateCanonical(testInfo, 'characterCreation');
+    await page.goto('/character/create');
     await page.getByLabel('Nom').fill(canonicalE2EFixtures.actors.magicianDraftName);
     await openCreationStep(page, 'Voie');
     await page.getByRole('button', { name: /Magicien/ }).click();
