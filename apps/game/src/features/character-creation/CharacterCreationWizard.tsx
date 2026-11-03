@@ -14,7 +14,8 @@ import {
   ScrollText,
   UserPlus
 } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import Link from 'next/link';
 
 import type { Character, CharacterAttributes } from '@knightandwizard/rules-core';
 
@@ -34,6 +35,8 @@ import {
   type StepValidation
 } from './model';
 import {
+  clearFinalizedDraftLocally,
+  finalizeDraftToApi,
   loadDraftLocally,
   saveDraftLocally,
   syncDraftToApi,
@@ -60,6 +63,10 @@ export function CharacterCreationWizard({
   const [apiSync, setApiSync] = useState<DraftSyncResult>(syncIdle);
   const [localSync, setLocalSync] = useState<DraftSyncResult>(syncIdle);
   const [loaded, setLoaded] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const submissionPending = useRef(false);
+  const mounted = useRef(false);
   const [submittedCharacter, setSubmittedCharacter] = useState<Character | null>(null);
   const view = useMemo(() => buildCreationView(draft, catalog), [catalog, draft]);
   const currentStepIndex = Math.max(
@@ -72,17 +79,23 @@ export function CharacterCreationWizard({
   const extraSpellMax = Math.max(0, Math.floor((view.selectedRace?.category ?? 0) / 10));
 
   useEffect(() => {
+    mounted.current = true;
     const savedDraft = loadDraftLocally(window.localStorage);
 
     if (savedDraft) {
       setDraft(savedDraft);
+    } else {
+      setDraft((current) => ({ ...current, id: `draft-${crypto.randomUUID()}` }));
     }
 
     setLoaded(true);
+    return () => {
+      mounted.current = false;
+    };
   }, []);
 
   useEffect(() => {
-    if (!loaded) {
+    if (!loaded || isSubmitting || submittedCharacter) {
       return undefined;
     }
 
@@ -92,7 +105,7 @@ export function CharacterCreationWizard({
     }, 450);
 
     return () => window.clearTimeout(timeoutId);
-  }, [draft, loaded]);
+  }, [draft, loaded, isSubmitting, submittedCharacter]);
 
   function updateDraft(patch: Partial<CharacterCreationDraft>) {
     setDraft((current) => ({
@@ -100,6 +113,7 @@ export function CharacterCreationWizard({
       ...patch
     }));
     setSubmittedCharacter(null);
+    setSubmitError(null);
   }
 
   function selectOrientation(orientationId: string) {
@@ -134,27 +148,58 @@ export function CharacterCreationWizard({
   function resetDraft() {
     setDraft({
       ...draftTemplate,
-      id: `draft-${Date.now()}`
+      id: `draft-${crypto.randomUUID()}`
     });
     setSubmittedCharacter(null);
+    setSubmitError(null);
   }
 
-  function submitDraft() {
-    if (!view.canSubmit) {
+  async function submitDraft() {
+    if (!view.canSubmit || submissionPending.current || submittedCharacter) {
       return;
     }
+    submissionPending.current = true;
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      const character = await finalizeDraftToApi({ ...draft, currentStep: 'review' });
+      if (mounted.current) setSubmittedCharacter(character);
+      // A new visit starts a new draft rather than overwriting this saved character.
+      try {
+        clearFinalizedDraftLocally(draft, window.localStorage);
+      } catch {
+        // The server save is authoritative even when local storage is unavailable.
+      }
+    } catch (error) {
+      if (mounted.current) {
+        setSubmitError(error instanceof Error ? error.message : 'Création impossible. Réessayez.');
+      }
+    } finally {
+      submissionPending.current = false;
+      if (mounted.current) setIsSubmitting(false);
+    }
+  }
 
-    const character = previewCharacter(draft, catalog);
-
-    setDraft((current) => ({
-      ...current,
-      currentStep: 'review'
-    }));
-    setSubmittedCharacter(character);
+  if (submittedCharacter) {
+    return (
+      <section className="grid gap-4 rounded-md border border-forest/20 bg-paper p-5">
+        <h1 className="text-2xl font-semibold">Personnage enregistré</h1>
+        <p role="status">{submittedCharacter.name} est sauvegardé. Sa fiche peut être rechargée.</p>
+        <Link
+          className="kw-btn kw-btn--primary"
+          href={`/character?characterId=${encodeURIComponent(submittedCharacter.id)}`}
+        >
+          Ouvrir la fiche
+        </Link>
+        <button className="kw-btn kw-btn--secondary" onClick={resetDraft} type="button">
+          Nouveau personnage
+        </button>
+      </section>
+    );
   }
 
   return (
-    <div className="grid gap-5">
+    <fieldset className="grid min-w-0 gap-5" disabled={isSubmitting}>
       <section className="rounded-md border border-ink/10 bg-white/78 p-5 shadow-sm">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div>
@@ -308,7 +353,8 @@ export function CharacterCreationWizard({
             {draft.currentStep === 'review' && (
               <ReviewStep
                 draft={draft}
-                submittedCharacter={submittedCharacter}
+                isSubmitting={isSubmitting}
+                submitError={submitError}
                 submitDraft={submitDraft}
                 view={view}
               />
@@ -326,7 +372,7 @@ export function CharacterCreationWizard({
           <BudgetPanel draft={draft} view={view} />
         </aside>
       </div>
-    </div>
+    </fieldset>
   );
 }
 
@@ -641,12 +687,14 @@ function StoryStep({
 
 function ReviewStep({
   draft,
-  submittedCharacter,
+  isSubmitting,
+  submitError,
   submitDraft,
   view
 }: Readonly<{
   draft: CharacterCreationDraft;
-  submittedCharacter: Character | null;
+  isSubmitting: boolean;
+  submitError: string | null;
   submitDraft: () => void;
   view: ReturnType<typeof buildCreationView>;
 }>) {
@@ -672,17 +720,16 @@ function ReviewStep({
       )}
       <button
         className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-forest px-4 text-sm font-semibold text-paper transition hover:bg-forest/90 disabled:opacity-40"
-        disabled={!view.canSubmit}
+        disabled={!view.canSubmit || isSubmitting}
         onClick={submitDraft}
         type="button"
       >
         <BookCheck aria-hidden="true" className="size-4" />
-        Valider le brouillon
+        {isSubmitting ? 'Enregistrement…' : 'Créer le personnage'}
       </button>
-      {submittedCharacter && (
-        <p className="rounded-md border border-forest/20 bg-forest/10 p-3 text-sm font-semibold text-forest">
-          Brouillon valide · vitalite {submittedCharacter.vitality.max} · energie{' '}
-          {submittedCharacter.energy.max}
+      {submitError && (
+        <p role="alert" className="text-wine">
+          {submitError}
         </p>
       )}
     </div>
