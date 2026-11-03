@@ -41,6 +41,7 @@
 | **I1 — MJ LLM vivant** 🆕          | `agent.generate()` (#58), RAG cité (#59), mémoire épisodique vectorielle (#60) | v0.6.0      |
 | **I2 — Auth & multi-joueur** 🆕    | auth minimale (`userId` en dur aujourd'hui), players/scenes                    | v0.4.0      |
 | **I3 — Dette canonique & qualité** | déclarer l'évidence des partials, Zod sur catalogues secondaires, E2E élargi   | transversal |
+| **I4 — SDLC, CI/CD & releases** | cadrer et documenter le cycle de livraison, les gates et la promotion reproductible ([#302](https://github.com/decarvalhoe/knightandwizard/issues/302)) | transversal |
 
 ## 2. Réconciliation des issues GitHub
 
