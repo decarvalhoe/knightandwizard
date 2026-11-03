@@ -1,3 +1,9 @@
+import {
+  InventoryUpdateSchema,
+  InventoryConflictError,
+  UnknownEquipmentError,
+  updatePersistedInventory
+} from '../characters/inventory.js';
 import type { FastifyInstance, FastifyReply } from 'fastify';
 import { ProgressionError } from '@knightandwizard/rules-core';
 import {
@@ -55,6 +61,27 @@ interface CharacterParams {
 }
 
 export async function registerCharacterRoutes(app: FastifyInstance): Promise<void> {
+  app.options('/characters/:id/equipment', async (_request, reply) => reply.code(204).send());
+  app.put<{ Params: CharacterParams }>('/characters/:id/equipment', async (request, reply) => {
+    const parsed = InventoryUpdateSchema.safeParse(request.body);
+    if (!parsed.success)
+      return reply
+        .code(400)
+        .send({ status: 'invalid', errors: parsed.error.issues.map((issue) => issue.message) });
+    try {
+      const result = await updatePersistedInventory(request.params.id, parsed.data, {
+        userId: resolveRequestUserId(request)
+      });
+      return { ...result, status: 'saved' };
+    } catch (error) {
+      if (error instanceof InventoryConflictError)
+        return reply.code(409).send({ status: 'conflict' });
+      if (error instanceof UnknownEquipmentError)
+        return reply.code(400).send({ status: 'invalid', errors: [error.message] });
+      return sendCharacterRouteError(error, reply);
+    }
+  });
+
   app.options('/characters/finalize', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id/active-spells', async (_request, reply) => reply.code(204).send());
   app.options('/characters/:id/combat-state', async (_request, reply) => reply.code(204).send());

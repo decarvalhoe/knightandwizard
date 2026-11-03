@@ -1,7 +1,7 @@
 'use client';
 
 import { BookOpen, Dices, Minus, PackagePlus, Shield, Sparkles, UserCog } from 'lucide-react';
-import { useMemo, useState, type CSSProperties, type ReactNode } from 'react';
+import { useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 
 import { type AttributeKey, type Character } from '@knightandwizard/rules-core';
 import {
@@ -19,11 +19,13 @@ import {
   type ToastTone
 } from '@knightandwizard/ui';
 
+import { InventorySaveError, saveCharacterInventory } from './persistence';
 import { getClientApiBaseUrl } from '../../lib/api';
 import {
   addInventoryItem,
   attributeRollOutcomeLabels,
   buildCharacterSheetView,
+  buildInventoryFromCharacterEquipment,
   filterEquipmentCatalog,
   removeInventoryItem,
   rollAttributeCheck,
@@ -44,6 +46,7 @@ interface CharacterSheetProps {
   attributeLabels: Record<AttributeKey, string>;
   attributeOrder: AttributeKey[];
   character: Character;
+  canPersistInventory?: boolean;
   dataSourceLabel: string;
   equipmentCatalog: EquipmentCatalogEntry[];
   initialInventory: InventoryItem[];
@@ -70,6 +73,7 @@ export function CharacterSheet({
   attributeLabels,
   attributeOrder,
   character,
+  canPersistInventory = false,
   dataSourceLabel,
   equipmentCatalog,
   initialInventory,
@@ -77,6 +81,11 @@ export function CharacterSheet({
   skillLabels,
   spells
 }: Readonly<CharacterSheetProps>) {
+  const inventoryLock = useRef(false);
+  const [inventoryPending, setInventoryPending] = useState(false);
+  const [inventoryError, setInventoryError] = useState<InventorySaveError | null>(null);
+  const [inventoryRetry, setInventoryRetry] = useState<InventoryItem[] | null>(null);
+  const [inventorySaved, setInventorySaved] = useState(false);
   const [mode, setMode] = useState<CharacterSheetMode>('complete');
   const [sheetCharacter, setSheetCharacter] = useState(character);
   const [inventory, setInventory] = useState(initialInventory);
@@ -86,15 +95,40 @@ export function CharacterSheet({
   const [questConversionPending, setQuestConversionPending] = useState(false);
   const [questConversionError, setQuestConversionError] = useState<string | null>(null);
 
-  function addEquipment(equipmentId: string) {
-    const option = equipmentCatalog.find((entry) => entry.id === equipmentId);
-
-    if (!option) {
+  async function persistInventory(next: InventoryItem[]) {
+    if (inventoryLock.current) return;
+    if (!canPersistInventory) {
+      setInventory(next);
       return;
     }
+    inventoryLock.current = true;
+    setInventoryPending(true);
+    setInventoryError(null);
+    setInventorySaved(false);
+    setInventoryRetry(next);
+    try {
+      const saved = await saveCharacterInventory(sheetCharacter.id, next, sheetCharacter.equipment);
+      setInventory(buildInventoryFromCharacterEquipment(saved.equipment, equipmentCatalog));
+      setSheetCharacter((current) => ({ ...current, equipment: saved.equipment }));
+      setInventoryRetry(null);
+      setInventorySaved(true);
+    } catch (error) {
+      setInventoryError(
+        error instanceof InventorySaveError
+          ? error
+          : new InventorySaveError('Connexion interrompue. Inventaire non confirmé. Réessayez.')
+      );
+    } finally {
+      inventoryLock.current = false;
+      setInventoryPending(false);
+    }
+  }
 
-    setInventory((current) =>
-      addInventoryItem(current, {
+  function addEquipment(equipmentId: string) {
+    const option = equipmentCatalog.find((entry) => entry.id === equipmentId);
+    if (!option) return;
+    void persistInventory(
+      addInventoryItem(inventory, {
         category: option.category,
         id: option.id,
         name: option.name,
@@ -199,7 +233,8 @@ export function CharacterSheet({
                 <InventoryRow
                   item={item}
                   key={item.id}
-                  onRemove={() => setInventory((current) => removeInventoryItem(current, item.id))}
+                  disabled={inventoryPending || inventoryError !== null}
+                  onRemove={() => void persistInventory(removeInventoryItem(inventory, item.id))}
                 />
               ))}
             </SectionCard>
@@ -432,6 +467,7 @@ export function CharacterSheet({
                     filteredEquipmentCatalog.map((option) => (
                       <Button
                         className="kw-sheet__equipment-option"
+                        disabled={inventoryPending || inventoryError !== null}
                         key={option.id}
                         onClick={() => addEquipment(option.id)}
                         type="button"
@@ -455,6 +491,31 @@ export function CharacterSheet({
           }
           title="Inventaire"
         >
+          {!canPersistInventory && (
+            <p>
+              Aperçu uniquement : les modifications ne sont pas enregistrées. Ouvrez un personnage
+              enregistré pour modifier son inventaire.
+            </p>
+          )}
+          {inventoryPending && <p role="status">Enregistrement de l’inventaire…</p>}
+          {inventorySaved && <p role="status">Inventaire enregistré</p>}
+          {inventoryError && (
+            <div role="alert">
+              <p>{inventoryError.message}</p>
+              {inventoryError.conflict ? (
+                <Button onClick={() => window.location.reload()}>Recharger la fiche</Button>
+              ) : (
+                <Button
+                  disabled={inventoryPending}
+                  onClick={() => {
+                    if (inventoryRetry) void persistInventory(inventoryRetry);
+                  }}
+                >
+                  Réessayer l’enregistrement
+                </Button>
+              )}
+            </div>
+          )}
           <div className="kw-sheet__encumbrance" data-testid="encumbrance-summary">
             <p className="kw-sheet__muted">
               Charge {view.encumbrance.carriedKg} / {view.encumbrance.capacityKg} kg{' '}
@@ -480,7 +541,8 @@ export function CharacterSheet({
               <InventoryRow
                 item={item}
                 key={item.id}
-                onRemove={() => setInventory((current) => removeInventoryItem(current, item.id))}
+                disabled={inventoryPending || inventoryError !== null}
+                onRemove={() => void persistInventory(removeInventoryItem(inventory, item.id))}
               />
             ))}
           </div>
@@ -683,7 +745,11 @@ function SkillTreeRows({
   );
 }
 
-function InventoryRow({ item, onRemove }: Readonly<{ item: InventoryItem; onRemove: () => void }>) {
+function InventoryRow({
+  item,
+  onRemove,
+  disabled = false
+}: Readonly<{ item: InventoryItem; onRemove: () => void; disabled?: boolean }>) {
   return (
     <div className="kw-sheet__inventory-row">
       <div>
@@ -696,6 +762,7 @@ function InventoryRow({ item, onRemove }: Readonly<{ item: InventoryItem; onRemo
       <Badge tone={item.equipped ? 'info' : 'neutral'}>x{item.quantity}</Badge>
       <Button
         aria-label={`Retirer ${item.name}`}
+        disabled={disabled}
         className="kw-sheet__icon-button"
         onClick={onRemove}
         type="button"

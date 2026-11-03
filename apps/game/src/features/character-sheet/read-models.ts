@@ -40,6 +40,7 @@ import {
 } from './model';
 
 export interface CharacterSheetReadModel {
+  canPersistInventory: boolean;
   attributeLabels: Record<AttributeKey, string>;
   attributeOrder: AttributeKey[];
   character: Character;
@@ -95,6 +96,7 @@ export async function getCharacterSheetReadModel(
   const apiBackedCharacter = persistedCharacter !== null || draftSnapshot !== null;
 
   return {
+    canPersistInventory: persistedCharacter !== null,
     attributeLabels,
     attributeOrder: [...ATTRIBUTE_KEYS],
     character,
